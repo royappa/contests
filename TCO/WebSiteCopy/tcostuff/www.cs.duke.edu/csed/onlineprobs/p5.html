@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  
+<!-- Mirrored from www.cs.duke.edu/csed/onlineprobs/p5.html by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 14 Mar 2006 08:55:05 GMT -->
+<head>
+    <title>Weekly Problem 5</title>
+  </head>
+
+  <body>
+    <h1>Weekly Problem 5</h1>
+
+<em>
+
+This problem statement is the exclusive and proprietary property of
+TopCoder, Inc. Any unauthorized use or reproduction of this information
+without the prior written consent of TopCoder, Inc. is strictly
+prohibited. (c)2002, TopCoder, Inc. All rights reserved.
+
+</em>
+<P>
+<hr>
+
+<h3>Problem Statement</h3>
+
+
+You have three assistants working for you. They all type with the same speed
+of one page per minute. You came to your office today with a bunch of papers
+you need to have typed as soon as possible. You have to distribute the papers
+among your assistants in such a way that they finish all the papers at the
+earliest possible time.
+<P>
+
+Your task is, given a
+<code>vector&lt;int&gt;</code> with the number of pages for each paper, return
+the minimum number of minutes needed for your assistants to type all these
+papers. Assume that they can't divide a paper into parts, that is, each paper
+is typed by one person.
+ 
+<h3>Definition</h3>
+    
+<UL>
+<LI> Class:TypingJob
+<LI> Method:bestTime
+<LI> Parameters:<code>const vector&lt;int&gt;&amp;</code>
+<LI> Returns:int
+<LI> Method signature
+<PRE>
+ int bestTime(const tvector&lt;int&gt;&amp; pages)
+</PRE>
+
+(be sure your method is public)
+</UL>
+<P>
+
+<h3>Class</h3>
+
+<PRE>
+#include "tvector.h"
+class TypingJob
+{
+  public:
+    int bestTime(tvector&lt;int&gt; a) 
+    {
+       // fill in code here
+    }
+};
+
+</PRE>
+     
+<P>
+
+<h3>Constraints</h3>
+<UL>
+<LI> pages has between 1 and 10 elements inclusive
+<LI> each element of pages is between 1 and 100 inclusive
+</UL>
+<P>
+
+<h3>Examples</h3>
+
+<OL>
+<LI>
+<PRE>
+
+{38}
+
+</PRE>
+Returns: 38
+<P>
+<LI>
+<PRE>
+
+{15, 10, 5, 7, 8}
+
+</PRE>
+Returns: 15
+<P>
+The first secretary can type the 15-page paper.  The second secretary 
+can type the 10-page and 5-page papers.  The third secretary can type 
+the 7-page and 8-page papers.
+
+<P>
+<LI>
+<PRE>
+
+{100,100,100,100,100,100,100,100,100,100}
+
+</PRE>
+
+Returns: 400
+<P>
+<LI>
+<PRE>
+
+{1,2,3,4,5}
+
+</PRE>
+Returns: 5
+<P>
+<LI>
+<PRE>
+
+{1,2,3,4,5,6,7}
+
+</PRE>
+Returns: 10
+</OL>
+
+    <hr>
+    <address><a href="mailto:ola@cs.duke.edu">Owen L. Astrachan</a></address>
+<!-- Created: Wed Jan  8 09:34:28 EST 2003 -->
+<!-- hhmts start -->
+Last modified: Wed Apr 14 01:21:19 EDT 2004
+<!-- hhmts end -->
+  </body>
+
+<!-- Mirrored from www.cs.duke.edu/csed/onlineprobs/p5.html by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 14 Mar 2006 08:55:05 GMT -->
+</html>

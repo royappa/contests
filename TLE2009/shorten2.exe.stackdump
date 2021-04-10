@@ -1,0 +1,10 @@
+Exception: STATUS_STACK_OVERFLOW at eip=0040189B
+eax=005FA334 ebx=00000000 ecx=00032CE4 edx=0000004C esi=611021A0 edi=00401B58
+ebp=0022CCE8 esp=0022CCDC program=c:\misc\topcoder\tle2009\shorten2.exe, pid 20188, thread main
+cs=001B ds=0023 es=0023 fs=003B gs=0000 ss=0023
+Stack trace:
+Frame     Function  Args
+0022CCE8  0040189B  (00000001, 6116B6B0, 00A30090, 0022CC70)
+0022CD98  610060D8  (00000000, 0022CDD0, 61005450, 0022CDD0)
+61005450  61004416  (0000009C, A02404C7, E8611021, FFFFFF48)
+     75 [main] shorten2 20188 _cygtls::handle_exceptions: Error while dumping state (probably corrupted stack)

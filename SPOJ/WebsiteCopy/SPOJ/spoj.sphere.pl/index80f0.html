@@ -1,0 +1,267 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<!-- Mirrored from spoj.sphere.pl/?css=/themes/skin3.css by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 10 Jan 2006 04:49:43 GMT -->
+<head>
+<title>Sphere Online Judge (SPOJ) </title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-2">
+<META NAME="Keywords" CONTENT="spoj, online, judge, problem, set, problemset, archive, ACM, Polish, Poland, contest, contester, task, tasks, ADA, Java, Pascal, C, C++, Whitespace, sphere, interest, group, python, ruby, icon, o'caml, caml, ocaml, perl, haskell, bf, brain, clips, prolog, fortran, asm, assembler, asembler, functional, esoteric, programming, languages">
+
+<link href="gfx/favicon.png" rel="shortcut icon" type="image/x-icon">
+
+<link href="themes/skin3.css" rel="stylesheet" type="text/css" id="theme">
+<style type="text/css">
+<!--
+.maintable {width: 755;} 
+-->
+</style>
+<script type="text/javascript" language="javascript">
+<!--
+function UnCryptMailto(s) {
+	var n=0;
+	var r="";
+	for(var i=0;i<s.length;i++) {		
+		n=s.charCodeAt(i); 
+		if (n>=8364) {n = 128;}
+		r += String.fromCharCode(n+(2));	
+	}
+	return r;
+}
+function linkTo_UnCryptMailto(s)	{
+	location.href=UnCryptMailto(s);
+}
+// -->
+</script>
+
+</head>
+<body>
+<center>
+<table cellpadding="10" cellspacing="0" class="maintable" id="maintable">
+<tr>
+    <td colspan="2" class="header">
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+        <tr>
+		<td class="headerleft"/>
+		<td class="headercenter"><h1>Sphere Online Judge</h1></td>
+		<td class="headerright"/>
+	</tr>
+	</table>
+    </td>
+</tr>
+<tr><td class="menu" width="92" valign="top">
+<form name="login"  action="http://spoj.sphere.pl/?css=/themes/skin3.css" method="post" 
+	onsubmit="if(document.login.ssl.checked) document.login.action='https://spoj.sphere.pl/?css=/themes/skin3.css'" style="margin-bottom: 18px"> 
+User: <input name="login_user" type="text" style="width: 85px;" class="form"><BR>
+Password: <input name="password" type="password" style="width: 85px;" class="form"><BR>
+<script language="javascript" type="text/javascript">
+<!--
+document.write('<input type="checkbox" name="ssl" id="ssl" checked>secure<br>');
+//-->
+</script>
+<input name="submit" type="submit" value="Log In" class="button" style="width: 85px;">
+</form><div class="menucmd"><a href="register/index.html">register</a><br><br><a href="status/index.html">status</a><br><a href="submit/index.html">submit</a><br><a href="problems/classical/sort=0,start=250.html">problems</a><br><br><a href="https://spoj.sphere.pl/">news</a><br><a href="contests/index.html">contests</a><br><a href="info/index.html">info</a><br><a href="ranks/index.html">ranks</a><br><br><a href="https://spoj.sphere.pl/forum">forum</a><br><a href="help/index.html">help</a><br><a href="links.html">links</a><br><hr></div>Server time:<br>2006-01-10<br>05:47:24<a href="problems/classical/sort=0,start=250.html"></a><br><br>
+<form method="get" action="https://spoj.sphere.pl/search/" class="form" style="width:90px">
+<input type="text" name="query" style="width:85px" maxlength=255 value="" class="form"><br>
+<input type="submit" value="Search" style="width:85px" class="form" title="Search site"><br>
+&nbsp;<a href="search/problems=on,users=on,contests=on.html" title="More search options"><small>advanced...</small></a>
+</form></td><td class="content" width="99%"><p align="justify"><b> 2006-01-07 18:09:50 Downtime </b> by <b> Tomek Noiński </b> <br>
+We're really sorry for today's downtime. Our database server broke down. We didn't see that coming :(
+<p align="justify"><b> 2005-11-27 04:10:17 Haskell compiler upgrade </b> by <b> Tomek Noiński </b> <br>
+GHC compiler has just been upgraded from 6.2.1 (using gcc 3.3) to 6.4.1 (using gcc 4.0).
+<p align="justify"><b> 2005-10-09 13:07:20 End of downtime </b> by <b> Adrian Kosowski </b> <br>
+We sincerely apologise for nearly 36 hours of server downtime, caused by malfunction of our Internet Service Provider's hardware. We hope that nothing similar will happen in the foreseeable future.
+<p align="justify"><b> 2005-07-01 15:22:40 Technical problems </b> by <b> Tomek Noiński </b> <br>
+We experienced some technical problems, but everything is ok now. We're very sorry about the inconvenience.
+<p align="justify"><b> 2005-06-09 22:28:51 New www server </b> by <b> Tomek Noiński </b> <br>
+SPOJ has moved to a different server in <a href="http://task.gda.pl/english/">TASK</a>, which means no more power outages and better performance :)
+<p align="justify"><b> 2005-06-04 23:38:55 Compilers' upgrade </b> by <b> Tomek Noiński </b> <br>
+gcc and g++ compilers have been upgraded to 4.0 and fpc compiler has been upgraded to stable 2.0.0. All solutions will gradually be rejudged.
+<p align="justify"><b> 2005-06-01 11:21:41 Big rejudging! </b> by <b> Tomek Noiński </b> <br>
+<a href="http://task.gda.pl/english/"><img align="left" border=0 src="gfx/logo-task.gif" alt="TASK logo"/></a>We have new computers to run programs on (PIII Xeon 700MHz) in <a href="http://task.gda.pl/english/">Academic Computer Centre in Gdansk TASK</a> and all programs will be rejudged in the following month. Time limits will have to be adjusted, but more programs will change TLE->AC than vice versa. Please report any abnormalities! :)
+<p align="justify"><b> 2005-02-03 02:39:30 Change in languages </b> by <b> Tomek Noiński </b> <br>
+Scheme language has been added, in two incarnations: Guile interpreter and QobiScheme (using Stalin compiler).
+Also, GHC5 has been removed and all GHC solutions have been rejudged on GHC6. 
+<p align="justify"><b> 2004-12-18 03:54:35 New Java compiler/VM </b> by <b> Tomek Noiński </b> <br>
+Java compiler and JVM have been upgraded to j2se sdk 5.0.
+<p align="justify"><b> 2004-12-15 23:50:29 Pogromcy 2003 complete set </b> by <b> Adam Dzedzej </b> <br>
+I've added two problems 
+<A href="problems/BRCKTS/index.html">BRCKTS</a>
+and <A href="problems/IMP.html">IMP</a>
+and now the set of problems from <i>Pogromcy Algorytmow 2003</i> (Algorithm Tamers) contest is complete. See problems 53-62. 
+<p align="justify"><b> 2004-12-14 02:10:24 Source length matters </b> by <b> Tomek Noiński </b> <br>
+SPOJ problem judges can examine solution's source from now on. Problem <a href="problems/KAMIL/index.html">KAMIL</a>
+ has been changed so that it is ranked by source length rather than execution time.
+<p align="justify"><b> 2004-12-01 22:58:02 New problem SUMITR </b> by <b> Łukasz Kuszner </b> <br>
+A new problem 
+<a href = "problems/SUMITR/index.html"> 
+SUMITR </a>
+is available, taste it! 
+<p align="justify"><b> 2004-11-23 22:19:54 Two tutorial problems </b> by <b> Michał Małafiejski </b> <br>
+<a href="problems/TCONNUM/index.html">TCONNUM</a> and <a href="problems/TDBFS/index.html">TDBFS</a>, have fun!
+<p align="justify"><b> 2004-11-16 21:37:24 Rejudge of Help R2-D2! </b> by <b> Adrian Kuegel </b> <br>
+The test cases didn't cover an important test case, so some incorrect programs got Accepted. This is fixed now.
+<p align="justify"><b> 2004-11-03 06:01:05 New problem added to the Online Judge </b> by <b> Neal Zane </b> <br>
+A new problem <a href="problems/SHAMAN/index.html">SHAMAN</a> is available. You are welcome to challenge it and comment on it.
+<p align="justify"><b> 2004-10-29 20:47:09 SPOJ site update </b> by <b> Adrian Kosowski </b> <br>
+A site update has been performed as a first step to allowing users to create their own contest sites via a web browser interface. The websites of existing contests hosted at the Sphere Online Judge are currently being tested and improved.<br>Please report major bugs in the forum (some missing features will be added within 24 hours, you needn't report them). All feedback is most welcome.<br><br>
+The <a href="http://liga.sphere.pl/">DASM Programming League</a> has a new website to which we are currently adding problems from Problemset 2. Standings from Problemset 1 will be available in several hours.
+
+<p align="justify"><b> 2004-10-25 23:28:29 New language: Common Lisp </b> by <b> Tomek Noiński </b> <br>
+Common Lisp language has been added, with two compilers/interpreters to choose from: gcl and clisp.
+<p align="justify"><b> 2004-10-19 22:43:01 New kind of problems in SPOJ </b> by <b> Michał Małafiejski </b> <br>
+We decided to add a third kind of problems: <i>tutorial</i>. They are easier than classical or challenge problems, so no points are given for solving them. Sometimes, before a problem is added to the classical or challenge set of the online judge, we present it as a tutorial problem.
+<p align="justify"><b> 2004-10-16 20:44:51 SPOJ Bulletin, issue 5 </b> by <b> Adrian Kosowski </b> <br>
+<DIV align="justify">
+This edition of the SPOJ Bulletin comprises a list of all major changes which 
+		have appeared in Sphere Online Judge since the previous issue.
+	<p>Changes in October:
+		<ul>
+			<li>
+			At last, Sphere Online Judge WWW server is running on a new PC! It should be 
+			incomparably faster and more stable.
+			<li>
+				The opening problemset of this year's <A href="http://liga.sphere.pl/">DASM 
+					Programming League</A> has been made available (problems: <A href="problems/SOPARADE.html">
+					SOPARADE</A>, <A href="problems/CUTSQRS.html">CUTSQRS</A>, <A href="problems/PHRASES.html">
+					PHRASES</A>, <A href="problems/PSPHERE.html">PSPHERE</A>, <A href="problems/PAWNS/index.html">
+					PAWNS</A>). The deadline for submitting solutions is 27.10, but the sooner 
+				you solve a problem, the better. You are welcome to write to the <A href="https://spoj.sphere.pl/forum/viewforum.php?f=40">
+					forum</A>
+			in case of any doubts.
+			<li>
+			MS-Word, pdf and PostScript "languages" have been added. At present, they are 
+			not meant for use in any of the publicly available SPOJ problems ;)
+			<li>
+				From now on, bearing in mind the upcoming contest support in the online judge, 
+				solutions will be tested on <I>4 identical PII266 computers</I>. All 
+			solutions have been rejudged on the online judge's new PCs. Time limits were 
+			arbitrarily changed, generally more TLE turned into AC than vice versa ;)
+			<li>
+				The Nemerle compiler in SPOJ has been upgraded to version 0.2.1.</li>
+		</ul>
+	<P>Changes in September:
+		<ul>
+			<li>
+			The Ocaml compiler in SPOJ has been upgraded from version 3.07a to 3.08.1.
+			<li>
+				The Nemerle language (<A href="http://www.nemerle.org/">http://www.nemerle.org/</A>) 
+			has been added to Sphere Online Judge.
+			<li>
+			The C# compiler and .NET virtual machine in SPOJ have been upgraded to mono 
+			1.0.1.
+			<li>
+			The site search function has been integrated and enhanced.
+			<li>
+			The site structure has been reordered and in consequence document URLs should 
+			now be more intuitive.
+			<li>
+			PS and PDF versions of individual problems and of the whole problemset have 
+			been made available for download.
+			<li>
+			Memory used by submitted solutions at runtime is now displayed in the status.
+			<li>
+			The general look-and-feel of SPOJ has been somewhat altered. Visual alterations 
+			have been introduced (if these are not immediately apparent,
+			<li>
+			SPOJ has been assigned its own IP address and https connections now go through 
+			standard port 443 (at last).
+			<li>
+			The program for sending submission confirmations has been rewritten from 
+			scratch.
+			<li>
+			An important change has been introduced: from now on, a program has to exit 
+			with exit code 0 to get AC. It will get Runtime Error: NZEC otherwise. We 
+			believe it's better this way.
+			<li>
+				The PHP language has been added to the online judge. The interpreter is PHP 
+				4.3.8-9, cli version.</li>
+		</ul>
+	<P>Changes in August:
+		<ul>
+			<li>
+			The Bash language has been added to the online judge, along with some standard 
+			Linux tools.
+			<li>
+				Submissions in C# language are now supported by Sphere Online Judge. The 
+				compiler and .net bytecode interpreter are from mono 0.30.2 (<A href="http://www.mono-project.com/">http://www.mono-project.com</A>).
+			<li>
+			Old Blackdown Java with green threads has been replaced with Sun's Java 1.5.0b2 
+			with native threads. Java, Nice and Bytecode programs should run much faster.
+			<li>
+			Since limiting programs' memory usage proved to be very difficult when allowing 
+			so many language, memory limits specific for particular problems have been 
+			removed and now all problems have the same, sane memory limit (you can assume 
+			you have at least 64MB of physical memory at your disposal).
+			<li>
+				A new language has been added to SPOJ: Lua (<A href="http://www.lua.org/">http://www.lua.org</A>)
+			<li>
+				Two new languages have been added to SPOJ: Nice (<A href="http://nice.sourceforge.net/">http://nice.sourceforge.net</A>) 
+				and java bytecode submitted directly in a JAR file (which allows users to write 
+				in any language compilable to bytecode, even if not supported by the online 
+				judge directly). Many thanks to Daniel Bonniot for helpful suggestions.</li>
+		</ul>
+	<p>Plans for the weeks to come include: improving the support for contests in SPOJ, 
+		making contests publicly available, as well as introducing a more advanced 
+		testing model for the online judge (to allow for multiple test cases and 
+		interactive testing). If you have any questions or suggestions, please write to 
+		the <a href="https://spoj.sphere.pl/forum/viewforum.php?f=29">forum</a>.</p>
+</DIV>
+
+<p align="justify"><b> 2004-07-23 01:42:05 SPOJ Bulletin, issues 1-4 </b> by <b> Adrian Kosowski </b> <br>
+For the archives of the Bulletin, please see the <a href="https://spoj.sphere.pl/forum/viewforum.php?f=24">forum</a>.
+
+<p align="justify"><b> 2004-06-01 21:33:29 Opening of spoj </b> by <b> Tomek Noiński </b> <br>
+Sphere Online Judge is officially open. Welcome to SPOJ!
+</td>
+</tr>
+
+<tr>
+<td colspan="2" class="footer">
+
+<script language="javascript" type="text/javascript">
+<!--
+function swapSheet(sheet, caller) {
+    document.getElementById('theme').href=sheet;
+    document.cookie="css_0="+sheet+"; path=/;";
+    caller.href="#bottom";
+}
+
+function setWidth(w, caller) {
+    document.getElementById('maintable').style.width=w;
+    document.cookie="res="+w+"; path=/;";
+    caller.href="#bottom";
+}
+//-->
+
+</script>
+        <table width="100%">
+    <tr>
+	<td align="left">
+            <a href="http://www.pg.gda.pl/eng.html"><IMG src="gfx/logo-pg.html" alt="www.pg.gda.pl" border=0 height=36 width=44></a>&nbsp;
+            <a href="http://www.eti.pg.gda.pl/"><IMG src="gfx/logo-eti.html" alt="www.eti.pg.gda.pl" border=0 height=36 width=44></a>
+	</td>
+	<td align="center">
+	    page size:
+	    <a href="https://spoj.sphere.pl/?res=755"  onClick="setWidth('755', this)">800x600</a>
+	    <a href="https://spoj.sphere.pl/?res=980"  onClick="setWidth('980', this)">1024x768</a>
+	    <a href="https://spoj.sphere.pl/?res=100%" onClick="setWidth('100%', this)">Full</a>
+	    &nbsp;&nbsp;
+	    theme:
+	    <a href="indexb6a4.html?css=/themes/skin1.css" onClick="swapSheet('themes/skin1.css', this)">olive</a>
+	    <a href="index3840.html?css=/themes/skin2.css" onClick="swapSheet('themes/skin2.css', this)">banana</a>
+	    <a href="index80f0.html?css=/themes/skin3.css" onClick="swapSheet('themes/skin3.css', this)">plum</a>
+	    <br>
+	    <a href="http://sphere.pl/?id=66">spoj team at sphere</a> &copy; 2004-05 all rights reserved
+	</td>
+	<td align="right">
+            <a href="http://task.gda.pl/english/"><IMG src="gfx/logo-task.gif" alt="task.gda.pl" border=0 height=36 width=44></a>&nbsp;
+            <a href="http://sphere.pl/"><IMG src="gfx/logo-sphere.html" alt="sphere.pl" border=0 height=32></a>
+	</td>
+    </tr>
+    </table>
+    </tr></table>
+</center>
+</body>
+
+<!-- Mirrored from spoj.sphere.pl/?css=/themes/skin3.css by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 10 Jan 2006 04:49:46 GMT -->
+</html>

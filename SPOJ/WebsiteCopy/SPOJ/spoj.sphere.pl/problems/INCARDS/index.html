@@ -1,0 +1,218 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<!-- Mirrored from spoj.sphere.pl/problems/INCARDS/ by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 10 Jan 2006 04:48:46 GMT -->
+<head>
+<title>Sphere Online Judge (SPOJ)  - Problem INCARDS</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-2">
+<META NAME="Keywords" CONTENT="spoj, online, judge, problem, set, problemset, archive, ACM, Polish, Poland, contest, contester, task, tasks, ADA, Java, Pascal, C, C++, Whitespace, sphere, interest, group, python, ruby, icon, o'caml, caml, ocaml, perl, haskell, bf, brain, clips, prolog, fortran, asm, assembler, asembler, functional, esoteric, programming, languages">
+
+<link href="https://spoj.sphere.pl/gfx/favicon" rel="shortcut icon" type="image/x-icon">
+
+<link href="../../themes/skin3.css" rel="stylesheet" type="text/css" id="theme">
+<style type="text/css">
+<!--
+.maintable {width: 755;} 
+-->
+</style>
+<script type="text/javascript" language="javascript">
+<!--
+function UnCryptMailto(s) {
+	var n=0;
+	var r="";
+	for(var i=0;i<s.length;i++) {		
+		n=s.charCodeAt(i); 
+		if (n>=8364) {n = 128;}
+		r += String.fromCharCode(n+(2));	
+	}
+	return r;
+}
+function linkTo_UnCryptMailto(s)	{
+	location.href=UnCryptMailto(s);
+}
+// -->
+</script>
+
+</head>
+<body>
+<center>
+<table cellpadding="10" cellspacing="0" class="maintable" id="maintable">
+<tr>
+    <td colspan="2" class="header">
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+        <tr>
+		<td class="headerleft"/>
+		<td class="headercenter"><h1>Sphere Online Judge</h1></td>
+		<td class="headerright"/>
+	</tr>
+	</table>
+    </td>
+</tr>
+<tr><td class="menu" width="92" valign="top">
+<form name="login"  action="http://spoj.sphere.pl/problems/INCARDS/" method="post" 
+	onsubmit="if(document.login.ssl.checked) document.login.action='https://spoj.sphere.pl/problems/INCARDS/'" style="margin-bottom: 18px"> 
+User: <input name="login_user" type="text" style="width: 85px;" class="form"><BR>
+Password: <input name="password" type="password" style="width: 85px;" class="form"><BR>
+<script language="javascript" type="text/javascript">
+<!--
+document.write('<input type="checkbox" name="ssl" id="ssl" checked>secure<br>');
+//-->
+</script>
+<input name="submit" type="submit" value="Log In" class="button" style="width: 85px;">
+</form><div class="menucmd"><a href="https://spoj.sphere.pl/register">register</a><br><br><a href="https://spoj.sphere.pl/status">status</a><br><a href="https://spoj.sphere.pl/submit">submit</a><br><a href="../classical/sort=0,start=250.html">problems</a><br><br><a href="https://spoj.sphere.pl/">news</a><br><a href="https://spoj.sphere.pl/contests">contests</a><br><a href="https://spoj.sphere.pl/info">info</a><br><a href="https://spoj.sphere.pl/ranks/">ranks</a><br><br><a href="https://spoj.sphere.pl/forum">forum</a><br><a href="https://spoj.sphere.pl/help">help</a><br><a href="https://spoj.sphere.pl/links">links</a><br><hr></div>Server time:<br>2006-01-10<br>05:47:22<a href="../classical/sort=0,start=250.html"></a><br><br>
+<form method="get" action="https://spoj.sphere.pl/search/" class="form" style="width:90px">
+<input type="text" name="query" style="width:85px" maxlength=255 value="" class="form"><br>
+<input type="submit" value="Search" style="width:85px" class="form" title="Search site"><br>
+&nbsp;<a href="https://spoj.sphere.pl/search/problems=on,users=on,contests=on" title="More search options"><small>advanced...</small></a>
+</form></td><td class="content" width="99%"><table class="problems" width="100%">
+<tr class="navigation">
+<td><a href="https://spoj.sphere.pl/submit/INCARDS/">Submit</a></td>
+<td><a href="https://spoj.sphere.pl/status/INCARDS/">All submissions</a></td>
+<td><a href="https://spoj.sphere.pl/ranks/INCARDS/">Best solutions</a></td>
+<td><a href="https://spoj.sphere.pl/problems/INCARDS.ps">PS</a></td>
+<td><a href="https://spoj.sphere.pl/problems/INCARDS.pdf">PDF</a></td>
+<td><a href="../classical/sort=0,start=250.html">Back to list</a></td>
+</tr>
+</table>
+
+<div class="prob">
+
+<h2>SPOJ Problem Set </h2>
+<h1>50. Invitation Cards</h1>
+<h2>Problem code: INCARDS</h2>
+<p align="justify">
+<P>In the age of television, not many people attend theater
+performances. Antique Comedians of Malidinesia are aware of this fact. They
+want to propagate theater and, most of all, Antique Comedies. They have
+printed invitation cards with all the necessary information and with the
+programme. A lot of students were hired to distribute these invitations
+among the people. Each student volunteer has assigned exactly one bus stop
+and he or she stays there the whole day and gives invitation to people
+travelling by bus. A special course was taken where students learned
+how to influence people and what is the difference between influencing
+and robbery.
+
+<P>The transport system is very special: all lines are
+unidirectional and connect exactly two stops. Buses leave
+the originating stop with passangers each half an hour. After reaching
+the destination stop they return empty to the originating stop,
+where they wait until the next full half an hour, e.g. X:00 or
+X:30, where 'X' denotes the hour. The fee for transport between two
+stops is given by special tables and is payable on the spot. The
+lines are planned in such a way, that each round trip (i.e. a journey
+starting and finishing at the same stop) passes through a <I>Central
+Checkpoint Stop</I> (CCS) where each passenger has to pass a thorough
+check including body scan.
+
+<P>All the ACM student members leave the CCS each morning. Each volunteer is
+to move to one predetermined stop to invite passengers. There are as many
+volunteers as stops. At the end of the day, all students travel back to CCS.
+You are to write a computer program that helps ACM to minimize the amount of
+money to pay every day for the transport of their employees.
+
+
+<H3>Input</H3>
+
+<P>The input consists of <VAR>N</VAR> cases. The first line of the input
+contains only positive integer <VAR>N</VAR>. Then follow the cases.
+Each case begins with a line containing exactly two integers
+<VAR>P</VAR> and <VAR>Q</VAR>, <VAR>1 &lt;= P,Q &lt;= 1000000</VAR>.
+<VAR>P</VAR> is the number of stops including CCS and <VAR>Q</VAR> the
+number of bus lines. Then there are <VAR>Q</VAR> lines, each describing one
+bus line. Each of the lines contains exactly three numbers - the originating
+stop, the destination stop and the price. The CCS is designated by
+number <VAR>1</VAR>. Prices are positive integers the sum of which is
+smaller than <VAR>1000000000</VAR>. You can also assume it is always
+possible to get from any stop to any other stop.
+
+
+<H3>Output</H3>
+
+<P>For each case, print one line containing the minimum amount of
+money to be paid each day by ACM for the travel costs of its volunteers.
+
+
+<H3>Example</H3>
+<PRE>
+Sample input:
+
+2
+2 2
+1 2 13
+2 1 33
+4 6
+1 2 10
+2 1 60
+1 3 20
+3 4 10
+2 4 5
+4 1 50
+
+Sample output:
+
+46
+210
+</PRE>
+<b>Warning: large Input/Output data, be careful with certain languages</b>
+
+<hr>
+<table border=0 cellspacing=0 cellpadding=0 align=left>
+<tr><td width=130>Added by:</td><td><a href="https://spoj.sphere.pl/search/'Adrian%20Kosowski'">Adrian Kosowski</a></td></tr>
+<tr><td>Date:</td><td>2004-06-06</td></tr>
+<tr><td>Time limit:</td><td>5s
+</td></tr>
+<tr><td>Source limit:</td><td>50000B</td></tr>
+<tr><td>Resource:</td><td>ACM Central European Programming Contest, Prague 1998</td></tr></table>
+</div></td>
+</tr>
+
+<tr>
+<td colspan="2" class="footer">
+
+<script language="javascript" type="text/javascript">
+<!--
+function swapSheet(sheet, caller) {
+    document.getElementById('theme').href=sheet;
+    document.cookie="css_0="+sheet+"; path=/;";
+    caller.href="#bottom";
+}
+
+function setWidth(w, caller) {
+    document.getElementById('maintable').style.width=w;
+    document.cookie="res="+w+"; path=/;";
+    caller.href="#bottom";
+}
+//-->
+
+</script>
+        <table width="100%">
+    <tr>
+	<td align="left">
+            <a href="http://www.pg.gda.pl/eng.html"><IMG src="https://spoj.sphere.pl/gfx/logo-pg" alt="www.pg.gda.pl" border=0 height=36 width=44></a>&nbsp;
+            <a href="http://www.eti.pg.gda.pl/"><IMG src="https://spoj.sphere.pl/gfx/logo-eti" alt="www.eti.pg.gda.pl" border=0 height=36 width=44></a>
+	</td>
+	<td align="center">
+	    page size:
+	    <a href="https://spoj.sphere.pl/?res=755"  onClick="setWidth('755', this)">800x600</a>
+	    <a href="https://spoj.sphere.pl/?res=980"  onClick="setWidth('980', this)">1024x768</a>
+	    <a href="https://spoj.sphere.pl/?res=100%" onClick="setWidth('100%', this)">Full</a>
+	    &nbsp;&nbsp;
+	    theme:
+	    <a href="../../indexb6a4.html?css=/themes/skin1.css" onClick="swapSheet('../../themes/skin1.css', this)">olive</a>
+	    <a href="../../index3840.html?css=/themes/skin2.css" onClick="swapSheet('../../themes/skin2.css', this)">banana</a>
+	    <a href="../../index80f0.html?css=/themes/skin3.css" onClick="swapSheet('../../themes/skin3.css', this)">plum</a>
+	    <br>
+	    <a href="http://sphere.pl/?id=66">spoj team at sphere</a> &copy; 2004-05 all rights reserved
+	</td>
+	<td align="right">
+            <a href="http://task.gda.pl/english/"><IMG src="https://spoj.sphere.pl/gfx/logo-task" alt="task.gda.pl" border=0 height=36 width=44></a>&nbsp;
+            <a href="http://sphere.pl/"><IMG src="https://spoj.sphere.pl/gfx/logo-sphere" alt="sphere.pl" border=0 height=32></a>
+	</td>
+    </tr>
+    </table>
+    </tr></table>
+</center>
+</body>
+
+<!-- Mirrored from spoj.sphere.pl/problems/INCARDS/ by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 10 Jan 2006 04:48:46 GMT -->
+</html>

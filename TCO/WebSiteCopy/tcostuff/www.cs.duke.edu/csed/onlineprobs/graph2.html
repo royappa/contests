@@ -1,0 +1,165 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  
+<!-- Mirrored from www.cs.duke.edu/csed/onlineprobs/graph2.html by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 14 Mar 2006 08:55:10 GMT -->
+<head>
+    <title>Graph 1, Word Ladders II</title>
+  </head>
+
+  <body>
+    <h1>Graph 1, Word Ladders II</h1>
+
+<h3>Problem Statement</h3>
+
+A <em>word ladder</em> is a sequence of words in which each word can be
+transformed into the next word by changing one letter. For example, the
+word ladder below changes 'lot' to 'log'.
+<PRE>
+   lot dot dog log
+</PRE>
+This is not the shortest word-ladder between 'lot' and 'log' since the
+    former can be immediately changed to the latter yielding a word
+    ladder of length two:
+<PRE>
+  lot log
+</PRE>
+The first and last words in a word ladder are the <em>anchor rungs</em>
+    of the ladder. Any other words are <em>interior rungs</em>. For
+    example, there are three interior rungs in the ladder below
+between 'smile' and 'evote'.
+<PRE>
+   smile smite smote emote evote
+</PRE>
+In this problem you'll write a method that has parameters representing
+potential interior rungs: a vector of strings (these by nonsense or
+English words), and the anchor rungs --- two strings.  Your code must
+determine the shortest word ladder between the anchor rungs that uses at
+least one interior rung, and the number of such ladders. Return a vector
+containing two ints: the first is the length of the shortest valid word
+ladder and the second is the number of shortest ladders. If there are no
+valid ladders return [0,0].
+
+
+<h3>Definition</h3>
+
+<UL>    
+<LI> Class: WordLadder
+<LI> Method: solve
+      <LI> Parameters: <code>const tvector&lt;string&gt;&amp; </code>
+      <code>const string&amp;</code>, <code>const string&amp;</code>
+<LI> Returns: <code> tvector&lt;int&gt;</code>
+<LI>Method signature: 
+<PRE>
+   tvector&lt;int&gt; solve(const tvector&lt;string&gt;&amp; words,
+                       const string&amp; from, const string&amp; to);
+</PRE>
+
+(be sure your method is public)
+</UL>
+<P>    
+
+ <h3>Class</h3>
+
+
+<XMP>
+class WordLadder
+{
+    public:
+
+      tvector<int> solve(const tvector<string>& words, 
+                         const string& from, const string& to)
+      {
+            // fill in code here
+      }
+};
+</XMP>
+
+<h3>Notes</h3>
+
+The parameters <tt>from</tt> and <tt>to</tt> are the anchor rungs, they
+    must be connected by at least one interior rung from <tt>words</tt>
+    or there are no valid word ladders.
+
+<h3>Constraints</h3>
+<UL>
+<LI> <tt>words</tT> contains at most 50 words.
+<P>
+<LI> All strings contain only lowercase, alphabetic characters.
+<P>
+<LI> All strings in <tt>word</tT> are the same length and are the
+same length as <tt>from</tt> and <tt>to</tt>.
+<P>
+</UL>
+
+
+<P>
+<h3>Examples</h3>
+<OL>
+<LI>
+<PRE>
+[hot, dot, dog] hit cog 
+</PRE>
+
+Returns [5, 1] 
+<P>
+The only ladder is <tt>hit hot dot dog cog</tt> which has length five.
+<P>
+
+<LI>
+<PRE>
+[hot, dot, dog, lot, log] hit cog 
+</PRE>
+Returns [5, 2]
+<P>
+Now there are two length-five ladders:
+<PRE>
+  hit hot dot dog cog
+  hit hot lot log cog
+</PRE>
+<LI>
+<PRE>
+[rain, ruin, gain, grin, grit, main, pain, pair, pail, mail] sail ruip 
+</PRE>
+
+Returns: [6, 2]
+<P>
+There are two ladders of length six and no shorter ladders.
+<PRE>
+  sail mail main rain ruin ruip
+  sail pail pain rain ruin ruip
+</PRE>
+<P>
+<LI>
+<PRE>
+[most, mist, fist, fish,] lost cost 
+</PRE>
+Returns [3, 1]
+<P>
+Although <tt>lost</tt> is directly connected to <tt>cost</tt>, a
+valid word ladder must contain an interior rung so the shortest ladder
+	  is
+<PRE>
+   lost most cost
+</PRE>
+<LI>
+<PRE>
+[mist, fist, fish,] lost cost 
+</PRE>
+Returns [0, 0]
+<P>
+Although <tt>lost</tt> is directly connected to <tt>cost</tt>, a
+valid word ladder must contain an interior rung, there is no such ladder.
+
+</OL>
+
+
+    <hr>
+    <address><a href="mailto:ola@cs.duke.edu">Owen L. Astrachan</a></address>
+<!-- Created: Tue Apr  6 15:03:45 EDT 2004 -->
+<!-- hhmts start -->
+Last modified: Fri Apr  9 09:55:57 EDT 2004
+<!-- hhmts end -->
+  </body>
+
+<!-- Mirrored from www.cs.duke.edu/csed/onlineprobs/graph2.html by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 14 Mar 2006 08:55:10 GMT -->
+</html>

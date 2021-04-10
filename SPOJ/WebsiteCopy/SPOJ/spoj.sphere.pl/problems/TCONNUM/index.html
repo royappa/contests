@@ -1,0 +1,209 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<!-- Mirrored from spoj.sphere.pl/problems/TCONNUM/ by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 10 Jan 2006 04:55:36 GMT -->
+<head>
+<title>Sphere Online Judge (SPOJ)  - Problem TCONNUM</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-2">
+<META NAME="Keywords" CONTENT="spoj, online, judge, problem, set, problemset, archive, ACM, Polish, Poland, contest, contester, task, tasks, ADA, Java, Pascal, C, C++, Whitespace, sphere, interest, group, python, ruby, icon, o'caml, caml, ocaml, perl, haskell, bf, brain, clips, prolog, fortran, asm, assembler, asembler, functional, esoteric, programming, languages">
+
+<link href="https://spoj.sphere.pl/gfx/favicon" rel="shortcut icon" type="image/x-icon">
+
+<link href="../../themes/skin3.css" rel="stylesheet" type="text/css" id="theme">
+<style type="text/css">
+<!--
+.maintable {width: 755;} 
+-->
+</style>
+<script type="text/javascript" language="javascript">
+<!--
+function UnCryptMailto(s) {
+	var n=0;
+	var r="";
+	for(var i=0;i<s.length;i++) {		
+		n=s.charCodeAt(i); 
+		if (n>=8364) {n = 128;}
+		r += String.fromCharCode(n+(2));	
+	}
+	return r;
+}
+function linkTo_UnCryptMailto(s)	{
+	location.href=UnCryptMailto(s);
+}
+// -->
+</script>
+
+</head>
+<body>
+<center>
+<table cellpadding="10" cellspacing="0" class="maintable" id="maintable">
+<tr>
+    <td colspan="2" class="header">
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+        <tr>
+		<td class="headerleft"/>
+		<td class="headercenter"><h1>Sphere Online Judge</h1></td>
+		<td class="headerright"/>
+	</tr>
+	</table>
+    </td>
+</tr>
+<tr><td class="menu" width="92" valign="top">
+<form name="login"  action="http://spoj.sphere.pl/problems/TCONNUM/" method="post" 
+	onsubmit="if(document.login.ssl.checked) document.login.action='https://spoj.sphere.pl/problems/TCONNUM/'" style="margin-bottom: 18px"> 
+User: <input name="login_user" type="text" style="width: 85px;" class="form"><BR>
+Password: <input name="password" type="password" style="width: 85px;" class="form"><BR>
+<script language="javascript" type="text/javascript">
+<!--
+document.write('<input type="checkbox" name="ssl" id="ssl" checked>secure<br>');
+//-->
+</script>
+<input name="submit" type="submit" value="Log In" class="button" style="width: 85px;">
+</form><div class="menucmd"><a href="https://spoj.sphere.pl/register">register</a><br><br><a href="https://spoj.sphere.pl/status">status</a><br><a href="https://spoj.sphere.pl/submit">submit</a><br><a href="../classical/sort=7,start=0.html">problems</a><br><br><a href="https://spoj.sphere.pl/">news</a><br><a href="https://spoj.sphere.pl/contests">contests</a><br><a href="https://spoj.sphere.pl/info">info</a><br><a href="https://spoj.sphere.pl/ranks/">ranks</a><br><br><a href="https://spoj.sphere.pl/forum">forum</a><br><a href="https://spoj.sphere.pl/help">help</a><br><a href="https://spoj.sphere.pl/links">links</a><br><hr></div>Server time:<br>2006-01-10<br>05:49:36<a href="../classical/sort=7,start=0.html"></a><br><br>
+<form method="get" action="https://spoj.sphere.pl/search/" class="form" style="width:90px">
+<input type="text" name="query" style="width:85px" maxlength=255 value="" class="form"><br>
+<input type="submit" value="Search" style="width:85px" class="form" title="Search site"><br>
+&nbsp;<a href="https://spoj.sphere.pl/search/problems=on,users=on,contests=on" title="More search options"><small>advanced...</small></a>
+</form></td><td class="content" width="99%"><table class="problems" width="100%">
+<tr class="navigation">
+<td><a href="https://spoj.sphere.pl/submit/TCONNUM/">Submit</a></td>
+<td><a href="https://spoj.sphere.pl/status/TCONNUM/">All submissions</a></td>
+<td><a href="https://spoj.sphere.pl/ranks/TCONNUM/">Best solutions</a></td>
+<td><a href="https://spoj.sphere.pl/problems/TCONNUM.ps">PS</a></td>
+<td><a href="https://spoj.sphere.pl/problems/TCONNUM.pdf">PDF</a></td>
+<td><a href="../classical/sort=7,start=0.html">Back to list</a></td>
+</tr>
+</table>
+
+<div class="prob">
+
+<h2>SPOJ Problem Set </h2>
+<h1>429. Simple Numbers Conversion</h1>
+<h2>Problem code: TCONNUM</h2>
+<p align="justify">
+<p align=justify>Every integer number <i>n</i> is represented in positional number system of base <i>r</i> by a sequence of digits 0 <= <i>d<sub>i</sub></i> < <i>r</i>, so the value is equal to:</p>
+<center>
+<i>n</i> = <i>d<sub></i>0<i></sub></i> + 
+<i>r</i> * <i>d<sub></i>1<i></sub></i> +
+<i>r<sup>2</sup></i> * <i>d<sub></i>2<i></sub></i> + 
+<i>r<sup>3</sup></i> * <i>d<sub></i>3<i></sub></i> + ...
+</center>
+<p align=justify>Your task is to convert a given number in <i>r</i>-base represantation into <i>s</i>-base representation, for example:
+decimal 231 into binary 11100111. Assume that <i>r</i> <= 36 and the digits are 0,1,2,3,4,5,6,7,8,9,
+<i>A</i>,
+<i>B</i>,
+<i>C</i>,
+<i>D</i>,
+<i>E</i>,
+<i>F</i>,
+<i>G</i>,
+<i>H</i>,
+<i>I</i>,
+<i>J</i>,
+<i>K</i>,
+<i>L</i>,
+<i>M</i>,
+<i>N</i>,
+<i>O</i>,
+<i>P</i>,
+<i>Q</i>,
+<i>R</i>,
+<i>S</i>,
+<i>T</i>,
+<i>U</i>,
+<i>V</i>,
+<i>W</i>,
+<i>X</i>,
+<i>Y</i>,
+<i>Z</i>.
+
+</p>
+<h3>Input</h3>
+<p align=justify>
+<i>N</i> [the number of series <= 1000]
+<br><i>n r s</i> [<i>n</i> <= 10<sup>1000</sup>, <i>r</i>,<i>s</i> <= 36]
+</p>
+
+<h3>Output</h3>
+<p align=justify>
+<i>n</i> [<i>s</i>-base representation of number <i>n</i>]
+</p>
+<p>
+Text grouped in [ ] does not appear in the input and output file.
+<h3>Example</h3>
+<pre>
+<b>Input:</b>
+3
+231 10 2
+ABC 15 10
+XYZ 36 2
+
+<b>Output:</b>
+11100111
+2427
+1010101111111011
+
+</pre>
+
+
+<hr>
+<table border=0 cellspacing=0 cellpadding=0 align=left>
+<tr><td width=130>Added by:</td><td><a href="https://spoj.sphere.pl/search/'Michał%20Małafiejski'">Michał Małafiejski</a></td></tr>
+<tr><td>Date:</td><td>2004-10-13</td></tr>
+<tr><td>Time limit:</td><td>12s
+</td></tr>
+<tr><td>Source limit:</td><td>5000B</td></tr>
+</table>
+</div></td>
+</tr>
+
+<tr>
+<td colspan="2" class="footer">
+
+<script language="javascript" type="text/javascript">
+<!--
+function swapSheet(sheet, caller) {
+    document.getElementById('theme').href=sheet;
+    document.cookie="css_0="+sheet+"; path=/;";
+    caller.href="#bottom";
+}
+
+function setWidth(w, caller) {
+    document.getElementById('maintable').style.width=w;
+    document.cookie="res="+w+"; path=/;";
+    caller.href="#bottom";
+}
+//-->
+
+</script>
+        <table width="100%">
+    <tr>
+	<td align="left">
+            <a href="http://www.pg.gda.pl/eng.html"><IMG src="https://spoj.sphere.pl/gfx/logo-pg" alt="www.pg.gda.pl" border=0 height=36 width=44></a>&nbsp;
+            <a href="http://www.eti.pg.gda.pl/"><IMG src="https://spoj.sphere.pl/gfx/logo-eti" alt="www.eti.pg.gda.pl" border=0 height=36 width=44></a>
+	</td>
+	<td align="center">
+	    page size:
+	    <a href="https://spoj.sphere.pl/?res=755"  onClick="setWidth('755', this)">800x600</a>
+	    <a href="https://spoj.sphere.pl/?res=980"  onClick="setWidth('980', this)">1024x768</a>
+	    <a href="https://spoj.sphere.pl/?res=100%" onClick="setWidth('100%', this)">Full</a>
+	    &nbsp;&nbsp;
+	    theme:
+	    <a href="../../indexb6a4.html?css=/themes/skin1.css" onClick="swapSheet('../../themes/skin1.css', this)">olive</a>
+	    <a href="../../index3840.html?css=/themes/skin2.css" onClick="swapSheet('../../themes/skin2.css', this)">banana</a>
+	    <a href="../../index80f0.html?css=/themes/skin3.css" onClick="swapSheet('../../themes/skin3.css', this)">plum</a>
+	    <br>
+	    <a href="http://sphere.pl/?id=66">spoj team at sphere</a> &copy; 2004-05 all rights reserved
+	</td>
+	<td align="right">
+            <a href="http://task.gda.pl/english/"><IMG src="https://spoj.sphere.pl/gfx/logo-task" alt="task.gda.pl" border=0 height=36 width=44></a>&nbsp;
+            <a href="http://sphere.pl/"><IMG src="https://spoj.sphere.pl/gfx/logo-sphere" alt="sphere.pl" border=0 height=32></a>
+	</td>
+    </tr>
+    </table>
+    </tr></table>
+</center>
+</body>
+
+<!-- Mirrored from spoj.sphere.pl/problems/TCONNUM/ by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 10 Jan 2006 04:55:36 GMT -->
+</html>

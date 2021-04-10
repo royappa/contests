@@ -1,0 +1,213 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<!-- Mirrored from spoj.sphere.pl/problems/BFORG/ by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 10 Jan 2006 04:55:59 GMT -->
+<head>
+<title>Sphere Online Judge (SPOJ)  - Problem BFORG</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-2">
+<META NAME="Keywords" CONTENT="spoj, online, judge, problem, set, problemset, archive, ACM, Polish, Poland, contest, contester, task, tasks, ADA, Java, Pascal, C, C++, Whitespace, sphere, interest, group, python, ruby, icon, o'caml, caml, ocaml, perl, haskell, bf, brain, clips, prolog, fortran, asm, assembler, asembler, functional, esoteric, programming, languages">
+
+<link href="https://spoj.sphere.pl/gfx/favicon" rel="shortcut icon" type="image/x-icon">
+
+<link href="../../themes/skin3.css" rel="stylesheet" type="text/css" id="theme">
+<style type="text/css">
+<!--
+.maintable {width: 755;} 
+-->
+</style>
+<script type="text/javascript" language="javascript">
+<!--
+function UnCryptMailto(s) {
+	var n=0;
+	var r="";
+	for(var i=0;i<s.length;i++) {		
+		n=s.charCodeAt(i); 
+		if (n>=8364) {n = 128;}
+		r += String.fromCharCode(n+(2));	
+	}
+	return r;
+}
+function linkTo_UnCryptMailto(s)	{
+	location.href=UnCryptMailto(s);
+}
+// -->
+</script>
+
+</head>
+<body>
+<center>
+<table cellpadding="10" cellspacing="0" class="maintable" id="maintable">
+<tr>
+    <td colspan="2" class="header">
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+        <tr>
+		<td class="headerleft"/>
+		<td class="headercenter"><h1>Sphere Online Judge</h1></td>
+		<td class="headerright"/>
+	</tr>
+	</table>
+    </td>
+</tr>
+<tr><td class="menu" width="92" valign="top">
+<form name="login"  action="http://spoj.sphere.pl/problems/BFORG/" method="post" 
+	onsubmit="if(document.login.ssl.checked) document.login.action='https://spoj.sphere.pl/problems/BFORG/'" style="margin-bottom: 18px"> 
+User: <input name="login_user" type="text" style="width: 85px;" class="form"><BR>
+Password: <input name="password" type="password" style="width: 85px;" class="form"><BR>
+<script language="javascript" type="text/javascript">
+<!--
+document.write('<input type="checkbox" name="ssl" id="ssl" checked>secure<br>');
+//-->
+</script>
+<input name="submit" type="submit" value="Log In" class="button" style="width: 85px;">
+</form><div class="menucmd"><a href="https://spoj.sphere.pl/register">register</a><br><br><a href="https://spoj.sphere.pl/status">status</a><br><a href="https://spoj.sphere.pl/submit">submit</a><br><a href="../classical/sort=7,start=0.html">problems</a><br><br><a href="https://spoj.sphere.pl/">news</a><br><a href="https://spoj.sphere.pl/contests">contests</a><br><a href="https://spoj.sphere.pl/info">info</a><br><a href="https://spoj.sphere.pl/ranks/">ranks</a><br><br><a href="https://spoj.sphere.pl/forum">forum</a><br><a href="https://spoj.sphere.pl/help">help</a><br><a href="https://spoj.sphere.pl/links">links</a><br><hr></div>Server time:<br>2006-01-10<br>05:49:58<a href="../classical/sort=7,start=0.html"></a><br><br>
+<form method="get" action="https://spoj.sphere.pl/search/" class="form" style="width:90px">
+<input type="text" name="query" style="width:85px" maxlength=255 value="" class="form"><br>
+<input type="submit" value="Search" style="width:85px" class="form" title="Search site"><br>
+&nbsp;<a href="https://spoj.sphere.pl/search/problems=on,users=on,contests=on" title="More search options"><small>advanced...</small></a>
+</form></td><td class="content" width="99%"><table class="problems" width="100%">
+<tr class="navigation">
+<td><a href="https://spoj.sphere.pl/submit/BFORG/">Submit</a></td>
+<td><a href="https://spoj.sphere.pl/status/BFORG/">All submissions</a></td>
+<td><a href="https://spoj.sphere.pl/ranks/BFORG/">Best solutions</a></td>
+<td><a href="https://spoj.sphere.pl/problems/BFORG.ps">PS</a></td>
+<td><a href="https://spoj.sphere.pl/problems/BFORG.pdf">PDF</a></td>
+<td><a href="../classical/sort=7,start=0.html">Back to list</a></td>
+</tr>
+</table>
+
+<div class="prob">
+
+<h2>SPOJ Problem Set </h2>
+<h1>315. The Secret Fellowship of Byteland</h1>
+<h2>Problem code: BFORG</h2>
+<p align="justify">
+<p>The relationship between The University of Byteland and King Johnny was never a friendly one. The king was the easy-going, open-minded sort of person who is prepared to turn a blind eye to the embezzlement of public funds, but inwardly revolts at the thought of money going to waste, and supporting a university was to the king a perfect example of a waste of money. On the other hand, the chancellor of the university showed no tolerance whatsoever, and frequently stated in public that Byteland was being governed by a monarch who took terrible decisions when he was drunk and even worse ones when he was sober. After some time of bad-tempered coexistence, the king had had enough and decided to close down the university. However, the king's councillors advised against this move, suggesting it might cause social unrest. The king yielded to their advice, and instead established a law which banned all organisations, clubs and associations active at the university.</p>
+<p>
+This action had a rather curious effect on the usually lazy students of the university. They had never before even thought of organising any sort of fellowship, but now they immediately decided they needed to set one up. And this is how the <i>Secret Fellowship</i> came to life.
+<p>
+The main problem that faced the management of the Fellowship was to organise members' meetings in such a way as to minimise the risk to the participants. It was decided that the <i>n</i> members of the fellowship should be split into <i>k</i> secret divisions, each consisting of at least 2 members. All members belonging to the same division would then meet regularly, and they would take it in turns to host the meetings of the division in their houses.
+<p>
+But one more important factor has to be taken into account -- the laziness of students. It is therefore your task to form the divisions in such a way that the furthest distance a student may ever be asked to walk is as short as possible.
+
+<h3>Input</h3>
+<p>The first line of input contains a single integer t, the number of test cases (t=1000). t test cases follow.
+<p>
+Each test cases starts with a line containing two integers <i>n k</i>, denoting the number of students and the number of divisions to be formed, respectively (2<=2<i>k</i><=<i>n</i><=200). Each of the next <i>n</i> lines contains two integers <i>x<sub>i</sub> y<sub>i</sub></i> each (-1000 <= <i>x<sub>i</sub>,y<sub>i</sub></i> <= 1000), denoting the coordinates of the houses of successive students.
+
+<h3>Output</h3>
+<p>
+For the <i>i</i>-th test case output a line with the text <tt>case <i>i</i> Y</tt> or <tt>case <i>i</i> N</tt>, specifying whether you wish to solve the given case. Then in the former case print exactly <i>k</i> lines. Each line should start with integer <i>n<sub>j</sub></i> (<i>n<sub>j</sub></i>>=2) and be followed by a space separated list of exactly <i>n<sub>j</sub></i> increasing integers <i>s<sub>jl</sub></i>, denoting the students belonging to the <i>j</i>-th division, numbered in input order (1<=<i>s<sub>jl</sub></i><=n). All divisions must be disjoint and the sum of all numbers <i>n<sub>j</sub></i> must equal <i>n</i>.
+
+<h3>Score</h3>
+<p>
+The score awarded to your program is the total of scores for the test cases you chose to solve.
+<p>
+For each solved test case you will receive <i>diam</i> / (<i>d</i>*<i>k</i>) points, where <i>diam</i> denotes the distance between the two furthest houses of members of the fellowship, and <i>d</i> is the distance between the two furthest houses of members belonging to the same division.
+
+<h3>Example</h3>
+
+<pre>
+<b>Input:</b>
+2
+6 3
+0 0
+1 0
+0 1
+1 1
+2 0
+2 1
+6 2
+0 0
+1 0
+0 1
+1 1
+2 0
+2 1
+6 2
+0 0
+1 0
+0 1
+1 1
+2 0
+2 1
+
+<b>Output:</b>
+case 1 Y
+3 1 2 4
+3 3 5 6
+case 2 Y
+3 1 2 5
+3 3 4 6
+case 3 Y
+2 1 3
+4 2 4 5 6
+
+<b>Score:</b>
+1.849003
+
+</pre>
+
+<p align=justify><i>Bonus info:</i> If score = <i>xxx</i>.<i>xxxaaa</i>, <i>aaa</i> means the number of test cases with Y answer.
+
+
+<hr>
+<table border=0 cellspacing=0 cellpadding=0 align=left>
+<tr><td width=130>Added by:</td><td><a href="https://spoj.sphere.pl/search/'Michał%20Małafiejski'">Michał Małafiejski</a></td></tr>
+<tr><td>Date:</td><td>2005-03-11</td></tr>
+<tr><td>Time limit:</td><td>17s
+</td></tr>
+<tr><td>Source limit:</td><td>50000B</td></tr>
+<tr><td>Resource:</td><td>DASM Programming League 2004, problemset 9</td></tr></table>
+</div></td>
+</tr>
+
+<tr>
+<td colspan="2" class="footer">
+
+<script language="javascript" type="text/javascript">
+<!--
+function swapSheet(sheet, caller) {
+    document.getElementById('theme').href=sheet;
+    document.cookie="css_0="+sheet+"; path=/;";
+    caller.href="#bottom";
+}
+
+function setWidth(w, caller) {
+    document.getElementById('maintable').style.width=w;
+    document.cookie="res="+w+"; path=/;";
+    caller.href="#bottom";
+}
+//-->
+
+</script>
+        <table width="100%">
+    <tr>
+	<td align="left">
+            <a href="http://www.pg.gda.pl/eng.html"><IMG src="https://spoj.sphere.pl/gfx/logo-pg" alt="www.pg.gda.pl" border=0 height=36 width=44></a>&nbsp;
+            <a href="http://www.eti.pg.gda.pl/"><IMG src="https://spoj.sphere.pl/gfx/logo-eti" alt="www.eti.pg.gda.pl" border=0 height=36 width=44></a>
+	</td>
+	<td align="center">
+	    page size:
+	    <a href="https://spoj.sphere.pl/?res=755"  onClick="setWidth('755', this)">800x600</a>
+	    <a href="https://spoj.sphere.pl/?res=980"  onClick="setWidth('980', this)">1024x768</a>
+	    <a href="https://spoj.sphere.pl/?res=100%" onClick="setWidth('100%', this)">Full</a>
+	    &nbsp;&nbsp;
+	    theme:
+	    <a href="../../indexb6a4.html?css=/themes/skin1.css" onClick="swapSheet('../../themes/skin1.css', this)">olive</a>
+	    <a href="../../index3840.html?css=/themes/skin2.css" onClick="swapSheet('../../themes/skin2.css', this)">banana</a>
+	    <a href="../../index80f0.html?css=/themes/skin3.css" onClick="swapSheet('../../themes/skin3.css', this)">plum</a>
+	    <br>
+	    <a href="http://sphere.pl/?id=66">spoj team at sphere</a> &copy; 2004-05 all rights reserved
+	</td>
+	<td align="right">
+            <a href="http://task.gda.pl/english/"><IMG src="https://spoj.sphere.pl/gfx/logo-task" alt="task.gda.pl" border=0 height=36 width=44></a>&nbsp;
+            <a href="http://sphere.pl/"><IMG src="https://spoj.sphere.pl/gfx/logo-sphere" alt="sphere.pl" border=0 height=32></a>
+	</td>
+    </tr>
+    </table>
+    </tr></table>
+</center>
+</body>
+
+<!-- Mirrored from spoj.sphere.pl/problems/BFORG/ by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 10 Jan 2006 04:55:59 GMT -->
+</html>

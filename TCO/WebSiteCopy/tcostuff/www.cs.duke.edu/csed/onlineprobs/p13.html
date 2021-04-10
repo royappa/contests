@@ -1,0 +1,235 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  
+<!-- Mirrored from www.cs.duke.edu/csed/onlineprobs/p13.html by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 14 Mar 2006 08:55:06 GMT -->
+<head>
+    <title>Weekly Problem #13</title>
+  </head>
+
+  <body>
+    <h1>Weekly Problem #13</h1>
+
+<em>
+This problem statement is the exclusive and proprietary property of
+TopCoder, Inc. Any unauthorized use or reproduction of this information
+without the prior written consent of TopCoder, Inc. is strictly
+prohibited. (c)2003, TopCoder, Inc. All rights reserved.
+</em>
+
+<p>
+<hr>
+
+<h3>Problem Statement</h3>
+
+One of the many nice things about the internet is that it doesn't have a
+central server anywhere in the world. That is, the internet is
+decentralized. In theory, this means that if a router (a device that
+makes sure messages reach the proper destination) connected to the
+internet crashes, it's still possible to create a connection between any
+two remaining routers. In this problem you are to examine how true this
+is, given a configuration of how the routers are connected to each
+other. Two routers can be connected either directly or indirectly
+(i.e. by passing through one or more directly connected
+routers). Initially, all routers are connected to each other.
+<P>
+
+A router is an articulation point if the removal of that router will
+split the remaining routers into (at least) two parts. That is, if there
+exist two routers, neither of which is the removed router, which after
+the removal can't connect which each other.
+<P>
+
+The configuration will be given as a vector <string>, where each element
+describes one router (the first element being router 0, etc). Each
+element will contain a space separated sequence of non-negative
+integers. If the integer j appears in element i then router i is
+directly connected with router j. There will be exactly one space
+between the integers, and there will be no leading or trailing
+spaces. No integer will contain any unnecessary leading zeros. All
+direct connections are bi-directional, so if the integer i is in element
+j, then the integer j will be in element i. All integers will be valid
+routers.
+<P>
+
+For example, if input is {"1 2","0 2","0 1 3","2"}, we have the
+following configuration of routers:
+<P>
+<PRE>
+ 0
+ |\
+ | \
+ |  2-----3
+ | /
+ |/
+ 1
+</PRE>
+
+There is one articulation point, namely router 2.  If this router is
+removed, then router 3 is disconnected from routers 0 and 1.
+<P>
+Create a class Internet which contains the method howMany which takes as
+input a <code>tvector&lt;string&gt; routers</code> 
+in the format described above and
+returns an int containing how many of these routers are articulation
+points.
+<P>
+
+
+
+
+<P> 
+<h3>Definition</h3>
+
+<UL>    
+<LI> Class: Internet
+<LI> Method: articulationPoints
+<LI> Parameters: <code>tvector&lt;string&gt;</code>,
+<LI> Returns: int
+<LI> Method signature: 
+<XMP>
+    int articulationPoints(const tvector<string>& routers)
+</XMP>
+</UL>
+
+<P>    
+
+ <h3>Class</h3>
+
+<XMP>
+#include<string>
+using namespace std;
+#include "tvector.h"
+class Internet
+{
+  public:
+    int articulationPoints(const tvector<string>& routers)
+    {
+            // fill in code here
+    }
+};
+</XMP>
+
+<P>
+<h3>Constraints</h3>
+<UL>
+<LI> routers will contain between 2 and 50 elements, inclusive (this is
+	    a very small internet).
+<P>
+<LI> Each element in routers will be between 1 and 50 in length,
+	    inclusive.
+<P>
+<LI> Each element in routers will contain only digits ('0'-'9') and
+	    spaces (' ').
+<P>
+<LI> A router will never have a direct connection to itself.
+<P>
+<LI> There will be at most one direct connection between two routers.
+<P>
+<LI>If the integer i is in element j of routers, then the integer j will
+	    be in element i of routers.
+<P>
+<LI>All routers will be connected to each other.
+<P>
+<LI>Each element in routers will only contain integers between 0 and
+	    (number of elements in routers)-1, inclusive.
+
+<P>
+<LI>There will be exactly one space between the integers in the elements
+	    in routers, and no leading or trailing spaces.
+<P>
+<LI> No integer in the elements in routers will contain any unnecessary
+	    leading zeros.
+<P>
+</UL>
+
+<P>
+<h3>Examples</h3>
+<OL>
+<LI>
+<PRE>
+routers = {"2","2 3","0 1 3 4","1 2","2 5 6","4 6","4 5"}
+
+</PRE>
+
+Returns:  2
+<P>
+
+If router 2 crashes, the remaining routers will be split into three
+parts, one containing the router 0, another the routers 1 and 3, and the
+last one routers 4, 5 and 6.  If router 4 crashes, there will be two
+parts: one containing routers 0, 1, 2 and 3 and the other containing
+routers 5 and 6.  If router 0, 1, 3, 5 or 6 crashes, this will not split
+up the remaining routers. Thus only router 2 and 4 are articulation
+points, so the method should return 2.
+
+
+<P>
+<LI>
+<PRE>    
+routers = {"3 10","8 4","7 10","0 9","6 1","9","4 11","11 2","1","3 5","0 2","7 6"}
+</PRE>
+
+Returns  10
+
+<P>
+The 12 routers are connected in a long chain. This means that if a
+router crashes it will disconnect the remaining routers unless the
+crashed routers is one of the endpoints. Since there are two endpoints
+(routers 5 and 8), the method should return 10.
+
+
+<P>
+<LI>
+<PRE>    
+{"1 9","0 2","1 3","2 4","3 5","4 6","5 7","6 8","7 9","8 0"}
+</PRE>
+<P>
+Returns: 0
+<P>
+
+The routers are now connected in a ring, so if one router crashes, this
+will not disconnect the internet. The method should thus return 0.
+
+<P>
+<LI>
+<PRE>
+routers = 
+{"1 7 12 13 15",
+ "0 2 6 4 7",
+ "3 5 6 1",
+ "4 5 2",
+ "3 1",
+ "3 2",
+ "2 1",
+ "1 0 8",
+ "7 9 10 11",
+ "10 11 8",
+ "9 8",
+ "9 8",
+ "0 13",
+ "0 12 14 15",
+ "13",
+ "13 0"}
+
+</PRE>
+<P>
+Returns:  5
+<P>
+
+The routers 0, 1, 7, 8 and 13 are articulation points, so the method
+should return 5.
+
+
+</OL>
+
+
+    <hr>
+    <address><a href="mailto:ola@cs.duke.edu">Owen L. Astrachan</a></address>
+<!-- Created: Sun Apr  6 22:07:57 EDT 2003 -->
+<!-- hhmts start -->
+Last modified: Wed Jul 23 10:30:15 EDT 2003
+<!-- hhmts end -->
+  </body>
+
+<!-- Mirrored from www.cs.duke.edu/csed/onlineprobs/p13.html by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 14 Mar 2006 08:55:06 GMT -->
+</html>

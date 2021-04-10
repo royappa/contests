@@ -1,0 +1,191 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<!-- Mirrored from spoj.sphere.pl/problems/HWORK/ by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 10 Jan 2006 04:55:56 GMT -->
+<head>
+<title>Sphere Online Judge (SPOJ)  - Problem HWORK</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-2">
+<META NAME="Keywords" CONTENT="spoj, online, judge, problem, set, problemset, archive, ACM, Polish, Poland, contest, contester, task, tasks, ADA, Java, Pascal, C, C++, Whitespace, sphere, interest, group, python, ruby, icon, o'caml, caml, ocaml, perl, haskell, bf, brain, clips, prolog, fortran, asm, assembler, asembler, functional, esoteric, programming, languages">
+
+<link href="https://spoj.sphere.pl/gfx/favicon" rel="shortcut icon" type="image/x-icon">
+
+<link href="../../themes/skin3.css" rel="stylesheet" type="text/css" id="theme">
+<style type="text/css">
+<!--
+.maintable {width: 755;} 
+-->
+</style>
+<script type="text/javascript" language="javascript">
+<!--
+function UnCryptMailto(s) {
+	var n=0;
+	var r="";
+	for(var i=0;i<s.length;i++) {		
+		n=s.charCodeAt(i); 
+		if (n>=8364) {n = 128;}
+		r += String.fromCharCode(n+(2));	
+	}
+	return r;
+}
+function linkTo_UnCryptMailto(s)	{
+	location.href=UnCryptMailto(s);
+}
+// -->
+</script>
+
+</head>
+<body>
+<center>
+<table cellpadding="10" cellspacing="0" class="maintable" id="maintable">
+<tr>
+    <td colspan="2" class="header">
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+        <tr>
+		<td class="headerleft"/>
+		<td class="headercenter"><h1>Sphere Online Judge</h1></td>
+		<td class="headerright"/>
+	</tr>
+	</table>
+    </td>
+</tr>
+<tr><td class="menu" width="92" valign="top">
+<form name="login"  action="http://spoj.sphere.pl/problems/HWORK/" method="post" 
+	onsubmit="if(document.login.ssl.checked) document.login.action='https://spoj.sphere.pl/problems/HWORK/'" style="margin-bottom: 18px"> 
+User: <input name="login_user" type="text" style="width: 85px;" class="form"><BR>
+Password: <input name="password" type="password" style="width: 85px;" class="form"><BR>
+<script language="javascript" type="text/javascript">
+<!--
+document.write('<input type="checkbox" name="ssl" id="ssl" checked>secure<br>');
+//-->
+</script>
+<input name="submit" type="submit" value="Log In" class="button" style="width: 85px;">
+</form><div class="menucmd"><a href="https://spoj.sphere.pl/register">register</a><br><br><a href="https://spoj.sphere.pl/status">status</a><br><a href="https://spoj.sphere.pl/submit">submit</a><br><a href="../classical/sort=7,start=0.html">problems</a><br><br><a href="https://spoj.sphere.pl/">news</a><br><a href="https://spoj.sphere.pl/contests">contests</a><br><a href="https://spoj.sphere.pl/info">info</a><br><a href="https://spoj.sphere.pl/ranks/">ranks</a><br><br><a href="https://spoj.sphere.pl/forum">forum</a><br><a href="https://spoj.sphere.pl/help">help</a><br><a href="https://spoj.sphere.pl/links">links</a><br><hr></div>Server time:<br>2006-01-10<br>05:49:57<a href="../classical/sort=7,start=0.html"></a><br><br>
+<form method="get" action="https://spoj.sphere.pl/search/" class="form" style="width:90px">
+<input type="text" name="query" style="width:85px" maxlength=255 value="" class="form"><br>
+<input type="submit" value="Search" style="width:85px" class="form" title="Search site"><br>
+&nbsp;<a href="https://spoj.sphere.pl/search/problems=on,users=on,contests=on" title="More search options"><small>advanced...</small></a>
+</form></td><td class="content" width="99%"><table class="problems" width="100%">
+<tr class="navigation">
+<td><a href="https://spoj.sphere.pl/submit/HWORK/">Submit</a></td>
+<td><a href="https://spoj.sphere.pl/status/HWORK/">All submissions</a></td>
+<td><a href="https://spoj.sphere.pl/ranks/HWORK/">Best solutions</a></td>
+<td><a href="https://spoj.sphere.pl/problems/HWORK.ps">PS</a></td>
+<td><a href="https://spoj.sphere.pl/problems/HWORK.pdf">PDF</a></td>
+<td><a href="../classical/sort=7,start=0.html">Back to list</a></td>
+</tr>
+</table>
+
+<div class="prob">
+
+<h2>SPOJ Problem Set </h2>
+<h1>294. Johnny and the Optimisation of Homework</h1>
+<h2>Problem code: HWORK</h2>
+<p align="justify">
+<p>One day when Johnny was still a schoolboy he got caught red-handed by his teacher while doing a Very Mischievous Thing (of the sort that you would expect of Johnny). As a punishment he was told off and assigned additional homework. The teacher underlined quite a few words in a dictionary and asked Johnny to rewrite all of them to his notebook.
+<p>
+Johnny wasn't at all pleased about this, since writing by hand is always a painful burden. Fortunately, Johnny's dad took pity on the crying boy and offered to help. He presented his son with a few sheets of carbon paper, thanks to which any text Johnny wrote was at once ready in exactly <i>k</i> copies. Some of the characters of particular copies could then be erased using a white correction pen, so as to obtain only the words required by the teacher. All the characters forming a single word have to be directly adjacent, but words can be written in any order on the sheets and different words can be separated by an arbitrary (possibly 0) amount of space.
+<p>
+Johnny has cheered up considerably by now, since the bit with the carbon paper and correction pen sounds rather fun. All that remains to be done is to write down an appropriate text, obviously keeping it as short as possible. Please advise Johnny what to write.
+
+<h3>Input</h3>
+<p>
+Input begins with a single integer t (t=1000). t test cases follow.
+<p>
+Each test case starts with a line containing two integers n k, respectively denoting the number of words the teacher has asked Johnny to write and the total number of carbon copies that Johnny creates, including the original (1<=k<=n<=512). Each of the next n lines contains a word assigned by the teacher - a string of between 4 and 12 characters 'a', 'b', 'c' or 'd'. All words given at input are Bytelandian nouns in common use.
+
+<h3>Output</h3>
+<p>For the i-th test case output a line with the text <tt>case i Y</tt> or <tt>case i N</tt>, specifying whether you wish to solve the given case. Then in the former case
+print a single line containing the text that should be written by Johnny. Exactly n lines with a single integer on each should follow, the i-th representing the position of the first letter of the i-th word (on the page on which this word eventually appears, before applying the correction pen).
+
+<h3>Scoring</h3>
+<p>The score awarded to your program is the sum of scores taken over all test cases you chose to solve.
+<p>For each test case, the score is the difference between the total number of characters of the words provided by the teacher and the number of characters of the text eventually handwritten by Johnny. Programs which receive a negative score for some test case will be considered incorrect.
+<h3>Example</h3>
+<pre>
+<b>Input:</b>
+1
+4 2
+aaaa
+aaaa
+aaaa
+bbaaa
+
+<b>Output:</b>
+case 1 Y
+aaaabbaaaa
+1
+1
+7
+5
+
+<b>Score:</b>
+17 - 10 = 7
+</pre>
+<p>
+When given in to the teacher, the 2 pages of homework may look as follows:
+<pre>
+aaaa__aaaa
+aaaabbaaa_
+</pre>
+
+<hr>
+<table border=0 cellspacing=0 cellpadding=0 align=left>
+<tr><td width=130>Added by:</td><td><a href="https://spoj.sphere.pl/search/'Michał%20Małafiejski'">Michał Małafiejski</a></td></tr>
+<tr><td>Date:</td><td>2005-02-11</td></tr>
+<tr><td>Time limit:</td><td>17s
+</td></tr>
+<tr><td>Source limit:</td><td>50000B</td></tr>
+<tr><td>Resource:</td><td>DASM Programming League 2004, problemset 7</td></tr></table>
+</div></td>
+</tr>
+
+<tr>
+<td colspan="2" class="footer">
+
+<script language="javascript" type="text/javascript">
+<!--
+function swapSheet(sheet, caller) {
+    document.getElementById('theme').href=sheet;
+    document.cookie="css_0="+sheet+"; path=/;";
+    caller.href="#bottom";
+}
+
+function setWidth(w, caller) {
+    document.getElementById('maintable').style.width=w;
+    document.cookie="res="+w+"; path=/;";
+    caller.href="#bottom";
+}
+//-->
+
+</script>
+        <table width="100%">
+    <tr>
+	<td align="left">
+            <a href="http://www.pg.gda.pl/eng.html"><IMG src="https://spoj.sphere.pl/gfx/logo-pg" alt="www.pg.gda.pl" border=0 height=36 width=44></a>&nbsp;
+            <a href="http://www.eti.pg.gda.pl/"><IMG src="https://spoj.sphere.pl/gfx/logo-eti" alt="www.eti.pg.gda.pl" border=0 height=36 width=44></a>
+	</td>
+	<td align="center">
+	    page size:
+	    <a href="https://spoj.sphere.pl/?res=755"  onClick="setWidth('755', this)">800x600</a>
+	    <a href="https://spoj.sphere.pl/?res=980"  onClick="setWidth('980', this)">1024x768</a>
+	    <a href="https://spoj.sphere.pl/?res=100%" onClick="setWidth('100%', this)">Full</a>
+	    &nbsp;&nbsp;
+	    theme:
+	    <a href="../../indexb6a4.html?css=/themes/skin1.css" onClick="swapSheet('../../themes/skin1.css', this)">olive</a>
+	    <a href="../../index3840.html?css=/themes/skin2.css" onClick="swapSheet('../../themes/skin2.css', this)">banana</a>
+	    <a href="../../index80f0.html?css=/themes/skin3.css" onClick="swapSheet('../../themes/skin3.css', this)">plum</a>
+	    <br>
+	    <a href="http://sphere.pl/?id=66">spoj team at sphere</a> &copy; 2004-05 all rights reserved
+	</td>
+	<td align="right">
+            <a href="http://task.gda.pl/english/"><IMG src="https://spoj.sphere.pl/gfx/logo-task" alt="task.gda.pl" border=0 height=36 width=44></a>&nbsp;
+            <a href="http://sphere.pl/"><IMG src="https://spoj.sphere.pl/gfx/logo-sphere" alt="sphere.pl" border=0 height=32></a>
+	</td>
+    </tr>
+    </table>
+    </tr></table>
+</center>
+</body>
+
+<!-- Mirrored from spoj.sphere.pl/problems/HWORK/ by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 10 Jan 2006 04:55:57 GMT -->
+</html>

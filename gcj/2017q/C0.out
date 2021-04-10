@@ -1,0 +1,200 @@
+Case #1: Input: 4 2
+1 0
+Case #2: Input: 5 2
+1 0
+Case #3: Input: 6 2
+1 1
+Case #4: Input: 1000 1000
+0 0
+Case #5: Input: 1000 1
+500 499
+Case #6: Input: 999 127
+7 7
+Case #7: Input: 606 594
+0 0
+Case #8: Input: 945 936
+0 0
+Case #9: Input: 500 128
+1 1
+Case #10: Input: 500 249
+1 1
+Case #11: Input: 1000 489
+1 1
+Case #12: Input: 280 259
+0 0
+Case #13: Input: 5 1
+2 2
+Case #14: Input: 342 320
+0 0
+Case #15: Input: 500 500
+0 0
+Case #16: Input: 999 512
+0 0
+Case #17: Input: 659 587
+0 0
+Case #18: Input: 310 280
+0 0
+Case #19: Input: 1000 127
+7 7
+Case #20: Input: 301 230
+1 0
+Case #21: Input: 1000 255
+3 3
+Case #22: Input: 378 288
+0 0
+Case #23: Input: 951 758
+0 0
+Case #24: Input: 999 1
+499 499
+Case #25: Input: 490 395
+0 0
+Case #26: Input: 999 303
+1 1
+Case #27: Input: 3 1
+1 1
+Case #28: Input: 500 162
+1 1
+Case #29: Input: 500 2
+125 124
+Case #30: Input: 999 496
+1 1
+Case #31: Input: 627 625
+0 0
+Case #32: Input: 739 736
+0 0
+Case #33: Input: 313 286
+0 0
+Case #34: Input: 458 365
+0 0
+Case #35: Input: 1 1
+0 0
+Case #36: Input: 545 438
+1 0
+Case #37: Input: 935 811
+0 0
+Case #38: Input: 999 255
+3 3
+Case #39: Input: 1000 500
+1 1
+Case #40: Input: 500 88
+3 3
+Case #41: Input: 500 255
+1 1
+Case #42: Input: 500 244
+1 1
+Case #43: Input: 999 497
+1 1
+Case #44: Input: 999 498
+1 1
+Case #45: Input: 1000 441
+1 1
+Case #46: Input: 1000 512
+0 0
+Case #47: Input: 999 998
+0 0
+Case #48: Input: 744 599
+0 0
+Case #49: Input: 558 437
+1 0
+Case #50: Input: 1000 256
+1 1
+Case #51: Input: 1000 999
+0 0
+Case #52: Input: 500 251
+1 1
+Case #53: Input: 621 471
+1 0
+Case #54: Input: 999 2
+249 249
+Case #55: Input: 4 1
+2 1
+Case #56: Input: 612 506
+1 0
+Case #57: Input: 364 351
+0 0
+Case #58: Input: 999 128
+3 3
+Case #59: Input: 903 700
+0 0
+Case #60: Input: 880 770
+0 0
+Case #61: Input: 1000 499
+1 1
+Case #62: Input: 427 395
+0 0
+Case #63: Input: 532 522
+0 0
+Case #64: Input: 500 1
+250 249
+Case #65: Input: 500 127
+3 3
+Case #66: Input: 493 432
+0 0
+Case #67: Input: 999 487
+1 1
+Case #68: Input: 875 695
+0 0
+Case #69: Input: 294 272
+0 0
+Case #70: Input: 736 675
+0 0
+Case #71: Input: 1000 488
+1 1
+Case #72: Input: 1000 492
+1 1
+Case #73: Input: 500 116
+3 3
+Case #74: Input: 500 250
+1 1
+Case #75: Input: 964 952
+0 0
+Case #76: Input: 517 473
+1 0
+Case #77: Input: 999 256
+1 1
+Case #78: Input: 999 511
+1 1
+Case #79: Input: 1000 128
+3 3
+Case #80: Input: 999 499
+1 1
+Case #81: Input: 999 999
+0 0
+Case #82: Input: 500 248
+1 1
+Case #83: Input: 499 396
+0 0
+Case #84: Input: 367 344
+0 0
+Case #85: Input: 1000 498
+1 1
+Case #86: Input: 999 488
+1 1
+Case #87: Input: 500 499
+0 0
+Case #88: Input: 712 630
+0 0
+Case #89: Input: 3 2
+0 0
+Case #90: Input: 500 245
+1 1
+Case #91: Input: 1000 2
+250 249
+Case #92: Input: 2 1
+1 0
+Case #93: Input: 500 117
+3 3
+Case #94: Input: 1000 511
+1 1
+Case #95: Input: 577 476
+1 0
+Case #96: Input: 2 2
+0 0
+Case #97: Input: 503 454
+0 0
+Case #98: Input: 500 256
+0 0
+Case #99: Input: 459 349
+0 0
+Case #100: Input: 430 416
+0 0

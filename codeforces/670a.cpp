@@ -1,7 +1,6 @@
 #include <bits/stdc++.h>
 
-//http://codeforces.com/contest/670/problem/A
-
+//http://codeforces.com/contest/673/problem/0 (A)
 using namespace std;
 
 typedef long long LL;

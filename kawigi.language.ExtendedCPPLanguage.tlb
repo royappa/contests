@@ -1,0 +1,35 @@
+@method name=class-name
+@calling-code:
+code += comp.getClassName();
+@method-code:
+@/method
+@method name=method-name
+@calling-code:
+code += comp.getMethodName();
+@method-code:
+@/method
+@method name=param-list
+@calling-code:
+code += makeParamList(comp.getParamTypes(), comp.getParamNames());
+@method-code:
+@/method
+@method name=param-type-list
+@calling-code:
+code += makeParamTypeList(comp.getParamTypes());
+@method-code:
+@/method
+@method name=return-type
+@calling-code:
+code += comp.getReturnType().getDescriptor(lang);
+@method-code:
+@/method
+@method name=set-caret
+@calling-code:
+caret = code.length();
+@method-code:
+@/method
+@method name=testing-code
+@calling-code:
+code += generateTestingCode(comp, lang);
+@method-code:
+@/method

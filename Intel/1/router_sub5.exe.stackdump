@@ -1,0 +1,11 @@
+Exception: STATUS_ACCESS_VIOLATION at eip=00401A2A
+eax=0000000C ebx=0000033A ecx=003D2070 edx=01E86244 esi=000003EC edi=0F8FACF0
+ebp=28AEEF98 esp=28A1BCE0 program=c:\misc\topcoder\intel\1\router_sub5.exe, pid 3856, thread unknown (0x284)
+cs=001B ds=0023 es=0023 fs=003B gs=0000 ss=0023
+Stack trace:
+Frame     Function  Args
+28AEEF98  00401A2A  (00000007, FFFFFFFF, 00000000, 00000000)
+28AEEFD8  610BE4BA  (0F8FACF0, 28AEF010, 610BE440, 00000000)
+28AEF008  610048E4  (00000000, 00000000, 00000000, 00000000)
+28AEFF98  6100489A  (00000000, 00000000, 00000000, 000000002736361 [unknown (0x1010)] router_sub5 3856 handle_exceptions: Error while dumping state (probably corrupted stack)
+      3 [unknown (0x1470)] router_sub5 3856 handle_exceptions: Error while dumping state (probably corrupted stack)

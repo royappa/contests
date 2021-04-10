@@ -1,0 +1,193 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  
+<!-- Mirrored from www.cs.duke.edu/csed/onlineprobs/p14.html by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 14 Mar 2006 08:55:06 GMT -->
+<head>
+    <title>Weekly Problem #14</title>
+  </head>
+
+  <body>
+    <h1>Weekly Problem #14</h1>
+
+<em>
+This problem statement is the exclusive and proprietary property of
+TopCoder, Inc. Any unauthorized use or reproduction of this information
+without the prior written consent of TopCoder, Inc. is strictly
+prohibited. (c)2003, TopCoder, Inc. All rights reserved.
+</em>
+
+<p>
+<hr>
+
+<h3>Problem Statement</h3>
+
+You are writing software to help someone understand their very
+complicated family.  Your task is to determine all aunts and uncles of a
+given person.  An aunt or uncle of a person is defined as a sibling of
+that person's parent.  Two people are siblings if they have one or more
+parents in common.
+<P>
+Create a class AuntUncle that contains a method list which receives a
+<code>tvector&lt;string&gt;</code>, 
+with each element containing a record of a person's birth - in
+the form of "PARENT1 PARENT2 CHILD" (quotes for clarity only), and a
+single String with the target person's name, and returns a 
+<code>tvector&lt;string&gt;</code> of
+all aunts and uncles for that target person, sorted alphabetically.
+<P>
+
+
+
+<P> 
+<h3>Definition</h3>
+
+<UL>
+<LI> Class: AuntUncle
+<LI> Method: list
+<LI> Parameters: <code>tvector&lt;string&gt;</code>, <code>string</code>
+<LI> Returns: <code>tvector&lt;string&gt;</code>
+<LI> Method signature (see below, be sure your method is public):  
+
+</UL>
+
+ <h3>Class</h3>
+
+<XMP>
+#include<string>
+using namespace std;
+#include "tvector.h"
+class AuntUncle
+{
+ public:
+   tvector<string> list(const tvector<string>& parents, const string& target)
+   {
+           // fill in code here
+   }
+};
+</XMP>
+
+<P>
+<h3>Notes</h3>
+
+<UL>
+<LI> Gender of the people is not to be considered.  In other words,
+parents A and B could have a child together, as could parents A and C,
+as well as parents B and C - even though this would be impossible
+normally, since at least one of those pairings would result in two
+people of the same gender.
+<LI> Under no circumstances will the correct answer include the target.
+<LI> Under no circumstances will the correct answer include either of
+the actual parents of the target.
+</UL>
+<h3>Constraints</h3>
+
+Inputs are valid (you don't need to check) if all of
+the following criteria are met:
+<UL>
+<LI> <code>parents</code> will contain between 1 and 50 elements, inclusive.
+<LI> Each element in <code>parents</code> 
+will be in the form of <code>"parent1 parent2 child"</code>  (quotes for
+	clarity).
+
+<LI> Each element in <code>parents</code> 
+will not contain leading/trailing spaces.
+<LI> Each item in each element of <codedparents</code> 
+(parent1, parent2, and child) 
+will be at least 1 character, and at most 10 characters, in length.
+<LI> Each item in each element of <code>parents</code> 
+(parent1, parent2, and child) will contain only capital letters
+('A'-'Z').
+<LI> 
+Each item in each element of <code>parents</code> (parent1, parent2, and
+child) will be separated by exactly one space.
+
+<LI> Each element in <code>parents</code> 
+will not contain repeated names.  That is,
+parent1, parent2, and child will all be different names.
+<LI> No ancestral loops will occur in <code>parents</code>.  In other
+words, someone cannot be both a descendant and an ancestor of the same
+person.
+<LI> No one will be listed as a child in more than one element in
+<code>parents</code>.  A person can only have one pair of parents.
+
+
+<LI> String target will contain only capital letters ('A'-'Z').
+<LI> String target will be between 1 and 10 characters in length,
+inclusive.
+
+<LI>
+String target will be contained as an item 
+(either parent1, parent2, or
+child) in at least one element of <code>parents.</code>
+</UL>
+<P>
+
+<P>
+<h3>Examples</h3>
+
+In each of these examples, quotes ('"'), commas (','), and curly braces ('{'
+and '}') are included for clarity only.  They are never part of the input or
+output.
+
+
+<OL>
+<LI>
+<PRE>
+parents = {"JOE JANE ROB"}
+target = "ROB"
+</PRE>
+
+Returns:  {}
+<P>
+Target "ROB"'s parents do not have parents, let alone siblings.  "ROB"
+has no uncles or aunts.
+
+<P>
+<LI>
+<PRE>    
+parents = {"JOE MARY FRANK", "BOB JANE MARTHA", "FRANK MARTHA ROB", 
+           "BOB AMANDA TROY"}
+target = "ROB"
+</PRE>
+<P>
+Returns: {"TROY"}
+<P>
+Target "ROB"'s parent "MARTHA" has a parent "BOB" who has a child other
+than either of "ROB"'s parents.  This child is named "TROY", and must be
+"ROB"'s Uncle (or Aunt).
+
+<P>
+<LI>
+<PRE>
+parents = {"HECTOR DANA ROB", "ROB MARY JOE", "JOE MARY FRANK"}
+target = "FRANK"
+</PRE>
+Returns:{}
+<P>
+Target "FRANK"'s parent "MARY" is also his parent "JOE"'s parent.  Be careful
+you don't think "FRANK" is his own Uncle (or Aunt).
+<P>
+<LI>
+<PRE>
+parents = {"A B E", "C D F", "E F G", "A P Z", "B P Y", "C P X", "D P W", 
+           "A B V", "B C U", "A C T", "B D S", "A D R", "B C Q"}
+target = "G"
+</PRE>
+
+return: {"Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"}
+<P>
+Note that the answer is sorted alphabetically.
+
+</OL>
+
+
+    <hr>
+    <address><a href="mailto:ola@cs.duke.edu">Owen L. Astrachan</a></address>
+<!-- Created: Sun Apr  6 22:07:57 EDT 2003 -->
+<!-- hhmts start -->
+Last modified: Wed Jul 23 10:30:05 EDT 2003
+<!-- hhmts end -->
+  </body>
+
+<!-- Mirrored from www.cs.duke.edu/csed/onlineprobs/p14.html by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 14 Mar 2006 08:55:06 GMT -->
+</html>

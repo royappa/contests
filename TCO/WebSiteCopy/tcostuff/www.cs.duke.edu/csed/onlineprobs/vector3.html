@@ -1,0 +1,183 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  
+<!-- Mirrored from www.cs.duke.edu/csed/onlineprobs/vector3.html by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 14 Mar 2006 08:55:08 GMT -->
+<head>
+    <title>Weekly Problem Vector 3</title>
+  </head>
+
+  <body>
+    <h1>Weekly Problem Vector 3</h1>
+
+<em>
+
+This problem statement is the exclusive and proprietary property of
+TopCoder, Inc. Any unauthorized use or reproduction of this information
+without the prior written consent of TopCoder, Inc. is strictly
+prohibited. (c)2002, TopCoder, Inc. All rights reserved.
+
+</em>
+<P>
+<hr>
+
+<h3>Problem Statement</h3>
+
+Given a rectangular object and several boxes (in this problem, we ignore
+the height of the box, so a box only has two dimensions) of different
+sizes, you want to find the box with the smallest area which is large
+enough to contain the object. When putting the object in the box, it's
+sides must be parallel with the sides of the box. Thus, you may only
+rotate the object 0, 90, 180 or 270 degrees (although for obvious
+reasons you only need to consider rotating with 0 and 90 degrees).
+<P>
+
+Create a function smallestBox
+which takes an int objWidth, an int objLength (the width and length of
+the object), a tvector&lt;int&gt; boxWidth, 
+a tvector&lt;int&gt; boxLength (the width and length
+of the boxes) and returns an int, the area of the smallest box that can
+fit the object. Element i in boxWidth and boxLength correspond to box
+i. If no box is big enough to contain the object, return -1.
+<P>
+<h3>Definition</h3>
+<UL>    
+<LI> Class: none used in this problem
+<LI> Method: smallestBox
+<LI> Parameters: int, int, tvector&lt;int&gt; tvector&lt;int&gt;
+<LI> Returns: int
+<LI> Method signature: 
+<PRE>
+int smallestBox(int objWidth, int objLength, 
+                tvector&lt;int&gt; boxWidth,
+                tvector&lt;int&gt; boxLength)
+</PRE>
+
+</UL>
+<P>
+
+<h3>Class</h3>
+<PRE>
+ #include "tvector.h"
+ int smallestBox(int objWidth, int objLength, 
+                 tvector&lt;int&gt; boxWidth,
+                 tvector&lt;int&gt; boxLength)
+ {
+     // fill in body of this function
+ }
+
+</PRE>
+
+<h3>Notes</h3>
+<P>
+There doesn't have to be any gap between the sides of an object and the
+sides of the box. Thus, an object with width 5 and length 7 will fit in
+a box with width 7 and length 5.-Return -1 if there is no box big enough
+to contain the object (see example 1). 
+<P>
+<h3>Constraints</h3>
+<UL>
+<LI> 
+objWidth will be between 1 and 1000, inclusive.
+<LI>
+objLength will be
+between 1 and 1000, inclusive.
+<LI> boxWidth will contain between 1 and 50
+elements, inclusive.
+<LI> boxLength will contain between 1 and 50 elements,
+inclusive.
+<LI> boxWidth will contain the same number of elements as
+boxLength.
+<LI>
+Each element in boxWidth will be between 1 and 1000,
+inclusive.
+<LI>Each element in boxLength will be between 1 and 1000,
+inclusive. 
+</UL>
+<P>
+<h3>Examples</h3>
+
+<OL type='0'>
+<LI>
+<PRE>
+
+7
+
+3
+
+{3}
+
+{7}
+</PRE>
+
+Returns: 21
+<P>
+By rotating the object 90 degrees we can precisely fit it into the only
+box in the list, so the method should return 21 (7*3).
+<P>
+<LI>
+<PRE>
+
+5
+
+8
+
+{6,9,3}
+
+{7,4,5}
+
+</PRE>
+
+Returns: -1
+<P>
+The object can't fit in any of the boxes, no matter if we rotate it or
+not. The method should thus return -1.
+<P>
+<LI>
+
+<PRE>
+
+17
+
+5
+
+{19,10,12,40}
+
+{12,20,15,5}
+
+</PRE>
+
+Returns: 200
+<P>
+The object will fit in box 0, 1 and 3. The area of box 1 and 3 are 200
+while the area of box 0 is 228, so the method should return 200.
+<P>
+<LI>
+<PRE>
+
+20
+
+44
+
+{36,42,18,37,33,5,30,10,29,9,11,16,48,50,34,44,33,12,31,41}
+
+{42,45,46,24,23,21,21,8,26,25,48,12,10,45,18,6,12,22,42,45}
+
+</PRE>
+
+Returns: 1845
+
+
+
+</OL>
+
+
+    <hr>
+    <address><a href="mailto:ola@cs.duke.edu">Owen L. Astrachan</a></address>
+<!-- Created: Mon Jan  6 14:27:13 EST 2003 -->
+<!-- hhmts start -->
+Last modified: Thu Sep 25 00:17:04 EDT 2003
+<!-- hhmts end -->
+  </body>
+
+<!-- Mirrored from www.cs.duke.edu/csed/onlineprobs/vector3.html by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 14 Mar 2006 08:55:08 GMT -->
+</html>

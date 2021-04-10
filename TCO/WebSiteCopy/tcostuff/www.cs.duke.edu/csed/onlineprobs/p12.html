@@ -1,0 +1,179 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  
+<!-- Mirrored from www.cs.duke.edu/csed/onlineprobs/p12.html by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 14 Mar 2006 08:55:06 GMT -->
+<head>
+    <title>Weekly Problem #12</title>
+  </head>
+
+  <body>
+    <h1>Weekly Problem #12</h1>
+
+<em>
+This problem statement is the exclusive and proprietary property of
+TopCoder, Inc. Any unauthorized use or reproduction of this information
+without the prior written consent of TopCoder, Inc. is strictly
+prohibited. (c)2003, TopCoder, Inc. All rights reserved.
+</em>
+
+<p>
+<hr>
+
+<h3>Problem Statement</h3>
+
+You just got a phone with a speed-dial feature, and you want to
+determine which numbers to store in the speed-dial memory.  To do this,
+you look at last month's bill, and decide to use the numbers that appear
+most frequently on the bill.
+<P>
+
+
+Create a class NewPhone that contains the method bestNumbers, which
+takes three arguments: <code>numbers</code>: a
+<code>tvector&lt;string&gt;</code> representing all the
+numbers you called last month.  Each string has the form "NNN-NNN-NNNN",
+where N is a numerical digit ('0'-'9').  <code>frequencies</code>: 
+A <code>tvector&lt;int&gt;</code>
+indicating how many times each number was called last month.  Element i
+of this tvector maps to element i of the <code>numbers</code> tvector.  
+<code>spaces</code>: The number
+of memory spaces available to use.
+<P>
+The method should return a <code>tvector&lt;string&gt;</code> 
+of the numbers to program
+into the memory spaces available, starting with the most frequently
+called number, and going in decreasing frequency order.  If two or more
+numbers are called the same number of times, they should be returned in
+the order they were in the original input.  The size of the return value
+should be equal to spaces, discarding any numbers that do not fit into
+the result.  If two or more numbers have the same frequency, but not all
+of them will fit in the result, add the ones that were first in the
+original input (See example 3).
+
+
+<P> 
+<h3>Definition</h3>
+
+<UL>    
+<LI> Class: NewPhone
+<LI> Method: bestNumberss
+<LI> Parameters: <code>tvector&lt;string&gt;</code>,
+	<code>tvector&lt;int&gt;</code>, <code>int</code>
+<LI> Returns: <code>tvector&lt;string&gt;</code>
+<LI> Method signature: 
+<XMP>
+    tvector<string> bestNumbers(const tvector<string>& numbers, 
+                                const tvector<int>& frequencies, int spaces)
+</XMP>
+</UL>
+
+<P>    
+
+ <h3>Class</h3>
+
+<XMP>
+#include<string>
+using namespace std;
+#include "tvector.h"
+class NewPhone
+{
+    public:
+       tvector<string> bestNumbers(const tvector<string>& numbers, 
+                                   const tvector<int>& frequencies, int spaces)
+    {
+            // fill in code here
+    }
+};
+</XMP>
+
+<P>
+<h3>Constraints</h3>
+<UL>
+<LI> numbers will have between 1 and 50 elements, inclusive.
+<P>
+<LI> Each element in numbers will have the form "NNN-NNN-NNNN", where
+	each N is a digit ('0'-'9').
+<P>
+<LI> There will be no repeated elements in numbers.
+<P>
+<LI> frequencies will have the same number of elements as numbers.
+<P>
+<LI> Each element of frequencies will be between 1 and 100, inclusive.
+<P>
+<LI> spaces will be between 1 and length of numbers, inclusive.
+</UL>
+
+<P>
+<h3>Examples</h3>
+<OL>
+<LI>
+<PRE>
+numbers = {"123-456-7890", "012-333-4455", "800-825-6699"}
+frequencies = {3,2,1}
+spaces = 3
+</PRE>
+
+Returns:  <code>{ "123-456-7890",  "012-333-4455",  "800-825-6699" }</code>
+<P>
+
+You made 6 calls last month, three of them were 123-456-7890, two of
+them were 012-333-4455, and the last was 800-825-6699.  Given the
+frequency of the numbers, they are already in the order of most frequent
+to least frequent, and there are enough spaces to hold all the numbers.
+
+<P>
+<LI>
+<PRE>    
+numbers = {"123-456-7890", "012-333-4455", "800-825-6699"}
+frequencies = {3,1,2}
+spaces = 3
+</PRE>
+
+Returns  <code>{ "123-456-7890",  "800-825-6699",  "012-333-4455" }</code>
+
+<P>
+Now, the second and third numbers are out of order.
+
+<P>
+<LI>
+<PRE>    
+numbers = {"123-456-7890", "012-333-4455", "800-825-6699"}
+frequencies = {3,1,2}
+spaces = 2
+</PRE>
+<P>
+Returns: <code>{ "123-456-7890",  "800-825-6699" }</code>
+<P>
+Now, there are only two spaces available for speed-dial numbers.
+<P>
+<LI>
+<PRE>
+numbers = {"123-456-7890", "012-333-4455", "800-825-6699", "333-333-3333"}
+frequencies = {3,1,3,3}
+spaces = 2
+</PRE>
+<P>
+Returns:  <code>{ "123-456-7890",  "800-825-6699" }</code>
+<P>
+Three numbers were called with a frequency of 3.  Since the first and
+third elements come before the fourth, they are programmed first, and
+there is not enough room for the fourth element in the memory spaces.
+
+
+</OL>
+
+
+
+
+
+
+    <hr>
+    <address><a href="mailto:ola@cs.duke.edu">Owen L. Astrachan</a></address>
+<!-- Created: Wed Feb 26 10:34:13 EST 2003 -->
+<!-- hhmts start -->
+Last modified: Wed Jul 23 10:30:22 EDT 2003
+<!-- hhmts end -->
+  </body>
+
+<!-- Mirrored from www.cs.duke.edu/csed/onlineprobs/p12.html by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 14 Mar 2006 08:55:06 GMT -->
+</html>

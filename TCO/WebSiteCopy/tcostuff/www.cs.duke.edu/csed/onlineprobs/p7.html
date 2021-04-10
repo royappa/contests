@@ -1,0 +1,171 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  
+<!-- Mirrored from www.cs.duke.edu/csed/onlineprobs/p7.html by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 14 Mar 2006 08:55:05 GMT -->
+<head>
+    <title>Spring 2003, Weekly Problem 7</title>
+  </head>
+
+  <body>
+    <h1>Spring 2003, Weekly Problem 7</h1>
+
+<em>
+This problem statement is the exclusive and proprietary property of
+TopCoder, Inc. Any unauthorized use or reproduction of this information
+without the prior written consent of TopCoder, Inc. is strictly
+prohibited. (c)2002, TopCoder, Inc. All rights reserved.
+</em>
+
+<p>
+<hr>
+
+<h3>Problem Statement</h3>
+    
+
+If you want to write a message anonymously, one way to do it is to cut
+out letters from headlines in a newspaper and paste them onto a blank
+piece of paper to form the message you want to write. Given several
+headlines that you have cut out, determine how many messages from a list
+you can write using the letters from the headlines. You should only
+consider each message by itself and not in conjunction with the others,
+see example 2.
+<P>
+
+Create a class <tt>Anonymous</tt> which contains the method
+<tt>howMany</tt> which takes as parameters a
+<tt>tvector&lt;string&gt;</tt> <tt>headlines</tt> containing the
+headlines which you have cut out as well as a
+<tt>tvector&lt;string&gt;</tt> <tt>messages</tt> with the messages you
+may want to write, and returns an int which is the total number of
+messages you can write.
+ <P>
+
+<h3>Definition</h3>
+    
+<UL>
+<LI> Class: Anonymous
+<LI> Method: howMany
+<LI> Parameters: <code>const tvector&lt;string&gt&amp;</code>, 
+<code>const tvector&lt;string&gt;&amp;</code> 
+<LI> Returns: int
+<LI> Method signature
+<XMP>
+int howMany(const tvector<string>& headlines, const tvector<string>& messages)
+</XMP>
+</UL>
+(be sure your method is public)
+<P>
+<h3>Class</h3>
+
+<XMP>
+#include <string>
+using namespace std;
+#include "tvector.h"
+
+class Anonymous 
+{
+    public:
+      int howMany(const tvector <string>& headlines, 
+                  const tvector <string>& messages) 
+      {
+            // fill in code here
+      }
+};
+
+</XMP>     
+<P>
+
+<h3>Notes and Constraints</h3>
+<UL>
+
+<LI> All letters that you cut out can be used both as upper or lower case in
+    a message.
+<LI> Spaces should be ignored in elements in both headlines
+    and messages. 
+<P>
+<LI> headlines will contain between 1 and 50 elements, inclusive.
+<LI> messages
+    will contain between 1 and 50 elements, inclusive.
+<LI> The length of
+    each element in headlines will be between 1 and 50 characters,
+    inclusive.
+<LI> The length of each element in messages will be between 1
+    and 50 characters, inclusive.
+<LI> Each element in headlines will only
+    contain the letters 'A'-'Z', 'a'-'z' and space.
+<LI> Each element in
+    messages will only contain the letters 'A'-'Z', 'a'-'z' and space. 
+</UL>
+<P>
+<h3>Examples</h3>
+
+<OL>
+<LI>
+<PRE>
+headlines =
+
+{"Earthquake in San Francisco",
+ "Burglary at musuem in Sweden",
+ "Poverty"}
+
+messages =
+
+{"Give me my money back",
+ "I am the best coder",
+ "TOPCODER"}
+</PRE>
+
+Returns: 2
+<P>
+In the first message we have three 'm's, but there are only two 'm's
+among the headlines (both in the word "museum"), so this message can't
+be written.
+<P>
+The second message can be written. Note that the first letter, 'I', only
+appears as lower case in the headlines, but that's allowed. The last
+message can also be written, so the method should return 2.  
+<P>
+<LI>
+<PRE>
+headlines = 
+
+        {"Programming is fun"}
+
+messages = 
+
+        {"program","programmer","gaming","sing","NO FUN"}
+</PRE>
+Returns: 4
+<P>
+The messages "program", "gaming", "sing" and "NO FUN" can all be written
+    but not "programmer" (no 'e's exist). The method should return 4.
+<P>
+<LI>
+<PRE>
+headlines = 
+
+   {"abcdef","abcdef"}
+
+messages = 
+
+   {"AaBbCc","aabbbcc","   ","FADE"}
+</PRE>
+
+Returns: 3
+<P>
+All messages except the second one can be written, because it contains
+three 'b's but there are only two 'b's available. Also note the message
+only containing spaces - such a message can of course always be written.
+<P>
+</OL>
+
+    <hr>
+    <address><a href="mailto:ola@cs.duke.edu">Owen L. Astrachan</a></address>
+<!-- Created: Fri Feb 14 22:24:43 EST 2003 -->
+<!-- hhmts start -->
+Last modified: Wed Jul 23 10:31:04 EDT 2003
+<!-- hhmts end -->
+  </body>
+
+<!-- Mirrored from www.cs.duke.edu/csed/onlineprobs/p7.html by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 14 Mar 2006 08:55:05 GMT -->
+</html>

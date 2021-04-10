@@ -1,0 +1,4 @@
+d1.cpp: In function ‘int main()’:
+d1.cpp:34:1: error: expected ‘;’ before ‘}’ token
+ }
+ ^

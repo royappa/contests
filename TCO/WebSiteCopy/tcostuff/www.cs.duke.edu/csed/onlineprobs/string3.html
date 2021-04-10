@@ -1,0 +1,136 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  
+<!-- Mirrored from www.cs.duke.edu/csed/onlineprobs/string3.html by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 14 Mar 2006 08:55:07 GMT -->
+<head>
+    <title>Weekly Problem string3</title>
+  </head>
+
+  <body>
+    <h1>Weekly Problem string3</h1>
+
+
+<p>
+<hr>
+
+<h3>Problem Statement</h3>
+
+
+
+<P>
+Given a time in one of the following three string formats return the
+number of seconds represented by the time as an int. The quotes
+below aren't part of the strings, but are shown for clarity.
+<p>
+<center>
+<table>
+<tr>
+<td> "00" <td> hours 
+<tr>
+<td> "00:00" <td> hours and minutes
+<tr>
+<td> "00:00:00" <td> hours, minutes and seconds
+</table>
+</center>
+
+<p>
+Hint: The function <tt>atoi</tt> from the include file
+<tt>"strutils.h"</tt> will be useful in solving this problem.
+The <tt>atoi</tt> function converts a string like "23" to its
+numeric, int equivalent, i.e., 23.
+See page 289 in Tapestry for details.
+<P>
+
+<P> 
+<h3>Definition</h3>
+
+<UL>
+<LI> Class: none used in this problem
+<LI> Method: seconds
+<LI> Parameters: string
+<LI> Returns: int
+<LI> Method signature (see below)
+
+</UL>
+
+ <h3>Prototype</h3>
+
+(be sure you have the necessary include files as shown)
+
+<XMP>
+#include <string>
+using namespace std;
+
+#include "strutils.h"
+
+   int seconds(string str)
+   {
+           // fill in code here
+   }
+
+</XMP>
+
+<P>
+
+<h3>Constraints</h3>
+<UL>
+
+<LI> The paramete <tt>str</tt> will be in one of the
+three formats shown.
+
+</UL>
+
+<P>
+<h3>Examples</h3>
+
+(quote for clarity, they're not part of the string)
+<OL>
+<LI>
+<PRE>
+  "03"
+
+Returns: 10800
+</PRE>
+
+<P>
+<LI>
+<PRE>    
+
+  "00:42"
+
+Returns: 2520
+</PRE>
+<P>
+<P>
+<LI>
+<PRE>
+   
+  "01:02:30"
+
+Returns: 3750
+</PRE>
+<P>
+
+<LI>
+<PRE>
+   
+  "59:59:59"
+
+Returns: 215999
+</PRE>
+<P>
+
+
+</OL>
+
+
+    <hr>
+    <address><a href="mailto:rodger@cs.duke.edu">Susan H. Rodger</a></address>
+<!-- Created: Sun Apr  6 22:07:57 EDT 2003 -->
+<!-- hhmts start -->
+Last modified: Thu Sep 11 09:54:31 EDT 2003
+<!-- hhmts end -->
+  </body>
+
+<!-- Mirrored from www.cs.duke.edu/csed/onlineprobs/string3.html by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 14 Mar 2006 08:55:07 GMT -->
+</html>

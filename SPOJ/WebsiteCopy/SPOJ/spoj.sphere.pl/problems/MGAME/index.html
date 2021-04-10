@@ -1,0 +1,189 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<!-- Mirrored from spoj.sphere.pl/problems/MGAME/ by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 10 Jan 2006 04:56:00 GMT -->
+<head>
+<title>Sphere Online Judge (SPOJ)  - Problem MGAME</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-2">
+<META NAME="Keywords" CONTENT="spoj, online, judge, problem, set, problemset, archive, ACM, Polish, Poland, contest, contester, task, tasks, ADA, Java, Pascal, C, C++, Whitespace, sphere, interest, group, python, ruby, icon, o'caml, caml, ocaml, perl, haskell, bf, brain, clips, prolog, fortran, asm, assembler, asembler, functional, esoteric, programming, languages">
+
+<link href="https://spoj.sphere.pl/gfx/favicon" rel="shortcut icon" type="image/x-icon">
+
+<link href="../../themes/skin3.css" rel="stylesheet" type="text/css" id="theme">
+<style type="text/css">
+<!--
+.maintable {width: 755;} 
+-->
+</style>
+<script type="text/javascript" language="javascript">
+<!--
+function UnCryptMailto(s) {
+	var n=0;
+	var r="";
+	for(var i=0;i<s.length;i++) {		
+		n=s.charCodeAt(i); 
+		if (n>=8364) {n = 128;}
+		r += String.fromCharCode(n+(2));	
+	}
+	return r;
+}
+function linkTo_UnCryptMailto(s)	{
+	location.href=UnCryptMailto(s);
+}
+// -->
+</script>
+
+</head>
+<body>
+<center>
+<table cellpadding="10" cellspacing="0" class="maintable" id="maintable">
+<tr>
+    <td colspan="2" class="header">
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+        <tr>
+		<td class="headerleft"/>
+		<td class="headercenter"><h1>Sphere Online Judge</h1></td>
+		<td class="headerright"/>
+	</tr>
+	</table>
+    </td>
+</tr>
+<tr><td class="menu" width="92" valign="top">
+<form name="login"  action="http://spoj.sphere.pl/problems/MGAME/" method="post" 
+	onsubmit="if(document.login.ssl.checked) document.login.action='https://spoj.sphere.pl/problems/MGAME/'" style="margin-bottom: 18px"> 
+User: <input name="login_user" type="text" style="width: 85px;" class="form"><BR>
+Password: <input name="password" type="password" style="width: 85px;" class="form"><BR>
+<script language="javascript" type="text/javascript">
+<!--
+document.write('<input type="checkbox" name="ssl" id="ssl" checked>secure<br>');
+//-->
+</script>
+<input name="submit" type="submit" value="Log In" class="button" style="width: 85px;">
+</form><div class="menucmd"><a href="https://spoj.sphere.pl/register">register</a><br><br><a href="https://spoj.sphere.pl/status">status</a><br><a href="https://spoj.sphere.pl/submit">submit</a><br><a href="../classical/sort=7,start=0.html">problems</a><br><br><a href="https://spoj.sphere.pl/">news</a><br><a href="https://spoj.sphere.pl/contests">contests</a><br><a href="https://spoj.sphere.pl/info">info</a><br><a href="https://spoj.sphere.pl/ranks/">ranks</a><br><br><a href="https://spoj.sphere.pl/forum">forum</a><br><a href="https://spoj.sphere.pl/help">help</a><br><a href="https://spoj.sphere.pl/links">links</a><br><hr></div>Server time:<br>2006-01-10<br>05:50:00<a href="../classical/sort=7,start=0.html"></a><br><br>
+<form method="get" action="https://spoj.sphere.pl/search/" class="form" style="width:90px">
+<input type="text" name="query" style="width:85px" maxlength=255 value="" class="form"><br>
+<input type="submit" value="Search" style="width:85px" class="form" title="Search site"><br>
+&nbsp;<a href="https://spoj.sphere.pl/search/problems=on,users=on,contests=on" title="More search options"><small>advanced...</small></a>
+</form></td><td class="content" width="99%"><table class="problems" width="100%">
+<tr class="navigation">
+<td><a href="https://spoj.sphere.pl/submit/MGAME/">Submit</a></td>
+<td><a href="https://spoj.sphere.pl/status/MGAME/">All submissions</a></td>
+<td><a href="https://spoj.sphere.pl/ranks/MGAME/">Best solutions</a></td>
+<td><a href="https://spoj.sphere.pl/problems/MGAME.ps">PS</a></td>
+<td><a href="https://spoj.sphere.pl/problems/MGAME.pdf">PDF</a></td>
+<td><a href="../classical/sort=7,start=0.html">Back to list</a></td>
+</tr>
+</table>
+
+<div class="prob">
+
+<h2>SPOJ Problem Set </h2>
+<h1>326. Enjoying a Multiplayer Game</h1>
+<h2>Problem code: MGAME</h2>
+<p align="justify">
+<p>One of the most popular types of computer multiplayer games in existence is the simple deathmatch shooter, in which it is the player's task to eliminate all other players on the gaming board. Usually, at the start of the game the players are distributed fairly randomly over the board, and run around in order to find and shoot opponents.
+<p>But there is a fair percentage of players (especially the younger ones) who enjoy the shooting most and give up the running altogether. To achieve this, at the start of the match all players are arranged very close to each other, and everyone opens fire in the very first second of the game. The gunfire continues until everyone within sight of everyone else is dead, and then the game ends, since no one feels like moving from their selected camping point.
+<p>Parents are often helpless when their children get addicted to this sort of entertainment, and don't know how to make them stop playing without causing a major quarrel. But Johnny's dad has developed the perfect method. He always says to his son: <i>Sure, I'll let you play another round, but tell me please how long it'll take!</i> And no, the answer <i>only a minute or two</i> is just not good enough.
+<p>
+At the start of the game, the players are positioned on the board and each player has a list of other players he is capable of eliminating (from his location). At the start of every second, each living player fires a round towards one of the opponents on his list (provided the list is not yet empty). Players who have been hit are eliminated from the game directly after the shots were fired. The situation continues until the lists of all surviving players are empty.
+<p>
+We are not asking you to give an exact answer the question posed by Johnny's dad, but only for an honest estimate. Given an arrangement of players on the board, try to find scenarios of shooting leading to the longest possible and the shortest possible game.
+
+<h3>Input</h3>
+<p>The first line of input contains a single integer <i>t</i>, the number of test cases (t=100). <i>t</i> test cases follow. 
+
+Each test case starts with a line containing integer <i>n</i>, denoting the number of players on the board (2<=<i>n</i><=500). Each of the next <i>n</i> lines contains a list of integers: first, <i>d<sub>i</sub></i> the length of the i-th player's list, followed by the considered list of exactly <i>d<sub>i</sub></i> other players (numbered in input order from the range 1 to <i>n</i>).
+<h3>Output</h3>
+<p>For the <i>i</i>-th test case output a line with the text <tt>case <i>i</i> Y</tt> or <tt>case <i>i</i> N</tt>, specifying whether you wish to solve the given case. Then in the former case print a description of the longest known game scenario, followed by a description of the shortest known game scenario. Each scenario starts with an integer <i>t</i>, the duration of the game measured in seconds (0<=<i>t</i><=<i>n-1</i>). Each of the next <i>t</i> lines contains a list of integers, representing the identifiers of players eliminated by respective players in the given second (one integer for each player left alive and capable of hitting an enemy at the start of the second, ordered according to the input identifiers of the shooting players).
+
+<h3>Score</h3>
+<p>
+The score awarded to your program is the total of scores for the test cases you chose to solve. 
+<p>
+For each solved test case you will receive <i>t<sub>max</sub></i> / <i>t<sub>min</sub></i>-1 points, where <i>t<sub>max</sub></i> is the length of the first presented scenario, while <i>t<sub>min</sub></i> - the length of the second one. 
+
+<h3>Example</h3>
+
+<pre>
+<b>Input:</b>
+1
+4
+2 2 3
+2 1 3
+3 1 2 4
+1 3
+
+<b>Output:</b>
+case 1 Y
+2
+3 3 4 3
+2 1
+1
+2 1 4 3
+
+<b>Score:</b>
+2/1 - 1 = 1.00
+</pre>
+
+
+<hr>
+<table border=0 cellspacing=0 cellpadding=0 align=left>
+<tr><td width=130>Added by:</td><td><a href="https://spoj.sphere.pl/search/'Adrian%20Kosowski'">Adrian Kosowski</a></td></tr>
+<tr><td>Date:</td><td>2005-04-14</td></tr>
+<tr><td>Time limit:</td><td>17s
+</td></tr>
+<tr><td>Source limit:</td><td>50000B</td></tr>
+<tr><td>Resource:</td><td>DASM Programming League 2004, problemset 9</td></tr></table>
+</div></td>
+</tr>
+
+<tr>
+<td colspan="2" class="footer">
+
+<script language="javascript" type="text/javascript">
+<!--
+function swapSheet(sheet, caller) {
+    document.getElementById('theme').href=sheet;
+    document.cookie="css_0="+sheet+"; path=/;";
+    caller.href="#bottom";
+}
+
+function setWidth(w, caller) {
+    document.getElementById('maintable').style.width=w;
+    document.cookie="res="+w+"; path=/;";
+    caller.href="#bottom";
+}
+//-->
+
+</script>
+        <table width="100%">
+    <tr>
+	<td align="left">
+            <a href="http://www.pg.gda.pl/eng.html"><IMG src="https://spoj.sphere.pl/gfx/logo-pg" alt="www.pg.gda.pl" border=0 height=36 width=44></a>&nbsp;
+            <a href="http://www.eti.pg.gda.pl/"><IMG src="https://spoj.sphere.pl/gfx/logo-eti" alt="www.eti.pg.gda.pl" border=0 height=36 width=44></a>
+	</td>
+	<td align="center">
+	    page size:
+	    <a href="https://spoj.sphere.pl/?res=755"  onClick="setWidth('755', this)">800x600</a>
+	    <a href="https://spoj.sphere.pl/?res=980"  onClick="setWidth('980', this)">1024x768</a>
+	    <a href="https://spoj.sphere.pl/?res=100%" onClick="setWidth('100%', this)">Full</a>
+	    &nbsp;&nbsp;
+	    theme:
+	    <a href="../../indexb6a4.html?css=/themes/skin1.css" onClick="swapSheet('../../themes/skin1.css', this)">olive</a>
+	    <a href="../../index3840.html?css=/themes/skin2.css" onClick="swapSheet('../../themes/skin2.css', this)">banana</a>
+	    <a href="../../index80f0.html?css=/themes/skin3.css" onClick="swapSheet('../../themes/skin3.css', this)">plum</a>
+	    <br>
+	    <a href="http://sphere.pl/?id=66">spoj team at sphere</a> &copy; 2004-05 all rights reserved
+	</td>
+	<td align="right">
+            <a href="http://task.gda.pl/english/"><IMG src="https://spoj.sphere.pl/gfx/logo-task" alt="task.gda.pl" border=0 height=36 width=44></a>&nbsp;
+            <a href="http://sphere.pl/"><IMG src="https://spoj.sphere.pl/gfx/logo-sphere" alt="sphere.pl" border=0 height=32></a>
+	</td>
+    </tr>
+    </table>
+    </tr></table>
+</center>
+</body>
+
+<!-- Mirrored from spoj.sphere.pl/problems/MGAME/ by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 10 Jan 2006 04:56:00 GMT -->
+</html>

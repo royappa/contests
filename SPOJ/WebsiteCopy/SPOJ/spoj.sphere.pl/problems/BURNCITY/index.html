@@ -1,0 +1,226 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<!-- Mirrored from spoj.sphere.pl/problems/BURNCITY/ by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 10 Jan 2006 04:55:56 GMT -->
+<head>
+<title>Sphere Online Judge (SPOJ)  - Problem BURNCITY</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-2">
+<META NAME="Keywords" CONTENT="spoj, online, judge, problem, set, problemset, archive, ACM, Polish, Poland, contest, contester, task, tasks, ADA, Java, Pascal, C, C++, Whitespace, sphere, interest, group, python, ruby, icon, o'caml, caml, ocaml, perl, haskell, bf, brain, clips, prolog, fortran, asm, assembler, asembler, functional, esoteric, programming, languages">
+
+<link href="https://spoj.sphere.pl/gfx/favicon" rel="shortcut icon" type="image/x-icon">
+
+<link href="../../themes/skin3.css" rel="stylesheet" type="text/css" id="theme">
+<style type="text/css">
+<!--
+.maintable {width: 755;} 
+-->
+</style>
+<script type="text/javascript" language="javascript">
+<!--
+function UnCryptMailto(s) {
+	var n=0;
+	var r="";
+	for(var i=0;i<s.length;i++) {		
+		n=s.charCodeAt(i); 
+		if (n>=8364) {n = 128;}
+		r += String.fromCharCode(n+(2));	
+	}
+	return r;
+}
+function linkTo_UnCryptMailto(s)	{
+	location.href=UnCryptMailto(s);
+}
+// -->
+</script>
+
+</head>
+<body>
+<center>
+<table cellpadding="10" cellspacing="0" class="maintable" id="maintable">
+<tr>
+    <td colspan="2" class="header">
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+        <tr>
+		<td class="headerleft"/>
+		<td class="headercenter"><h1>Sphere Online Judge</h1></td>
+		<td class="headerright"/>
+	</tr>
+	</table>
+    </td>
+</tr>
+<tr><td class="menu" width="92" valign="top">
+<form name="login"  action="http://spoj.sphere.pl/problems/BURNCITY/" method="post" 
+	onsubmit="if(document.login.ssl.checked) document.login.action='https://spoj.sphere.pl/problems/BURNCITY/'" style="margin-bottom: 18px"> 
+User: <input name="login_user" type="text" style="width: 85px;" class="form"><BR>
+Password: <input name="password" type="password" style="width: 85px;" class="form"><BR>
+<script language="javascript" type="text/javascript">
+<!--
+document.write('<input type="checkbox" name="ssl" id="ssl" checked>secure<br>');
+//-->
+</script>
+<input name="submit" type="submit" value="Log In" class="button" style="width: 85px;">
+</form><div class="menucmd"><a href="https://spoj.sphere.pl/register">register</a><br><br><a href="https://spoj.sphere.pl/status">status</a><br><a href="https://spoj.sphere.pl/submit">submit</a><br><a href="../classical/sort=7,start=0.html">problems</a><br><br><a href="https://spoj.sphere.pl/">news</a><br><a href="https://spoj.sphere.pl/contests">contests</a><br><a href="https://spoj.sphere.pl/info">info</a><br><a href="https://spoj.sphere.pl/ranks/">ranks</a><br><br><a href="https://spoj.sphere.pl/forum">forum</a><br><a href="https://spoj.sphere.pl/help">help</a><br><a href="https://spoj.sphere.pl/links">links</a><br><hr></div>Server time:<br>2006-01-10<br>05:49:55<a href="../classical/sort=7,start=0.html"></a><br><br>
+<form method="get" action="https://spoj.sphere.pl/search/" class="form" style="width:90px">
+<input type="text" name="query" style="width:85px" maxlength=255 value="" class="form"><br>
+<input type="submit" value="Search" style="width:85px" class="form" title="Search site"><br>
+&nbsp;<a href="https://spoj.sphere.pl/search/problems=on,users=on,contests=on" title="More search options"><small>advanced...</small></a>
+</form></td><td class="content" width="99%"><table class="problems" width="100%">
+<tr class="navigation">
+<td><a href="https://spoj.sphere.pl/submit/BURNCITY/">Submit</a></td>
+<td><a href="https://spoj.sphere.pl/status/BURNCITY/">All submissions</a></td>
+<td><a href="https://spoj.sphere.pl/ranks/BURNCITY/">Best solutions</a></td>
+<td><a href="https://spoj.sphere.pl/problems/BURNCITY.ps">PS</a></td>
+<td><a href="https://spoj.sphere.pl/problems/BURNCITY.pdf">PDF</a></td>
+<td><a href="../classical/sort=7,start=0.html">Back to list</a></td>
+</tr>
+</table>
+
+<div class="prob">
+
+<h2>SPOJ Problem Set </h2>
+<h1>222. The Burning City</h1>
+<h2>Problem code: BURNCITY</h2>
+<p align="justify">
+Terrorists from the BBFO have raised fires in the capital of Byteland! As is it is a hot summer day, most of the fire brigade have quite naturally taken a day off, and so the noble task of extinguishing all the fires falls to the only officer on duty. By now you will probably not be surprised to learn that he is in fact... Johnny. This enterprising youth remains undaunted by the challenge facing him, and, taking advantage of the absence of his superiors, he decides to use his favourite fire fighting technique. So, he loads the fire station's helicopter with as many dynamite charges as it can carry, and takes off on his errand of mercy.
+<p>
+From up there in the sky Johnny can see the city as a square, sliced into smaller, identical squares by a regular grid of streets. Every square contains one of three kinds of terrain - buildings, grassland or water (perhaps most firemen would go into further detail when analysing terrain, but you really can't expect that from a firefighter whose preferred method of extinguishing fires is dynamite, can you?).
+<p>
+Johnny starts out in the centre of the square corresponding to the fire station. In the time from the start of a minute to the end of that minute he can move to the center of one of the four adjacent squares (but he is not allowed to leave the city). While over the center of a square he can choose to drop a single dynamite charge on it. He starts preparing the charge at the beginning of a minute, and it is dropped from the helicopter at the end of the same minute. Everything on the square on which the bomb was dropped is blown apart, and in its place a crater is formed and instantly flooded by subterranean waters.
+<p>
+The fire spreads in a most predictable way: if a square starts burning at the beginning of minute m, then all four adjacent squares will catch fire at the start of minute (<i>m</i>+2). The only exception is a square filled with water (either naturally, or by Johnny's bombs) which never catches fire. If a square starts burning, all property on it is instantly destroyed. Once a square starts burning it will only stop burning if Johnny blows it up, or when the monsoon rain comes and floods the city, at the end of the <i>h</i>-th minute of firefighting.
+<p>
+Johnny's main objective is to save as many squares with buildings as possible (from fire and dynamite).
+<p>
+An example of the fire fighting process is presented below.
+</p>
+
+<img src="burncity.png" alt="An example of the fire fighting process"/>
+
+<h3>Input</h3>
+<p>
+The first line of input contains a single integer <i>t</i><=500, the number of test cases.
+<p>
+The first line of every test case contains five integers <i>n c h s<sub>x</sub> s<sub>y</sub></i>, respectively denoting: <i>n</i> - the length of one side of the city (measured in squares), <i>c</i> - the number of dynamite charges Johnny can use, <i>h</i> - the number of minutes after which the rain falls, <i>s<sub>x</sub></i>, <i>s<sub>y</sub></i> - the <i>x</i> and <i>y</i> coordinates of the square containing the fire-station from which Johnny starts, measured relative to the North-West corner of the city (1<=<i>s<sub>x</sub></i>, <i>s<sub>y</sub></i><=<i>n</i><=50, 0<=<i>c</i><=<i>h</i><=5*<i>n</i>; there are about 10 test cases for all possible values of <i>n</i>). Finally, the map of the city is given in the form of <i>n</i> lines of <i>n</i> characters each, each corresponding to the state of a square at the start of the fire fighting ('b' - building, 'g' - grassland, 'w' - water, 'f' - fire).
+<h3>Output</h3>
+<p>
+For the <i>i</i>-th test case output a line containing the text 'city <i>i</i> Y' if you want to solve the test case or 'city <i>i</i> N' if you wish to leave it out. 
+<p>
+If you chose to the solve the test case, in the next line output a sequence of exactly <i>h</i> characters 'N', 'S', 'W', 'E', '+' or '-', corresponding to Johnny's actions in successive minutes (moving North, South, West and East on the map, dropping dynamite, not doing anything, respectively).
+
+<h3>Score</h3>
+<p>
+The total score is the total number of rescued squares with buildings taken over all test cases.
+
+<h3>Example</h3>
+<pre>
+<b>Input:</b>
+5
+3 2 9 1 1
+bgg
+bbg
+bbf
+4 2 8 3 1
+bbbb
+bgwg
+fwgg
+gbbb
+4 3 15 2 1
+bbbb
+bbbb
+bbbb
+fbbb
+4 3 15 2 1
+bbbf
+bbbb
+bbbb
+fbbb
+4 3 15 2 1
+bbbf
+bbbb
+bbbb
+fbbb
+
+<b>Output:</b>
+city 1 Y
+S+E---N+-
+city 2 Y
+W+SSS+--
+city 3 Y
+ESE+SW+S+------
+city 4 Y
++EES+W+--------
+city 5 Y
++ES+-E+--------
+
+<b>Score:</b>
+9
+</pre>
+
+<p>(The first test case is illustrated in the figure and Johnny can save one building. In testcases 2, 3, 4, 5 Johnny saves 4, 2, 2 and 0 buildings, respectively).
+
+<p>
+<i>Bonus info</i>: The three digit number after the decimal point of your score denotes the number of test cases you have solved correctly, rescuing at least one building.
+</p>
+<b>Warning: large Input/Output data, be careful with certain languages</b>
+
+<hr>
+<table border=0 cellspacing=0 cellpadding=0 align=left>
+<tr><td width=130>Added by:</td><td><a href="https://spoj.sphere.pl/search/'Michał%20Małafiejski'">Michał Małafiejski</a></td></tr>
+<tr><td>Date:</td><td>2004-10-11</td></tr>
+<tr><td>Time limit:</td><td>17s
+</td></tr>
+<tr><td>Source limit:</td><td>50000B</td></tr>
+<tr><td>Resource:</td><td>DASM Programming League 2004 (problemset 3)<br>English version and pictures by Adrian Kosowski</td></tr></table>
+</div></td>
+</tr>
+
+<tr>
+<td colspan="2" class="footer">
+
+<script language="javascript" type="text/javascript">
+<!--
+function swapSheet(sheet, caller) {
+    document.getElementById('theme').href=sheet;
+    document.cookie="css_0="+sheet+"; path=/;";
+    caller.href="#bottom";
+}
+
+function setWidth(w, caller) {
+    document.getElementById('maintable').style.width=w;
+    document.cookie="res="+w+"; path=/;";
+    caller.href="#bottom";
+}
+//-->
+
+</script>
+        <table width="100%">
+    <tr>
+	<td align="left">
+            <a href="http://www.pg.gda.pl/eng.html"><IMG src="https://spoj.sphere.pl/gfx/logo-pg" alt="www.pg.gda.pl" border=0 height=36 width=44></a>&nbsp;
+            <a href="http://www.eti.pg.gda.pl/"><IMG src="https://spoj.sphere.pl/gfx/logo-eti" alt="www.eti.pg.gda.pl" border=0 height=36 width=44></a>
+	</td>
+	<td align="center">
+	    page size:
+	    <a href="https://spoj.sphere.pl/?res=755"  onClick="setWidth('755', this)">800x600</a>
+	    <a href="https://spoj.sphere.pl/?res=980"  onClick="setWidth('980', this)">1024x768</a>
+	    <a href="https://spoj.sphere.pl/?res=100%" onClick="setWidth('100%', this)">Full</a>
+	    &nbsp;&nbsp;
+	    theme:
+	    <a href="../../indexb6a4.html?css=/themes/skin1.css" onClick="swapSheet('../../themes/skin1.css', this)">olive</a>
+	    <a href="../../index3840.html?css=/themes/skin2.css" onClick="swapSheet('../../themes/skin2.css', this)">banana</a>
+	    <a href="../../index80f0.html?css=/themes/skin3.css" onClick="swapSheet('../../themes/skin3.css', this)">plum</a>
+	    <br>
+	    <a href="http://sphere.pl/?id=66">spoj team at sphere</a> &copy; 2004-05 all rights reserved
+	</td>
+	<td align="right">
+            <a href="http://task.gda.pl/english/"><IMG src="https://spoj.sphere.pl/gfx/logo-task" alt="task.gda.pl" border=0 height=36 width=44></a>&nbsp;
+            <a href="http://sphere.pl/"><IMG src="https://spoj.sphere.pl/gfx/logo-sphere" alt="sphere.pl" border=0 height=32></a>
+	</td>
+    </tr>
+    </table>
+    </tr></table>
+</center>
+</body>
+
+<!-- Mirrored from spoj.sphere.pl/problems/BURNCITY/ by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 10 Jan 2006 04:55:56 GMT -->
+</html>

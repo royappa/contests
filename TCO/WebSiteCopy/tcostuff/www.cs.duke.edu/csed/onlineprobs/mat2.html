@@ -1,0 +1,304 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  
+<!-- Mirrored from www.cs.duke.edu/csed/onlineprobs/mat2.html by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 14 Mar 2006 08:55:09 GMT -->
+<head>
+    <title>Weekly Problem Matrix 2</title>
+  </head>
+
+  <body>
+    <h1>Weekly Problem Matrix 2</h1>
+
+<em>
+
+This problem statement is the exclusive and proprietary property of
+TopCoder, Inc. Any unauthorized use or reproduction of this information
+without the prior written consent of TopCoder, Inc. is strictly
+prohibited. (c)2002, TopCoder, Inc. All rights reserved.
+
+</em>
+<P>
+<hr>
+
+<h3>Problem Statement</h3>
+
+You are given a picture that needs to be colored in.  To aid in the
+coloring process, color clues have been placed in the picture.  To color
+a particular region of the picture you must first locate the color clue
+with the highest value within the region.  In case of a tie the leftmost
+clue is chosen from among the highest.  For example:
+<PRE>
+
+XXXXXXXXXX   
+...2.X....   
+.2...X..2.    
+...0.XXXXX      'X's are boundaries
+..1..X....      '.'s are blanks  
+.3...X....
+....3X....
+XXXXXXXXXX
+
+</PRE>
+
+Above there are 3 regions: the left, the upper right, and the lower
+right.  The lower right has no clues.  The left does have clues so first
+we find the highest clue value(3).  There is a tie between two 3s in the
+region so the leftmost 3 is chosen.  The upper right does have a clue
+and we choose the highest clue, which is also the only clue in the
+region(2).
+<P>
+
+Once we have chosen a clue for a region we ignore all other clues in
+that region.  Next, the point with the chosen clue on it is given the
+color value of the clue.  The picture before would now look like this
+once we have 1)chosen clues, 2)ignored the unchosen, and 3)given the
+points corresponding to the chosen clues the corresponding color values:
+<PRE>
+
+XXXXXXXXXX   
+.....X....   
+.....X..2.    
+.....XXXXX      'X's are boundaries
+.....X....      '.'s are blanks  
+.3...X....
+.....X....
+XXXXXXXXXX
+
+</PRE>
+
+Finally we must ensure that the following criteria hold for the region:
+<OL>
+<LI> All points in a region with the same horizontal coordinate share the same color value.  
+<LI> A point in the region one step to the left of another point in the region must have a color value lower by one.  
+<LI> A point in the region one step to the right of another point in the region must have a color value higher by one.
+</OL>
+The picture used before would be colored as follows:
+<PRE>
+
+XXXXXXXXXX   
+23456X0123   
+23456X0123   
+23456XXXXX      'X's are boundaries
+23456X....      '.'s are blanks  
+23456X....
+23456X....
+XXXXXXXXXX
+
+</PRE>
+As can be seen, the coloring method creates something of a color
+gradient in each region.  The region on the lower right had no color
+clues so it could not be colored and remains blank.  Also note that all
+shading ends at the boundaries of the picture.  It is as if there is an
+imaginary boundary around the outside of the picture.  In other words,
+all regions that touch the edge of the picture end at the edge of the
+picture.
+<P>
+Your method will color all of the regions in the picture that can be
+colored, and will then return the sum of all of the colors values in the
+picture not including blank regions and boundaries.  In the above
+example it would be: 6*(2+3+4+5+6) + 2*(0+1+2+3) = 132 Since the blank
+region and boundaries were disregarded, and there are 6 rows of
+2+3+4+5+6 in the left region and 2 rows of 0+1+2+3 in the upper right
+region.
+<P>
+Two points are in the same region if and only if there exists a path
+between them that does not cross a boundary.  This path can only consist
+of vertical and horizontal moves (no one step diagonal moves).  This
+path must not contain boundary symbols and cannot leave the picture.
+<P>
+
+Create a class NumberFill that contains the method gradient, which takes
+a <tt>tvector&lt;string&gt;</tt>
+picture and returns the sum of all colors values within
+the picture once all regions that should be filled have been properly
+filled.  Boundary points and blank regions are not included in the
+summation calculation.
+
+
+
+
+<P>
+<h3>Definition</h3>
+<UL>
+<LI> Class: NumberFill
+<LI> Method: gradient
+<LI> Parameters: <tt>tvector&lt;string&gt;</tt>
+<LI> Returns: int
+Method signature (be sure your method is public):  
+<PRE>
+  int gradient(tvector&lt;string&gt; picture);
+</PRE>
+</UL>
+<h3>Prototype</h3>
+<PRE>
+ #include <string>
+ using namespace std;
+ #include "tvector.h"
+
+ class NumberFill
+ {
+   public:
+     int gradient(tvector&lt;string&gt; picture)
+     {
+         // fill in this function (and others you can write)
+     }
+ };
+
+
+</PRE>
+
+<h3>Notes</h3>
+
+<UL>
+<LI> Boundaries are represented by 'X' characters.
+<LI> Color clues are represented by characters '0'..'9' inclusive.
+<LI> Blank spots on the board are represented by '.' characters.
+
+<LI> Due to the nature of the process, negative color values and color
+values greater than 9 can occur in the picture after the gradient has
+been computed (see example 6 for more on negative color values)
+
+
+</UL>
+
+<P>
+<h3>Constraints</h3>
+<UL>
+<LI> All characters in picture are either 'X', '.', or '0'..'9'
+	inclusive (single quotes for clarity)
+<P>
+<LI> All elements of picture will have the same length.
+<LI> All elements of picture will have length between 1 and 20 inclusive
+<LI> picture will contain between 1 and 20 elements inclusive
+</UL>
+
+</UL>
+<P>
+<h3>Examples</h3>
+
+<OL type='0'>
+<LI>
+<PRE>
+ picture = {
+"..X.....",
+"..X..0..",
+"1.X.....",
+"..X.....",
+"........"}
+
+return 168
+
+</PRE>
+
+The highest clue in the region is the 1 so it is chosen.
+The final picture would look like:
+<PRE>
+12X45678
+12X45678
+12X45678 
+12X45678 
+12345678 
+</PRE>
+The return value is thus: 5*(1+2+4+5+6+7+8)+3 = 168
+
+<LI>
+<PRE>
+ picture = {
+"5.X.....",
+"..X..3..",
+"..X.....",
+"..X.....",
+"..X....."}
+
+return 130
+</PRE>
+
+There are two regions in this picture: the left and the right.
+The highest clue in the left region is the 5 so it is chosen.
+The highest clue in the right region is the 3 so it is chosen.
+The final picture would look like:
+<PRE>
+56X12345
+56X12345
+56X12345
+56X12345
+56X12345
+</PRE>
+The return value is thus: 5*(5+6+1+2+3+4+5) = 130
+
+<LI>
+
+<PRE>
+ picture = {
+"........",
+"........",
+"........",
+"........"}
+
+return 0
+
+</pre>
+There are no clues in the region so it is left blank.
+
+<LI>
+<PRE>
+ picture = {"...3"}
+
+ return 6
+
+</PRE>
+The highest clue in the region is the 3 so it is chosen. 
+The final picture would look like:
+<PRE>
+0123
+</PRE>
+The return value is thus 0+1+2+3 = 6
+
+<P>
+
+<LI>
+<PRE>
+picture = {".3....3"}
+
+return 35
+</PRE>
+
+Two clues of value 3 are tied for the highest clue in the region.  The
+leftmost 3 is chosen.  The final picture would look like: 
+<PRE>
+2345678 
+</PRE>
+The
+return value is thus 2+3+4+5+6+7+8 = 35
+
+<P>
+<LI>
+<PRE>
+
+picture = {"......0"}
+
+return -21
+
+
+</PRE>
+The highest clue in the region is the 0 so it is chosen.
+The final picture would look like:
+<PRE>
+-6 -5 -4 -3 -2 -1 0
+</PRE>
+The return value is thus -6+-5+-4+-3+-2+-1+0 = -21
+
+
+</OL>
+
+
+    <hr>
+    <address><a href="mailto:ola@cs.duke.edu">Owen L. Astrachan</a></address>
+<!-- Created: Mon Jan  6 14:27:13 EST 2003 -->
+<!-- hhmts start -->
+Last modified: Tue Sep 30 10:14:11 EDT 2003
+<!-- hhmts end -->
+  </body>
+
+<!-- Mirrored from www.cs.duke.edu/csed/onlineprobs/mat2.html by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 14 Mar 2006 08:55:09 GMT -->
+</html>

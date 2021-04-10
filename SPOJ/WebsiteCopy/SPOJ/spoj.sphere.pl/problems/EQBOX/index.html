@@ -1,0 +1,196 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<!-- Mirrored from spoj.sphere.pl/problems/EQBOX/ by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 10 Jan 2006 05:04:36 GMT -->
+<head>
+<title>Sphere Online Judge (SPOJ)  - Problem EQBOX</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-2">
+<META NAME="Keywords" CONTENT="spoj, online, judge, problem, set, problemset, archive, ACM, Polish, Poland, contest, contester, task, tasks, ADA, Java, Pascal, C, C++, Whitespace, sphere, interest, group, python, ruby, icon, o'caml, caml, ocaml, perl, haskell, bf, brain, clips, prolog, fortran, asm, assembler, asembler, functional, esoteric, programming, languages">
+
+<link href="https://spoj.sphere.pl/gfx/favicon" rel="shortcut icon" type="image/x-icon">
+
+<link href="../../themes/skin3.css" rel="stylesheet" type="text/css" id="theme">
+<style type="text/css">
+<!--
+.maintable {width: 755;} 
+-->
+</style>
+<script type="text/javascript" language="javascript">
+<!--
+function UnCryptMailto(s) {
+	var n=0;
+	var r="";
+	for(var i=0;i<s.length;i++) {		
+		n=s.charCodeAt(i); 
+		if (n>=8364) {n = 128;}
+		r += String.fromCharCode(n+(2));	
+	}
+	return r;
+}
+function linkTo_UnCryptMailto(s)	{
+	location.href=UnCryptMailto(s);
+}
+// -->
+</script>
+
+</head>
+<body>
+<center>
+<table cellpadding="10" cellspacing="0" class="maintable" id="maintable">
+<tr>
+    <td colspan="2" class="header">
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+        <tr>
+		<td class="headerleft"/>
+		<td class="headercenter"><h1>Sphere Online Judge</h1></td>
+		<td class="headerright"/>
+	</tr>
+	</table>
+    </td>
+</tr>
+<tr><td class="menu" width="92" valign="top">
+<form name="login"  action="http://spoj.sphere.pl/problems/EQBOX/" method="post" 
+	onsubmit="if(document.login.ssl.checked) document.login.action='https://spoj.sphere.pl/problems/EQBOX/'" style="margin-bottom: 18px"> 
+User: <input name="login_user" type="text" style="width: 85px;" class="form"><BR>
+Password: <input name="password" type="password" style="width: 85px;" class="form"><BR>
+<script language="javascript" type="text/javascript">
+<!--
+document.write('<input type="checkbox" name="ssl" id="ssl" checked>secure<br>');
+//-->
+</script>
+<input name="submit" type="submit" value="Log In" class="button" style="width: 85px;">
+</form><div class="menucmd"><a href="https://spoj.sphere.pl/register">register</a><br><br><a href="https://spoj.sphere.pl/status">status</a><br><a href="https://spoj.sphere.pl/submit">submit</a><br><a href="../classical/sort=-1,start=0.html">problems</a><br><br><a href="https://spoj.sphere.pl/">news</a><br><a href="https://spoj.sphere.pl/contests">contests</a><br><a href="https://spoj.sphere.pl/info">info</a><br><a href="https://spoj.sphere.pl/ranks/">ranks</a><br><br><a href="https://spoj.sphere.pl/forum">forum</a><br><a href="https://spoj.sphere.pl/help">help</a><br><a href="https://spoj.sphere.pl/links">links</a><br><hr></div>Server time:<br>2006-01-10<br>05:55:39<a href="../classical/sort=-1,start=0.html"></a><br><br>
+<form method="get" action="https://spoj.sphere.pl/search/" class="form" style="width:90px">
+<input type="text" name="query" style="width:85px" maxlength=255 value="" class="form"><br>
+<input type="submit" value="Search" style="width:85px" class="form" title="Search site"><br>
+&nbsp;<a href="https://spoj.sphere.pl/search/problems=on,users=on,contests=on" title="More search options"><small>advanced...</small></a>
+</form></td><td class="content" width="99%"><table class="problems" width="100%">
+<tr class="navigation">
+<td><a href="https://spoj.sphere.pl/submit/EQBOX/">Submit</a></td>
+<td><a href="https://spoj.sphere.pl/status/EQBOX/">All submissions</a></td>
+<td><a href="https://spoj.sphere.pl/ranks/EQBOX/">Best solutions</a></td>
+<td><a href="https://spoj.sphere.pl/problems/EQBOX.ps">PS</a></td>
+<td><a href="https://spoj.sphere.pl/problems/EQBOX.pdf">PDF</a></td>
+<td><a href="../classical/sort=-1,start=0.html">Back to list</a></td>
+</tr>
+</table>
+
+<div class="prob">
+
+<h2>SPOJ Problem Set </h2>
+<h1>35. Equipment Box</h1>
+<h2>Problem code: EQBOX</h2>
+<p align="justify">
+<p align=justify>
+There is a large room in the Pyramid called <EM>Room-of-No-Return</EM>. Its
+floor is covered by rectangular tiles of equal size. The name of the room
+was chosen because of the very high number of traps and mechanisms in it.
+The ACM group has spent several years studying the secret plan of this room.
+It has made a clever plan to avoid all the traps. A specially trained
+mechanic was sent to deactivate the most feared trap called Shattered Bones.
+After deactivating the trap the mechanic had to escape from the room.
+It is very important to step on the center of the tiles only; he must
+not touch the edges. One wrong step and a large rock 
+falls from the ceiling squashing the mechanic like a pancake. After deactivating
+the trap, he realized a horrible thing: the ACM plan did not take his
+equipment box into consideration. The box must be laid onto the
+ground because the mechanic must have both hands free to prevent contact with
+other traps. But when the box is laid on the ground, it could touch the line
+separating the tiles. And this is the main problem you are to solve.
+
+<H3>Input</H3>
+<p align=justify>
+The input consists of <VAR>T</VAR> test cases (T is equal to about 10000). The number of them (<VAR>T</VAR>) is given on
+the first line of the input file.
+Each test case consists of a single line. The line contains exactly four
+integer numbers separated by spaces: <VAR>A</VAR>, <VAR>B</VAR>,
+<VAR>X</VAR> and <VAR>Y</VAR>. <VAR>A</VAR> and <VAR>B</VAR>indicate the
+dimensions of the tiles, <VAR>X</VAR> and <VAR>Y</VAR> are the dimensions of
+the equipment box (<VAR>1 &lt;= A,B,X,Y &lt;= 50000</VAR>).
+
+<H3>Output</H3>
+
+<p align=justify>Your task is to determine whether it is possible to put the box on 
+a&nbsp;single tile -- that is, if the whole box fits on a&nbsp;single tile without
+touching its border. If so, you are to print one line with the
+sentence "<CODE>Escape is possible.</CODE>". Otherwise print the sentence
+"<CODE>Box cannot be dropped.</CODE>".
+
+
+<H3>Example</h3>
+
+<PRE>
+Sample Input:
+
+2
+10 10 8 8
+8 8 10 10
+
+Sample output:
+
+Escape is possible.
+Box cannot be dropped.
+</PRE>
+<b>Warning: large Input/Output data, be careful with certain languages</b>
+
+<hr>
+<table border=0 cellspacing=0 cellpadding=0 align=left>
+<tr><td width=130>Added by:</td><td><a href="https://spoj.sphere.pl/search/'Adrian%20Kosowski'">Adrian Kosowski</a></td></tr>
+<tr><td>Date:</td><td>2004-06-06</td></tr>
+<tr><td>Time limit:</td><td>5s
+</td></tr>
+<tr><td>Source limit:</td><td>50000B</td></tr>
+<tr><td>Resource:</td><td>ACM Central European Programming Contest, Prague 1999</td></tr></table>
+</div></td>
+</tr>
+
+<tr>
+<td colspan="2" class="footer">
+
+<script language="javascript" type="text/javascript">
+<!--
+function swapSheet(sheet, caller) {
+    document.getElementById('theme').href=sheet;
+    document.cookie="css_0="+sheet+"; path=/;";
+    caller.href="#bottom";
+}
+
+function setWidth(w, caller) {
+    document.getElementById('maintable').style.width=w;
+    document.cookie="res="+w+"; path=/;";
+    caller.href="#bottom";
+}
+//-->
+
+</script>
+        <table width="100%">
+    <tr>
+	<td align="left">
+            <a href="http://www.pg.gda.pl/eng.html"><IMG src="https://spoj.sphere.pl/gfx/logo-pg" alt="www.pg.gda.pl" border=0 height=36 width=44></a>&nbsp;
+            <a href="http://www.eti.pg.gda.pl/"><IMG src="https://spoj.sphere.pl/gfx/logo-eti" alt="www.eti.pg.gda.pl" border=0 height=36 width=44></a>
+	</td>
+	<td align="center">
+	    page size:
+	    <a href="https://spoj.sphere.pl/?res=755"  onClick="setWidth('755', this)">800x600</a>
+	    <a href="https://spoj.sphere.pl/?res=980"  onClick="setWidth('980', this)">1024x768</a>
+	    <a href="https://spoj.sphere.pl/?res=100%" onClick="setWidth('100%', this)">Full</a>
+	    &nbsp;&nbsp;
+	    theme:
+	    <a href="../../indexb6a4.html?css=/themes/skin1.css" onClick="swapSheet('../../themes/skin1.css', this)">olive</a>
+	    <a href="../../index3840.html?css=/themes/skin2.css" onClick="swapSheet('../../themes/skin2.css', this)">banana</a>
+	    <a href="../../index80f0.html?css=/themes/skin3.css" onClick="swapSheet('../../themes/skin3.css', this)">plum</a>
+	    <br>
+	    <a href="http://sphere.pl/?id=66">spoj team at sphere</a> &copy; 2004-05 all rights reserved
+	</td>
+	<td align="right">
+            <a href="http://task.gda.pl/english/"><IMG src="https://spoj.sphere.pl/gfx/logo-task" alt="task.gda.pl" border=0 height=36 width=44></a>&nbsp;
+            <a href="http://sphere.pl/"><IMG src="https://spoj.sphere.pl/gfx/logo-sphere" alt="sphere.pl" border=0 height=32></a>
+	</td>
+    </tr>
+    </table>
+    </tr></table>
+</center>
+</body>
+
+<!-- Mirrored from spoj.sphere.pl/problems/EQBOX/ by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 10 Jan 2006 05:04:42 GMT -->
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  
+<!-- Mirrored from www.cs.duke.edu/csed/onlineprobs/p2.html by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 14 Mar 2006 08:55:04 GMT -->
+<head>
+    <title>Weekly Problem 2</title>
+  </head>
+
+  <body>
+    <h1>Weekly Problem 2</h1>
+
+<em>
+
+This problem statement is the exclusive and proprietary property of
+TopCoder, Inc. Any unauthorized use or reproduction of this information
+without the prior written consent of TopCoder, Inc. is strictly
+prohibited. (c)2002, TopCoder, Inc. All rights reserved.
+
+</em>
+<P>
+<hr>
+
+
+<h3>PROBLEM STATEMENT</h3>
+
+The Stanford Office of Student Affairs has been placing student groups
+(including the one, the only, the truly incomparable, Leland Stanford
+Junior University Marching Band) on alcohol probation.  However, due to
+some legal nitpicking, they are only allowed to place a group on alcohol
+probation if it throws 3 parties in a given year.
+<P>
+
+Given a tvector &lt;string&gt;, schedule, which represents which group
+throws a party on each day, return a string of the first group that
+becomes legally eligible for alcohol probation.  Each element of
+schedule will represent one day.  If the same group throws 3 or more
+parties, it becomes legally eligible for alcohol probation.
+
+If no group becomes legally eligible for alcohol probation, return "".
+
+
+
+
+<h3>Definition</h3>
+
+<UL>
+<LI> Class:Alcohol
+<LI> Method:punish
+<LI> Parameters:tvector &lt;string&gt;
+<LI> Returns:string
+<LI> Method signature:
+<PRE>
+
+  string punish(const tvector&lt;string&gt;&amp; schedule)
+
+</PRE>
+(be sure your method is public)
+</UL>
+<P>
+
+<h3>Class</h3>
+<PRE>
+ #include &lt;string&gt;
+ using namespace std;
+ #include "tvector.h"
+ class Alcohol
+ {
+     public:
+       string punish(const tvector&lt;string&gt;&amp; schedule)
+       {
+           // fill in body of this function
+       }
+ };
+</PRE>
+
+<h3>Notes</h3>
+<P>
+<UL>
+<LI> If no group becomes legally eligible for alcohol probation, return "".
+<LI> Element 0 of schedule represents day 0, element 1 represents day 1, and so on.  Thus, each day, there is exactly one group that throws a party.
+</UL>
+<P>
+
+<h3>Constraints</h3>
+<UL>
+<LI> schedule will contain between 0 and 50 elements, inclusive.
+<LI> each element of schedule will contain 1 to 10 characters, inclusive.
+<LI> each element of schedule will only contain capital letters [A-Z].
+</UL>
+
+<h3>Examples</h3>
+
+<OL>
+<LI>
+<PRE>
+
+{"LSJUMB","SAE","AEP","SAE","LSJUMB","LSJUMB","AEP","LSJUMB"}
+
+Returns: "LSJUMB"
+
+</PRE>
+
+LSJUMB throws 4 parties, while SAE and AEP throw only 2.  Therefore LSJUMB is the only group that is legally eligible for alcohol probation.
+<P>
+<LI>
+<PRE>
+
+{"LSJUMB","SAE","SAE","LSJUMB","LSJUMB","SAE","AEP","AEP","AEP"}
+
+</PRE>
+
+Returns: "LSJUMB"
+<P>
+All 3 groups throw 3 parties, so they are all eligible for alcohol probation.  The order in which they become eligible is "LSJUMB", "SAE", "AEP".
+<P>
+<LI>
+<PRE>
+
+{"KA","SX","TAXI","TAXI","SX","SX","KA","TAXI","KA","KA","TAXI","KA",
+ "TAXI","ST","KA","KA","KA","KA","KA","SX","SX","SX","SX","SX"}
+</PRE>
+Returns: "SX"
+<P>
+<LI>
+<PRE>
+
+{"D","A","E","C","E","A","B","J","C","A","G","J","J","I","D","J","B",
+ "J","F","E","C","D","C","C","J","D","H","E","D","I","F","F","C","D"}
+</PRE>
+
+Returns: "A"
+<P>
+
+<LI>
+<PRE>
+
+{"B","C","B","B","H","H","J","H","C","G","D","C","H","F","A",
+ "E","J","E","C","E","H","A","H","A","F","J","B","J","E","I",
+ "A","B","C","J","C","C","J","E","F","B","A","F","F","E","C"}
+
+</PRE>
+Returns: "B"
+<P>
+<LI>
+<PRE>
+
+{"B","S","W","J","Y","B","H","E","A","V","U","H"}
+</PRE>
+
+Returns: ""
+</OL>
+
+
+    <hr>
+    <address><a href="mailto:ola@cs.duke.edu">Owen L. Astrachan</a></address>
+<!-- Created: Mon Jan  6 14:38:00 EST 2003 -->
+<!-- hhmts start -->
+Last modified: Wed Jul 23 10:31:49 EDT 2003
+<!-- hhmts end -->
+  </body>
+
+<!-- Mirrored from www.cs.duke.edu/csed/onlineprobs/p2.html by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 14 Mar 2006 08:55:04 GMT -->
+</html>

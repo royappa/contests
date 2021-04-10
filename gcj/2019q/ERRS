@@ -1,0 +1,16 @@
+b.cpp: In function ‘void solve(int, int, std::string)’:
+b.cpp:29:42: error: return-statement with a value, in function returning 'void' [-fpermissive]
+   return string(N-1, 'E')+string(N-1, 'S');
+                                          ^
+b.cpp:32:42: error: return-statement with a value, in function returning 'void' [-fpermissive]
+   return string(N-1, 'S')+string(N-1, 'E');
+                                          ^
+b.cpp:45:5: error: ‘r’ was not declared in this scope
+     r += string(N-1, 'S');
+     ^
+b.cpp:61:5: error: ‘r’ was not declared in this scope
+     r += string(N-1, 'E');
+     ^
+b.cpp:66:42: error: ‘R’ was not declared in this scope
+  cout << "Case #" << testCase << ": " << R << endl;
+                                          ^

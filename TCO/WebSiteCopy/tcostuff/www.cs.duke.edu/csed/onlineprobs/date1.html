@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  
+<!-- Mirrored from www.cs.duke.edu/csed/onlineprobs/date1.html by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 14 Mar 2006 08:55:06 GMT -->
+<head>
+    <title>Weekly Problem date1</title>
+  </head>
+
+  <body>
+    <h1>Weekly Problem date1</h1>
+
+
+<p>
+<hr>
+
+<h3>Problem Statement</h3>
+
+January 1 is the first day of any year.  February 1 is always the 32nd
+day of any year.  March 1 is either the 60th or 61st day of a year
+depending on whether the year is a leap year. 
+
+<P>
+
+Given a date specified in American standard month, day, year format
+(using integer values),
+your function will return what day of the year the date represents.
+<P>
+For example, given <code> 1 1 2003 </code> your method should return 1.
+
+<P> 
+<h3>Definition</h3>
+
+<UL>
+<LI> Class: none used in this problem
+<LI> Method: dayNumber
+<LI> Parameters: int, int, int
+<LI> Returns: int
+<LI> Method signature (see below)
+
+</UL>
+
+ <h3>Prototype</h3>
+
+(be sure you have the necessary include files)
+
+<XMP>
+#include "date.h"
+
+   int dayNumber(int month, int day, int year)  
+   {
+           // fill in code here
+   }
+
+</XMP>
+
+<P>
+
+<h3>Constraints</h3>
+<UL>
+
+<LI> month, day, and year parameters will represent a real date, e.g.,
+     parameters 2 29 2001 are not permitted since 2001 is not a leap
+     year. 
+</UL>
+
+<P>
+<h3>Examples</h3>
+
+<OL>
+<LI>
+<PRE>
+  1  1  2003
+
+Returns:  1
+</PRE>
+From above
+<P>
+<LI>
+<PRE>    
+
+  3  1  2000
+
+Returns: 61
+</PRE>
+<P>
+The year 2000 is a leap year.
+<P>
+<LI>
+<PRE>
+   
+  3  1  1900
+
+Returns:60
+</PRE>
+<P>
+The year 1900 is not a leap year.
+<P>
+<LI>
+<PRE>
+
+  12 31  1999
+
+Returns: 365
+</PRE>
+
+</OL>
+
+
+    <hr>
+    <address><a href="mailto:ola@cs.duke.edu">Owen L. Astrachan</a></address>
+<!-- Created: Sun Apr  6 22:07:57 EDT 2003 -->
+<!-- hhmts start -->
+Last modified: Wed Jul 23 11:10:49 EDT 2003
+<!-- hhmts end -->
+  </body>
+
+<!-- Mirrored from www.cs.duke.edu/csed/onlineprobs/date1.html by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 14 Mar 2006 08:55:06 GMT -->
+</html>

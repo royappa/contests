@@ -1,0 +1,197 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  
+<!-- Mirrored from www.cs.duke.edu/csed/onlineprobs/p6.html by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 14 Mar 2006 08:55:05 GMT -->
+<head>
+    <title>Weekly Problem 6</title>
+  </head>
+
+  <body>
+    <h1>Weekly Problem 6</h1>
+
+
+<em>
+This problem statement is the exclusive and proprietary property of
+TopCoder, Inc. Any unauthorized use or reproduction of this information
+without the prior written consent of TopCoder, Inc. is strictly
+prohibited. (c)2002, TopCoder, Inc. All rights reserved.
+</em>
+
+<P>
+<hr>
+
+<h3>Problem Statement</h3>
+
+You are trying to eat more healthy meals.  You know the nutritional
+information of each of the food items you can eat.  This information
+contains the number of calories in each food item, and the vitamin
+content of each item - represented as the percentage of the recommended
+amounts of each of 3 vitamins.
+<P>
+
+Create a class LightMeal which contains a method calories that, given a
+<tt>tvector&lt;string&gt;</tt> of food items' dietary information,
+returns the number of calories in the meal you should eat that contains
+the fewest calories and that provides at least 100 percent of each of
+these three vitamins.
+<P>
+
+<h3>Definition</h3>
+
+<UL>
+<LI> Class: LightMeal
+<LI> Method: calories
+<LI> Parameters: <code>const tvector&lt;string&gt;&map;</code>
+<LI> Returns: int
+<LI> Method signature 
+<PRE>
+   int calories(const tvector&lt;string&gt;&amp; items)
+</PRE>
+</UL>
+(be sure your method is public)
+<P>
+<h3>Class</h3>
+<XMP>
+#include <string>
+using namespace std;
+#include "tvector.h"
+
+class LightMeal
+{
+  public:
+    int calories(const tvector<string>& items)
+    {
+        // fill in code here
+    }
+};
+</XMP>
+
+
+Each element in items will be in the form of 
+<PRE>
+   "CALORIES VITAMIN_A VITAMIN_B VITAMIN_C" 
+</PRE>
+(quotes are for clarity only).  <tt>CALORIES</tt>
+represents the number of calories in the item.  <tt>VITAMIN_A</tt>, 
+<tt>VITAMIN_B</tt> and 
+<tt>VITAMIN_C</tt> each represent the percent of the recommended amount
+of each vitamin the item contains.
+
+<P>
+<h3>Constraints and Notes</h3>
+
+<UL>
+<LI> Meals with more than 100 percent of one or more vitamins are fine.
+Your concern is only to find the meal with at least 100 percent of each
+vitamin and the minimum number of calories.  
+<P>
+<LI> You can not eat part of
+an item, nor can you eat more than one of each item.  You must either
+eat the entire single item, or none of it.
+<P>
+<LI> <code>tvector&lt;string&gt;&amp; items</code> will contain between
+1 and 20 elements, inclusive.  
+<P>
+<LI> Each element of parameter
+<tt>items</tt> will be between 7 and 50 characters in length, inclusive.
+<P>
+<LI> Each element of parameter <tt>items</tt> will contain 4
+non-negative integers each separated by a single space.  Each of these
+numbers will be between 0 and 1000, inclusive.
+<P>
+<LI>  Each element of parameter <tt>items</tt> will contain only digits '0'-'9' and spaces
+	' '.
+<P>
+<LI>  Each element of parameter <tt>items</tt> will neither start nor
+	end with a space.
+<P>
+<LI> There will be at least one combination of items that will provide
+at least 100% of each of the 3 vitamins.
+</UL>
+
+<h3>Examples</h3>
+
+In each of these examples, quotes ('"'), commas (','), and curly braces
+('{' and '}') are included for clarity only.  They are never part of the
+input or output.
+<P>
+<OL>
+<LI>
+<PRE>
+
+  items = {"100 100 100 100"}
+
+</PRE>
+Returns: 100
+<P>
+There is only one food item, and it provides at least 100% of each of
+the three vitamins.  It consists of 100 calories, so return 100.
+<P>
+
+<LI>
+<PRE>
+items = {"1 5 5 5", "1 5 5 5", "1 5 5 5", "1 5 5 5", "1 5 5 5", 
+         "1 5 5 5", "1 5 5 5", "1 5 5 5", "1 5 5 5", "1 5 5 5", 
+         "1 5 5 5", "1 5 5 5", "1 5 5 5", "1 5 5 5", "1 5 5 5", 
+         "1 5 5 5", "1 5 5 5", "1 5 5 5", "1 5 5 5", "1 5 5 5"}
+</PRE>
+
+Returns: 20
+<P>
+All items must be eaten to get 100 percent of each vitamin.
+<P>
+<LI>
+<PRE>
+
+items = {"10 100 0 0", "20 0 100 0", "40 0 0 100", "80 100 100 100",
+         "160 0 0 0"}
+</PRE>
+
+Return: 70
+<P>
+The lowest-calorie combination that contains the required vitamins
+includes just the first three items 
+<PRE>
+  ("10 100 0 0", "20 0 100 0", and "40 0 0 100").
+</PRE>
+<P>
+<LI>
+<PRE>
+items = {"100 100 100 100", "50 1000 1000 1000", "10 100 100 99"}
+
+</PRE>
+Returns: 50
+<P>
+The lowest-calorie combination that contains the required vitamins
+includes only the second item ("50 1000 1000 1000").
+<P>
+<LI>
+<PRE>
+
+items = {"0 100 0 0", "0 0 100 0", "10 0 0 100", "0 0 0 100"}
+</PRE>
+
+Returns: 0
+<P>
+<LI>
+<PRE>
+items = {"20 20 20 20", "20 20 20 20", "20 20 20 20", "20 20 20 20", "20 20 20 20",
+         "20 20 20 20", "20 20 20 20", "20 20 20 20", "20 20 20 20", "20 20 20 20",
+         "20 20 20 20", "20 20 20 20", "20 20 20 20", "20 20 20 20", "20 20 20 20", 
+         "20 20 20 20", "20 20 20 20", "20 20 20 20", "20 20 20 20", "20 20 20 20"}
+</PRE>
+
+Returns: 100
+<P>
+
+
+    <hr>
+    <address><a href="mailto:ola@cs.duke.edu">Owen L. Astrachan</a></address>
+<!-- Created: Tue Jan 28 10:24:37 EST 2003 -->
+<!-- hhmts start -->
+Last modified: Wed Jul 23 10:31:15 EDT 2003
+<!-- hhmts end -->
+  </body>
+
+<!-- Mirrored from www.cs.duke.edu/csed/onlineprobs/p6.html by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 14 Mar 2006 08:55:05 GMT -->
+</html>

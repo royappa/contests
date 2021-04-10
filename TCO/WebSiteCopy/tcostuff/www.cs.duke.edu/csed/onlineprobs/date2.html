@@ -1,0 +1,128 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  
+<!-- Mirrored from www.cs.duke.edu/csed/onlineprobs/date2.html by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 14 Mar 2006 08:55:07 GMT -->
+<head>
+    <title>Weekly Problem date2</title>
+  </head>
+
+  <body>
+    <h1>Weekly Problem date2</h1>
+
+<p>
+<hr>
+
+<h3>Problem Statement</h3>
+
+January 1 is the first day of any year.  February 1 is always the 32nd
+day of any year.  March 1 is either the 60th or 61st day of a year
+depending on whether the year is a leap year. 
+
+<P>
+
+Given two integer values:
+a number between 1 and 365 (or 366 for a leap year) representing
+a specific date, and a year,
+your function will return a string "Sunday", "Monday", ... or
+"Saturday" (quotes for clarity) that is the day of the week on
+which the specified date occurs.
+
+<P>
+For example, given <code> 1 2003 </code> your method should return 
+<code>"Wednesday"</codE> since January 1 of 2003 is a Wednesday.
+<P> 
+<h3>Definition</h3>
+
+<UL>
+<LI> Class: none used in this problem
+<LI> Method: dayName
+<LI> Parameters: int, int
+<LI> Returns: string
+<LI> Method signature (see below)
+
+</UL>
+
+ <h3>Prototype</h3>
+
+(be sure you have the necessary include files)
+
+<XMP>
+#include <string>
+using namespace std;
+#include "date.h"
+
+   string dayName(int days, int year)
+   {
+           // fill in code here
+   }
+
+</XMP>
+
+<P>
+
+<h3>Constraints</h3>
+<UL>
+
+<LI> days is between 1 and 366.
+<P>
+<LI> days will be 366 only if year represents a leap year.
+<P>
+<LI> year will be between 1800 and 2500.
+</UL>
+
+<P>
+<h3>Examples</h3>
+
+Quotes "" are for clarity and are not part
+of the string values returned.
+<OL>
+<LI>
+<PRE>
+ 1 2003
+
+Returns:  "Wednesday"
+</PRE>
+<P>
+From above
+<P>
+<LI>
+<PRE>    
+
+ 1 2004
+
+Returns: "Thursday"
+</PRE>
+<P>
+In 2004, January 1 is a Thursday
+<P>
+<LI>
+<PRE>
+   
+ 3 2004
+
+Returns: "Saturday"
+</PRE>
+<P>
+See the previous example
+<P>
+<LI>
+<PRE>
+
+  33 2003
+
+Returns: "Sunday"
+</PRE>
+March 2 in 2003 is a Sunday.
+</OL>
+
+
+    <hr>
+    <address><a href="mailto:ola@cs.duke.edu">Owen L. Astrachan</a></address>
+<!-- Created: Sun Apr  6 22:07:57 EDT 2003 -->
+<!-- hhmts start -->
+Last modified: Wed Jul 23 11:11:50 EDT 2003
+<!-- hhmts end -->
+  </body>
+
+<!-- Mirrored from www.cs.duke.edu/csed/onlineprobs/date2.html by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 14 Mar 2006 08:55:07 GMT -->
+</html>

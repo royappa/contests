@@ -1,0 +1,175 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  
+<!-- Mirrored from www.cs.duke.edu/csed/onlineprobs/matrix1.html by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 14 Mar 2006 08:55:09 GMT -->
+<head>
+    <title>Matrix 1, Highest Scoring Game</title>
+  </head>
+
+  <body>
+    <h1>Matrix 1, Highest Scoring Game</h1>
+
+<em>
+
+</em>
+<p>
+<hr>
+
+<h3>Problem Statement</h3>
+
+Your task is to return the total score of the highest game. 
+You are 
+given a matrix called
+<tt>scores </tt> with scores for some sport, where 
+each row in the matrix represents the scores of a player on 
+the team over several games and each column is the individual scores
+in a game.
+Thus, the entry <tt>scores[k][j]</tt> in the matrix is the number
+of points scored by player <tt>k</tt> for game <tt>j</tt>. 
+The total score of a game is the sum of the individual scores in the game. 
+<P>
+
+
+For example, suppose the game is Duke basketball,  there are 14 players on 
+the team, and they have played three games so far. 
+The three columns are in the matrix scores. 
+<p>
+<pre>
+     18   12    17
+     17    0    17
+      9   16    23
+     13   23    6
+     21    9    3
+      9    6    4
+     12   11    6
+     16   12   17
+      0    0    0
+      0    0    0
+     23   12   18
+     15    4    0
+      0    0    2
+      0    0    0
+</pre>
+<P>
+
+The max score returned should be <tt> 153 </tt>, the sum of the first column,
+the game with the most points.
+<P>
+
+
+
+<P> 
+<h3>Definition</h3>
+
+<UL>
+<LI> Class: none used in this problem
+<LI> Method: highGameScore
+<LI> Parameters:  tmatrix&lt;int&gt;
+<LI> Returns: int
+<LI> Method signature (see below)
+
+</UL>
+
+ <h3>Prototype</h3>
+
+(be sure you have the necessary include files)
+
+<XMP>
+
+
+#include "tmatrix.h"
+
+   int highGameScore(tmatrix <int> &  scores)
+   {
+           
+   }
+
+</XMP>
+
+<P>
+
+
+<h3>Constraints</h3>
+<UL>
+
+<LI>
+scores.numrows() >0
+<P>
+</UL>
+
+<P>
+<h3>Examples</h3>
+
+<OL>
+<LI>
+<PRE>
+     18   12    17
+     17    0    17
+     9   16    23
+     13   23    6
+     21    9    3
+      9    6    4
+     12   11    6
+     16   12   17
+      0    0    0
+      0    0    0
+     23   12   18
+     15    4    0
+      0    0    2
+      0    0    0
+
+Returns: 153
+
+</PRE>
+The total score for the first game (first column) is 153, which is
+larger than the total score for the other games.
+
+<LI>
+<PRE>
+ 10 14 29 17
+ 29  4 13 29
+ 11  3  5 18
+
+Returns:  64
+
+</PRE>
+The highest total score is 64, the sum of the 4th column.
+
+
+<P>
+<LI>
+<PRE>    
+  3 4
+  1 2
+
+Returns: 6
+
+</PRE>
+<P> The highest total score is 6, the sum of the 2cd column.
+
+<P>
+<LI>
+<PRE>
+  3 4
+  3 4
+
+Returns: 8
+   
+</PRE>
+<P>
+The highest total score is 8, the sum of the 2cd column.
+</OL>
+
+
+
+
+    <hr>
+    <address><a href="mailto:rodger@cs.duke.edu">Susan H. Rodger</a></address>
+<!-- Created: Tue Sep 23 23:40:19 EDT 2003 -->
+<!-- hhmts start -->
+Last modified: Thu Nov 20 09:38:59 EST 2003
+<!-- hhmts end -->
+  </body>
+
+<!-- Mirrored from www.cs.duke.edu/csed/onlineprobs/matrix1.html by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 14 Mar 2006 08:55:09 GMT -->
+</html>

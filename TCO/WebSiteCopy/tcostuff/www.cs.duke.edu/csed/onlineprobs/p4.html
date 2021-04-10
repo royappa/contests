@@ -1,0 +1,179 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  
+<!-- Mirrored from www.cs.duke.edu/csed/onlineprobs/p4.html by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 14 Mar 2006 08:55:05 GMT -->
+<head>
+    <title>Weekly Problem 4</title>
+  </head>
+
+  <body>
+    <h1>Weekly Problem 4</h1>
+
+<em>
+
+This problem statement is the exclusive and proprietary property of
+TopCoder, Inc. Any unauthorized use or reproduction of this information
+without the prior written consent of TopCoder, Inc. is strictly
+prohibited. (c)2002, TopCoder, Inc. All rights reserved.
+
+</em>
+<P>
+<hr>
+
+<h3>Problem Statement</h3>
+
+Most telephones today are equipped with a speed dialing facility, which
+makes it possible to assign telephone numbers to single keys on your
+phone - although it's usually required to press some special speed
+dialing key first. However, there's usually a limit on how many numbers
+you can assign to the speed dial slots, so deciding which numbers you
+should assign can sometimes be tricky, if you want the optimal
+assignment.
+<P>
+
+Assume that you have made a list of all phone numbers you dial, and how
+many times you are dialing them each month. Now you want to find out
+which phone numbers you should assign to speed dialing slots in order to
+minimize the number of keys you have to press. For the purposes of this
+problem, you only have to return the total number of keypresses required
+if the optimal assignment is done.
+<P>
+
+In this problem, we assume that speed dialing a number takes exactly two
+keypresses, while dialing a number the default way requires exactly the
+same amount of keypresses as the length of the phone number. It's not
+possible to speed dial a number partially (for instance, speed dialing
+and then add two extra digits, or speed dialing twice to produce a
+single compound number).
+<P>
+
+Create a class SpeedDial containing the method assignNumbers which takes
+as parameters a 
+<code>tvector&lt;int&gt; number</code> containing the phone numbers, 
+a <code>tvector&lt;int&gt; howMany</code>
+containing how many times you dial each number as well as an int
+slots - the number of speed dialing slots your telephone has. Element i
+in howMany is how many times you dial the number in element i in
+number. The method should return the least number of keypresses required
+to dial all the numbers in a month.
+<P>
+ 
+<h3>Definition</h3>
+    
+<UL>
+<LI> Class: SpeedDial
+<LI> Method: assignNumbers
+<LI> Parameters: <code>const tvector&lt;int&gt;&amp;, const tvector&lt;int&gt;&amp;, int</code>
+<LI> Returns: int
+<LI> Method signature:
+<PRE>
+
+int assignNumbers(const tvector&lt;int&gt;&amp; numbers,
+                  const tvector&lt;int&gt;&amp; howMany,
+                  int slots)
+</PRE>
+
+(be sure your method is public)
+</ul>
+<P>
+
+<h3>Class</h3>
+
+<PRE>
+#include "tvector.h"
+class SpeedDial
+{
+  public:
+    int assignNumbers(const tvector&lt;int&gt;&amp; numbers,
+                      const tvector&lt;int&gt;&amp; howMany,
+                      int slots)
+    {
+       // fill in code here
+    }
+};
+
+</PRE>
+     
+<h3>Notes</h3>
+<UL>
+<LI> There may be more speed dialing slots than actual phone numbers. In
+that case, some slots will be left unused (see example 1).
+<LI> Since the numbers are given as int, they can't contain leading
+	zeros. 
+</UL>
+<P>
+
+<h3>Constraints</h3>
+<UL>
+<LI> numbers will contain between 1 and 50 elements, inclusive.
+<LI> howMany willcontain between 1 and 50 elements, inclusive.
+<LI> numbers will contain the same number of elements as howMany.
+<LI> Each element in numbers is between 1000 and 999999999, inclusive.
+<LI> Each element in howMany is between 1 and 1000, inclusive.
+<LI> The elements in numbers are unique.
+<LI> slots is between 1 and 9, inclusive.
+</UL>
+<P>
+
+<h3>Examples</h3>
+
+<OL>
+<LI>
+<PRE>
+
+{9753,1245987,4833,34473,8733,1437}
+
+{5,2,4,3,2,4}
+
+4
+</PRE>
+Returns: 52
+<P>
+If we would dial all numbers without using speed dialing, the number of
+keypresses required would be 4*5 + 7*2 + 4*4 + 5*3 + 4*2 + 4*4 = 89.
+<P>
+The number of keypresses saved if we would assign each of the numbers to
+a speed dialing slot would be 10, 10, 8, 9, 4, and 8. So we should
+definitely assign 9753, 1245987 and 34473 to a speed dialing slot, and
+either 4833 or 1437. We would then save 10 + 10 + 9 + 8 = 37 keypresses,
+so the total number of keypresses required would be 89 - 37 = 52.
+<P>
+<LI>
+<PRE>
+
+{124839,9876,43823}
+
+{73,95,102}
+
+5
+</PRE>
+
+Returns: 540
+<P>
+Here we have more slots than phone numbers, so all numbers in the list
+should be assigned to speed dialing slots. The total number of
+keypresses required would be 2*73 + 2*95 + 2*102 = 540.
+<P>
+<LI>
+<PRE>
+
+{8925135,6046333,68260,29405,4830502,378742,13561,6090,976234,71994}
+
+{5,35,2,34,33,14,43,42,29,10}
+
+5
+</PRE>
+Returns: 695
+
+</OL>
+
+    <hr>
+    <address><a href="mailto:ola@cs.duke.edu">Owen L. Astrachan</a></address>
+<!-- Created: Wed Jan  8 09:34:28 EST 2003 -->
+<!-- hhmts start -->
+Last modified: Wed Jul 23 10:31:33 EDT 2003
+<!-- hhmts end -->
+  </body>
+
+<!-- Mirrored from www.cs.duke.edu/csed/onlineprobs/p4.html by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 14 Mar 2006 08:55:05 GMT -->
+</html>

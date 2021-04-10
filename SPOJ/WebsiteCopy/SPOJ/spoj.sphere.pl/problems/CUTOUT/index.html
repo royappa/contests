@@ -1,0 +1,205 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<!-- Mirrored from spoj.sphere.pl/problems/CUTOUT/ by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 10 Jan 2006 04:51:35 GMT -->
+<head>
+<title>Sphere Online Judge (SPOJ)  - Problem CUTOUT</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-2">
+<META NAME="Keywords" CONTENT="spoj, online, judge, problem, set, problemset, archive, ACM, Polish, Poland, contest, contester, task, tasks, ADA, Java, Pascal, C, C++, Whitespace, sphere, interest, group, python, ruby, icon, o'caml, caml, ocaml, perl, haskell, bf, brain, clips, prolog, fortran, asm, assembler, asembler, functional, esoteric, programming, languages">
+
+<link href="https://spoj.sphere.pl/gfx/favicon" rel="shortcut icon" type="image/x-icon">
+
+<link href="../../themes/skin3.css" rel="stylesheet" type="text/css" id="theme">
+<style type="text/css">
+<!--
+.maintable {width: 755;} 
+-->
+</style>
+<script type="text/javascript" language="javascript">
+<!--
+function UnCryptMailto(s) {
+	var n=0;
+	var r="";
+	for(var i=0;i<s.length;i++) {		
+		n=s.charCodeAt(i); 
+		if (n>=8364) {n = 128;}
+		r += String.fromCharCode(n+(2));	
+	}
+	return r;
+}
+function linkTo_UnCryptMailto(s)	{
+	location.href=UnCryptMailto(s);
+}
+// -->
+</script>
+
+</head>
+<body>
+<center>
+<table cellpadding="10" cellspacing="0" class="maintable" id="maintable">
+<tr>
+    <td colspan="2" class="header">
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+        <tr>
+		<td class="headerleft"/>
+		<td class="headercenter"><h1>Sphere Online Judge</h1></td>
+		<td class="headerright"/>
+	</tr>
+	</table>
+    </td>
+</tr>
+<tr><td class="menu" width="92" valign="top">
+<form name="login"  action="http://spoj.sphere.pl/problems/CUTOUT/" method="post" 
+	onsubmit="if(document.login.ssl.checked) document.login.action='https://spoj.sphere.pl/problems/CUTOUT/'" style="margin-bottom: 18px"> 
+User: <input name="login_user" type="text" style="width: 85px;" class="form"><BR>
+Password: <input name="password" type="password" style="width: 85px;" class="form"><BR>
+<script language="javascript" type="text/javascript">
+<!--
+document.write('<input type="checkbox" name="ssl" id="ssl" checked>secure<br>');
+//-->
+</script>
+<input name="submit" type="submit" value="Log In" class="button" style="width: 85px;">
+</form><div class="menucmd"><a href="https://spoj.sphere.pl/register">register</a><br><br><a href="https://spoj.sphere.pl/status">status</a><br><a href="https://spoj.sphere.pl/submit">submit</a><br><a href="../classical/sort=7,start=0.html">problems</a><br><br><a href="https://spoj.sphere.pl/">news</a><br><a href="https://spoj.sphere.pl/contests">contests</a><br><a href="https://spoj.sphere.pl/info">info</a><br><a href="https://spoj.sphere.pl/ranks/">ranks</a><br><br><a href="https://spoj.sphere.pl/forum">forum</a><br><a href="https://spoj.sphere.pl/help">help</a><br><a href="https://spoj.sphere.pl/links">links</a><br><hr></div>Server time:<br>2006-01-10<br>05:47:59<a href="../classical/sort=7,start=0.html"></a><br><br>
+<form method="get" action="https://spoj.sphere.pl/search/" class="form" style="width:90px">
+<input type="text" name="query" style="width:85px" maxlength=255 value="" class="form"><br>
+<input type="submit" value="Search" style="width:85px" class="form" title="Search site"><br>
+&nbsp;<a href="https://spoj.sphere.pl/search/problems=on,users=on,contests=on" title="More search options"><small>advanced...</small></a>
+</form></td><td class="content" width="99%"><table class="problems" width="100%">
+<tr class="navigation">
+<td><a href="https://spoj.sphere.pl/submit/CUTOUT/">Submit</a></td>
+<td><a href="https://spoj.sphere.pl/status/CUTOUT/">All submissions</a></td>
+<td><a href="https://spoj.sphere.pl/ranks/CUTOUT/">Best solutions</a></td>
+<td><a href="https://spoj.sphere.pl/problems/CUTOUT.ps">PS</a></td>
+<td><a href="https://spoj.sphere.pl/problems/CUTOUT.pdf">PDF</a></td>
+<td><a href="../classical/sort=7,start=0.html">Back to list</a></td>
+</tr>
+</table>
+
+<div class="prob">
+
+<h2>SPOJ Problem Set </h2>
+<h1>67. Cutting out</h1>
+<h2>Problem code: CUTOUT</h2>
+<p align="justify">
+<p>
+One has to cut out a number of rectangles from a paper square. The sides of each rectangle are to be parallel 
+to the sides of the square. Some rectangles can be already cut out. What is the largest area of a rectangle 
+which can be cut out from the remaining paper? 
+</p>
+<h3>Illustration</h3>
+<p>
+Three rectangles have been cut out from the square 10x10 in the figure shown below. The area of the largest 
+rectangle that can be cut out from the remaining paper is 16. One of such rectangles is shown with a dashed 
+line. 
+</p>
+<img src="CUTOUT.png" align=left/> 
+<h3>Task</h3>
+<p>
+Write a program that for each data set from a sequence of several data sets:
+</p>
+<div align=justify>
+<ul>
+<li>reads descriptions of a square and rectangles from the input, 
+<li>computes the area of the largest rectangle which can be cut out from the remaining paper, 
+<li>writes the result to output.</li> 
+</ul>
+</div>
+<h3>Input</h3>
+<p>
+The first line of the input file contains one positive 
+integer d not larger than 10. This is the number of data sets. The data sets 
+follow. Each set of data occupies two consecutive lines of the input file. The 
+first line of each data set contains two integers n and r, 1 &lt;=
+                     
+                    
+           n &lt;=   40000, 0 &lt;= r &lt;= 100. The integer n is the length 
+of the sides of an input square. The integer r is the number of rectangles which have been cut out from the 
+square. The second line of the data set contains a sequence of 4r integers x<sub>1</sub>, x<sub>2</sub>,...,x<sub>4r</sub> from the interval 
+[0,n] separated by single spaces. For each i = 1,...,r, integers x<sub>4i-3</sub>, x<sub>4i-2</sub>, x<sub>4i-1</sub>, x<sub>4i</sub>
+describe the i-th rectangle: x<sub>4i-3</sub> is the distance of its left side from the left side of the square, x<sub>4i-2</sub>
+is the distance of its right side from the left side of the square, x<sub>4i-1</sub> is the distance of the bottom side of the rectangle from the 
+bottom side of the square and x<sub>4i</sub> is the distance of its top side from the bottom side of the square. 
+</p>
+<h3>Output</h3>
+<p>
+For each i = 1,...,d, your program should write only one integer to the i-th line of the output file -- the 
+largest area of a rectangle which can be cut out from the rest of the i-th square. 
+</p>
+<h3>Example</h3>
+<pre>
+Sample input:
+
+2 
+6 2 
+0 3 0 3 3 6 3 6 
+10 3 
+0 5 0 5 0 10 5 10 9 10 0 5 
+
+Sample output:
+
+9 
+20 
+</pre>
+
+
+<hr>
+<table border=0 cellspacing=0 cellpadding=0 align=left>
+<tr><td width=130>Added by:</td><td><a href="https://spoj.sphere.pl/search/'Adrian%20Kosowski'">Adrian Kosowski</a></td></tr>
+<tr><td>Date:</td><td>2004-06-08</td></tr>
+<tr><td>Time limit:</td><td>5s
+</td></tr>
+<tr><td>Source limit:</td><td>50000B</td></tr>
+<tr><td>Resource:</td><td>III Polish Collegiate Team Programming Contest (AMPPZ), 1998</td></tr></table>
+</div></td>
+</tr>
+
+<tr>
+<td colspan="2" class="footer">
+
+<script language="javascript" type="text/javascript">
+<!--
+function swapSheet(sheet, caller) {
+    document.getElementById('theme').href=sheet;
+    document.cookie="css_0="+sheet+"; path=/;";
+    caller.href="#bottom";
+}
+
+function setWidth(w, caller) {
+    document.getElementById('maintable').style.width=w;
+    document.cookie="res="+w+"; path=/;";
+    caller.href="#bottom";
+}
+//-->
+
+</script>
+        <table width="100%">
+    <tr>
+	<td align="left">
+            <a href="http://www.pg.gda.pl/eng.html"><IMG src="https://spoj.sphere.pl/gfx/logo-pg" alt="www.pg.gda.pl" border=0 height=36 width=44></a>&nbsp;
+            <a href="http://www.eti.pg.gda.pl/"><IMG src="https://spoj.sphere.pl/gfx/logo-eti" alt="www.eti.pg.gda.pl" border=0 height=36 width=44></a>
+	</td>
+	<td align="center">
+	    page size:
+	    <a href="https://spoj.sphere.pl/?res=755"  onClick="setWidth('755', this)">800x600</a>
+	    <a href="https://spoj.sphere.pl/?res=980"  onClick="setWidth('980', this)">1024x768</a>
+	    <a href="https://spoj.sphere.pl/?res=100%" onClick="setWidth('100%', this)">Full</a>
+	    &nbsp;&nbsp;
+	    theme:
+	    <a href="../../indexb6a4.html?css=/themes/skin1.css" onClick="swapSheet('../../themes/skin1.css', this)">olive</a>
+	    <a href="../../index3840.html?css=/themes/skin2.css" onClick="swapSheet('../../themes/skin2.css', this)">banana</a>
+	    <a href="../../index80f0.html?css=/themes/skin3.css" onClick="swapSheet('../../themes/skin3.css', this)">plum</a>
+	    <br>
+	    <a href="http://sphere.pl/?id=66">spoj team at sphere</a> &copy; 2004-05 all rights reserved
+	</td>
+	<td align="right">
+            <a href="http://task.gda.pl/english/"><IMG src="https://spoj.sphere.pl/gfx/logo-task" alt="task.gda.pl" border=0 height=36 width=44></a>&nbsp;
+            <a href="http://sphere.pl/"><IMG src="https://spoj.sphere.pl/gfx/logo-sphere" alt="sphere.pl" border=0 height=32></a>
+	</td>
+    </tr>
+    </table>
+    </tr></table>
+</center>
+</body>
+
+<!-- Mirrored from spoj.sphere.pl/problems/CUTOUT/ by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 10 Jan 2006 04:51:35 GMT -->
+</html>

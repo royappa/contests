@@ -1,0 +1,162 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  
+<!-- Mirrored from www.cs.duke.edu/csed/onlineprobs/tripleloopvector.html by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 14 Mar 2006 08:55:08 GMT -->
+<head>
+    <title>Weekly Problems, Triple-loop/Vector</title>
+  </head>
+
+  <body>
+    <h1>Weekly Problems, Triple-loop/Vector</h1>
+
+
+This problem statement is the exclusive and proprietary property of
+TopCoder, Inc. Any unauthorized use or reproduction of this information
+without the prior written consent of TopCoder, Inc. is strictly
+prohibited. (c)2003, TopCoder, Inc. All rights reserved.
+
+</em>
+<P>
+<hr>
+
+<h3>Problem Statement</h3>
+
+You work in a workshop which makes garden instruments from metal. At the
+end of each working day there remains a pile of scrap metal that cannot
+be used to make anything useful. Because you dislike the idea of
+throwing things away (even scrap metal), you decide to utilize this
+metal to make some triangular picture frames that can be sold at the
+local market.
+
+Given a <tt>tvector&lt;int&gt;</tt>
+of pieces where each element represents the length of a
+straight metallic piece, return the number of possible different picture
+frames that can be made from those pieces. Two picture frames are
+considered to be identical if each of their corresponding sides is equal
+in length. If no picture frames can be created from pieces then return
+0.
+
+
+<P>
+<h3>Definition</h3>
+
+
+<UL>    
+<LI> Class: none used in this problem
+<LI> Method: pictureFrames
+<LI> Parameters: tvector&lt;int&gt;
+<LI> Returns: int
+<LI> Method signature:
+<PRE>
+int pictureFrames(tvector&lt;int&gt; pieces)
+</PRE>
+
+</UL>
+<P>
+
+<h3>Prototype</h3>
+<PRE>
+ #include "tvector.h"
+ int pictureFrames(tvector&lt;int&gt; pieces)
+ {
+     // fill in body of this function
+ }
+
+</PRE>
+
+<P>
+<h3>Notes</h3>
+
+A triangle can be formed if, and only if, for every pair of its sides
+the sum of that pair is longer than the third side.
+
+<P>
+<h3>Constraints</h3>
+<UL>
+<LI> pieces will have between 0 and 50 elements inclusive.
+<P>
+<LI> Each element in pieces will be between 1 and 10000 inclusive.
+<P>
+<LI> pieces will not have any repeated elements.
+<P>
+</UL>
+
+<P>
+<h3>Examples</h3>
+
+<OL type='0'>
+<LI>
+<PRE>
+
+{1,2,3,4,5}
+
+Returns: 3
+
+    
+</PRE>
+We can form picture frames with the following sides: {2, 3, 4}, {2, 4,
+5} and {3, 4, 5}. So we can form 3 different picture frames.
+<P>
+
+<LI>
+<PRE>
+
+
+{8,5,3}
+
+Returns: 0
+
+</PRE>
+8 + 5 is longer than 3 and 8 + 3 is longer than 5, but 5 + 3 is not
+longer than 8. Thus we cannot form a single picture frame from these
+pieces.  2)
+
+<P>
+
+<LI>
+
+<PRE>
+
+{4,23,76,22,87,3,1,99}
+
+Returns: 7
+
+</PRE>
+<P>
+
+<LI>
+<PRE>
+
+
+{10000,9999,9998,9997,9996,1,2,3,4,5}
+
+Returns: 43
+
+
+</PRE>
+
+<LI>
+<PRE>
+
+{100}
+
+Returns: 0
+
+</PRE>
+
+We cannot form any picture frames with just one piece of metal.
+
+</OL>
+
+
+
+    <hr>
+    <address><a href="mailto:ola@cs.duke.edu">Owen L. Astrachan</a></address>
+<!-- Created: Thu Oct  2 15:10:09 EDT 2003 -->
+<!-- hhmts start -->
+Last modified: Thu Oct  2 15:17:34 EDT 2003
+<!-- hhmts end -->
+  </body>
+
+<!-- Mirrored from www.cs.duke.edu/csed/onlineprobs/tripleloopvector.html by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 14 Mar 2006 08:55:08 GMT -->
+</html>

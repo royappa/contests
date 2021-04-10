@@ -1,0 +1,123 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  
+<!-- Mirrored from www.cs.duke.edu/csed/onlineprobs/string2.html by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 14 Mar 2006 08:55:07 GMT -->
+<head>
+    <title>Weekly Problem string 2</title>
+  </head>
+
+  <body>
+    <h1>Weekly Problem string 2</h1>
+
+
+<p>
+<hr>
+
+<h3>Problem Statement</h3>
+
+A string is <em>prefix-suffix-swapped</em> 
+(or <tt>ps-swapped</tt>) if some suffix
+is moved so that it becomes a prefix.  For example,
+the string <tt>"flapjack"</tt> can be ps-swapped
+on the suffix <tt>"jack"</tt> to become <tt>"jackflap"</tt>,
+on the suffix <tt>"ack"</tt> to become
+<tt>"ackflapj"</tt> and on other suffixes as well.
+
+<P>
+
+Given a string <em>s</em>, and an integer index <em>index</em>, return the
+ps-swapped string created by moving the suffix
+that starts with the <tt>index</tt>-th character so that it
+is a prefix.
+<P>
+
+<P> 
+<h3>Definition</h3>
+
+<UL>
+<LI> Class: none used in this problem
+<LI> Method: prefixSuffix
+<LI> Parameters: string int
+<LI> Returns: string
+<LI> Method signature (see below)
+
+</UL>
+
+<h3>Prototype</h3>
+
+(be sure you have the necessary include files)
+
+<XMP>
+#include <string>
+using namespace std;
+
+   string prefixSuffix(string s, int index)
+   {
+           // fill in code here
+   }
+
+</XMP>
+
+<P>
+
+<h3>Constraints</h3>
+<UL>
+
+<LI> the value of <tt>index</tt> will be between 0
+and one less than the length of the string, i.e., it will
+be the index of a valid suffix of the string parameter
+</UL>
+
+<P>
+<h3>Examples</h3>
+
+(quote for clarity, they're not part of the string)
+<OL>
+<LI>
+<PRE>
+"hellodolly" 5
+
+Returns:  "dollyhello"
+</PRE>
+The character with index 5 is 'd'
+<P>
+<LI>
+<PRE>    
+
+"layers" 5
+
+Returns: "slayer"
+</PRE>
+<P>
+<P>
+<LI>
+<PRE>
+   
+"apple" 0
+
+Returns:"apple"
+</PRE>
+<P>
+
+<P>
+<LI>
+<PRE>
+
+"sweet potato" 4
+
+Returns: "t potatoswee"
+</PRE>
+
+</OL>
+
+
+    <hr>
+    <address><a href="mailto:ola@cs.duke.edu">Owen L. Astrachan</a></address>
+<!-- Created: Sun Apr  6 22:07:57 EDT 2003 -->
+<!-- hhmts start -->
+Last modified: Wed Jul 23 11:10:49 EDT 2003
+<!-- hhmts end -->
+  </body>
+
+<!-- Mirrored from www.cs.duke.edu/csed/onlineprobs/string2.html by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 14 Mar 2006 08:55:07 GMT -->
+</html>

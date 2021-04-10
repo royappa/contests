@@ -1,0 +1,298 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<!-- Mirrored from spoj.sphere.pl/problems/SOLSTRAS/ by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 10 Jan 2006 04:55:52 GMT -->
+<head>
+<title>Sphere Online Judge (SPOJ)  - Problem SOLSTRAS</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-2">
+<META NAME="Keywords" CONTENT="spoj, online, judge, problem, set, problemset, archive, ACM, Polish, Poland, contest, contester, task, tasks, ADA, Java, Pascal, C, C++, Whitespace, sphere, interest, group, python, ruby, icon, o'caml, caml, ocaml, perl, haskell, bf, brain, clips, prolog, fortran, asm, assembler, asembler, functional, esoteric, programming, languages">
+
+<link href="https://spoj.sphere.pl/gfx/favicon" rel="shortcut icon" type="image/x-icon">
+
+<link href="../../themes/skin3.css" rel="stylesheet" type="text/css" id="theme">
+<style type="text/css">
+<!--
+.maintable {width: 755;} 
+-->
+</style>
+<script type="text/javascript" language="javascript">
+<!--
+function UnCryptMailto(s) {
+	var n=0;
+	var r="";
+	for(var i=0;i<s.length;i++) {		
+		n=s.charCodeAt(i); 
+		if (n>=8364) {n = 128;}
+		r += String.fromCharCode(n+(2));	
+	}
+	return r;
+}
+function linkTo_UnCryptMailto(s)	{
+	location.href=UnCryptMailto(s);
+}
+// -->
+</script>
+
+</head>
+<body>
+<center>
+<table cellpadding="10" cellspacing="0" class="maintable" id="maintable">
+<tr>
+    <td colspan="2" class="header">
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+        <tr>
+		<td class="headerleft"/>
+		<td class="headercenter"><h1>Sphere Online Judge</h1></td>
+		<td class="headerright"/>
+	</tr>
+	</table>
+    </td>
+</tr>
+<tr><td class="menu" width="92" valign="top">
+<form name="login"  action="http://spoj.sphere.pl/problems/SOLSTRAS/" method="post" 
+	onsubmit="if(document.login.ssl.checked) document.login.action='https://spoj.sphere.pl/problems/SOLSTRAS/'" style="margin-bottom: 18px"> 
+User: <input name="login_user" type="text" style="width: 85px;" class="form"><BR>
+Password: <input name="password" type="password" style="width: 85px;" class="form"><BR>
+<script language="javascript" type="text/javascript">
+<!--
+document.write('<input type="checkbox" name="ssl" id="ssl" checked>secure<br>');
+//-->
+</script>
+<input name="submit" type="submit" value="Log In" class="button" style="width: 85px;">
+</form><div class="menucmd"><a href="https://spoj.sphere.pl/register">register</a><br><br><a href="https://spoj.sphere.pl/status">status</a><br><a href="https://spoj.sphere.pl/submit">submit</a><br><a href="../classical/sort=7,start=0.html">problems</a><br><br><a href="https://spoj.sphere.pl/">news</a><br><a href="https://spoj.sphere.pl/contests">contests</a><br><a href="https://spoj.sphere.pl/info">info</a><br><a href="https://spoj.sphere.pl/ranks/">ranks</a><br><br><a href="https://spoj.sphere.pl/forum">forum</a><br><a href="https://spoj.sphere.pl/help">help</a><br><a href="https://spoj.sphere.pl/links">links</a><br><hr></div>Server time:<br>2006-01-10<br>05:49:54<a href="../classical/sort=7,start=0.html"></a><br><br>
+<form method="get" action="https://spoj.sphere.pl/search/" class="form" style="width:90px">
+<input type="text" name="query" style="width:85px" maxlength=255 value="" class="form"><br>
+<input type="submit" value="Search" style="width:85px" class="form" title="Search site"><br>
+&nbsp;<a href="https://spoj.sphere.pl/search/problems=on,users=on,contests=on" title="More search options"><small>advanced...</small></a>
+</form></td><td class="content" width="99%"><table class="problems" width="100%">
+<tr class="navigation">
+<td><a href="https://spoj.sphere.pl/submit/SOLSTRAS/">Submit</a></td>
+<td><a href="https://spoj.sphere.pl/status/SOLSTRAS/">All submissions</a></td>
+<td><a href="https://spoj.sphere.pl/ranks/SOLSTRAS/">Best solutions</a></td>
+<td><a href="https://spoj.sphere.pl/problems/SOLSTRAS.ps">PS</a></td>
+<td><a href="https://spoj.sphere.pl/problems/SOLSTRAS.pdf">PDF</a></td>
+<td><a href="../classical/sort=7,start=0.html">Back to list</a></td>
+</tr>
+</table>
+
+<div class="prob">
+
+<h2>SPOJ Problem Set </h2>
+<h1>126. Solovay-Strassen Inverted</h1>
+<h2>Problem code: SOLSTRAS</h2>
+<p align="justify">
+Let us denote the set of all prime numbers by the symbol <B>P</B>. The 
+Solovay-Strassen algorithm determines whether a given positive odd integer <I>n</I>>2 
+belongs to <B>P</B>.<BR>
+<BR>
+The <EM>Legendre function</EM> <FONT COLOR="purple">sig</FONT> for number <I>n</I><img src="elem.png" alt="\in">
+<B>N</B> with parameter <I>s</I><img src="elem.png" alt="\in"> <B>N</B>
+(<I>s</I><<I>n</I>) is defined by the formula <FONT COLOR="purple">sig</FONT>(<I>n</I>,<I>s</I>)=<I>s</I><SUP>(<I>n</I>-1)/2</SUP>
+<FONT COLOR="purple">mod</FONT> <I>n</I>. The symbol <FONT COLOR="purple">mod</FONT> is defined in such a way as to return the result with the smallest possible absolute value, from the range (-n/2, n/2].<BR>
+<BR>
+The <EM>Jacobi function</EM> <FONT COLOR="purple">jac</FONT> for number <I>n</I><img src="elem.png" alt="\in">
+<B>N</B> with parameter <I>s</I><img src="elem.png" alt="\in"> <B>N</B>
+(<I>s</I><<I>n</I>) is given as:
+<DIV ALIGN="center"><TABLE CELLSPACING="0" CELLPADDING="0">
+		<TR VALIGN="middle">
+			<TD NOWRAP>
+				<FONT COLOR="purple">jac</FONT>(<I>n</I>,<I>s</I>)=
+			</TD>
+			<TD NOWRAP><TABLE CELLSPACING="0" CELLPADDING="0">
+					<TR VALIGN="middle">
+						<TD NOWRAP><img src="brace.png" alt="\cases"></TD>
+						<TD NOWRAP><TABLE CELLSPACING="2" CELLPADDING="0">
+								<TR>
+									<TD ALIGN="left" NOWRAP><FONT COLOR="purple">sig</FONT>(<I>n</I>,<I>s</I>),
+									</TD>
+									<TD ALIGN="left" NOWRAP>  if  <I>n</I><img src="elem.png" alt="\in"><B>P</B></TD>
+								</TR>
+								<TR>
+									<TD ALIGN="left" NOWRAP><TABLE CELLSPACING="0" CELLPADDING="0">
+											<TR VALIGN="middle">
+												<TD NOWRAP><TABLE CELLSPACING="0" CELLPADDING="0">
+														<TR>
+															<TD ALIGN="center"><I>k</I></TD>
+														</TR>
+														<TR>
+															<TD ALIGN="left"><img src="pi.png" alt="\product"></TD>
+														</TR>
+														<TR>
+															<TD ALIGN="center"><I>i</I>=1</TD>
+														</TR>
+													</TABLE>
+												</TD>
+												<TD NOWRAP>
+													<FONT COLOR="purple">sig</FONT>(<I>p</I><SUB><I>i</I></SUB>,<I>s</I>),
+												</TD>
+											</TR>
+										</TABLE>
+									</TD>
+									<TD ALIGN="left" NOWRAP><TABLE CELLSPACING="0" CELLPADDING="0">
+											<TR VALIGN="middle">
+												<TD NOWRAP>  if</TD>
+												<TD NOWRAP>
+													<I>  n</I>=</TD>
+												<TD NOWRAP><TABLE CELLSPACING="0" CELLPADDING="0">
+														<TR>
+															<TD ALIGN="center"><I>k</I></TD>
+														</TR>
+														<TR>
+															<TD ALIGN="left"><img src="pi.png" alt="\product"></TD>
+														</TR>
+														<TR>
+															<TD ALIGN="center"><I>i</I>=1</TD>
+														</TR>
+													</TABLE>
+												</TD>
+												<TD NOWRAP>
+													<I> p</I><SUB><I>i</I></SUB>, where all  <I>p</I><SUB><I>i</I></SUB>
+													<img src="elem.png" alt="\in"><B>P</B></TD>
+											</TR>
+										</TABLE>
+									</TD>
+								</TR>
+							</TABLE>
+						</TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+</DIV>
+<p>
+	It is interesting to note that for given <I>n</I> and <I>s</I>, the values of <FONT COLOR="purple">
+		sig</FONT>(<I>n</I>,<I>s</I>) and <FONT COLOR="purple">jac</FONT>(<I>n</I>,<I>s</I>) 
+	can be computed in <I>O</I>((log<SUB>2</SUB> <I>n</I>)<SUP>2</SUP>) 
+	time. For particulars consult an encyclopedia, such as <a href="http://mathworld.wolfram.com/JacobiSymbol.html">
+		MathWorld</a>.<BR>
+</p>
+<p>
+	The deterministic version of the Solovay-Strassen primality-test algorithm is 
+	given below. <BLOCKQUOTE><TABLE border="0" cellspacing="0" cellpadding="0">
+			<TR>
+				<TD ALIGN="left" NOWRAP><B>algorithm </B><FONT COLOR="purple">Solovay-Strassen</FONT>
+					(<I>n</I>)</TD>
+			</TR>
+			<TR>
+				<TD ALIGN="left" NOWRAP><B>var</B> <I>s</I>;</TD>
+			</TR>
+			<TR>
+				<TD ALIGN="left" NOWRAP><B>begin</B></TD>
+			</TR>
+			<TR>
+				<TD ALIGN="left" NOWRAP><B>    for</B> <I>s</I> <B>in</B> {1,2,3,4,...,<I>n</I>}
+					<B>do</B></TD>
+			</TR>
+			<TR>
+				<TD ALIGN="left" NOWRAP height="25"><B>        if</B>
+					<FONT color="purple">sig</FONT>(<I>n</I>,<I>s</I>)<img src="neq.png" alt="\neq"><FONT color="purple">jac</FONT>(<I>n</I>,<I>s</I>)</TD>
+			</TR>
+			<TR>
+				<TD ALIGN="left" NOWRAP><B>            
+						then return</B> "<EM>n is composite </EM>(<EM>detected at attempt <</EM>s</EM>>)";</TD>
+			</TR>
+			<TR>
+				<TD ALIGN="left" NOWRAP><B>    return</B> "<EM><I>n</I> is prime</EM>";</TD>
+			</TR>
+			<TR>
+				<TD ALIGN="left" NOWRAP><B>end</B>.</TD>
+			</TR>
+		</TABLE>
+	</BLOCKQUOTE>
+	<h3>Task</h3>
+<p>
+	We are not asking you to implement the Solovay-Strassen algorithm, this would 
+	be far too easy :). Instead, try to find values of <I>n</I>, for which the 
+	output of the algorithm would be "<I>n</I> is composite (detected at attempt 1)", 
+	"<I>n</I> is composite (detected at attempt 2)", and so on. Write out as many of 
+	these values as you can in consecutive lines, and try to keep them as small as 
+	possible.
+</p>
+<h3>Scoring</h3>
+<p>
+	The score awarded to your program is the total of all points given for its 
+	individual lines.
+</p>
+<p>
+	The <I>i</I>-th line output by your program should contain exactly one positive 
+	odd integer <I>n>2</I> of no more than 500 decimal digits. If 
+	Solovay-Strassen(<I>n</I>) yields the answer "<I>n</I> is composite (detected at 
+	attempt <I>i</I>)", you will receive <I>i</I>/log<SUB>10</SUB>
+	<I>n</I> points for this line, if not - your program will be considered 
+	incorrect. Output 0 if you don't want a line to be assessed. Only the first 
+	1000 lines of output are taken into account.
+</p>
+<h3>Example</h3>
+<p>
+	A program outputing:
+</p>
+<pre>0
+0
+561</pre>
+<p>
+	will receive 3/log<SUB>10</SUB> 561 = 1.091 points.
+</p>
+
+
+<hr>
+<table border=0 cellspacing=0 cellpadding=0 align=left>
+<tr><td width=130>Added by:</td><td><a href="https://spoj.sphere.pl/search/'Konrad%20Piwakowski'">Konrad Piwakowski</a></td></tr>
+<tr><td>Date:</td><td>2004-07-10</td></tr>
+<tr><td>Time limit:</td><td>3s
+</td></tr>
+<tr><td>Source limit:</td><td>50000B</td></tr>
+</table>
+</div></td>
+</tr>
+
+<tr>
+<td colspan="2" class="footer">
+
+<script language="javascript" type="text/javascript">
+<!--
+function swapSheet(sheet, caller) {
+    document.getElementById('theme').href=sheet;
+    document.cookie="css_0="+sheet+"; path=/;";
+    caller.href="#bottom";
+}
+
+function setWidth(w, caller) {
+    document.getElementById('maintable').style.width=w;
+    document.cookie="res="+w+"; path=/;";
+    caller.href="#bottom";
+}
+//-->
+
+</script>
+        <table width="100%">
+    <tr>
+	<td align="left">
+            <a href="http://www.pg.gda.pl/eng.html"><IMG src="https://spoj.sphere.pl/gfx/logo-pg" alt="www.pg.gda.pl" border=0 height=36 width=44></a>&nbsp;
+            <a href="http://www.eti.pg.gda.pl/"><IMG src="https://spoj.sphere.pl/gfx/logo-eti" alt="www.eti.pg.gda.pl" border=0 height=36 width=44></a>
+	</td>
+	<td align="center">
+	    page size:
+	    <a href="https://spoj.sphere.pl/?res=755"  onClick="setWidth('755', this)">800x600</a>
+	    <a href="https://spoj.sphere.pl/?res=980"  onClick="setWidth('980', this)">1024x768</a>
+	    <a href="https://spoj.sphere.pl/?res=100%" onClick="setWidth('100%', this)">Full</a>
+	    &nbsp;&nbsp;
+	    theme:
+	    <a href="../../indexb6a4.html?css=/themes/skin1.css" onClick="swapSheet('../../themes/skin1.css', this)">olive</a>
+	    <a href="../../index3840.html?css=/themes/skin2.css" onClick="swapSheet('../../themes/skin2.css', this)">banana</a>
+	    <a href="../../index80f0.html?css=/themes/skin3.css" onClick="swapSheet('../../themes/skin3.css', this)">plum</a>
+	    <br>
+	    <a href="http://sphere.pl/?id=66">spoj team at sphere</a> &copy; 2004-05 all rights reserved
+	</td>
+	<td align="right">
+            <a href="http://task.gda.pl/english/"><IMG src="https://spoj.sphere.pl/gfx/logo-task" alt="task.gda.pl" border=0 height=36 width=44></a>&nbsp;
+            <a href="http://sphere.pl/"><IMG src="https://spoj.sphere.pl/gfx/logo-sphere" alt="sphere.pl" border=0 height=32></a>
+	</td>
+    </tr>
+    </table>
+    </tr></table>
+</center>
+</body>
+
+<!-- Mirrored from spoj.sphere.pl/problems/SOLSTRAS/ by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 10 Jan 2006 04:55:52 GMT -->
+</html>

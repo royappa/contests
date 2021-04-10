@@ -1,0 +1,221 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<!-- Mirrored from spoj.sphere.pl/problems/FCTRL/ by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 10 Jan 2006 04:48:45 GMT -->
+<head>
+<title>Sphere Online Judge (SPOJ)  - Problem FCTRL</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-2">
+<META NAME="Keywords" CONTENT="spoj, online, judge, problem, set, problemset, archive, ACM, Polish, Poland, contest, contester, task, tasks, ADA, Java, Pascal, C, C++, Whitespace, sphere, interest, group, python, ruby, icon, o'caml, caml, ocaml, perl, haskell, bf, brain, clips, prolog, fortran, asm, assembler, asembler, functional, esoteric, programming, languages">
+
+<link href="https://spoj.sphere.pl/gfx/favicon" rel="shortcut icon" type="image/x-icon">
+
+<link href="../../themes/skin3.css" rel="stylesheet" type="text/css" id="theme">
+<style type="text/css">
+<!--
+.maintable {width: 755;} 
+-->
+</style>
+<script type="text/javascript" language="javascript">
+<!--
+function UnCryptMailto(s) {
+	var n=0;
+	var r="";
+	for(var i=0;i<s.length;i++) {		
+		n=s.charCodeAt(i); 
+		if (n>=8364) {n = 128;}
+		r += String.fromCharCode(n+(2));	
+	}
+	return r;
+}
+function linkTo_UnCryptMailto(s)	{
+	location.href=UnCryptMailto(s);
+}
+// -->
+</script>
+
+</head>
+<body>
+<center>
+<table cellpadding="10" cellspacing="0" class="maintable" id="maintable">
+<tr>
+    <td colspan="2" class="header">
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+        <tr>
+		<td class="headerleft"/>
+		<td class="headercenter"><h1>Sphere Online Judge</h1></td>
+		<td class="headerright"/>
+	</tr>
+	</table>
+    </td>
+</tr>
+<tr><td class="menu" width="92" valign="top">
+<form name="login"  action="http://spoj.sphere.pl/problems/FCTRL/" method="post" 
+	onsubmit="if(document.login.ssl.checked) document.login.action='https://spoj.sphere.pl/problems/FCTRL/'" style="margin-bottom: 18px"> 
+User: <input name="login_user" type="text" style="width: 85px;" class="form"><BR>
+Password: <input name="password" type="password" style="width: 85px;" class="form"><BR>
+<script language="javascript" type="text/javascript">
+<!--
+document.write('<input type="checkbox" name="ssl" id="ssl" checked>secure<br>');
+//-->
+</script>
+<input name="submit" type="submit" value="Log In" class="button" style="width: 85px;">
+</form><div class="menucmd"><a href="https://spoj.sphere.pl/register">register</a><br><br><a href="https://spoj.sphere.pl/status">status</a><br><a href="https://spoj.sphere.pl/submit">submit</a><br><a href="../classical/sort=0,start=250.html">problems</a><br><br><a href="https://spoj.sphere.pl/">news</a><br><a href="https://spoj.sphere.pl/contests">contests</a><br><a href="https://spoj.sphere.pl/info">info</a><br><a href="https://spoj.sphere.pl/ranks/">ranks</a><br><br><a href="https://spoj.sphere.pl/forum">forum</a><br><a href="https://spoj.sphere.pl/help">help</a><br><a href="https://spoj.sphere.pl/links">links</a><br><hr></div>Server time:<br>2006-01-10<br>05:47:15<a href="../classical/sort=0,start=250.html"></a><br><br>
+<form method="get" action="https://spoj.sphere.pl/search/" class="form" style="width:90px">
+<input type="text" name="query" style="width:85px" maxlength=255 value="" class="form"><br>
+<input type="submit" value="Search" style="width:85px" class="form" title="Search site"><br>
+&nbsp;<a href="https://spoj.sphere.pl/search/problems=on,users=on,contests=on" title="More search options"><small>advanced...</small></a>
+</form></td><td class="content" width="99%"><table class="problems" width="100%">
+<tr class="navigation">
+<td><a href="https://spoj.sphere.pl/submit/FCTRL/">Submit</a></td>
+<td><a href="https://spoj.sphere.pl/status/FCTRL/">All submissions</a></td>
+<td><a href="https://spoj.sphere.pl/ranks/FCTRL/">Best solutions</a></td>
+<td><a href="https://spoj.sphere.pl/problems/FCTRL.ps">PS</a></td>
+<td><a href="https://spoj.sphere.pl/problems/FCTRL.pdf">PDF</a></td>
+<td><a href="../classical/sort=0,start=250.html">Back to list</a></td>
+</tr>
+</table>
+
+<div class="prob">
+
+<h2>SPOJ Problem Set </h2>
+<h1>11. Factorial</h1>
+<h2>Problem code: FCTRL</h2>
+<p align="justify">
+<P>
+The most important part of a GSM network is so called
+<EM>Base Transceiver Station</em> (<EM>BTS</em>). These transceivers form the
+areas called <EM>cells</em> (this term gave the name to the cellular phone)
+and every phone connects to the BTS with the strongest signal (in
+a little simplified view). Of course, BTSes need some attention and
+technicians need to check their function periodically.
+
+<P>
+ACM technicians faced a very interesting problem recently. Given a set of
+BTSes to visit, they needed to find the shortest path to visit all of the
+given points and return back to the central company building. Programmers
+have spent several months studying this problem but with no results. They
+were unable to find the solution fast enough. After a long time, one of the
+programmers found this problem in a conference article. Unfortunately, he
+found that the problem is so called "Travelling Salesman Problem" and it is
+very hard to solve. If we have <VAR>N</var> BTSes to be visited, we can visit them in
+any order, giving us <VAR>N</var>! possibilities to examine. The function expressing
+that number is called factorial and can be computed as a product
+
+1.2.3.4....<VAR>N</var>. The number is very high even for a relatively small <VAR>N</var>.
+
+<P>
+The programmers understood they had no chance to solve the problem. But
+because they have already received the research grant from the government,
+they needed to continue with their studies and produce at least <EM>some</em>
+results. So they started to study behaviour of the factorial function.
+
+<P>
+For example, they defined the function <VAR>Z</var>. For any positive integer <VAR>N</var>,
+<VAR>Z</var>(<VAR>N</var>) is the number of zeros at the end of the decimal form of number
+<VAR>N</var>!. They noticed that this function never decreases. If we have two numbers
+<VAR>N</var><SUB>1</sub><<VAR>N</var><SUB>2</sub>, then 
+<VAR>Z</var>(<VAR>N</var><SUB>1</sub>) <= <VAR>Z</var>(<VAR>N</var><SUB>2</sub>). It is because we can never "lose" any
+trailing zero by multiplying by any positive number. We can only get new
+and new zeros. The function <VAR>Z</var> is very interesting, so we need a computer
+program that can determine its value efficiently.
+
+<P>
+<H3>Input</h3>
+
+<P>
+There is a single positive integer <VAR>T</var> on the first line of input (equal to about 100000). It stands
+for the number of numbers to follow. Then there are <VAR>T</var> lines, each containing
+exactly one positive integer number <VAR>N</var>, 
+1 <= <VAR>N</var> <= 1000000000.
+
+<P>
+<H3>Output</h3>
+
+<P>
+For every number <VAR>N</var>, output a single line containing the single non-negative
+integer <VAR>Z</var>(<VAR>N</var>).
+<h3>Example</h3>
+<p>Sample Input:</p>
+
+<PRE>
+<tt>6
+3
+60
+100
+1024
+23456
+8735373
+</tt></pre>
+
+<p>Sample Output:</p>
+
+<PRE>
+<tt>0
+14
+24
+253
+5861
+2183837
+</tt></pre>
+
+<hr>
+<table border=0 cellspacing=0 cellpadding=0 align=left>
+<tr><td width=130>Added by:</td><td><a href="https://spoj.sphere.pl/search/'Adrian%20Kosowski'">Adrian Kosowski</a></td></tr>
+<tr><td>Date:</td><td>2004-05-09</td></tr>
+<tr><td>Time limit:</td><td>6s
+</td></tr>
+<tr><td>Source limit:</td><td>50000B</td></tr>
+<tr><td>Resource:</td><td>ACM Central European Programming Contest, Prague 2000</td></tr></table>
+</div></td>
+</tr>
+
+<tr>
+<td colspan="2" class="footer">
+
+<script language="javascript" type="text/javascript">
+<!--
+function swapSheet(sheet, caller) {
+    document.getElementById('theme').href=sheet;
+    document.cookie="css_0="+sheet+"; path=/;";
+    caller.href="#bottom";
+}
+
+function setWidth(w, caller) {
+    document.getElementById('maintable').style.width=w;
+    document.cookie="res="+w+"; path=/;";
+    caller.href="#bottom";
+}
+//-->
+
+</script>
+        <table width="100%">
+    <tr>
+	<td align="left">
+            <a href="http://www.pg.gda.pl/eng.html"><IMG src="https://spoj.sphere.pl/gfx/logo-pg" alt="www.pg.gda.pl" border=0 height=36 width=44></a>&nbsp;
+            <a href="http://www.eti.pg.gda.pl/"><IMG src="https://spoj.sphere.pl/gfx/logo-eti" alt="www.eti.pg.gda.pl" border=0 height=36 width=44></a>
+	</td>
+	<td align="center">
+	    page size:
+	    <a href="https://spoj.sphere.pl/?res=755"  onClick="setWidth('755', this)">800x600</a>
+	    <a href="https://spoj.sphere.pl/?res=980"  onClick="setWidth('980', this)">1024x768</a>
+	    <a href="https://spoj.sphere.pl/?res=100%" onClick="setWidth('100%', this)">Full</a>
+	    &nbsp;&nbsp;
+	    theme:
+	    <a href="../../indexb6a4.html?css=/themes/skin1.css" onClick="swapSheet('../../themes/skin1.css', this)">olive</a>
+	    <a href="../../index3840.html?css=/themes/skin2.css" onClick="swapSheet('../../themes/skin2.css', this)">banana</a>
+	    <a href="../../index80f0.html?css=/themes/skin3.css" onClick="swapSheet('../../themes/skin3.css', this)">plum</a>
+	    <br>
+	    <a href="http://sphere.pl/?id=66">spoj team at sphere</a> &copy; 2004-05 all rights reserved
+	</td>
+	<td align="right">
+            <a href="http://task.gda.pl/english/"><IMG src="https://spoj.sphere.pl/gfx/logo-task" alt="task.gda.pl" border=0 height=36 width=44></a>&nbsp;
+            <a href="http://sphere.pl/"><IMG src="https://spoj.sphere.pl/gfx/logo-sphere" alt="sphere.pl" border=0 height=32></a>
+	</td>
+    </tr>
+    </table>
+    </tr></table>
+</center>
+</body>
+
+<!-- Mirrored from spoj.sphere.pl/problems/FCTRL/ by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 10 Jan 2006 04:48:45 GMT -->
+</html>
