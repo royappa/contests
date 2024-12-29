@@ -1,0 +1,222 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<!-- Mirrored from spoj.sphere.pl/problems/DECORATE/ by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 10 Jan 2006 05:02:16 GMT -->
+<head>
+<title>Sphere Online Judge (SPOJ)  - Problem DECORATE</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-2">
+<META NAME="Keywords" CONTENT="spoj, online, judge, problem, set, problemset, archive, ACM, Polish, Poland, contest, contester, task, tasks, ADA, Java, Pascal, C, C++, Whitespace, sphere, interest, group, python, ruby, icon, o'caml, caml, ocaml, perl, haskell, bf, brain, clips, prolog, fortran, asm, assembler, asembler, functional, esoteric, programming, languages">
+
+<link href="https://spoj.sphere.pl/gfx/favicon" rel="shortcut icon" type="image/x-icon">
+
+<link href="../../themes/skin3.css" rel="stylesheet" type="text/css" id="theme">
+<style type="text/css">
+<!--
+.maintable {width: 755;} 
+-->
+</style>
+<script type="text/javascript" language="javascript">
+<!--
+function UnCryptMailto(s) {
+	var n=0;
+	var r="";
+	for(var i=0;i<s.length;i++) {		
+		n=s.charCodeAt(i); 
+		if (n>=8364) {n = 128;}
+		r += String.fromCharCode(n+(2));	
+	}
+	return r;
+}
+function linkTo_UnCryptMailto(s)	{
+	location.href=UnCryptMailto(s);
+}
+// -->
+</script>
+
+</head>
+<body>
+<center>
+<table cellpadding="10" cellspacing="0" class="maintable" id="maintable">
+<tr>
+    <td colspan="2" class="header">
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+        <tr>
+		<td class="headerleft"/>
+		<td class="headercenter"><h1>Sphere Online Judge</h1></td>
+		<td class="headerright"/>
+	</tr>
+	</table>
+    </td>
+</tr>
+<tr><td class="menu" width="92" valign="top">
+<form name="login"  action="http://spoj.sphere.pl/problems/DECORATE/" method="post" 
+	onsubmit="if(document.login.ssl.checked) document.login.action='https://spoj.sphere.pl/problems/DECORATE/'" style="margin-bottom: 18px"> 
+User: <input name="login_user" type="text" style="width: 85px;" class="form"><BR>
+Password: <input name="password" type="password" style="width: 85px;" class="form"><BR>
+<script language="javascript" type="text/javascript">
+<!--
+document.write('<input type="checkbox" name="ssl" id="ssl" checked>secure<br>');
+//-->
+</script>
+<input name="submit" type="submit" value="Log In" class="button" style="width: 85px;">
+</form><div class="menucmd"><a href="https://spoj.sphere.pl/register">register</a><br><br><a href="https://spoj.sphere.pl/status">status</a><br><a href="https://spoj.sphere.pl/submit">submit</a><br><a href="../classical/sort=5,start=0.html">problems</a><br><br><a href="https://spoj.sphere.pl/">news</a><br><a href="https://spoj.sphere.pl/contests">contests</a><br><a href="https://spoj.sphere.pl/info">info</a><br><a href="https://spoj.sphere.pl/ranks/">ranks</a><br><br><a href="https://spoj.sphere.pl/forum">forum</a><br><a href="https://spoj.sphere.pl/help">help</a><br><a href="https://spoj.sphere.pl/links">links</a><br><hr></div>Server time:<br>2006-01-10<br>05:53:45<a href="../classical/sort=5,start=0.html"></a><br><br>
+<form method="get" action="https://spoj.sphere.pl/search/" class="form" style="width:90px">
+<input type="text" name="query" style="width:85px" maxlength=255 value="" class="form"><br>
+<input type="submit" value="Search" style="width:85px" class="form" title="Search site"><br>
+&nbsp;<a href="https://spoj.sphere.pl/search/problems=on,users=on,contests=on" title="More search options"><small>advanced...</small></a>
+</form></td><td class="content" width="99%"><table class="problems" width="100%">
+<tr class="navigation">
+<td><a href="https://spoj.sphere.pl/submit/DECORATE/">Submit</a></td>
+<td><a href="https://spoj.sphere.pl/status/DECORATE/">All submissions</a></td>
+<td><a href="https://spoj.sphere.pl/ranks/DECORATE/">Best solutions</a></td>
+<td><a href="https://spoj.sphere.pl/problems/DECORATE.ps">PS</a></td>
+<td><a href="https://spoj.sphere.pl/problems/DECORATE.pdf">PDF</a></td>
+<td><a href="../classical/sort=5,start=0.html">Back to list</a></td>
+</tr>
+</table>
+
+<div class="prob">
+
+<h2>SPOJ Problem Set </h2>
+<h1>382. Decorate the wall</h1>
+<h2>Problem code: DECORATE</h2>
+<p align="justify">
+<p>After building his huge villa, Mr. Rich cannot help but notice that
+the interior walls
+look rather blank. To change that, he starts to hang paintings from
+his wonderful collection.
+But soon he realizes that it becomes quite difficult to find a place on
+the wall where a painting
+can be placed without overlapping other paintings. Now he needs
+a program which would tell him, given the already placed paintings,
+where to place the next painting without moving any other paintings
+(or indicating that this is impossible). Paintings have a rectangular
+shape and are to be placed parallel to the side of the wall.
+If you do not mind a nice reward from Mr. Rich, go on and
+solve the problem.
+</p>
+<h3>Input Specification</h3>
+<p>The first line of the input file contains a number representing the
+number of test cases to follow.
+Each test case starts with a line containing three numbers <i>n</i>,
+<i>w</i>
+and <i>h</i>.
+<i>n</i> is the number of paintings already hanging on the
+wall, <i>w</i>
+is the width of the wall
+and <i>h</i> is the height of the wall.<br>
+The next <i>n</i> lines contain 4 integers <i>x<sub>1</sub>, y<sub>1</sub>,
+x<sub>2</sub>, y<sub>2</sub></i> each (<i>0 &#8804; x<sub>1</sub> < x<sub>2</sub> &#8804; w</i>,
+<i>0 &#8804; y<sub>1</sub> < y<sub>2</sub> &#8804; h</i>); the
+x-coordinates give
+the distance to the left end of the wall, the y-coordinates give the
+distance to the bottom of the wall.
+(<i>x<sub>1</sub>, y<sub>1</sub></i>) is the position of the lower left corner of a painting,
+(<i>x<sub>2</sub>, y<sub>2</sub></i>)
+is the position of the upper right corner.
+The last line of each test case contains the dimensions of the next
+painting
+to be placed, first its width <i>w'</i>, then its height <i>h'</i> (<i>1 &#8804; w' &#8804; w</i>, <i>1 &#8804; h' &#8804; h</i>).
+You are not allowed to rotate the painting.
+<br>
+You can assume that <i>0 &#8804; n &#8804; 200</i> and <i>1</i> &#8804; w, h &#8804; 1000000</i>.
+Moreover, all paintings already hanging do not overlap.
+</p>
+<h3>Output Specification</h3>
+<p>Produce one line of output for each test case. Write "Fail!" if
+there is
+no place left on the wall where the painting could be placed without
+overlapping other paintings.
+Otherwise, write the coordinates where the lower left corner of the
+painting should be placed.
+In case there is more than one solution, select the solution with
+a minimum y-coordinate, and
+break ties using the minimum x-coordinate.
+</p>
+<table>
+<tbody>
+<td valign="top" width="30%" align="left">
+<h3>Sample Input</h3>
+<pre>2
+1 10 9
+5 4 10 9
+9 5
+2 10 10
+5 5 10 10
+0 0 4 3
+3 4
+</pre>
+<h3>Sample Output</h3>
+<pre>Fail!
+4 0
+</pre>
+</td>
+<td width="60%" valign="top">
+The following image illustrates the second sample test case:<br><br> 
+<img src="decorate.jpg">
+</td>
+</tbody>
+</table>
+
+
+<hr>
+<table border=0 cellspacing=0 cellpadding=0 align=left>
+<tr><td width=130>Added by:</td><td><a href="https://spoj.sphere.pl/search/'Adrian%20Kuegel'">Adrian Kuegel</a></td></tr>
+<tr><td>Date:</td><td>2005-06-24</td></tr>
+<tr><td>Time limit:</td><td>5s
+</td></tr>
+<tr><td>Source limit:</td><td>50000B</td></tr>
+<tr><td>Resource:</td><td>University of Ulm Local Contest 2005</td></tr></table>
+</div></td>
+</tr>
+
+<tr>
+<td colspan="2" class="footer">
+
+<script language="javascript" type="text/javascript">
+<!--
+function swapSheet(sheet, caller) {
+    document.getElementById('theme').href=sheet;
+    document.cookie="css_0="+sheet+"; path=/;";
+    caller.href="#bottom";
+}
+
+function setWidth(w, caller) {
+    document.getElementById('maintable').style.width=w;
+    document.cookie="res="+w+"; path=/;";
+    caller.href="#bottom";
+}
+//-->
+
+</script>
+        <table width="100%">
+    <tr>
+	<td align="left">
+            <a href="http://www.pg.gda.pl/eng.html"><IMG src="https://spoj.sphere.pl/gfx/logo-pg" alt="www.pg.gda.pl" border=0 height=36 width=44></a>&nbsp;
+            <a href="http://www.eti.pg.gda.pl/"><IMG src="https://spoj.sphere.pl/gfx/logo-eti" alt="www.eti.pg.gda.pl" border=0 height=36 width=44></a>
+	</td>
+	<td align="center">
+	    page size:
+	    <a href="https://spoj.sphere.pl/?res=755"  onClick="setWidth('755', this)">800x600</a>
+	    <a href="https://spoj.sphere.pl/?res=980"  onClick="setWidth('980', this)">1024x768</a>
+	    <a href="https://spoj.sphere.pl/?res=100%" onClick="setWidth('100%', this)">Full</a>
+	    &nbsp;&nbsp;
+	    theme:
+	    <a href="../../indexb6a4.html?css=/themes/skin1.css" onClick="swapSheet('../../themes/skin1.css', this)">olive</a>
+	    <a href="../../index3840.html?css=/themes/skin2.css" onClick="swapSheet('../../themes/skin2.css', this)">banana</a>
+	    <a href="../../index80f0.html?css=/themes/skin3.css" onClick="swapSheet('../../themes/skin3.css', this)">plum</a>
+	    <br>
+	    <a href="http://sphere.pl/?id=66">spoj team at sphere</a> &copy; 2004-05 all rights reserved
+	</td>
+	<td align="right">
+            <a href="http://task.gda.pl/english/"><IMG src="https://spoj.sphere.pl/gfx/logo-task" alt="task.gda.pl" border=0 height=36 width=44></a>&nbsp;
+            <a href="http://sphere.pl/"><IMG src="https://spoj.sphere.pl/gfx/logo-sphere" alt="sphere.pl" border=0 height=32></a>
+	</td>
+    </tr>
+    </table>
+    </tr></table>
+</center>
+</body>
+
+<!-- Mirrored from spoj.sphere.pl/problems/DECORATE/ by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 10 Jan 2006 05:02:16 GMT -->
+</html>

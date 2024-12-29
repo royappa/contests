@@ -1,0 +1,89 @@
+#include <vector>
+#include <list>
+#include <map>
+#include <set>
+#include <deque>
+#include <stack>
+#include <bitset>
+#include <algorithm>
+#include <functional>
+#include <numeric>
+#include <utility>
+#include <sstream>
+#include <iostream>
+#include <iomanip>
+#include <cstdio>
+#include <cmath>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+class TheBoringStoreDivTwo {
+public:
+string find(string J, string B) 
+{
+	int n = J.size(), m = B.size();
+	vector<string> J1, J2, B1, B2;
+	for (int i = 0; i < n; i++)
+	{
+		for (int il = 1; i+il <= n; il++)
+		{
+			for (int j = i+il; j < n; j++)
+			{
+				for (int jl = 1; j+jl <= n; jl++)
+				{
+					J1.push_back(J.substr(i, il));
+					J2.push_back(J.substr(j, jl));
+				}
+			}
+		}
+	}
+	for (int i = 0; i < m; i++)
+	{
+		for (int il = 1; i+il <= m; il++)
+		{
+			
+			for (int j = i+il; j < m; j++)
+			{
+				for (int jl = 1; j+jl <= m; jl++)
+				{
+					B1.push_back(B.substr(i, il));
+					B2.push_back(B.substr(j, jl));
+				}
+			}
+		}
+	}	
+	
+cout << J1.size() << " " << J2.size() << " / " << B1.size() << " " << B2.size() << endl;
+	string s = "";
+	
+	for (string A : J1)
+	{
+		for (string C : B1)
+		{
+			for (string B : J2)
+			{
+				if (B[0] != A[0]) continue;
+				for (string D : B2)
+				{
+					if (A.size()+C.size() != B.size()+D.size()) continue;
+					if (A+C == B+D)
+					{
+						string t = A+C;
+						if (t.size() > s.size() || (t.size() == s.size() && t < s))
+						{
+							s = t;
+						}
+					}
+				}
+			}
+		}
+	}
+	return s;
+}
+
+};
+
+
+//Powered by [KawigiEdit]

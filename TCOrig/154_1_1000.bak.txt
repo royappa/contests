@@ -1,0 +1,163 @@
+typedef long long LL;
+
+LL fact(LL n)
+{
+	LL f = 1;
+	for (LL i = 1; i <= n; i++)
+	{
+		f *= i;
+	}
+	return n;
+}
+
+LL C(LL n, LL k)
+{
+	LL comb = 1, LL nk = n-k;
+	while (n > 0)
+	{
+		comb *= n;
+		n--;
+		while (k > 0 && comb % k == 0)
+		{
+			comb /= k;
+			k--;
+		}
+		while (nk > 0 && comb % nk == 0)
+		{
+			comb /= nk;
+			nk--;
+		}
+	}
+	return comb;
+}
+	
+LL T(int n) // number of total orderings of n different items that may or may not be distinct
+{
+	LL tot = 0;
+	for (int i = 1; i <= n; i++)  // some i of them could be the same
+	{
+		tot += C(n, i) * fact(n-i+1);
+	}
+	return tot;
+}
+
+long long howMany(int num, vector <string> facts) 
+{
+	// 1. find n = the number of known distinct items based on the facts
+	// 2. return T(n) = the number of total orderings of n distinct items
+	
+	int A[20][20];
+	memset(A, 0, sizeof(A));
+	for (int i = 0; i < num; i++)
+	{
+		A[i][i] = 1;
+	}
+	for (int i = 0; i < facts.size(); i++)
+	{
+		int x, y;
+		sscanf(facts[i].size(), "%d=%d", &x, &y);
+		A[x][y] = A[y][x] = 1;
+	}
+	for (int k = 0; k < num; k++)
+	{
+		for (int i = 0; i < num; i++)
+		{
+			for (int j = 0; j < num; j++)
+			{
+				A[i][j] = A[i][j] || (A[i][k] && A[k][j]);
+			}
+		}
+	}
+	int groups = 0;
+	vector<int> mark(num, 0);
+	for (int i = 0; i < num; i++)
+	{
+		if (mark[i] == 1) continue;
+		groups++;
+		for (int j = 0; j < num; j++)
+		{
+			if (A[i][j])
+			{
+				mark[j] = 1;
+			}
+		}
+	}
+	return T(groups);
+}
+
+3! = 6 if all are distinct
+a=b c, b=c a, a=c b & reverse cases: 6
+a=b=c case
+total 13
+
+
+1 * 4!
+6 * 3! + 
+2 * 2! 
+1 * 1!
+
+4! + 6*6 + 4*2 + 1
+
+
+Problem Statement
+    
+Suppose you have num different objects and have been given some information about their ordering. The information will be given as a vector <string> facts whose elements will be of the form "A=B" where A and B are integers between 0 and num-1 inclusive. "0=8" means the 0th object is equal to the 8th object. Given these facts you will return the total possible number of distinct ways the objects could be ordered. For example: num = 4 facts = {"0=2","1=3"} Possible orderings: 0=2<1=3, 1=3<0=2, 0=1=2=3 In this case there are 3 possible orderings, so you would return 3. If no facts were given, there would be 75 possible orderings. As seen above, the orderings described here are total orderings. This means, for all pairs of objects, the ordering is specified (one is less than the other, or they are equal). Two orderings are the same if all pairs of objects in each ordering have exactly the same relationship.
+Definition
+    
+Class:
+PossibleOrders
+Method:
+howMany
+Parameters:
+int, vector <string>
+Returns:
+long long
+Method signature:
+long long howMany(int num, vector <string> facts)
+(be sure your method is public)
+    
+
+Constraints
+-
+facts will contain between 0 and 50 elements inclusive
+-
+num will be between 2 and 17 inclusive
+-
+Each element of facts will be formatted as (quotes for clarity) "A=B" where A and B are integers between 0 and num-1 inclusive A and B will have no extra leading zeros
+Examples
+0)
+
+    
+4
+{"0=2","1=3"}
+Returns: 3
+From above.
+1)
+
+    
+4
+{}
+Returns: 75
+No facts.
+2)
+
+    
+3
+{"1=1"}
+Returns: 13
+Useless fact.
+3)
+
+    
+3
+{"1=2","2=1"}
+Returns: 3
+Redundant facts.
+4)
+
+    
+17
+{}
+Returns: 130370767029135901
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

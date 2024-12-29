@@ -1,0 +1,65 @@
+
+#define MOD 44444444
+
+int howMany(int n, int k) 
+{
+	// how many digit strings of length <= n, have a substring of length k, of some digit
+	
+	f(n, last_same, did_reach) = 
+	
+	
+}
+Problem Statement
+    
+Let's define a function f over positive integers which returns the longest subsequence of the same digits in the number. 
+
+So, f(344488) = 3 and f(123) = 1.  Given an int n and int k, return an int stating how many numbers, no longer than n digits has f(x) = k. Return the result modulo 44444444.
+
+Definition
+    
+Class:
+SameDigits
+Method:
+howMany
+Parameters:
+int, int
+Returns:
+int
+Method signature:
+int howMany(int n, int k)
+(be sure your method is public)
+    
+
+Constraints
+-
+n and k will be between 1 and 1000, inclusive.
+Examples
+0)
+
+    
+2
+2
+Returns: 9
+The numbers are 11, 22, 33, 44, 55, 66, 77, 88 and 99.
+1)
+
+    
+2
+1
+Returns: 90
+
+2)
+
+    
+3
+2
+Returns: 171
+
+3)
+
+    
+723
+38
+Returns: 23525252
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

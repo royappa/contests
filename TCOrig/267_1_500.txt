@@ -1,0 +1,158 @@
+#include <vector>
+#include <list>
+#include <map>
+#include <set>
+#include <deque>
+#include <stack>
+#include <bitset>
+#include <algorithm>
+#include <functional>
+#include <numeric>
+#include <utility>
+#include <sstream>
+#include <iostream>
+#include <iomanip>
+#include <cstdio>
+#include <cmath>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+#define node(er,ec,cr,cc) (er*1000000+ec*10000+cr*100+cc)
+
+class ValetParking {
+public:
+
+
+vector<int> q;
+map<int,int> dist;
+
+int minMoves(int er, int ec, int cr, int cc) 
+{
+
+	int dr[] = { -1, 0, 1,  0};
+	int dc[] = {  0, 1, 0, -1};
+	
+	int qhead = 0;
+	int qnum = 0;
+	map<int,int> dist;
+	int start = node(er,ec,cr,cc);
+	q.push_back(start);
+	qnum++;
+	dist[start] = 0;
+	while (qnum > 0)
+	{
+		int head = q[qhead++];
+		qnum--;
+		if (head%10000 == 0)
+			return dist[head];
+		int er = head/1000000;
+		int ec = head%1000000/10000;
+		int cr = head%10000/100;
+		int cc = head%100;
+		//cout << er << " " << ec << " " << cr << " " << cc << endl;
+		for (int d = 0; d < 4; d++)
+		{
+			int ern = er+dr[d], ecn = ec + dc[d];
+			if (ern >= 0 && ern < 100 && ecn >= 0 && ecn < 100)
+			{
+				int crn, ccn;
+				if (ern == cr & ecn == cc)
+				{
+					crn = er;
+					ccn = ec;
+				}
+				else
+				{
+					crn = cr;
+					ccn = cc;
+				}
+				if (abs(crn-ern)+abs(ccn-ecn) > abs(cr-er)+abs(cc-ec)+2)
+					continue;
+				int nbr = node(ern,ecn,crn,ccn);
+				if (dist.count(nbr) > 0)
+					continue;
+				dist[nbr] = dist[head]+1;
+				q.push_back(nbr);
+				qnum++;
+			}
+		}
+	}
+	return 0;	
+		
+}
+};
+
+
+//Powered by [KawigiEdit]
+
+	Problem Statement
+	    
+	Valet parking is used to maximize the number of cars that we can park in our lot. The parking spaces are arranged in a 100 x 100 grid of squares. Each square can hold one car, and it is possible to drive a car onto any of the four orthogonally adjacent squares (provided that it is not already occupied by a car). A car may enter or leave the lot only on the corner square whose coordinates are (0,0).
+	
+	The lot is full when all but one of the squares is occupied. Given the location of the one empty square and the location of the customer's car, we want to know how many times the valet will have to get into a car and drive it before he can maneuver the customer's car to the location (0,0). The valet is not allowed to drive any of the cars out of the lot.
+	
+	Create a class ValetParking that contains a method minMoves that is given the coordinates (emptyRow and emptyCol) of the one empty square in the full lot, and the coordinates of the customer's car (cusRow and cusCol). The method returns the number of times the valet will have to move a car.
+	Definition
+	    
+	Class:
+	ValetParking
+	Method:
+	minMoves
+	Parameters:
+	int, int, int, int
+	Returns:
+	int
+	Method signature:
+	int minMoves(int emptyRow, int emptyCol, int cusRow, int cusCol)
+	(be sure your method is public)
+	    
+	
+	Constraints
+	-
+	emptyRow, emptyCol, cusRow, and cusCol will be between 0 and 99, inclusive.
+	-
+	(emptyRow,emptyCol) is not the same position as (cusRow,cusCol).
+	Examples
+	0)
+	
+	    
+	50
+	22
+	0
+	0
+	Returns: 0
+	The customer's car is already at the exit position.
+	1)
+	
+	    
+	0
+	0
+	1
+	0
+	Returns: 1
+	The valet can immediately drive the customer's car to the empty exit position.
+	2)
+	
+	    
+	0
+	0
+	1
+	1
+	Returns: 5
+	   One way to do this is:
+	     a) drive a car from 1,0 to 0,0
+	     b) drive the customer's car from 1,1 to 1,0
+	     c) drive a car from 0,1 to 1,1
+	     d) drive a car from 0,0 to 0,1
+	     e) drive the customer's car from 1,0 to 0,0
+	3)
+	
+	    
+	80
+	15
+	40
+	7
+	Returns: 252
+	
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

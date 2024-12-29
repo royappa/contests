@@ -1,0 +1,157 @@
+If I have 25% chance of winning any one game, what is the probability that I will win at least 1 game out of 10?
+
+= 1-(probability that I will win 0 games out of 10)
+= 1-(probability that I will lose 10 games out of 10)
+= 1-( (1-25%)^10 )
+
+If I have 25% chance of winning any one game, what is the probability that I will win at least 2 games out of 10?
+
+= 1-(probability that I will not win "at least 2 games out of 10")
+= 1-(probability that I will lose 9 games out of 10)
+= 1-( (1-.25)^9 )
+
+If I have P% chance of winning any one game, what is the probability that I will win at least X games out of N?
+= 1-(probability that I will not win "at least X games out of N")
+= 1-(probability that I will lose (N-X+1) games out of N
+= 1-(1-P)^(N-X+1)
+(wrong - use Binomial Distribution or compute as a recursive function f(X,N) = (1-P)*f(X, N-1)+P*f(X-1,N-1) using memoization - below)
+
+// Counting method for calculating f(P, X, N)
+
+// there are 2^N possible outcomes of N games played (model as bitmask where my win=1)
+// of those 2^N outcomes, count the number of outcomes with >= X 1's 	
+
+
+// CORRECT
+
+double memo[60][60];
+
+double f(double P, int X, int N)
+{
+	if (X == 0)
+		return 1.0;
+	if (N == 0)
+		return 0;
+	double &r = memo[X][N];
+	if (r >= 0)
+		return r;
+	
+	return r = (1-P)*f(P, X, N-1) + P*f(P, X-1, N-1);
+}
+
+
+double estimate(int T, int N, int X, int P) 
+{
+	//return probability that I will win in at least ONE trial
+	// = 1-(probability that opponent will win ALL the trials)
+	// = 1-( (chance of opponent to win ONE trial)^T )
+	// chance of opponent to win one trial = 1-(chance of me to win one trial)
+	// chance of me to win one trial = chance that I will get at least X wins in N games
+	// = 1-(1-P/100)^(N-X+1)
+	
+	for (int i = 0; i < 60; i++)
+		for (int j = 0; j < 60; j++)
+			memo[i][j] = -1; // don't fool with memset & doubles?
+		
+	double TP = f(P/100.0, X, N);
+	return 1.0-pow(1-TP, T);
+}  
+
+
+
+
+Problem Statement
+    
+One Saturday evening you are playing a game of online Scrabble. Your opponent is a very good player, but this time you managed to win. After a brief conversation, you are told: "I am clearly better than you, but one game is simply not enough to prove it." Your opponent then makess the following bet: "If we play 10 games, you will win less than 5 ... and this will happen every time, even if we try this 10 times in a row!".  You will solve a more general problem using the following parameters: - an int trials denoting the number of meetings in which a set of games is played. - an int games denoting the number of games that are to be played in each meeting. - an int winsNeeded denoting the number of victories you need in one of the meetings to win the bet. - an int winChance denoting the probability in percent of winning one particular game.  Return a double between 0 and 1, denoting the probability you have to win the bet.
+Definition
+    
+Class:
+ScrabbleBet
+Method:
+estimate
+Parameters:
+int, int, int, int
+Returns:
+double
+Method signature:
+double estimate(int trials, int games, int winsNeeded, int winChance)
+(be sure your method is public)
+    
+
+Notes
+-
+Your return value must have an absolute or relative error less than 1e-9.
+Constraints
+-
+trials will be between 1 and 50, inclusive.
+-
+games will be between 1 and 20, inclusive.
+-
+winsNeeded will be between 1 and games, inclusive.
+-
+winChance will be between 0 and 100, inclusive.
+Examples
+0)
+
+    
+2
+2
+1
+50
+Returns: 0.9375
+There are 4 possible ways a meeting could evolve: - you lose both games. - you lose game 1 and you win game 2. - you win game 1 and you lose game 2. - you win both games.  Your opponent has a 1/4 chance of not losing the bet after the first meeting. Since there are two meetings, your opponent's chances to win the bet are 1/4 * 1/4 = 1/16. Thus, you have a 15/16 chance to win the bet.
+1)
+
+    
+2
+2
+2
+50
+Returns: 0.4375
+This time your opponent has a 3/4 chance of not losing the bet after one meeting and a 9/16 chance of not losing the bet after the two meetings. Your chances are now 1 - 9/16 = 7/16.
+2)
+
+    
+10
+10
+5
+25
+Returns: 0.5566860567603682
+
+3)
+
+    
+2
+20
+5
+10
+Returns: 0.08448495352665641
+
+4)
+
+    
+50
+15
+1
+0
+Returns: 0.0
+
+5)
+
+    
+50
+17
+16
+100
+Returns: 1.0
+
+6)
+
+    
+50
+10
+10
+75
+Returns: 0.9448701546682944
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

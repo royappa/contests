@@ -1,0 +1,196 @@
+#include <vector>
+#include <list>
+#include <map>
+#include <set>
+#include <deque>
+#include <stack>
+#include <bitset>
+#include <algorithm>
+#include <functional>
+#include <numeric>
+#include <utility>
+#include <sstream>
+#include <iostream>
+#include <iomanip>
+#include <cstdio>
+#include <cmath>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+class NCMultiplication {
+public:
+typedef long long LL;
+vector<int> v;
+
+bool valid(LL A, LL B)
+{
+	int va[20], vb[20], vc[20];
+	int na, nb, nc;
+//cout << "*"<< " " << A << " " << B << endl;	
+	na = nb = nc = 0;
+	while (A > 0)
+	{
+		va[na++] = A % 10;
+		A /= 10;
+	}
+	while (B > 0)
+	{
+		vb[nb++] = B % 10;
+		B /=  10;
+	}
+	int n = v.size();
+		
+	memset(vc, 0, sizeof(vc));
+	for (int i = 0; i < na; i++)
+	{
+		for (int j = 0; j < nb; j++)
+		{
+			vc[i+j] += va[i]*vb[j];
+			nc = i+j+1;
+		}
+	}
+
+//cout << "**" << nc << endl;
+//for (int i = 0; i < nc; i++) cout << vc[i] << " " ; cout << endl;
+
+	if (n != nc)
+		return false;
+ 
+	for (int i = 0; i < n; i++)
+	{
+		if (v[i] != vc[i])
+			return false;
+	}
+	return true;
+}
+
+long long findFactors(vector <int> digits) 
+{
+	v = digits;
+	LL num = 0;
+	for (int i = 0; i < v.size(); i++)
+	{
+		num = num*10LL+(LL)v[i];
+	}
+	reverse(v.begin(), v.end());
+	int s = (int) ceil(sqrt((double)num));
+	
+	LL bestA, bestB;
+	bool found = false;
+	for (int d = 1; d <= s; d++)
+	{
+		if (num % d == 0)
+		{
+			LL A = d, B = num / d;
+			if (A < B)
+			{
+				LL tmp = A;
+				A = B;
+				B = tmp;
+			}
+			if ((!found || A-B < bestA-bestB) && valid(A, B))
+			{
+				found = true;
+				bestA = A;
+				bestB = B;
+			}
+		}
+	}
+	return found ? bestA : -1;
+}
+};
+
+
+//Powered by [KawigiEdit]
+
+Problem Statement
+    
+The usual longhand scheme for multiplying two numbers A and B is to multiply the last digit of B by A, shift left by one digit, multiply the second-to-last digit of B by A, and so on. This process is illustrated below:
+
+   36
+x  15
+-----
+  180
++ 36
+-----
+  540
+  
+But let's say we didn't multiply in the usual way. Let us define a new method of multiplication called "NC-Multiplication", where the "NC" stands for "No Carry". It is called this because we do not carry when numbers exceed 9, no matter what. To multiply 36 by 15 in this manner, we would do:
+
+     3  6
+x    1  5
+---------
+    15 30
++ 3  6
+---------
+  3 21 30
+  
+and so the result would be {3, 21, 30}.
+
+You will be given a vector <int> digits, that represents the result of NC-multiplying two numbers together. You wish to factor this result by finding the two numbers that multiplied together to form the result. There may be multiple pairs of numbers that work. If we call the larger number A and the smaller B, then we want the pair such that A - B is minimized. Of this pair, your method should return a long long that is equal to A. If no such A and B exist that NC-multiply to digits, your method should return -1.
+Definition
+    
+Class:
+NCMultiplication
+Method:
+findFactors
+Parameters:
+vector <int>
+Returns:
+long long
+Method signature:
+long long findFactors(vector <int> digits)
+(be sure your method is public)
+    
+
+Constraints
+-
+digits will contain between 1 and 15 elements, inclusive.
+-
+All elements of digits will be between 0 and 2000, inclusive.
+-
+At least one element in digits will be nonzero.
+-
+The number represented by digits will be less than 1014 = 100000000000000.
+-
+There will be no leading or trailing zeros in digits.
+Examples
+0)
+
+    
+{3,21,30}
+Returns: 36
+36 and 15 NC-Multiply together to make {3,21,30}, as seen above.
+1)
+
+    
+{15,3,6}
+Returns: 512
+
+2)
+
+    
+{4,20,25}
+Returns: 25
+25 NC-Multiplied by 25.
+3)
+
+    
+{6,61,124,129,90,27}
+Returns: 6773
+
+4)
+
+    
+{8,14,22,95,125,120,73,9,9}
+Returns: -1
+
+5)
+
+    
+{6, 5, 32, 68, 113, 143, 143, 124, 100, 75, 48, 23, 7, 1}
+Returns: 65864431
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

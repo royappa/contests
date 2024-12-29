@@ -1,0 +1,137 @@
+typedef long double LD;
+
+LD memo[1010][60][16];
+
+int G, p;
+
+LD f(int S, int n, int k)
+{
+	if (n == 1 && G == S+1)
+	{
+		return LD(p/100.0);
+	}
+	else if (n == 1 && G > S+1)
+	{
+		return 0.0;
+	}
+	if (S < (1<<k))
+	{
+		return 0.0;
+	}
+	if (G-S > n)
+	{
+		return 0.0;
+	}
+	LD& r = memo[S][n][k];
+	if (r != LD(-1.0))
+	{
+		return r;
+	}
+	r = p*f(S+1, n-1, 0)+(100-p)*f(S-(1<<k), n-1, k+1);
+	r /= LD(100.0);
+	return r;
+}
+
+double winProbability(int initSum, int goalSum, int rounds, int prob) 
+{
+	G = goalSum;
+	p = prob;
+	for (int i = 0; i < 1010; i++)
+	{
+		for (int j = 0; j < 60; j++)
+		{
+			for (int k = 0; k < 16; k++)
+			{
+				memo[i][j][k] = LD(-1.0);
+			}
+		}
+	}
+	return double(f(initSum, rounds, 0));
+}
+
+Problem Statement
+    
+You are thinking of using the following betting strategy: in the first round, you bet one dollar. 
+If you win the bet, you win the dollar and bet another dollar in the next round. 
+Otherwise you lose the dollar and bet two dollars in the second round (provided you still have at least two dollars in your account). 
+If you win, you get the two dollars and bet one dollar in the third round, otherwise you lose the two dollars and bet four dollars in the third round (provided you have at least that amount in your account) and so on. 
+In other words, whenever you lose a bet, you double the value of the bet for the next round. 
+
+If you don't have enough money to cover your bet, you have to stop betting. 
+
+Whenever you win, the bet for the next round will be one dollar.
+
+For example, if you start with 10 dollars, and you win the bet in the first round, lose the bet in the next two rounds and then win the bet in the fourth round, you will end up with 10+1-1-2+4 = 12 dollars.
+
+You will be given four ints 
+initSum, the amount of money you initially have, 
+goalSum, the sum you wish to achieve, 
+rounds, the maximum number of rounds you wish to play, and 
+prob, the percent probability of winning one round. 
+
+Return the probability that you will reach your goal within the maximum number of rounds you wish to play. 
+
+Note that if you manage to get to goalSum or more, you stop betting.
+
+	Definition
+    
+Class:
+TestBettingStrategy
+Method:
+winProbability
+Parameters:
+int, int, int, int
+Returns:
+double
+Method signature:
+double winProbability(int initSum, int goalSum, int rounds, int prob)
+(be sure your method is public)
+    
+
+Constraints
+-
+initSum will be between 1 and 1,000, inclusive.
+-
+goalSum will be between (initSum + 1) and 1,000, inclusive.
+-
+rounds will be between 1 and 50, inclusive.
+-
+prob will be between 0 and 100, inclusive.
+Examples
+0)
+
+    
+10
+11
+4
+50
+Returns: 0.875
+You have a 50% chance of reaching 11 dollars in the first round. You could also win by losing the first round and winning the second, with a 25% chance, or losing the first two rounds and winning the third one, with a 12.5% chance. Note that the fourth round is never needed. If you lose the first three rounds, you can't cover your fourth bet. In any other case, you will have already reached 11 dollars and stopped.
+1)
+
+    
+10
+20
+20
+50
+Returns: 0.3441343307495117
+
+2)
+
+    
+10
+20
+10
+90
+Returns: 0.34867844010000015
+You have to win every round. Since the probability of winning a round is pretty high, you have a decent chance of doing this.
+3)
+
+    
+24
+38
+24
+60
+Returns: 0.5940784635646947
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

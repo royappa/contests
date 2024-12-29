@@ -1,0 +1,960 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<!-- Mirrored from spoj.sphere.pl/ranks/users/start=400 by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 10 Jan 2006 05:13:34 GMT -->
+<head>
+<title>Sphere Online Judge (SPOJ)  - User Statistics</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-2">
+<META NAME="Keywords" CONTENT="spoj, online, judge, problem, set, problemset, archive, ACM, Polish, Poland, contest, contester, task, tasks, ADA, Java, Pascal, C, C++, Whitespace, sphere, interest, group, python, ruby, icon, o'caml, caml, ocaml, perl, haskell, bf, brain, clips, prolog, fortran, asm, assembler, asembler, functional, esoteric, programming, languages">
+
+<link href="https://spoj.sphere.pl/gfx/favicon" rel="shortcut icon" type="image/x-icon">
+
+<link href="../../themes/skin3.css" rel="stylesheet" type="text/css" id="theme">
+<style type="text/css">
+<!--
+.maintable {width: 755;} 
+-->
+</style>
+<script type="text/javascript" language="javascript">
+<!--
+function UnCryptMailto(s) {
+	var n=0;
+	var r="";
+	for(var i=0;i<s.length;i++) {		
+		n=s.charCodeAt(i); 
+		if (n>=8364) {n = 128;}
+		r += String.fromCharCode(n+(2));	
+	}
+	return r;
+}
+function linkTo_UnCryptMailto(s)	{
+	location.href=UnCryptMailto(s);
+}
+// -->
+</script>
+
+</head>
+<body>
+<center>
+<table cellpadding="10" cellspacing="0" class="maintable" id="maintable">
+<tr>
+    <td colspan="2" class="header">
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+        <tr>
+		<td class="headerleft"/>
+		<td class="headercenter"><h1>Sphere Online Judge</h1></td>
+		<td class="headerright"/>
+	</tr>
+	</table>
+    </td>
+</tr>
+<tr><td class="menu" width="92" valign="top">
+<form name="login"  action="http://spoj.sphere.pl/ranks/users/start=400" method="post" 
+	onsubmit="if(document.login.ssl.checked) document.login.action='https://spoj.sphere.pl/ranks/users/start=400'" style="margin-bottom: 18px"> 
+User: <input name="login_user" type="text" style="width: 85px;" class="form"><BR>
+Password: <input name="password" type="password" style="width: 85px;" class="form"><BR>
+<script language="javascript" type="text/javascript">
+<!--
+document.write('<input type="checkbox" name="ssl" id="ssl" checked>secure<br>');
+//-->
+</script>
+<input name="submit" type="submit" value="Log In" class="button" style="width: 85px;">
+</form><div class="menucmd"><a href="https://spoj.sphere.pl/register">register</a><br><br><a href="https://spoj.sphere.pl/status">status</a><br><a href="https://spoj.sphere.pl/submit">submit</a><br><a href="../../problems/classical/sort=-1,start=0.html">problems</a><br><br><a href="https://spoj.sphere.pl/">news</a><br><a href="https://spoj.sphere.pl/contests">contests</a><br><a href="https://spoj.sphere.pl/info">info</a><br><a href="https://spoj.sphere.pl/ranks/">ranks</a><br><div class="submenucmd"><a href="https://spoj.sphere.pl/ranks/users">users</a><br><a href="https://spoj.sphere.pl/ranks/countries">countries</a><br><a href="https://spoj.sphere.pl/ranks/psetters">psetters</a><br><a href="https://spoj.sphere.pl/ranks/languages">languages</a><br></div><br><a href="https://spoj.sphere.pl/forum">forum</a><br><a href="https://spoj.sphere.pl/help">help</a><br><a href="https://spoj.sphere.pl/links">links</a><br><hr></div>Server time:<br>2006-01-10<br>06:05:49<a href="../../problems/classical/sort=-1,start=0.html"></a><br><br>
+<form method="get" action="https://spoj.sphere.pl/search/" class="form" style="width:90px">
+<input type="text" name="query" style="width:85px" maxlength=255 value="" class="form"><br>
+<input type="submit" value="Search" style="width:85px" class="form" title="Search site"><br>
+&nbsp;<a href="https://spoj.sphere.pl/search/problems=on,users=on,contests=on" title="More search options"><small>advanced...</small></a>
+</form></td><td class="content" width="99%"><h3>Problem Solvers' Hall of Fame</H3>
+
+<table class="navigation" width="99%">
+<tr><td align="left" width="27%">
+<a href="start=300.html">&lt; Previous</a></td><td class="navigationcenter" width="4%"><a href="start=0.html">&nbsp;1</a></td> 
+<td class="navigationcenter" width="4%"><a href="start=100.html">&nbsp;2</a></td> 
+<td class="navigationcenter" width="4%"><a href="start=200.html">&nbsp;3</a></td> 
+<td class="navigationcenter" width="4%"><a href="start=300.html">&nbsp;4</a></td> 
+<td class="navigationcenter" width="4%">&nbsp;5</td> 
+<td class="navigationcenter" width="4%"><a href="start=500.html">&nbsp;6</a></td> 
+<td class="navigationcenter" width="4%"><a href="start=600.html">&nbsp;7</a></td> 
+<td class="navigationcenter" width="4%"><a href="start=700.html">&nbsp;8</a></td> 
+<td class="navigationcenter" width="4%"><a href="start=800.html">&nbsp;9</a></td> 
+<td class="navigationcenter" width="4%"><a href="start=900.html">&nbsp;10</a></td> 
+<td class="navigationcenter" width="4%"><a href="start=1000.html">&nbsp;11</a></td> 
+<td align="right" width="25%">
+<a href="start=500.html">Next &gt;</a></td></table>
+<table class="problems" width="100%">
+<tr class="headerrow">
+<th width="10%" class="headerrowleft">RANK</th>
+<th width="10%">CC</th>
+<th width="40%">NAME</th>
+<th width="15%" title="Classical problems: weighted score (solved count)">CLASSICAL</th>
+<th width="15%" title="Challenge problems: weighted score (1st place count)">CHALLENGE</th>
+<th width="10%" class="headerrowright"  style="text-align:center;">SCORE</th>
+</tr>
+<tr class="row">
+<td>400</td>
+<td>VN</td>
+<td><a href="https://spoj.sphere.pl/users/saturn">Saturn (HUS)</a></td>
+<td>3.9 (16)</td>
+<td>0.0 (0)</td>
+<td style="text-align:right;">3.9&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>400</td>
+<td>IN</td>
+<td><a href="https://spoj.sphere.pl/users/kanishkkunal">Kanishk Kunal</a></td>
+<td>3.3 (13)</td>
+<td>0.6 (0)</td>
+<td style="text-align:right;">3.9&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>400</td>
+<td>PL</td>
+<td><a href="https://spoj.sphere.pl/users/sreniaw">księciunio</a></td>
+<td>3.8 (11)</td>
+<td>0.1 (0)</td>
+<td style="text-align:right;">3.9&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>400</td>
+<td>CN</td>
+<td><a href="https://spoj.sphere.pl/users/clzbc">Zheng Binchen</a></td>
+<td>3.8 (10)</td>
+<td>0.1 (0)</td>
+<td style="text-align:right;">3.9&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>400</td>
+<td>IN</td>
+<td><a href="https://spoj.sphere.pl/users/braineater">Harpreet Singh</a></td>
+<td>3.9 (8)</td>
+<td>0.0 (0)</td>
+<td style="text-align:right;">3.9&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>406</td>
+<td>US</td>
+<td><a href="https://spoj.sphere.pl/users/aubergineanode">Kyle</a></td>
+<td>3.8 (16)</td>
+<td>0.0 (0)</td>
+<td style="text-align:right;">3.8&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>406</td>
+<td>SG</td>
+<td><a href="https://spoj.sphere.pl/users/ice_mountain_">deng chao</a></td>
+<td>3.8 (12)</td>
+<td>0.0 (0)</td>
+<td style="text-align:right;">3.8&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>406</td>
+<td>IN</td>
+<td><a href="https://spoj.sphere.pl/users/rev">Revanth</a></td>
+<td>3.0 (12)</td>
+<td>0.9 (0)</td>
+<td style="text-align:right;">3.8&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>406</td>
+<td>PL</td>
+<td><a href="https://spoj.sphere.pl/users/sparhawk">Kamil Maraś</a></td>
+<td>2.8 (9)</td>
+<td>1.0 (0)</td>
+<td style="text-align:right;">3.8&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>406</td>
+<td>PL</td>
+<td><a href="https://spoj.sphere.pl/users/przemek">Przemysław Dzierżak</a></td>
+<td>3.8 (9)</td>
+<td>0.0 (0)</td>
+<td style="text-align:right;">3.8&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>406</td>
+<td>RU</td>
+<td><a href="https://spoj.sphere.pl/users/alexander">Yuriew Alexander</a></td>
+<td>3.7 (8)</td>
+<td>0.2 (0)</td>
+<td style="text-align:right;">3.8&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>406</td>
+<td>PE</td>
+<td><a href="https://spoj.sphere.pl/users/rici">Rici Lake</a></td>
+<td>3.8 (7)</td>
+<td>0.0 (0)</td>
+<td style="text-align:right;">3.8&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>413</td>
+<td>PL</td>
+<td><a href="https://spoj.sphere.pl/users/wielfilist">Filip Wielewski</a></td>
+<td>2.4 (7)</td>
+<td>1.4 (0)</td>
+<td style="text-align:right;">3.7&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>413</td>
+<td>JP</td>
+<td><a href="https://spoj.sphere.pl/users/natori">NATORI Shin</a></td>
+<td>3.1 (6)</td>
+<td>0.6 (0)</td>
+<td style="text-align:right;">3.7&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>413</td>
+<td>CN</td>
+<td><a href="https://spoj.sphere.pl/users/suzhan">Su Zhan</a></td>
+<td>3.7 (6)</td>
+<td>0.0 (0)</td>
+<td style="text-align:right;">3.7&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>413</td>
+<td>CN</td>
+<td><a href="https://spoj.sphere.pl/users/zhouyuan">Zhou Yuan</a></td>
+<td>3.7 (3)</td>
+<td>0.0 (0)</td>
+<td style="text-align:right;">3.7&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>417</td>
+<td>PL</td>
+<td><a href="https://spoj.sphere.pl/users/hitch">Paweł Gerwel</a></td>
+<td>3.4 (15)</td>
+<td>0.2 (0)</td>
+<td style="text-align:right;">3.6&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>417</td>
+<td>PL</td>
+<td><a href="https://spoj.sphere.pl/users/grow">Grzegorz Owsiany</a></td>
+<td>3.5 (13)</td>
+<td>0.1 (0)</td>
+<td style="text-align:right;">3.6&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>417</td>
+<td>US</td>
+<td><a href="https://spoj.sphere.pl/users/hexadecimal">Seth Hoffert</a></td>
+<td>3.6 (12)</td>
+<td>0.0 (0)</td>
+<td style="text-align:right;">3.6&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>417</td>
+<td>PL</td>
+<td><a href="https://spoj.sphere.pl/users/tomek11">Tomek Kulczyński</a></td>
+<td>3.6 (11)</td>
+<td>0.0 (0)</td>
+<td style="text-align:right;">3.6&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>417</td>
+<td>PL</td>
+<td><a href="https://spoj.sphere.pl/users/milosz">Miłosz Pacześny</a></td>
+<td>2.6 (10)</td>
+<td>1.0 (0)</td>
+<td style="text-align:right;">3.6&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>417</td>
+<td>PT</td>
+<td><a href="https://spoj.sphere.pl/users/raf">Rui Ferreira</a></td>
+<td>3.3 (9)</td>
+<td>0.2 (0)</td>
+<td style="text-align:right;">3.6&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>417</td>
+<td>HU</td>
+<td><a href="https://spoj.sphere.pl/users/abiczo">Andras Biczo</a></td>
+<td>3.0 (8)</td>
+<td>0.6 (0)</td>
+<td style="text-align:right;">3.6&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>417</td>
+<td>DE</td>
+<td><a href="https://spoj.sphere.pl/users/toxaris">Tillmann Rendel</a></td>
+<td>3.4 (8)</td>
+<td>0.2 (0)</td>
+<td style="text-align:right;">3.6&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>417</td>
+<td>VN</td>
+<td><a href="https://spoj.sphere.pl/users/sanphu">Knovski Cruczk</a></td>
+<td>3.6 (6)</td>
+<td>0.1 (0)</td>
+<td style="text-align:right;">3.6&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>417</td>
+<td>US</td>
+<td><a href="https://spoj.sphere.pl/users/fxr">fxr</a></td>
+<td>3.1 (5)</td>
+<td>0.5 (0)</td>
+<td style="text-align:right;">3.6&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>417</td>
+<td>PL</td>
+<td><a href="https://spoj.sphere.pl/users/karol">Karol Budzanowski</a></td>
+<td>2.7 (5)</td>
+<td>0.9 (0)</td>
+<td style="text-align:right;">3.6&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>417</td>
+<td>PL</td>
+<td><a href="https://spoj.sphere.pl/users/ionnjon">Krzysztof Bałka</a></td>
+<td>1.9 (4)</td>
+<td>1.7 (0)</td>
+<td style="text-align:right;">3.6&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>429</td>
+<td>PL</td>
+<td><a href="https://spoj.sphere.pl/users/takeshi">Artur Koniński</a></td>
+<td>3.4 (15)</td>
+<td>0.1 (0)</td>
+<td style="text-align:right;">3.5&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>429</td>
+<td>XX</td>
+<td><a href="https://spoj.sphere.pl/users/acwarrior">ACWarrior</a></td>
+<td>3.4 (14)</td>
+<td>0.1 (0)</td>
+<td style="text-align:right;">3.5&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>429</td>
+<td>BY</td>
+<td><a href="https://spoj.sphere.pl/users/ravent">Tihon Sergey</a></td>
+<td>3.4 (14)</td>
+<td>0.1 (0)</td>
+<td style="text-align:right;">3.5&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>429</td>
+<td>XX</td>
+<td><a href="https://spoj.sphere.pl/users/a1234567">1234567</a></td>
+<td>3.4 (13)</td>
+<td>0.1 (0)</td>
+<td style="text-align:right;">3.5&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>429</td>
+<td>ID</td>
+<td><a href="https://spoj.sphere.pl/users/timo">Timotius Sakti</a></td>
+<td>3.5 (13)</td>
+<td>0.0 (0)</td>
+<td style="text-align:right;">3.5&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>429</td>
+<td>QA</td>
+<td><a href="https://spoj.sphere.pl/users/author">Przemyslaw Sempruch</a></td>
+<td>3.2 (10)</td>
+<td>0.3 (0)</td>
+<td style="text-align:right;">3.5&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>429</td>
+<td>PL</td>
+<td><a href="https://spoj.sphere.pl/users/klechu">Wojciech Leja</a></td>
+<td>3.5 (9)</td>
+<td>0.0 (0)</td>
+<td style="text-align:right;">3.5&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>429</td>
+<td>PL</td>
+<td><a href="https://spoj.sphere.pl/users/szczenchu">Seweryn Szczęch</a></td>
+<td>2.3 (8)</td>
+<td>1.1 (0)</td>
+<td style="text-align:right;">3.5&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>429</td>
+<td>PL</td>
+<td><a href="https://spoj.sphere.pl/users/yuko">Michał Jurczyński</a></td>
+<td>2.6 (6)</td>
+<td>0.9 (0)</td>
+<td style="text-align:right;">3.5&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>429</td>
+<td>PL</td>
+<td><a href="https://spoj.sphere.pl/users/mand">Paweł Olchawa</a></td>
+<td>3.5 (6)</td>
+<td>0.0 (0)</td>
+<td style="text-align:right;">3.5&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>429</td>
+<td>VN</td>
+<td><a href="https://spoj.sphere.pl/users/buddha">Nguyen Cong Hiep</a></td>
+<td>3.0 (4)</td>
+<td>0.5 (0)</td>
+<td style="text-align:right;">3.5&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>429</td>
+<td>BG</td>
+<td><a href="https://spoj.sphere.pl/users/whitespace">whitespace</a></td>
+<td>0.1 (2)</td>
+<td>3.3 (1)</td>
+<td style="text-align:right;">3.5&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>441</td>
+<td>RU</td>
+<td><a href="https://spoj.sphere.pl/users/sc5">SC5</a></td>
+<td>3.3 (14)</td>
+<td>0.1 (0)</td>
+<td style="text-align:right;">3.4&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>441</td>
+<td>RU</td>
+<td><a href="https://spoj.sphere.pl/users/gribnick">gribnick</a></td>
+<td>3.2 (13)</td>
+<td>0.2 (0)</td>
+<td style="text-align:right;">3.4&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>441</td>
+<td>XX</td>
+<td><a href="https://spoj.sphere.pl/users/tree">Maciej Łaszcz</a></td>
+<td>3.2 (13)</td>
+<td>0.2 (0)</td>
+<td style="text-align:right;">3.4&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>441</td>
+<td>PL</td>
+<td><a href="https://spoj.sphere.pl/users/paganella">Kasia Ślósarczyk</a></td>
+<td>2.9 (11)</td>
+<td>0.5 (0)</td>
+<td style="text-align:right;">3.4&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>441</td>
+<td>VN</td>
+<td><a href="https://spoj.sphere.pl/users/phamtuanvu">pham tuan vu</a></td>
+<td>3.4 (7)</td>
+<td>0.0 (0)</td>
+<td style="text-align:right;">3.4&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>441</td>
+<td>SK</td>
+<td><a href="https://spoj.sphere.pl/users/misof">Miso Forisek</a></td>
+<td>3.0 (5)</td>
+<td>0.4 (0)</td>
+<td style="text-align:right;">3.4&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>441</td>
+<td>VN</td>
+<td><a href="https://spoj.sphere.pl/users/ntson">ngo thanh son</a></td>
+<td>3.4 (4)</td>
+<td>0.0 (0)</td>
+<td style="text-align:right;">3.4&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>441</td>
+<td>DE</td>
+<td><a href="https://spoj.sphere.pl/users/stefanpochmann">Stefan Pochmann</a></td>
+<td>3.4 (4)</td>
+<td>0.0 (0)</td>
+<td style="text-align:right;">3.4&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>449</td>
+<td>PL</td>
+<td><a href="https://spoj.sphere.pl/users/sebi29">Sebatsian Tworek</a></td>
+<td>3.3 (11)</td>
+<td>0.0 (0)</td>
+<td style="text-align:right;">3.3&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>449</td>
+<td>PL</td>
+<td><a href="https://spoj.sphere.pl/users/regis">Karol Kurach</a></td>
+<td>3.3 (10)</td>
+<td>0.1 (0)</td>
+<td style="text-align:right;">3.3&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>449</td>
+<td>RO</td>
+<td><a href="https://spoj.sphere.pl/users/cosmin">Cosmin</a></td>
+<td>3.3 (9)</td>
+<td>0.0 (0)</td>
+<td style="text-align:right;">3.3&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>449</td>
+<td>BR</td>
+<td><a href="https://spoj.sphere.pl/users/leonel">Leonel</a></td>
+<td>3.3 (9)</td>
+<td>0.0 (0)</td>
+<td style="text-align:right;">3.3&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>449</td>
+<td>PL</td>
+<td><a href="https://spoj.sphere.pl/users/habas">Paweł Habas</a></td>
+<td>3.3 (9)</td>
+<td>0.0 (0)</td>
+<td style="text-align:right;">3.3&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>449</td>
+<td>PL</td>
+<td><a href="https://spoj.sphere.pl/users/zachar">Jacek Zacharek</a></td>
+<td>2.4 (6)</td>
+<td>1.0 (0)</td>
+<td style="text-align:right;">3.3&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>449</td>
+<td>CN</td>
+<td><a href="https://spoj.sphere.pl/users/geniushjs">Huang Jinsong</a></td>
+<td>3.3 (5)</td>
+<td>0.0 (0)</td>
+<td style="text-align:right;">3.3&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>449</td>
+<td>VN</td>
+<td><a href="https://spoj.sphere.pl/users/ngo_minh_duc">Ngo Minh Duc</a></td>
+<td>0.3 (1)</td>
+<td>3.0 (1)</td>
+<td style="text-align:right;">3.3&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>457</td>
+<td>PL</td>
+<td><a href="https://spoj.sphere.pl/users/harcerz">Michał Głowacki</a></td>
+<td>2.8 (13)</td>
+<td>0.3 (0)</td>
+<td style="text-align:right;">3.2&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>457</td>
+<td>US</td>
+<td><a href="https://spoj.sphere.pl/users/sean">Sean</a></td>
+<td>2.2 (10)</td>
+<td>1.0 (0)</td>
+<td style="text-align:right;">3.2&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>457</td>
+<td>MX</td>
+<td><a href="https://spoj.sphere.pl/users/burgos">Rodrigo Burgos Dominguez</a></td>
+<td>3.2 (9)</td>
+<td>0.0 (0)</td>
+<td style="text-align:right;">3.2&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>457</td>
+<td>RU</td>
+<td><a href="https://spoj.sphere.pl/users/baltazar">Krayev Alexey</a></td>
+<td>3.2 (3)</td>
+<td>0.0 (0)</td>
+<td style="text-align:right;">3.2&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>461</td>
+<td>DE</td>
+<td><a href="https://spoj.sphere.pl/users/ah_wima">Andreas Helbrich</a></td>
+<td>3.1 (4)</td>
+<td>0.0 (0)</td>
+<td style="text-align:right;">3.1&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>461</td>
+<td>DE</td>
+<td><a href="https://spoj.sphere.pl/users/btrbao">Andreas Österle, Bertrand Tchoumkeu, Roland Bader</a></td>
+<td>3.1 (4)</td>
+<td>0.0 (0)</td>
+<td style="text-align:right;">3.1&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>461</td>
+<td>DE</td>
+<td><a href="https://spoj.sphere.pl/users/mfrommle">Markus Frommlet</a></td>
+<td>3.1 (4)</td>
+<td>0.0 (0)</td>
+<td style="text-align:right;">3.1&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>461</td>
+<td>CN</td>
+<td><a href="https://spoj.sphere.pl/users/runerror">RunError</a></td>
+<td>3.1 (2)</td>
+<td>0.0 (0)</td>
+<td style="text-align:right;">3.1&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>465</td>
+<td>CN</td>
+<td><a href="https://spoj.sphere.pl/users/death_boy">Liu Alfrad</a></td>
+<td>3.0 (12)</td>
+<td>0.0 (0)</td>
+<td style="text-align:right;">3.0&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>465</td>
+<td>PL</td>
+<td><a href="https://spoj.sphere.pl/users/movax">Witold Baryluk</a></td>
+<td>2.9 (12)</td>
+<td>0.1 (0)</td>
+<td style="text-align:right;">3.0&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>465</td>
+<td>PL</td>
+<td><a href="https://spoj.sphere.pl/users/weds">Paweł Pająk</a></td>
+<td>2.8 (10)</td>
+<td>0.2 (0)</td>
+<td style="text-align:right;">3.0&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>465</td>
+<td>PL</td>
+<td><a href="https://spoj.sphere.pl/users/mkaziu">mkaziu</a></td>
+<td>3.0 (9)</td>
+<td>0.0 (0)</td>
+<td style="text-align:right;">3.0&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>465</td>
+<td>IR</td>
+<td><a href="https://spoj.sphere.pl/users/amir">Amir</a></td>
+<td>3.0 (7)</td>
+<td>0.0 (0)</td>
+<td style="text-align:right;">3.0&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>465</td>
+<td>DE</td>
+<td><a href="https://spoj.sphere.pl/users/ks6">Klaus Scheufele</a></td>
+<td>3.0 (4)</td>
+<td>0.0 (0)</td>
+<td style="text-align:right;">3.0&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>465</td>
+<td>PL</td>
+<td><a href="https://spoj.sphere.pl/users/raven">Piotr Wisniewski</a></td>
+<td>2.1 (4)</td>
+<td>1.0 (0)</td>
+<td style="text-align:right;">3.0&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>465</td>
+<td>TW</td>
+<td><a href="https://spoj.sphere.pl/users/autrijus">Autrijus Tang</a></td>
+<td>0.0 (0)</td>
+<td>3.0 (1)</td>
+<td style="text-align:right;">3.0&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>465</td>
+<td>CN</td>
+<td><a href="https://spoj.sphere.pl/users/xreborner">xreborner</a></td>
+<td>0.0 (0)</td>
+<td>3.0 (1)</td>
+<td style="text-align:right;">3.0&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>474</td>
+<td>RU</td>
+<td><a href="https://spoj.sphere.pl/users/alexey">Chernih Alexey Vladimirovitch</a></td>
+<td>2.8 (13)</td>
+<td>0.1 (0)</td>
+<td style="text-align:right;">2.9&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>474</td>
+<td>VN</td>
+<td><a href="https://spoj.sphere.pl/users/longdt">duong thanh long</a></td>
+<td>2.9 (12)</td>
+<td>0.0 (0)</td>
+<td style="text-align:right;">2.9&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>474</td>
+<td>US</td>
+<td><a href="https://spoj.sphere.pl/users/nuleren">Dustin White</a></td>
+<td>2.9 (12)</td>
+<td>0.0 (0)</td>
+<td style="text-align:right;">2.9&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>474</td>
+<td>CH</td>
+<td><a href="https://spoj.sphere.pl/users/derungs">Jörg Derungs</a></td>
+<td>2.9 (10)</td>
+<td>0.0 (0)</td>
+<td style="text-align:right;">2.9&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>474</td>
+<td>DE</td>
+<td><a href="https://spoj.sphere.pl/users/mirjam">mirjam</a></td>
+<td>2.9 (10)</td>
+<td>0.0 (0)</td>
+<td style="text-align:right;">2.9&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>474</td>
+<td>PL</td>
+<td><a href="https://spoj.sphere.pl/users/pzielinski">Piotr Zieliński</a></td>
+<td>2.7 (10)</td>
+<td>0.1 (0)</td>
+<td style="text-align:right;">2.9&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>474</td>
+<td>RU</td>
+<td><a href="https://spoj.sphere.pl/users/agh">agh</a></td>
+<td>2.8 (9)</td>
+<td>0.1 (0)</td>
+<td style="text-align:right;">2.9&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>474</td>
+<td>CN</td>
+<td><a href="https://spoj.sphere.pl/users/caoshiqi">caoshiqi</a></td>
+<td>2.9 (9)</td>
+<td>0.0 (0)</td>
+<td style="text-align:right;">2.9&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>474</td>
+<td>VN</td>
+<td><a href="https://spoj.sphere.pl/users/mastervivi">Nguyen Manh Quoc Anh</a></td>
+<td>2.7 (9)</td>
+<td>0.2 (0)</td>
+<td style="text-align:right;">2.9&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>474</td>
+<td>US</td>
+<td><a href="https://spoj.sphere.pl/users/sbeattie">Steve Beattie</a></td>
+<td>2.4 (9)</td>
+<td>0.5 (0)</td>
+<td style="text-align:right;">2.9&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>474</td>
+<td>CN</td>
+<td><a href="https://spoj.sphere.pl/users/phoenixinter">Hao Hu</a></td>
+<td>2.9 (8)</td>
+<td>0.0 (0)</td>
+<td style="text-align:right;">2.9&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>474</td>
+<td>AU</td>
+<td><a href="https://spoj.sphere.pl/users/endy">Krystian Matusiewicz</a></td>
+<td>2.9 (8)</td>
+<td>0.0 (0)</td>
+<td style="text-align:right;">2.9&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>474</td>
+<td>HR</td>
+<td><a href="https://spoj.sphere.pl/users/zuza">Goran Zuzic</a></td>
+<td>2.9 (7)</td>
+<td>0.0 (0)</td>
+<td style="text-align:right;">2.9&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>474</td>
+<td>XX</td>
+<td><a href="https://spoj.sphere.pl/users/mas01">cbr</a></td>
+<td>2.9 (6)</td>
+<td>0.0 (0)</td>
+<td style="text-align:right;">2.9&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>474</td>
+<td>VN</td>
+<td><a href="https://spoj.sphere.pl/users/tt3346">Cao Thanh Tung</a></td>
+<td>0.9 (1)</td>
+<td>2.0 (0)</td>
+<td style="text-align:right;">2.9&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>474</td>
+<td>RU</td>
+<td><a href="https://spoj.sphere.pl/users/podtelkin">Fedor Podtelkin</a></td>
+<td>1.2 (1)</td>
+<td>1.7 (0)</td>
+<td style="text-align:right;">2.9&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>490</td>
+<td>US</td>
+<td><a href="https://spoj.sphere.pl/users/dplass">David Plass</a></td>
+<td>2.6 (11)</td>
+<td>0.1 (0)</td>
+<td style="text-align:right;">2.8&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>490</td>
+<td>CU</td>
+<td><a href="https://spoj.sphere.pl/users/shadowmaster">Ismay Pérez Sánchez</a></td>
+<td>2.3 (10)</td>
+<td>0.4 (0)</td>
+<td style="text-align:right;">2.8&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>490</td>
+<td>PL</td>
+<td><a href="https://spoj.sphere.pl/users/vermin">Rafał Bryk</a></td>
+<td>2.8 (10)</td>
+<td>0.0 (0)</td>
+<td style="text-align:right;">2.8&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>490</td>
+<td>ID</td>
+<td><a href="https://spoj.sphere.pl/users/titid">titid gede</a></td>
+<td>2.7 (10)</td>
+<td>0.1 (0)</td>
+<td style="text-align:right;">2.8&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>490</td>
+<td>PL</td>
+<td><a href="https://spoj.sphere.pl/users/nordom">Jerzy Kozera</a></td>
+<td>2.8 (8)</td>
+<td>0.0 (0)</td>
+<td style="text-align:right;">2.8&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>490</td>
+<td>CN</td>
+<td><a href="https://spoj.sphere.pl/users/savior">Shi Chen</a></td>
+<td>2.5 (7)</td>
+<td>0.3 (0)</td>
+<td style="text-align:right;">2.8&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>490</td>
+<td>ES</td>
+<td><a href="https://spoj.sphere.pl/users/informatimago">Pascal Bourguignon</a></td>
+<td>2.8 (6)</td>
+<td>0.0 (0)</td>
+<td style="text-align:right;">2.8&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>490</td>
+<td>PL</td>
+<td><a href="https://spoj.sphere.pl/users/badziewiak">badziewiak</a></td>
+<td>2.7 (4)</td>
+<td>0.1 (0)</td>
+<td style="text-align:right;">2.8&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>498</td>
+<td>US</td>
+<td><a href="https://spoj.sphere.pl/users/dmleach">Dave Leach</a></td>
+<td>2.6 (12)</td>
+<td>0.1 (0)</td>
+<td style="text-align:right;">2.7&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>498</td>
+<td>PL</td>
+<td><a href="https://spoj.sphere.pl/users/dreamsleep">Tomasz Kasprzak</a></td>
+<td>2.4 (11)</td>
+<td>0.3 (0)</td>
+<td style="text-align:right;">2.7&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr class="row">
+<td>498</td>
+<td>BR</td>
+<td><a href="https://spoj.sphere.pl/users/jpfarias">Joao Paulo Fernandes Farias</a></td>
+<td>2.3 (10)</td>
+<td>0.4 (0)</td>
+<td style="text-align:right;">2.7&nbsp;&nbsp;&nbsp;</td>
+</tr>
+</table>
+<div align="justify">
+<p>
+These are the official SPOJ standings. <i>Please note that the formulae used for 
+calculating the scores are currently evolving.</i> At present points are awarded to each user as follows:
+<ul>
+<li>for solving classical problem <i>p</i>: 80/(40+<i>number_of_people_who_have_solved</i> <i>p</i>) points
+<li>for a top score in any challenge: 3 points,
+<li>for any lower score in a challenge: (<i>user's_score relative_to_the top_score</i>) points.
+</ul>
+<p>
+Numbers given in brackets beside the scores correspond to the number of solved classical problems
+and the number of challenges for which the user's best score is also the top score, respectively.
+<p>
+All feedback concerning the methods used for generating statistics is most welcome. Please post remarks in the forum, or mail them directly to our contact address.
+</div></td>
+</tr>
+
+<tr>
+<td colspan="2" class="footer">
+
+<script language="javascript" type="text/javascript">
+<!--
+function swapSheet(sheet, caller) {
+    document.getElementById('theme').href=sheet;
+    document.cookie="css_0="+sheet+"; path=/;";
+    caller.href="#bottom";
+}
+
+function setWidth(w, caller) {
+    document.getElementById('maintable').style.width=w;
+    document.cookie="res="+w+"; path=/;";
+    caller.href="#bottom";
+}
+//-->
+
+</script>
+        <table width="100%">
+    <tr>
+	<td align="left">
+            <a href="http://www.pg.gda.pl/eng.html"><IMG src="https://spoj.sphere.pl/gfx/logo-pg" alt="www.pg.gda.pl" border=0 height=36 width=44></a>&nbsp;
+            <a href="http://www.eti.pg.gda.pl/"><IMG src="https://spoj.sphere.pl/gfx/logo-eti" alt="www.eti.pg.gda.pl" border=0 height=36 width=44></a>
+	</td>
+	<td align="center">
+	    page size:
+	    <a href="https://spoj.sphere.pl/?res=755"  onClick="setWidth('755', this)">800x600</a>
+	    <a href="https://spoj.sphere.pl/?res=980"  onClick="setWidth('980', this)">1024x768</a>
+	    <a href="https://spoj.sphere.pl/?res=100%" onClick="setWidth('100%', this)">Full</a>
+	    &nbsp;&nbsp;
+	    theme:
+	    <a href="../../indexb6a4.html?css=/themes/skin1.css" onClick="swapSheet('../../themes/skin1.css', this)">olive</a>
+	    <a href="../../index3840.html?css=/themes/skin2.css" onClick="swapSheet('../../themes/skin2.css', this)">banana</a>
+	    <a href="../../index80f0.html?css=/themes/skin3.css" onClick="swapSheet('../../themes/skin3.css', this)">plum</a>
+	    <br>
+	    <a href="http://sphere.pl/?id=66">spoj team at sphere</a> &copy; 2004-05 all rights reserved
+	</td>
+	<td align="right">
+            <a href="http://task.gda.pl/english/"><IMG src="https://spoj.sphere.pl/gfx/logo-task" alt="task.gda.pl" border=0 height=36 width=44></a>&nbsp;
+            <a href="http://sphere.pl/"><IMG src="https://spoj.sphere.pl/gfx/logo-sphere" alt="sphere.pl" border=0 height=32></a>
+	</td>
+    </tr>
+    </table>
+    </tr></table>
+</center>
+</body>
+
+<!-- Mirrored from spoj.sphere.pl/ranks/users/start=400 by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 10 Jan 2006 05:13:34 GMT -->
+</html>

@@ -1,0 +1,168 @@
+// CORRECT
+
+#include <vector>
+#include <list>
+#include <map>
+#include <set>
+#include <deque>
+#include <stack>
+#include <bitset>
+#include <algorithm>
+#include <functional>
+#include <numeric>
+#include <utility>
+#include <sstream>
+#include <iostream>
+#include <iomanip>
+#include <cstdio>
+#include <cmath>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+class TinSoldiers {
+public:
+	int lineUps(vector <int>);
+};
+
+
+int getPal(vector<int> r)
+{
+	int n = r.size();
+	int sum = 0;
+	for (int i = 0; i < n; i++)
+	{
+		sum += r[i];
+	}
+	if (sum <= 1)
+		return 1;
+	int c = 0;
+	for (int i = 0; i < n; i++)
+	{
+		if (r[i] >= 2)
+		{
+			r[i] -= 2;
+			c += getPal(r);
+			r[i] += 2;
+		}
+	}
+	
+	return c;
+}
+
+int TinSoldiers::lineUps(vector <int> r)
+{
+	int n = r.size();
+	typedef long long LL;
+	
+	// this could be up to 25! = 15511210043330985984000000LL, can LL hold that big?
+	// aha passes systests because {5,5,5,5,5} is never given as an input because result is > 2^31-1
+	int total = 0;
+ 	for (int i = 0; i < n; i++)  
+	{			     
+		total += r[i];		
+	}
+	LL top = 1;
+	for (int i = 1; i <= total; i++)
+	{
+		top *= i;
+	}
+	for (int i = 0; i < n; i++)
+	{
+		int f = 1;
+		for (int j = 1; j <= r[i]; j++)
+		{
+			f *= j;
+		}
+		top /= f;
+	}
+	
+	int pal = getPal(r);
+	return pal+(top-pal)/2;
+}
+
+
+Problem Statement
+    
+Little Gretchen is making tin soldiers stand at attention in a single line. She is an egalitarian general, freely mixing soldiers of different ranks. For example, if she had two lieutenants, two sergeants, and one private, she could line them up in the following 16 ways.
+
+    llpss
+    llsps
+    llssp
+    lplss
+    lpsls
+    lslps
+    lslsp
+    lspls
+    lspsl
+    lsslp
+    lsspl
+    pllss
+    sllps
+    sllsp
+    slpls
+    slslp
+Before you object that the list is incomplete, you should know that Gretchen considers mirror images to be equivalent. For example, since "sspll" is the same as "llpss" from back to front, she counts them as one.
+You are given a vector <int> containing the number of soldiers of each rank. Return an int stating the number of ways they can be lined up, ignoring reflections.
+Definition
+    
+Class:
+TinSoldiers
+Method:
+lineUps
+Parameters:
+vector <int>
+Returns:
+int
+Method signature:
+int lineUps(vector <int> rankCounts)
+(be sure your method is public)
+    
+
+Constraints
+-
+rankCounts contains between 1 and 5 elements, inclusive
+-
+each element of rankCounts is between 1 and 5, inclusive
+-
+there are fewer than 2^31 ways for Gretchen to line up the soldiers
+Examples
+0)
+
+    
+{2, 2, 1}
+Returns: 16
+This case is illustrated above.
+1)
+
+    
+{2, 2, 2}
+Returns: 48
+One more private makes for many more line-ups.
+2)
+
+    
+{5}
+Returns: 1
+There is only one way to line up five soldiers of the same rank.
+3)
+
+    
+{5, 1}
+Returns: 3
+Look out for reflections!
+4)
+
+    
+{4, 5}
+Returns: 66
+Here we have four soldiers of one rank, and five soldiers of another.
+5)
+
+    
+{4, 2, 2, 5, 4}
+Returns: 643245120
+In this case, Gretchen can spend months and years lining up her soldiers.
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.
+

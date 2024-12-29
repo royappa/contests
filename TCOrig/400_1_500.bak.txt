@@ -1,0 +1,89 @@
+#include <vector>
+#include <list>
+#include <map>
+#include <set>
+#include <deque>
+#include <stack>
+#include <bitset>
+#include <algorithm>
+#include <functional>
+#include <numeric>
+#include <utility>
+#include <sstream>
+#include <iostream>
+#include <iomanip>
+#include <cstdio>
+#include <cmath>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+class ReversalChain {
+public:
+#define MAX (1<<30)
+
+string goal;
+
+
+#define dump(x, s, rev,r) cout << x << " " << s << " " << goal.substr(p,q-p+1) << " " << rev << " = " << r << endl;
+
+int f(string sub, string goal, int rev) // min reverse chain of sub given that it has already been subject to REV reversions
+{
+	int& r = memo[p][q][rev];
+	if (r != -1)
+	{
+		dump(1, p, q, rev, r);
+		return r;
+	}
+		
+	string isub = init.substr(p, q-p+1);
+	if (rev)
+		reverse(isub.begin(), isub.end());
+		
+	if (p == q)
+	{
+		r = i[p] != goal[p] ? MAX : 0;
+		dump(2, p, q, rev, r);
+		return r;
+	}
+	if (irev.substr(p,q-p+1) == goal.substr(p,q-p+1))
+	{
+		r = 0;
+		dump(3, p, q, rev, r);
+		return r;
+	}
+	r = MAX;
+	for (int i = p; i <= q; i++)
+	{
+		string ileft = irev.substr(p, max((i-1)-p+1,0));
+		string gleft = goal.substr(p, max((i-1)-p+1,0));
+		if (ileft != gleft) continue;
+		for (int j = i; j <= q; j++)
+		{
+			if (i == p && j == q) continue;
+			string iright = irev.substr(j+1, max(q-(j+1)+1,0));
+			string gright = goal.substr(j+1, max(q-(j+1)+1,0));
+			if (iright != gright) continue;
+			r <?= 1+f(i, j, (rev+1)%2);
+		}
+	}
+	if (rev == 0)
+	{
+		r <?= 1+f(p, q, 1);
+	}
+	dump(4, p, q, rev, r);
+	return r;
+}
+
+int minReversal(string init_, string goal_) 
+{
+	goal = goal_;
+	
+	int r = f(init, 0);
+	return r >= MAX ? -1 : r;
+}
+};
+
+
+//Powered by [KawigiEdit]

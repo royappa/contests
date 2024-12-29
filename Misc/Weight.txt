@@ -1,0 +1,123 @@
+
+Problem Statement
+    
+There is a famous puzzle in which you try to determine which of twelve coins is counterfeit. You know that the counterfeit coin is slightly heavier or lighter than the eleven good coins, and your only tool is a balance scale that can tell which of two stacks of coins is heavier, or if they are the same weight. In the famous puzzle, you must discover which coin is counterfeit and whether it is heavier or lighter than the good coins, using no more than three weighings.
+
+In this problem, you are given N coins. As in the puzzle, exactly one of the coins is counterfeit, and it is slightly heavier or lighter than the other coins, which are all the same weight. Using a balance scale, you want to determine which coin is counterfeit and whether it is heavier or lighter than the good coins, using the minimum number of weighings. It is possible that your weighing strategy will use different numbers of weighings in different cases. You want to minimize the maximum number of weighings required by your strategy. For example, a strategy that always takes four weighings is preferable to a strategy that usually takes three weighings but occasionally takes five weighings.
+
+You have already made several weighings, and now you need to determine which coins to weigh next. The individual coins are labeled with uppercase letters beginning with 'A'. For example, if N is 5, then the coins are labeled 'A', 'B', 'C', 'D', and 'E'. You will be given two String[]'s, left and right, where element k of left identifies which coins were on the left side of the scale during weighing k, and element k of right identifies which coins were on the right side of the scale during weighing k. (Note that the weighings are numbered from 0.) 
+
+You will also be given a String result, where character k of result describes the result of weighing k. The character 'L' means that the left stack was heavier, the character 'R' means that the right stack was heavier, and the character 'E' means that the two stacks were the same weight. For example, in the following scenario,
+   N      = 12
+   left   = { "ABCD", "ABC" }
+   right  = { "EFGH", "IJK" }
+   result = { "EL" }
+coins A, B, C, and D were compared to E, F, G, and H in weighing 0, and the two stacks were the same weight. In weighing 1, coins A, B, and C were compared to I, J, and K, and the left stack (A, B, and C) was heavier.
+
+Your task is to decide which coins to weigh next. You want to choose the coins that minimize the maximum number of weighings needed from this point forward, assuming all subsequent weighings (if any) will be chosen optimally. For example, suppose you are trying to decide between two arrangements for the next weighing. Arrangement 1 will require one subsequent weighing regardless of the result of the current weighing. Arrangement 2 will require no subsequent weighings if the result of the current weighing is 'L' or 'R', but will require two subsequent weighings if the result of the current weighing is 'E'. Then you would choose arrangement 1.
+
+You will return the coins as a String of the form "<left>-<right>" where <left> is the coins in the left stack and <right> is the coins in the right stack. The coins in each stack should always be listed in alphabetical order. For example, if you wanted to compare the coins A and B to the coins C and D, you would return "AB-CD". If two different configurations of coins achieve the same maximum number of weighings, prefer the one that uses the fewest coins. For example "AB-CD" would be preferred over "ABC-DEF". If there is still a tie, prefer the configuration that comes first alphabetically.
+
+If the previous weighings are sufficient to determine which coin is counterfeit and whether it is heavier or lighter than the good coins, return the empty string (""). If the results of the previous weighings are mutually inconsistent or otherwise incompatible with the hypothesis that exactly one of the coins is counterfeit, return "error".
+Definition
+    
+Class:
+CounterfeitCoin
+Method:
+nextWeighing
+Parameters:
+int, String[], String[], String
+Returns:
+String
+Method signature:
+String nextWeighing(int N, String[] left, String[] right, String result)
+(be sure your method is public)
+    
+
+Constraints
+-
+N is between 3 and 26, inclusive.
+-
+left contains between 0 and 5 elements, inclusive.
+-
+right contains the same number of elements as left.
+-
+result contains the same number of characters as elements in left.
+-
+Each element of left contains between 1 and 13 characters, inclusive.
+-
+Element k of left contains the same number of characters as element k of right.
+-
+Every character in left and right is between 'A' and the N-th uppercase letter, inclusive.
+-
+The characters in each element of left and right occur in alphabetical order, with no repeats.
+-
+Element k of left shares no characters in common with element k of right.
+-
+result contains only the characters 'L', 'R', and 'E'.
+Examples
+0)
+
+    
+12
+{}
+{}
+""
+Returns: "ABCD-EFGH"
+In the famous problem, the first weighing should weigh the first four coins against the next four coins.
+1)
+
+    
+12
+{ "ABCD", "ABC" }
+{ "EFGH", "IJK" }
+"EL"
+Returns: "I-J"
+The example above.
+After the first weighing, we know that coins A, B, and C are not counterfeit. Therefore, after the second weighing, the counterfeit coin must be one of I, J, or K, and furthermore, the counterfeit coin must be lighter than the good coins. Next, we should weigh coin I against coin J. If one of them is lighter than the other, then the lighter one is counterfeit. If I and J weigh the same, then the counterfeit is coin K.
+2)
+
+    
+12
+{ "ABCD", "ABC", "I" }
+{ "EFGH", "IJK", "J" }
+"ELR"
+Returns: ""
+I is the counterfeit coin, and it is light.
+3)
+
+    
+6
+{ "AB", "EF" }
+{ "CD", "AC" }
+"EE"
+Returns: "error"
+The coins appear to all be the same weight. Or perhaps several of the coins are counterfeit. Either way, it's an error.
+4)
+
+    
+7
+{ "ACE" }
+{ "BDF" }
+"E"
+Returns: "A-G"
+The first weighing rules out coins A-F, so the counterfeit coin must be G. However, we do not yet know if it is heavy or light, so we need one more weighing to determine that.
+5)
+
+    
+20
+{ "ACDJMNOQ", "CD", "G", "ABC", "R"}
+{ "BFIKLPST", "AK", "H", "FIK", "G"}
+"LEEEE"
+Returns: "JLM-NOP"
+
+6)
+
+    
+26
+{}
+{}
+""
+Returns: "ABCDEFG-HIJKLMN"
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

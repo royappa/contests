@@ -1,0 +1,152 @@
+#define XNS "NO SOLUTION"
+#define XMS "MULTIPLE SOLUTIONS"
+
+vector<int> F;
+int L, n;
+
+string tos(vector<int> t)
+{
+	string x = "";
+	for (int i = 0; i < t.size(); i++)
+	{
+		char buf[100];
+		sprintf(buf, "%d", t[i]);
+		if (i > 0)
+		{
+			x += " ";
+		}
+		x += buf;
+	}
+	return x;
+}		
+		
+string f(int k, vector<int> cur)
+{
+	if (k == n)
+	{
+		return tos(cur);
+	}
+	
+	int m = F[k];
+	string s1, s2;
+	int last = k == 0 ? -1 : cur[k];
+	vector<int> tmp;
+	if (m > last)
+	{
+		tmp = cur;
+		tmp.push_back(m);
+		s1 = f(k+1, tmp);
+	}
+	if (L-m > last)
+	{
+		tmp = cur;
+		tmp.push_back(L-m);
+		s2 = f(k+1, tmp);
+	}
+	if (s1 != XNS && s1 != XMS && s2 != XNS && s2 != XMS)
+	{
+		return XMS;
+	}
+	if (s1 != XNS && s1 != XMS)
+	{
+		return s1;
+	}
+	return s2;
+}
+	
+string determineOrientation(int length, vector <int> F_) 
+{
+	F = F_;
+	L = length;
+	n = F.size();
+	vector<int> t;
+	
+	return f(0, t);	
+	
+}
+Problem Statement
+    
+In one big country there is a saying that "we've got only two troubles: roads and fools". This problem is about both of them.
+
+Two cities of this country are connected by a highway. Some points on the highway are marked with milestones. On the two sides of each milestone the distances to the two cities are written. When you travel from one city to another, the milestones show the distance traveled from the origin city. If the milestones are placed correctly, the numbers you see while traveling must go in ascending order since the distance you've traveled is always increasing.
+
+During the reconstruction of the highway, some of the milestones were stolen, some were broken and some... just disappeared. On top of it all a group of bandits with unexplained motives set out to the highway one night and reversed some of the milestones.
+
+Given the state of the remaining milestones after the act, determine if it is possible to restore the correct orientations. You are given an int length, the length of the highway, and a vector <int> frontSides. Each element of frontSides is the mark on the front side of the milestone in the order they are seen traveling from the first city to the second. The mark on the opposite side of milestone i is obviously length-F[i].
+
+Return a string containing the restored sequence of milestones separated by single spaces (again, as seen traveling from the first city to the second). 
+
+If there is more than one solution, return "MULTIPLE SOLUTIONS". 
+
+If no solution exists (you can never tell what else could have happend to the milestones in that big country...), return "NO SOLUTION".
+
+Two solutions are considered equal if you see the same numbers on all milestones when traveling between the cities (see examples 4 and 5 for further 
+
+clarification).
+Definition
+    
+Class:
+RoadsAndFools
+Method:
+determineOrientation
+Parameters:
+int, vector <int>
+Returns:
+string
+Method signature:
+string determineOrientation(int length, vector <int> frontSides)
+(be sure your method is public)
+    
+
+Constraints
+-
+length will be between 1 and 1000, inclusive.
+-
+frontSides will contain between 1 and 50 elements, inclusive.
+-
+each element of frontSides will be between 0 and length, inclusive.
+Examples
+0)
+
+    
+5
+{1, 2, 3}
+Returns: "1 2 3"
+The first milestone has the numbers 1 and 4 on it. The second and third both have the numbers 2 and 3 on their two sides. "1 2 3" is the only correct orientation.
+1)
+
+    
+5
+{5, 2, 0}
+Returns: "MULTIPLE SOLUTIONS"
+There are two correct orientations: {0, 2, 5} and {0, 3, 5}.
+2)
+
+    
+5
+{4, 4}
+Returns: "1 4"
+
+3)
+
+    
+5
+{4, 4, 4}
+Returns: "NO SOLUTION"
+
+4)
+
+    
+5
+{3}
+Returns: "MULTIPLE SOLUTIONS"
+Both {2} and {3} are correct orientations.
+5)
+
+    
+10
+{5}
+Returns: "5"
+Both sides of the milestone contain the number 5, so the solution is unique.
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

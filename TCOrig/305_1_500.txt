@@ -1,0 +1,164 @@
+// CORRECT (done after SRM ..:-( )
+
+int n, m;
+string s, t;
+
+int f[52][52][52][52];
+
+int longestPal(string s_, string t_) 
+{
+	s = s_;
+	t = t_;
+	n = s.size();
+	m = t.size();
+	
+	if (n+m == 0)
+		return 0;
+		
+	memset(f, 0, sizeof(f));
+				
+	for (int ilen = 0; ilen <= n; ilen++)
+	{
+		for (int jlen = 0; jlen <= m; jlen++)
+		{
+			for (int i = 0; i+ilen <= n; i++)
+			{
+				for (int j = 0; j+jlen <= m; j++)
+				{
+					int& r = f[i][ilen][j][jlen];
+					if (ilen+jlen == 0)
+					{
+						r = 1;
+					}
+					else if (ilen+jlen == 1)
+					{
+						r = 1;
+					}
+					else if (ilen == 0)
+					{
+						r = (t[j] == t[j+jlen-1]) && f[i][ilen][j+1][jlen-2];
+					}
+					else if (jlen == 0)
+					{
+						r = (s[i] == s[i+ilen-1]) && f[i+1][ilen-2][j][jlen];
+					}
+					else if (ilen == 1 && jlen == 1)
+					{
+						r = (s[i] == t[j]);
+					}
+					else if (ilen == 1)
+					{
+						int x = (s[i] == t[j+jlen-1]) && f[i][ilen-1][j][jlen-1];
+						int y = (t[j] == s[i]) && f[i][ilen-1][j+1][jlen-1];
+						int z = (t[j] == t[j+jlen-1]) && f[i][ilen][j+1][jlen-2];
+						r = x || y || z;
+					}
+					else if (jlen == 1)
+					{
+						int x = (t[j] == s[i+ilen-1]) && f[i][ilen-1][j][jlen-1];
+						int y = (s[i] == t[j]) && f[i+1][ilen-1][j][jlen-1];
+						int z = (s[i] == s[i+ilen-1]) && f[i+1][ilen-2][j][jlen];
+						r = x || y || z;
+					}
+					else
+					{
+						int x = (s[i] == s[i+ilen-1]) && f[i+1][ilen-2][j][jlen];
+						int y = (s[i] == t[j+jlen-1]) && f[i+1][ilen-1][j][jlen-1];
+						int z = (t[j] == s[i+ilen-1]) && f[i][ilen-1][j+1][jlen-1];
+						int w = (t[j] == t[j+jlen-1]) && f[i][ilen][j+1][jlen-2];
+						r = x || y || z || w;
+					}
+					//printf("f[%d][%d][%d][%d] = %d\n", i, ilen, j, jlen, r);
+				}
+			}
+		}
+	}
+	// now find the longest palindrome
+	
+	int mx = 0;
+	for (int i = 0; i < n+1; i++)		// the n+1 is to handle cases where n,m=0 (won't hurt)
+	{
+		for (int j = 0; j < m+1; j++)
+		{
+			for (int ilen = 0; ilen <= n; ilen++)
+			{
+				for (int jlen = 0; jlen <= m; jlen++)
+				{
+					if (f[i][ilen][j][jlen])
+					{
+						mx = max(mx, ilen+jlen);
+					}
+				}
+			}
+		}
+	}
+	
+	return mx;	
+}
+
+Problem Statement
+    
+A palindrome is a sequence of letters that reads the same forwards and backwards, such as "MOM". Given two strings, s and t, you are to find the length of the longest palindrome that is a contiguous substring of some interleaving of s and t. For example, the strings "AA" and "BB" can be interleaved in six ways:
+   AABB    BBAA
+   ABAB    BABA
+   ABBA    BAAB
+Of these, the top two contain palindromes of length 2 ("AA" and "BB"), the middle two contain palindromes of length 3 ("ABA" and "BAB"), and the bottom two contain palindromes of length 4 ("ABBA" and "BAAB"), so the answer would be 4.
+Definition
+    
+Class:
+InterleavePal
+Method:
+longestPal
+Parameters:
+string, string
+Returns:
+int
+Method signature:
+int longestPal(string s, string t)
+(be sure your method is public)
+    
+
+Notes
+-
+To interleave two strings, you intersperse their characters. For example, "ABCDE" is one way to interleave the strings "ACE" and "BD". However, the characters need not strictly alternate between the two strings. For example, "BACED" and "ACBDE" are also ways to interleave the strings "ACE" and "BD". Notice that the characters from the original strings maintain their order with respect to other characters from the same string (e.g., the 'B' always comes before the 'D' in the above examples).
+-
+Interleaving any string with the empty string yields the original string.
+Constraints
+-
+s will contain between 0 and 50 characters, inclusive.
+-
+t will contain between 0 and 50 characters, inclusive.
+-
+Every character in s will be an uppercase letter ('A'-'Z').
+-
+Every character in t will be an uppercase letter ('A'-'Z').
+Examples
+0)
+
+    
+"AA"
+"BB"
+Returns: 4
+The example above.
+1)
+
+    
+""
+"JAVA"
+Returns: 3
+The longest palindrome is "AVA".
+2)
+
+    
+""
+""
+Returns: 0
+The empty string is a palindrome of length 0.
+3)
+
+    
+"ONCEUPONATIMETHEREWASAYOUNGPROGRAMMERWHOLEARNED"
+"TOPROGRAMJOINEDTOPCODERANDEVENTUALLYBECAMERED"
+Returns: 9
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

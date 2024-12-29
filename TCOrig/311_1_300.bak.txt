@@ -1,0 +1,180 @@
+#include <vector>
+#include <list>
+#include <map>
+#include <set>
+#include <deque>
+#include <stack>
+#include <bitset>
+#include <algorithm>
+#include <functional>
+#include <numeric>
+#include <utility>
+#include <sstream>
+#include <iostream>
+#include <iomanip>
+#include <cstdio>
+#include <cmath>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+class MatrixTransforming {
+public:
+int minPushes(vector <string> a, vector <string> b) 
+{
+	int m = a.size(), n = a[0].size();
+	
+	int count = 0;
+	
+	// perform all flips that MUST be done, in sequence.., starting with a[0][0], which uniquely determines a[0][1] etc.
+	// thanks to MISOF for the explanation...
+	for (int r = 0; r < m; r++)
+	{
+		for (int c = 0; c < n; c++)
+		{
+			if (r+2 >= m || c+2 >= n)
+				continue;
+			if (a[r][c] != b[r][c])
+			{
+				count++;
+				for (int i = 0; i < 3; i++)
+				{
+					for (int j = 0; j < 3; j++)
+					{
+						int dr = r+i, dc = c+j;
+						a[dr][dc] = char('0'+!(a[dr][dc]-'0'));
+					}
+				}
+			}
+		}
+	}
+	return a == b ? count : -1;
+}
+};
+
+
+//Powered by [KawigiEdit]
+						
+					
+	
+}
+
+
+000000000
+000000000
+000000000
+0000x0000
+000000000
+000000000
+Problem Statement
+    
+Given two matrices a and b, both composed of zeroes and ones, return the minimal number of operations necessary to transform matrix a into matrix b. An operation consists of flipping (one becomes zero and zero becomes one) all elements of some contiguous 3 x 3 submatrix. If a cannot be transformed into b, return -1.
+Definition
+    
+Class:
+MatrixTransforming
+Method:
+minPushes
+Parameters:
+vector <string>, vector <string>
+Returns:
+int
+Method signature:
+int minPushes(vector <string> a, vector <string> b)
+(be sure your method is public)
+    
+
+Constraints
+-
+a will contain between 1 and 50 elements, inclusive.
+-
+a and b will contain the same number of elements.
+-
+Each element of a will contain between 1 and 50 characters, inclusive.
+-
+Each element of b will contain between 1 and 50 characters, inclusive.
+-
+All elements of a and b will contain the same number of characters.
+-
+Each element of a and b will be contain only zeroes ('0') and ones ('1').
+Examples
+0)
+
+    
+{"111","111","111"}
+{"000","000","000"}
+Returns: 1
+Flip the entire 3 x 3 matrix.
+1)
+
+    
+{"1"}
+{"0"}
+Returns: -1
+No flip can be made here.
+2)
+
+    
+{"001","100","100","000","011","010","100","100","010",
+"010","010","110","101","101","000","110","000","110"}
+
+001
+100
+100
+000
+011
+010
+100
+100
+010
+010
+010
+110
+101
+101
+000
+110
+000
+110
+
+{"001","100","011","000","100","010","011","100","101",
+"101","010","001","010","010","111","110","111","001"}
+001
+100
+011
+000
+100
+010
+011
+100
+101
+101
+010
+001
+010
+010
+111
+110
+111
+001
+
+
+Returns: 7
+
+3)
+
+    
+{
+"0000",
+"0010",
+"0000"
+}
+{
+"1001",
+"1011",
+"1001"
+}
+Returns: 2
+Flip each of the two 3 x 3 submatrices once.
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

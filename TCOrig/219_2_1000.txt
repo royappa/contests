@@ -1,0 +1,60 @@
+// SUBSET SUM CORRECT
+// will also find the actual subset which sums to a total t
+// however, unique solution must exist .. if multiple solutions, may need to use bitmasks or something
+#include <vector>
+#include <list>
+#include <map>
+#include <set>
+#include <deque>
+#include <stack>
+#include <bitset>
+#include <algorithm>
+#include <functional>
+#include <numeric>
+#include <utility>
+#include <sstream>
+#include <iostream>
+#include <iomanip>
+#include <cstdio>
+#include <cmath>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+class PayBill {
+public:
+vector <int> whoPaid(vector <int> A, int t) 
+{
+	int n = A.size();	
+	// subset sum review. . . 
+	vector<int> S(t+1, 0);
+	
+	vector<int> P(t+1, -1);
+	
+	S[0] = 1;
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = A[i]; j <= t; j++)
+		{
+			if (!S[j] && S[j-A[i]] && P[j-A[i]] != i) // The !S[j] is crucial!
+			{
+				S[j] = 1;
+				P[j] = i;
+			}
+		}
+	}
+	vector<int> r;
+	int q = t;
+	while (P[q] != -1)
+	{
+		r.push_back(P[q]);
+		q = q-A[P[q]];
+	}
+	reverse(r.begin(), r.end());
+	return r;			
+}
+};
+
+
+//Powered by [KawigiEdit]

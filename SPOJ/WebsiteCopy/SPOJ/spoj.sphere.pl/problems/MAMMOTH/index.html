@@ -1,0 +1,192 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<!-- Mirrored from spoj.sphere.pl/problems/MAMMOTH/ by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 10 Jan 2006 04:56:00 GMT -->
+<head>
+<title>Sphere Online Judge (SPOJ)  - Problem MAMMOTH</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-2">
+<META NAME="Keywords" CONTENT="spoj, online, judge, problem, set, problemset, archive, ACM, Polish, Poland, contest, contester, task, tasks, ADA, Java, Pascal, C, C++, Whitespace, sphere, interest, group, python, ruby, icon, o'caml, caml, ocaml, perl, haskell, bf, brain, clips, prolog, fortran, asm, assembler, asembler, functional, esoteric, programming, languages">
+
+<link href="https://spoj.sphere.pl/gfx/favicon" rel="shortcut icon" type="image/x-icon">
+
+<link href="../../themes/skin3.css" rel="stylesheet" type="text/css" id="theme">
+<style type="text/css">
+<!--
+.maintable {width: 755;} 
+-->
+</style>
+<script type="text/javascript" language="javascript">
+<!--
+function UnCryptMailto(s) {
+	var n=0;
+	var r="";
+	for(var i=0;i<s.length;i++) {		
+		n=s.charCodeAt(i); 
+		if (n>=8364) {n = 128;}
+		r += String.fromCharCode(n+(2));	
+	}
+	return r;
+}
+function linkTo_UnCryptMailto(s)	{
+	location.href=UnCryptMailto(s);
+}
+// -->
+</script>
+
+</head>
+<body>
+<center>
+<table cellpadding="10" cellspacing="0" class="maintable" id="maintable">
+<tr>
+    <td colspan="2" class="header">
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+        <tr>
+		<td class="headerleft"/>
+		<td class="headercenter"><h1>Sphere Online Judge</h1></td>
+		<td class="headerright"/>
+	</tr>
+	</table>
+    </td>
+</tr>
+<tr><td class="menu" width="92" valign="top">
+<form name="login"  action="http://spoj.sphere.pl/problems/MAMMOTH/" method="post" 
+	onsubmit="if(document.login.ssl.checked) document.login.action='https://spoj.sphere.pl/problems/MAMMOTH/'" style="margin-bottom: 18px"> 
+User: <input name="login_user" type="text" style="width: 85px;" class="form"><BR>
+Password: <input name="password" type="password" style="width: 85px;" class="form"><BR>
+<script language="javascript" type="text/javascript">
+<!--
+document.write('<input type="checkbox" name="ssl" id="ssl" checked>secure<br>');
+//-->
+</script>
+<input name="submit" type="submit" value="Log In" class="button" style="width: 85px;">
+</form><div class="menucmd"><a href="https://spoj.sphere.pl/register">register</a><br><br><a href="https://spoj.sphere.pl/status">status</a><br><a href="https://spoj.sphere.pl/submit">submit</a><br><a href="../classical/sort=7,start=0.html">problems</a><br><br><a href="https://spoj.sphere.pl/">news</a><br><a href="https://spoj.sphere.pl/contests">contests</a><br><a href="https://spoj.sphere.pl/info">info</a><br><a href="https://spoj.sphere.pl/ranks/">ranks</a><br><br><a href="https://spoj.sphere.pl/forum">forum</a><br><a href="https://spoj.sphere.pl/help">help</a><br><a href="https://spoj.sphere.pl/links">links</a><br><hr></div>Server time:<br>2006-01-10<br>05:49:59<a href="../classical/sort=7,start=0.html"></a><br><br>
+<form method="get" action="https://spoj.sphere.pl/search/" class="form" style="width:90px">
+<input type="text" name="query" style="width:85px" maxlength=255 value="" class="form"><br>
+<input type="submit" value="Search" style="width:85px" class="form" title="Search site"><br>
+&nbsp;<a href="https://spoj.sphere.pl/search/problems=on,users=on,contests=on" title="More search options"><small>advanced...</small></a>
+</form></td><td class="content" width="99%"><table class="problems" width="100%">
+<tr class="navigation">
+<td><a href="https://spoj.sphere.pl/submit/MAMMOTH/">Submit</a></td>
+<td><a href="https://spoj.sphere.pl/status/MAMMOTH/">All submissions</a></td>
+<td><a href="https://spoj.sphere.pl/ranks/MAMMOTH/">Best solutions</a></td>
+<td><a href="https://spoj.sphere.pl/problems/MAMMOTH.ps">PS</a></td>
+<td><a href="https://spoj.sphere.pl/problems/MAMMOTH.pdf">PDF</a></td>
+<td><a href="../classical/sort=7,start=0.html">Back to list</a></td>
+</tr>
+</table>
+
+<div class="prob">
+
+<h2>SPOJ Problem Set </h2>
+<h1>356. Tethering the Mammoths</h1>
+<h2>Problem code: MAMMOTH</h2>
+<p align="justify">
+<p>Whereas most parks in different parts of the world are inhabited by pleasant little creatures like birds or squirrels, the nature park in Byteland's capital has somewhat larger inhabitants -- a herd of mammoths. As you may well imagine, this does lead to peculiar problems sometimes.
+<p>On one occassion the King of Bitland came on a state visit to Byteland, and, to everybody's surprise, decided he would take a stroll in the Mammoth Park. Since mammoths tend to be a little unpredictable and know nothing of the protocol of royal visits, they had to be tied up for the time being. But tying mammoths <i>properly</i> is not as easy as it sounds.
+<p>
+The park consists of little clearings connected by alleys, and on every clearing there stands a mammoth. Due to the lack of sterdy trees in the park, the only things you can tie a mammoth to are other mammoths. Since tying a mammoth by too few ropes may actually be more dangerous than leaving them alone, it is required that each mammoth has to be tied to <i>exactly k</i> other mammoths (that way all animals are kept safe and none of them has a feeling of being unfairly treated). The ropes connecting two mammoths must run along the park alleys and can only be 1 or 2 alleys long (in the latter case, the rope is assumed not to touch the mammoth in between). Finally, no two ropes may run a long a single alley, since this might result in an awful tangle.
+<p>
+It is your task to design which mammoths to tie together, or to determine that the required tethering is impossible to attain.
+
+<h3>Input</h3>
+<p>The first line of input contains integer t, the number of test cases (t<=100). t test cases follow.
+<p>The first line of each test case contains three integers n m k, denoting the number of clearings (each with a mammoth on it), the number of alleys in the park, and the number of mammoths to tie each mammoth to, respectively (1<=k<=n<=m<=2000).
+<p>Each of the next m lines contains a pair of integers a<sub>i</sub> b<sub>i</sub>, denoting that clearings a<sub>i</sub> and b<sub>i</sub> are connected by an alley (1<=a<sub>i</sub>,b<sub>i</sub><=n). 
+
+<h3>Output</h3>
+<p>For the i-th test case output a line containing the text <tt>case <i>i</i> YES</tt> if you know a solution to the given problem and <tt>case <i>i</i> NO</tt> in the opposite case. In the former case, you should then output exactly (k*n)/2 lines, containing the description of a rope between two mammoths. Each such line should begin with integer l, the length of the rope measured in alleys (l=1 or l=2) and be followed by exactly l+1 integers corresponding to successive clearings on the path of the rope.
+<p>It is possible that for the given test case no answer exists; in that case the only allowed solutions is <tt>case <i>i</i> NO</tt>.
+<p> Your score is equal to the number of test cases for which you gave the answer <tt>case <i>i</i> YES</tt>.
+<h3>Example</h3>
+
+<pre>
+<b>Input:</b>
+3
+4 4 2
+1 2
+2 3
+3 1
+1 4
+4 4 1
+1 2
+2 3
+3 1
+1 4
+3 3 2
+1 2
+2 3
+3 1
+
+<b>Output:</b>
+case 1 NO
+case 2 YES
+1 2 3
+1 1 4
+case 3 NO
+
+<b>Score:</b>
+1+0+0 = 1
+</pre>
+<p>For the presented example, the optimal solution would score 2 points (for test cases 2 and 3).
+
+<hr>
+<table border=0 cellspacing=0 cellpadding=0 align=left>
+<tr><td width=130>Added by:</td><td><a href="https://spoj.sphere.pl/search/'Adrian%20Kosowski'">Adrian Kosowski</a></td></tr>
+<tr><td>Date:</td><td>2005-05-08</td></tr>
+<tr><td>Time limit:</td><td>42s
+</td></tr>
+<tr><td>Source limit:</td><td>50000B</td></tr>
+<tr><td>Resource:</td><td>DASM Programming League 2004, problemset 10</td></tr></table>
+</div></td>
+</tr>
+
+<tr>
+<td colspan="2" class="footer">
+
+<script language="javascript" type="text/javascript">
+<!--
+function swapSheet(sheet, caller) {
+    document.getElementById('theme').href=sheet;
+    document.cookie="css_0="+sheet+"; path=/;";
+    caller.href="#bottom";
+}
+
+function setWidth(w, caller) {
+    document.getElementById('maintable').style.width=w;
+    document.cookie="res="+w+"; path=/;";
+    caller.href="#bottom";
+}
+//-->
+
+</script>
+        <table width="100%">
+    <tr>
+	<td align="left">
+            <a href="http://www.pg.gda.pl/eng.html"><IMG src="https://spoj.sphere.pl/gfx/logo-pg" alt="www.pg.gda.pl" border=0 height=36 width=44></a>&nbsp;
+            <a href="http://www.eti.pg.gda.pl/"><IMG src="https://spoj.sphere.pl/gfx/logo-eti" alt="www.eti.pg.gda.pl" border=0 height=36 width=44></a>
+	</td>
+	<td align="center">
+	    page size:
+	    <a href="https://spoj.sphere.pl/?res=755"  onClick="setWidth('755', this)">800x600</a>
+	    <a href="https://spoj.sphere.pl/?res=980"  onClick="setWidth('980', this)">1024x768</a>
+	    <a href="https://spoj.sphere.pl/?res=100%" onClick="setWidth('100%', this)">Full</a>
+	    &nbsp;&nbsp;
+	    theme:
+	    <a href="../../indexb6a4.html?css=/themes/skin1.css" onClick="swapSheet('../../themes/skin1.css', this)">olive</a>
+	    <a href="../../index3840.html?css=/themes/skin2.css" onClick="swapSheet('../../themes/skin2.css', this)">banana</a>
+	    <a href="../../index80f0.html?css=/themes/skin3.css" onClick="swapSheet('../../themes/skin3.css', this)">plum</a>
+	    <br>
+	    <a href="http://sphere.pl/?id=66">spoj team at sphere</a> &copy; 2004-05 all rights reserved
+	</td>
+	<td align="right">
+            <a href="http://task.gda.pl/english/"><IMG src="https://spoj.sphere.pl/gfx/logo-task" alt="task.gda.pl" border=0 height=36 width=44></a>&nbsp;
+            <a href="http://sphere.pl/"><IMG src="https://spoj.sphere.pl/gfx/logo-sphere" alt="sphere.pl" border=0 height=32></a>
+	</td>
+    </tr>
+    </table>
+    </tr></table>
+</center>
+</body>
+
+<!-- Mirrored from spoj.sphere.pl/problems/MAMMOTH/ by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 10 Jan 2006 04:56:00 GMT -->
+</html>

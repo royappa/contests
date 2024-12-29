@@ -1,0 +1,143 @@
+
+Problem Statement
+    
+A text frame is a rectangular frame in which a phrase is written repeatedly in the clockwise direction. Frames like these were once used to decorate file headers when rich text was not available. In this problem, the frame occupies the border of an empty block of text with dimensions width x height. Starting in the top left cell, traverse the border of the rectangular area in the clockwise direction, writing one character in each cell. Each time you finish writing the phrase, put a space in the next cell, and then start writing the phrase again in the next cell after that. Stop after visiting every cell on the border. For example, if the phrase was "I LOVE TOPCODER" (quotes for clarity) and width and height were 29 and 5, respectively, the text block would look like this:  
+I.LOVE.TOPCODER.I.LOVE.TOPCOD
+............................E
+R...........................R
+E............................
+DOCPOT.EVOL.I.REDOCPOT.EVOL.I
+  Note that in this problem, we will use '.' characters to represent spaces.  Rows are numbered 0 to height-1, from top to bottom, and columns are numbered 0 to width-1, from left to right. You are only interested in the subsection which has its upper left corner at row y1, column x1 and its lower right corner at row y2-1, column x2-1. Return this subsection as a vector <string> containing exactly y2-y1 elements, each of which contains exactly x2-x1 characters. The i-th character of the j-th element of this vector <string> is the character at row y1+j, column x1+i of the text block. Remember that all spaces must be represented as '.' characters.
+Definition
+    
+Class:
+TextFrames
+Method:
+generateFrame
+Parameters:
+int, int, string, int, int, int, int
+Returns:
+vector <string>
+Method signature:
+vector <string> generateFrame(int width, int height, string phrase, int x1, int y1, int x2, int y2)
+(be sure your method is public)
+    
+Constraints
+-
+width and height will each be between 2 and 1000000, inclusive.
+-
+x1 will be between 0 and width-1, inclusive.
+-
+x2 will be between x1+1 and width, inclusive.
+-
+x2-x1 will be between 1 and 50, inclusive.
+-
+y1 will be between 0 and height-1, inclusive.
+-
+y2 will be between y1+1 and height, inclusive.
+-
+y2-y1 will be between 1 and 50, inclusive.
+-
+phrase will contain between 2 and 50 characters, inclusive.
+-
+phrase will contain only '.' or uppercase letters ('A'-'Z').
+-
+The first and last characters of phrase will not be '.' .
+Examples
+0)
+    
+29
+5
+"I.LOVE.TOPCODER"
+0
+0
+29
+5
+Returns: 
+{"I.LOVE.TOPCODER.I.LOVE.TOPCOD",
+ "............................E",
+ "R...........................R",
+ "E............................",
+ "DOCPOT.EVOL.I.REDOCPOT.EVOL.I" }
+1)
+    
+10
+10
+"THIS.SHOWS.A.CORNER"
+5
+5
+10
+10
+Returns: {"....O", "....R", "....N", "....E", "IHT.R" }
+This case asks for the bottom-left 5x5 corner of the following text frame:
+THIS.SHOWS
+R.........
+O........A
+C.........
+.........C
+A........O
+.........R
+S........N
+W........E
+OHS.SIHT.R
+2)
+    
+4
+4
+"THE.PHRASE.CAN.BE.LONGER.THAN.THE.PERIMETER"
+1
+2
+4
+4
+Returns: {"..H", "SAR" }
+3)
+    
+777
+896
+"THE.PORTION.MAY.NOT.CONTAIN.ANY.LETTER"
+30
+20
+50
+30
+Returns: 
+{"....................",
+ "....................",
+ "....................",
+ "....................",
+ "....................",
+ "....................",
+ "....................",
+ "....................",
+ "....................",
+ "...................." }
+4)
+    
+1000000
+1000000
+"LIVE"
+0
+508
+4
+528
+Returns: 
+{"E...",
+ "V...",
+ "I...",
+ "L...",
+ "....",
+ "E...",
+ "V...",
+ "I...",
+ "L...",
+ "....",
+ "E...",
+ "V...",
+ "I...",
+ "L...",
+ "....",
+ "E...",
+ "V...",
+ "I...",
+ "L...",
+ "...." }
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

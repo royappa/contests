@@ -1,0 +1,76 @@
+
+Problem Statement
+    
+A flat cat is a fictional Martian animal known for being an extremely affectionate pet and also for being able to replicate itself promptly given favorable conditions. The cat replicates itself when it is D, 2*D, 3*D, ... days old, and each time, it creates K new kittens. You have been presented with a newborn flat cat. Return the number of days after which you will have at least T cats, assuming that cats don't die.
+Definition
+    
+Class:
+FlatCatsBreeding
+Method:
+days
+Parameters:
+int, int, int
+Returns:
+int
+Method signature:
+int days(int D, int K, int T)
+(be sure your method is public)
+    
+
+Constraints
+-
+D will be between 1 and 100, inclusive.
+-
+K will be between 1 and 10, inclusive.
+-
+T will be between 1 and 1000000, inclusive.
+Examples
+0)
+
+    
+4
+3
+1
+Returns: 0
+You have one cat as soon as you are presented with it, so you don't have to wait until it replicates.
+1)
+
+    
+4
+3
+4
+Returns: 4
+After 4 days, the first cat produces 3 kittens, so you will have a total of 4 cats.
+2)
+
+    
+4
+3
+9
+Returns: 8
+After 4 days, you'll have four cats. After 4 more days, each of those cats will produce 3 kittens, for a total of 16 cats. Note that you don't need to have exactly T cats, but at least T.
+3)
+
+    
+4
+3
+1000000
+Returns: 40
+
+4)
+
+    
+91
+6
+10433
+Returns: 455
+
+5)
+
+    
+9
+7
+17079
+Returns: 45
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

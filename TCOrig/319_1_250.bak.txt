@@ -1,0 +1,108 @@
+typedef pair<int,int> pi;
+
+bool ok(int i, vector<string> v)
+{
+	int ir = i / 10;
+	int ic = i % 10;
+	return v[ir][ic] == '-';
+}
+
+pi pos(int i, vector<string> v)
+{
+	int ir = i / 10;
+	int ic = i % 10;
+	return make_pair(ir*2, ic);
+}
+
+double dist(pi a, pi b)
+{
+	return hypot(a.first-b.first, a.second-b.second);
+}
+
+double getArrangement(string L, string R) 
+{
+	vector<string> v;
+	v.push_back(L);
+	v.push_back(R);
+	
+	double t = double(1<<30);
+	for (int i = 0; i < 20; i++)
+	{
+		for (int j = 0; j < 20; j++)
+		{
+			for (int k = 0; k < 20; k++)
+			{
+				if (!ok(i, v) || !ok(i, v) || !ok(k, v))
+					continue;
+				pi a = pos(i, v);
+				pi b = pos(j, v);
+				pi c = pos(k, v);
+				double x = dist(a, b)+dist(a, c)+dist(b, c);
+				if (x < t)
+				{
+					t = x;
+				}
+			}
+		}
+	}
+	return t;
+}
+Problem Statement
+    
+Three friends enter a bus. There are two rows of seats with 10 seats in each row along the left and right side of the bus. For this problem, consider the seats to be points. Each seat in the same row is separated from the one in front of it and the one behind it by exactly 1 meter, and from the one directly opposite it (i.e., in the other row) by exactly 2 meters. Some of the seats are occupied by passengers. The friends want to know which seats they should occupy so as to minimize the sum of the Euclidean distances between each pair of friends. Recall that the Euclidean distance is simply the length of the line segment joining two points.
+Create a class BusSeating that contains a method getArrangement. The method takes two strings as arguments, leftRow and rightRow. Each string is composed of the characters '-' and 'X' only, with '-' denoting an empty seat, and 'X' denoting an occupied seat. The seats are given in order from the front to the back of the bus in each row. The method should return a double corresponding to the sum of the Euclidean distances between friends in the optimal arrangment.
+Definition
+    
+Class:
+BusSeating
+Method:
+getArrangement
+Parameters:
+string, string
+Returns:
+double
+Method signature:
+double getArrangement(string leftRow, string rightRow)
+(be sure your method is public)
+    
+
+Notes
+-
+Your return value must have an absolute or relative error less than 1e-9.
+Constraints
+-
+leftRow and rightRow will each contain exactly 10 characters.
+-
+leftRow and rightRow will contain only the characters '-' and uppercase 'X'.
+-
+There will be at least 3 empty seats among the 2 rows of seats.
+Examples
+0)
+
+    
+"----------"
+"----------"
+Returns: 4.0
+The minimum sum of distances in this situation is achieved when the three friends sit behind each other in the same row of seats, giving a minimum distance of 4.0.
+1)
+
+    
+"XXX-X-XX-X"
+"-XXXX---XX"
+Returns: 4.0
+Once again, the friends can minimize the sum of distances by sitting behind each other in a row. This time, however, there is only one way to seat themselves in this manner.
+2)
+
+    
+"XXXXXXXXXX"
+"-XX-XX-X--"
+Returns: 6.0
+
+3)
+
+    
+"XXX-X-XX-X"
+"XXX-X-XX-X"
+Returns: 6.82842712474619
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

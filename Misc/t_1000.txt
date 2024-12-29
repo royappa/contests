@@ -1,0 +1,133 @@
+bool poss(vector<int> d, int n) // is it possible to make a number of length n with this histogram
+{
+	int N = n;
+	for (int i = 0; i < 10; i++)
+	{
+		n -= min(d[i], (N+1)/2);
+	}
+	return n <= 0;
+}	
+
+string maximumNumber(vector <int> orig) 
+{
+
+	
+	int sum = accumulate(orig.begin()+1, orig.end(), 0);
+	if (sum == 0)
+		return "0";
+	sum += orig[0];
+
+		
+	for (int n = 500; n >= 1; n--)
+	{
+		// try to build a number of length n
+		vector<int> d = orig;
+			
+		int last = 0; // leading zeros suck!
+		string r = "";
+		int left = sum;
+		int i;
+		for (i = n; i >= 1; i--)
+		{
+			if (left < i)
+				continue;
+			// next digit is the biggest number, not equal to last, such that removing this number will not unbalance the rest
+			int best = -1;
+			for (int j = 9; j >= 0; j--)
+			{
+				if (j != last && d[j] > 0) // try j
+				{
+					d[j]--;
+					if (!poss(d, i-1))
+					{
+						d[j]++;
+						continue;
+					}
+					best = j; 
+					break;
+				}
+			}
+			if (best == -1)
+				continue;
+			r += char('0'+best);
+			last = best;
+		}
+		if (i == 0)
+			return r;		
+	}	
+}
+
+2100
+
+210
+2010
+
+877
+87 - greedy
+787 - non greedy
+133344444
+
+
+Problem Statement
+    
+You have some digits, and you want to use one or more of them to create the largest possible number. The number must have no extra leading zeroes, 
+and no two adjacent digits can be the same. For example, "0121" and "2110" are not valid numbers.
+
+You are given a vector <int> digits containing exactly 10 elements. The i-th element (0-based) is the number of digit i that you have. 
+
+Return a String denoting the maximum valid number you can create.
+
+Definition
+    
+Class:
+RepresentNumber
+Method:
+maximumNumber
+Parameters:
+vector <int>
+Returns:
+string
+Method signature:
+string maximumNumber(vector <int> digits)
+(be sure your method is public)
+    
+
+Constraints
+-
+digits will contain exactly 10 elements.
+-
+Each element of digits will be between 0 and 50, inclusive.
+-
+The sum of the elements of digits will be between 1 and 50, inclusive.
+Examples
+0)
+
+    
+{3,0,0,0,0,0,0,0,0,0}
+Returns: "0"
+
+1)
+
+    
+{4,1,2,0,0,0,0,0,0,0}
+Returns: "202010"
+
+2)
+
+    
+{4,1,8,0,0,0,0,0,0,0}
+Returns: "21202020202"
+You can't use all the '2' digits.
+3)
+
+    
+{0,1,4,4,1,4,0,2,2,0}
+Returns: "878754535352323212"
+
+4)
+
+    
+{0,3,3,2,4,4,3,4,1,4}
+Returns: "9897979767656545454343212121"
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

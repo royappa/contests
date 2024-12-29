@@ -1,0 +1,200 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<!-- Mirrored from spoj.sphere.pl/problems/DFLOOR/ by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 10 Jan 2006 04:51:52 GMT -->
+<head>
+<title>Sphere Online Judge (SPOJ)  - Problem DFLOOR</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-2">
+<META NAME="Keywords" CONTENT="spoj, online, judge, problem, set, problemset, archive, ACM, Polish, Poland, contest, contester, task, tasks, ADA, Java, Pascal, C, C++, Whitespace, sphere, interest, group, python, ruby, icon, o'caml, caml, ocaml, perl, haskell, bf, brain, clips, prolog, fortran, asm, assembler, asembler, functional, esoteric, programming, languages">
+
+<link href="https://spoj.sphere.pl/gfx/favicon" rel="shortcut icon" type="image/x-icon">
+
+<link href="../../themes/skin3.css" rel="stylesheet" type="text/css" id="theme">
+<style type="text/css">
+<!--
+.maintable {width: 755;} 
+-->
+</style>
+<script type="text/javascript" language="javascript">
+<!--
+function UnCryptMailto(s) {
+	var n=0;
+	var r="";
+	for(var i=0;i<s.length;i++) {		
+		n=s.charCodeAt(i); 
+		if (n>=8364) {n = 128;}
+		r += String.fromCharCode(n+(2));	
+	}
+	return r;
+}
+function linkTo_UnCryptMailto(s)	{
+	location.href=UnCryptMailto(s);
+}
+// -->
+</script>
+
+</head>
+<body>
+<center>
+<table cellpadding="10" cellspacing="0" class="maintable" id="maintable">
+<tr>
+    <td colspan="2" class="header">
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+        <tr>
+		<td class="headerleft"/>
+		<td class="headercenter"><h1>Sphere Online Judge</h1></td>
+		<td class="headerright"/>
+	</tr>
+	</table>
+    </td>
+</tr>
+<tr><td class="menu" width="92" valign="top">
+<form name="login"  action="http://spoj.sphere.pl/problems/DFLOOR/" method="post" 
+	onsubmit="if(document.login.ssl.checked) document.login.action='https://spoj.sphere.pl/problems/DFLOOR/'" style="margin-bottom: 18px"> 
+User: <input name="login_user" type="text" style="width: 85px;" class="form"><BR>
+Password: <input name="password" type="password" style="width: 85px;" class="form"><BR>
+<script language="javascript" type="text/javascript">
+<!--
+document.write('<input type="checkbox" name="ssl" id="ssl" checked>secure<br>');
+//-->
+</script>
+<input name="submit" type="submit" value="Log In" class="button" style="width: 85px;">
+</form><div class="menucmd"><a href="https://spoj.sphere.pl/register">register</a><br><br><a href="https://spoj.sphere.pl/status">status</a><br><a href="https://spoj.sphere.pl/submit">submit</a><br><a href="../classical/sort=7,start=0.html">problems</a><br><br><a href="https://spoj.sphere.pl/">news</a><br><a href="https://spoj.sphere.pl/contests">contests</a><br><a href="https://spoj.sphere.pl/info">info</a><br><a href="https://spoj.sphere.pl/ranks/">ranks</a><br><br><a href="https://spoj.sphere.pl/forum">forum</a><br><a href="https://spoj.sphere.pl/help">help</a><br><a href="https://spoj.sphere.pl/links">links</a><br><hr></div>Server time:<br>2006-01-10<br>05:48:08<a href="../classical/sort=7,start=0.html"></a><br><br>
+<form method="get" action="https://spoj.sphere.pl/search/" class="form" style="width:90px">
+<input type="text" name="query" style="width:85px" maxlength=255 value="" class="form"><br>
+<input type="submit" value="Search" style="width:85px" class="form" title="Search site"><br>
+&nbsp;<a href="https://spoj.sphere.pl/search/problems=on,users=on,contests=on" title="More search options"><small>advanced...</small></a>
+</form></td><td class="content" width="99%"><table class="problems" width="100%">
+<tr class="navigation">
+<td><a href="https://spoj.sphere.pl/submit/DFLOOR/">Submit</a></td>
+<td><a href="https://spoj.sphere.pl/status/DFLOOR/">All submissions</a></td>
+<td><a href="https://spoj.sphere.pl/ranks/DFLOOR/">Best solutions</a></td>
+<td><a href="https://spoj.sphere.pl/problems/DFLOOR.ps">PS</a></td>
+<td><a href="https://spoj.sphere.pl/problems/DFLOOR.pdf">PDF</a></td>
+<td><a href="../classical/sort=7,start=0.html">Back to list</a></td>
+</tr>
+</table>
+
+<div class="prob">
+
+<h2>SPOJ Problem Set </h2>
+<h1>98. Dance Floor</h1>
+<h2>Problem code: DFLOOR</h2>
+<p align="justify">
+<P align=justify>
+You recently watched a video clip in which a singer danced on a grid of colourful tiles enlightened from below. Each step on a tile flipped the tile's state, i.e. light on or off. In addition to that, all the neighbouring tiles flipped their states, too.
+<br><br>
+In this task, you are supposed to come up with a short program that decides if it is possible for the singer to switch on the lights of all the tiles, provided that he dances on the appropriate tiles.
+<br><br>
+The dance floor has rectangular shape. At the beginning, some of the tiles are already alight. Your program may temporarily switch off some tiles, if it deems that necessary to reach its goal. Stepping on a tile toggles its own state as well as the states of the four neighbouring tiles directly above, below, to the left and to the right. Of course, in the case of a peripheral tile, there will be only three or two neighbouring tiles.
+<br><br>
+Here comes an example:
+<br>
+<img src="example.gif">
+<br>
+If the dancer steps on the tile indicated by the brown shoe, all the tiles within the white area change their states. The resulting dance floor is depicted on the right.
+<br><br>
+You may assume that the singer is fit enough to jump from any tile to any other tile, even if the destination tile lies on the opposite side of the dance floor.
+</P>
+<H3>Input</H3>
+<P align=justify>
+There are several test cases.
+The first line of each case contains two integer numbers <em>x</em> and <em>y</em>,
+  indicating the width and the height of the dance floor grid. The numbers are
+  separated by a single space and satisfy 3 &#8804; <em>x</em>,<em>y</em> &#8804;
+  15.
+<br><br>
+The following <em>y</em> lines containing <em>x</em>characters each describe
+  the initial on/off states of the tiles. A zero means &quot;the tile is switched
+  off&quot;, a one digit means &quot;the tile is alight&quot;.
+<br><br>Input ends with 0 0.
+</P>
+<H3>Output</H3>
+<P align=justify>
+For each test case your program should output the number of steps needed to switch all the lights on, followed by exactly that many lines with two space-separated numbers <em>i</em> and <em>j</em>. Each individual line commands the singer to
+  step on the <em>i</em>-th tile of the <em>j</em>-th row. Starting with the situation
+  of the input file and executing all the commands in the output file, all the
+  tiles must be switched on.
+<br><br>
+If more than one solution exist, your program should output an arbitrary one
+  of them. If, on the other hand, no solution exists, your program should write the number "-1".
+</P>
+<H3>Example</H3>
+<pre>
+<h4>Sample input</h4>
+4 3
+0111
+1010
+1000
+
+0 0
+
+<h4>Sample output</h4>
+3
+1 2
+1 3
+4 3
+</pre>
+
+
+<hr>
+<table border=0 cellspacing=0 cellpadding=0 align=left>
+<tr><td width=130>Added by:</td><td><a href="https://spoj.sphere.pl/search/'Michał%20Czuczman'">Michał Czuczman</a></td></tr>
+<tr><td>Date:</td><td>2004-07-01</td></tr>
+<tr><td>Time limit:</td><td>3s
+</td></tr>
+<tr><td>Source limit:</td><td>50000B</td></tr>
+<tr><td>Resource:</td><td>Swiss Olympiad in Informatics 2004</td></tr></table>
+</div></td>
+</tr>
+
+<tr>
+<td colspan="2" class="footer">
+
+<script language="javascript" type="text/javascript">
+<!--
+function swapSheet(sheet, caller) {
+    document.getElementById('theme').href=sheet;
+    document.cookie="css_0="+sheet+"; path=/;";
+    caller.href="#bottom";
+}
+
+function setWidth(w, caller) {
+    document.getElementById('maintable').style.width=w;
+    document.cookie="res="+w+"; path=/;";
+    caller.href="#bottom";
+}
+//-->
+
+</script>
+        <table width="100%">
+    <tr>
+	<td align="left">
+            <a href="http://www.pg.gda.pl/eng.html"><IMG src="https://spoj.sphere.pl/gfx/logo-pg" alt="www.pg.gda.pl" border=0 height=36 width=44></a>&nbsp;
+            <a href="http://www.eti.pg.gda.pl/"><IMG src="https://spoj.sphere.pl/gfx/logo-eti" alt="www.eti.pg.gda.pl" border=0 height=36 width=44></a>
+	</td>
+	<td align="center">
+	    page size:
+	    <a href="https://spoj.sphere.pl/?res=755"  onClick="setWidth('755', this)">800x600</a>
+	    <a href="https://spoj.sphere.pl/?res=980"  onClick="setWidth('980', this)">1024x768</a>
+	    <a href="https://spoj.sphere.pl/?res=100%" onClick="setWidth('100%', this)">Full</a>
+	    &nbsp;&nbsp;
+	    theme:
+	    <a href="../../indexb6a4.html?css=/themes/skin1.css" onClick="swapSheet('../../themes/skin1.css', this)">olive</a>
+	    <a href="../../index3840.html?css=/themes/skin2.css" onClick="swapSheet('../../themes/skin2.css', this)">banana</a>
+	    <a href="../../index80f0.html?css=/themes/skin3.css" onClick="swapSheet('../../themes/skin3.css', this)">plum</a>
+	    <br>
+	    <a href="http://sphere.pl/?id=66">spoj team at sphere</a> &copy; 2004-05 all rights reserved
+	</td>
+	<td align="right">
+            <a href="http://task.gda.pl/english/"><IMG src="https://spoj.sphere.pl/gfx/logo-task" alt="task.gda.pl" border=0 height=36 width=44></a>&nbsp;
+            <a href="http://sphere.pl/"><IMG src="https://spoj.sphere.pl/gfx/logo-sphere" alt="sphere.pl" border=0 height=32></a>
+	</td>
+    </tr>
+    </table>
+    </tr></table>
+</center>
+</body>
+
+<!-- Mirrored from spoj.sphere.pl/problems/DFLOOR/ by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 10 Jan 2006 04:51:52 GMT -->
+</html>

@@ -1,0 +1,168 @@
+#include <vector>
+#include <list>
+#include <map>
+#include <set>
+#include <deque>
+#include <stack>
+#include <bitset>
+#include <algorithm>
+#include <functional>
+#include <numeric>
+#include <utility>
+#include <sstream>
+#include <iostream>
+#include <iomanip>
+#include <cstdio>
+#include <cmath>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+class Histogram {
+public:
+vector <string> draw(vector <string> title, vector <int> value) 
+{
+	int height = 0;
+	int n = value.size();
+	for (int i = 0; i < n; i++)
+	{
+		height >?= value[i];
+	}
+	height++;
+	
+	int sep = 0;
+	for (int i = 0; i < n-1; i++)
+	{
+		sep >?= (title[i].size()-1+1)/2+(title[i+1].size()-1)/2+1;
+	}
+	int width = (title[0].size()-1)/2+(title[n-1].size()-1+1)/2;
+	width += (n-1)*sep+n;
+	cout << height << " " << width << endl;
+	
+	vector<string> v(height);
+	for (int i = 0; i < height; i++)
+	{
+		v[i] = string(width, ' ');
+	}
+	
+	int pos = 0;
+	for (int i = 0; i < n-1; i++)
+	{
+		for (int j = 0; j < title[i].size(); j++)
+		{
+			v[height-1][pos++] = title[i][j];
+		}
+		pos += sep- ( (title[i].size()-1+1)/2+(title[i+1].size()-1)/2+1)+1;
+	}
+	for (int j = 0; j < title[n-1].size(); j++)
+	{
+		v[height-1][pos++] = title[n-1][j];
+	}
+	//cout << sep << endl;
+	pos = title[0].size()%2==0 ? title[0].size()/2-1 : title[0].size()/2; 
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = 0; j < value[i]; j++)
+		{
+			v[height-2-j][pos] = 'X';
+			//cout << v[height-2-j][pos] << '*' << height << " " << j << " " << pos << endl;
+		}
+		pos += sep+1;
+	}
+	for (int i = 0; i < height-1; i++)
+	{
+		int p = v[i].rfind('X');
+		v[i] = v[i].substr(0, p+1);
+	}
+	return v;
+}
+
+};
+
+
+//Powered by [KawigiEdit]
+Problem Statement
+    
+Given a sequence of values, we want to display a histogram of vertical bars with a title at the bottom of each bar. 
+Each value will be an integer, and the corresponding bar will consist of that many 'X' characters. For example,
+							   X
+							   X
+		   X                   X
+ X         X         X         X         X 
+EAST     NORTH     SOUTH      WEST INTERNATIONAL
+EAST     NORTH     SOUTH      WEST INTERNATIONAL
+We require that the bars be centered over their titles, using the more leftward of the two middle positions for a title whose length is even. 
+
+We require that there must be at least one space between adjacent titles, and that the number of spaces between adjacent bars be constant. 
+
+In the example above, there are 9 spaces between adjacent bars.
+
+Create a class Histogram that contains a method draw that is given a vector <string> title and a vector <int> value. It returns a vector <string> in which each element is the next row of the histogram to be printed, starting with the top row and ending with the row that contains the titles.
+The histogram must preserve the order given in title and value. The spacing between bars should be as small as possible. Each element of the return should be as short as possible; this implies that the final element of the return will have no leading spaces, and that no element of the return will have trailing spaces.
+Definition
+    
+Class:
+Histogram
+Method:
+draw
+Parameters:
+vector <string>, vector <int>
+Returns:
+vector <string>
+Method signature:
+vector <string> draw(vector <string> title, vector <int> value)
+(be sure your method is public)
+    
+
+Constraints
+-
+title will contain between 2 and 10 elements inclusive.
+-
+Each element of title will contain between 1 and 15 characters inclusive, all uppercase letters 'A'-'Z'.
+-
+value will contain the same number of elements as title.
+-
+Each element of value will be between 1 and 10 inclusive.
+Examples
+0)
+
+    
+{"EAST","NORTH","SOUTH","WEST","INTERNATIONAL"}
+{1,2,1,4,1}
+Returns: 
+{ "                               X",
+  "                               X",
+  "           X                   X",
+  " X         X         X         X         X",
+  "EAST     NORTH     SOUTH      WEST INTERNATIONAL" }
+This is the example given in the problem.
+1)
+
+    
+{"A","B","C"}
+{2,1,2}
+Returns: { "X   X",  "X X X",  "A B C" }
+This corresponds to the following histogram:
+   X   X
+   X X X
+   A B C
+2)
+
+    
+{"VERYLARGE", "XX"}
+{10,1}
+Returns: 
+{ "    X",
+  "    X",
+  "    X",
+  "    X",
+  "    X",
+  "    X",
+  "    X",
+  "    X",
+  "    X",
+  "    X     X",
+  "VERYLARGE XX" }
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

@@ -1,0 +1,47 @@
+
+Problem Statement
+    
+Consider a meeting of n businessmen sitting around a circular table. To start the meeting, they must shake hands. Each businessman shakes the hand of exactly one other businessman. All handshakes happen simultaneously. We say that the shake is perfect if no arms cross each other. Given an int n, return the number of perfect shakes that exist for n businessmen. See examples for further clarification.
+Definition
+    
+Class:
+HandsShaking
+Method:
+countPerfect
+Parameters:
+int
+Returns:
+long long
+Method signature:
+long long countPerfect(int n)
+(be sure your method is public)
+    
+
+Notes
+-
+Businessmen are distinguishable. Rotating a perfect shake can yield a different perfect shake (see example 1).
+Constraints
+-
+n will be between 2 and 50, inclusive.
+-
+n will be even.
+Examples
+0)
+
+    
+2
+Returns: 1
+Two businessmen have only one possibility - just to shake each other's hand.
+1)
+
+    
+4
+Returns: 2
+Two out of three possible shakes are perfect.         
+2)
+
+    
+8
+Returns: 14
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

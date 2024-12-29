@@ -1,0 +1,106 @@
+typedef pair<int,int> pi;
+vector<pi> h;
+int n;
+
+int minTime(vector <int> a, vector <int> t, int pos) 
+{
+	map<int,int> m;
+	for (int i = 0; i < n; i++)
+	{
+		if (m.count(a[i]) > 0)
+		{
+			m = min(m[a[i]], t[i]);
+		}
+		else
+		{
+			m[a[i]] = t[i];
+		}
+	}
+	int last = 0;
+	for (typeof(m.begin()) it = m.begin(); it != m.end(); it++)
+	{
+		h.push_back(make_pair(it->first, it->second));
+		last = max(last, it->second);
+	}
+	n = h.size();
+	
+	return best == INF ? -1 : best;
+}
+
+
+
+Problem Statement
+    
+A postman has to deliver several letters along a street. He has the address (in the form of the number of meters from the left end of the street to the destination of the letter) and the maximum time he can take to deliver each letter. The postman moves at 1 meter per second and can deliver a letter instantly once he reaches the right location. You need to find out if it's possible to make all the deliveries within the given constraints, and if so, the minimum time the postman can take to do it.
+
+You will be given two vector <int>s address and maxTime, where the ith element of each represents the address and maximum time of delivery of the ith letter. You will also be given an int initialPos with the initial position of the postman (in the same units and format as the addresses). Return the minimum amount of time the postman needs to deliver all letters within the constraints or -1 if it's impossible to do so.
+
+Definition
+    
+Class:
+FastPostman
+Method:
+minTime
+Parameters:
+vector <int>, vector <int>, int
+Returns:
+int
+Method signature:
+int minTime(vector <int> address, vector <int> maxTime, int initialPos)
+(be sure your method is public)
+    
+
+Constraints
+-
+address will contain between 1 and 50 elements, inclusive.
+-
+address and maxTime will contain the same number of elements.
+-
+Each element of address will be between 1 and 1000000 (10^6), inclusive.
+-
+Each element of maxTime will be between 1 and 1000000000 (10^9), inclusive.
+-
+initialPos will be between 1 and 1000000 (10^6), inclusive.
+Examples
+0)
+
+    
+{1,3,5,7}
+{9,2,5,100}
+4
+Returns: 13
+The only way to deliver all the letters within the maximum times is to go through all the houses in the following order: 3-5-1-7.
+1)
+
+    
+{1,5}
+{6,2}
+3
+Returns: 6
+If the postman starts from the house with address 5, he will make both just in time.
+2)
+
+    
+{1000000}
+{45634}
+876
+Returns: -1
+No way!
+3)
+
+    
+{1,7,10,4}
+{15,6,28,39}
+2
+Returns: 20
+
+4)
+
+    
+{1000000,1000000,1000000,1000000}
+{563,23452,32426,1}
+1000000
+Returns: 0
+The postman is lucky and starts right in front of the only house that has correspondence.
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

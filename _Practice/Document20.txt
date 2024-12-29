@@ -1,0 +1,6 @@
+- add sign off to all nMO
+- REMOVE blood pressure check med
+- add BS check only to delivery outcomes
+- Remove BG SUPPLIES shortcut from NMO Sched
+- Calendar to see upcoming
+- Add Encounters Custom Fields

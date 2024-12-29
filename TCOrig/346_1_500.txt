@@ -1,0 +1,58 @@
+vector <int> getBestRound(vector <int> heights) 
+{
+	
+}
+Problem Statement
+    
+There are several people that will sit around the same table in a circular fashion. Since all these people are very self-conscious about their height, you don't want to sit any short person next to a tall one. To formalize this, we want to minimize the maximum height difference between 2 adjacent persons.
+You will be given the heights of the people as a vector <int>. Return a vector <int> with the height of each individual in clockwise order of a seating arrangement that follows the above rule. If there are several solutions, return the lexicographically first one.
+Definition
+    
+Class:
+HeightRound
+Method:
+getBestRound
+Parameters:
+vector <int>
+Returns:
+vector <int>
+Method signature:
+vector <int> getBestRound(vector <int> heights)
+(be sure your method is public)
+    
+
+Constraints
+-
+heights will contain between 3 and 50 elements, inclusive.
+-
+Each element of heights will be between 1 and 1000, inclusive.
+Examples
+0)	
+
+    
+{1,2,3,4}
+Returns: {1, 2, 4, 3 }
+It's better to separate the tallest and shortest people in the round. All solutions with 1 and 4 separated are equivalent, so we choose the lexicographically first one.
+1)
+
+    
+{1000,500,1}
+Returns: {1, 500, 1000 }
+In a round of only 3 persons, everybody is next to everyone else, so we only have to return the lexicographically first representation.
+2)
+
+    
+{1,3,4,5,7}
+Returns: {1, 3, 5, 7, 4 }
+
+3)
+
+    
+{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+ 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
+Returns: 
+{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+ 1, 1, 1 }
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

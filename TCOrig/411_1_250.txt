@@ -1,0 +1,156 @@
+vector<string> v;
+
+map<string,int> memo;
+
+
+int transform(string s, string t)
+{
+	int c = 0;
+	for (int i = 0; i < s.size(); i++)
+	{
+		c += s[i] != t[i];
+	}
+	return c;
+}
+
+int f(string s)
+{
+	if (memo.count(s))
+		return memo[s];
+	if (s.size() == 0)
+		return 0;
+	bool match = false;
+	for (int i = 0; i < v.size(); i++)
+	{
+		if (s.size() >= v[i].size())
+		{
+			match = true;
+			break;
+		}
+	}
+	if (!match)
+	{
+		return memo[s] = -1;
+	}
+	int r = 1<<30;
+	for (int i = 0; i < v.size(); i++)
+	{
+		if (s.size() >= v[i].size())
+		{
+			int cost = transform(s.substr(0, v[i].size()), v[i]);
+			int c = f(s.substr(v[i].size()));
+			if (c != -1)
+			{
+				r <?= cost+c;
+			}
+		}
+	}
+	return memo[s] = r;
+}
+	
+int decompose(string sentence, vector <string> validWords) 
+{
+	v = validWords;
+	return f(sentence);	
+}
+
+Problem Statement
+    
+Little Bonnie and her friends were dismayed to learn that their parents were reading all of their private communications. 
+
+They decided to invent a new language that would allow them to talk freely. 
+
+What they finally came up with was a language where sentences are built using a special method.  All the valid words that can be used in the new language are given in the vector <string> validWords. 
+
+A sentence is a concatenation (with no spaces) of a sequence of valid words. 
+
+Each valid word can appear 0 or more times in the sentence. 
+
+What makes the language special is that each word can be transformed by rearranging its letters before being used. 
+
+The cost to transform a word is defined as the number of character positions where the original word and the transformed word differ. 
+
+For example, "abc" can be transformed to "abc" with a cost of 0, to "acb", "cba" or "bac" with a cost of 2, and to "bca" or "cab" with a cost of 3.  
+
+Although several different sequences of valid words can produce the same sentence in this language, only the sequence with the least total transformation cost carries the meaning of the sentence. 
+
+The advantage of the new language is that the parents can no longer understand what the kids are saying. 
+
+The disadvantage is that the kids themselves also do not understand. They need your help.  
+
+Given a string sentence, return the total cost of transformation of the sequence of valid words which carries the meaning of the sentence, or -1 if no such sequence exists.
+
+Definition
+    
+Class:
+SentenceDecomposition
+Method:
+decompose
+Parameters:
+string, vector <string>
+Returns:
+int
+Method signature:
+int decompose(string sentence, vector <string> validWords)
+(be sure your method is public)
+    
+
+Notes
+-
+If a word is used multiple times in a sentence, each occurrence can be transformed differently.
+Constraints
+-
+sentence will contain between 1 and 50 lowercase letters ('a'-'z'), inclusive.
+-
+validWords will contain between 1 and 50 elements, inclusive.
+-
+Each element of validWords will contain between 1 and 50 lowercase letters ('a'-'z'), inclusive.
+Examples
+0)
+
+    
+"neotowheret"
+{"one", "two", "three", "there"}
+Returns: 8
+The following transformations can be made:
+"one" -> "neo" with a cost of 3
+"two" -> "tow" with a cost of 2
+"three" -> "heret" with a cost of 3
+"there" -> "heret" with a cost of 5
+So the sequence {"one", "two", "three"} is the one carrying the meaning of "neotowheret". Its total transformation cost is 3 + 2 + 3 = 8.
+1)
+
+    
+"abba"
+{"ab", "ac", "ad"}
+Returns: 2
+The word "ab" is used twice, and each time, it is transformed differently.
+2)
+
+    
+"thisismeaningless"
+{"this", "is", "meaningful"}
+Returns: -1
+
+3)
+
+    
+"ommwreehisymkiml"
+{"we", "were", "here", "my", "is", "mom", "here", "si", "milk", "where", "si"}
+Returns: 10
+
+4)
+
+    
+"ogodtsneeencs"
+{"go", "good", "do", "sentences", "tense", "scen"}
+Returns: 8
+
+5)
+
+    
+"sepawaterords"
+{"separate","words"}
+Returns: -1
+You are only allowed to rearrange letters within words, and not in the entire sentence.
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

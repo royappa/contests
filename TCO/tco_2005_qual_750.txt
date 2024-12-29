@@ -1,0 +1,81 @@
+
+vector<int> amps;
+
+int canDo(int nf, int na)
+{
+	// check every assignment of apps to fuses
+	if (na == 0)
+	{
+		return true;
+	}
+	
+	// try assigning the last i apps to the current fuse
+	int sum = 0;
+	for (int i = 1; i <= na; i++)
+	{
+		sum += amps[na-i];
+		if (sum <= 20)
+		{
+			if (canDo(nf-1, na-i))
+				return true;
+		}
+	}
+	return false;
+}
+
+bool minFuses(vector <int> _amps) 
+{
+	amps = _amps;
+	int na = amps.size();
+	for (int nf = 1; nf < 20; nf++)
+	{
+		if (canDo(nf, na))
+		{
+			return nf;
+		}
+	}
+}
+
+Problem Statement
+    
+Homes typically have 20 amp fuses in their fuseboxes. Appliances are then hooked up to the fuses. If the appliances connected to a single fuse ever draw more than 20 amps, the fuse will blow (which you would like to avoid). In large homes with a large number of appliances, multiple 20 amp fuses may be required to accommodate all of the appliances. You have a number of large appliances, each of which must be connected to some fuse. The number of amps used by each appliance will be given by amps. Your task is to find the minimum number of 20 amp fuses that can accommodate all of the appliances.
+Definition
+    
+Class:
+Fuses
+Method:
+minFuses
+Parameters:
+vector <int>
+Returns:
+int
+Method signature:
+int minFuses(vector <int> amps)
+(be sure your method is public)
+    
+
+Constraints
+-
+Each element of amps will be between 1 and 10, inclusive.
+-
+amps will contain between 1 and 10 elements, inclusive.
+Examples
+0)
+
+    
+{10,10}
+Returns: 1
+We can hook up two 10 amp appliances to one 20 amp fuse.
+1)
+
+    
+{10,10,10,10,10,10,10,10,10,10}
+Returns: 5
+Here we require five 20 amp fuses. We hook up two appliances to each one.
+2)
+
+    
+{4,4,8,9,9,10}
+Returns: 3
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

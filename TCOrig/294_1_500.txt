@@ -1,0 +1,169 @@
+bool lessThan(string a, string b)
+{
+	if (a.size() != b.size())
+	{
+		return a.size() < b.size();
+	}
+	return a < b;
+}
+
+vector<string> words;
+map<string,string> memo;
+
+string pal(string p)
+{
+	if (memo.count(p) > 0)
+	{
+		return memo[p];
+	}
+	string best = "";
+	for (int i = 0; i < words.size(); i++)
+	{
+		if (words[i] is a prefix of p)
+		{
+			string r;
+			// let pp = p-prefix;
+			if (pp == "") // success already
+			{
+				if (prefix < best)
+					best = prefix;
+				continue;
+			}
+			else // recurse
+			{
+				string ppal = pal(pp);
+				if (ppal == "")
+					continue;
+				string r = p + " " + ppal;
+				if (r < best)
+					best = r;
+			}
+		}
+	}
+	memo[p] = best;
+	return best;
+}
+
+string palindrome(string text, vector <string> _words) 
+{
+	int n = text.size();
+	
+	string a, b;
+	
+	a = text;
+	for (int i = n-1; i >= 0; i--)
+	{
+		a += text[i];
+	}
+	b = text;
+	for (int i = n-2; i >= 0; i--)
+	{
+		b += text[i];
+	}
+	words = _words;
+	
+	sort(words.begin(), words.end(), lessThan);
+		
+	a = pal(a);
+	b = pal(b);
+	return a < b ? a : b;
+}
+
+Problem Statement
+    
+A palindrome is a phrase that reads the same forward and backward (ignoring spaces). 
+
+Given the first half of a palindrome (as described below), you must return a complete palindrome that contains only words from a given set of legal words. The returned palindrome must be a phrase where words are separated by single spaces.
+
+You will be given the first half of the palindrome as a string text containing only letters and no spaces. There are two complete palindromes that can be created from this first half. For example, given "ABC", you could produce either "ABCCBA" or "ABCBA" as the complete palindrome. 
+
+You must then insert spaces into the complete palindrome such that all the words in the phrase exist in the vector <string> words
+
+For example, given the list of words { "A", "CANAL", "MAN", "PANAMA", "PLAN" }, and the text "AMANAPLANAC", your method would return the string 
+"A MAN A PLAN A CANAL PANAMA".
+
+If no palindrome can be made, your method should return "". If more than one palindrome can be made, return the one that comes first lexicographically (please note that ' ' comes before all letters).
+Definition
+    
+Class:
+Palindromist
+Method:
+palindrome
+Parameters:
+string, vector <string>
+Returns:
+string
+Method signature:
+string palindrome(string text, vector <string> words)
+(be sure your method is public)
+    
+
+Constraints
+-
+text will contain between 1 and 50 characters, inclusive.
+-
+text will contain only uppercase letters ('A'-'Z').
+-
+words will contain between 1 and 50 elements, inclusive.
+-
+Each element of words will contain between 1 and 50 characters, inclusive.
+-
+Each element of words will contain only uppercase letters ('A'-'Z').
+Examples
+0)
+
+    
+"AMANAPLANAC"
+{ "A", "CANAL", "MAN", "PANAMA", "PLAN" }
+Returns: "A MAN A PLAN A CANAL PANAMA"
+
+1)
+
+    
+"AAAAA"
+{ "AA", "A", "AAA" }
+Returns: "A A A A A A A A A"
+
+2)
+
+    
+"CBA"
+{ "CBABC", "CBAABC" }
+Returns: "CBAABC"
+
+3)
+
+    
+"RACEFAST"
+{ "AR", "CAR", "FAST", "RACE", "SAFE", "CEFA", "ACE", "STTS", "AFEC" }
+Returns: "RACE FAST SAFE CAR"
+
+4)
+
+    
+"AABAABA"
+{ "AA", "AAB", "BAA", "BAB" }
+Returns: "AA BAA BAA BAA BAA"
+
+5)
+
+    
+"STRAWNOTOOSTUPIDAF"
+{ "WARTS", "I", "TOO", "A", "FAD", "STUPID", "STRAW", "PUT", "NO", "ON", "SOOT" }
+Returns: "STRAW NO TOO STUPID A FAD I PUT SOOT ON WARTS"
+
+6)
+
+    
+"AAAAA"
+{ "AAAA" }
+Returns: ""
+
+7)
+
+    
+"A"
+{ "A", "AA" }
+Returns: "A"
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

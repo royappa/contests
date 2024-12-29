@@ -1,0 +1,109 @@
+
+typedef vector<string> vs;
+
+vs S(string s)
+{
+	vs r;
+	r.push_back("S");
+	int n = s.size();
+	if (s[0] == 'a' && s[n-1] == 'b')
+	{
+		
+	
+vector <string> getDerivation(string s) 
+{
+	vs r;
+	
+	int n = s.size()
+	r.push_back("S");	
+	if (s[0] == 'a' && s[n-1] == 'b')
+	{
+		string x = "T";
+		while (s[0] == 'a' && s[n-1] == 'b')
+		{
+			x = ("a"+x+"b");
+			r.push_back(x);
+			s = s.substr(1, n-2);
+			n -= 2;
+			
+}
+Problem Statement
+    
+  S ::= T | bUa
+  T ::= aTb | A | B
+  U ::= aU | bU | a | b
+  A ::= aA | a
+  B ::= bB | b
+Displayed above is a Context-Free Grammar (CFG). You begin with the string (quotes for clarity) "S", and apply replacement rules until your resulting string no longer contains any capital letters. The first line above says that S can be replaced with T or bUa. The other lines are similar. You will return a sequence of strings, beginning with "S" and ending with input, where each successive sequence element results from applying one of the replacement rules above. For example, if input is "aaabb" then you will return
+ {"S","T","aTb","aaTbb","aaAbb","aaabb"}
+Definition
+    
+Class:
+DerivationDisplay
+Method:
+getDerivation
+Parameters:
+string
+Returns:
+vector <string>
+Method signature:
+vector <string> getDerivation(string input)
+(be sure your method is public)
+    
+
+Constraints
+-
+input will contain between 1 and 50 characters inclusive.
+-
+Each character in input will be 'a' or 'b'.
+-
+There will be exactly one solution.
+Examples
+0)
+
+    
+"aaabb"
+Returns: {"S", "T", "aTb", "aaTbb", "aaAbb", "aaabb" }
+The example above.
+1)
+
+    
+"bbba"
+Returns: {"S", "bUa", "bbUa", "bbba" }
+In the first step, S must be replaced with bUa in order to derive this string. Then the 2 inner b's are added.
+2)
+
+    
+"baabba"
+Returns: {"S", "bUa", "baUa", "baaUa", "baabUa", "baabba" }
+
+3)
+
+    
+"a"
+Returns: {"S", "T", "A", "a" }
+
+4)
+
+    
+"b"
+Returns: {"S", "T", "B", "b" }
+
+5)
+
+    
+"aabbbbbbbb"
+Returns: 
+{"S",
+ "T",
+ "aTb",
+ "aaTbb",
+ "aaBbb",
+ "aabBbb",
+ "aabbBbb",
+ "aabbbBbb",
+ "aabbbbBbb",
+ "aabbbbbBbb",
+ "aabbbbbbbb" }
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

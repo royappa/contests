@@ -1,0 +1,117 @@
+import java.util.*;
+
+public class Orchard
+{
+	public int[] nextTree(String[] orchard)
+	{
+		int nr = orchard.length, nc = orchard[0].length();
+		char[][] mat = new char[nr][];
+		for (int r = 0; r < nr; r++)
+		{
+			mat[r] = new char[nc];
+			orchard[i].getChars(0, nc, mat[r], 0);
+		}
+		int maxLen = 0, maxr=0, maxc = 0;
+		for (int r = 0; r < nr; r++)
+		{
+			for (int c = 0; c < nc; c++)
+			{
+				int xr = r-1, xc = c;
+				int up=0,down=0,left=0,right=0;
+				while (xr >= 0 && mat[xr][xc] != 'T') { xr--; up++; } 
+				xr = r+1; xc = c;
+				while (xr < nr && mat[xr][xc] != 'T') { xr++; down++; }
+				xr = r; xc = c-1;
+				while (xc >= 0 && mat[xr][xc] != 'T') { xc--; left++; }
+				xr = r; xc = c+1;
+				while (xc < nc && mat[xr][xc] != 'T') { xc++; right++; }
+				int len = Math.min(up, Math.min(down, Math.min(left, right)));
+				if (len > maxLen)
+				{
+					maxLen = len;
+					maxr = r;
+					maxc = c;
+				}
+			}
+		
+		}
+		new int[] result = { maxr, maxc };
+		return result;
+	}
+}
+
+Problem Statement
+    
+My orchard is arranged in a square, with the rows and columns numbered 1, 2, ..., n. I need software to choose the location where the next tree should be planted.
+I want the next tree not to be interfered with by existing trees or by the activities of the neighboring landowners. Therefore, I want to choose the location for which the shortest orthogonal path that goes either to a tree or out of the orchard is as long as possible. By an orthogonal path I mean a sequence of steps that go along rows and/or columns (not diagonally). If there are several locations that have the same shortest orthogonal path, break the tie by choosing the smallest row number, and, if necessary, break any remaining tie by choosing the smallest column number.
+The existing layout of the orchard is shown by a String[] orchard in which the elements correspond to rows 1, 2, ..., n. Within each element of orchard, the characters correspond to columns 1, 2, ..., n. The character 'T' indicates an existing tree at that row and column, while '-' indicates an available location.
+Create a class Orchard that contains a method nextTree that is given a String[] orchard and returns a int[] with two elements giving the row and column of the chosen location. The first element of the return should give the row, and the second element should give the column.
+Definition
+    
+Class:
+Orchard
+Method:
+nextTree
+Parameters:
+String[]
+Returns:
+int[]
+Method signature:
+int[] nextTree(String[] orchard)
+(be sure your method is public)
+    
+
+Constraints
+-
+orchard contains n elements, where n is between 1 and 50 inclusive
+-
+each element of orchard contains exactly n characters
+-
+each element of orchard contains only the characters 'T' and '-'
+-
+at least one element of orchard contains a character '-'
+Examples
+0)
+
+    
+{ "----" , "T---" , "----" , "----" }
+Returns: { 2,  3 }
+    ----  row 1
+    T---  row 2
+    ----  row 3
+    ----  row 4
+The edge locations all have a path of length 1 out of the orchard. The four central locations have a shortest path of 2 out of the orchard. Among these four, the one in row 2 column 2 has a path of 1 to the tree. Among the other 3 locations, the one in row 2 is preferred to the ones in row 3.
+1)
+
+    
+{"---T--","------","------","----T-","------","------"}
+Returns: { 3,  3 }
+    ---T--
+    ------
+    ------
+    ----T-
+    ------
+    ------
+ 
+The location at row 3, column 3 has a shortest orthogonal path of 3. In fact it has paths of length 3 to each of the 2 existing trees and also to the outside of the orchard.
+2)
+
+    
+{"------------","------------","------------","------------",
+"------------","------------","------------","------------",
+"------------","------------","------------","------------"}
+Returns: { 6,  6 }
+
+3)
+
+    
+{"-T----T",
+ "T---T--",
+ "-----TT",
+ "---TT--",
+ "T-----T",
+ "-------",
+ "T-T--T-"}
+Returns: { 2,  3 }
+The location at row 2, column 3 has a shortest path of length two both to the outside of the orchard and to several trees.
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

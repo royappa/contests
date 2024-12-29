@@ -1,0 +1,79 @@
+int nearness(vector <int> target, vector <int> cand) 
+{
+	sort(target.begin(), target.end());
+	sort(cand.begin(), cand.end());
+	int nt = target.size(), nc = cand.size();
+	
+	int dist = 1<<30;
+	
+	for (int s = 0; s < (1<<nc); s++)
+	{
+		int n = 0;
+		int t = 0;
+		for (int j = 0; j < nc; j++)
+		{
+			if (s & (1<<j))
+			{
+				t += abs(target[n++] - cand[j]);
+			}
+		}
+		if (n == nt)
+		{
+			dist = min(dist, t);
+		}
+	}
+	return dist;
+}
+
+Problem Statement
+    
+Suppose the solution to some problem is a set of integers, several of which you do not know. You wish to evaluate the nearness of some candidate set of known integers to the solution. For example, the candidate solution might be {9, 1, 2, 3, 5, 6}, while the target is {4, 9, 2, 1}: actually six integers, but two are unknown. 
+
+We define the distance between a target and a candidate to be the minimum sum of absolute differences in known values, disregarding extraneous candidate values. Here the distance would be |4-3| + |9-9| + |2-2| + |1-1| = 1: we have ignored the 5 and 6. Given a vector <int> target and a vector <int> candidate, return the distance between them.
+Definition
+    
+Class:
+SetMetric
+Method:
+nearness
+Parameters:
+vector <int>, vector <int>
+Returns:
+int
+Method signature:
+int nearness(vector <int> target, vector <int> candidate)
+(be sure your method is public)
+    
+
+Constraints
+-
+candidate will contain between 1 and 20 elements, inclusive.
+-
+target will contain between 1 and 20 elements, inclusive.
+-
+target will not contain more elements than candidate.
+-
+Each element of target and candidate will be between -1000 and 1000, inclusive.
+Examples
+0)
+
+    
+{4,9,2,1}
+{9,1,2,3,5,6}
+Returns: 1
+The example from the problem statement.
+1)
+
+    
+{0}
+{1000,-1000,0}
+Returns: 0
+Only one of the numbers is relevant; the extreme cases do not affect this answer.
+2)
+
+    
+{1000,-1000,0,5,289,-40}
+{30,821,-777,-52,91,444,-134,85}
+Returns: 679
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

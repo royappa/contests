@@ -1,0 +1,9 @@
+1. We WILL NOT allow two users to have the same login_email.
+2. We WILL NOT allow, inside one client, to have two PERSONS to have any overlapping emails, at all, but they will be DETECTED.
+       a. USER-USER overlap is forbidden. Nothing else.
+       b. CONTACT/USER overlap is forbidden, but detected, and CONTACT is marked as duplicate.
+       c. CONTACT/CONTACT overlap is forbidden, but detected, and all CONTACTs ar emarked as duplicates.
+3. Between two clients:
+       a. A contact of client A, can have any overlap with any person of client B. No problem. Not forbidden, not detected.
+       b. A user of client A, can have any overlap of his contact_email_address_list, with the contact_email_address of any person of client B. No problem - not forbidden, not detected.
+       c. A user of client A, cannot have his login_email to be the same as the login_email of another user of client B. (Or of client A). This is just condition 1, restated.

@@ -1,0 +1,216 @@
+#include <vector>
+#include <list>
+#include <map>
+#include <set>
+#include <deque>
+#include <stack>
+#include <bitset>
+#include <algorithm>
+#include <functional>
+#include <numeric>
+#include <utility>
+#include <sstream>
+#include <iostream>
+#include <iomanip>
+#include <cstdio>
+#include <cmath>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+class StockQuotes {
+public:
+vector <string> report(vector <string> quotes) 
+{
+	int n = quotes.size();
+	vector<int> count(n, 0);
+	vector<int> bestask(n), bestbid(n);
+	vector<int> bestexcha(n), bestexchb(n);
+	
+	map<int,int> ea, eb;
+	vector<int> t(n);
+	
+	int cc = 0;
+	int tc = 0;
+	for (int i = 0; i < n; i++)
+	{
+		int e, bid, ask;
+		
+		sscanf(quotes[i].c_str(), "%d %d %d", &e, &bid, &ask);
+		t[e] += ask-bid;
+		count[e]++;
+		
+		if (i == 0)
+		{
+			cc = 1;
+			bestask[0] = ask;
+			bestbid[0] = bid;
+			bestexcha[0] = e;
+			bestexchb[0] = e;
+			tc += ask-bid;
+		}
+		else
+		{
+			// calc new inside spread
+			if (ask >= bestask[i-1] && bid < bestbid[i-1])
+			{
+				cc++;
+				if (ask < bestask[i])
+				{
+					bestask[i] = ask;
+					bestexcha[i] = e;
+				}
+				if (bid > bestbid[i])
+				{
+					bestbid[i] = bid;
+					bestexchb[i] = e;
+				}
+				tc += bestask[i] - bestbid[i];
+			}
+			else if ((e == bestexcha[i-1] && ask > bestask[i-1]) || (e == bestexchb[i-1] && bid < bestbid[i-1]))
+			{
+				cc++;
+				if (e == bestexcha[i-1] && ask > bestask[i-1])
+				{
+					int k = i-1;
+					while (k >= 0 && bestexcha[k] == e)
+					{
+						k--;
+					}
+					if (k != -1)
+					{
+						bestask[i] = bestask[k];
+						bestexcha[i] = bestexcha[k];
+					}
+					else
+					{
+						bestask[i] = ask;
+						bestexcha[i] = e;
+					}
+				}
+				if (e == bestexchb[i-1] && bid < bestbid[i-1])
+				{
+					int k = i-1;
+					while (k >= 0 && bestexchb[k] == e)
+					{
+						k--;
+					}
+					if (k != -1)
+					{
+						bestbid[i] = bestbid[k];
+						bestexchb[i] = bestexchb[k];
+					}
+					else
+					{
+						bestbid[i] = bid;
+						bestexchb[i] = e;
+					}
+				}			
+				tc += bestask[i]-bestbid[i];
+			}
+			else
+			{
+				bestask[i] = bestask[i-1];
+				bestbid[i] = bestbid[i-1];
+				bestexcha[i] = bestexcha[i-1];
+				bestexchb[i] = bestexchb[i-1];
+			}			
+		}
+	}
+	vector<string> result;
+	for (int e = 0; e < n; e++)
+	{
+		if (count[e] == 0)
+			continue;
+		char buf[100];
+		sprintf(buf, "%d %d %.2lf", e, count[e], (double) t[e]/(double) count[e]);
+		result.push_back(buf);
+	}
+	char buf[100];
+	sprintf(buf, "%d %d %.2lf", 10, cc, (double) tc/(double) cc);
+	result.push_back(buf);
+	return result;
+}
+
+};
+
+
+//Powered by [KawigiEdit]
+
+Problem Statement
+    
+A 'quote' is a message from a stock exchange that says at what price that exchange is currently willing to buy a given stock (the 'bid') and what price it is willing to sell the stock (the 'ask'). The 'spread' is defined as the difference between the ask and the bid. For our purposes, you can assume that the ask will always be greater than the bid and that the bid will be greater than zero. The 'inside quote' is defined as the highest bid from any exchange and the lowest ask from any exchange (they do not necessarily need to be the same exchange). The inside quote changes when any exchange improves upon the current inside quote or when the best exchange moves away from the inside exposing a lower bid or higher ask.  You will be given a vector <string> representing a number of quotes, in the order they are made. Each element of the input will represent a single quote and will be formatted as: "EXCHANGE BID ASK", where EXCHANGE is the index of the stock exchange making the quote and BID and ASK are as defined above. You are to issue a report based on the quotes. Each element of the report should be formatted as "EXCHANGE COUNT AVERAGE_SPREAD", where EXCHANGE is either the index of an EXCHANGE, as in the input, or 10, representing the inside quote. COUNT is the number of times that the quote (either bid or ask) for that exchange changed (or that the inside quote changed). AVERAGE_SPREAD is the average spread, averaged only over the quotes that caused the spread to change and with exactly 2 digits after the decimal point (rounded in the standard way to the nearest hundredth where .005 rounds up). The return should contain one entry for each exchange that issues one or more quotes in the input. It should be sorted by the index of the exchanges, with the entry for the inside spread coming last.
+Definition
+    
+Class:
+StockQuotes
+Method:
+report
+Parameters:
+vector <string>
+Returns:
+vector <string>
+Method signature:
+vector <string> report(vector <string> quotes)
+(be sure your method is public)
+    
+
+Constraints
+-
+Each element of quotes will be formatted as "EXCHANGE BID ASK" where EXCHANGE is a digit between '0' and '9', inclusive, and BID and ASK are integers between 1 and 1000, inclusive, without leading zeros.
+-
+quotes will contain between 1 and 50 elements inclusive.
+-
+An exchange will never issue a quote that is the same is its existing quote (so the number of times that its quote changes will be identical to the number of quotes it issues).
+-
+ASK will be greater than BID in each element of quote.
+-
+The inside spread will always be greater than 0.
+Examples
+0)
+
+    
+{"0 10 14",
+ "1 9 16",
+ "2 11 15",
+ "0 11 13",
+ "1 10 15",
+ "2 12 14",
+ "0 9 15",
+ "2 8 20"}
+Returns: {"0 3 4.00", "1 2 6.00", "2 3 6.00", "10 6 2.83" }
+The following table shows how the best bid and ask change as new bids come in:
+              |     BEST
+Exch|Bid |Ask | Bid|Ask | Changed
+----+----+----+----+----+------
+ 0  | 10 | 14 | 10 | 14 | Yes
+ 1  |  9 | 16 | 10 | 14 | 
+ 2  | 11 | 15 | 11 | 14 | Yes
+ 0  | 11 | 13 | 11 | 13 | Yes
+ 1  | 10 | 15 | 11 | 13 |  
+ 2  | 12 | 14 | 12 | 13 | Yes
+ 0  |  9 | 15 | 12 | 14 | Yes
+ 2  |  8 | 20 | 10 | 15 | Yes
+1)
+
+    
+{"8 931 944",
+ "8 926 946",
+ "8 926 951",
+ "8 928 953",
+ "8 929 954"}
+Returns: {"8 5 21.60", "10 5 21.60" }
+
+2)
+
+    
+{"2 711 730",
+ "5 716 729",
+ "7 711 734",
+ "0 718 731",
+ "5 713 731",
+ "1 713 730"}
+Returns: {"0 1 13.00", "1 1 17.00", "2 1 19.00", "5 2 15.50", "7 1 23.00", "10 4 13.75" }
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

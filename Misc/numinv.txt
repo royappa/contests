@@ -1,0 +1,57 @@
+
+Problem Statement
+    
+An important metric in the theory of sorting is the number of inversions in a sequence. An inversion is any pair of elements that are out of order, meaning that the earlier element in the sequence has a larger value than the later element in the sequence. For example, the sequence
+   3 1 4 2 5
+has three inversions: 3-1, 3-2, and 4-2.
+Given integers n and inv, you are to return a permutation of the sequence 1,...,n that has exactly inv inversions. If it is not possible to create a permutation that has inv inversions, return the empty sequence. If there is more than one permutation that has exactly inv inversions, return the lexicographically earliest. A permutation P is lexicographically earlier than a permutation Q if, at the first index at which the permutations differ, the element in P is smaller than the element in Q.
+Definition
+    
+Class:
+Inversions
+Method:
+createExample
+Parameters:
+int, int
+Returns:
+int[]
+Method signature:
+int[] createExample(int n, int inv)
+(be sure your method is public)
+    
+
+Constraints
+-
+n is between 1 and 1000, inclusive.
+-
+inv is between 0 and 1000000, inclusive.
+Examples
+0)
+
+    
+3
+0
+Returns: { 1,  2,  3 }
+The only way for the sequence to have no inversions is for it to be in increasing order.
+1)
+
+    
+4
+6
+Returns: { 4,  3,  2,  1 }
+A sequence in decreasing order.
+2)
+
+    
+4
+10
+Returns: { }
+There is no way to get 10 inversions with only 4 elements.
+3)
+
+    
+14
+21
+Returns: { 1,  2,  3,  4,  5,  6,  7,  14,  13,  12,  11,  10,  9,  8 }
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

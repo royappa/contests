@@ -1,0 +1,140 @@
+double finalPosition(int length, int nCarriages, vector <string> offset, vector <string> period, int trainSpeed, int robberSpeed, int nBridges) 
+{
+	vector<int> b(1000005, 0);
+	for (int i = 0; i < offset.size(); i++)
+	{
+		.. calculate b[];
+	}
+	double x = 0.0;
+	while (true)
+	{
+		.. move robber as far along train as possible, until he hits next bridge
+		if (numbridges == nBridges)
+		{
+			return x;
+		}
+		if (robber is at end of train)
+		{
+			return x;
+		}
+	}
+}
+
+
+Problem Statement
+    
+This problem contains images best viewed from the applet.
+A train is moving in the positive direction of the x-axis. The train consists of nCarriages carriages of equal length. Initially, at time 0, the coordinate of the rightmost end of the last carriage is length, the coordinate of the rightmost end of the second to last carriage is 2 * length, and so on. There is a robber located on the leftmost point of the roof of the last carriage.
+  Here is an example of a train with 4 carriages at time 0.
+There are an infinite number of low bridges above the railway. Each bridge belongs to one bridge sequence. The k-th sequence consists of bridges located at the coordinates offset[k] + period[k] * j, for all non-negative integers j.
+  The blue bridges belong to sequence 0 and the red bridges belong to sequence 1. In this case, offset[0] = 3, period[0] = 4, offset[1] = 4, and period[1] = 2.
+The train moves at a constant speed of trainSpeeed units per second, and the robber has a maximal speed of robberSpeed units per second. The robber cannot walk through the bridges when he is on the roof because they are too low. Therefore, whenever the robber is at the same coordinate as a bridge, he must either be between two carriages or at either end of the train. This allows him to duck and jump down into a safe area.
+The robber's goal is to travel to the rightmost point of the first carriage as quickly as possible. He will stop walking and jump off the train when he reaches the rightmost point of the first carriage, or when nBridges have passed above him - whichever comes first. Return the position of the robber on the x-axis when he exits the train.
+The offsets and periods of the bridge sequences are given in the vector <string>s offset and period. Each element of offset and period contains a space separated list of integers. The ith integers in offset and period are the offset and period of the ith bridge sequence. See example 0 for clarification.
+Definition
+    
+Class:
+TrainRobber
+Method:
+finalPosition
+Parameters:
+int, int, vector <string>, vector <string>, int, int, int
+Returns:
+double
+Method signature:
+double finalPosition(int length, int nCarriages, vector <string> offset, vector <string> period, int trainSpeed, int robberSpeed, int nBridges)
+(be sure your method is public)
+    
+
+Notes
+-
+It is possible for multiple bridges to be located in the same position.
+-
+A return value with either an absolute or relative error of less than 1.0E-9 is considered correct.
+Constraints
+-
+length will be between 1 and 1000000, inclusive.
+-
+nCarriages will be between 1 and 1000000, inclusive.
+-
+offset will contain between 1 and 50 elements, inclusive.
+-
+Each element of offset will contain between 1 and 50 characters, inclusive.
+-
+period will contain between 1 and 50 elements, inclusive.
+-
+Each element of period will contain between 1 and 50 characters, inclusive.
+-
+Each element of offset and period will contain one or more integers without leading zeroes separated by single spaces.
+-
+Each integer in offset and period will be between 1 and 1000000, inclusive.
+-
+offset and period will contain the same number of integers.
+-
+trainSpeed will be between 1 and 1000000, inclusive.
+-
+robberSpeed will be between 1 and 1000000, inclusive.
+-
+nBridges will be between 1 and 1000000, inclusive.
+Examples
+0)
+
+    
+1
+4
+{"3 4"}
+{"4", "2"}
+1
+1
+100
+Returns: 14.0
+The robber will walk to the rightmost end of the last carriage and then duck down between carriages to avoid the first two bridges (at coordinates 3 and 4). He will then walk to the rightmost end of the next carriage and duck down to avoid the next three bridges (at coordinates 6, 7, and 8). He will repeat this procedure once more to avoid the next three bridges (at coordinates 10, 11, and 12). He will finally reach the rightmost point of the first carriage when he is at coordinate 14.
+1)
+
+    
+1
+4
+{"3 4"}
+{"4 2"}
+1
+1
+1
+Returns: 3.0
+The first bridge will pass when the robber is at coordinate 3.
+2)
+
+    
+5
+10
+{"8 23"}
+{"15 13"}
+10
+10
+10
+Returns: 75.0
+
+3)
+
+    
+100
+100
+{"1 1"}
+{"1 1"}
+100
+100
+100
+Returns: 50.0
+
+4)
+
+    
+1
+1000000
+{"10", "15 63"}
+{"23 42 11"}
+10
+1000
+1000
+Returns: 6355.0
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

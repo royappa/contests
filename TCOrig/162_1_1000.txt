@@ -1,0 +1,66 @@
+long long count(string n) 
+{
+	
+abcdefg
+0bcdefg
+
+98272
+
+}
+
+Problem Statement
+    
+You have a group of non-zero digits, which are not necessarily unique. If you can insert '0' digits wherever you wish, there are an infinite number of integers which have exactly those non-zero digits. 
+
+For example, given the group of digits {1, 2}, you can create the numbers 12, 21, 102, 120, 201, 210, 1002, 1020, etc. Given a potentially large number n in string format, return how many numbers that use the same exact non-zero digits are less than it. Leading zeros are not allowed.
+
+Definition
+    
+Class:
+PermutationCounter
+Method:
+count
+Parameters:
+string
+Returns:
+long long
+Method signature:
+long long count(string n)
+(be sure your method is public)
+    
+
+Constraints
+-
+n will have between 1 and 50 characters, inclusive.
+-
+n will consist only of digit characters ('0' - '9').
+-
+n will not start with a '0'.
+-
+There will be at most 2^63 - 1 integers with the same non-zero digits as n that are less than n
+Examples
+0)
+
+    
+"1020"
+Returns: 7
+From the problem statement above, we see that there are 7 values less than the given value.
+1)
+
+    
+"50000000000000"
+Returns: 13
+Since there is only one non-zero digit in this number, the only way to increment the number is by inserting a zero after the 5. Therefore, the sequence is: 5, 50, 500, 5000, ..., 50000000000000.
+2)
+
+    
+"1030000040000"
+Returns: 1414
+
+3)
+
+    
+"1901712530271201432987123"
+Returns: 141588146596382454
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

@@ -1,0 +1,96 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+
+class CountSubarrays {
+public:
+typedef long long LL;
+const int MOD = 744444499;
+
+typedef pair<LL,LL> pLL;
+
+pLL eea2(LL a, LL b)
+{
+	if (a == 0)
+	{
+		return make_pair(1LL, 0LL);
+	}
+	else if (b == 0)
+	{
+		return make_pair(0LL, 1LL);
+	}
+	if (a % b == 0)
+	{
+		return make_pair(0LL, 1LL);
+	}
+	else
+	{
+		pLL t = eea2(b, a % b);
+		LL m = t.first, n = t.second;
+
+		return make_pair(n, m-n*(a / b));
+	}
+}
+pLL eea(LL a, LL b)
+{
+	pLL t;
+	if (a < 0 && b < 0)
+	{
+		t = eea2(-a, -b);
+		t.first *= -1LL;
+		t.second *= -1LL;
+	}
+	else if (a < 0)
+	{
+		t = eea2(-a, b);
+		t.first *= -1LL;
+	}
+	else if (b < 0)
+	{
+		t = eea2(a, -b);
+		t.second *= -1LL;
+	}
+	else
+	{
+		t = eea2(a, b);
+	}
+	return t;
+}
+
+int modinv(int p) {
+	pLL r = eea2(p, MOD);
+	return r.first;
+}
+long long count(vector <int> Aprefix, int n, int a, int b, int m, int X) {
+	vector<int> A(n);
+	int na = Aprefix.size();
+	for (int i = 0; i < na; i++) {
+		A[i] = Aprefix[i];
+	}
+	for (int i = na; i < n; i++) {
+		A[i] = LL((LL(A[i-na])*a+b))%m;
+	}
+	int P = 1;
+	unordered_map<int,int> c;
+	LL t = 0;
+	for (int i = 0; i < n; i++) {
+		P = LL(P*A[i])%MOD;
+		if (P == 0) {
+			c.clear();
+			P = 1;
+			continue;
+		}
+		int Pii = modinv(P);
+		int q = LL(X*Pii)%MOD;
+		c[q]++;
+		t += c[q];
+	}
+	return t;
+
+}
+};
+
+
+<%:testing-code%>
+//Powered by KawigiEdit 2.1.4 (beta) modified by pivanof!

@@ -1,0 +1,72 @@
+int divideWork(int S, int F, int G) 
+{
+	while (G >= 2)
+	{
+		if (G <= S+F && G > F && G > S)
+			return G;
+		G--;
+	}
+	return 1;
+}
+
+Problem Statement
+    
+Once upon a time, there lived a powerful wizard who created spheresCount magical spheres. These spheres, when connected together, were a source of unimaginable power. To prevent anyone else from using them, the wizard created fakeSpheresCount spheres that are indistinguishable from the real ones, but don't hold any magical power.
+You are determined to find out which spheres are real, and use them to rule the world. To accomplish this, you want to gather a team of gnomes to try every combination of spheresCount spheres out of (spheresCount + fakeSpheresCount) spheres, even if it takes centuries. You will assign combinations to each gnome beforehand, and you will not test any combination more than once. Unfortunately, the gnomes have a labor union that won't allow some gnomes to have more work than others. Therefore, you must select a team size that will allow you to assign an equal number of combinations to each gnome.
+Return the maximum possible team size less than or equal to gnomesAvailable that allows even distribution of the work.
+Definition
+    
+Class:
+MagicalSpheres
+Method:
+divideWork
+Parameters:
+int, int, int
+Returns:
+int
+Method signature:
+int divideWork(int spheresCount, int fakeSpheresCount, int gnomesAvailable)
+(be sure your method is public)
+    
+
+Constraints
+-
+spheresCount will be between 1 and 1,000,000,000, inclusive.
+-
+fakeSpheresCount will be between 1 and 1,000,000,000, inclusive.
+-
+availableGnomes will be between 1 and 100000, inclusive.
+Examples
+0)
+
+    
+3
+1
+3
+Returns: 2
+We have a total of four spheres, lets call them {a,b,c,d}. We need to check all triplets to find which of them are real. The different triplets are: {a,b,c}, {a,b,d}, {a,c,d}, {b,c,d}. Since there are four possibilities to check, we can divide it between two gnomes, by assigning two to each of them.
+1)
+
+    
+3
+3
+50
+Returns: 20
+With three fake spheres, there are 20 triplets to check. You can use 20 gnomes and assign one of the triplets to each of them.
+2)
+
+    
+4
+3
+4
+Returns: 1
+
+3)
+
+    
+15634
+456
+5000
+Returns: 4990
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

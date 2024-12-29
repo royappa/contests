@@ -1,0 +1,114 @@
+int n;
+vector<int> p;
+int memo[51][51][1001];
+
+// What is the fewest pieces we can place using pieces k..n-1, if np pieces have already been placed, and e units of board remains empty.
+
+// If there are np pieces placed, and e empty units left, then:
+//   - there can be up to np+1 holes
+// 	 - we can size the holes s.t. the biggest hole is e/(np+1). 
+//		- Thus pieces whose length are > e/(np+1) cannot fit, i.e., only pieces of length <= e/(np+1) can fit.
+int f(int k, int np, int e)
+{
+	if (k == n || e == 0) // no pieces left, or no space left
+	{
+		return 0;
+	}
+	int& r = memo[k][np][e];
+	if (r != -1)
+	{
+		return r;
+	}
+	
+	r = 1<<30;
+	
+	if (p[k]*(np+1) <= e)
+	{
+		r = min(f(k+1, np, e), f(k+1, np+1, e-p[k]));
+	}
+	else
+	{
+		r = f(k+1, np, e);
+	}
+	return r;
+}
+	
+int optimalPlacement(int L, vector <int> pieces) 
+{
+	p = pieces;
+	n = p.size();
+	memset(memo, -1, sizeof(memo));
+	return f(0, 0, L); 
+}
+
+Problem Statement
+    
+You have received a new puzzle as a gift. It consists of a board and several pieces of various lengths. Each piece has the same width as the board. The goal of the game is to place the least number of pieces on the board such that no other unused piece can be added legally. Pieces must not hang over the edge of the board or be twisted at an angle. Each piece must be oriented so that its width is parallel to the width of the board. Pieces must not overlap, but their edges may touch. Keep in mind that distances between pieces or the distances between pieces and the edges of the board are not necessarily integer numbers. See the examples for further clarification.  You will be given an int L, the length of the board, and a vector <int> pieces containing the lengths of the pieces. Create a method optimalPlacement that returns the number of pieces placed on the board that allows you to solve the puzzle. 
+Definition
+    
+Class:
+PlacingPieces
+Method:
+optimalPlacement
+Parameters:
+int, vector <int>
+Returns:
+int
+Method signature:
+int optimalPlacement(int L, vector <int> pieces)
+(be sure your method is public)
+    
+
+Constraints
+-
+L will be between 1 and 1000, inclusive.
+-
+pieces will contain between 1 and 30 elements, inclusive.
+-
+Each element of pieces will be between 1 and 100, inclusive.
+Examples
+0)
+
+    
+9
+{1, 8}
+Returns: 1
+You can place both pieces on the board and leave no space on it. However, there is a better solution as depicted below. Place only the second piece on the board, and leave a little space between it and the left and right edges of the board, so that the first piece can't fit:
+ 
+1)
+
+    
+36
+{1, 1, 5, 5, 5}
+Returns: 4
+If we place all three pieces with length 5 on the board, we will have no choice but to also place the smallest two pieces. However, if you place only two of them and the two smallest pieces, you can leave spaces on the board that are smaller than the length of the remaining piece.
+ 
+2)
+
+    
+37
+{1, 1, 5, 5, 5}
+Returns: 5
+You cannot leave any piece out here.
+3)
+
+    
+18
+{2, 2, 2, 9, 9, 10}
+Returns: 2
+Sometimes it is better to not place the piece with the highest length.
+4)
+
+    
+1
+{2, 3, 4}
+Returns: 0
+No piece fits on this board.
+5)
+
+    
+703
+{73, 76, 90, 42, 84, 13, 57, 88, 80, 45, 80, 1, 78, 41, 73, 40, 97, 42}
+Returns: 7
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

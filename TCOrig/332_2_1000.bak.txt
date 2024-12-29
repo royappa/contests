@@ -1,0 +1,101 @@
+
+
+int countSquares(vector <string> v) 
+{
+	int n, m;
+	int d = 0;
+	n = v.size();
+	m = v[0].size();
+	
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = 0; j < m; j++)
+		{
+			for (int s = 
+			int ar, ac, br, bc, cr, cc, dr, dc;
+			bool ok = getVert(i, j, ar, ac, br, bc, cr, cc, dr, dc, n, m);
+			if (ok && v[ar][ac] == v[br][bc] && v[ar][ac] == v[cr][cc] && v[ar][ac] == v[dr][dc])
+				d++;
+			ok = getDiag(i, j, ar, ac, br, bc, cr, cc, dr, dc, n, m);
+			if (ok && v[ar][ac] == v[br][bc] && v[ar][ac] == v[cr][cc] && v[ar][ac] == v[dr][dc])
+				d++;
+		}
+	}
+	return d;
+				
+}
+
+Problem Statement
+    
+You are given a rectangular field divided into square cells. Each cell contains a letter. A square with vertices in the centers of four cells is called valid if those four cells are distinct and all contain the same letter. For example, the following field contains two valid squares:
+ABA
+BAB
+ABA
+
+One has vertices in the centers of the following squares:
+A.A
+...
+A.A
+
+Another has vertices in the centers of the following cells:
+.B.
+B.B
+.B.
+
+You are given a vector <string> field. The j-th character of the i-th element of field is the letter contained in the cell at row i, column j. Return the number of distinct valid squares in the field. Two squares are distinct if one has a vertex in a cell where the other does not.
+Definition
+    
+Class:
+Squares
+Method:
+countSquares
+Parameters:
+vector <string>
+Returns:
+int
+Method signature:
+int countSquares(vector <string> field)
+(be sure your method is public)
+    
+
+Constraints
+-
+field will contain between 1 and 50 elements, inclusive.
+-
+Each element of field will contain between 1 and 50 characters, inclusive.
+-
+All elements of field will contain the same number of characters.
+-
+Each element of field will contain only uppercase letters ('A'-'Z').
+Examples
+0)
+
+    
+{"ABA", "BAB", "ABA"}
+Returns: 2
+Example from the problem statement.
+1)
+
+    
+{"AA", "AA"}
+Returns: 1
+
+2)
+
+    
+{"ABC", 
+ "DEF", 
+ "GHI"}
+Returns: 0
+There are no valid squares here.
+3)
+
+    
+{"AABCA", 
+ "AAAAA", 
+ "BAAAB", 
+ "AAAEA", 
+ "ADBFA"}
+Returns: 11
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

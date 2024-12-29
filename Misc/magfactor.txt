@@ -1,0 +1,156 @@
+	public String[] enlarge(String[] image, int factor)
+	{
+		int m = image.length;
+		
+		String[] mag = new String[m*factor];
+		
+		int num = 0;
+		for (int i = 0; i < m; i++)
+		{
+			String magLine = "";
+			for (int j = 0; j < image[i].length(); j++)
+			{
+				char ch = image[i].charAt(j);
+				for (k = 0; k < factor; k++)
+					magLine += ch;
+			}
+			for (int j = 0; j < factor; j++)
+			{
+				mag[k++] = magLine;
+			}
+		}
+		
+		return mag;
+	}
+	
+Problem Statement
+    
+Given an image as a String[], scale it up by factor. That is, if the original image is M x N, the scaled image should be M*factor x N*factor. Each character in the input String[] should be represented by factor x factor of the same character in the output (see examples).
+Definition
+    
+Class:
+ImageEnlarger
+Method:
+enlarge
+Parameters:
+String[], int
+Returns:
+String[]
+Method signature:
+String[] enlarge(String[] image, int factor)
+(be sure your method is public)
+    
+
+Constraints
+-
+image will contain between 1 and 50 elements, inclusive.
+-
+Each element of image will contain between 1 and 50 characters, inclusive.
+-
+Each element of image will contain the same number of characters.
+-
+Each character in image will have ASCII value between 32 and 126, inclusive.
+-
+factor will be between 0 and 50, inclusive.
+-
+The return will contain at most 7500 characters.
+Examples
+0)
+
+    
+{"abc",
+ "def",
+ "ghi"}
+3
+Returns: 
+{ "aaabbbccc",
+  "aaabbbccc",
+  "aaabbbccc",
+  "dddeeefff",
+  "dddeeefff",
+  "dddeeefff",
+  "ggghhhiii",
+  "ggghhhiii",
+  "ggghhhiii" }
+
+1)
+
+    
+{"ab",
+ "cd"}
+0
+Returns: { }
+
+2)
+
+    
+{"---------",
+ "-TTT--CC-",
+ "--T--C---",
+ "--T--C---",
+ "--T---CC-",
+ "---------"}
+10
+Returns: 
+{ "------------------------------------------------------------------------------------------",
+  "------------------------------------------------------------------------------------------",
+  "------------------------------------------------------------------------------------------",
+  "------------------------------------------------------------------------------------------",
+  "------------------------------------------------------------------------------------------",
+  "------------------------------------------------------------------------------------------",
+  "------------------------------------------------------------------------------------------",
+  "------------------------------------------------------------------------------------------",
+  "------------------------------------------------------------------------------------------",
+  "------------------------------------------------------------------------------------------",
+  "----------TTTTTTTTTTTTTTTTTTTTTTTTTTTTTT--------------------CCCCCCCCCCCCCCCCCCCC----------",
+  "----------TTTTTTTTTTTTTTTTTTTTTTTTTTTTTT--------------------CCCCCCCCCCCCCCCCCCCC----------",
+  "----------TTTTTTTTTTTTTTTTTTTTTTTTTTTTTT--------------------CCCCCCCCCCCCCCCCCCCC----------",
+  "----------TTTTTTTTTTTTTTTTTTTTTTTTTTTTTT--------------------CCCCCCCCCCCCCCCCCCCC----------",
+  "----------TTTTTTTTTTTTTTTTTTTTTTTTTTTTTT--------------------CCCCCCCCCCCCCCCCCCCC----------",
+  "----------TTTTTTTTTTTTTTTTTTTTTTTTTTTTTT--------------------CCCCCCCCCCCCCCCCCCCC----------",
+  "----------TTTTTTTTTTTTTTTTTTTTTTTTTTTTTT--------------------CCCCCCCCCCCCCCCCCCCC----------",
+  "----------TTTTTTTTTTTTTTTTTTTTTTTTTTTTTT--------------------CCCCCCCCCCCCCCCCCCCC----------",
+  "----------TTTTTTTTTTTTTTTTTTTTTTTTTTTTTT--------------------CCCCCCCCCCCCCCCCCCCC----------",
+  "----------TTTTTTTTTTTTTTTTTTTTTTTTTTTTTT--------------------CCCCCCCCCCCCCCCCCCCC----------",
+  "--------------------TTTTTTTTTT--------------------CCCCCCCCCC------------------------------",
+  "--------------------TTTTTTTTTT--------------------CCCCCCCCCC------------------------------",
+  "--------------------TTTTTTTTTT--------------------CCCCCCCCCC------------------------------",
+  "--------------------TTTTTTTTTT--------------------CCCCCCCCCC------------------------------",
+  "--------------------TTTTTTTTTT--------------------CCCCCCCCCC------------------------------",
+  "--------------------TTTTTTTTTT--------------------CCCCCCCCCC------------------------------",
+  "--------------------TTTTTTTTTT--------------------CCCCCCCCCC------------------------------",
+  "--------------------TTTTTTTTTT--------------------CCCCCCCCCC------------------------------",
+  "--------------------TTTTTTTTTT--------------------CCCCCCCCCC------------------------------",
+  "--------------------TTTTTTTTTT--------------------CCCCCCCCCC------------------------------",
+  "--------------------TTTTTTTTTT--------------------CCCCCCCCCC------------------------------",
+  "--------------------TTTTTTTTTT--------------------CCCCCCCCCC------------------------------",
+  "--------------------TTTTTTTTTT--------------------CCCCCCCCCC------------------------------",
+  "--------------------TTTTTTTTTT--------------------CCCCCCCCCC------------------------------",
+  "--------------------TTTTTTTTTT--------------------CCCCCCCCCC------------------------------",
+  "--------------------TTTTTTTTTT--------------------CCCCCCCCCC------------------------------",
+  "--------------------TTTTTTTTTT--------------------CCCCCCCCCC------------------------------",
+  "--------------------TTTTTTTTTT--------------------CCCCCCCCCC------------------------------",
+  "--------------------TTTTTTTTTT--------------------CCCCCCCCCC------------------------------",
+  "--------------------TTTTTTTTTT--------------------CCCCCCCCCC------------------------------",
+  "--------------------TTTTTTTTTT------------------------------CCCCCCCCCCCCCCCCCCCC----------",
+  "--------------------TTTTTTTTTT------------------------------CCCCCCCCCCCCCCCCCCCC----------",
+  "--------------------TTTTTTTTTT------------------------------CCCCCCCCCCCCCCCCCCCC----------",
+  "--------------------TTTTTTTTTT------------------------------CCCCCCCCCCCCCCCCCCCC----------",
+  "--------------------TTTTTTTTTT------------------------------CCCCCCCCCCCCCCCCCCCC----------",
+  "--------------------TTTTTTTTTT------------------------------CCCCCCCCCCCCCCCCCCCC----------",
+  "--------------------TTTTTTTTTT------------------------------CCCCCCCCCCCCCCCCCCCC----------",
+  "--------------------TTTTTTTTTT------------------------------CCCCCCCCCCCCCCCCCCCC----------",
+  "--------------------TTTTTTTTTT------------------------------CCCCCCCCCCCCCCCCCCCC----------",
+  "--------------------TTTTTTTTTT------------------------------CCCCCCCCCCCCCCCCCCCC----------",
+  "------------------------------------------------------------------------------------------",
+  "------------------------------------------------------------------------------------------",
+  "------------------------------------------------------------------------------------------",
+  "------------------------------------------------------------------------------------------",
+  "------------------------------------------------------------------------------------------",
+  "------------------------------------------------------------------------------------------",
+  "------------------------------------------------------------------------------------------",
+  "------------------------------------------------------------------------------------------",
+  "------------------------------------------------------------------------------------------",
+  "------------------------------------------------------------------------------------------" }
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

@@ -1,0 +1,88 @@
+string a, b, c;
+int na, nb, nc;
+typedef long long LL;
+LL memo[51][51][51];
+
+LL f(int pa, int pb, int pc)
+{
+	if (pa == na || pb == nb || pc == nc)
+	{
+		return 0;
+	}
+	
+	LL &r = memo[pa][pb][pc];
+	if (r != -1LL)
+		return r;
+	
+long long countCommonSubsequences(string a_, string b_, string c_) 
+{
+	a = a_;
+	b = b_;
+	c = c_;
+	na = a.size();
+	nb = b.size();
+	nc = c.size();
+	memset(memo, -1, sizeof(memo));
+	return f(0, 0, 0);
+}
+
+Problem Statement
+    
+A subsequence of a string is obtained by removing zero or more characters from it. You are given three strings, and must determine the number of different non-empty subsequences they all share.
+Definition
+    
+Class:
+CountingCommonSubsequences
+Method:
+countCommonSubsequences
+Parameters:
+string, string, string
+Returns:
+long long
+Method signature:
+long long countCommonSubsequences(string a, string b, string c)
+(be sure your method is public)
+    
+
+Notes
+-
+A subsequence should be counted only once even if it can be obtained in more than 1 way from any of the input strings.
+Constraints
+-
+a, b and c will have between 1 and 50 characters each, inclusive.
+-
+Every character of a, b and c will be a lowercase letter ('a'-'z').
+Examples
+0)
+
+    
+"call"
+"accelerate"
+"candle"
+Returns: 6
+The 6 subsequences common to all of the strings are: "c", "a", "l", "al", "ca" and "cl".
+1)
+
+    
+"topcoder"
+"topcoder"
+"topcoder"
+Returns: 239
+All possible subsequences are shared by all three strings. Note that the letter 'o' is repeated, so some of the subsequences may be formed in multiple ways. Each unique subsequence is only counted once.
+2)
+
+    
+"no"
+"correct"
+"answer"
+Returns: 0
+There are many subsequences that are shared by any two of these strings, but none that are shared by all three of them.
+3)
+
+    
+"aabbaabbaabbaabbaabbaabbaabbaabbaabbaabbaabb"
+"abababababababababababababababababababab"
+"aaaabbbbaaaabbbbaaaabbbbaaaabbbbaaaabbbb"
+Returns: 1725660
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

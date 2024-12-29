@@ -1,0 +1,216 @@
+#include <vector>
+#include <list>
+#include <map>
+#include <set>
+#include <deque>
+#include <stack>
+#include <bitset>
+#include <algorithm>
+#include <functional>
+#include <numeric>
+#include <utility>
+#include <sstream>
+#include <iostream>
+#include <iomanip>
+#include <cstdio>
+#include <cmath>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+class SortingInIterations {
+public:
+typedef long long LL;
+typedef pair<int,int> pi;
+
+long long sum(int a0, int X, int Y, int M, int n, int start, int finish) 
+{
+	set<pi> s;
+	s.insert(make_pair(a0, 0));
+	for (int i = 1; i < n; i++)
+	{
+		int a1 = (LL(a0)*LL(X)+LL(Y))%LL(M);
+		s.insert(make_pair(a1, -i)); // asc by value, desc by i (thanks msg)
+		a0 = a1;
+	}
+	LL sum = 0;
+	for (int i = 1; i <= finish; i++)
+	{
+		//for (typeof(s.begin()) it = s.begin(); it != s.end(); it++)
+		//	cout << it->first <<","<<-it->second<<" "; cout << endl;
+				
+		if (s.size() == 0)
+		{
+			return -1;
+		}
+		int lastInd = -s.begin()->second;
+		int minVal = s.begin()->first;
+		int lastVal = minVal;
+		int k = 0;
+		typeof(s.begin()) it = s.begin(); 
+		while (it != s.end() && it->first == minVal)
+		{
+			it++;
+			k++;
+		}
+		while (k-- > 0)
+		{
+			if (i >= start && i <= finish)
+				sum += s.begin()->first;			
+			s.erase(s.begin());
+		}		
+		int lastInd2 = 0;	
+		if (it != s.end())
+		{
+			lastVal = s.begin()->first;
+			lastInd2 = -s.begin()->second;
+		}
+		k = 0;
+		while (it != s.end())
+		{
+			int val = it->first, ind = -it->second;
+			it++;
+			if (val > lastVal)
+			{
+				lastInd = lastInd2;
+				lastInd2 = ind;
+				lastVal = val;
+			}		
+			if (ind > lastInd)
+			{
+				k++;
+				if (i >= start && i <= finish)
+					sum += val;
+			}
+			else
+				break;
+		}
+		while (k-- > 0)
+		{
+			//cout << "del " << s.begin()->first << " " ;
+			s.erase(s.begin());		
+		}
+		//cout << endl;
+	}
+	return sum;
+}
+};
+
+
+//Powered by [KawigiEdit]
+			
+Problem Statement
+    
+John is going to sort a sequence of numbers using a special algorithm. 
+
+First all numbers a[0], a[1], a[2], ..., a[n-1] are written on a blackboard. During the first iteration, John checks all numbers in the order of increasing indices (so, he checks a[0] first, followed by a[1], a[2],..., and ends the first iteration with a[n - 1]). 
+
+At any moment, he can erase the number he is looking at from the blackboard and write it into his notebook. 
+
+When looking at number a[i], John erases it from the board and writes into his notebook if and only if it is equal to the smallest unerased number on the blackboard. 
+
+All other iterations are similar to the first one, but, of course, John checks only the numbers which were not erased from the blackboard. The process is over when all numbers are erased from the board and written into John's notebook in non-descending order.
+
+For example, if John is given a sequence of {3, 5, 1, 4, 2}, the process will go as follows. During the first iteration, John will erase 1 and 2 from the board, writing them to the notebook and changing the sequence to {3, 5, 4}. 
+
+During the second iteration, 3 and 4 will be written into his notebook, so only 5 will be on the board during the third iteration.
+
+You will be given four ints: a0, X, Y, M, n. The sequence John will need to sort can be generated using the following algorithm:
+a[0] = a0;
+a[i] = (a[i - 1] * X + Y) mod M, for 0 < i < n (where mod is a remainder operation.).
+
+You will be given two more ints start and finish. Return the sum of all numbers John will erase from the board during all iterations with indices (1-based) between start and finish, inclusive. If John will need less than finish iterations to sort the sequence, return -1.
+
+Definition
+    
+Class:
+SortingInIterations
+Method:
+sum
+Parameters:
+int, int, int, int, int, int, int
+Returns:
+long long
+Method signature:
+long long sum(int a0, int X, int Y, int M, int n, int start, int finish)
+(be sure your method is public)
+    
+
+Constraints
+-
+a0 will be between 0 and M-1, inclusive.
+-
+X will be between 0 and 4*10^5, inclusive.
+-
+Y will be between 0 and 4*10^5, inclusive.
+-
+M will be between 1 and 4*10^5, inclusive.
+-
+n will be between 1 and 4*10^5, inclusive.
+-
+start will be between 1 and 4*10^5, inclusive.
+-
+finish will be between start and 4*10^5, inclusive.
+Examples
+0)
+
+    
+4
+2
+0
+7
+10
+1
+1
+Returns: 5
+The sequence is 4 1 2 4 1 2 4 1 2 4. The bolded elements will be erased during the first iteration.
+1)
+
+    
+1
+0
+0
+5
+5
+1
+2
+Returns: 1
+The sequence is 1, 0, 0, 0, 0. We need two iterations to erase all numbers.
+2)
+
+    
+7
+6
+9
+10
+10
+2
+3
+Returns: 20
+
+3)
+
+    
+0
+1
+1
+100000
+100000
+1
+1
+Returns: 4999950000
+Be careful with overflows.
+4)
+
+    
+1
+7
+0
+10
+10
+1
+10
+Returns: -1
+John needs only four iterations.
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

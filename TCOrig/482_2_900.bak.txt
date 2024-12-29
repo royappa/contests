@@ -1,0 +1,79 @@
+typedef long long LL;
+
+long long sum(int M, int N, int B) 
+{
+	
+}
+
+
+1000000
+1999999
+
+
+Problem Statement
+    
+Dave writes the numbers from M to N (inclusive) on a piece of paper in base B (see notes for details). Then he hands the paper to Earl and asks Earl to compute the sum of the numbers. Earl, however, mistakenly assumes the numbers are written in base B+1. Return the value Earl will come up with.
+For example, if M is 14, N is 18, and B is 3, Dave would write: 112 120 121 122 200 Then Earl would sum the values (expressed here in base 10): 22 24 25 26 32 For a result of 129.
+Definition
+    
+Class:
+BaseConfusion
+Method:
+sum
+Parameters:
+int, int, int
+Returns:
+long long
+Method signature:
+long long sum(int M, int N, int B)
+(be sure your method is public)
+    
+
+Notes
+-
+The number anan-1...a1a0 in base B corresponds to the value an*Bn + an-1*Bn-1 + ... + a1*B + a0. For example 120 in base 3 corresponds to the value 1 * 32 + 2 * 3 + 0 = 15 in decimal, while 120 in base 4 corresponds to the value 1 * 42 + 2 * 4 + 0 = 24 in decimal.
+-
+When writing numbers in bases higher than 10, it may be necessary to represent digits higher than 9. In such cases letters (a, b, c, ...) are used to represent (10, 11, 12, ...) as needed.
+-
+The return value is guaranteed to fit within a 64-bit signed integer datatype.
+Constraints
+-
+M and N will be between 1 and 350000000, inclusive.
+-
+M will be less than or equal to N.
+-
+B will be between 3 and 16, inclusive.
+Examples
+0)
+
+    
+14
+18
+3
+Returns: 129
+The example from the problem statement.
+1)
+
+    
+1
+10
+16
+Returns: 55
+Earl produces the correct answer in this case.
+2)
+
+    
+100
+100
+10
+Returns: 121
+
+3)
+
+    
+209881
+210565
+3
+Returns: 3141592653
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

@@ -1,0 +1,70 @@
+int RedundantStrings::howMany(int length) 
+{
+	if (length == 1)
+		return 0;
+	int total = 0;
+	for (int sub = 1; sub <= length/2; sub++)
+	{
+		if (length%sub != 0 || length/sub < 2)
+			continue;
+		// how many strings of length sub? 2^sub
+		total += (1<<sub) - howMany(sub);
+	}
+	return total;	
+}
+
+Problem Statement
+    
+A string composed of a's and b's is either redundant or non-redundant. A string is redundant if and only if it can be expressed as a shorter string replicated multiple times. For example, the string "ababab" is redundant since it is 3 copies of "ab" concatenated together. The string "ab" is called a root of "ababab". The string "aaaa" has 2 roots: "aa" and "a". A nice result in formal languages states that every redundant string has exactly 1 non-redundant root (it may have many redundant roots).  
+
+Only considering strings composed of a's and b's, return the number of redundant strings that have the given length.
+Definition
+    
+Class:
+RedundantStrings
+Method:
+howMany
+Parameters:
+int
+Returns:
+int
+Method signature:
+int howMany(int length)
+(be sure your method is public)
+    
+
+Constraints
+-
+length will be between 1 and 60 inclusive.
+Examples
+0)
+
+    
+1
+Returns: 0
+There are no redundant strings of length 1.
+1)
+
+    
+2
+Returns: 2
+Both "aa" and "bb" are redundant.
+2)
+
+    
+4
+Returns: 4
+Here the redundant strings are "aaaa", "bbbb", "abab", and "baba".
+3)
+
+    
+10
+Returns: 34
+
+4)
+
+    
+30
+Returns: 33814
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

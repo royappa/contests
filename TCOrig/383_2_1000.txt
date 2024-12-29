@@ -1,0 +1,190 @@
+
+
+#define SQR(x) ((x)*(x))
+#define PLUS(x,y) ((x)==INF || (y)==INF ? INF : (x)+(y))
+#define MIN(x,y) ((x) == INF ? (y) : (y) == INF : (x) : min((x),(y)))
+
+int highestPoint(vector <string> landscape, int threshold, int timeToDark) 
+{
+	int A[30][30];
+	int h, w;
+	h = landscape.size();
+	w = landscape[0].size();
+
+	for (int i = 0; i < h; i++)
+	{
+		for (int j = 0; j < w; j++)
+		{
+			if (isupper(landscape[i][j]))
+			{
+				A[i][j] = landscape[i][j]-'A';
+			}
+			else
+			{
+				A[i][j] = 26+landscape[i][j]-'a';
+			}
+		}
+	}
+	int d[650][650];
+	int INF = 1<<30;
+	int n = 0;
+	for (int i = 0; i < h; i++)
+	for (int j = 0; j < w; j++)
+	for (int k = 0; k < h; k++)
+	for (int m = 0; m < w; m++)
+	{
+		int a = i*w+j;
+		int b = k*w+m;
+		n >?= a;
+		if (abs(A[i][j]-A[k][m]) > threshold)
+			d[a][b] = d[b][a] = INF;
+		else if (A[i][j] >= A[k][m])
+			d[a][b] = 1;
+		else
+			d[a][b] = SQR(A[i][j]-A[k][m]);
+	}
+	for (int k = 0; k < n; k++)
+	for (int i = 0; i < n; i++)
+	for (int j = 0; j < n; j++)
+	{		 
+		d[i][j] = MIN(d[i][j], PLUS(d[i][k], d[k][j]));
+	}
+	
+	int alt = 0;
+	for (int i = 0; i < h; i++)
+	for (int j = 0; j < w; j++)
+	{
+		int a = i*w+j;
+		if (PLUS(d[0][a],d[a][0]) <= timeToDark)
+			alt >?= A[i][j];
+	}
+	return alt;
+}
+
+Problem Statement
+    
+John is currently on a hillwalking holiday in a mountainous region. He really enjoys getting to high altitudes to enjoy the spectacular views of the region and he is planning a walk today that will get him to as high an altitude as possible. However, he also wants to be back at his hotel before it starts to get dark.
+ 
+You are given a map of the region as a vector <string> landscape, describing a rectangluar section of the landscape. The altitude of the landscape at coordinates (j, i) is an integer represented by character j in element i of landscape, which will either be an uppercase letter ('A'-'Z') representing altitudes from 0 to 25, respectively, or a lowercase letter ('a'-'z'), representing altitudes from 26 to 51, respectively. John starts off at his hotel at coordinates (0, 0) and is planning to walk between points with integer coordinates. 
+
+In each segment of his walk, he can walk to any orthogonally adjacent point, as long as the magnitude of the difference in altitude is no greater than threshold, otherwise the path is too steep. He cannot walk on a path that is too steep, regardless of whether he is walking uphill or downhill. 
+
+If he walks from some point to another that is at equal or lower altitude (i.e., walking level or downhill) then the time it takes to walk between the points is 1. If he walks to a point at higher altitude (i.e., uphill) then the amount of time it takes is given by the difference in altitude between the points squared. 
+
+For example, if he were to walk from a point with altitude 5 to one with altitude 9, then it would take (9 - 5) ^ 2 = 16 time units to walk that segment. If he were to walk the same segment, but in the opposite direction, it would only take him a single time unit.
+ 
+Return an int containing the altitude of the highest point that he can reach on any walk that starts and finishes at (0, 0), given that the total time taken for the walk may not be greater than timeToDark.
+
+Definition
+    
+Class:
+HillWalker
+Method:
+highestPoint
+Parameters:
+vector <string>, int, int
+Returns:
+int
+Method signature:
+int highestPoint(vector <string> landscape, int threshold, int timeToDark)
+(be sure your method is public)
+    
+
+Constraints
+-
+landscape will contain between 1 and 25 elements, inclusive.
+-
+Each element of landscape will contain between 1 and 25 characters, inclusive.
+-
+Each element of landscape will contain the same number of characters.
+-
+Each character in landscape will be either a lowercase letter ('a'-'z') or an uppercase letter ('A'-'Z').
+-
+threshold will be between 1 and 52, inclusive.
+-
+timeToDark will be between 1 and 1,000,000, inclusive.
+
+Examples
+0)
+
+    
+{"AD"
+,"JG"}
+3
+10000
+Returns: 9
+John has plenty of time until it gets dark, so he can get to the highest point. He can't move directly to the highest point, even though it is adjacent to his hotel, because the slope is too steep, but he can take a longer path which is less steep and he returns on the same path.
+1)
+
+    
+{"AD"
+,"JG"}
+3
+29
+Returns: 6
+This is the same map, but he now doesn't quite have enough time to make it to the top. Note that he cannot walk down a slope that is too steep, so he could not move directly from the highest point back to his hotel.
+2)
+
+    
+{"AABCDE"
+,"GJIHGF"
+,"MKLMNO"
+,"STSRQP"
+,"YUVWXY"
+,"edcbaZ"}
+6
+36
+Returns: 30
+This is the height map shown in the figure below. He has just enough time to make it to the top, but he has to follow a winding path. Otherwise he would run out of time.   
+3)
+
+    
+{"BCDE"
+,"AJKF"
+,"AIHG"
+,"AAAA"
+,"AOMK"
+,"AQSI"
+,"ACEG"}
+5
+14
+Returns: 10
+This map has 2 separate mountains, as shown in the figure below. John doesn't have much time today, so he gets highest if he climbs the smaller one.   
+4)
+
+    
+{"BCDE"
+,"AJKF"
+,"AIHG"
+,"AAAA"
+,"AOMK"
+,"AQSI"
+,"ACEG"}
+5
+57
+Returns: 18
+This is the same map, but he has more time for his walk in this case. He can therefore climb right to the top of the higher mountain.
+5)
+
+    
+{"ABCDEFK"}
+3
+1000
+Returns: 5
+The highest point is unreachable in this case.
+6)
+
+    
+{"TRRVUXefk"
+,"bSNMOWcff"
+,"bRPNNQZip"
+,"XSRUTVcfj"
+,"WbZQPXZbV"
+,"XdYSRWVOP"
+,"feedVVcZR"
+,"XhfdZZefg"}
+4
+50
+Returns: 28
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

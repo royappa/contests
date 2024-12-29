@@ -1,0 +1,141 @@
+vector<int> px, py;
+int n;
+typedef long double LD;
+
+#define COMP(ma,mb,p)  (((ma)|((mb)<<n))|((p)<<(2*n)))
+map<int,LD> memo;
+
+LD score(int ma, int mb)
+{
+	LD s = 0;
+	for (int i = 0; i < n; i++)
+	{
+		if ((ma & (1<<i)) == 0) continue;
+		for (int j = 0; j < n; j++)
+		{
+			if ((mb & (1<<j)) == 0) continue;
+			s += sqrt((px[i]-px[j])*(px[i]-px[j])+(py[i]-py[j])*(py[i]-py[j]));
+		}
+	}
+	return s;
+}
+
+LD f(int ma, int mb, int player)
+{
+	int key = COMP(ma, mb, player);
+	if (memo.count(key) > 0)
+		return memo[key];
+		
+	if (__builtin_popcount(ma)+__builtin_popcount(mb) == n)
+	{
+		return memo[key] = score(ma, mb);
+	}
+	
+	LD r = 0;	
+	if (player == 0)
+	{
+		// maximize
+		r = 0;
+		for (int i = 0; i < n; i++)
+		{
+			if ((ma & (1<<i)) == 0 && (mb & (1<<i)) == 0)
+			{
+				r >?= f(ma|(1<<i), mb, 1);
+			}
+		}
+	}
+	else
+	{
+		// minimize
+		r = 1.0e60;
+		for (int i = 0; i < n; i++)
+		{
+			if ((ma & (1<<i)) == 0 && (mb & (1<<i)) == 0)
+			{
+				r <?= f(ma, mb|(1<<i), 0);
+			}
+		}
+	}
+	return memo[key] = r;
+}
+
+double gameValue(vector <int> pointsX, vector <int> pointsY) 
+{
+	px = pointsX;
+	py = pointsY;
+	n = px.size();
+	
+	return (double)f(0, 0, 0);
+}
+
+Problem Statement
+    
+You are given a set of white points on a plane, with the x and y coordinates of the i-th point represented by the i-th elements of pointsX and pointsY, respectively. 
+
+You play a game with your friend alternating turns. 
+
+On your turn, you pick any white point and color it red. 
+
+On his turn, your friend picks any white point and colors it blue. 
+
+The game ends when there are no white points left, and the final score is the sum of all distances between pairs of points with different colors. 
+
+Knowing that you make the first turn, and that your opponent plays optimally and wants to minimize the final score, return the highest final score you can achieve.
+
+Definition
+    
+Class:
+PointsGame
+Method:
+gameValue
+Parameters:
+vector <int>, vector <int>
+Returns:
+double
+Method signature:
+double gameValue(vector <int> pointsX, vector <int> pointsY)
+(be sure your method is public)
+    
+
+Notes
+-
+Your return must have relative or absolute error less than 1E-9.
+Constraints
+-
+pointsX will contain between 2 and 12 elements, inclusive. 
+-
+pointsY will contain the same number of elements as pointsX. 
+-
+Each element of pointsX and pointsY will be between 0 and 1000, inclusive. 
+-
+All points in the given set will be distinct.
+Examples
+0)
+
+    
+{0,0}
+{0,1}
+Returns: 1.0
+There are only 2 points and the answer is the distance between them.
+1)
+
+    
+{0,0,1,1}
+{0,5,0,5}
+Returns: 12.198039027185569
+Your friend can always choose the closest point to get the smallest answer.
+2)
+
+    
+{0,0,0,0}
+{0,1,5,6}
+Returns: 12.0
+
+3)
+
+    
+{0,1,2,3}
+{0,0,0,0}
+Returns: 6.0
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

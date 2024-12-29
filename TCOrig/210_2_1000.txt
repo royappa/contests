@@ -1,0 +1,93 @@
+#include <vector>
+#include <list>
+#include <map>
+#include <set>
+#include <deque>
+#include <stack>
+#include <bitset>
+#include <algorithm>
+#include <functional>
+#include <numeric>
+#include <utility>
+#include <sstream>
+#include <iostream>
+#include <iomanip>
+#include <cstdio>
+#include <cmath>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+class TopographicalImage {
+public:
+int qy[5000], qx[5000];
+
+int floodFill(vector<string> &t, int mx, int my)
+{
+	int m = t[mx][my];
+	int qn = 0;
+	int qhead = 0, qtail = 0;
+	qy[qtail] = my;
+	qx[qtail] = mx;
+	qn++;
+	qtail++;
+	int area = 1;
+	t[mx][my] = 0;
+	while (qn > 0)
+	{
+		my = qy[qhead];
+		mx = qx[qhead];
+		qhead++;
+		qn--;
+		//cout << qn << endl;
+		for (int dy = -1; dy <= 1; dy++)
+		{
+			for (int dx = -1; dx <= 1; dx++)
+			{
+				if (dy == 0 && dx == 0) continue;
+				if (my+dy>=0 && my+dy < t.size() && mx+dx >= 0 && mx+dx < t[0].size() && t[my+dy][mx+dx] != 0 && t[my+dy][mx+dx] <= m)
+				{
+					qy[qtail] = my+dy;
+					qx[qtail] = mx+dx;
+					qn++;
+					qtail++;
+					t[my+dy][mx+dx] = 0;
+					area++;
+				}
+			}
+		}
+	}
+	return area;
+}
+
+vector <int> calcPeakAreas(vector <string> t) 
+{
+
+	int m = 0, mx = 0, my = 0;
+	vector<int> r;
+	do
+	{
+		for (int y = 0; y < t.size(); y++)
+		{
+			for (int x = 0; x < t[y].size(); x++)
+			{
+				if (t[y][x] > m)
+				{
+					mx = x;
+					my = y;
+					m = t[y][x];
+				}
+			}
+		}
+		if (m > 0)
+		{
+			r.push_back(floodFill(t, mx, my));
+		}
+	} while (m > 0);
+	return r;
+}
+};
+
+
+//Powered by [KawigiEdit]

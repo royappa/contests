@@ -1,0 +1,75 @@
+vector<int> x, y;
+
+double getArea(vector <int> x_, vector <int> y_) 
+{
+	x = x_;
+	y = y_;
+	n = x.size();
+	
+	f(p) = min area of points
+}
+
+Problem Statement
+    
+You're given several points in the cartesian plane. Return the smallest possible total sum of areas of a set of convex polygons such that each point is covered by at least one polygon. Moreover, the vertices of each polygon must all lie on the given points, and each polygon must have at least three sides. A point is covered by a polygon if the point lies in the polygon's interior or on its boundary.  The points are described by vector <int>s x and y, where (x[i],y[i]) is the location of the ith point.
+Definition
+    
+Class:
+PolygonCover
+Method:
+getArea
+Parameters:
+vector <int>, vector <int>
+Returns:
+double
+Method signature:
+double getArea(vector <int> x, vector <int> y)
+(be sure your method is public)
+    
+
+Notes
+-
+The returned value must be accurate to within a relative or absolute value of 1E-9.
+-
+A polygon is convex if its edges only intersect at its vertices with each vertex sharing exactly two edges, and it's possible to complete a walk around the polygon by only making left turns.
+-
+If two polygons with areas A and B overlap, then an area of A+B is contributed to the result.
+Constraints
+-
+x and y will each contain between 3 and 15 elements, inclusive.
+-
+x and y will contain the same number of elements.
+-
+Each element of x and y will be between -1000 and 1000, inclusive.
+-
+No three points represented by x and y will lie on a common line.
+Examples
+0)
+
+    
+{0,10,0,-10}
+{-10,0,10,0}
+Returns: 200.0
+The best way to cover these points is a square that has the four points as vertices.
+1)
+
+    
+{-1,2,-2,0}
+{-1,0,2,-1}
+Returns: 2.0
+The optimal solution here is to use two triangles; one triangle has vertices at points 0, 1, and 3 while the other triangle has vertices at points 0, 2, and 3.
+2)
+
+    
+{2,0,-2,-1,1,0}
+{0,2,0,-2,-2,1}
+Returns: 3.0
+
+3)
+
+    
+{1,0,-4,0,1,4}
+{1,4,0,-4,-1,0}
+Returns: 6.0
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

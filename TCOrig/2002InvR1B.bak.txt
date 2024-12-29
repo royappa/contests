@@ -1,0 +1,143 @@
+#include <vector>
+#include <list>
+#include <map>
+#include <set>
+#include <deque>
+#include <stack>
+#include <bitset>
+#include <algorithm>
+#include <functional>
+#include <numeric>
+#include <utility>
+#include <sstream>
+#include <iostream>
+#include <iomanip>
+#include <cstdio>
+#include <cmath>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+int rem[1000020];
+
+class Decimal {
+public:
+
+// WORKING LONG DIVISION DECIMAL FRACTION QUOTIENT DIVISOR REPEATED FRACTION WITH REPETITION COUNT
+// QUITE WELL TESTED (not used in this solution directly).
+// SEE TEST HARNESS BELOW - AND EFFICIENT WAY TO JUST GET REPCOUNT
+// return quotient, fraction and repcount (last n digits of fraction that repeat) from dividing a/b
+void longDivide(int a, int b, string& quotient, string& frac, int& repcount)  
+{
+	vector<string> res(3,"");
+	
+	quotient = "0";
+	frac = "0";
+	repcount = 1;
+	if (a >= b)
+	{
+		int div = a/b;
+		char buf[100];
+		sprintf(buf, "%d", div);
+		quotient = buf;
+		a %= b;
+	}
+	// now a < b
+	if (a == 0)
+	{
+		return;
+	}
+	// 0 < a < b
+	vector<int> rem;
+	string s = "";
+	do
+	{
+		rem.push_back(a);
+		if (a*10 >= b)
+		{
+			a *= 10;
+			int dig = a / b;
+			s += char('0'+dig);
+			a %= b;
+		}
+		else
+		{
+			s += '0';
+			a *= 10;
+		}	
+	} while (a != 0 && std::find(rem.begin(), rem.end(), a) == rem.end());
+	if (a > 0)
+	{
+		int p = std::find(rem.begin(), rem.end(), a)-rem.begin();
+		repcount = rem.size()-p;
+	}
+	frac = s;
+	return;
+}
+	
+// BASED ON ABOVE BUT JUST FOR REPCOUNT OF FRACTION
+void longDivide2(int a, int b, int& repcount)  // return repcount (last n digits of fraction that repeat) from dividing a/b
+{
+
+	memset(rem, -1, sizeof(rem));
+	repcount = 1;
+	// 0 < a < b
+	//map<int,int> rem;
+	int pos = 0;
+	do
+	{
+		rem[a] = pos++;
+		if (a*10 >= b)
+		{
+			a *= 10;
+			a %= b;
+		}
+		else
+		{
+			a *= 10;
+		}	
+	} while (a != 0 && rem[a] == -1);
+	
+	if (a > 0)
+	{
+		repcount = pos-rem[a];
+	}
+	return;
+}	
+		
+vector <int> find(int lower, int upper, int lowerLength, int upperLength) 
+{
+	string quot, frac;
+	int rc;
+	
+/*
+// TEST HARNESS
+int a = 355, b = 113;
+longDivide(a, b, quot, frac, rc);
+cout << a << "/" << b << "=" << endl << quot << "." << endl << frac << " " << rc << endl;
+int j;
+for (j = 0; j < frac.size()-rc; j++)
+	cout << " ";
+int t = 1;
+for (; j < frac.size(); j++)
+{	cout << char('0'+t); t = (t + 1) % 10; }
+cout << endl;
+*/
+
+	vector<int> res;
+	for (int i = lower; i <= upper; i++)
+	{
+		longDivide2(1, i, rc);
+		//if (t++ % 10 == 0) cout << t << endl;
+		//cout <<i << " " << rc << endl;
+		
+		if (rc >= lowerLength && rc <= upperLength)
+			res.push_back(i);
+	}
+	return res;
+}
+};
+
+
+//Powered by [KawigiEdit]

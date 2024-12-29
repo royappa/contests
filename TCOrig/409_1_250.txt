@@ -1,0 +1,88 @@
+int getLength(vector <string> w) 
+{
+	int n = w.size();
+	string r = w[0];
+	int x = 0;
+	for (int i = 1; i < n; i++)
+	{
+		bool found = false;
+		for (j = x; j < r.size(); j++)
+		{
+			string suf = r.substr(j);
+			if (suf.size() <= w[i].size() && w[i].substr(0, suf.size()) == suf)
+			{
+				string rest = w[i].substr(suf.size());
+				if (rest.size() > 0) r += rest;
+				x = j;
+				found = true;
+				break;
+			}
+			else if (suf.size() > w[i].size() && suf.substr(0, w[i].size()) == w[i])
+			{
+				x = j;
+				found = true;
+				break;
+			}
+		}
+		if (!found)
+		{
+			x = r.size();
+			r += w[i];
+		}
+	}
+	return r;
+}
+Problem Statement
+    
+A string X is an ordered superstring of the vector <string> words if
+* Each element of words is a substring of X.
+* There exists a sequence of indices x_1 <= x_2 <= ... <= x_n, where n is the number of elements in words. 
+For each element k of words, where k is a 1-based index, there is an occurrence of words[k] that starts at the x_k-th letter of X.
+For example "abca" is an ordered superstring of {"abc", "ca"}, but "cabc" is not.
+Given a vector <string> words, return the length of its shortest ordered superstring.
+Definition
+    
+Class:
+OrderedSuperString
+Method:
+getLength
+Parameters:
+vector <string>
+Returns:
+int
+Method signature:
+int getLength(vector <string> words)
+(be sure your method is public)
+    
+
+Constraints
+-
+words will contain between 1 and 50 elements, inclusive.
+-
+Each element of words will contain between 1 and 50 lowercase letters ('a'-'z'), inclusive.
+Examples
+0)
+
+    
+{"abc","ca"}
+Returns: 4
+This is the example from the problem statement. The shortest ordered superstring is "abca". The sequence of indices is {0, 2}. There is an occurrence of "abc" starting at character 0 of "abca", and there is an occurrence of "ca" starting at character 2 of "abca".
+1)
+
+    
+{"a","a","b","a"}
+Returns: 3
+Although the given words are all substrings of "ab", they do not appear in the proper order. The shortest ordered superstring is "aba".
+2)
+
+    
+{"abcdef", "ab","bc", "de","ef"}
+Returns: 6
+
+3)
+
+    
+{"ab","bc", "de","ef","abcdef"}
+Returns: 12
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

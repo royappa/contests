@@ -1,0 +1,41 @@
+typedef vector<int> vi;
+
+vi conn;
+int hash[100][100];
+
+int cost(int i, int j)
+{
+	if (i == j)
+	{
+		return 0;
+	}
+	if (hash[i][j] != -1)
+		return hash[i][j];
+	int minC = -1;
+	for (int k = i; k <= j-1; k++)
+	{
+		int a = cost(i, k);
+		int sizeA = k-i+1;
+		int b = cost(k+1, j);
+		int sizeB = j-(k+1)+1;
+		int inpA = conn[i-1];
+		int outA = conn[k];
+		int outB = conn[j];
+		int c = a + b + (inpA + sizeA) * outA * (outB+sizeB);
+		if (minC  == -1 || c < minC)
+		{
+			minC = c;
+		}
+	}
+	return hash[i][j] = minC;
+}
+
+int Assemble::minCost(vector <int> connect) 
+{
+	conn = connect;
+	int n = connect.size()-1;
+	for (int i = 0; i < 100; i++)
+		for (int j = 0; j < 100; j++)
+			hash[i][j] = -1;
+	return cost(1, n);
+}

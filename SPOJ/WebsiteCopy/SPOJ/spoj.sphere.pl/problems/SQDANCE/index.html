@@ -1,0 +1,323 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<!-- Mirrored from spoj.sphere.pl/problems/SQDANCE/ by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 10 Jan 2006 05:00:36 GMT -->
+<head>
+<title>Sphere Online Judge (SPOJ)  - Problem SQDANCE</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-2">
+<META NAME="Keywords" CONTENT="spoj, online, judge, problem, set, problemset, archive, ACM, Polish, Poland, contest, contester, task, tasks, ADA, Java, Pascal, C, C++, Whitespace, sphere, interest, group, python, ruby, icon, o'caml, caml, ocaml, perl, haskell, bf, brain, clips, prolog, fortran, asm, assembler, asembler, functional, esoteric, programming, languages">
+
+<link href="https://spoj.sphere.pl/gfx/favicon" rel="shortcut icon" type="image/x-icon">
+
+<link href="../../themes/skin3.css" rel="stylesheet" type="text/css" id="theme">
+<style type="text/css">
+<!--
+.maintable {width: 755;} 
+-->
+</style>
+<script type="text/javascript" language="javascript">
+<!--
+function UnCryptMailto(s) {
+	var n=0;
+	var r="";
+	for(var i=0;i<s.length;i++) {		
+		n=s.charCodeAt(i); 
+		if (n>=8364) {n = 128;}
+		r += String.fromCharCode(n+(2));	
+	}
+	return r;
+}
+function linkTo_UnCryptMailto(s)	{
+	location.href=UnCryptMailto(s);
+}
+// -->
+</script>
+
+</head>
+<body>
+<center>
+<table cellpadding="10" cellspacing="0" class="maintable" id="maintable">
+<tr>
+    <td colspan="2" class="header">
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+        <tr>
+		<td class="headerleft"/>
+		<td class="headercenter"><h1>Sphere Online Judge</h1></td>
+		<td class="headerright"/>
+	</tr>
+	</table>
+    </td>
+</tr>
+<tr><td class="menu" width="92" valign="top">
+<form name="login"  action="http://spoj.sphere.pl/problems/SQDANCE/" method="post" 
+	onsubmit="if(document.login.ssl.checked) document.login.action='https://spoj.sphere.pl/problems/SQDANCE/'" style="margin-bottom: 18px"> 
+User: <input name="login_user" type="text" style="width: 85px;" class="form"><BR>
+Password: <input name="password" type="password" style="width: 85px;" class="form"><BR>
+<script language="javascript" type="text/javascript">
+<!--
+document.write('<input type="checkbox" name="ssl" id="ssl" checked>secure<br>');
+//-->
+</script>
+<input name="submit" type="submit" value="Log In" class="button" style="width: 85px;">
+</form><div class="menucmd"><a href="https://spoj.sphere.pl/register">register</a><br><br><a href="https://spoj.sphere.pl/status">status</a><br><a href="https://spoj.sphere.pl/submit">submit</a><br><a href="../classical/sort=7,start=0.html">problems</a><br><br><a href="https://spoj.sphere.pl/">news</a><br><a href="https://spoj.sphere.pl/contests">contests</a><br><a href="https://spoj.sphere.pl/info">info</a><br><a href="https://spoj.sphere.pl/ranks/">ranks</a><br><br><a href="https://spoj.sphere.pl/forum">forum</a><br><a href="https://spoj.sphere.pl/help">help</a><br><a href="https://spoj.sphere.pl/links">links</a><br><hr></div>Server time:<br>2006-01-10<br>05:52:21<a href="../classical/sort=7,start=0.html"></a><br><br>
+<form method="get" action="https://spoj.sphere.pl/search/" class="form" style="width:90px">
+<input type="text" name="query" style="width:85px" maxlength=255 value="" class="form"><br>
+<input type="submit" value="Search" style="width:85px" class="form" title="Search site"><br>
+&nbsp;<a href="https://spoj.sphere.pl/search/problems=on,users=on,contests=on" title="More search options"><small>advanced...</small></a>
+</form></td><td class="content" width="99%"><table class="problems" width="100%">
+<tr class="navigation">
+<td><a href="https://spoj.sphere.pl/submit/SQDANCE/">Submit</a></td>
+<td><a href="https://spoj.sphere.pl/status/SQDANCE/">All submissions</a></td>
+<td><a href="https://spoj.sphere.pl/ranks/SQDANCE/">Best solutions</a></td>
+<td><a href="https://spoj.sphere.pl/problems/SQDANCE.ps">PS</a></td>
+<td><a href="https://spoj.sphere.pl/problems/SQDANCE.pdf">PDF</a></td>
+<td><a href="../classical/sort=7,start=0.html">Back to list</a></td>
+</tr>
+</table>
+
+<div class="prob">
+
+<h2>SPOJ Problem Set </h2>
+<h1>131. Square dance</h1>
+<h2>Problem code: SQDANCE</h2>
+<p align="justify">
+<P align=justify>
+You are hired by french NSA to break the RSA code used on the Pink
+Card. The easiest way to do that is to factor the public modulus and
+you have found the fastest algorithm to do that, except that you have
+to solve a subproblem that can be modeled in the following way.
+<br>
+Let <img width="16" height="15" align="bottom" border="0"
+src="img1.png" alt="$ \cal P$"><!-- MATH
+$= \{p_1,p_2,...,p_n\}$
+-->
+<img width="118" height="32" align="middle" border="0" src="img2.png"
+alt="$ = \{p_1,p_2,...,p_n\}$"><!-- MATH
+$S = \{s_1,s_2,...,s_u\}$
+-->be
+a set of prime numbers. If <img width="131" height="32" align="middle"
+border="0" src="img3.png" alt="$ S = \{s_1,s_2,...,s_u\}$"><!-- MATH
+$T = \{t_1,...,t_v\}$
+-->
+and <img width="106" height="32" align="middle" border="0"
+src="img4.png" alt="$ T = \{t_1,...,t_v\}$"> are formed with elements
+of <img width="16" height="15" align="bottom" border="0" src="img1.png"
+alt="$ \cal P$">, then S*T will denote the quantity
+<!-- MATH
+\begin{displaymath}
+s_1*s_2*\cdot \cdot \cdot *s_u*t_1*t_2*\cdot \cdot \cdot *t_v.
+\end{displaymath}
+-->
+</p>
+<img width="238" height="29" align="middle"
+border="0" src="img5.png"
+alt="$\displaystyle s_1*s_2*\cdot \cdot \cdot *s_u*t_1*t_2*\cdot \cdot \cdot *t_v.$">
+<p>
+We call relation a set of two primes p,q, where p and q are distinct
+elements of <img width="16" height="15" align="bottom" border="0"
+src="img1.png" alt="$ \cal P$"><!-- MATH
+$S_i = \{p_i,q_i\}$
+-->.
+You dispose of a collection of R
+relations <img width="89" height="32" align="middle" border="0"
+src="img6.png" alt="$ S_i = \{p_i,q_i\}$"><!-- MATH
+$S_{i_1}, S_{i_2}, ..., S_{i_k}$
+-->
+and you are interested in finding
+sequences of these, <img width="103" height="30" align="middle"
+border="0" src="img7.png" alt="$ S_{i_1}, S_{i_2}, ..., S_{i_k}$">
+such that
+<!-- MATH
+\begin{displaymath}
+S_{i_1}*S_{i_2}*\cdot \cdot \cdot *S_{i_k}
+\end{displaymath}
+-->
+</p>
+<img width="134" height="30" align="middle"
+border="0" src="img8.png"
+alt="$\displaystyle S_{i_1}*S_{i_2}*\cdot \cdot \cdot *S_{i_k}$">
+<p>
+is a perfect square.
+</p><p>
+The way you look for these squares is the following. The ultimate goal
+is to count squares that appear in the process. Relations arrive one at
+a time. You maintain a collection <img width="13" height="14"
+align="bottom" border="0" src="img9.png" alt="$ \cal C$"> of relations
+that do not contain any square subproduct. This is easy: at first, <img
+width="13" height="14" align="bottom" border="0" src="img9.png"
+alt="$ \cal C$"> is empty. Then a relation arrives and <img width="13"
+height="14" align="bottom" border="0" src="img9.png" alt="$ \cal C$">
+begins to grow.
+Suppose a new relation <img width="43" height="32" align="middle"
+border="0" src="img10.png" alt="$ \{p,q\}$"> arrives. If no square
+appears when adding <img width="43" height="32" align="middle"
+border="0" src="img10.png" alt="$ \{p,q\}$"> to <img width="13"
+height="14" align="bottom" border="0" src="img9.png" alt="$ \cal C$">,
+then <img width="43" height="32" align="middle" border="0"
+src="img10.png" alt="$ \{p,q\}$"> is added to the collection.
+Otherwise, a square is about to appear, we increase the number of
+squares, but we do not store this relation, hence <img width="13"
+height="14" align="bottom" border="0" src="img9.png" alt="$ \cal C$">
+keeps the desired property.
+<br>
+<!-- MATH
+$S_1 = \{2,3\}$
+-->Let us consider an example. First
+arrives <img width="81" height="32" align="middle" border="0"
+src="img11.png" alt="$ S_1 = \{2,3\}$"> and we put it in <img
+width="13" height="14" align="bottom" border="0" src="img9.png"
+alt="$ \cal C$"><!-- MATH
+$S_2 = \{5,11\},S_3 = \{3,7\}$
+-->; then
+arrives <img width="173" height="32" align="middle" border="0"
+src="img12.png" alt="$ S_2 = \{5,11\},S_3 = \{3,7\}$"> and they are
+stored in <img width="13" height="14" align="bottom" border="0"
+src="img9.png" alt="$ \cal C$"><!-- MATH
+$S_4 = \{2,7\}$
+-->. Now
+enters the relation <img width="81" height="32" align="middle"
+border="0" src="img13.png" alt="$ S_4 = \{2,7\}$">. This relation
+could be used to form the
+square:
+<!-- MATH
+\begin{displaymath}
+S_1*S_3*S_4 = (2*3)*(3*7)*(2*7) = (2*3*7)^2.
+\end{displaymath}
+-->
+</p>
+<img width="365" height="36" align="middle"
+border="0" src="img14.png"
+alt="$\displaystyle S_1*S_3*S_4 = (2*3)*(3*7)*(2*7) = (2*3*7)^2.$">
+<p>
+So we count 1 and do not store <img width="21" height="30"
+align="middle" border="0" src="img15.png" alt="$ S_4$"> in <img
+width="13" height="14" align="bottom" border="0" src="img9.png"
+alt="$ \cal C$"><!-- MATH
+$S_5 = \{5,11\}$
+-->. Now we consider <img
+width="89" height="32" align="middle" border="0" src="img16.png"
+alt="$ S_5 = \{5,11\}$"> that could make a square with <img width="21"
+height="30" align="middle" border="0" src="img17.png" alt="$ S_2$"><!-- MATH
+$S_6 = \{2,13\}$
+-->,
+so we count 1 square more. Then <img width="89" height="32"
+align="middle" border="0" src="img18.png" alt="$ S_6 = \{2,13\}$"> is
+put into <img width="13" height="14" align="bottom" border="0"
+src="img9.png" alt="$ \cal C$"><!-- MATH
+$S_7 = \{7,13\}$
+-->. Now <img
+width="89" height="32" align="middle" border="0" src="img19.png"
+alt="$ S_7 = \{7,13\}$"><!-- MATH
+$S_1*S_3*S_6*S_7$
+--> could make
+the square <img width="117" height="30" align="middle" border="0"
+src="img20.png" alt="$ S_1*S_3*S_6*S_7$">. Eventually, we get 3
+squares.
+<br>
+</div>
+</p>
+<H3>Input</h3>
+<P align=justify>
+The first line of the input contains a number T <= 30 that indicates the number of test cases to follow. Each test case begins with a line containing two integers P and R: <img
+width="61" height="34" align="middle" border="0" src="img21.png"
+alt="$ P\le 10^5$"> is the number of primes occurring in the test
+case; R (<img width="44" height="34" align="middle" border="0"
+src="img22.png" alt="$ \le 10^5$">) is the number of sets of primes
+that arrive. The subsequent R lines each contain two integers i and j
+making a set<!-- MATH
+$\{p_i,q_i\}(1\le i,j\le P)$
+--> <img
+width="148" height="32" align="middle" border="0" src="img23.png"
+alt="$ \{p_i,q_i\}(1\le i,j\le P)$">. Note that we actually do not
+deal with the primes, they are irrelevant to the solution.
+<br>
+</p>
+<H3>Output</h3>
+<P align=justify>
+For each test case, output the number of squares that can be formed using the preceding rules.
+</p>
+<H3>Example</h3>
+<div align="left">
+<pre><b>Input:</b>
+2
+6 7
+1 2
+3 5
+2 4
+1 4
+3 5
+1 6
+4 6
+2 3
+1 2
+1 2
+1 2
+
+<b>Output:</b>
+3
+2
+</pre>
+</div>
+<b>Warning: large Input/Output data, be careful with certain languages</b>
+
+<hr>
+<table border=0 cellspacing=0 cellpadding=0 align=left>
+<tr><td width=130>Added by:</td><td><a href="https://spoj.sphere.pl/search/'Adrian%20Kuegel'">Adrian Kuegel</a></td></tr>
+<tr><td>Date:</td><td>2004-07-13</td></tr>
+<tr><td>Time limit:</td><td>5s
+</td></tr>
+<tr><td>Source limit:</td><td>50000B</td></tr>
+<tr><td>Resource:</td><td>ACM Southwestern European Regional Contest, Paris 2003</td></tr></table>
+</div></td>
+</tr>
+
+<tr>
+<td colspan="2" class="footer">
+
+<script language="javascript" type="text/javascript">
+<!--
+function swapSheet(sheet, caller) {
+    document.getElementById('theme').href=sheet;
+    document.cookie="css_0="+sheet+"; path=/;";
+    caller.href="#bottom";
+}
+
+function setWidth(w, caller) {
+    document.getElementById('maintable').style.width=w;
+    document.cookie="res="+w+"; path=/;";
+    caller.href="#bottom";
+}
+//-->
+
+</script>
+        <table width="100%">
+    <tr>
+	<td align="left">
+            <a href="http://www.pg.gda.pl/eng.html"><IMG src="https://spoj.sphere.pl/gfx/logo-pg" alt="www.pg.gda.pl" border=0 height=36 width=44></a>&nbsp;
+            <a href="http://www.eti.pg.gda.pl/"><IMG src="https://spoj.sphere.pl/gfx/logo-eti" alt="www.eti.pg.gda.pl" border=0 height=36 width=44></a>
+	</td>
+	<td align="center">
+	    page size:
+	    <a href="https://spoj.sphere.pl/?res=755"  onClick="setWidth('755', this)">800x600</a>
+	    <a href="https://spoj.sphere.pl/?res=980"  onClick="setWidth('980', this)">1024x768</a>
+	    <a href="https://spoj.sphere.pl/?res=100%" onClick="setWidth('100%', this)">Full</a>
+	    &nbsp;&nbsp;
+	    theme:
+	    <a href="../../indexb6a4.html?css=/themes/skin1.css" onClick="swapSheet('../../themes/skin1.css', this)">olive</a>
+	    <a href="../../index3840.html?css=/themes/skin2.css" onClick="swapSheet('../../themes/skin2.css', this)">banana</a>
+	    <a href="../../index80f0.html?css=/themes/skin3.css" onClick="swapSheet('../../themes/skin3.css', this)">plum</a>
+	    <br>
+	    <a href="http://sphere.pl/?id=66">spoj team at sphere</a> &copy; 2004-05 all rights reserved
+	</td>
+	<td align="right">
+            <a href="http://task.gda.pl/english/"><IMG src="https://spoj.sphere.pl/gfx/logo-task" alt="task.gda.pl" border=0 height=36 width=44></a>&nbsp;
+            <a href="http://sphere.pl/"><IMG src="https://spoj.sphere.pl/gfx/logo-sphere" alt="sphere.pl" border=0 height=32></a>
+	</td>
+    </tr>
+    </table>
+    </tr></table>
+</center>
+</body>
+
+<!-- Mirrored from spoj.sphere.pl/problems/SQDANCE/ by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 10 Jan 2006 05:00:36 GMT -->
+</html>

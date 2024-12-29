@@ -1,0 +1,92 @@
+
+
+int countExchanges(int g1, int s1, int b1, int g2, int s2, int b2) 
+{
+	return f(g1, s1, b1);
+	
+}
+Problem Statement
+    
+Your character in an RPG game has G1 gold, S1 silver and B1 bronze coins. 
+
+You need G2 gold, S2 silver and B2 bronze coins to buy a new armor. 
+
+A bank in the game supports four types of exchange operations:
+the bank will give you 9 silver coins in exchange for 1 gold coin
+the bank will give you 1 gold coin in exchange for 11 silver coins
+the bank will give you 9 bronze coins in exchange for 1 silver coin
+the bank will give you 1 silver coin in exchange for 11 bronze coins
+
+Return the minimal number of exchange operations required for your character to hold at least G2 gold, at least S2 silver and at least B2 bronze coins. 
+
+Return -1 if the character does not have enough money for that.
+
+Definition
+    
+Class:
+CoinsExchange
+Method:
+countExchanges
+Parameters:
+int, int, int, int, int, int
+Returns:
+int
+Method signature:
+int countExchanges(int G1, int S1, int B1, int G2, int S2, int B2)
+(be sure your method is public)
+    
+
+Constraints
+-
+G1, S1, B1, G2, S2 and B2 will each be between 0 and 1,000,000, inclusive.
+
+Examples
+
+0)
+
+    
+1
+0
+0
+
+0
+0
+81
+
+Returns: 10
+Initially, you have one gold coin. You should exchange it for 9 silver coins. After that you should exchange each of the 9 silver coins for 9 bronze coins.
+
+1)
+
+    
+1
+100
+12
+5
+53
+33
+Returns: 7
+
+2)
+
+    
+1
+100
+12
+5
+63
+33
+Returns: -1
+
+3)
+
+    
+5
+10
+12
+3
+7
+9
+Returns: 0
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

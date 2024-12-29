@@ -1,0 +1,178 @@
+
+int board[100][100];
+
+void place(vector<int> cards, int width, int height)
+{
+	int k = 0;
+	for (int i = 0; i < height; i++)
+	{
+		for (int j = 0; j < width; j++)
+		{
+			board[i][j] = cards[k];
+			k++;
+		}
+	}
+}
+
+int GuessCard::whichRow(int width, int height, vector <int> columns) 
+{
+
+	vector<int> cards;
+	int n = width*height;
+	for (int i = 0; i < n; i++)
+	{
+		cards.push_back(i);
+	}
+	
+	place(cards, width, height);
+	vector<int> candidates;
+	for (int i = 0; i < cards.size(); i++)
+	{
+		candidates.push_back(cards[i]);
+	}
+	
+	for (int k = 0; k < columns.size(); k++)
+	{
+		int c = columns[k];
+		// candidates = items of column c
+		vector<int> newcand;
+		for (int i = 0; i < height; i++)
+		{
+			newcand.push_back(board[i][c]);
+		}
+		vector<int> result;
+		for (int a = 0; a < candidates.size(); a++)
+		{
+			for (int b = 0; b < newcand.size(); b++)
+			{
+				if (candidates[a] == newcand[b])
+				{
+					result.push_back(newcand[b]);
+				}
+			}
+		}
+	cout < "
+		candidates = result;
+		if (candidates.size() == 1)
+		{
+			return candidates[0];
+		}
+
+		cards.clear();
+		for (int i = 0; i < width; i++)
+		{
+			for (int j = 0; j < height; j++)
+			{
+				cards.push_back(board[j][i]);
+			}
+		}
+		place(cards, width, height);
+	}
+	return -1;	
+}
+
+Problem Statement
+    
+In a classic card guessing game, you first lay out some cards in a width times height rectangular configuration. A friend looks at the cards, and memorizes one of them. 
+
+You have to guess which card he chose. 
+
+He tells you the column in which his card is located (the left-most column number is 0). 
+
+Now you rearrange the cards by picking them up column after column (beginning with the first column, and picking up cards within each column from top to bottom), and laying the cards back down row by row (beginning with the top row, row number 0, and laying down cards within each row from left to right) creating a rectangular configuration with the same width and height as the original one; you lay the cards down in the order you picked them up. 
+
+After this rearrangement, your friend tells you the column in which his card is now located. You repeat this rearrangement procedure several times and with all the information you get you may be able to deduce the card your friend had in mind.
+
+For example, in the classic game, there are a total of 21 cards placed in 7 rows and 3 columns, like this:
+01 02 03
+04 05 06
+07 08 09
+10 11 12
+13 14 15
+16 17 18
+19 20 21
+Let's say the card to guess is "09". Your friend tells you that it is in the last column (column 2). Now you pick up the first column from top to bottom, then the second column, and finally the third column, and lay all the cards down row by row. This gives the following configuration:
+01 04 07
+10 13 16
+19 02 05
+08 11 14
+17 20 03
+06 09 12
+15 18 21
+Now you are informed that the card you are looking for ("09") is in the middle column (column 1). You rearrange the cards again, giving:
+01 10 19
+08 17 06
+15 04 13
+02 11 20
+09 18 07
+16 05 14
+03 12 21
+And now the card "09" is in the first column (column 0). Since this is the only card that was in the given columns in the three configurations, you can now be sure that the card you are looking for is "09".
+
+In this problem, you will be given width and height, the width and height of the configuration, and a vector <int> columns giving the column position of the card to guess in each configuration. 
+
+If there is enough information to deduce the correct card, return the row where the card lies in the last configuration (the configuration for which you get the last element of columns as an answer). 
+
+In the example, width would be 3, height would be 7, columns would be {2, 1, 0}, and you should return 4 (the card "09" is in the fifth row in the last configuration). 
+
+If there is not enough information in columns, return -1.
+Definition
+    
+Class:
+GuessCard
+Method:
+whichRow
+Parameters:
+int, int, vector <int>
+Returns:
+int
+Method signature:
+int whichRow(int width, int height, vector <int> columns)
+(be sure your method is public)
+    
+
+Constraints
+-
+width and height will be between 1 and 100, inclusive.
+-
+columns will have between 1 and 20 elements, inclusive.
+-
+Each element of columns will be between 0 and width-1 inclusive.
+-
+The values in columns will be consistent - i.e., there will be at least one card that lies in column 
+columns[i] in the ith layout for all values of i.
+
+Examples
+0)
+
+    
+3
+7
+{2, 1, 0}
+Returns: 4
+The example from the problem statement.
+1)
+
+    
+3
+7
+{2, 1}
+Returns: -1
+The same as the first example, but only after two arrangements. This time, there are two possible cards that are in the last column in the first arrangement and in the middle column in the second arrangement (cards "09" and "18" in the example in the problem statement). So we can not be sure which is the correct card, and return -1.
+2)
+
+    
+1
+10
+{0, 0, 0}
+Returns: -1
+There is only one column, so the correct card is always in this column (column 0), but this information doesn't help us any further. Any of the cards could be the correct one, so return -1.
+3)
+
+    
+10
+1
+{4, 4, 4}
+Returns: 0
+This time there is only one row, so the card we are looking for will be in this row (row 0).
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

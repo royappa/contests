@@ -1,0 +1,100 @@
+vector<int> v;
+int n;
+
+int memo[60][60];
+
+
+bool f(int p, int k) // return true if persons p..n-1 are wearing exactly k white hats
+{
+	if (p == n-1)
+	{
+		 
+bool check(int k) // return true if this configuration has exactly k white hats
+{
+		
+	memset(memo, -1, sizeof(memo));
+	
+	return f(0, k);
+}
+	
+int whiteNumber(vector <int> v_) 
+{
+	v = v_;
+	n = v.size();
+	
+	int c = -1;
+	for (int i = 0; i <= int(v.size()); i++)
+	{
+		if (check(i))
+		{
+			if (c != -1)
+			{
+				return -1;
+			}
+			c = i;
+		}
+	}
+	return c;			
+}
+Problem Statement
+    
+There is a number of people in a room, and each of them wears a hat which is either black or white. 
+
+Every person counts the number of other people wearing white hats. 
+
+You are given a vector <int> count, the i-th element of which is the number counted by the i-th person. 
+
+Return the total number of people wearing white hats, or -1 if count doesn't correspond to a valid situation.
+
+Definition
+    
+Class:
+WhiteHats
+Method:
+whiteNumber
+Parameters:
+vector <int>
+Returns:
+int
+Method signature:
+int whiteNumber(vector <int> count)
+(be sure your method is public)
+    
+
+Constraints
+-
+count will contain between 2 and 50 elements, inclusive.
+-
+Each element of count will be between 0 and 50, inclusive.
+Examples
+0)
+
+    
+{2,1,1}
+Returns: 2
+The first person wears a black hat and sees two people wearing white hats. Each person wearing a white hat sees only one other white hat in the room.
+1)
+
+    
+{2,2,2}
+Returns: 3
+Everyone wears a white hat here.
+2)
+
+    
+{0,0}
+Returns: 0
+Black hats only.
+3)
+
+    
+{1,1,1,2}
+Returns: -1
+
+4)
+
+    
+{10,10}
+Returns: -1
+Now that's interesting. There are only two people in the room, yet each of them counted 10 others.
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

@@ -1,0 +1,96 @@
+	public String time(String[] variables, String equation)
+	{
+		
+	}
+	
+	
+Problem Statement
+    
+An important part of any algorithm is its runtime. This is usually specified as an equation with a number of variables. For example, the runtime of many popular sorting algorithms is N*lg(N), meaning that the amount of time it takes to run the algorithm is proportional to N times the base 2 logarithm of N.  Your task is to write a method that approximates how long an algorithm will run, given its runtime and the values of the parameters involved. For this approximation, you should assume that a computer can execute 1 billion (1E9) operations per second. You will be given a String[], variables, each element of which is of the form "VAR VALUE", where VAR is an uppercase letter, and VALUE is an integer greater than 0. You will also be given a String, equation, conforming to the following grammar:
+  equation ::= TERM '*' equation | TERM '+' equation | TERM
+  TERM ::= VAR | 'lg(' VAR ')' | VAR^INT | INT^VAR
+  VAR ::= a VAR from variables
+  INT ::= an integer between 2 and 9, inclusive, with no leading zeros.
+You should calculate the time it takes to run the algorithm by evaluating equation with the given variables to obtain the total number of operations. You should return a String in the form "DURATION UNITS", where UNITS is either "nanoseconds", "microseconds", "milliseconds", "seconds", "minutes", "hours", "days", or "years". You should use the largest unit for which DURATION is greater than or equal to 1. You should truncate any fractional part of DURATION.
+Definition
+    
+Class:
+TimeAnalysis
+Method:
+time
+Parameters:
+String[], String
+Returns:
+String
+Method signature:
+String time(String[] variables, String equation)
+(be sure your method is public)
+    
+
+Notes
+-
+The base 2 logarithm of a number N, can be calculated as log(N)/log(2), where log computes a logarithm in some other base.
+-
+'^' denotes exponentiation.
+-
+Use the standard order of operations.
+-
+Assume that every year has exactly 365 days.
+-
+equation will contain no spaces.
+Constraints
+-
+variables will contain between 1 and 26 elements, inclusive.
+-
+Each element of variables will be formatted as "VAR VALUE", where VAR is an uppercase letter, and VALUE is an integer.
+-
+Each element of variables will have a unique VAR.
+-
+Each VALUE will be between 2 and 1000000000 (1E9), inclusive, with no leading zeros.
+-
+equation will be contain between 1 and 50 characters, inclusive.
+-
+equation will be formatted as specified in the statement.
+-
+Each variable used in equation will be present in variables.
+-
+The return value will be less than 1000 years.
+-
+When the correct units are chosen, the duration will not be within 1e-3 of an integer.
+Examples
+0)
+
+    
+{"N 1000"}
+"N*lg(N)"
+Returns: "9 microseconds"
+With N=1000, N*lg(N) = 1000 * 9.966 operations. This takes a little under 10 microseconds, so you should return "9 microseconds".
+1)
+
+    
+{"N 1000000000","M 10"}
+"M*N*lg(N)"
+Returns: "4 minutes"
+
+2)
+
+    
+{"N 1000","M 205"}
+"N^2*M+M^3"
+Returns: "213 milliseconds"
+
+3)
+
+    
+{"N 30"}
+"2^N*N^2"
+Returns: "16 minutes"
+
+4)
+
+    
+{"N 29"}
+"3^N*N^2"
+Returns: "1 years"
+Despite the bad grammar, you should return "1 years", not "1 year".
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

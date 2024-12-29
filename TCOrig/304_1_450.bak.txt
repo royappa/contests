@@ -1,0 +1,77 @@
+
+
+
+double probability(int n, int maxSide, int v, int theSum) 
+{
+	double num = 0, den = 0;
+	for (int s = 1; s <= maxSide*n; s++)
+	{
+		int fs = 
+		if (s >= theSum)
+}
+
+Problem Statement
+    
+Conditional probability can be illustrated with dice problems. What is the probability that you rolled a 12 on a pair of normal 6-sided dice, given that at least one of the dice shows a 6? This is the same question as the following: roll a pair of dice until at least one of the dice shows 6 -- what is the probability that your final roll has 6 on BOTH dice. The surprising answer is 1/11 since of the 36 equally likely rolls, 11 have at least one 6 and 1 of these 11 has 6 on both dice.
+
+Our goal is to solve a generalized version of this problem in which we roll nDice identical dice, each with sides labelled 1,2,...,maxSide. We want to know the probability that the sum of the dice is greater than or equal to theSum given that at least one of the dice shows the value v. Create a class Conditional that contains a method probability that is given nDice,maxSide, v, and theSum and that returns the desired conditional probability.
+Definition
+    
+Class:
+Conditional
+Method:
+probability
+Parameters:
+int, int, int, int
+Returns:
+double
+Method signature:
+double probability(int nDice, int maxSide, int v, int theSum)
+(be sure your method is public)
+    
+
+Constraints
+-
+nDice and maxSide will be between 1 and 50, inclusive.
+-
+v will be between 1 and maxSide, inclusive.
+-
+theSum will be between 1 and maxSide*nDice, inclusive.
+Examples
+0)
+
+    
+2
+6
+6
+12
+Returns: 0.09090909090909091
+This is the example above whose answer is 1/11. (Of course, the sum cannot be greater than 12.)
+1)
+
+    
+2
+6
+6
+6
+Returns: 1.0
+Given that at least one of the dice shows a 6 the sum of the 2 dice must be at least 7.
+2)
+
+    
+1
+9
+3
+3
+Returns: 1.0
+
+3)
+
+    
+2
+3
+2
+4
+Returns: 0.6
+Two 3-sided (!) dice with at least one 2 showing: 12 22 32 21 23 are the 5 possible equally likely results, and 3 of the 5 have a sum greater than or equal to 4.
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

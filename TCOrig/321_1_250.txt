@@ -1,0 +1,108 @@
+typedef long long LL;
+typedef vector<LL,LL> vLL;
+
+vLL factors(LL n)
+{
+	vLL r;
+	
+	LL f = 1;
+	while (f*f <= n)
+	{
+		if (n % f == 0)
+		{
+			r.push_back(f);
+			r.push_back(n/f);
+		}
+		f++;
+	}
+	sort(r.begin(), r.end());
+	return r;
+}
+
+int minSplitNumber(int width, int height, int nTiles) 
+{
+	LL w = min(width, height), h = max(width, height), n = nTiles;
+	
+	LL area = w*h;
+	
+	if (n == area)
+		return 0;
+	if (n > area)
+		return -1;
+	
+	if ((n % w == 0 && (n/w) < h) || (n % h == 0 && (n/h) < w))
+		return 1;
+	
+	vLL v = factors(n);
+	int k = v.size();
+	for (int i = 0; i < k; i++)
+	{
+		for (int j = 0; j < k; j++)
+		{
+			if (v[i]*v[j] == n && (v[i] < w && v[j] < h || v[i] < h && v[j] < w))
+				return 2;
+		}
+	}
+	
+	return -1;
+}
+
+Problem Statement
+    
+You have a rectangular chocolate bar that consists of width x height square tiles. You can split it into two rectangular pieces by creating a single vertical or horizontal break along tile edges. For example, a 2 x 2 chocolate bar can be divided into two 2 x 1 pieces, but it cannot be divided into two pieces, where one of them is 1 x 1. You can repeat the split operation as many times as you want, each time splitting a single rectangular piece into two rectangular pieces. Your goal is to create a piece consisting of exactly nTiles tiles. Return the minimal number of split operations necessary to reach this goal. If it is impossible, return -1.
+Definition
+    
+Class:
+Chocolate
+Method:
+minSplitNumber
+Parameters:
+int, int, int
+Returns:
+int
+Method signature:
+int minSplitNumber(int width, int height, int nTiles)
+(be sure your method is public)
+    
+
+Constraints
+-
+width will be between 1 and 10^9, inclusive.
+-
+height will be between 1 and 10^9, inclusive.
+-
+nTiles will be between 1 and 10^9, inclusive.
+Examples
+0)
+
+    
+5
+4
+12
+Returns: 1
+You can split the chocolate bar into two rectangular pieces 3 x 4 and 2 x 4 by creating a single vertical break. Only one break is necessary.
+1)
+
+    
+12
+10
+120
+Returns: 0
+The chocolate bar consists of exactly 120 tiles.
+2)
+
+    
+2
+2
+1
+Returns: 2
+
+3)
+
+    
+17
+19
+111
+Returns: -1
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

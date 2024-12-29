@@ -1,0 +1,179 @@
+
+int length(vector <string> grid) 
+{
+	int h = grid.size(), w = grid[0].size();
+	
+	char longest[2][h][w];
+	
+	int run = 0;
+	char last = ' ';
+	for (int i = 0; i < h; i++)
+	{
+		for (int j = 0; j < w; j++)
+		{
+			longest[run][i][j] = ' ';
+			if (grid[i][j] == 'A')
+			{
+				longest[run][i][j] = 'A';
+				last = 'A';
+			}
+		}
+	}
+	
+	bool changed = true;
+	
+	int other;
+	while (changed)
+	{
+		changed = false;
+		other = 1-run;
+		// change every alpha to next(alpha);
+		for (int i = 0; i < h; i++)
+		{
+			for (int j = 0; j < w; j++)
+			{
+				bool found = false;
+				for (int dr = -1; dr <= 1; dr++)
+				{
+					for (int dc = -1; dc <= 1; dc++)
+					{
+						if (i+dr >= 0 && i+dr < h && j+dc >= 0 && j+dc < w && longest[run][i+dr][j+dc] == grid[i][j]-1)
+						{
+							found = true;
+						}
+					}
+				}
+				if (found) // a neighbor in run contains prev[grid[i][j]]
+				{
+					longest[other][i][j] = grid[i][j];
+					changed = true;
+					last = max(last, grid[i][j]);
+				}
+				else
+				{
+					longest[other][i][j] = ' ';
+				}
+			}
+		}
+		run = 1-run;
+	}
+	return last == ' ' ? 0 : last-'A'+1;	
+}
+
+Problem Statement
+    
+You will be given a 2-dimensional grid of letters. Write a method to find the length of the longest path of consecutive letters, starting at 'A'. Paths can step from one letter in the grid to any adjacent letter (horizontally, vertically, or diagonally).
+For example, in the following grid, there are several paths from 'A' to 'D', but none from 'A' to 'E':
+    { "ABE",
+      "CFG",
+      "BDH",
+      "ABC" }
+One such path is:
+    A B .
+    C . .
+    . D .
+    . . .
+    (spaces are for clarity only)
+so, for this grid, your method should return 4.
+Definition
+    
+Class:
+ABCPath
+Method:
+length
+Parameters:
+vector <string>
+Returns:
+int
+Method signature:
+int length(vector <string> grid)
+(be sure your method is public)
+    
+
+Notes
+-
+The longest path may start at any 'A' character in the input.
+Constraints
+-
+grid will contain between 1 and 50 elements, inclusive.
+-
+Each element of grid will be between 1 and 50 characters long, inclusive.
+-
+Each element of grid will have the same length.
+-
+grid will contain only uppercase letters ('A'-'Z').
+Examples
+0)
+
+    
+{ "ABE",
+  "CFG",
+  "BDH",
+  "ABC" }
+Returns: 4
+This is the example from the problem statement.
+1)
+
+    
+{ "A" }
+Returns: 1
+
+2)
+
+    
+{ "BCDEFGHIJKLMNOPQRSTUVWXYZ" }
+Returns: 0
+Paths must start with an 'A'.
+3)
+
+    
+{ "C",
+  "D",
+  "B",
+  "A" }
+Returns: 2
+
+4)
+
+    
+{ "KCBVNRXSPVEGUEUFCODMOAXZYWEEWNYAAXRBKGACSLKYRVRKIO",
+  "DIMCZDMFLAKUUEPMPGRKXSUUDFYETKYQGQHNFFEXFPXNYEFYEX",
+  "DMFRPZCBOWGGHYAPRMXKZPYCSLMWVGMINAVRYUHJKBBRONQEXX",
+  "ORGCBHXWMTIKYNLFHYBVHLZFYRPOLLAMBOPMNODWZUBLSQSDZQ",
+  "QQXUAIPSCEXZTTINEOFTJDAOBVLXZJLYOQREADUWWSRSSJXDBV",
+  "PEDHBZOVMFQQDUCOWVXZELSEBAMBRIKBTJSVMLCAABHAQGBWRP",
+  "FUSMGCSCDLYQNIXTSTPJGZKDIAZGHXIOVGAZHYTMIWAIKPMHTJ",
+  "QMUEDLXSREWNSMEWWRAUBFANSTOOJGFECBIROYCQTVEYGWPMTU",
+  "FFATSKGRQJRIQXGAPLTSXELIHXOPUXIDWZHWNYUMXQEOJIAJDH",
+  "LPUTCFHYQIWIYCVOEYHGQGAYRBTRZINKBOJULGYCULRMEOAOFP",
+  "YOBMTVIKVJOSGRLKTBHEJPKVYNLJQEWNWARPRMZLDPTAVFIDTE",
+  "OOBFZFOXIOZFWNIMLKOTFHGKQAXFCRZHPMPKGZIDFNBGMEAXIJ",
+  "VQQFYCNJDQGJPYBVGESDIAJOBOLFPAOVXKPOVODGPFIYGEWITS",
+  "AGVBSRLBUYOULWGFOFFYAAONJTLUWRGTYWDIXDXTMDTUYESDPK",
+  "AAJOYGCBYTMXQSYSPTBWCSVUMNPRGPOEAVVBGMNHBXCVIQQINJ",
+  "SPEDOAHYIDYUJXGLWGVEBGQSNKCURWYDPNXBZCDKVNRVEMRRXC",
+  "DVESXKXPJBPSJFSZTGTWGAGCXINUXTICUCWLIBCVYDYUPBUKTS",
+  "LPOWAPFNDRJLBUZTHYVFHVUIPOMMPUZFYTVUVDQREFKVWBPQFS",
+  "QEASCLDOHJFTWMUODRKVCOTMUJUNNUYXZEPRHYOPUIKNGXYGBF",
+  "XQUPBSNYOXBPTLOYUJIHFUICVQNAWFMZAQZLTXKBPIAKXGBHXX" }
+Returns: 19
+
+5)
+
+    
+{ "EDCCBA",
+  "EDCCBA" }
+Returns: 3
+
+6)
+
+    
+{ "AMNOPA",
+  "ALEFQR",
+  "KDABGS",
+  "AJCHUT",
+  "AAIWVA",
+  "AZYXAA" }
+Returns: 26
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

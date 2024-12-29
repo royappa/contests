@@ -1,0 +1,140 @@
+
+typedef unsigned long long LL;
+vector<int> a;
+int n;
+
+bool root(int r)
+{
+	int i = n;
+	LL b1 = a[n];
+	for (int i = n-1; i >= 0; i--)
+	{
+		LL b0 = a[i]+b1*r
+vector <int> integerRoots(vector <int> X, vector <int> Y, int n_) 
+{
+	n = n_;
+	a.resize(n+1, 0);
+	int lx = X.size(), ly = Y.size();
+	for (int i = 0; i <= n; i++)
+	{
+		int p = i % lx;
+		int q = (i + Y[i % ly]) % lx;
+		a[i] = X[p];
+		X[p] = X[q];
+		X[q] = a[i];
+	}
+	vector<int> r;
+	LL a0 = a[0];
+	for (LL d = 1; d*d <= a0; d++)
+	{
+		if (a0 % d == 0)
+		{
+			int f1 = d;
+			int f2 = a0/d;
+			int f3 = -f1;
+			int f4 = -f2;
+			if (root(f1))
+				r.push_back(f1);
+			if (root(f2))
+				r.push_back(f2);
+			if (root(f3))
+				r.push_back(f3);
+			if (root(f4))
+				r.push_back(f4);
+		}
+	}
+	sort(r.begin(), r.end());
+	r.erase(unique(r.begin(), r.end()), r.end());
+	return r;
+}
+
+Problem Statement
+    
+An integer polynomial of degree n is a function of the form a0 + a1x1 + a2x2 + ... + anxn, where each ai is a constant integer and x is a variable. An integer root of an integer polynomial is an integer value of x for which the expression equals zero.
+You will be given the coefficients of an integer polynomial, and must return all the integer roots in increasing order. Roots must appear only once in the output (see example 1 for clarification).
+Since the degree may be quite large, the coefficients are presented indirectly. Use the following pseudo-code to generate the coefficients a[0] to a[n]:
+lX = length(X)
+lY = length(Y)
+for i = 0, 1, ..., n:
+  p = i mod lX
+  q = (i + Y[i mod lY]) mod lX
+  a[i] = X[p]
+  X[p] = X[q]
+  X[q] = a[i]
+The array indices are all 0-based and a mod b is the remainder when a is divided by b.
+Definition
+    
+Class:
+SolvePolynomial
+Method:
+integerRoots
+Parameters:
+vector <int>, vector <int>, int
+Returns:
+vector <int>
+Method signature:
+vector <int> integerRoots(vector <int> X, vector <int> Y, int n)
+(be sure your method is public)
+    
+
+Notes
+-
+The intended solution is independent of the method of generation, and will work for any integer polynomial.
+Constraints
+-
+n will be between 0 and 10,000, inclusive.
+-
+X will contain between 1 and 50 elements, inclusive.
+-
+Y will contain between 1 and 50 elements, inclusive.
+-
+Each element of X will be between -109 and 109, inclusive.
+-
+Each element of Y will be between 0 and 50, inclusive.
+-
+At least one element of a will be non-zero.
+Examples
+0)
+
+    
+{-4, 2, 2}
+{0}
+2
+Returns: {-2, 1 }
+-4 + 2x + 2x2 = 2(x - 1)(x + 2).
+1)
+
+    
+{1, 2, 0}
+{2, 0, 0, 0}
+3
+Returns: {-1 }
+1 + 2x + x^2 + 0x^3 = (x + 1)(x + 1). Note that an may be zero and that roots must appear only once in the output.
+2)
+
+    
+{1, 4, 4}
+{0}
+2
+Returns: { }
+
+3)
+
+    
+{-15, -10, 2, 1}
+{0}
+3
+Returns: {3 }
+
+4)
+
+    
+{735134400, 1383, 4121, 18875, 10463, 
+ 13512, 19603, 28679, 13483, 9509, 1701,
+ 13383, 24425, 7923, 7978, 21702, 30989,
+ 20676, 18547, 28130, 10944}
+{34,23,6,5,3,5,4,34,37,5,6,21,17,9}
+10000
+Returns: { }
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

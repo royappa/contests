@@ -1,0 +1,68 @@
+
+
+int f(int n)
+{
+	if (n <= 9)
+		return n+1;
+	
+	
+		
+	
+int countPalNums(int lower, int upper) 
+{
+	return f(upper)-f(lower-1);
+}
+Problem Statement
+    
+A palindromic number is a number that remains the same when its digits are reversed. For example, 4, 33, 101 and 6666 are palindromic numbers. 10, 51 and 156552 are not (when reversing digits, the number is considered to have no leading zeroes).
+You will be given two ints lower and upper describing a range. Return the number of palindromic numbers between lower and upper, inclusive.
+Definition
+    
+Class:
+PalindromicNumbers
+Method:
+countPalNums
+Parameters:
+int, int
+Returns:
+int
+Method signature:
+int countPalNums(int lower, int upper)
+(be sure your method is public)
+    
+
+Constraints
+-
+lower will be between 1 and 1000000000 (10^9), inclusive.
+-
+upper will be between lower and 1000000000 (10^9), inclusive.
+Examples
+0)
+
+    
+ 8
+25
+Returns: 4
+8, 9, 11 and 22 are palindromic numbers.
+1)
+
+    
+111
+222
+Returns: 12
+111, 121, 131, 141, 151, 161, 171, 181, 191, 202, 212 and 222 are palindromic numbers.
+2)
+
+    
+88966989
+88977987
+Returns: 0
+
+3)
+
+    
+ 999999990
+1000000000
+Returns: 1
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

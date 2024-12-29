@@ -1,0 +1,215 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<!-- Mirrored from spoj.sphere.pl/problems/TDBFS/ by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 10 Jan 2006 04:55:37 GMT -->
+<head>
+<title>Sphere Online Judge (SPOJ)  - Problem TDBFS</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-2">
+<META NAME="Keywords" CONTENT="spoj, online, judge, problem, set, problemset, archive, ACM, Polish, Poland, contest, contester, task, tasks, ADA, Java, Pascal, C, C++, Whitespace, sphere, interest, group, python, ruby, icon, o'caml, caml, ocaml, perl, haskell, bf, brain, clips, prolog, fortran, asm, assembler, asembler, functional, esoteric, programming, languages">
+
+<link href="https://spoj.sphere.pl/gfx/favicon" rel="shortcut icon" type="image/x-icon">
+
+<link href="../../themes/skin3.css" rel="stylesheet" type="text/css" id="theme">
+<style type="text/css">
+<!--
+.maintable {width: 755;} 
+-->
+</style>
+<script type="text/javascript" language="javascript">
+<!--
+function UnCryptMailto(s) {
+	var n=0;
+	var r="";
+	for(var i=0;i<s.length;i++) {		
+		n=s.charCodeAt(i); 
+		if (n>=8364) {n = 128;}
+		r += String.fromCharCode(n+(2));	
+	}
+	return r;
+}
+function linkTo_UnCryptMailto(s)	{
+	location.href=UnCryptMailto(s);
+}
+// -->
+</script>
+
+</head>
+<body>
+<center>
+<table cellpadding="10" cellspacing="0" class="maintable" id="maintable">
+<tr>
+    <td colspan="2" class="header">
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+        <tr>
+		<td class="headerleft"/>
+		<td class="headercenter"><h1>Sphere Online Judge</h1></td>
+		<td class="headerright"/>
+	</tr>
+	</table>
+    </td>
+</tr>
+<tr><td class="menu" width="92" valign="top">
+<form name="login"  action="http://spoj.sphere.pl/problems/TDBFS/" method="post" 
+	onsubmit="if(document.login.ssl.checked) document.login.action='https://spoj.sphere.pl/problems/TDBFS/'" style="margin-bottom: 18px"> 
+User: <input name="login_user" type="text" style="width: 85px;" class="form"><BR>
+Password: <input name="password" type="password" style="width: 85px;" class="form"><BR>
+<script language="javascript" type="text/javascript">
+<!--
+document.write('<input type="checkbox" name="ssl" id="ssl" checked>secure<br>');
+//-->
+</script>
+<input name="submit" type="submit" value="Log In" class="button" style="width: 85px;">
+</form><div class="menucmd"><a href="https://spoj.sphere.pl/register">register</a><br><br><a href="https://spoj.sphere.pl/status">status</a><br><a href="https://spoj.sphere.pl/submit">submit</a><br><a href="../classical/sort=7,start=0.html">problems</a><br><br><a href="https://spoj.sphere.pl/">news</a><br><a href="https://spoj.sphere.pl/contests">contests</a><br><a href="https://spoj.sphere.pl/info">info</a><br><a href="https://spoj.sphere.pl/ranks/">ranks</a><br><br><a href="https://spoj.sphere.pl/forum">forum</a><br><a href="https://spoj.sphere.pl/help">help</a><br><a href="https://spoj.sphere.pl/links">links</a><br><hr></div>Server time:<br>2006-01-10<br>05:49:36<a href="../classical/sort=7,start=0.html"></a><br><br>
+<form method="get" action="https://spoj.sphere.pl/search/" class="form" style="width:90px">
+<input type="text" name="query" style="width:85px" maxlength=255 value="" class="form"><br>
+<input type="submit" value="Search" style="width:85px" class="form" title="Search site"><br>
+&nbsp;<a href="https://spoj.sphere.pl/search/problems=on,users=on,contests=on" title="More search options"><small>advanced...</small></a>
+</form></td><td class="content" width="99%"><table class="problems" width="100%">
+<tr class="navigation">
+<td><a href="https://spoj.sphere.pl/submit/TDBFS/">Submit</a></td>
+<td><a href="https://spoj.sphere.pl/status/TDBFS/">All submissions</a></td>
+<td><a href="https://spoj.sphere.pl/ranks/TDBFS/">Best solutions</a></td>
+<td><a href="https://spoj.sphere.pl/problems/TDBFS.ps">PS</a></td>
+<td><a href="https://spoj.sphere.pl/problems/TDBFS.pdf">PDF</a></td>
+<td><a href="../classical/sort=7,start=0.html">Back to list</a></td>
+</tr>
+</table>
+
+<div class="prob">
+
+<h2>SPOJ Problem Set </h2>
+<h1>442. Searching the Graph</h1>
+<h2>Problem code: TDBFS</h2>
+<p align="justify">
+<p>Far a given list of adjacent vertices of a graph and a choosen vertex <i>v</i> write down in the Depth First Search (DFS) or Breadth First Search (BFS) order all the vertices from the connected component of a graph containing <i>v</i>. Assume that the number of vertices of a graph is at most 1000.
+<h3>Input</h3>
+<p align=justify>
+<br><i>t</i> [the number of graphs <= 100]
+<br>Graph:
+<br><i>n</i> [1 <= <i> n </i> <= 1000 the number of graph vertices]
+<br><i>i m a b c ...</i> [the list of <i>m</i> adjacent vertices to vertex <i>i</i>]
+<br>Any query is as follows: [not more than <i>n</i> queries]
+<br><i>v</i> <i>i</i>
+<br>where 1 <= <i>v</i> <= <i>n</i> is the beginning vertex and <i>i</i> = 0 for DFS order and <i>i</i> = 1 for BFS order.
+<br>0 0 [at the end of the serie]
+<br><br>The list for isolated vertex <i>a</i> is <i>a</i> 0.
+</p>
+<h3>Output</h3>
+<p>
+<br><i>graph i</i> [test case, word <i>graph</i> is necessary]
+<br><i>a b c ...</i> [the DFS or BFS order of all vertices]
+</p>
+<h3>Example</h3>
+<pre>
+<b>Input:</b>
+3
+6
+1 2 3 4
+2 2 3 6
+3 2 1 2
+4 1 1
+5 0
+6 1 2
+5 1
+1 0
+1 0
+0 0
+10
+1 6 3 5 6 7 8 9
+2 1 9
+3 2 1 5
+4 5 6 7 8 9 10
+5 4 1 3 7 8
+6 3 1 4 7
+7 5 1 4 5 6 8
+8 5 1 4 5 7 10
+9 3 1 2 4
+10 2 4 8
+7 1
+1 0
+2 1
+4 1
+7 1
+0 0
+2
+1 0
+2 0
+1 1
+0 0
+<b>Output:</b>
+graph 1
+5
+1 3 2 6 4
+1 3 2 6 4
+graph 2
+7 1 4 5 6 8 3 9 10 2
+1 3 5 7 4 6 8 10 9 2
+2 9 1 4 3 5 6 7 8 10
+4 6 7 8 9 10 1 5 2 3
+7 1 4 5 6 8 3 9 10 2
+graph 3
+1
+</pre>
+
+
+<hr>
+<table border=0 cellspacing=0 cellpadding=0 align=left>
+<tr><td width=130>Added by:</td><td><a href="https://spoj.sphere.pl/search/'Michał%20Małafiejski'">Michał Małafiejski</a></td></tr>
+<tr><td>Date:</td><td>2004-10-22</td></tr>
+<tr><td>Time limit:</td><td>12s
+</td></tr>
+<tr><td>Source limit:</td><td>5000B</td></tr>
+</table>
+</div></td>
+</tr>
+
+<tr>
+<td colspan="2" class="footer">
+
+<script language="javascript" type="text/javascript">
+<!--
+function swapSheet(sheet, caller) {
+    document.getElementById('theme').href=sheet;
+    document.cookie="css_0="+sheet+"; path=/;";
+    caller.href="#bottom";
+}
+
+function setWidth(w, caller) {
+    document.getElementById('maintable').style.width=w;
+    document.cookie="res="+w+"; path=/;";
+    caller.href="#bottom";
+}
+//-->
+
+</script>
+        <table width="100%">
+    <tr>
+	<td align="left">
+            <a href="http://www.pg.gda.pl/eng.html"><IMG src="https://spoj.sphere.pl/gfx/logo-pg" alt="www.pg.gda.pl" border=0 height=36 width=44></a>&nbsp;
+            <a href="http://www.eti.pg.gda.pl/"><IMG src="https://spoj.sphere.pl/gfx/logo-eti" alt="www.eti.pg.gda.pl" border=0 height=36 width=44></a>
+	</td>
+	<td align="center">
+	    page size:
+	    <a href="https://spoj.sphere.pl/?res=755"  onClick="setWidth('755', this)">800x600</a>
+	    <a href="https://spoj.sphere.pl/?res=980"  onClick="setWidth('980', this)">1024x768</a>
+	    <a href="https://spoj.sphere.pl/?res=100%" onClick="setWidth('100%', this)">Full</a>
+	    &nbsp;&nbsp;
+	    theme:
+	    <a href="../../indexb6a4.html?css=/themes/skin1.css" onClick="swapSheet('../../themes/skin1.css', this)">olive</a>
+	    <a href="../../index3840.html?css=/themes/skin2.css" onClick="swapSheet('../../themes/skin2.css', this)">banana</a>
+	    <a href="../../index80f0.html?css=/themes/skin3.css" onClick="swapSheet('../../themes/skin3.css', this)">plum</a>
+	    <br>
+	    <a href="http://sphere.pl/?id=66">spoj team at sphere</a> &copy; 2004-05 all rights reserved
+	</td>
+	<td align="right">
+            <a href="http://task.gda.pl/english/"><IMG src="https://spoj.sphere.pl/gfx/logo-task" alt="task.gda.pl" border=0 height=36 width=44></a>&nbsp;
+            <a href="http://sphere.pl/"><IMG src="https://spoj.sphere.pl/gfx/logo-sphere" alt="sphere.pl" border=0 height=32></a>
+	</td>
+    </tr>
+    </table>
+    </tr></table>
+</center>
+</body>
+
+<!-- Mirrored from spoj.sphere.pl/problems/TDBFS/ by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 10 Jan 2006 04:55:37 GMT -->
+</html>

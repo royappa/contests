@@ -1,0 +1,124 @@
+
+typedef long long LL;
+typedef pair<LL,LL> pLL;
+
+// best that I can make, if p tasks have been collected by day d, and amount anum/aden is in the bank at the end of day d.
+
+pLL f(int p, int d, LL anum, LL aden)
+{
+	if (p == n)
+	{
+		return 
+double maximumProfit(vector <int> e, vector <int> t, int fee, int rate) 
+{
+	
+	pLL r = f(0, 
+}
+Problem Statement
+    
+You are working for a foreign company, doing your job remotely via the web. Each time you deliver a task, a payment is added to your work account. Anytime you want, you can ask the company to send you a check for your accumulated earnings, but a fixed fee is deducted from each check. You will only ask for checks when your accumulated earnings are greater than or equal to fee. When you ask for a check, the payments for tasks that are delivered on that same day will be included. Checks arrive the same day that you request them, and they arrive before the bank closes, so you can deposit them into your bank account the same day.
+
+
+The bank is open during the day every single day of the year. Every Sunday night, after closing time, interest is added to your bank account in the amount of A*rate/1000, where A is the amount of money that was in your account at closing time. Day 1 is a Sunday, so interest may be added to your bank account at the end of day 1, 8, 15, ..., 358, and 365. At the beginning of day 1, your bank account has no money.
+
+You are given two vector <int>s, earning and moment. The ith element of earning specifies the payment you will receive for the ith task, and the ith element of moment is the day of the year (between 1 and 365) when you will deliver the ith task. You will also be given two ints fee and rate as described above. You must develop a strategy (deciding when to ask for your checks) that maximizes the amount of money you will have in your bank account after interest is added at the end of day 365. Return this maximum amount.
+Definition
+    
+Class:
+CollectingPayment
+Method:
+maximumProfit
+Parameters:
+vector <int>, vector <int>, int, int
+Returns:
+double
+Method signature:
+double maximumProfit(vector <int> earning, vector <int> moment, int fee, int rate)
+(be sure your method is public)
+    
+
+Notes
+-
+At the end of the year, you may have some leftover earnings in your work account. See example 4.
+-
+The returned value must be accurate to within a relative or absolute value of 1E-9.
+Constraints
+-
+earning will contain between 1 and 50 elements, inclusive.
+-
+moment and earning will contain the same number of elements.
+-
+Each element of earning will be between 1 and 1000, inclusive.
+-
+Each element of moment will be between 1 and 365, inclusive.
+-
+The elements of moment will be sorted in strictly ascending order (no repeated elements).
+-
+fee will be between 0 and 1000, inclusive.
+-
+rate will be between 0 and 100, inclusive.
+Examples
+0)
+
+    
+{300,290,320,150}
+{120,124,200,202}
+40
+10
+Returns: 1325.1174146859212
+One possible optimal strategy in this case is to ask for checks on days 125 and 203. In this case, your first check will be worth 550 (because it contains payments for your first two tasks less the fee: 300+290-40=550). On day 127 your bank account will be increased by 550*10/1000=5.5, getting to 555.5. After that, it will continue growing for another 10 Sundays, the last one being 197, getting to day 202 with 613.62 (approximately). On day 203 you deposit your check for 430 (320+150-40) and then your account is increased to 1043.62. On day 204 it will increase by 1043.62*10/1000, getting to 1054.05. From then on, it will increase another 23 times, the last one being on day 365. NOTE: All these partial results are rounded to only 2 digits, and therefore, lack precision. The final result reported, on the other hand, is precise.
+1)
+
+    
+{300,290,320,150}
+{1,122,243,365}
+40
+10
+Returns: 1240.733092976253
+In this case, it is better to take a check for each payment to take advantage of the bank interest rate, because the times for payments are spread across the year.
+2)
+
+    
+{300,290,320,150}
+{1,122,243,365}
+200
+10
+Returns: 868.6
+With such a big fee, it's preferable to wait until the end of the year and have all your payments sent together.
+3)
+
+    
+{150}
+{365}
+50
+100
+Returns: 110.0
+You deposit right on time to get a 10% reward from the bank.
+4)
+
+    
+{1000,1}
+{155,365}
+100
+100
+Returns: 17274.90824619758
+Here you should try to deposit the 1000 payment as fast as possible because of the high rate. Note that you will not request a check for the last payment because it is less than the fee.
+5)
+
+    
+{1,346,7,346,345,3,453,5,346,3}
+{1,2,7,34,74,163,200,250,352,360}
+0
+0
+Returns: 1855.0
+With no fee and no interest rate, it doesn't matter when you ask for the checks. As long as you collect every payment, your resulting balance will be equal to the sum of the payments.
+6)
+
+    
+{1,346,7,346,345,3,453,5,346,354,25,23,354,235,235}
+{1,7,34,74,98,154,163,178,200,210,250,279,325,352,360}
+50
+10
+Returns: 3693.6800093457805
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

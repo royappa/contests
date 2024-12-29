@@ -1,0 +1,163 @@
+
+class VariableDeclaration {
+public:
+	string badDeclaration(string);
+	
+	string getDeclared(string code)
+	{
+		string declared = "";
+		for (int i = 0; i < code.size(); i++)
+		{
+			if (isalpha(code[i]))
+			{
+				declared += code[i];
+			}
+		}
+		return declared;
+	}
+	string getDeclaredTopLevel(string code)
+	{
+		int level = 0;
+		string declared;
+		for (int i = 0; i < code.size(); i++)
+		{
+			if (isalpha(code[i]) && level == 0)
+			{
+				declared += code[i];
+			}
+			if (code[i] == '{')
+			{
+				level++;
+			}
+			if (code[i] == '}')
+			{
+				level--;
+			}
+		}
+		return declared;
+	}
+	
+	string findBad(string block, string declaredEnclosing)
+	{
+		int n = block.size();
+		string inside = block.substr(1, n-2);
+		string declaredInside = getDeclared(inside);
+		string bad = "";
+		for (int i = 0; i < declaredEnclosing.size(); i++)
+		{
+			if (declaredInside.find(declaredEnclosing[i]) != string::npos)
+			{
+				bad += declaredEnclosing[i];
+			}
+		}
+		string declared = getDeclaredTopLevel(inside);
+		int level = 0;
+		int start, end;
+		for (int i = 0; i < inside.size(); i++)
+		{
+			if (code[i] == '{')
+			{
+				if (level == 0)
+				{
+					start = i;
+				}
+				level++;
+			}
+			if (code[i] == '}')
+			{
+				level--;
+				if (level == 0)
+				{
+					end = i;		
+					bad += findBad(inside.substr(start+1,end-start+1-2), declared);
+				}
+			}
+		}
+		// remove duplicates & sort
+		stable_sort(bad.begin(), bad.end());
+		string noDup = bad.substr(0, 1);
+		for (int i = 1; i < bad.size(); i++)
+		{
+			char ch = bad[i];
+			int k = noDup.size();
+			if (ch == noDup[k-1])
+				continue;
+			noDup += ch;
+		}
+		return noDup;
+	}
+};
+
+string VariableDeclaration::badDeclaration(string code) 
+{
+	return findBad(code, "");	
+}
+
+
+Problem Statement
+    
+Structured langugages such as Java, C# and C++ are made up of blocks of code (usually nested several levels), where the start and end markers for a block are denoted by curly brackets, '{' and '}'. A variable declared in a block is only accessible within that block and its sub-blocks.
+
+In C#, you are not allowed to declare a variable in a block if any of its sub-blocks also declares a variable with the same name. The following code, for instance, will give a compiler error in C# (but not in Java or C++):
+
+    public void MyMethod()
+    {
+    	for(int j = 0; j < 5; j++)
+    	{
+    	    int i = j;
+    	}      
+    	int i = 0;        
+    }
+Changing int i = 0; to { int i = 0; } would be legal C#.
+
+Your task is to write a method which finds this kind of illegal variable declaration. The input will be a string containing curly brackets (marking the start and end positions for a block) and lower case letters. Each lowercase letter in the input denotes that a variable with that name has been declared in this position. Hence the code above would be encoded with the string "{{ji}i}" (quotes for clarity only).
+
+Create a class VariableDeclaration containing the method badVariable which takes a string code containing a piece of code in the format above, and returns a string containing a list of all variables (in alphabetical order) that have been badly declared. The list should not contain any duplicates. 
+
+You can assume that the curly brackets match up properly, and that there is a single outer block. Further, a variable will never be declared several times in the same block, so inputs like "{a{b}a}" are not allowed.
+Definition
+    
+Class:
+VariableDeclaration
+Method:
+badDeclaration
+Parameters:
+string
+Returns:
+string
+Method signature:
+string badDeclaration(string code)
+(be sure your method is public)
+    
+
+Constraints
+-
+code will contain between 2 and 50 characters, inclusive.
+-
+Each character in code will be a '{', a '}' or a lowercase letter.
+-
+The curly brackets in code will match up properly.
+-
+Tbere will be a single outer block; that is, the first character in code will be a '{', whose corresponding '}' will be the last character.
+-
+A variable won't be declared more than once in the same block.
+Examples
+0)
+
+    
+"{{ji}i}"
+Returns: "i"
+This is the example in the problem statement.
+1)
+
+    
+"{{ji}{i}}"
+Returns: ""
+
+2)
+
+    
+"{d{{e}{fd}}{e}{df{{a}}}a}"
+Returns: "ad"
+Make sure not to output duplicates, and to sort the badly declared variables in alphabetical order.
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

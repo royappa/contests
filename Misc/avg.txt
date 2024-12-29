@@ -1,0 +1,80 @@
+hh:mm xM, DAY n
+
+time = time.replace("DAY", "");
+String[] w = time.split("[:, ]*");
+
+		public int avgMinutes(String[] times)
+		{
+			int sum = 0;
+			int n = times.length;
+			for (int i = 0; i < n; i++)
+			{
+				times[i] = times[i].replace("DAY", "");
+				String[] w = times[i].split("[:, ]+");
+				int hh = Integer.parseInt(w[0]);
+				int mm = Integer.parseInt(w[1]);
+				int ampm = w[2].charAt(0) == 'A' ? 0 : 1;
+				int day = Integer.parseInt(w[3]);
+				if (ampm == 0 && !(hh==12 && mm==0)) hh += 12;
+				int m = (day-1)*24*60+(hh-8)*60+mm;
+				sum += m;
+			}
+			return sum / n;
+		}
+
+	
+
+Problem Statement
+    
+The Iditarod is a dogsled race from Anchorage to Nome that takes many days. We want to take a list of the times when the competitors crossed the finish line and convert that into the average number of minutes to complete the race.
+The race starts on day 1 at 8:00 AM. We are given a list of finish times as a String[], where each finish time is formatted as
+hh:mm xM, DAY n
+where hh is exactly 2 digits giving the hour, mm is exactly 2 digits giving the minute, x is either 'A' or 'P', and n is a positive integer less than 100 with no leading zeros. So each string has exactly 15 or 16 characters (depending on whether n is less than 10).
+Create a class Iditarod containing method avgMinutes that is given a String[], times, and that returns the average number of minutes taken by the competitors to complete the race. Round the returned value to the nearest minute, with .5 rounding up.
+Definition
+    
+Class:
+Iditarod
+Method:
+avgMinutes
+Parameters:
+String[]
+Returns:
+int
+Method signature:
+int avgMinutes(String[] times)
+(be sure your method is public)
+    
+
+Notes
+-
+"12:00 AM, DAY d" refers to midnight between DAY d-1 and DAY d
+-
+"12:00 PM, DAY d" refers to noon on DAY d
+Constraints
+-
+times contains between 1 and 50 elements inclusive
+-
+each element of times is formatted as specified above, with hh between 01 and 12 inclusive, mm between 00 and 59 inclusive, and d between 1 and 99 inclusive
+-
+each element of times represents a time later than the start of the race
+Examples
+0)
+
+    
+{"12:00 PM, DAY 1","12:01 PM, DAY 1"}
+Returns: 241
+From 8:00 AM to noon is 4 hours, so we have 4 hours for one competitor, and 4 hours, 1 minute for the other. These two values average to 240.5 minutes which is rounded up.
+1)
+
+    
+{"12:00 AM, DAY 2"}
+Returns: 960
+The one competitor finished in 16 hours, just at the start of DAY 2.
+2)
+
+    
+{"02:00 PM, DAY 19","02:00 PM, DAY 20", "01:58 PM, DAY 20"}
+Returns: 27239
+26280 minutes, 27720 minutes, 27718 minutes average to 27239.333 which rounds down.
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

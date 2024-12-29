@@ -1,0 +1,97 @@
+#include <vector>
+#include <list>
+#include <map>
+#include <set>
+#include <deque>
+#include <stack>
+#include <bitset>
+#include <algorithm>
+#include <functional>
+#include <numeric>
+#include <utility>
+#include <sstream>
+#include <iostream>
+#include <iomanip>
+#include <cstdio>
+#include <cmath>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+class ReversalChain {
+public:
+#define MAX (1<<30)
+
+string init, goal;
+int n, memo[60][60][2];
+
+#define dump(x, p,q,rev,r) cout << x << " " << p << " " << q << " " << init.substr(p,q-p+1) << " " << goal.substr(p,q-p+1) << " " << rev << " = " << r << endl;
+
+int f(int p, int q, int rev) // min reverse chain of sub given that it has already been subject to REV reversions
+{
+	int& r = memo[p][q][rev];
+	if (r != -1)
+	{
+		dump(1, p, q, rev, r);
+		return r;
+	}
+		
+	string irev = init;
+	if (rev)
+		reverse(irev.begin(), irev.end());
+		
+	string isub = irev.substr(p, q-p+1), gsub = goal.substr(p, q-p+1);
+		
+	if (p == q)
+	{
+		r = isub[0] != gsub[0] ? MAX : 0;
+		dump(2, p, q, rev, r);
+		return r;
+	}
+	if (isub == gsub)
+	{
+		r = 0;
+		dump(3, p, q, rev, r);
+		return r;
+	}
+	r = MAX;
+	for (int i = p; i <= q; i++)
+	{
+		string ileft = isub.substr(0, max((i-1)-p+1,0));
+		string gleft = gsub.substr(0, max((i-1)-p+1,0));
+		if (ileft != gleft) continue;
+		for (int j = i; j <= q; j++)
+		{
+			if (i == p && j == q) continue;
+			string iright = isub.substr(j+1-p, max(q-(j+1)+1,0));
+			string gright = gsub.substr(j+1-p, max(q-(j+1)+1,0));
+			cout << i << " " << j << ":" << ileft << ":" << gleft << ":" << iright << ":" << gright << " = " << isub << " " << gsub << endl;
+			if (iright != gright) continue;
+			r <?= 1+f(i, j, (rev+1)%2);
+		}
+	}
+	cout << "here" << endl;
+	if (rev == 0)
+	{
+		r <?= 1+f(p, q, 1);
+	}
+	dump(4, p, q, rev, r);
+	return r;
+}
+
+int minReversal(string init_, string goal_) 
+{
+	init = init_;
+	goal = goal_;
+		
+	n = init.size();
+	
+	memset(memo, -1, sizeof(memo));
+	int r = f(0, n-1, 0);
+	return r >= MAX ? -1 : r;
+}
+};
+
+
+//Powered by [KawigiEdit]

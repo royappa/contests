@@ -1,0 +1,176 @@
+vector<string> s;
+map<int,int> memo;
+int n, k;
+
+int color[5][5]; // color[i][j] = color of team j in round i
+int played[5]; // number of games played by team i
+int colorUsed[5][5]; 
+int total;
+
+void f(int g)
+{
+	if (g == n)
+	{
+		total++;
+		return;
+	}
+	// play game g
+	
+	int poss[n], numPoss = 0;
+	int need = 0;
+	for (int i = 0; i < n; i++)
+	{
+		need += s[g][i] != '-';
+	}
+	
+	for (int m = 0; m < (1<<n); m++)
+	{
+		int tmp = m, bc = 0;
+		while (tmp != 0)
+		{
+			tmp &= tmp-1;
+			bc++;
+		}
+		if (bc != need)
+			continue;
+		vector<int> colors;
+		for (int i = 0; i < k; i++)
+			colors.push_back(i);
+		do
+		{
+			for (int i = 0; i < n; i++)
+			{
+				if (m & (1<<i))
+				{
+					
+					if (colorUsed[i][s[g][i]-'A'])
+					{
+						colorConflict = true;
+						break;
+					}
+				}
+			}
+		}
+		while (next_permutation(colors.begin(), colors.end()));
+
+		
+		
+int howMany(vector <string> schedule, int k_) 
+{
+	s = schedule;
+	n = s.size();
+	k = k_;
+	total = 0;
+	memset(color, 0, sizeof(color));
+	memset(colorUsed, 0, sizeof(colorUsed));
+	memset(played, 0, sizeof(played));
+	
+	f(0); 	
+	return total;
+}
+
+Problem Statement
+    
+n teams play in a tournament. There are n games in the tournament, and each game is played by k teams. 
+
+During each game, each participating team is assigned one of k colors, and each of those teams must have a distinct color. 
+
+The k colors are represented by the first k uppercase letters in the alphabet. 
+
+Each team must play exactly k games, and they must be assigned a different color in each of their games. 
+
+In addition, all teams participating in the same game must have the same experience. The experience of a team is the number of games it has played before the current game.
+
+You are given a schedule of the tournament in the vector <string> schedule. 
+The i-th element of schedule represents the i-th game. 
+
+The j-th character of the i-th element of schedule can have one of the following values:  
+'-' if the jth team doesn't play in the ith game;
+an uppercase letter representing the color assigned to the j-th team in the i-th game;
+'?' if it is unknown whether the j-th team participates in the i-th game (if it does participate, the color assigned to the j-th team in this game is also unknown).
+
+Return the number of different valid ways to complete the given schedule. Two schedules are different if there is at least one position at which they contain different characters. Of course, there must be no '?' characters in a complete schedule.
+Definition
+    
+Class:
+GamesSchedule
+Method:
+howMany
+Parameters:
+vector <string>, int
+Returns:
+int
+Method signature:
+int howMany(vector <string> schedule, int k)
+(be sure your method is public)
+    
+
+Constraints
+-
+schedule will contain between 2 and 5 elements, inclusive.
+-
+Each element of schedule will contain exactly n characters, where n is the number of elements in schedule.
+-
+Each element of schedule will contain only the first k uppercase letters and '-' and '?' characters.
+-
+k will be between 2 and 5, inclusive.
+-
+The number of elements in schedule will be an integer multiple of k.
+Examples
+0)
+
+    
+{"AB", "??"}
+2
+Returns: 1
+In the first day color 'A' was assigned for the first team and color 'B' for the second team. The only way to complete the schedule is to assign color 'B' to the first team and color 'A' to the second team in the second game of the tournament.
+1)
+
+    
+{"??", "??"}
+2
+Returns: 2
+Two valid schedules are {"AB", "BA"} and {"BA", "AB"}.
+2)
+
+    
+{"?-?A", "????", "????", "??-?"}
+2
+Returns: 10
+
+3)
+
+    
+{"?C?", "A?B", "???"}
+3
+Returns: 0
+The second team must be assigned either 'A' or 'B' in the second game because it was already assigned 'C' in the first game. However, neither of those colors is valid because they have already been assigned to the other teams in that game.
+4)
+
+    
+{"???", "A??", "???"}
+3
+Returns: 4
+
+5)
+
+    
+{"???", "A?A", "???"}
+3
+Returns: 0
+The schedule is already incorrect.
+6)
+
+    
+{"???B","?D?A","A???","????"}
+4
+Returns: 5
+
+7)
+
+    
+{"????D","?????","E????","?????","?????"}
+5
+Returns: 6048
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

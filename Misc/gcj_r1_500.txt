@@ -1,0 +1,161 @@
+#include <vector>
+#include <list>
+#include <map>
+#include <set>
+#include <deque>
+#include <stack>
+#include <bitset>
+#include <algorithm>
+#include <functional>
+#include <nume#include <vector>
+#include <list>
+#include <map>
+#include <set>
+#include <deque>
+#include <stack>
+#include <bitset>
+#include <algorithm>
+#include <functional>
+#include <numeric>
+#include <utility>
+#include <sstream>
+#include <iostream>
+#include <iomanip>
+#include <cstdio>
+#include <cmath>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+vector<string> G;
+int N;
+
+class GregariousClub {
+public:
+
+vector <int> getMax(vector <string> G, int k)
+{
+	vector<int> r;
+	n = G.size();
+	for (int i = 0; i < n; i++)
+	{
+		r.push_back(i);
+	}
+	bool changed = true;
+	while (changed)
+	{
+		changed = false;
+		// remove everyone from r, who does not know at least k people in r
+		for (int i = 0; i < r.size(); i++)
+		{
+			int count = 0;
+			for (int j = 0; j < r.size(); j++)
+			{
+				if (i == j) continue;
+				if (G[i][j] == 'Y') count++;
+			}
+			if (count < k)
+			{
+				r.erase(r.begin()+i);
+				changed = true;
+				break;
+			}
+		}
+	}
+	return r;
+}
+
+};
+	
+
+Problem Statement
+    
+Character j in element i (both 0-based) of friendships says whether person j and person i know each other ('Y' for yes, 'N' for no). This relationship is symmetric. You want to start a club where every member knows at least k other people in the club. Needless to say, you want the club to contain as many people as possible. Return a vector <int>, in strictly ascending order, containing the numbers of all people in your club.
+Definition
+    
+Class:
+GregariousClub
+Method:
+getMax
+Parameters:
+vector <string>, int
+Returns:
+vector <int>
+Method signature:
+vector <int> getMax(vector <string> friendships, int k)
+(be sure your method is public)
+    
+
+Constraints
+-
+friendships will contain between 2 and 50 elements inclusive.
+-
+Each element of friendships will contain exactly N characters, where N is the number of elements in friendships.
+-
+Each character in friendships will be 'Y' or 'N'.
+-
+Character i in element i of friendships will be 'N'.
+-
+Character i in element j of friendships will equal character j in element i of friendships.
+-
+k will be between 0 and 50 inclusive.
+Examples
+0)
+
+    
+{"NY",
+ "YN"}
+1
+Returns: {0, 1 }
+Both people know each other, so they meet the requirements of the club.
+1)
+
+    
+{"NY",
+ "YN"}
+2
+Returns: { }
+Now the club constraints are too restrictive for anyone to join.
+2)
+
+    
+{"NNN",
+ "NNN",
+ "NNN"}
+0
+Returns: {0, 1, 2 }
+No friendships exist, but we aren't picky.
+3)
+
+    
+{"NYYYNNNN",
+ "YNYYNNNN",
+ "YYNYNNNN",
+ "YYYNNNNN",
+ "NNNNNNNN",
+ "NNNNNNYY",
+ "NNNNNYNY",
+ "NNNNNYYN"}
+3
+Returns: {0, 1, 2, 3 }
+
+4)
+
+    
+{"NYYYNNNN",
+ "YNYYNNNN",
+ "YYNYNNNN",
+ "YYYNNNNN",
+ "NNNNNNNN",
+ "NNNNNNYY",
+ "NNNNNYNY",
+ "NNNNNYYN"}
+2
+Returns: {0, 1, 2, 3, 5, 6, 7 }
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.
+
+
+
+

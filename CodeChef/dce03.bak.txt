@@ -1,0 +1,43 @@
+#include <vector>
+#include <list>
+#include <map>
+#include <set>
+#include <deque>
+#include <stack>
+#include <bitset>
+#include <algorithm>
+#include <functional>
+#include <numeric>
+#include <utility>
+#include <sstream>
+#include <iostream>
+#include <iomanip>
+#include <cstdio>
+#include <cmath>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+int c(int N)
+{
+	if (N <= 2)
+	{
+		return 1;
+	}
+	int s = 0;
+	for (int i = 
+}
+
+int main()
+{
+	int T;
+	cin >> T;
+	while (T-- > 0)
+	{
+		int N;
+		cin >> N;
+		cout << c(N) << endl;
+	}
+}
+

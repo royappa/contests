@@ -1,0 +1,90 @@
+bool inside(int x, int y, vi p)
+{
+	return (x >= p[0] && x <= p[2] && y >= p[1] && y <= p[3]);
+}
+
+vi inter(vi pa, vi pb)
+{
+	int al = pa[0], ar = pa[2], ab = pa[1], at = pa[3];
+	int bl = pb[0], br = pb[2], bb = pb[1], bt = pb[3];
+	
+	int il, ir, ib, it;
+	if (al >= bl && al <= br)
+		il = al;
+	else 
+		il = bl;
+	if (ar >= al && ar <= br)
+		ir = ar;
+	else
+		ir = br;
+	if (at >= bb && at <= bt)
+		it = at;
+	else
+		it = bt;
+	if (ab >= bb && ab <= bt)
+		ib = ab;
+	else
+		ib = bb;
+	}
+	vi p;
+	p.push_back(il);
+	p.push_back(it);
+	p.push_back(ir);
+	p.push_back(ib);
+	return p;
+}
+	
+vi ins(vi pa, vi pb)
+{
+	int aux, auy, alx, aly;
+	aux = pa[0];
+	auy = pa[1];
+	alx = pa[2];
+	aly = pa[3];
+	int bux, buy, blx, bly;
+	bux = pb[0];
+	buy = pb[1];
+	blx = pb[2];
+	bly = pb[3];
+	
+	int count = 0;
+	if (inside(aux,auy,pb)) count++;
+	if (inside(aux,aly,pb)) count++;
+	if (inside(alx,auy,pb)) count++;
+	if (inside(alx,aly,pb)) count++;
+	if (count == 4)
+		return pa;
+	if (count > 0)
+		return inter(pa,pb);
+	if (count == 0)
+	{
+		if (inside(bux,buy,pa)) count++;
+		if (inside(bux,bly,pa)) count++;
+		if (inside(blx,buy,pa)) count++;
+		if (inside(blx,bly,pa)) count++;	
+		if (count == 4)
+			return pb;
+		if (count > 0)
+			return inter(pb, pa);
+		vi p;
+		p.push_back(0); p.push_back(0); p.push_back(0); p.push_back(0);
+		return p;
+	}
+}
+
+vi strPoly(string s)
+{
+	int l,b,r,t;
+	sscanf(s.c_str(), "%d %d %d %d", &l, &b, &r, &t);
+	vi p;
+	p.push_back(l);
+	p.push_back(t);
+	p.push_back(r);
+	p.push_back(b);
+	return p;
+}
+
+int polyArea(vi p)
+{
+	return ( (p[2]-p[0])*(p[3]-p[1]) );
+}

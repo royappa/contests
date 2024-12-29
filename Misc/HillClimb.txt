@@ -1,0 +1,159 @@
+
+Problem Statement
+    
+Given a map of a hill, there are many ways for an agent to get from one point to another point. Many different algorithms have been developed to find the best, or reasonably good ways to get from a starting location to an ending location. One such method is the breadth-first-search (BFS) algorithm, where the agent always expands the location with the least accumulated cost. 
+
+Another method is called A*, which involves predicting the total cost to the goal based on the cost so far, and a heuristic which calculates the expected cost to come, and then expanding the nodes in a BFS-fashion based on this expected, rather than already accumulated, cost.
+
+When a search method expands a node, it assigns a new cost to each neighbor, unless that neighbor already has an equal or lesser cost assigned. In BFS, this cost is the cost to get to the current node plus the cost of moving from the current node to the given neighboring node. In A*, this is the total cost as in BFS plus the predicted cost based on the heuristic function. The search ends when the goal node is expanded, and not when its cost is calculated. This is because different neighboring nodes can assign different costs to the goal, so terminating before the goal node itself is expanded can give a sub-optimal solution. Once the goal is expanded, however, you are guaranteed that no neighbor will assign it a lower cost than the one it currently has, and thus it is optimal.
+
+BFS (for reference): For BFS, the agent starts at the starting location (hereafter referred to as S) with a cost of 0. The agent expands this location (also referred to as a node), calculating the cost for all of its neighbors. It then expands all nodes with a calculated cost of 1, then all nodes with a calculated cost of 2, and so forth, until it has expanded the goal node. Notice that a given node may be assigned different costs by different neighbors, but this is okay because we assume that the cost is always increasing, so it should be assigned the lowest cost possible and expanded in turn.
+
+A*: For A*, the agent starts at S, with a so-far cost of 0. The heuristic function our agent uses will be the "Manhattan Distance" from the current node to the goal node (hereafter referred to as G), that is, the positive difference in X values plus the positive difference in Y values. The agent expands S, assigning all of its neighbors a cost as with BFS, but with an additional predicted cost (the Manhattan Distance to the goal). It then expands the nodes in a BFS-fashion using these total predicted costs. A* should NOT expand a node that it has already expanded previously.
+
+For this problem, the agent can move across the hill in any of the four cardinal directions (north, east, west and south.) The cost of moving down the hill is 1, of moving across a plateau (between 2 squares of equal altitude) is 2, and of moving up the hill is 3. The hill is represented by a String[] hill, which represents the altitudes as 1 through 9 (with 9 being the highest altitude). The x and y coordinates of S and G are represented respectively by int sx sy gx and gy. The y coordinate is the 0-indexed element in hill, and the x coordinate is the 0-indexed location in the element of hill. 
+
+Use the A* method to search for G starting from S, and return the number of nodes expanded. Expand all nodes that share the same predicted cost as G. For example, if you expand G with a predicted cost of 10, make sure that all other nodes with a predicted cost of 10 are also expanded, to avoid ambiguities.
+Definition
+    
+Class:
+AlgoHill
+Method:
+astar
+Parameters:
+String[], int, int, int, int
+Returns:
+int
+Method signature:
+int astar(String[] hill, int sx, int sy, int gx, int gy)
+(be sure your method is public)
+    
+
+Constraints
+-
+hill will contain between 5 and 50 elements, inclusive.
+-
+each element of hill will have between 5 and 50 characters, inclusive.
+-
+each element of hill will have the same number of characters as every other element of hill.
+-
+each element of hill will contain only the characters '1' through '9'.
+-
+sy and gy will each be between 0 and one less than the number of elements in hill, inclusive.
+-
+sx and gx will each be between 0 and one less than the length of the elements in hill, inclusive.
+Examples
+0)
+
+    
+{"34567",
+ "23456",
+ "12345",
+ "23456",
+ "34567"}
+0
+2
+2
+2
+Returns: 5
+A* will assign the following costs:
+10 *  *  *  *
+6  8  10 *  *
+2  4  6  10 *
+6  8  10 *  *
+10 *  *  *  *
+All nodes with a predicted cost less than or equal to 6 will be expanded (5 nodes).
+1)
+
+    
+{"55555",
+ "54555",
+ "55355",
+ "55525",
+ "55551"}
+0
+0
+4
+4
+Returns: 25
+In this case, A* expands all nodes. Also, note that several times in this example, a node of cost C expands to form another node with cost C, and this new node must also be expanded before going on to expand nodes of cost greater than C.
+2)
+
+    
+{"55555",
+ "54445",
+ "54345",
+ "54445",
+ "55555"}
+0
+1
+4
+3
+Returns: 21
+
+3)
+
+    
+{"99999",
+ "89992",
+ "76543",
+ "99992",
+ "99991"}
+0
+0
+4
+0
+Returns: 13
+Note that the node at (4,1) gets expanded by A*. Prior to expanding nodes with a predicted cost of 8, this node has no cost. After expanding the node at (4,2), this is assigned a predicted cost of 8 (the same as the goal) and therefore should be expanded.
+4)
+
+    
+{"68233335836531",
+ "57244363483169",
+ "92744511826738",
+ "76864574378195",
+ "39927887799237",
+ "89447973623642",
+ "19758793475135",
+ "33857155647757",
+ "82987352116383",
+ "18813823791825",
+ "91772225881964",
+ "46692256258431",
+ "41961397519198",
+ "48265328441524",
+ "31422961925492",
+ "17844758382392",
+ "47549368526297",
+ "27955796939522",
+ "59699922792416",
+ "56366572279148",
+ "26884644728715",
+ "98234493558879",
+ "38984599399327",
+ "66812381124583",
+ "73833939626911",
+ "13681831986111",
+ "69237772565286",
+ "34347792857462"}
+8
+2
+8
+2
+Returns: 1
+The start node is the goal node, and is the only node that you expand.
+5)
+
+    
+{"44435",
+ "44425",
+ "44445",
+ "32445",
+ "55555"}
+0
+0
+2
+2
+Returns: 13
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

@@ -1,0 +1,130 @@
+int minError(string q, int score) 
+{
+
+	vector<int> p;
+	int N = q.size();
+	for (int i = 1; i <= N; i++)
+	{
+		p.push_back(i);
+	}
+	
+	int best = 1<<30;
+	do
+	{
+		int e = 0;
+		int s = 0;
+		for (int i = 0; i < N; i++)
+		{
+			if (q[i] == 'C')
+			{
+				s += p[i];
+				e = max(e, abs((i+1)-p[i]));
+			}
+		}
+		if (s == score)
+		{
+			best = min(best, e);
+		}
+	}
+	while (next_permutation(p.begin(), p.end()));
+	
+	if (best == 1<<30)
+		return -1;
+	return best;
+}
+
+Problem Statement
+    
+You took a test consisting of N questions, each of which has a distinct point value between 1 and N, inclusive, and you have finally received the results. 
+
+Along with your final score, you are told which questions you answered correctly. 
+
+However, you are not given the point values that were assigned to the questions. 
+
+For each correct answer, you received the full point value of the question, and for each wrong answer, you received 0 points. 
+
+You must determine the minimum possible error of a valid point assignment that would result in the final score that you received. 
+
+The error of a valid assignment of points is defined as follows: For each question i (where i is a 1-based index), let e(i) = the absolute value of (i minus the point value of the question). 
+
+The error of the point assignment is the maximum value of e(i).
+
+Given a string questions and an int score, return an int representing the minimum possible error of a valid point assignment. 
+
+The ith character (where i is a 1-based index) of questions is either 'C', meaning that you answered question i correctly, or 'W', meaning that you answered it wrong. 
+
+If there is no valid point assignment, return -1.
+
+Definition
+    
+Class:
+ScoreRecomposition
+Method:
+minError
+Parameters:
+string, int
+Returns:
+int
+Method signature:
+int minError(string questions, int score)
+(be sure your method is public)
+    
+
+Constraints
+-
+questions will contain exactly N elements, where N is between 1 and 10, inclusive.
+-
+Each character of questions will be either 'C' or 'W'.
+-
+score will be between 0 and N*(N+1)/2, inclusive.
+Examples
+0)
+
+    
+"CCC"
+5
+Returns: -1
+Contact the contest director immediately! Since you answered every question correctly, your score should be 6.
+1)
+
+    
+"WCWW"
+4
+Returns: 2
+Obviously, you answered only the 4-point question correctly.
+2)
+
+    
+"CWW"
+1
+Returns: 0
+The minimum error occurs when each question i is assigned a point value of i.
+3)
+
+    
+"CWCC"
+6
+Returns: 2
+One valid point assignment with the lowest possible error is 1, 4, 2, 3.
+4)
+
+    
+"WWCC"
+3
+Returns: 2
+
+5)
+
+    
+"CWCCWWCWCC"
+55
+Returns: -1
+
+6)
+
+    
+"CWWCWCCWWC"
+37
+Returns: 3
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

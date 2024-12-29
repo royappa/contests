@@ -1,0 +1,145 @@
+// CORRECT
+#include <vector>
+#include <list>
+#include <map>
+#include <set>
+#include <deque>
+#include <stack>
+#include <bitset>
+#include <algorithm>
+#include <functional>
+#include <numeric>
+#include <utility>
+#include <sstream>
+#include <iostream>
+#include <iomanip>
+#include <cstdio>
+#include <cmath>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+class RunLengthPlus {
+public:
+
+map<string,string> memo;
+
+string f(string s)
+{
+	if (s.size() == 1)
+	{
+		return s;
+	}
+	if (memo.count(s) > 0)
+	{
+		return memo[s];
+	}
+	
+	int n = s.size();
+	string best = string(100, 'Z');
+	
+	for (int k = 1; k <= n/2; k++)
+	{
+		if (n % k == 0)
+		{
+			bool allSame = true;
+			string sub = s.substr(0, k);
+			for (int i = 1; i <= n/k; i++)
+			{
+				if (sub != s.substr((i-1)*k, k))
+				{
+					allSame = false;
+					break;
+				}
+			}
+			if (allSame)
+			{
+				string comp;
+				if (k == 1)
+				{
+					char buf[10];
+					sprintf(buf, "%d", n);
+					comp = buf;
+					comp += s[0];
+				}
+				else
+				{
+					char buf[10];
+					sprintf(buf, "%d", n/k);
+					comp = buf;
+					comp = comp + "(" + compress(sub) + ")";
+				}
+				if (comp.size() < best.size() || (comp.size() == best.size() && comp < best))
+				{
+					best = comp;
+				}
+			}
+		}
+	}
+	for (int k = 1; k <= n-1; k++)
+	{
+		string first = s.substr(0, k);
+		string rest = s.substr(k);
+		string comp = compress(first)+compress(rest);
+		if (comp.size() < best.size() || (comp.size() == best.size() && comp < best))
+		{
+			best = comp;
+		}
+	}
+	
+	memo[s] = best;
+	return best;
+}
+		
+string compress(string s) 
+{
+	return f(s);
+}
+
+};
+
+
+//Powered by [KawigiEdit]
+
+Problem Statement
+    
+One type of compression is run length encoding. In this case, a character may be preceded by an integer N, which indicates that the character should be repeated N times. For example, the string "3ABBC10D" would be decompressed as "AAABBCDDDDDDDDDD". A character that is not preceded by an integer is repeated just once. We are going to enrich this slightly be allowing a sequence of characters to be preceded by an integer N, indicating that the sequence should be repeated N times. In this case, the sequence of characters should be surrounded by parentheses. Additionally, you may nest the compressed sequences. Thus, the compressed sequence "X2(2A3(BC))X" would be decompressed as "XAABCBCBCAABCBCBCX". You will be given a string of uppercase letters and are to compress it in such a way that the result has as few characters as possible. If there are multiple ways to do this, choose the one that comes first lexicographically (using standard ASCII ordering).
+Definition
+    
+Class:
+RunLengthPlus
+Method:
+compress
+Parameters:
+string
+Returns:
+string
+Method signature:
+string compress(string s)
+(be sure your method is public)
+    
+
+Constraints
+-
+s will contain between 1 and 50 uppercase letters, inclusive.
+Examples
+0)
+
+    
+"AAABBCDDDDDDDDDD"
+Returns: "3A2BC10D"
+
+1)
+
+    
+"XAABCBCBCAABCBCBCX"
+Returns: "X2(2A3(BC))X"
+
+2)
+
+    
+"ABCBACBABCBABCABACACBCBABACBCBBABACBACBCACBBAC"
+Returns: "ABCBA2(CBAB)CABACACBCBABACBC2BA2(BAC)BCAC2BAC"
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

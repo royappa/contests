@@ -1,0 +1,58 @@
+
+Problem Statement
+    
+The digits 4 and 7 are lucky digits, and all other digits are unlucky. A second level lucky number is a positive integer whose decimal representation contains either all 4's or all 7's. John and Brus have a set of integers, and they would like to find the subset whose sum is a second level lucky number.
+You are given vector <int> numbers, the set of integers that John and Brus have. Return a vector <int> containing the subset whose sum is a second level lucky number. The return value must be sorted in ascending order. If there are multiple possible return values, return the one with the largest sum. If there is a tie, return the one that comes earliest lexicographically. A vector <int> a1 comes before a vector <int> a2 lexicographically if a1 contains a smaller number at the first index where they differ. If there are no possible subsets, return an empty vector <int> instead.
+Definition
+    
+Class:
+TheLuckyNumbersLevelTwo
+Method:
+find
+Parameters:
+vector <int>
+Returns:
+vector <int>
+Method signature:
+vector <int> find(vector <int> numbers)
+(be sure your method is public)
+    
+Constraints
+-
+numbers will contain between 1 and 34 elements, inclusive.
+-
+Each element of numbers will be between 1 and 1,000,000,000, inclusive.
+-
+All elements in numbers will be distinct.
+Examples
+0)
+    
+{1, 2, 3, 4}
+Returns: {1, 2, 4 }
+Here it's possible to get two second level lucky numbers - 4 and 7. There are two subsets with a sum of 7 - {3, 4} and {1, 2, 4}. We will choose the last one because it is lexicographically smaller.
+1)
+    
+{12, 43, 29}
+Returns: { }
+There are no subsets whose sum is a second level lucky number.
+2)
+    
+{4, 7}
+Returns: {7 }
+3)
+    
+{41, 2, 28, 44, 7, 42, 21}
+Returns: {7, 28, 42 }
+4)
+    
+{15, 10, 28, 3, 13, 27, 7}
+Returns: {7, 15, 27, 28 }
+5)
+    
+{18, 45, 6}
+Returns: { }
+6)
+    
+{34, 20, 26, 28, 33, 23, 44, 40, 25, 10, 36, 14, 7, 29, 21, 27, 17, 13, 19, 24, 32, 41, 31}
+Returns: {7, 10, 13, 14, 17, 19, 20, 21, 23, 24, 25, 26, 27, 28, 29, 31, 32, 34, 44 }
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

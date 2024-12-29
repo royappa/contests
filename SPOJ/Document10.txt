@@ -1,0 +1,38 @@
+Camcorders  296
+ 
+Car Tech 4155
+
+Cell phones 611
+
+Components 44936
+
+Desktops 2098
+
+Digital cameras 724
+
+Games and gear 3938
+
+Hard drives and burners 21298
+
+Home audio 3052
+
+Home video 2977
+
+Laptops 3005
+
+Monitors and projectors 1923
+
+MP3 players 2898
+
+Networking and Wi-Fi 25207
+
+PDAs and GPS 925
+
+Peripherals 47006
+
+Printers 5491
+ 
+Software 24859
+
+Televisions 1789
+

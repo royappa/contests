@@ -1,0 +1,160 @@
+#include <vector>
+#include <list>
+#include <map>
+#include <set>
+#include <deque>
+#include <stack>
+#include <bitset>
+#include <algorithm>
+#include <functional>
+#include <numeric>
+#include <utility>
+#include <sstream>
+#include <iostream>
+#include <iomanip>
+#include <cstdio>
+#include <cmath>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+// TRANSITIVE CLOSURE CORRECT
+
+class DeadCode {
+public:
+
+int deadCount(vector <string> code) 
+{
+	int n = code.size();
+	
+	int A[n][n];
+	
+	// Initialize to identity matrix
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = 0; j < n; j++)
+		{
+			A[i][j] = i==j;
+		}
+	}
+		
+	vector<int> r;
+	
+	// Set up adjacency matrix
+	for (int i = 0; i < n; i++)
+	{
+		if (code[i] == "RETURN")
+		{
+			r.push_back(i);
+			continue;
+		}
+		int a, b;
+		sscanf(code[i].c_str(), "IF %d ELSE %d", &a, &b);
+		A[i][a] = A[i][b] = 1;
+	}
+	
+	// Warshall's - we love TC
+	for (int k = 0; k < n; k++)
+	{
+		for (int i = 0; i < n; i++)
+		{
+			for (int j = 0; j < n; j++)
+			{
+					A[i][j] = A[i][j] || (A[i][k] && A[k][j]);
+			}
+		}
+	}
+	
+	int count = 0;
+	
+	for (int i = 0; i < n; i++)
+	{
+		if (!A[0][i])
+			continue;
+		for (int j = 0; j < r.size(); j++)
+		{
+			if (A[i][r[j]])
+			{
+				count++;
+				break;
+			}
+		}
+	}
+
+	return n-count;
+}
+};
+
+
+//Powered by [KawigiEdit]
+
+
+
+Problem Statement
+    
+We have a program segment and want to analyze the control flow through it. 
+
+We have already replaced the actual code with simpler code that captures just the control logic. 
+
+The code we want to analyze consists of a sequence of statements in which each statement is one of the following two types:
+IF target1 ELSE target2
+RETURN
+
+
+Execution of an IF statement is followed by execution of one of its two targets. 
+
+Each target is an integer referring to a zero-based position in the code sequence. 
+
+The two targets may be identical. Execution of a RETURN statement ends the execution path.
+We want to find all the dead code. 
+
+A statement is "dead" if there is no execution path that contains it, where an execution path must start at the first statement (statement 0) in the segment and conclude by executing a RETURN statement. Create a class DeadCode that contains a method deadCount that is given a vector <string> code containing the sequence of statements and that returns the number of dead statements.
+Definition
+    
+Class:
+DeadCode
+Method:
+deadCount
+Parameters:
+vector <string>
+Returns:
+int
+Method signature:
+int deadCount(vector <string> code)
+(be sure your method is public)
+    
+
+Constraints
+-
+code will contain between 1 and 50 elements inclusive.
+-
+Each element of code will be one of the two forms above.
+-
+Each RETURN statement has no spaces.
+-
+Each IF statement has exactly 3 spaces.
+-
+Each target1 and target2 will be an integer with no extraneous leading zeroes.
+-
+Each target1 and target2 will be between 0 and n-1 inclusive, where n is the number of elements in code.
+Examples
+0)
+
+    
+{"RETURN", "IF 0 ELSE 1"}
+Returns: 1
+Execution immediately returns, so statement 1 cannot be reached.
+1)
+
+    
+{"IF 1 ELSE 2","IF 1 ELSE 2","RETURN"} 
+Returns: 0
+The sequence 0, 2 and the sequence 0, 1, 1, 2 are examples of legal execution paths. Every statement is in a legal execution path so there is no dead code.
+2)
+
+    
+{"IF 1 ELSE 2","RETURN", "IF 3 ELSE 2", "IF 2 ELSE 3"}
+Returns: 2
+Statements 2 and 3 are dead. No execution path that includes either of them can ever reach a RETURN statement.
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

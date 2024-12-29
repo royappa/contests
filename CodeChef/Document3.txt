@@ -1,0 +1,56 @@
+1
+3 2 3
+
+1 2 8
+2 3
+1 3 7
+
+(1+2)*(2+1) = 9
+(2+2)*(2+1) = 12
+
+(1+3)*(3+1) = 16
+(2+3)*(3+1) = 20
+(1+3)*(3+3) = 24
+(2+3)*(3+3) = 30
+
+
+
+
+
+
+for each y do
+	let xi <= y: i = 1..p
+	let zj <= y: j = 1..r
+	sum over (i,j) of  (xi+y)*(y+zj)
+		= xi*y(over each zj) + y*y + xi*zj + y*zj (over each xi)
+	
+	sum over i = 1..p
+		sum over j = 1..r
+			xi*y + y*y + xi*zj + y*zj
+	
+	= y*y*p*r  + 
+	  (x1+...+xp)*(z1+...+zr) + 
+	  (x1+x2+...+xp)*y*r +
+	  (z1+z2+...+zr)*y*p
+		
+			if (debug) {
+				cout << endl << "y = " << yy << endl;
+				cout << "xsp = " << xsp << " ysp = " << zsr << endl;
+				cout << "pp = " << pp << " rr = " << rr << endl;
+				cout << "yy*xsp*rr = " << yy*xsp*rr << endl;
+				cout << "yy*yy*(pp*rr) =  " << yy*yy*(pp*rr) << endl;
+				cout << "yy*zsr*pp = " << yy*zsr*pp << endl;
+				cout << "xsp*zsr = " << xsp*zsr << endl;
+				cout << "sub = " << yy*xsp*rr+ yy*yy*(pp*rr) + yy*zsr*pp + xsp*zsr << endl;
+			}		  
+			
+y = 3
+xsp = 3 ysp = 4
+pp = 2 rr = 2
+yy*xsp*rr = 18
+yy*yy*(pp*rr) =  36
+yy*zsr*pp = 24
+xsp*zsr = 12
+sub = 90
+111			
+			  

@@ -1,0 +1,163 @@
+char A[1002][1002];
+typef pair<int,int> pi;
+
+int getArea(int N, vector <string> changes) 
+{
+	memset(A, 1, sizeof(A));
+	for (int i = 0; i < changes.size(); i++)
+	{
+		string s = changes[i];
+		int X, Y, L, F;
+		sscanf(s.c_str(), "%d%d%d%d", &X, &Y, &L, &F);
+		for (int j = 0; j < L; j++)
+		{
+			A[X+j+1][Y+j+1] = 1<<F;
+		}
+	}
+	
+	vector<pi> va, vb;
+	for (int i = 1; i <= N; i++)
+	{
+		for (int j = 1; j <= N; j++)
+		{
+			if (A[i-1][j-1] != A[i][j] || A[i-1][j] != A[i][j] || A[i][j-1] != A[i][j])
+				va.push_back(make_pair(i,j));
+			if (A[i+1][j+1] != A[i][j] || A[i+1][j] != A[i][j] || A[i][j+1] != A[i][j])
+				vb.push_back(make_pair(i,j));
+		}
+	}
+	vector<int> bc(256,0);
+	for (int i = 0; i < 256; i++)
+	{
+		int x = i;
+		while (x)
+		{
+			bc[i]++;
+			x &= x-1;
+		}
+	}
+	
+	int best = 0;
+	for (int i = 0; i < va.size(); i++)
+	{
+		for (int j = 0; j < vb.size(); j++)
+		{
+			int ux = va[i].first, uy = va[i].second;
+			int lx = vb[j].first, ly = vb[j].second;
+			if (lx-ux == ly-uy && (lx-ux+1)*(ly-uy+1) > best && A[ux][uy] != 0 && A[lx][ly] != 0)
+			{
+				int types = 0, hasZero = 0;
+				for (int x = ux; x <= lx && !hasZero && bc[types] <= 2; x++)
+				{
+					for (int y = uy; y <= ly && !hasZero && bc[types] <= 2; y++)
+					{
+						types |= A[x][y];
+						if (A[x][y] == 1)
+							hasZero = 1;
+					}
+				}
+				if (!hasZero && bc[types] <= 2)
+				{
+					best >?= (lx-ux+1)*(ly-uy+1);
+				}
+			}
+		}
+	}
+	return best;
+}
+
+Problem Statement
+    
+Josh's grandfather has a N x N square field. Each cell in the field is a 1 x 1 square and contains a single type of fruit. Josh's grandfather said to Josh: "You can have any square section of my field, but with one condition. The section must not contain more than two different types of fruits and must not contain fruits of type 0 (zero)."
+
+The field contains a maximum of 8 types of fruits. The content of the field can be determined from the vector <string> changes. Each element of changes is formatted "X Y L F" (quotes for clarity only), where X and Y are the 0-based coordinates of the upper left corner of a square area, and L is the length of one side of the square (the upper left corner of the field is at (0, 0)). F is the type of fruit that will be planted in that square area. Initially, each cell contains fruit of type 0. The elements of changes should be applied, in order, to determine the final content of the field. Whenever a new type of fruit is planted in a certain area, it will entirely replace any existing fruit that was there before.
+
+Josh is greedy, so he wants to maximize the area of	 his section. Return the area of the largest square section of the field that contains no more than 2 different types of fruits and doesn't contain fruits of type 0. If no section can be chosen, return 0. See examples and constraints for more clarifications.
+Definition
+    
+Class:
+GrandpaField
+Method:
+getArea
+Parameters:
+int, vector <string>
+Returns:
+int
+Method signature:
+int getArea(int N, vector <string> changes)
+(be sure your method is public)
+    
+
+Constraints
+-
+N will be between 1 and 1000, inclusive.
+-
+changes will contain between 0 and 50 elements, inclusive.
+-
+Each element of changes will be formatted "X Y L F" (quotes for clarity).
+-
+In each element of changes, X and Y will be integers between 0 and N-1, inclusive, with no extra leading zeroes. L will be an integer between 1 and N, inclusive, with no extra leading zeroes. X+L and Y+L will each be between 1 and N, inclusive. 
+F will be an integer between 0 and 7, inclusive, with no extra leading zeroes.
+Examples
+0)
+
+    
+3
+{"0 0 3 1"}
+Returns: 9
+The field will look like:
+111
+111
+111
+Here, he can choose the whole field, so the answer is 9.
+1)
+
+    
+3
+{"1 1 1 7"}
+Returns: 1
+000
+070
+000
+The answer is 1. The chosen square is the square that contains the fruit of type 7.
+2)
+
+    
+7
+{"0 0 7 7", "2 2 4 1", "3 5 1 5"}
+Returns: 25
+The field looks like:
+7777777
+7777777
+7711117
+7711157
+7711117
+7711117
+7777777
+The optimal way is to choose the square with the top-right corner at (0,0) and side 5. This square contains fruits of type 7 and fruits of type 1. The answer is 25.
+3)
+
+    
+7
+{"0 0 7 7", "2 2 4 1", "3 5 1 5", "1 1 1 5", "5 1 1 5"}
+Returns: 16
+The field looks like:
+7777777
+7577777
+7711117
+7711157
+7711117
+7511117
+7777777
+The biggest square with fruits of type 7 and 5 has area 4, type 7 and 1 has area 9. But the answer is 16 : the square that contains frutis of type 1 and 5 with the corner at (2, 2) is the optimal solution.
+4)
+
+    
+1000
+{"0 0 1000 0", "20 20 980 1", "40 40 960 0", "60 60 940 2",
+ "80 80 920 0", "100 100 900 3", "120 120 880 0", "140 140 860 4",
+ "160 160 840 0", "180 180 820 5", "200 200 800 0", "250 250 22 1",
+ "250 250 1 0"}
+Returns: 441
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

@@ -1,0 +1,149 @@
+#include <vector>
+#include <list>
+#include <map>
+#include <set>
+#include <deque>
+#include <stack>
+#include <bitset>
+#include <algorithm>
+#include <functional>
+#include <numeric>
+#include <utility>
+#include <sstream>
+#include <iostream>
+#include <iomanip>
+#include <cstdio>
+#include <cmath>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+class ReturnToHome {
+public:
+double goHome(int X, int Y, int D, int T) 
+{
+	double L = hypot(X, Y);
+	if (T >= D)
+	{
+		return L;
+	}
+	int k = 0;
+	while (L >= 2*D)
+	{
+		L -= D;
+		k++;
+	}
+	if (fabs(L) < 1e-10)
+	{
+		return double(k)*T;
+	}
+	// options: walk rest of the way; make two jumps, or make one jump and walk back
+	double a = k*T+L;
+	double b = k*T+2*T+(2*D-L);
+	double c = k*T+2*T;
+	return min(a, min(b, c));
+}		
+
+};
+
+
+//Powered by [KawigiEdit]
+
+Problem Statement
+    
+You are located at point (X, Y) and you want to get home to point (0, 0) as quickly as possible. 
+
+There are two allowable methods of movement. The first method is walking, and you can walk at a speed of 1 unit per second. 
+
+The second method is jumping, and you can jump D units in T seconds. 
+
+You can jump in any straight direction, but you can only jump exactly D units. 
+
+Return the minimum number of seconds required to get home using these two methods. 
+
+You are not limited to using just one method for the entire trip; you can use any combination of walking and jumping.
+
+Definition
+    
+Class:
+ReturnToHome
+Method:
+goHome
+Parameters:
+int, int, int, int
+Returns:
+double
+Method signature:
+double goHome(int X, int Y, int D, int T)
+(be sure your method is public)
+    
+
+Notes
+-
+Your return value must have an absolute or relative error less than 1e-9.
+Constraints
+-
+X will be between 1 and 1000, inclusive.
+-
+Y will be between 1 and 1000, inclusive.
+-
+D will be between 1 and 10000, inclusive.
+-
+T will be between 1 and 10000, inclusive.
+Examples
+0)
+
+    
+6
+8
+5
+1083
+Returns: 6.0
+The fastest way to get home is by using two jumps.
+1)
+
+    
+3
+4
+6
+3
+Returns: 4.0
+You should jump one unit past your destination and then walk back.
+2)
+
+    
+400
+300
+150
+10
+Returns: 40.0
+You should get home using four jumps.
+3)
+
+    
+318
+445
+1200
+800
+Returns: 546.9451526432975
+The fastest way is to walk.
+4)
+
+    
+6
+8
+3
+2
+Returns: 7.0
+Make three jumps and then walk the remaining 1 unit.
+5)
+
+    
+10
+10
+1000
+5
+Returns: 10.0
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

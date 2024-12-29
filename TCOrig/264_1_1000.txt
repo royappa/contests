@@ -1,0 +1,70 @@
+int howMany(int n, int k) 
+{
+	
+}
+
+Problem Statement
+    
+Determine the number of ways to cut a convex polygon with n sides if the only cuts allowed are from vertex to vertex, each cut divides exactly one polygon into exactly two polygons, and you must end up with exactly k polygons. Consider each vertex distinct. For example, there are three ways to cut a square - the two diagonals and not cutting at all - but only two ways to cut it to form 2 polygons, and only one way to cut it to form 1 polygon. The order of cuts does not matter. Since the number of ways is very large, you should return the number taken modulo 1000000000 (one billion). In other words, if the answer would have at least 10 digits, return only the 9 least significant. If there is no way to cut the polygon into k pieces, return -1.
+Definition
+    
+Class:
+PolygonDecomposition
+Method:
+howMany
+Parameters:
+int, int
+Returns:
+int
+Method signature:
+int howMany(int n, int k)
+(be sure your method is public)
+    
+
+Notes
+-
+The vertices are distinct - there are 5 ways to cut a pentagon into 3 triangles, not just one way.
+-
+Only one polygon at a time may be cut - you cannot cut two triangles into four triangles with one cut.
+Constraints
+-
+n is between 3 and 100, inclusive.
+-
+k is between 1 and 100, inclusive.
+Examples
+0)
+
+    
+4
+2
+Returns: 2
+A quadrilateral can be cut into two triangles in two different ways, one for each diagonal.
+1)
+
+    
+100
+1
+Returns: 1
+Any polygon can be cut into one polygon by not cutting at all, but no other way.
+2)
+
+    
+6
+4
+Returns: 14
+
+3)
+
+    
+31
+20
+Returns: 956146480
+The actual number of ways is about 6.5 x 10^18, but we return only the final 9 digits.
+4)
+
+    
+3
+4
+Returns: -1
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

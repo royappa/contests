@@ -1,0 +1,142 @@
+typedef long long LL;
+LL seg[100];
+
+map<string,int
+LL parse(string s)
+{
+	int p = s.find('.');
+	s.erase(s.begin()+p);
+	LL x;
+	sscanf(s.c_str(), "%lld", &x);
+	return x;
+}
+
+LL mymax(LL a, LL b)
+{
+	return a > b ? a : b;
+}
+
+int f(LL len, int n, int used)
+{
+	if (n == 0)
+	{
+		return -1;
+	}
+	if (n == 1)
+	{
+		if (used & 1)
+			return -1;
+		return seg[0] <= len ? 1 : -1;
+	}
+	char buf[200];
+	sprintf(buf, "%lld:%d:%d", len, n, used);
+	if (memo.count(buf) > 0)
+		return memo[buf];
+	int r = 1<<30;
+	
+}
+
+int fewestWelds(vector <string> segments, string desiredLength) 
+{
+	int n = segments.size();
+	for (int i = 0; i < n; i++)
+	{
+		seg[i] = parse(segments[i]);
+	}
+	LL len = parse(desiredLength);
+	for (int i = 0; i < n; i++)
+		cout << seg[i] << endl;
+	cout << "len = " << len << endl;
+	
+	return r = f(len, n, 0);
+}
+
+Problem Statement
+    
+As part of industrializing a newly colonized planet you are are given the task of organizing the building of fuel pipelines from one city to another. You have some pre-manufactured pieces of pipeline scattered about the planet which you can weld together to form longer lengths. This is far in the future so everything is very high tech. The length of each pipeline segment is expressed in meters. Each segment is an exact multiple of 0.001 meters (one millimeter). The total length of the pipeline you must build is also specified exactly to a multiple of 0.001 meters. By using futuristic technology moving giant pipeline segments across the planet is no problem, but welding is expensive because it is done at the molecular level. So the number of welds (and thus the number of segments of pipeline you use) is to be kept to the absolute minimum necessary. Cutting pipes is far too costly and inaccurate so it is not allowed at all. This is a really big planet, so the pipeline segments can be up to a million kilometers long (1e9 meters or 1e12 millimeters).
+Given a list of the lengths of the available pipeline segments and a desiredLength, determine if the desiredLength can be formed by welding some or all of the segments end to end. If this is possible, return the minimum number of welded joints required, otherwise return -1.
+Definition
+    
+Class:
+LongPipes
+Method:
+fewestWelds
+Parameters:
+vector <string>, string
+Returns:
+int
+Method signature:
+int fewestWelds(vector <string> segments, string desiredLength)
+(be sure your method is public)
+    
+
+Notes
+-
+Either pretend the planet is flat, or assume the pipeline segments are all arcs of great circles and the length measurement is the arc length. Either way, this is a one-dimensional problem.
+-
+Each element in segments can be used only once. If multiple pipeline segments of the same length are available, that length will be present multiple times in segments.
+Constraints
+-
+segments will contain between 1 and 38 elements, inclusive.
+-
+desiredLength and each element of segments will be a decimal number.
+-
+Each decimal number will consist of 1 or more digits ('0'-'9') followed by a decimal point, followed by exactly three digits to the right of the decimal point.
+-
+No decimal number will contain extra leading zeros.
+-
+Each element of segments will be between 0.001 and 1000000000.000 meters (1e9), inclusive.
+-
+desiredLength will be between 0.001 and 38000000000.000 meters (3.8e10), inclusive.
+Examples
+0)
+
+    
+{"1.000","2.000","4.000","8.000","16.000","32.000","64.000","128.000",
+ "256.000","512.000","1024.000","2048.000","4096.000","8192.000",
+ "16384.000","32768.000","65536.000"}
+"65535.000"
+Returns: 15
+You can combine 16 lengths of pipe from the above list to form the desired length (all but the last element). Connecting 16 segments requires 15 welded joints.
+1)
+
+    
+{"0.001","0.002","0.004","0.008","0.016","0.032","0.064","0.128","0.256",
+ "0.512","1.024","2.048","4.096","8.192","16.384","32.768","65.536",
+ "131.072","262.144","524.288","1048.576","2097.152","4194.304","8388.608",
+ "16777.216","33554.432","67108.864","134217.728","268435.456","536870.912",
+ "1073741.824","2147483.648","4294967.296","8589934.592","17179869.184", 
+ "34359738.368","68719476.736","137438953.472"}
+"233333333.555"
+Returns: 17
+A larger example along the same lines.
+2)
+
+    
+{"1000000000.000","1000000000.000","1000000000.000","1000000000.000",
+ "1000000000.000","1000000000.000","1000000000.000","1000000000.000",
+ "1000000000.000","1000000000.000","1000000000.000","1000000000.000",
+ "1000000000.000","1000000000.000","1000000000.000","1000000000.000",
+ "1000000000.000","1000000000.000","1000000000.000","1000000000.000",
+ "1000000000.000","1000000000.000","1000000000.000","1000000000.000",
+ "1000000000.000","1000000000.000","1000000000.000","1000000000.000",
+ "1000000000.000","1000000000.000","1000000000.000","1000000000.000",
+ "1000000000.000","1000000000.000","1000000000.000","1000000000.000",
+ "1000000000.000","1000000000.000"}
+ 
+"38000000000.000"
+Returns: 37
+The maximum desiredLength.
+3)
+
+    
+{"0.002","0.002","0.004","0.008","0.016","0.032","0.064","0.128","0.256",
+ "0.512","1.024","2.048","4.096","8.192","16.384","32.768","65.536",
+ "131.072","262.144","524.288","1048.576","2097.152","4194.304","8388.608",
+ "16777.216","33554.432","67108.864","134217.728","268435.456","536870.912",
+ "1073741.824","2147483.648","4294967.296","8589934.592","17179869.184", 
+ "34359738.368","68719476.736","137438953.472"}
+"1000000000.001"
+Returns: -1
+Not possible.
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

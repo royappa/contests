@@ -1,0 +1,217 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<!-- Mirrored from spoj.sphere.pl/problems/MOULDS/ by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 10 Jan 2006 05:00:30 GMT -->
+<head>
+<title>Sphere Online Judge (SPOJ)  - Problem MOULDS</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-2">
+<META NAME="Keywords" CONTENT="spoj, online, judge, problem, set, problemset, archive, ACM, Polish, Poland, contest, contester, task, tasks, ADA, Java, Pascal, C, C++, Whitespace, sphere, interest, group, python, ruby, icon, o'caml, caml, ocaml, perl, haskell, bf, brain, clips, prolog, fortran, asm, assembler, asembler, functional, esoteric, programming, languages">
+
+<link href="https://spoj.sphere.pl/gfx/favicon" rel="shortcut icon" type="image/x-icon">
+
+<link href="../../themes/skin3.css" rel="stylesheet" type="text/css" id="theme">
+<style type="text/css">
+<!--
+.maintable {width: 755;} 
+-->
+</style>
+<script type="text/javascript" language="javascript">
+<!--
+function UnCryptMailto(s) {
+	var n=0;
+	var r="";
+	for(var i=0;i<s.length;i++) {		
+		n=s.charCodeAt(i); 
+		if (n>=8364) {n = 128;}
+		r += String.fromCharCode(n+(2));	
+	}
+	return r;
+}
+function linkTo_UnCryptMailto(s)	{
+	location.href=UnCryptMailto(s);
+}
+// -->
+</script>
+
+</head>
+<body>
+<center>
+<table cellpadding="10" cellspacing="0" class="maintable" id="maintable">
+<tr>
+    <td colspan="2" class="header">
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+        <tr>
+		<td class="headerleft"/>
+		<td class="headercenter"><h1>Sphere Online Judge</h1></td>
+		<td class="headerright"/>
+	</tr>
+	</table>
+    </td>
+</tr>
+<tr><td class="menu" width="92" valign="top">
+<form name="login"  action="http://spoj.sphere.pl/problems/MOULDS/" method="post" 
+	onsubmit="if(document.login.ssl.checked) document.login.action='https://spoj.sphere.pl/problems/MOULDS/'" style="margin-bottom: 18px"> 
+User: <input name="login_user" type="text" style="width: 85px;" class="form"><BR>
+Password: <input name="password" type="password" style="width: 85px;" class="form"><BR>
+<script language="javascript" type="text/javascript">
+<!--
+document.write('<input type="checkbox" name="ssl" id="ssl" checked>secure<br>');
+//-->
+</script>
+<input name="submit" type="submit" value="Log In" class="button" style="width: 85px;">
+</form><div class="menucmd"><a href="https://spoj.sphere.pl/register">register</a><br><br><a href="https://spoj.sphere.pl/status">status</a><br><a href="https://spoj.sphere.pl/submit">submit</a><br><a href="../classical/sort=7,start=0.html">problems</a><br><br><a href="https://spoj.sphere.pl/">news</a><br><a href="https://spoj.sphere.pl/contests">contests</a><br><a href="https://spoj.sphere.pl/info">info</a><br><a href="https://spoj.sphere.pl/ranks/">ranks</a><br><br><a href="https://spoj.sphere.pl/forum">forum</a><br><a href="https://spoj.sphere.pl/help">help</a><br><a href="https://spoj.sphere.pl/links">links</a><br><hr></div>Server time:<br>2006-01-10<br>05:51:41<a href="../classical/sort=7,start=0.html"></a><br><br>
+<form method="get" action="https://spoj.sphere.pl/search/" class="form" style="width:90px">
+<input type="text" name="query" style="width:85px" maxlength=255 value="" class="form"><br>
+<input type="submit" value="Search" style="width:85px" class="form" title="Search site"><br>
+&nbsp;<a href="https://spoj.sphere.pl/search/problems=on,users=on,contests=on" title="More search options"><small>advanced...</small></a>
+</form></td><td class="content" width="99%"><table class="problems" width="100%">
+<tr class="navigation">
+<td><a href="https://spoj.sphere.pl/submit/MOULDS/">Submit</a></td>
+<td><a href="https://spoj.sphere.pl/status/MOULDS/">All submissions</a></td>
+<td><a href="https://spoj.sphere.pl/ranks/MOULDS/">Best solutions</a></td>
+<td><a href="https://spoj.sphere.pl/problems/MOULDS.ps">PS</a></td>
+<td><a href="https://spoj.sphere.pl/problems/MOULDS.pdf">PDF</a></td>
+<td><a href="../classical/sort=7,start=0.html">Back to list</a></td>
+</tr>
+</table>
+
+<div class="prob">
+
+<h2>SPOJ Problem Set </h2>
+<h1>69. Moulds</h1>
+<h2>Problem code: MOULDS</h2>
+<p align="justify">
+<p>
+	In a factory, moulds for casting metal objects are produced by a special 
+	cutting device. The device is equipped with cuboid-shaped blade of size 1 mm x 
+	1 mm x 30 mm (its height) which operates with each of its sides thus producing 
+	the mould from cuboid of size 250 mm x 250 mm x 30 mm (its height). The end of 
+	the blade newer lowers below the bottom surface of the cuboid. In any moment 
+	the distance between initial and current position doesn't exceed 1000.
+</p>
+<p>
+	The machine understands special command language which has the following 
+	grammar:
+	<pre><tt>&lt;command block&gt; ::= [ &lt;command&gt; ; {&lt;command&gt; ; } ] 
+&lt;command&gt;       ::= &lt;lift&gt; | &lt;shift&gt; | &lt;command block&gt;
+&lt;lift&gt;          ::= ^ &lt;distance&gt;
+&lt;shift&gt;         ::= @ &lt;direction&gt; &lt;distance&gt;
+&lt;direction&gt;     ::= N | S | W | E 
+&lt;distance&gt;      ::= &lt;sign&gt; &lt;number&gt; | &lt;number&gt;
+&lt;number&gt;        ::= &lt;digit&gt; {&lt;digit&gt;}
+&lt;sign&gt;          ::= - | + 
+&lt;digit&gt;         ::= 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 
+</tt></pre>
+<P>
+	where {exp} means zero or more exps.&nbsp;
+</P>
+<p>
+	The command &lt;lift&gt; causes moving the blade downwards when the distance is 
+	a positive number and upwards otherwise. The command &lt;shift&gt; moves the 
+	blade in the appropriate direction (N--north, S--south, W--west, E--east).
+</p>
+<h3>Task</h3>
+<p>
+	Write a program which for each data set from a sequence of several data sets:
+</p>
+<div align="justify">
+	<ul>
+		<li>
+		reads a command block from input,
+		<li>
+		computes the volume of hollows made by the machine commanded by a given command 
+		block (assuming that before the execution the blade is located 1 mm above the 
+		north-west corner of the virgin cuboid),
+		<li>
+			writes the result to output.</li>
+	</ul>
+</div>
+<h3>Input</h3>
+<p>
+	The first line of the input file contains one integer d, 1 &lt;= d &lt;= 10, 
+	which is the number of data sets. The data sets follow. Each data set occupies 
+	one line of the input file and is a word derived from &lt;command block&gt; of 
+	the above grammar of length not exceeding 10000 characters.
+</p>
+<h3>Output</h3>
+<p>
+	The i-th line of the output file should contain one integer -- the volume (in 
+	cubic mm) of the hollows made by the machine controlled by the command block 
+	given in the i-th data set.
+</p>
+<h3>Example</h3>
+<pre>
+Sample input:
+
+<tt>1 
+[^2;@S2;] 
+</tt>
+
+Sample output:
+
+<tt>3</tt>
+
+</pre>
+
+
+<hr>
+<table border=0 cellspacing=0 cellpadding=0 align=left>
+<tr><td width=130>Added by:</td><td><a href="https://spoj.sphere.pl/search/'Adrian%20Kosowski'">Adrian Kosowski</a></td></tr>
+<tr><td>Date:</td><td>2004-06-08</td></tr>
+<tr><td>Time limit:</td><td>5s
+</td></tr>
+<tr><td>Source limit:</td><td>50000B</td></tr>
+<tr><td>Resource:</td><td>III Polish Collegiate Team Programming Contest (AMPPZ), 1998</td></tr></table>
+</div></td>
+</tr>
+
+<tr>
+<td colspan="2" class="footer">
+
+<script language="javascript" type="text/javascript">
+<!--
+function swapSheet(sheet, caller) {
+    document.getElementById('theme').href=sheet;
+    document.cookie="css_0="+sheet+"; path=/;";
+    caller.href="#bottom";
+}
+
+function setWidth(w, caller) {
+    document.getElementById('maintable').style.width=w;
+    document.cookie="res="+w+"; path=/;";
+    caller.href="#bottom";
+}
+//-->
+
+</script>
+        <table width="100%">
+    <tr>
+	<td align="left">
+            <a href="http://www.pg.gda.pl/eng.html"><IMG src="https://spoj.sphere.pl/gfx/logo-pg" alt="www.pg.gda.pl" border=0 height=36 width=44></a>&nbsp;
+            <a href="http://www.eti.pg.gda.pl/"><IMG src="https://spoj.sphere.pl/gfx/logo-eti" alt="www.eti.pg.gda.pl" border=0 height=36 width=44></a>
+	</td>
+	<td align="center">
+	    page size:
+	    <a href="https://spoj.sphere.pl/?res=755"  onClick="setWidth('755', this)">800x600</a>
+	    <a href="https://spoj.sphere.pl/?res=980"  onClick="setWidth('980', this)">1024x768</a>
+	    <a href="https://spoj.sphere.pl/?res=100%" onClick="setWidth('100%', this)">Full</a>
+	    &nbsp;&nbsp;
+	    theme:
+	    <a href="../../indexb6a4.html?css=/themes/skin1.css" onClick="swapSheet('../../themes/skin1.css', this)">olive</a>
+	    <a href="../../index3840.html?css=/themes/skin2.css" onClick="swapSheet('../../themes/skin2.css', this)">banana</a>
+	    <a href="../../index80f0.html?css=/themes/skin3.css" onClick="swapSheet('../../themes/skin3.css', this)">plum</a>
+	    <br>
+	    <a href="http://sphere.pl/?id=66">spoj team at sphere</a> &copy; 2004-05 all rights reserved
+	</td>
+	<td align="right">
+            <a href="http://task.gda.pl/english/"><IMG src="https://spoj.sphere.pl/gfx/logo-task" alt="task.gda.pl" border=0 height=36 width=44></a>&nbsp;
+            <a href="http://sphere.pl/"><IMG src="https://spoj.sphere.pl/gfx/logo-sphere" alt="sphere.pl" border=0 height=32></a>
+	</td>
+    </tr>
+    </table>
+    </tr></table>
+</center>
+</body>
+
+<!-- Mirrored from spoj.sphere.pl/problems/MOULDS/ by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 10 Jan 2006 05:00:30 GMT -->
+</html>

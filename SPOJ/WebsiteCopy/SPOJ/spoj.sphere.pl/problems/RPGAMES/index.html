@@ -1,0 +1,209 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<!-- Mirrored from spoj.sphere.pl/problems/RPGAMES/ by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 10 Jan 2006 05:02:19 GMT -->
+<head>
+<title>Sphere Online Judge (SPOJ)  - Problem RPGAMES</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-2">
+<META NAME="Keywords" CONTENT="spoj, online, judge, problem, set, problemset, archive, ACM, Polish, Poland, contest, contester, task, tasks, ADA, Java, Pascal, C, C++, Whitespace, sphere, interest, group, python, ruby, icon, o'caml, caml, ocaml, perl, haskell, bf, brain, clips, prolog, fortran, asm, assembler, asembler, functional, esoteric, programming, languages">
+
+<link href="https://spoj.sphere.pl/gfx/favicon" rel="shortcut icon" type="image/x-icon">
+
+<link href="../../themes/skin3.css" rel="stylesheet" type="text/css" id="theme">
+<style type="text/css">
+<!--
+.maintable {width: 755;} 
+-->
+</style>
+<script type="text/javascript" language="javascript">
+<!--
+function UnCryptMailto(s) {
+	var n=0;
+	var r="";
+	for(var i=0;i<s.length;i++) {		
+		n=s.charCodeAt(i); 
+		if (n>=8364) {n = 128;}
+		r += String.fromCharCode(n+(2));	
+	}
+	return r;
+}
+function linkTo_UnCryptMailto(s)	{
+	location.href=UnCryptMailto(s);
+}
+// -->
+</script>
+
+</head>
+<body>
+<center>
+<table cellpadding="10" cellspacing="0" class="maintable" id="maintable">
+<tr>
+    <td colspan="2" class="header">
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+        <tr>
+		<td class="headerleft"/>
+		<td class="headercenter"><h1>Sphere Online Judge</h1></td>
+		<td class="headerright"/>
+	</tr>
+	</table>
+    </td>
+</tr>
+<tr><td class="menu" width="92" valign="top">
+<form name="login"  action="http://spoj.sphere.pl/problems/RPGAMES/" method="post" 
+	onsubmit="if(document.login.ssl.checked) document.login.action='https://spoj.sphere.pl/problems/RPGAMES/'" style="margin-bottom: 18px"> 
+User: <input name="login_user" type="text" style="width: 85px;" class="form"><BR>
+Password: <input name="password" type="password" style="width: 85px;" class="form"><BR>
+<script language="javascript" type="text/javascript">
+<!--
+document.write('<input type="checkbox" name="ssl" id="ssl" checked>secure<br>');
+//-->
+</script>
+<input name="submit" type="submit" value="Log In" class="button" style="width: 85px;">
+</form><div class="menucmd"><a href="https://spoj.sphere.pl/register">register</a><br><br><a href="https://spoj.sphere.pl/status">status</a><br><a href="https://spoj.sphere.pl/submit">submit</a><br><a href="../classical/sort=5,start=0.html">problems</a><br><br><a href="https://spoj.sphere.pl/">news</a><br><a href="https://spoj.sphere.pl/contests">contests</a><br><a href="https://spoj.sphere.pl/info">info</a><br><a href="https://spoj.sphere.pl/ranks/">ranks</a><br><br><a href="https://spoj.sphere.pl/forum">forum</a><br><a href="https://spoj.sphere.pl/help">help</a><br><a href="https://spoj.sphere.pl/links">links</a><br><hr></div>Server time:<br>2006-01-10<br>05:53:53<a href="../classical/sort=5,start=0.html"></a><br><br>
+<form method="get" action="https://spoj.sphere.pl/search/" class="form" style="width:90px">
+<input type="text" name="query" style="width:85px" maxlength=255 value="" class="form"><br>
+<input type="submit" value="Search" style="width:85px" class="form" title="Search site"><br>
+&nbsp;<a href="https://spoj.sphere.pl/search/problems=on,users=on,contests=on" title="More search options"><small>advanced...</small></a>
+</form></td><td class="content" width="99%"><table class="problems" width="100%">
+<tr class="navigation">
+<td><a href="https://spoj.sphere.pl/submit/RPGAMES/">Submit</a></td>
+<td><a href="https://spoj.sphere.pl/status/RPGAMES/">All submissions</a></td>
+<td><a href="https://spoj.sphere.pl/ranks/RPGAMES/">Best solutions</a></td>
+<td><a href="https://spoj.sphere.pl/problems/RPGAMES.ps">PS</a></td>
+<td><a href="https://spoj.sphere.pl/problems/RPGAMES.pdf">PDF</a></td>
+<td><a href="../classical/sort=5,start=0.html">Back to list</a></td>
+</tr>
+</table>
+
+<div class="prob">
+
+<h2>SPOJ Problem Set </h2>
+<h1>398. Roll Playing Games</h1>
+<h2>Problem code: RPGAMES</h2>
+<p align="justify">
+<p>Phil Kropotnik is a game maker, and one common problem he runs into is determining the set of dice to
+use in a game. In many current games, non-traditional dice are often required, that is, dice with more
+or fewer sides than the traditional 6-sided cube. Typically, Phil will pick random values for all but the last die, then try to determine specific values to put on the last die so that certain sums can be rolled
+with certain probabilities (actually, instead of dealing with probabilities, Phil just deals with the total
+number of different ways a given sum can be obtained by rolling all the dice). Currently he makes this
+determination by hand, but needless to say he would love to see this process automated. That is your
+task.</p>
+<p>For example, suppose Phil starts with a 4-sided die with face values 1, 10, 15, and 20 and he wishes
+to determine how to label a 5-sided die so that there are a) 3 ways to obtain a sum of 2, b) 1 way to
+obtain a sum of 3, c) 3 ways to obtain 11, d) 4 ways to obtain 16, and e)1 way to obtain 26. To get
+these results he should label the faces of his 5-sided die with the values 1, 1, 1, 2, and 6. (For instance,
+the sum 16 may be obtained as 10 +6 or as 15 +1, with three different &#8220;1&#8221; faces to choose from on the
+second die, for a total of 4 different ways.) Note that he sometimes only cares about a subset of the sums reachable by rolling all the dices (like in the previous example).</p>
+<h3>Input</h3>
+<p>Input will consist of multiple input sets. Each input set will start with a single line containing an integer
+n indicating the number of dice that are already specified. Each of the next n lines describes one of
+these dice. Each of these lines will start with an integer f (indicating the number of faces on the die)
+followed by f integers indicating the value of each face. The last line of each problem instance will have
+the form
+</p>
+<p>r m v<sub>1</sub> c<sub>1</sub> v<sub>2</sub> c<sub>2</sub> v<sub>3</sub> c<sub>3</sub> &#183;&#183;&#183; v<sub>m</sub> c<sub>m</sub>
+</p>
+<p>where r is the number of faces required on the unspecified die, m is the number of sums of interest,
+v<sub>1</sub>,...,vs<ub>m</sub> are these sums, and c<sub>1</sub>,...,c<sub>m</sub> are the counts of the desired number of different ways in which
+to achieve each of the respective sums.
+</p>
+<p>Input values will satisfy the following constraints: 1 &#8804; n &#8804; 20, 3 &#8804; f &#8804; 20, 1 &#8804; m &#8804; 10, and 4 &#8804; r &#8804; 6.
+Values on the faces of all dice, both the specified ones and the unknown die, will be integers in the range
+1 ...50, and values for the v<sub>i</sub>&#8217;s and c<sub>i</sub>&#8217;s are all non-negative and are strictly less than the maximum
+value of a 32-bit signed integer.
+</p>
+<p>The last input set is followed by a line containing a single 0; it should not be processed.</p>
+<h3>Output</h3>
+<p>For each input set, output a single line containing either the phrase &#8220;Final die face values are&#8221;
+followed by the r face values in non-descending order, or the phrase &#8220;Impossible&#8221; if no die can be found
+meeting the specifications of the problem. If there are multiple dice which will solve the problem, choose
+the one whose lowest face value is the smallest; if there is still a tie, choose the one whose second-lowest
+face value is smallest, etc.</p>
+<h3>Example</h3>
+
+<pre>
+<b>Input:</b>
+
+1
+4 1 10 15 20
+5 5 2 3 3 1 11 3 16 4 26 1
+1
+6 1 2 3 4 5 6
+6 3 7 6 2 1 13 1
+4
+6 1 2 3 4 5 6
+4 1 2 2 3
+3 3 7 9
+8 1 4 5 9 23 24 30 38
+4 4 48 57 51 37 56 31 63 11
+0
+
+<b>Output:</b>
+
+Final die face values are 1 1 1 2 6
+Impossible
+Final die face values are 3 7 9 9
+</pre>
+
+
+<hr>
+<table border=0 cellspacing=0 cellpadding=0 align=left>
+<tr><td width=130>Added by:</td><td><a href="https://spoj.sphere.pl/search/'Adrian%20Kuegel'">Adrian Kuegel</a></td></tr>
+<tr><td>Date:</td><td>2005-07-09</td></tr>
+<tr><td>Time limit:</td><td>15s
+</td></tr>
+<tr><td>Source limit:</td><td>50000B</td></tr>
+<tr><td>Resource:</td><td>ACM East Central North America Regional Programming Contest 2004</td></tr></table>
+</div></td>
+</tr>
+
+<tr>
+<td colspan="2" class="footer">
+
+<script language="javascript" type="text/javascript">
+<!--
+function swapSheet(sheet, caller) {
+    document.getElementById('theme').href=sheet;
+    document.cookie="css_0="+sheet+"; path=/;";
+    caller.href="#bottom";
+}
+
+function setWidth(w, caller) {
+    document.getElementById('maintable').style.width=w;
+    document.cookie="res="+w+"; path=/;";
+    caller.href="#bottom";
+}
+//-->
+
+</script>
+        <table width="100%">
+    <tr>
+	<td align="left">
+            <a href="http://www.pg.gda.pl/eng.html"><IMG src="https://spoj.sphere.pl/gfx/logo-pg" alt="www.pg.gda.pl" border=0 height=36 width=44></a>&nbsp;
+            <a href="http://www.eti.pg.gda.pl/"><IMG src="https://spoj.sphere.pl/gfx/logo-eti" alt="www.eti.pg.gda.pl" border=0 height=36 width=44></a>
+	</td>
+	<td align="center">
+	    page size:
+	    <a href="https://spoj.sphere.pl/?res=755"  onClick="setWidth('755', this)">800x600</a>
+	    <a href="https://spoj.sphere.pl/?res=980"  onClick="setWidth('980', this)">1024x768</a>
+	    <a href="https://spoj.sphere.pl/?res=100%" onClick="setWidth('100%', this)">Full</a>
+	    &nbsp;&nbsp;
+	    theme:
+	    <a href="../../indexb6a4.html?css=/themes/skin1.css" onClick="swapSheet('../../themes/skin1.css', this)">olive</a>
+	    <a href="../../index3840.html?css=/themes/skin2.css" onClick="swapSheet('../../themes/skin2.css', this)">banana</a>
+	    <a href="../../index80f0.html?css=/themes/skin3.css" onClick="swapSheet('../../themes/skin3.css', this)">plum</a>
+	    <br>
+	    <a href="http://sphere.pl/?id=66">spoj team at sphere</a> &copy; 2004-05 all rights reserved
+	</td>
+	<td align="right">
+            <a href="http://task.gda.pl/english/"><IMG src="https://spoj.sphere.pl/gfx/logo-task" alt="task.gda.pl" border=0 height=36 width=44></a>&nbsp;
+            <a href="http://sphere.pl/"><IMG src="https://spoj.sphere.pl/gfx/logo-sphere" alt="sphere.pl" border=0 height=32></a>
+	</td>
+    </tr>
+    </table>
+    </tr></table>
+</center>
+</body>
+
+<!-- Mirrored from spoj.sphere.pl/problems/RPGAMES/ by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 10 Jan 2006 05:02:19 GMT -->
+</html>

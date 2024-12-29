@@ -1,0 +1,98 @@
+typedef long long LL;
+
+LL f(int open, int x, int y, int z)
+{
+	if (x == N && y == N && z == N)
+	{
+		return open==0;
+	}
+	char ch = A(x, y, z);
+	if (ch == '(')
+		open++;
+	else if (ch == ')')
+		open--;
+	if (open < 0)
+		return 0;
+	
+int properPaths(vector <string> maze, int N) 
+{
+	string s = "";
+	for (int i = 0; i < maze.size(); i++)
+	{
+		s += maze[i];
+	}
+	
+	return f(0, 1, 1, 1);	
+}
+
+Problem Statement
+    
+We are given a maze which is a cube of NxNxN cells. We start at (1,1,1) and we move to (N,N,N), in each move visiting one of the three adjacents cells in the positive x, y or z directions. Each cell of the maze contains either a '(', ')' or '.'. A path is the sequence of cells visited during the journey. We intend to find the number of such paths that produce a valid parenthesized expression.
+ Periods can occur freely in an expression, and must be ignored while checking if an expression is properly paranthesized or not. A paranthesized expression is said to be valid only if it adheres to the following grammar (quotes for clarity):
+      <expr> ::= empty-string | "("<expr>")" | <expr>"." | <expr><expr>
+e.g., "(())", "....", ".()." and "().(.)" are valid parathesized expressions. The maze is given in a vector <string> which, when concantenated, represents the cube encoded in the following manner. The characters of maze correspond to the following cube coordinates, in order:
+    (1,1,1), (1,1,2), ..., (1,1,N), (1,2,1), (1,2,2), ..., (1,N,N), (2,1,1), ..., (N,N,N)
+ Given the vector <string> maze return an int representing the number of possible paths forming valid parenthesized expressions. If there are more than 1,000,000,000 paths, return -1 instead. 
+Definition
+    
+Class:
+BracketMaze
+Method:
+properPaths
+Parameters:
+vector <string>, int
+Returns:
+int
+Method signature:
+int properPaths(vector <string> maze, int N)
+(be sure your method is public)
+    
+
+Constraints
+-
+maze will contain between 1 and 50 elements, inclusive.
+-
+Each element of maze will contain between 1 and 50 characters, inclusive.
+-
+The maze when concatenated will contain exactly N^3 characters.
+-
+Each character in maze will be '(', ')', or '.'.
+-
+N will be between 1 and 13, inclusive.
+Examples
+0)
+
+    
+{"()()()()"}
+2
+Returns: 2
+There are two paths in this 2x2x2 cube. From the 3 possible moves in the beginning, you cannot go right directly which completes a "()" but all it's neighbours are ')', hence lead to an invalid expression. The other two possible moves lead to unique valid paths.
+1)
+
+    
+{")()()()("}
+2
+Returns: 0
+
+2)
+
+    
+{ "..........................." }
+3
+Returns: 90
+
+3)
+
+    
+{"..(....)"}
+2
+Returns: 2
+
+4)
+
+    
+{ "(.........................)"}
+3
+Returns: 90
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

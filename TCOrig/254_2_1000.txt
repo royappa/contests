@@ -1,0 +1,134 @@
+
+int find(string &t, int p, int n)
+{
+	if (p == n - 1)
+	{
+		int L = t.size();
+		int best = 0;
+		for (int i = 0; i < L; i++)
+		{
+			if (i == 0 && i+1 < L && t[i+1] == '-')
+			{
+				best = i;
+				break;
+			}
+			if (i-1 >= 0 && i+1 < L && t[i-1] == '-' && t[i+1] == '-')
+			{
+				best = i;
+				break;
+			}
+			if (t[i] == '-')
+			{
+				best = i;
+			}
+			if (i == L-1 && i-1 >= 0 && t[i] == '-')
+			{
+				best = i;
+				break;
+			}
+		}
+		t[best] = 'p';
+		return best;
+	}
+	int f = find(t, p+1, n);
+	string::size_type pos = t.find('-');
+	return pos;
+}
+	
+
+int choose(string trough) 
+{
+	int n = 0; 
+	for (int i = 0; i < trough.size; i++)
+	{
+		if (trough[i] == '-')
+			n++;
+	}
+	if (n == 0)
+		return -1;
+	
+	return find(trough, 0, n);
+}
+
+Problem Statement
+    
+It's feeding time in the pig pen, where a trough is divided into n stalls to accommodate n piglets. 
+
+The rude piglets immediately rush to the trough and distribute themselves arbitrarily among the stalls. 
+
+After them come the fastidious piglets one at a time, at one-minute intervals.
+
+A fastidious piglet doesn't want to feed in just any stall, since he doesn't like to be sandwiched between two piglets. 
+
+As the trough fills up, however, a piglet who hasn't managed to occupy an end stall will eventually have a neighbor on each side. 
+
+It is the fastidious piglet's goal to delay this sandwiching as long as possible. 
+
+Among multiple stalls that afford the same delay, he prefers the leftmost. 
+
+He makes his selection in the knowledge that all subsequent piglets arriving at the trough will choose a stall according to the same criteria.
+
+Given a string describing a trough configuration such that '-' represents an empty stall and 'p' represents an occupied stall, return the zero-based index of the stall chosen by the next piglet. Return -1 if every stall is occupied.
+Definition
+    
+Class:
+Piglets
+Method:
+choose
+Parameters:
+string
+Returns:
+int
+Method signature:
+int choose(string trough)
+(be sure your method is public)
+    
+
+Notes
+-
+A fastidious piglet will take a stall at the very end of the trough if possible, preferring the left end to the right end.
+-
+All currently empty stalls will eventually be occupied by fastidious piglets.
+Constraints
+-
+trough contains between 1 and 15 characters, inclusive.
+-
+Each character in trough is either '-' or 'p'.
+Examples
+0)
+
+    
+"--p--"
+Returns: 0
+An end stall lets the piglet avoid sandwiching altogether.
+1)
+
+    
+"p-p-p"
+Returns: 1
+The piglet is forced to choose a stall that is already sandwiched. As always in the case of a tie, he prefers the leftmost.
+2)
+
+    
+"p--p"
+Returns: 1
+Whichever stall the next piglet chooses, he will be sandwiched by the piglet who follows one minute later.
+3)
+
+    
+"p---p"
+Returns: 2
+If the piglet takes stall 1, he will be sandwiched in one minute. Stalls 2 and 3 allow him a two-minute delay.
+4)
+
+    
+"ppp"
+Returns: -1
+
+5)
+
+    
+"p----p"
+Returns: 3
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

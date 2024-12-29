@@ -1,0 +1,111 @@
+int memo[10][100];
+
+vector<string> v;
+int n;
+
+int f(int p, int q)
+{
+	if (q <= 0)
+	{
+		return 0;
+	}
+
+	int u, c;
+	sscanf(v[p].c_str(), "%d%d", &u, &c);
+	
+	if (p == n-1)
+	{
+		return ((q+u-1)/u)*c;
+	}
+	
+	int& r = memo[p][q];
+	if (r != -1)
+	{
+		return r;
+	}
+	r = 1<<30;
+	for (int t = 0; t <= q; t++)
+	{
+		// buy t items at price p, and q-t items elsewhere
+		r = min(r, ((t+u-1)/u)*c+f(p+1, q-((t+u-1)/u)*u);
+	}
+	return r;
+}
+
+int bestDeal(vector <string> priceList, int quantity) 
+{
+	v = priceList;
+	n = v.size();
+	
+	memset(memo, -1, sizeof(memo));
+	
+	return f(0, quantity);
+}
+Problem Statement
+    
+When a customer buys large quantities of a product, frequently the seller will offer a volume discount. For instance, one unit might cost 10 dollars, but might be offered in packages of 5 for 45 dollars. In such a case, it always makes sense buy the bulk lots to save money. In some other cases, however, it might not always make sense. Suppose a single unit were on sale for 8 dollars. In such a case, purchasing single units would be less expensive than purchasing a 5-pack.
+
+You are given a vector <string> priceList describing the number of units available in each bundle, and the cost of the bundle. Each element is of the form "units cost" (quotes added for clarity). 
+
+You are also given an int quantity, the number of units you wish to purchase.
+
+Return an int indicating the best possible cost to purchase at least the desired quantity of units.
+
+Definition
+    
+Class:
+VolumeDiscount
+Method:
+bestDeal
+Parameters:
+vector <string>, int
+Returns:
+int
+Method signature:
+int bestDeal(vector <string> priceList, int quantity)
+(be sure your method is public)
+    
+
+Constraints
+-
+priceList will contain between 1 and 5 elements, inclusive.
+-
+Each element of priceList will be formatted as described in the problem statement.
+-
+units will be an integer between 1 and 99, inclusive, with no leading zeroes
+-
+cost will be an integer between 1 and 999, inclusive, with no leading zeroes.
+-
+No two values of units will be the same.
+-
+quantity will be between 1 and 99, inclusive.
+Examples
+0)
+
+    
+{"1 10", "5 45"}
+10
+Returns: 90
+The first example suggested in the problem statement.
+1)
+
+    
+{"1 8", "5 45"}
+10
+Returns: 80
+The second example suggested in the problem statement.
+2)
+
+    
+{"99 913", "97 173", "50 464", "80 565"} 	
+18
+Returns: 173
+Here, every package has more units than we need, so we pick the cheapest one.
+3)
+
+    
+{"2 272","1 166","10 993"}
+81
+Returns: 8110
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.	

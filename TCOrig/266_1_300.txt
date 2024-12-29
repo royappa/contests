@@ -1,0 +1,152 @@
+
+int	calcStop(int v1pos, int v2pos, int d)
+{
+	
+}
+
+int travelTime(string s, int d) 
+{
+		
+	int v1pos = s.find('V');	// time probe vent 1
+	int m = 1e20;
+	for (int v2pos = s.find('V')+1; v2pos < s.size(); v2pos++)
+	{
+		if (s[v2pos] == '-')
+			continue;
+		// found next 'V'
+		m = min(m, calcStop(v1pos, v2pos, d)); 
+	}
+	return m;
+}
+
+Problem Statement
+    
+You are working for NASA and your job is to seek out life on other worlds within our Solar System. 
+
+In this mission you are remotely controlling a probe that explores the deep ocean floor of Jupiter's moon Europa. 
+
+Researchers have concluded that if there is any extraterrestrial life to be found, the first places to look are the hydrothermal vents. 
+
+Basically the probe has to settle around a vent and explore it, but there is one major problem: communication delay. 
+
+The probe is continuously sending status messages back to Earth, but each of them is only received after delay units of time. 
+
+Analogously, if new instructions are sent from Earth, the probe needs delay units of time to receive them. 
+
+The strategy employed is to move the probe on a single axis, at a constant speed. 
+
+Initially the probe is situated at location 0. 
+
+Your goal is to make it stop at one of the vents as soon as possible.  
+
+Your probe can receive one of the following three commands:
+FORWARD:
+- This command is only given once, at time 0. The probe starts moving after delay units of time.
+
+REVERSE:
+- You may issue this command when a new vent has been detected. 
+
+After delay units of time, the probe instantly starts moving in the opposite direction.
+STOP:
+- You issue this command if and only if, according to the information you gathered so far, you can be certain that the probe will stop at one of the vents. 
+
+This is the last command you give and the probe stops after delay units of time.  
+
+Suppose delay is 5 and we have two vents, at locations 5 and 11, respectively. 
+
+The procedure of remote controlling the probe goes like this: 
+time 0: You issue the "forward" signal. 
+time 5: The probe starts moving. 
+time 10: The probe reaches the vent at location 5. 
+time 15: You receive the signal that the probe has reached the vent and issue the "reverse" command. 
+time 16: The probe reaches the vent at location 11. 
+time 20: The probe receives the "reverse" signal and starts moving back. Its current position is at location 15. 
+time 21: You receive the signal that the probe has reached the vent at location 11. 
+The probe is on its way back, currently at location 14. 
+Unfortunately, we will miss this vent. 
+Even if the "stop" command is issued now, by the time it is received, the probe will have already moved away to location 9. 
+You now have to decide whether another "reverse" command is appropriate. 
+Currently, the probe will stop after 30 units of time at the vent at location 5. 
+However, by issuing the "reverse" command again, the probe will stop after 28 units of time at the vent at location 11. 
+time 23: You issue the "stop" signal. 
+The probe is at location 12 and moves left (towards smaller locations). 
+time 24: The probe passes the vent at location 11. 
+time 26: The probe receives the "reverse" signal issued at time 21, is currently at location 9, and starts moving right. 
+time 28: The probe stops and the vent at location 11 can now be explored.  
+
+You are given a String surface, where 'S' is the first character and denotes the starting position, '-' denotes regular ocean floor and 'V' denotes a vent. Assume that the surface is plain after the end of the input ("SV" is the same as "SV--------------"). 
+
+You are also given an int delay, denoting the time needed for a signal to travel between Earth and Europa. 
+
+Return an int representing the amount of time elapsed between the FORWARD command and the moment the probe stops.
+
+Definition
+    
+Class:
+ExploringEuropa
+Method:
+travelTime
+Parameters:
+string, int
+Returns:
+int
+Method signature:
+int travelTime(string surface, int delay)
+(be sure your method is public)
+    
+
+Notes
+-
+Keep in mind that a reverse command is only meaningful when aiming for the last detected vent. 
+Do not issue it in other cases!
+-
+No more than 2 reverse commands are ever needed.
+Constraints
+-
+surface will contain between 2 and 50 characters, inclusive.
+-
+The first character of surface will be an 'S'.
+-
+surface will contain at least one 'V' character.
+-
+Each character of surface, except the first, is either a '-' or a 'V'.
+-
+delay is between 1 and 50, inclusive.
+
+Examples
+0)
+
+    
+"S----V-----V----"
+5
+Returns: 28
+This is the example from the problem statement.
+1)
+
+    
+"S----VV---------"
+5
+Returns: 29
+
+2)
+
+    
+"S---V"
+10
+Returns: 54
+
+3)
+
+    
+"SVVVVV"
+1
+Returns: 5
+
+4)
+
+    
+"S------------------------------V-----------V"
+22
+Returns: 129
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

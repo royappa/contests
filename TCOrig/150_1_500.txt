@@ -1,0 +1,62 @@
+#include <vector>
+#include <list>
+#include <map>
+#include <set>
+#include <deque>
+#include <stack>
+#include <bitset>
+#include <algorithm>
+#include <functional>
+#include <numeric>
+#include <utility>
+#include <sstream>
+#include <iostream>
+#include <iomanip>
+#include <cstdio>
+#include <cmath>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+class StripePainter {
+public:
+string s;
+int n;
+int memo[60][60][60];
+
+int f(int p, int len, int cur)
+{
+	if (len == 0)
+		return 0;
+	int& r = memo[p][len][cur];
+	if (r != -1)
+		return r;
+	
+	if (s[p] == cur)
+	{
+		r = f(p+1, len-1, cur);
+	}
+	else
+	{
+		r = 1<<30;
+		for (int i = 1; i <= len; i++)
+		{
+			r <?= 1+f(p, i, s[p])+f(p+i, len-i, cur);
+		}
+	}
+	return r;
+}
+
+int minStrokes(string stripes) 
+{
+	s = stripes;
+	n = s.size();
+	memset(memo, -1, sizeof(memo));
+	
+	return f(0, n, 'Z'+1);	
+}
+};
+
+
+//Powered by [KawigiEdit]

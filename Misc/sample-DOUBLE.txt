@@ -1,0 +1,407 @@
+ Current Member Count :  42,576 - September 6, 2004 [Get Time] Hello, royappa   |  Logout   |  Update Profile   |  Home   
+ 
+   
+ 
+ 
+  Competition Development Software Employment Services Marketing Services   
+ 
+
+
+Competition: 
+Launch Arena Applet 
+$HOME 
+Schedule 
+Statistics 
+Round Overview 
+Last Match Results 
+Problem Archive 
+Coder Rankings 
+Match Editorials 
+Tutor Transcripts 
+Quick Stats 
+Advanced Member Search 
+Member Surveys 
+Features 
+Events 
+Round Tables (Forums) 
+TopCoder Gear 
+Support / FAQs 
+ 
+     
+ Advanced Search 
+ 
+ 
+
+
+
+
+
+  
+     Problem Statistics     
+
+ 
+ 
+ 
+ 
+ Problem Statistics for 2004 TCCC > Qualification Problem Set 3 > Room 1 > Oblok  
+ 
+ Class Name Method Name Difficulty Status Points  
+ 
+ [ Commission ]  equivalentSales Level One Passed System Test 232.49  
+ Scale  scale Level Two Passed System Test 435.40  
+ 
+ 
+ 
+View Commission  Problem Statement  
+// Oblok -- University of Utah 
+
+import java.util.*; 
+
+public class Commission 
+{ 
+    public double equivalentSales(double ss /*sales*/, double cc /*cost*/, double c2 /*commission*/) 
+    { 
+        double cp = 100 - cc - 20; 
+
+        double op = 100 - cc - c2; 
+
+        return ss * cp / op; 
+    } 
+
+    static public void main (String[] args) 
+    { 
+        /*{ 
+        Commission tempObject = new Commission (); 
+        double sales = ; 
+        double cost = ; 
+        double commission = ; 
+        double result = tempObject.equivalentSales (sales, cost, commission); 
+
+        System.out.println ("Expected: "); 
+        System.out.print ("Received: "); 
+        System.out.println ("" + result); 
+        } 
+        */ 
+        { 
+        Commission tempObject = new Commission (); 
+        double sales = 100.555; 
+        double cost = 70.0; 
+        double commission = 10.0; 
+        double result = tempObject.equivalentSales (sales, cost, commission); 
+
+        System.out.println ("Expected: 50.2775"); 
+        System.out.print ("Received: "); 
+        System.out.println ("" + result); 
+        } 
+
+        { 
+        Commission tempObject = new Commission (); 
+        double sales = 756840; 
+        double cost = 74.3; 
+        double commission = 11.5; 
+        double result = tempObject.equivalentSales (sales, cost, commission); 
+
+        System.out.println ("Expected: 303801.971830986"); 
+        System.out.print ("Received: "); 
+        System.out.println ("" + result); 
+        } 
+
+        { 
+        Commission tempObject = new Commission (); 
+        double sales = 10000000000.0; 
+        double cost = 79.5; 
+        double commission = 19.5; 
+        double result = tempObject.equivalentSales (sales, cost, commission); 
+
+        System.out.println ("Expected: 5.0"); 
+        System.out.print ("Received: "); 
+        System.out.println ("" + result); 
+        } 
+
+        /*{ 
+        Commission tempObject = new Commission (); 
+        double sales = ; 
+        double cost = ; 
+        double commission = ; 
+        double result = tempObject.equivalentSales (sales, cost, commission); 
+
+        System.out.println ("Expected: "); 
+        System.out.print ("Received: "); 
+        System.out.println ("" + result); 
+        } 
+        */ 
+    } 
+    public String[] tokenize (String s) 
+    { 
+        // P. Jensen's (Oblok's) library code -- Copyright 2003.  Converts 
+        //   a string into an array of its delimited tokens. 
+        StringTokenizer st=new StringTokenizer(s," "); 
+        String[] rv=new String[st.countTokens()]; 
+        for (int i=0;i<rv.length;i++)rv[i]=st.nextToken(); 
+        return rv; 
+    } 
+
+    public String[][] tokenize (String s[]) 
+    { 
+        // P. Jensen's (Oblok's) library code -- Copyright 2003.  Converts 
+        //   a string array into arrays of its delimited tokens. 
+        String[][] rv = new String[s.length][]; 
+        for (int j=0;j<s.length;j++){ 
+          StringTokenizer st=new StringTokenizer(s[j]," "); 
+          rv[j]=new String[st.countTokens()]; 
+          for (int i=0;i<rv[j].length;i++)rv[j][i]=st.nextToken();} 
+        return rv; 
+    } 
+
+    static public char[] charize (String s) 
+    { 
+        // P. Jensen's (Oblok's) library code -- Too simple to comment. 
+        return s.toCharArray(); 
+    } 
+
+    static public char[][] charize (String[] s) 
+    { 
+        // P. Jensen's (Oblok's) library code -- Copyright 2003.  Converts 
+        //   a string array into arrays of its characters. 
+        char[][] rv = new char[s.length][]; 
+        for (int i=0;i<s.length;i++) 
+          rv[i]=s[i].toCharArray(); 
+        return rv; 
+    } 
+
+    public int[] valueize (String s) 
+    { 
+        // P. Jensen's (Oblok's) library code -- Copyright 2003.  Converts 
+        //   the string tokens to an array of integers, replacing invalid 
+        //   values with MIN_VALUE. 
+        String[] t=tokenize(s); 
+        int[] rv=new int[t.length]; 
+        for (int i=0;i<t.length;i++) 
+          try{rv[i]=Integer.parseInt(t[i]);}catch(NumberFormatException e){rv[i]=Integer.MIN_VALUE;} 
+        return rv; 
+    } 
+    public int[][] valueize (String s[]) 
+    { 
+        // P. Jensen's (Oblok's) library code -- Copyright 2003.  Converts 
+        //   the array of string tokens to arrays of integers, replacing invalid 
+        //   values with MIN_VALUE. 
+        int[][] rv=new int[s.length][]; 
+        for (int i=0;i<s.length;i++) 
+          rv[i]=valueize(s[i]); 
+        return rv; 
+    } 
+    public void print (String s){System.out.print(s);} 
+    public void println (String s){System.out.println(s);} 
+}
+ 
+ 
+ 
+ System Test Results 
+ 
+ Test Arguments  Success  Expected Results  Result  
+ 
+ 100.555, 70.0, 10.0  Passed  50.2775  50.2775  
+ 
+ 
+ 756840.0, 74.3, 11.5  Passed  303801.971830986  303801.971830986  
+ 
+ 
+ 1.0E10, 79.5, 19.5  Passed  5.0E9  5.0E9  
+ 
+ 
+ 1.0E10, 0.5, 19.5  Passed  9.9375E9  9.9375E9  
+ 
+ 
+ 1.0E10, 79.5, 0.5  Passed  2.5E8  2.5E8  
+ 
+ 
+ 8.43721326924896E9, 68.23599520710148, 6.251860358028325  Passed  3.8905164397896976E9  3.8905164397896976E9  
+ 
+ 
+ 9.614646660519178E9, 9.895342436486649, 4.655836078244928  Passed  7.888131164524941E9  7.888131164524941E9  
+ 
+ 
+ 7.944156667578871E9, 72.41836889584326, 2.9313429527628  Passed  2.443365567059476E9  2.443365567059476E9  
+ 
+ 
+ 7.260833675727328E9, 11.418929884569774, 4.633100706928474  Passed  5.931718741026545E9  5.931718741026545E9  
+ 
+ 
+ 2.0746127364318938E9, 22.64220742995874, 11.691988834512387  Passed  1.8121335646584523E9  1.8121335646584523E9  
+ 
+ 
+ 1.8306452010679398E9, 36.66797096334943, 18.410595141000577  Passed  1.7658735291653848E9  1.7658735291653848E9  
+ 
+ 
+ 5.264633569918279E8, 59.87190051072578, 14.298778074889587  Passed  4.1025881621061015E8  4.1025881621061015E8  
+ 
+ 
+ 3.6735972854196725E9, 17.029134770671543, 18.06905144637416  Passed  3.5643009968967166E9  3.5643009968967166E9  
+ 
+ 
+ 4.573054142666119E9, 18.358345872989382, 13.682065099354112  Passed  4.1479153390936646E9  4.1479153390936646E9  
+ 
+ 
+ 7.984716708616845E9, 64.3895524692775, 11.721898514122941  Passed  5.2177719601526985E9  5.2177719601526985E9  
+ 
+ 
+ 2.4042298818893364E8, 20.494151393102438, 11.662931514081114  Passed  2.1087793022248238E8  2.1087793022248238E8  
+ 
+ 
+ 2.47817639550108E9, 31.318728727639993, 4.746916867369422  Passed  1.8869476120139008E9  1.8869476120139008E9  
+ 
+ 
+ 4.996936228037295E9, 76.350585393411, 2.859257098792855  Passed  8.771406398414612E8  8.771406398414612E8  
+ 
+ 
+ 9.091314478993944E9, 73.72019169441944, 14.910274517646714  Passed  5.021464665017376E9  5.021464665017376E9  
+ 
+ 
+ 6.534539845041672E9, 19.66943408579149, 18.430553580116193  Passed  6.368859584591379E9  6.368859584591379E9  
+ 
+ 
+ 4.542526576450711E9, 1.0335515680986662, 8.7088215601534  Passed  3.9742590524736853E9  3.9742590524736853E9  
+ 
+ 
+ 5.731609554464256E9, 55.296680125977076, 9.85548832088176  Passed  4.0630873688946567E9  4.0630873688946567E9  
+ 
+ 
+ 4.131705055736418E9, 27.219588754580133, 1.2474141949261388  Passed  3.0485664096055565E9  3.0485664096055565E9  
+ 
+ 
+ 9.946869642678268E9, 48.44162556727712, 0.8045216547176959  Passed  6.184890790264513E9  6.184890790264513E9  
+ 
+ 
+ 7.646103454373939E9, 35.75761594507076, 9.255852306502309  Passed  6.152085516137515E9  6.152085516137514E9  
+ 
+ 
+ 1.2399359640902324E9, 21.754973004989843, 8.584996713113714  Passed  1.0367509662034758E9  1.0367509662034758E9  
+ 
+ 
+ 8.752555831912825E9, 6.513563246227915, 5.937716571674271  Passed  7.346699520425918E9  7.346699520425918E9  
+ 
+ 
+ 5.003354990872392E9, 60.52583214236826, 3.0768994063626303  Passed  2.677018883272023E9  2.677018883272023E9  
+ 
+ 
+ 3.422359995200295E9, 71.2152718023831, 12.874485296845062  Passed  1.8896318893266916E9  1.8896318893266916E9  
+ 
+ 
+ 2.598964065327838E9, 19.98726881332888, 6.039423486389426  Passed  2.1084758362879527E9  2.1084758362879527E9  
+ 
+ 
+ 5.320123952779625E9, 54.592690939724044, 14.717027072856984  Passed  4.404326866812755E9  4.404326866812755E9  
+ 
+ 
+ 9.121112259343814E8, 58.43234952883726, 12.412208453095609  Passed  6.747315338106012E8  6.747315338106012E8  
+ 
+ 
+ 8.73347408388608E9, 21.527597653311037, 2.057687306151056  Passed  6.6828386423538885E9  6.6828386423538885E9  
+ 
+ 
+ 7.983649183488454E9, 69.92054026418022, 0.5369999195981824  Passed  2.723905557982557E9  2.723905557982557E9  
+ 
+ 
+ 2.5365280222381577E9, 41.410442425386705, 4.255115000398136  Passed  1.801499923737706E9  1.801499923737706E9  
+ 
+ 
+ 6.983296107663028E9, 50.59368809971328, 2.1275415178144668  Passed  4.343450173783032E9  4.343450173783032E9  
+ 
+ 
+ 2.344918918375332E9, 42.75005208440239, 16.78683145431353  Passed  2.1587093435908976E9  2.1587093435908976E9  
+ 
+ 
+ 7.399319145857055E9, 30.02059818057305, 14.375326462116877  Passed  6.650835256310949E9  6.650835256310949E9  
+ 
+ 
+ 5.881222812389608E9, 75.93162131485185, 2.527945332233495  Passed  1.1107966650678055E9  1.1107966650678055E9  
+ 
+ 
+ 8.307698682448638E9, 4.501645030260655, 1.619685089469148  Passed  6.681151159353621E9  6.681151159353621E9  
+ 
+ 
+ 7.54288708241172E9, 67.20499050675615, 5.435686958195973  Passed  3.527547573675895E9  3.527547573675895E9  
+ 
+ 
+ 1.5368430181622431E9, 68.54515564435899, 15.871411208255633  Passed  1.1296803089283156E9  1.1296803089283156E9  
+ 
+ 
+ 9.134943958952156E9, 7.921538377594148, 19.086530927436954  Passed  9.020623256558752E9  9.020623256558752E9  
+ 
+ 
+ 4.268211084728977E9, 33.883890100775695, 16.764238716239326  Passed  3.9883653190501714E9  3.9883653190501723E9  
+ 
+ 
+ 2.0504570675327318E9, 57.965372527093386, 12.134115797400105  Passed  1.511046303240458E9  1.511046303240458E9  
+ 
+ 
+ 9.634234193425398E9, 45.744310960784944, 6.8380776872198386  Passed  6.960015936084612E9  6.960015936084612E9  
+ 
+ 
+ 2.175023147234453E9, 61.06222966380364, 1.6911366382143893  Passed  1.1058741354247205E9  1.1058741354247205E9  
+ 
+ 
+ 7.936850206636174E9, 32.87821242653537, 5.817766067939422  Passed  6.10071835835127E9  6.10071835835127E9  
+ 
+ 
+ 8.248795056362733E9, 49.34506157148808, 5.186719627461921  Passed  5.561385759768835E9  5.561385759768835E9  
+ 
+ 
+ 9.67568196780663E9, 75.08329950457731, 2.6425198581110316  Passed  2.1357656696461496E9  2.1357656696461496E9  
+ 
+ 
+ 1.100120128750106E9, 27.43423717733566, 18.10287486660254  Passed  1.0617992533001661E9  1.0617992533001661E9  
+ 
+ 
+ 8.326025367840853E9, 72.99754913143863, 9.591320108702227  Passed  3.3485811101434083E9  3.3485811101434083E9  
+ 
+ 
+ 9.297565596786016E9, 40.406362214946704, 2.980545136155373  Passed  6.502461308816779E9  6.502461308816779E9  
+ 
+ 
+ 6.143766427041953E9, 51.4754788380603, 11.120716840795613  Passed  4.685298692013166E9  4.685298692013166E9  
+ 
+ 
+ 3.549056262864414E9, 60.01081400760803, 12.929190463929928  Passed  2.6216835720184016E9  2.6216835720184016E9  
+ 
+ 
+ 9.81625034316587E9, 51.420138041621264, 16.93223413009082  Passed  8.864711165043602E9  8.864711165043602E9  
+ 
+ 
+ 2.7412011268608195E8, 7.306957997395385, 8.93608724200775  Passed  2.3791009262698826E8  2.3791009262698826E8  
+ 
+ 
+ 5.862888236790677E9, 72.832805442443, 17.780603413441227  Passed  4.476647594119693E9  4.476647594119693E9  
+ 
+ 
+ 4.822574642830569E9, 41.576085066556196, 17.30550386322547  Passed  4.506550545444533E9  4.506550545444533E9  
+ 
+ 
+ 3.8735230133727393E9, 65.78657777418557, 3.3508835264591132  Passed  1.783910864456067E9  1.783910864456067E9  
+ 
+ 
+ 7.913921699080601E9, 12.776200986665586, 14.457174701425274  Passed  7.311097453495468E9  7.311097453495468E9  
+ 
+ 
+ 1.2316974075493464E9, 5.9666997868706115, 15.917311076296672  Passed  1.1673234244669924E9  1.1673234244669924E9  
+ 
+ 
+ 9.098493722151285E9, 11.399584936008234, 7.862255956803612  Passed  7.7306747230645275E9  7.7306747230645275E9  
+ 
+ 
+ 7.3981094289717045E9, 20.239306056906333, 18.960172302662695  Passed  7.271584871539923E9  7.271584871539923E9  
+ 
+ 
+ 7.93505695834775E9, 12.134743969507358, 4.517965059878404  Passed  6.4610938858789835E9  6.4610938858789835E9  
+ 
+ 
+ 
+ 
+
+
+
+       
+Home  |   About TopCoder  |   Review Boards  |   Press Room  |   Contact Us  |   Privacy  |   Terms 
+Competition  |   Development  |   Software  |   Employment Services  |   Marketing Services 
+ 
+Copyright © 2001-2004, TopCoder, Inc. All rights reserved. 

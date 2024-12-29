@@ -1,0 +1,44 @@
+public class SquareDigits
+{
+	private int  S(int x)
+	{
+		int s;
+
+		s = 0;
+		while (x > 0)
+		{
+			s += (x%10)*(x%10);
+			x /= 10;
+		}
+		return s;
+	}
+
+	int[] T;
+	public int smallestResult(int n)
+	{
+		int x, x1;
+		// return smallest x such that T(x) contains n
+		T = new int[20000];
+		for (int i = 0; i < 20000; i++)
+		{
+			T[i] = 0;
+		}
+		for (x = 0; x < 100000; x++)
+		{
+			// generate T(x), and if T(x) contains n then return x. If T(x) starts to repeat before n, then stop
+			T[x] = 1;
+			x1 = S(x);
+			while (T[x1] == 0 && x1 != n)
+			{
+				T[x1] = 1;
+				x1 = S(x1);
+			}
+			if (x1 == n)
+			{
+				return x;
+			}
+		}
+		return x;
+	}
+
+}

@@ -1,0 +1,15 @@
+Since you said (in the other post) that you already read tutorials and code, it's hard to know what else to tell you. So, if can more clearly specify which parts you are having trouble understanding, people might be able to help on that.
+
+Anyway, let me take a crack at it. First off, here is a practice problem: http://www.spoj.pl/problems/SEQ/
+ 
+A simple example is the Fibonacci sequence:
+
+a[n] = a[n-1]+a[n-2]
+a[1] = 1
+a[0] = 1
+
+In general, a linear recurrence allows a[n] to be defined as a linear combination of several of the previous terms a[n-1], a[n-2], etc. And of course when you do this, you also have to define the initial terms of the series. So, given a sequence a0,a1,a2...,a[n-1],a[n] defined as follows:
+
+a[n] = b[n], for 0 <= n < r  (b[i] are the initial values of the series)
+a[n] = c[0]*a[n-1]+c[1]*a[n-2]+...+c[r-1]*a[n-r]  for n >= r (this is the recurrence)
+

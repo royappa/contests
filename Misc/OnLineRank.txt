@@ -1,0 +1,63 @@
+
+	public int calcRanks(int k, int[] scores)
+	{
+		int sum = 0;
+		for (int i = 0; i < scores.length; i++)
+		{
+			int numb = 0;
+			int p = i-1;
+			while (p >= 0 && p >= i-k)
+			{
+				if (scores[p--] > scores[i])
+					numb++;
+			}
+			sum += numb+1;
+		}
+		
+		return sum;
+	}
+
+Problem Statement
+    
+Proposals arrive at our office in a sequence. We give each one a score. We then calculate its "rank" based on comparison with the scores of the most recent submissions. Its rank is 1 + the number of recent scores that are greater than it. So a rank of 1 is the best possible rank and indicates that no recent score was greater. A rank of 2 would mean that exactly one recent score was greater. We need software that can calculate the rank of each score.
+
+Create a class OnLineRank that contains a method calcRanks that is given k, the number of recent scores to use in each rank calculation, and int[] scores, the sequence of scores of the arriving proposals. The method should calculate the rank for each score and return the sum of all the ranks.
+Each rank should be calculated based on the preceding k scores. If fewer than k scores have preceded this score, base the calculation on all the preceding scores. (The first proposal is thus guaranteed a rank of 1.)
+Definition
+    
+Class:
+OnLineRank
+Method:
+calcRanks
+Parameters:
+int, int[]
+Returns:
+int
+Method signature:
+int calcRanks(int k, int[] scores)
+(be sure your method is public)
+    
+
+Constraints
+-
+k will be between 1 and 100 inclusive.
+-
+scores will contain between 1 and 50 elements inclusive.
+-
+Each element of scores will be between 0 and 1000 inclusive.
+Examples
+0)
+
+    
+3
+{6,9,8,15,7,12}
+Returns: 11
+The 6 is the first score and earns a rank of 1. The 9 is compared with the 6, which does not exceed it, so it earns a rank of 1. The 8 is compared with the 6 and 9, and is beaten by the 9, so it earns a rank of 2. The 15 is compared with 6, 9, and 8, and earns a rank of 1. The 7 is compared with 9, 8, and 15, but not with 6, which is not recent. Its rank is 4. The 12 is beaten by the 15, earning a rank of 2. 1+1+2+1+4+2 = 11
+1)
+
+    
+80
+{3,3,3,3,3,3,3}
+Returns: 7
+No score is exceeded by even one of its predecessors, so each of the seven scores earns a rank of 1.
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

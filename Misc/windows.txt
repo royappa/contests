@@ -1,0 +1,202 @@
+	private int atoi(String s) { return Integer.parseInt(s); }
+
+	private int clip(int coord, int max)
+	{
+		if (coord < 0)
+			return 0;
+		if (coord > max)
+			return max;
+		return coord;
+	}
+	private boolean inside (int r, int c, int width, int height)
+	{
+		return (r >= 0 && r < width && c >= 0 && c < height);
+	}
+	private boolean between(int x, int min, int max)
+	{
+		return x >= min && x <= max;
+	}
+	private boolean outside(int tlv, int tlh, int vs, int hs, int width, int height)
+	{
+		if (inside(tlv,tlh,width,height) || inside(tlv+vs-1,tlh,width,height) || 
+				  inside(tlv+vs-1,tlh+hs-1,width,height) || inside(tlv,tlh+hs-1,width,height))
+			return false;
+		int minr = tlv, minc = tlh, maxr = tlv+vs-1, maxc = tlh+hs-1;
+		if (between(0, minr, maxr) && between(0, minc, maxc))
+			return false;
+		if (between(height-1, minr, maxr) && between(0, minc, maxc))
+			return false;
+		if (between(height-1, minr, maxr) && between(width-1, minc, maxc))
+			return false;
+		if (between(0, minr, maxr) && between(width-1, minc, maxc))
+			return false;
+		return true;
+	}
+	private void draw(char[][] screen, int r, int c, int tlv, int tlh, int vs, int hs, char ch)
+	{
+		char dch = ch;
+		if ( (r == tlv && c == tlh) || (r == tlv && c == tlh+hs-1) ||
+		     (r == tlv+vs-1 && c == tlh) || (r == tlv+vs-1 && c == tlh+hs-1))
+		{
+			dch = '+';
+		}
+		else if ( r == tlv || r == tlv+vs-1)
+		{
+			dch = '-';
+		}
+		else if (c == tlh || c == tlh+hs-1 )
+		{
+			dch = '|';
+		}
+		screen[r][c] = dch;
+	}
+	
+	public String[] screen(int height, int width, String[] windows)
+	{
+		char[][] screen = new char[100][100];
+		for (int i = 0; i < 100; i++)
+		{
+			Arrays.fill(screen[i], ' ');
+		}
+		for (int i = 0; i < windows.length; i++)
+		{
+			String[] w = windows[i].split(" ");
+			int tlv = atoi(w[0]);
+			int tlh = atoi(w[1]);
+			int vs = atoi(w[2]);
+			int hs = atoi(w[3]);
+			if (outside(tlv,tlh,vs,hs,width,height))
+				continue;
+			char ch = windows[i].charAt(windows[i].length()-1);
+			int ulr = clip(tlv, height-1);
+			int ulc = clip(tlh, width-1);
+			int lrr = clip(tlv+vs-1, height-1);
+			int lrc = clip(tlh+hs-1, width-1);
+			//System.out.println(ulr + " " + ulc + " " + lrr + " " + lrc);
+			for (int r = ulr; r <= lrr; r++)
+			{
+				for (int c = ulc; c <= lrc; c++)
+				{
+					draw(screen, r, c, tlv, tlh, vs, hs, ch);
+				}
+			}
+		}
+		String[] result = new String[height];
+		for (int r = 0; r < height; r++)
+		{
+			result[r] = new String(screen[r]);
+			result[r] = result[r].substring(0, width);
+		}
+		return result;
+	}
+	
+	
+Problem Statement
+    
+You are debugging a window manager for a GUI that uses a fixed character size, and a screen that is a rectangular grid of these characters. To that end, you are making it create various overlapping windows to test whether the display code works correctly.
+
+The screen has width width and height height. 
+
+Initially, each character in the screen is a space (' ', or ASCII value 32). The elements of windows represent the windows that you are creating, in order of their creation, where the earliest-created windows come first in windows. A window consists of a frame and a fill character, shown below:
++----+ 
+|XXXX| 
+|XXXX| 
++----+ 
+The corners of the frame are '+', the top and bottom are '-', the left and right are '|', and the interior of the window is filled with some character (here 'X'). 
+
+Each element in windows will be of the form "tlv tlh vs hs fill", 
+
+where each field is separated by a single space. tlv and tlh will be 32-bit integers between -100000000 and 100000000, inclusive, representing the vertical and horizontal offsets from the top-left of the screen. 
+
+A positive vertical offset is downwards, and a positive horizontal offset is to the right. vs and hs represent the vertical and horizontal size of the window, and will each be between 2 and 100000000, inclusive. 
+
+fill represents the character that will go in the center of the window. 
+
+Note that if vs, hs, or both are equal to 2, then the fill character does not appear because the frame takes up all the allotted space for the window. 
+
+If the picture drawn earlier represented the entirety of the screen, then the window shown would be represented by the String "0 0 4 6 X" (quotes for clarity).
+
+If one window is created that would intersect another window, the later window will appear over the earlier window. 
+
+That is, any part of the earlier-created window that intersects a later-created window is hidden. 
+
+Windows may also be drawn partially or completely off-screen.
+
+You wish to find what the window manager should show given some sequence of windows. 
+
+Your method should return a String[] such that the first element, from left to right, represents the first row of the screen, the second element is the second row, and so on. 
+
+This returned String[] should contain exactly height elements, and each element should contain exactly width characters.
+Definition
+    
+Class:
+WindowManager
+Method:
+screen
+Parameters:
+int, int, String[]
+Returns:
+String[]
+Method signature:
+String[] screen(int height, int width, String[] windows)
+(be sure your method is public)
+    
+
+Constraints
+-
+width will be between 1 and 100, inclusive
+-
+height will be between 1 and 100, inclusive
+-
+width * height will not exceed 8000.
+-
+windows will contain between 1 and 50 elements, inclusive
+-
+each element of windows will be of the form "tlv tlh vs hs fill" as explained in the problem statement
+-
+tlv and tlh will be between -100000000 and 100000000, inclusive, with no leading zeros.
+-
+vs and hs will be between 2 and 100000000, inclusive, with no leading zeros.
+-
+fill will be an ASCII character with value between 33 and 126, inclusive, that is also not '+', '-', or '|'
+Examples
+0)
+
+    
+4
+6
+{"-5 -5 20 20 O", "0 0 2 2 Y", "0 0 4 6 X"}
+Returns: { "+----+",  "|XXXX|",  "|XXXX|",  "+----+" }
++----+ |XXXX| |XXXX| +----+ A full-screen window completely covering up two others.
+1)
+
+    
+7
+7
+{"-5 -5 20 12 9", "2 2 15 15 @", "2 2 3 3 *"}
+Returns: 
+{ "999999|",
+  "999999|",
+  "99+-+--",
+  "99|*|@@",
+  "99+-+@@",
+  "99|@@@@",
+  "99|@@@@" }
+
+2)
+
+    
+1
+1
+{"-20000 -20000 5 5 X"}
+Returns: { " " }
+Note two things: windows may be completely off-screen, and the default character for any grid location is a space.
+3)
+
+    
+5
+5
+{"-1000000 -1000000 2000000 2000000 L"}
+Returns: { "LLLLL",  "LLLLL",  "LLLLL",  "LLLLL",  "LLLLL" }
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

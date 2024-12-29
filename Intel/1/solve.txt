@@ -1,0 +1,61 @@
+// Find one solution - any solution, using some rough heuristics
+vector<string> solve()
+{
+	int pos[MAX_P];
+	vector<string> schedule;
+	int used[MAX_N][MAX_N];
+	int unreached[MAX_P];
+	int numLeft = NP;
+
+	for (int i = 0; i < NP; i++)
+	{
+		unreached[i] = i;
+		pos[i] = src[i];
+	}
+
+	while (numLeft > 0) // While some packages not reached
+	{
+		memset(used, 0, sizeof(used)); // initially in this step, all edges are free
+		int i = 0;
+		while (i < numLeft) // For each unreached packet
+		{
+			bool reached = false;
+			int pi = unreached[i];
+			int vpi = pos[pi]; // current vertex where packet pi is located
+			int nbr = nbrCount[vpi];
+			for (int j = 0; j < nbr; j++)
+			{
+				int vn = adjL[vpi][j]; // neighbor
+				if (S[vn][dst[pi]] < S[vpi][dst[pi]] && !used[vpi][vn]) // this neighbor is closer then current vertex (although not necessarily best path)
+				{
+					used[vpi][vn] = used[vn][vpi] = 1;
+					pos[pi] = vn;
+					if (vn == dst[pi])
+					{
+						unreached[i] = unreached[numLeft-1];
+						reached = true;
+					}
+					break; // routed this packet
+				}
+			}
+			i++;
+			if (reached) // this packet reached
+			{
+				i--;
+				numLeft--;
+			}
+		}
+		// Update schedule
+		string s = "";
+		for (int i = 0; i < NP; i++)
+		{
+			char buf[100];
+			sprintf(buf, "%d", pos[i]);
+			if (i > 0)
+				s += " ";
+			s += buf;
+		}
+		schedule.push_back(s);
+	}
+	return schedule;
+}

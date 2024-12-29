@@ -1,0 +1,96 @@
+string minimum(vector <string> w) 
+{
+	string r = "";
+	while (w.size() > 0)
+	{
+		sort(w.begin(), w.end());
+		r += w[0][0];
+		w[0] = w[0].substr(1);
+		if (w[0].size() == 0)
+		{
+			w.erase(w.begin());
+		}
+	}
+	return r;
+}
+
+Problem Statement
+    
+A string S is an interspersal of a set of strings W, if W is a set of disjoint subsequences of S which cover S. Less formally, S can be formed from W by partitioning each member of W into substrings, then concatenating all the substrings, while maintaining the order of the substrings within each element of W. For example, if W contains the strings {"DESIGN", "ALGORITHM", "MARATHON"}, then one possible interspersal would be "ADELGMAORARISIGNTHMTHON", formed as shown below.
+
+  DE         SIGN
+ A  LG  O  RI    THM
+      MA RA         THON
+ -----------------------
+ ADELGMAORARISIGNTHMTHON 
+ 
+Given a vector <string> W, return the lexicographically minimum interspersal of the strings in W
+Definition
+    
+Class:
+StringInterspersal
+Method:
+minimum
+Parameters:
+vector <string>
+Returns:
+string
+Method signature:
+string minimum(vector <string> W)
+(be sure your method is public)
+    
+
+Notes
+-
+The lexicographically minimum of two strings is the one with the alphabetically earlier character at the first position at which they differ.
+-
+The return string will contain no more than 1000 characters.
+Constraints
+-
+W will contain between 1 and 20 elements, inclusive.
+-
+Each element of W will contain between 1 and 50 uppercase letters ('A'-'Z'), inclusive.
+Examples
+0)
+
+    
+{"DESIGN","ALGORITHM","MARATHON"}
+Returns: "ADELGMAORARISIGNTHMTHON"
+The example from the problem statement.
+1)
+
+    
+{"TOMEK","PETR","ACRUSH","BURUNDUK","KRIJGERTJE"}
+Returns: "ABCKPERIJGERRTJETOMEKTRURUNDUKUSH"
+
+2)
+
+    
+{"CCCA","CCCB","CCCD","CCCE"}
+Returns: "CCCACCCBCCCCCCDE"
+
+3)
+
+    
+{"BKSDSOPTDD","DDODEVNKL","XX","PODEEE","LQQWRT"}
+Returns: "BDDKLODEPODEEEQQSDSOPTDDVNKLWRTXX"
+
+4)
+
+    
+{"TOPCODER","BETFAIR","NSA","BT","LILLY"}
+Returns: "BBELILLNSATFAIRTOPCODERTY"
+
+5)
+
+    
+{"QITHSQARQV","BYLHVGMLRY","LKMAQTJEAM","AQYICVNIKK","HKGZZFFEWC"}
+Returns: "ABHKGLKMAQIQQTHSQARQTJEAMVYICVNIKKYLHVGMLRYZZFFEWC"
+
+6)
+
+    
+{"XHCYBTUQUW","EKBISADSSN","LOOISPOFAK","MIXBDHPJUQ","BNMNDHMOTC"}
+Returns: "BEKBILMINMNDHMOOIOSADSPOFAKSSNTCXBDHPJUQXHCYBTUQUW"
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

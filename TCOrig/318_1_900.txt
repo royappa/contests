@@ -1,0 +1,92 @@
+int findArea(vector <int> L) 
+{
+	int n = L.size();	
+	int s = accumulate(L.begin(), L.end(), 0);
+	
+	int maxArea = int(ceil(double(s/4.0)*double(s/4.0));
+	
+				
+	for (int m = maxArea; m >= 1; m--) // 1600
+	{
+		for (each pair of factors x, y of m) // sqrt(1600) = 40
+		{
+			if (possible to make 2 x's and 2 y's out of the sticks)
+			{
+				return m;
+			}
+		}
+	}
+	return -1;
+	
+}
+
+
+
+	
+// is it possible to make 2 x's and 2 y's out of the sticks?
+
+1. build a table, for every length {1..sum(L)}, of all the subsets of sticks that can make that length (masks).
+2. check if there are 4 non-overlapping subsets which can make x,x,y,y. This is O(160^4) but seems highly unlikely
+Problem Statement
+    
+Little Josh has found several sticks of various lengths. He wants to form a rectangle with the biggest possible area, using these sticks as the perimeter. He is allowed to glue sticks together, but he is not allowed to break single sticks into multiple shorter sticks. Sticks may only be glued together at their endpoints, so a stick of length 2 and a stick of length 3 can only be glued together to form a stick of length 5.
+For example, if Josh has sticks with lengths {1, 3, 3, 4, 5, 7}, he can create a 3 x 5 rectangle using the two sticks of length 3, the stick of length 5, and the sticks of lengths 1 and 4 glued together. This rectangle has an area of 15 square inches, which is the biggest area that can be achieved with these sticks.
+You will be given a vector <int> lengths containing the lengths of the sticks in inches. Return the maximal area (in square inches) of a rectangle that can be created using these sticks. If it is impossible to form a rectangle, return -1.
+Definition
+    
+Class:
+BiggestRectangleHard
+Method:
+findArea
+Parameters:
+vector <int>
+Returns:
+int
+Method signature:
+int findArea(vector <int> lengths)
+(be sure your method is public)
+    
+
+Constraints
+-
+lengths will contain between 4 and 16 elements, inclusive.
+-
+Each element of lengths will be between 1 and 10, inclusive.
+Examples
+0)
+
+    
+{1, 3, 3, 4, 5, 7}
+Returns: 15
+The example from the problem statement.
+1)
+
+    
+{9, 9, 5, 6, 2, 10}
+Returns: -1
+It is impossible to create a rectangle using these sticks.
+2)
+
+    
+{3, 4, 7, 8, 10, 2, 9}
+Returns: 70
+The best rectangle is 7x10.
+3)
+
+    
+{9, 2, 7, 9, 4, 9, 7, 10, 3}
+Returns: 224
+The best rectangle is 14x16.
+4)
+
+    
+{9, 9, 10, 7, 7, 8, 7, 5, 8, 6, 9, 7, 7, 10, 9, 6}
+Returns: 961
+The best rectangle is a square 31x31.
+5)
+
+    
+{2, 6, 4, 10, 2, 8, 1, 8, 2, 1, 4, 8, 10}
+Returns: 272
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

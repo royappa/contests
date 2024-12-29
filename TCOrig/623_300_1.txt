@@ -1,0 +1,154 @@
+public:
+int NA[20][20][20][20], NP[20][20][20][20], NE[20][20][20][20];
+int getBoard(vector <string> v, int K) 
+{
+	memset(NA, 0, sizeof(NA));
+	memset(NP, 0, sizeof(NP));
+	memset(NE, 0, sizeof(NE));
+	int nr = v.size(), nc = v[0].size();
+	for (int i = 0; i < nr; i++)
+	{
+		for (int j = 0; j < nc; j++)
+		{
+			for (int ii = i; ii < nr; ii++)
+			{
+				for (int jj = j; jj < nc; jj++)
+				{
+					for (int iii = i; iii <= ii; iii++)
+					{
+						for (int jjj = j; jjj <= jj; jjj++)
+						{
+							if (v[iii][jjj] == 'A')
+								NA[i][j][ii][jj]++;
+							else if (v[iii][jjj] == 'P')
+								NP[i][j][ii][jj]++;
+							else
+								NE[i][j][ii][jj]++;
+						}
+					}
+				}
+			}
+		}
+	}
+	int NAT = NA[0][0][nr-1][nc-1];
+	int NPT = NP[0][0][nr-1][nc-1];
+	int NET = NE[0][0][nr-1][nc-1];
+
+	int best = 0;
+	for (int i = 0; i < nr; i++)
+	{
+		for (int j = 0; j < nc; j++)
+		{
+			for (int ii = i; ii < nr; ii++)
+			{
+				for (int jj = j; jj < nc; jj++)
+				{
+					int NAI = NA[i][j][ii][jj];
+					int NPI = NP[i][j][ii][jj];
+					int NEI = NE[i][j][ii][jj];
+					int NAO = NAT-NAI;
+					int NPO = NPT-NPI;
+					int NEO = NET-NEI;
+					int tot = (ii-i+1)*(jj-j+1);
+					if (NAO >= NPI+NEI && NPI <= NEO && NPI+NEI <= K)
+						best = max(best, tot);
+				}
+			}
+		}
+	}
+	return best;
+}
+
+
+Problem Statement
+    
+A square board is divided into N rows by N columns of unit square cells. Some cells of the board are empty. Each of the other cells contains either an apple or a pear. You are given the current state of the board as a vector <string> board. In board, the character '.' denotes an empty cell, 'A' denotes an apple, and 'P' denotes a pear.  You are allowed to perform at most K moves. In each move, you can pick up one fruit (an apple or a pear) and place it onto any empty cell. (The new cell doesn't have to be adjacent to the old one.) Note that you cannot remove fruit from the board, you are only allowed to move it onto different cells.  A rectangular section of the board is called uniform if each cell in the rectangle contains an apple. After you are done moving the fruit, you want to have a uniform rectangle that is as large as possible somewhere on the board. Return the largest possible area of such a rectangle. If there are no apples, return 0.
+Definition
+    
+Class:
+UniformBoard
+Method:
+getBoard
+Parameters:
+vector <string>, int
+Returns:
+int
+Method signature:
+int getBoard(vector <string> board, int K)
+(be sure your method is public)
+Limits
+    
+Time limit (s):
+2.000
+Memory limit (MB):
+256
+Constraints
+-
+N will be between 1 and 20, inclusive.
+-
+board will contain exactly N elements.
+-
+Each element of board will contain exactly N characters.
+-
+Each character in board will be '.', 'A', or 'P'.
+-
+K will be between 0 and 1000, inclusive.
+Examples
+0)
+
+    
+{"AP",
+ ".A"}
+0
+Returns: 1
+You cannot move anything. The largest uniform rectangle on the board is a 1x1 rectangle that consists of a single cell with an apple.
+1)
+
+    
+{"AP",
+ ".A"}
+1
+Returns: 2
+You are allowed to make one move. You can move one of the apples onto the currently empty cell, thus creating a 1x2 rectangle of apples.
+2)
+
+    
+{"PPP",
+ "APA",
+ "A.P"}
+2
+Returns: 3
+In three moves you can create a 1x3 rectangle of apples.
+3)
+
+    
+{"AAA",
+ "PPP",
+ "AAA"}
+10
+Returns: 3
+You are allowed to make at most 10 moves. However, you cannot make any moves because there are no empty cells.
+4)
+
+    
+{"."}
+1000
+Returns: 0
+
+5)
+
+    
+{"PPAAPA..AP",
+ "PPA.APAP..",
+ "..P.AA.PPP",
+ "P.P..APAA.",
+ "P.P..P.APA",
+ "PPA..AP.AA",
+ "APP..AAPAA",
+ "P.P.AP...P",
+ ".P.A.PAPPA",
+ "..PAPAP..P"}
+10
+Returns: 15
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

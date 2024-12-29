@@ -1,0 +1,287 @@
+import java.util.*;
+public class Centipede
+{
+	private boolean segmentsOnScreen(char[][] s, int h, int w)
+	{
+		for (int r = 0; r < h; r++)
+			for (int c = 0; c < w; c++)
+				if (s[r][c]=='x')
+					return true;
+		return false;
+	}
+	private void move(char[][] s, int h, int w, int[] cr, int[] cc, int[] cd)
+	{
+		for (int r = 0; r < h; r++)
+			for (int c = 0; c < w; c++)
+				s[r][c] = (s[r][c]=='x') ? ' ' : s[r][c];
+		for (int i = 0; i < 10; i++)
+		{
+			// move segment i
+			if (cd[i] == 1) 
+			{
+				if (cr[i] == h)
+				{
+					continue;
+				}
+				else if (s[cr[i]][cc[i]+1] == ' ')
+				{
+					cc[i]++;
+				}
+				else if (cr[i] == h-1)
+				{
+					cr[i] = h;
+				}
+				else if (s[cr[i]+1][cc[i]] == ' ')
+				{
+					cr[i]++;
+					cd[i] = 1 - cd[i];
+				}
+				else
+				{
+					cd[i] = 1 - cd[i];
+				}
+			}
+			else // move left
+			{
+				if (cr[i] == h)
+				{
+					continue;
+				}
+				else if (s[cr[i]][cc[i]-1] == ' ')
+				{
+					cc[i]--;
+				}
+				else if (cr[i] == h-1)
+				{
+					cr[i] = h;
+				}
+				else if (s[cr[i]+1][cc[i]] == ' ')
+				{
+					cr[i]++;
+					cd[i] = 1 - cd[i];
+				}
+				else
+				{
+					cd[i] = 1 - cd[i];
+				}
+			}
+		}
+		for (int i = 0; i < 10; i++)
+		{
+			if (cr[i] < h)
+			{
+				s[cr[i]][cc[i]] = 'x';
+			}
+		}
+	}
+	public String[] simulate(String[] screenLayout, int timeUnits)
+	{
+		// simulate to end of one cycle. generate screens at t=0,1,...
+		// return screens[timeUnits%(t+1)]
+		ArrayList screens = new ArrayList();
+		int[] cr = new int[10];
+		int[] cc = new int[10];
+		int[] cd = new int[10];
+		
+		int t = 0;
+		int h = screenLayout.length;
+		int w = screenLayout[0].length();
+		char[][] screen1 = new char[h][w];
+		for (int r = 0; r < h; r++)
+			for (int c = 0; c < w; c++)
+				screen1[r][c] = screenLayout[r].charAt(c);
+		
+		for (int i = 0; i < 10; i++)
+		{
+			cr[i] = 0;
+			cc[i] = i+1;
+			cd[i] = 1;
+			screen1[0][i+1] = 'x';
+		}
+		while (segmentsOnScreen(screen1, h, w))
+		{
+			char[][] screen1Copy = new char[h][w];
+			for (int r = 0; r < h; r++)
+				for (int c = 0; c < w; c++)
+					screen1Copy[r][c] = screen1[r][c];
+			screens.add(screen1Copy);
+			t++;
+			move(screen1, h, w, cr, cc, cd);
+		}
+		
+		char[][] fc =  (char[][]) screens.get(timeUnits % t);
+		String[] result = new String[h];
+		for (int r = 0; r < h; r++)
+		{
+			result[r] = new String(fc[r]);
+System.out.println(result[r]);
+		}
+
+		return result;
+	}
+}
+
+Problem Statement
+    
+Centipede is a classic computer game where the main feature is a centipede moving horizontally across the screen. When it bumps into an obstacle, it changes direction and moves down one row. The centipede consist of 10 segments. The first segment is the head, while the remaining segments make up the tail. The second segment will be located where the head was one time unit ago, the third segment where it was two time units ago, etc. Several segments might share the same location at the same time, see example 0.
+
+When the centipede starts (at time 0), or has just completed a cycle (see below), it will occupy the leftmost 10 free squares in the first row. The head is in the rightmost of these squares, and the horizontal direction is right. Every time unit, the centipede moves one square in its current horizontal direction if possible. If this is not possible due to an obstacle, it moves one square down and changes direction (from right to left or from left to right). If this isn't possible either, it only changes direction (and doesn't move horizontally at all, see example 0).
+
+When the centipede bumps into an obstacle on the last row, it will move down out of the screen. In the same time unit as the last segment leaves the screen, the whole centipede will reappear on the first row. We say that the centipede has completed a cycle, and that the time unit when this happens for the first time is the cycle length. You may assume that given enough time, the centipede will always be able to complete a cycle. That is, it will never get stuck.
+
+Given a screen layout containing where the obstacles are, you are to compute the location of the centipede after a given number of time units. This number may be very big, see example 4. Obstacles are marked with a '#' on the layout. The first and last column in each row will always be an obstacle, and the first row will contain no other obstacle. 
+
+Below to the left is an example of a screen layout (quotes for clarity only), while below to the right is the same layout with a centipede trace, marking all the squares that some part of the centipede will visit.
+"#                #"            "xxxxxxxxxxxxxxxxx"
+"# #      #       #"            " #      #xxxxxxxx"
+"#   #    #   #   #"            "   #    #xxx#    "
+"#           #    #"            "         xx#     "
+"#   ##         # #"            "   ##xxxxxx   #  "
+"# #      ##      #"            " #   xxx##       "
+"#    #           #"            "    #xxx         "
+"#                #"            "     xxxxxxxxxxxx"
+Create a class Centipede containing the method simulate which takes a String[] screenLayout containing the layout in the format described above, and an int timeUnits, the number of time units to simulate. The method should return a String[] containing the same layout, except that the squares which are occupied by a centipede segment after timeUnits time units should be changed to a lowercase 'x'.
+Definition
+    
+Class:
+Centipede
+Method:
+simulate
+Parameters:
+String[], int
+Returns:
+String[]
+Method signature:
+String[] simulate(String[] screenLayout, int timeUnits)
+(be sure your method is public)
+    
+
+Notes
+-
+Several segments might share the same location at the same time, see example 0.
+Constraints
+-
+screenLayout will contain between 1 and 50 elements, inclusive.
+-
+Each element in screenLayout will contain between 12 and 50 characters, inclusive.
+-
+All elements in screenLayout will contain the same number of characters.
+-
+Each element in screenLayout will only contain the characters ' ' and '#'.
+-
+The first and last character in each element in screenLayout will be '#'.
+-
+All characters in the first element in screenLayout, except for the first and last, will be ' '.
+-
+If given enough time, the centipede will be able to complete a cycle.
+-
+timeUnits will be between 0 and 1000000000 (a billion), inclusive.
+Examples
+0)
+
+    
+{"#                #",
+ "# #      #       #",
+ "#   #    #   #   #",
+ "#           #    #",
+ "#   ##         # #",
+ "# #      ##      #",
+ "#    #           #",
+ "#                #"}
+24
+Returns: 
+{ "#                #",
+  "# #      #       #",
+  "#   #    #xxx#   #",
+  "#         xx#    #",
+  "#   ##   xxx   # #",
+  "# #      ##      #",
+  "#    #           #",
+  "#                #" }
+This is the map shown in the problem statement. Note that only 8 segments of the centipede are visible. This is because on row 3 the centipede changes direction without moving down a row and thus overlaps itself.
+1)
+
+    
+{"#          #",
+ "#          #"}
+16
+Returns: { "#          #",  "#xxxx      #" }
+Only the last four segments are visible here.
+2)
+
+    
+{"#            #",
+ "#     #      #",
+ "#            #"}
+24
+Returns: { "#xxxxxxxxxx  #",  "#     #      #",  "#            #" }
+The centipede has just finished its first cycle and appears at its starting position again.
+3)
+
+    
+{"#                        #",
+ "#      #                 #",
+ "#                 #      #",
+ "#  ##    #               #",
+ "#              #    #    #",
+ "#     #                  #",
+ "#       #          #     #",
+ "#          #             #",
+ "#              #         #"}
+74607
+Returns: 
+{ "#                        #",
+  "#      #                 #",
+  "#                 #      #",
+  "#  ##    #               #",
+  "#              #    #    #",
+  "#     #xxxxxxx           #",
+  "#      x#          #     #",
+  "#     xx   #             #",
+  "#              #         #" }
+The cycle length is 94 here, so in 74607 time units the centipede will have completed 793 cycles and have moved 65 time units in the current cycle.
+4)
+
+    
+{"#                            #",
+ "#   #     # # #           # ##",
+ "#   #       #                #",
+ "#                          # #",
+ "#                   #        #",
+ "##    #           #        # #",
+ "#    #    #   #              #",
+ "#  #    #  #          #      #",
+ "#     #   #       #          #",
+ "#                            #",
+ "#     #        #         #   #",
+ "#   ###          #        #  #",
+ "#           ##             # #",
+ "#                     #      #",
+ "##           #               #",
+ "#     #     #   #     # #    #",
+ "#          #  ##   #         #",
+ "#                    #       #",
+ "#                    #  #    #"}
+598273167
+Returns: 
+{ "#                            #",
+  "#   #     # # #           # ##",
+  "#   #       #                #",
+  "#                          # #",
+  "#                   #        #",
+  "##    #           #        # #",
+  "#    #    #   #              #",
+  "#  #    #  #          #      #",
+  "#     #   #       #          #",
+  "#                         xxx#",
+  "#     #        #         #xxx#",
+  "#   ###          #        # x#",
+  "#           ##             # #",
+  "#                     #      #",
+  "##           #               #",
+  "#     #     #   #     # #    #",
+  "#          #  ##   #         #",
+  "#                    #       #",
+  "#                    #  #    #" }
+Watch out for time out!
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

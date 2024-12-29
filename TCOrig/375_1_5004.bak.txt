@@ -1,0 +1,199 @@
+#define MAX_DIST (1<<30)
+
+int A[50][50];
+
+int pos(char ch)
+{
+	if (isupper(ch))
+		ch = tolower(ch);
+	if (isalpha(ch))
+		return ch-'a';
+	else if (isdigit(ch))
+		return 26+(ch-'0');
+	else
+		return 36;
+}
+
+void fillHor(string s)
+{
+	for (int i = 0; i < int(s.size())-1; i++)
+	{
+		int pa = pos(s[i]), pb = pos(s[i+1]);
+		A[pa][pb] = 1;
+	}
+	return;
+}
+
+void fillVert(string a, string b)
+{
+	if (a.size() != b.size())
+	{
+		cout << "ERROR";
+		return;
+	}
+	for (int i = 0; i < a.size(); i++)
+	{
+		A[pos(a[i])][pos(b[i])] = 1;
+	}
+}
+
+void floyd()
+{
+	for (int i = 0; i < 50; i++)
+		for (int j = 0; j < 50; j++)
+			A[i][j] = MAX_DIST;
+			
+	for (int i = 0; i < 50; i++)
+	{
+		A[i][i] = 0;
+	}
+	fillHor("1234567890");
+	fillHor("qwertyuiop");
+	fillHor("asdfghjkl");
+	fillHor("zxcvbnm");
+	fillR("1234567890", "qwertyuiop");
+	fillR("234567890", "qwertyuio");
+	fillR("qwertyuio", "asdfghjkl");
+	fillR("wertyuiop", "asdfghjkl");
+	fillVert("asdfghj",   "zxcvbnm");
+	fillVert("sdfghjk",   "zxcvbnm");
+	A[pos('x')][pos(' ')] = 3;
+	A[pos('c')][pos(' ')] = 3;
+	A[pos('v')][pos(' ')] = 3;
+	A[pos('b')][pos(' ')] = 3;
+	A[pos('n')][pos(' ')] = 3;
+	A[pos('m')][pos(' ')] = 3;
+	for (int i = 0; i < 50; i++)
+	{
+		for (int j = 0; j < 50; j++)
+		{
+			if (A[i][j] != MAX_DIST)
+			{
+				A[j][i] = A[i][j];
+			}
+		}
+	}
+	for (int k = 0; k < 50; k++)
+	{
+		for (int i = 0; i < 50; i++)
+		{
+			for (int j = 0; j < 50; j++)
+			{
+				A[i][j] = min(A[i][j]==MAX_DIST?MAX_DIST:A[i][j], (A[i][k]==MAX_DIST||A[k][j]==MAX_DIST)?MAX_DIST:A[i][k]+A[k][j]);
+			}
+		}
+	}
+	return;
+}
+	
+int dist(string a, string b)
+{
+	if (a.size() != b.size())
+		return MAX_DIST;
+	
+	int sum = 0;
+	for (int i = 0; i < a.size(); i++)
+	{
+		int pa = pos(a[i]), pb = pos(b[i]);
+		sum += A[pa][pb];
+	}
+	return sum;
+}
+		
+string correctDate(string input) 
+{
+	char *mo[] = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
+	vector<string> months;
+	for (int i = 0; i < 12; i++)
+	{
+		months.push_back(mo[i]);
+	}
+	int days[] = {31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+	
+	floyd();
+	
+	string best = "";
+	for (int m = 0; m < 12; m++)
+	{
+		for (int d = 1; d <= days[m]; d++)
+		{
+			char buf[100];
+			sprintf(buf, "%s %d", months[i].c_str(), d);
+			string t = buf;
+			if (best == "" || dist(input, t) < dist(best, t))
+			{
+				best = t;
+			}
+		}
+	}
+	return best;
+}
+Problem Statement
+    
+An application you're working on contains an input text field where a user types in a date.
+The user is instructed to type in a date in the form "<Month> <Day>" (quotes for clarity), where <Month> is the English name of the month ("January", "February", etc.) and <Day> is the day of the month, without leading zeroes.
+However, a user can make errors when typing. The following model is suggested: the user always presses the correct number of keys, but he or she can mistype one key for another. Let's define the penalty for a typing error as the length of the shortest path between the key that was actually pressed and the intended key in the graph shown below.
+ 
+Here red lines denote edges of length 1 and green lines denote edges of length 3. When calculating the penalty, the cases of the letters are ignored.
+Obviously, the penalty for typing a correct key is 0. Now, define the distance between the input of the user and a correct date of the same length as the sum of the penalties for mistyping over all corresponding characters.
+For example, distance("TopCoder", "March 31") = penalty("T", "M") + penalty("O", "A") + ... + penalty("R", "1") = 4 + 8 + 6 + 0 + 3 + 4 + 1 + 4 = 30
+Given a string input, return a correct date (in the format described above) that has the smallest distance from the input. In case of a tie, return the date that is earlier in the year.
+Definition
+    
+Class:
+DateFieldCorrection
+Method:
+correctDate
+Parameters:
+string
+Returns:
+string
+Method signature:
+string correctDate(string input)
+(be sure your method is public)
+    
+
+Notes
+-
+Consider February 29 a valid date (as it is in leap years).
+-
+The names of the months are "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November" and "December".
+-
+The lengths of the corresponding months are 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30 and 31 days.
+Constraints
+-
+input will contain between 5 and 12 characters, inclusive.
+-
+input will contain only uppercase and lowercase letters ('A'-'Z', 'a'-'z'), digits ('0'-'9') and spaces (' ').
+Examples
+0)
+
+    
+"Novebmer 10"
+Returns: "November 10"
+Swapping "b" and "m" is just a little typo and should be corrected easily.
+1)
+
+    
+"September 15"
+Returns: "September 15"
+A date that is typed in correctly shouldn't be changed at all.
+2)
+
+    
+"Juny 4"
+Returns: "June 4"
+"Juny" could stand both for "June" and "July". The penalty for mistyping is 3 in each case. If that's the case, June is preferred because it is earlier than July.
+3)
+
+    
+"Juny 31"
+Returns: "July 31"
+Once again, both June and July could have been meant by the user. However, if it's June then there is at least one typo in the day (there is no 31th day in June).
+4)
+
+    
+"TopCoder"
+Returns: "April 24"
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

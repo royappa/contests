@@ -1,0 +1,128 @@
+vector<string> split_nonre(string s, string sep)
+{
+	char *sC = (char *) malloc(s.size()+1);
+	strcpy(sC, s.c_str());
+	char *sepC = (char *) sep.c_str();
+	char *status = NULL;
+	
+	char *word;
+	vector<string> results;
+	while ((word = strtok_r(sC, sepC, &status)) != NULL)
+	{
+		results.push_back(word);
+		sC = NULL;
+	}
+	return results;
+}
+
+typedef pair<string,string> ps;
+
+vector <string> scriptingOrder(vector <string> funcs, vector <string> depends) 
+{
+	set<ps> d;
+	
+	// build d
+	for (int i = 0; i < funcs[i]; i++)
+	{
+		vector<string> w = split_nonre(depends[i], " ");
+		for (int j = 0; j < w.size(); j++)
+		{
+			int k = atoi(w[j].c_str());
+			d.insert(make_pair(funcs[i], funcs[k]));
+		}
+	}
+	
+	vector<string> r;
+	
+	set<string> del;
+	
+	while (del.size() < funcs.size())
+	{
+		map<string,int> c;
+		for (typeof(d)::iterator it = d.begin(); it != d.end(); it++)
+		{
+			string a = it->first, b = it->second; // a depends on b
+			if (del.count(a) == 0)
+			{
+				c[a] = 1;
+			}
+		}
+		vector<string> t;
+		for (int i = 0; i < funcs.size(); i++)
+		{
+			if (del.count(funcs[i]) == 0 && c.count(funcs[i]) == 0)
+			{
+				t.push_back(funcs[i]);
+				del.insert(funcs[i]);
+			}
+		}
+		sort(t.begin(), t.end());
+		r.insert(r.end(), t.begin(), t.end());
+	}
+	return r;
+}
+
+Problem Statement
+    
+You are developing a database platform that supports, among other things, user defined functions. User-defined functions may call internal functions, other user-defined functions, or both. A user-defined function, FuncA, is said to be dependent on another function, FuncB, if it calls FuncB.
+You have been tasked with writing a module that will "script" (list out the code for) all of the functions in a given database. However, because of dependency issues, they must be scripted in a specific order that meets the following criteria:
+A function cannot be scripted until all of its dependent functions have already been scripted.
+Whenever more than one function could be scripted (subject to the first requirement), the one whose name occurs first lexicographically will be scripted first.
+You are given a vector <string> funcs, each element of which is the name of a function in the database. You are also given a vector <string> depends, a list describing the dependency of each function. Each element of depends is a space-delimited list of integers. Each element of depends corresponds to the element of funcs with the same index. Each number represented in each element of depends refers to the 0-based index of another function.
+For instance, suppose a database has two functions, A and B, each of which is dependent on a third function, C. The input might then be given by:
+{"B", "C", "A"}
+{"1", "", "1"}
+Now, since functions A and B both depend upon C, we have to script C first. After that, either A or B could be scripted, since C has already been scripted. We use the second rule to determine that we should script A first. Our return is thus:
+{"C", "A", "B"}
+You are to return a String[] containing the names of the functions in the order in which they should be scripted.
+Definition
+    
+Class:
+FunctionDependency
+Method:
+scriptingOrder
+Parameters:
+vector <string>, vector <string>
+Returns:
+vector <string>
+Method signature:
+vector <string> scriptingOrder(vector <string> funcs, vector <string> depends)
+(be sure your method is public)
+    
+
+Constraints
+-
+funcs will contain between 1 and 50 elements, inclusive.
+-
+depends will contain the same number of elements as funcs.
+-
+Each element of funcs will contain between 1 and 50 upper case ('A'-'Z') character, inclusive.
+-
+Each element of depends will be a space-delimited list of integers, with no leading zeroes.
+-
+Each integer represented in depends will be between 0 and n-1, inclusive, where n is the number of elements in funcs.
+-
+There will be no circular dependencies.
+Examples
+0)
+
+    
+{"B", "C", "A"}
+{"1", "", "1"}
+Returns: {"C", "A", "B" }
+The example from the problem statement.
+1)
+
+    
+{"B", "C", "A"}
+{"1", "", "0"}
+Returns: {"C", "B", "A" }
+
+2)
+
+    
+{"K", "A", "B", "C", "D", "E", "F", "G", "H", "I"}
+{"", "", "1 1", "2", "3", "4", "5", "6", "7", "8"}
+Returns: {"A", "B", "C", "D", "E", "F", "G", "H", "I", "K" }
+Careful! It is permissible for the same dependency to be listed twice.
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

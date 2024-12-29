@@ -1,0 +1,103 @@
+	typedef long long LL;
+
+	LL quad(LL n)
+	{	
+		if (n == 1LL)
+		{
+			return 1LL;
+		}
+
+		LL total = 1LL;
+
+		for (LL len = 2LL; len < n; len++)
+		{
+			total += quad(n-len);
+		}
+
+		return 2LL*total;
+	}
+
+	long long countWords(string word) 
+	{
+		LL n = word.size();
+
+		return quad(n)*4LL-4LL;
+	}
+
+
+Problem Statement
+    
+One day, I started writing out the following patterns (The procedure for constructing the pattern is deliberately not given, you must infer the procedure through the examples):
+
+Input string: "HELLO" (quotes for clarity only)
+Pattern:      O
+             OLO
+            OLLLO
+           OLLELLO
+          OLLEHELLO
+           OLLELLO
+            OLLLO
+             OLO
+              O
+ Input string: "TC" (quotes for clarity only)
+Pattern:      C
+             CTC
+              C   
+ Input string: "ABCD" (quotes for clarity only)
+Pattern:      D
+             DCD
+            DCBCD
+           DCBABCD
+            DCBCD
+             DCD
+              D
+ After constructing the patterns, I noticed something interesting. Starting with the first letter of the input string (which appears only once in the very center of the pattern), I can trace a path outwards toward the edges, spelling out the original input string. Of course, I only move Up, Down, Left and Right from any letter. I'm now perplexed because I want to know how many ways the original input string can be spelled out in the pattern. I must always end at an edge, and I can't go over one letter more than once while spelling a word.  Create a class WordPattern containing the method countWords which takes a string word as input. The method should return a long long which is the number of ways the original input can be spelled out in the pattern according to my rules.
+Definition
+    
+Class:
+WordPattern
+Method:
+countWords
+Parameters:
+string
+Returns:
+long long
+Method signature:
+long long countWords(string word)
+(be sure your method is public)
+    
+
+Notes
+-
+Remember, I only move Up, Down, Left and Right from any letter to the next letter and never use a letter twice.
+Constraints
+-
+word will contain between 1 and 50 characters inclusive.
+-
+word will contain only uppercase letters ('A'-'Z').
+Examples
+0)
+
+    
+"HELLO"
+Returns: 60
+
+1)
+
+    
+"TC"
+Returns: 4
+
+2)
+
+    
+"ABCDEFGHIJKLMNOPQRST"
+Returns: 2097148
+
+3)
+
+    
+"ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJ"
+Returns: 137438953468
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

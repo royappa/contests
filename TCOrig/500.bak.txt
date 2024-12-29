@@ -1,0 +1,62 @@
+int f(int r0, int r2, int r3, int p, int cur) // return fewest moves required for player p to win; and cur is current player
+{
+
+	
+int moves(int N) 
+{
+	int m1 = f(N, N, N, 0, 0); // first player wins
+	int m2 = f(N, N, N, 1, 0); // second player wins
+	if (m1 == INF)
+		return m1;
+	return -m2;
+}
+
+Problem Statement
+    
+The game Chomp starts with a grid 3 cells high and N cells wide. Two players take turns selecting a remaining cell in the grid, and chomping (removing) all the cells to the right and above the selected cell (including the chosen one). The player who chomps the lower-leftmost cell loses the game. Here is a sample of two moves in the game:
+3 XX                          XX                    
+2 XXXX    => chomp(4,1) =>    XXX  => chomp(1,2) => 
+1 XXXXX                       XXX                      XXX
+  12345                       12345                    12345 
+Determine which player wins if each player plays optimally, and how many total (for both players combined) turns it takes (the last move is the losing move). The player who will win when playing optimally plays to win as quickly as possible, while the player who is destined to lose plays to make the game last as long as possible. If player 1 will win, return the total number of moves required. Otherwise, return the negation of the number of moves required.
+Definition
+    
+Class:
+Chomp
+Method:
+moves
+Parameters:
+int
+Returns:
+int
+Method signature:
+int moves(int N)
+(be sure your method is public)
+    
+
+Constraints
+-
+N will be between 1 and 100, inclusive.
+Examples
+0)
+
+    
+1
+Returns: 2
+The optimal game is simple:
+ X      .      .
+ X  =>  .  =>  .
+ X      X      .
+1)
+
+    
+2
+Returns: 6
+
+2)
+
+    
+4
+Returns: 8
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

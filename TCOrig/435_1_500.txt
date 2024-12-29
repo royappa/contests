@@ -1,0 +1,149 @@
+
+vector<string> split_nonre(string s, string sep)
+{
+	char *sC = (char *) malloc(s.size()+1);
+	strcpy(sC, s.c_str());
+	char *sepC = (char *) sep.c_str();
+	char *status = NULL;
+	
+	char *word;
+	vector<string> results;
+	while ((word = strtok_r(sC, sepC, &status)) != NULL)
+	{
+		results.push_back(word);
+		sC = NULL;
+	}
+	return results;
+}
+
+#define MOD 1000000007LL
+string s;
+int n;
+map<string,string> codon;
+
+
+int differentProteins(vector <string> dna, vector <string> cod) 
+{
+	s = accumulate(dna.begin(), dna.end(), "");
+	n = s.size();
+	for (int i = 0; i < cod.size(); i++)
+	{
+		vector<string> w = split_nonre(cod[i], " ");
+		codon[w[0]] = w[1];
+	}
+	return f(0);
+	
+}
+
+Problem Statement
+    
+In genetics, a DNA sequence is a sequence of nucleotides (A, C, G or T). 
+
+Some DNA sequences translate to proteins, which are non-empty sequences of amino acids. 
+
+Let's examine the DNA translation process:: 
+
+From left to right, split the DNA sequence into consecutive, non-overlapping triples of nucleotides. 
+
+Each triple is called a codon. There may be one or two nucleotides left over at the end - those should be ignored. 
+
+For example, the DNA sequence "ACCTGTACG" will produce the codon sequence "ACC", "TGT", "ACG". 
+
+The DNA sequence "ACCTGTAC" will produce the codon sequence "ACC", "TGT" ("AC" is left over and ignored).
+
+You are given a codon table that maps codons to their associated amino acids. 
+
+From left to right, look up each codon in the sequence generated above and replace it with its associated amino acid. 
+
+Every codon in the sequence must have an associated amino acid - otherwise, the DNA sequence does not translate to a protein. 
+
+For example, if "ACC" and "ACG" each map to threonin ("thr") and "TGT" maps to cysteine ("cys"), the DNA sequence "ACCTGTACG" will translate to the protein "thr cys thr".
+
+Sometimes, after replication, one or more nucleotides in a DNA sequence go missing. This situation is called deletion. 
+
+After a deletion, a DNA sequence can become any of its subsequences. For example, "ACTG" may become "ACG" or "CG".  
+
+
+You are given a vector <string> DNASequence containing a DNA sequence. Concatenate the elements of DNASequence to obtain the DNA sequence. 
+
+You are also given a vector <string> codonTable containing the codon table. 
+
+Each element is formatted "CODON AMINOACID" (quotes for clarity), where AMINOACID is the name of the amino acid associated with codon CODON. 
+
+Compute the number of different possible proteins that the given DNA sequence can translate to after undergoing zero or more deletions. 
+
+Since this number can be quite large, return its value modulo 1000000007. Remember that only nonempty amino acid sequences are considered proteins.
+
+Definition
+    
+Class:
+DNADeletion
+Method:
+differentProteins
+Parameters:
+vector <string>, vector <string>
+Returns:
+int
+Method signature:
+int differentProteins(vector <string> DNASequence, vector <string> codonTable)
+(be sure your method is public)
+    
+
+Constraints
+-
+DNASequence will contain between 1 and 50 elements, inclusive.
+-
+Every element of DNASequence will contain between 1 and 50 characters, inclusive.
+-
+Every element of DNASequence will contain only characters 'A', 'C', 'T', 'G'.
+-
+codonTable will contain between 1 and 50 elements, inclusive.
+-
+Every element of codonTable will contain a codon, followed by a single space, followed by an amino acid.
+-
+Every codon in codonTable will contain exactly 3 characters.
+-
+Every codon in codonTable will contain only characters 'A', 'C', 'T', 'G'.
+-
+Every codon in codonTable will be unique.
+-
+Every amino acid in codonTable will contain between 1 and 20 characters.
+-
+Every amino acid in codonTable will contain only letters ('a'-'z', 'A'-'Z').
+Examples
+0)
+
+    
+{"ACTG"}
+{"ACT gua", "ACG cys", "ATG leu", "CTG thr"}
+Returns: 4
+You can get proteins: "gua" (deletion of 'G' or no deletion), "cys" (deletion of 'T'), "leu" (deletion of 'C'), "thr" (deletion of 'A'). Other deletions do not result in proteins.
+1)
+
+    
+{"AAACCC"}
+{"AAA thr", "CCC cys"}
+Returns: 3
+You can get proteins: "thr", "cys" and "thr cys".
+2)
+
+    
+{"AAATCCC"}
+{"AAA gua","TCC dop","AAT dop","CCC gua"}
+Returns: 5
+You can get proteins: "gua", "dop", "gua dop" (from sequence "AAATCC"), "dop gua" (from sequence "AATCCC"), "gua gua" (from sequence "AAACCC").
+3)
+
+    
+{"ATGCGCATTAACCTCCTACCATGGAAGGGACGTAACCCGGCAATTTGATC",
+ "CTGATGACGGCATAAGCTACCCCTAGAGGTAAAAATGCATACTGCGTGCT",
+ "ATGCAG"}
+{"AAC RpjZt","AAT ZeiC","GCA ChZwh","TCC RpjZt","GAA I",
+ "TAG ZeiC","CTG dVK","GAG ZeiC","GTG I","AAG q","ATT dVK",
+ "AGA cJEjM","GGG KONUd","GTC ZRV","GGC ZeiC","TTA KONUd",
+ "GAC q","CCA q","GCC ZRV","GCG RpjZt","CCT ZRV","ATG dVK",
+ "ATC ChZwh","CTC cJEjM","CCC q","ATA dWjz","TTG DkEG",
+ "CAG q","CAA ZRV","ACT dVK","TCG dVK","ACC I","CGC dVK"}
+Returns: 455985264
+Be sure to concatenate the elements of DNASequence.
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

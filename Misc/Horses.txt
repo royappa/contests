@@ -1,0 +1,87 @@
+	private int horses_justpacks(int x, int y)
+	{
+		//cool way of rounding UP when dividing x/n is to calculate  (x+n-1)/n
+		return (x+2)/3 + (y+1)/2;
+	}
+
+	public int horses(int p, int x, int y)
+	{	
+		// i is the number of horses used to carry small packs
+		int minh = 2000000000;
+		for (int i = 0; i <= p; i++)
+		{
+			int xLeft = Math.max(0, x-i*2);
+			int yLeft = Math.max(0, y-(p-i));
+			int h = p + horses_justpacks(xLeft, yLeft);
+			if (h < minh)
+			{
+				minh = h;
+			}
+		}
+		
+		return minh;
+	}
+	
+
+Problem Statement
+    
+We have p people, x small packs, and y large packs. A packhorse can carry one of the following loads. It is not possible to have a horse carry a mixture of small and large packs.
+3 or fewer small packs
+2 or fewer large packs
+a person and 2 or fewer small packs
+a person and 1 large pack
+We need to know the fewest horses that we can use to handle our people and packs. Create a class Packhorse that contains a method horses that is given p, x, and y and returns the smallest number of horses that can carry the load.
+Definition
+    
+Class:
+Packhorses
+Method:
+horses
+Parameters:
+int, int, int
+Returns:
+int
+Method signature:
+int horses(int p, int x, int y)
+(be sure your method is public)
+    
+
+Constraints
+-
+p will be between 1 and 1000 inclusive.
+-
+x and y will be between 0 and 1000 inclusive.
+Examples
+0)
+
+    
+1
+5
+0
+Returns: 2
+One horse can carry the person and two small packs, and the other can carry the remaining three small packs.
+1)
+
+    
+1
+6
+0
+Returns: 3
+One way to get 3 horses to carry this load is to have each horse take two small packs, with one of the horses also carrying the person.
+2)
+
+    
+20
+15
+7
+Returns: 20
+
+3)
+
+    
+1
+3
+1
+Returns: 2
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

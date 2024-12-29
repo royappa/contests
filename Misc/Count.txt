@@ -1,0 +1,67 @@
+	private int nt(int N)
+	{
+		return N*(N+1)/2;
+	}
+
+	public int count(int N)
+	{
+		int sum = 0;
+		for (int len = 1; len <= N; len++)
+		{
+			int triN = N / len;
+			sum += nt(triN)+nt(triN-1);		
+		}	
+		return sum;
+	}
+
+Problem Statement
+    
+Given an equilateral triangle with side length N divided into a triangular grid of triangles with side length 1, count the total number of triangles present in the grid. For example, if N is 4:
+
+         /\
+        /__\
+       /\  /\
+      /__\/__\
+     /\  /\  /\
+    /__\/__\/__\
+   /\  /\  /\  /\
+  /__\/__\/__\/__\
+Here there are ten right-side-up and six up-side-down triangles with a side length of 1, six right-side-up and one up-side-down triangles with a side length of 2, three right-side-up triangles with a side length of 3, and one right-side-up triangle with a side length of 4. The total number of triangles is 27.
+Definition
+    
+Class:
+TriangleCount
+Method:
+count
+Parameters:
+int
+Returns:
+int
+Method signature:
+int count(int N)
+(be sure your method is public)
+    
+
+Constraints
+-
+N will be between 1 and 500, inclusive.
+Examples
+0)
+
+    
+2
+Returns: 5
+There are four small triangles and one big triangle.
+1)
+
+    
+4
+Returns: 27
+This is the example from the problem statement.
+2)
+
+    
+100
+Returns: 256275
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

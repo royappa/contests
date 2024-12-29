@@ -1,0 +1,155 @@
+
+	public String[] justify(String[] lines, int width)
+	{
+		ArrayList a = new ArrayList();
+		String cur = "";
+		for (int i = 0; i < lines.length; i++)
+		{
+			String[] w = lines[i].trim().split(" ");
+			int len = 0;
+			for (int j = 0; j < w.length; j++)
+			{
+				if (len == 0)
+				{
+					cur += w[0];
+					len += w[0].length();
+				}
+				else if (len+1+w[j].length > width)
+				{
+					a.add(cur);
+					cur = w[j];
+					len = w[j].length();
+				}
+				else
+				{
+					cur += " "+w[j];
+					len += 1+w[j].length();
+				}
+			}
+		}
+		a.add(cur);
+		return (String[]) a.toArray(new String[0]);
+	}
+	
+Problem Statement
+    
+Some text editors, such as vi, model the user's document as a sequence of lines containing a variable number of characters. Because the human eye prefers to read lines of equal length, such editors typically supply a function that will adjust the lines to make them fit within a column of fixed width. This process is called justification. (Other editors, such as OpenOffice.org, will justify lines on the fly.)
+
+Your job is to write a justifier for a simplified piece of text. You are given a String[], lines, each element of which is a single line consisting of tokens separated by single spaces. For the present purposes, a token is a sequence of lowercase alphabetical characters. 
+
+You are to return a String[] containing the same tokens in the same order and still separated by single spaces, distributed in such a way that no line exceeds the desired column width, which is specified by the int columnWidth. Within these constraints, you should put as many tokens as possible in the first line, then as many as possible in the second, and so on.
+
+Note that tokens must not be split between consecutive lines, and that the number of lines in the result may differ from that in the input. The resulting lines must contain tokens separated by single spaces, without extraneous spaces at the beginning or end of a line, akin to the input. No input token will be longer than the column width.
+Definition
+    
+Class:
+WordWrap
+Method:
+justify
+Parameters:
+String[], int
+Returns:
+String[]
+Method signature:
+String[] justify(String[] lines, int columnWidth)
+(be sure your method is public)
+    
+
+Constraints
+-
+lines contains between 1 and 50 elements, inclusive
+-
+each element of lines is between 1 and 50 characters long, inclusive
+-
+in each element of lines, only the space character (' ') and the lowercase alphabetical characters ('a' through 'z') are allowed
+-
+in each element of lines, neither the first nor last character may be a space
+-
+in each element of lines, there may not be two or more consecutive spaces
+-
+columnWidth is between 1 and 50, inclusive
+-
+in each element of lines, no sequence of alphabetic characters is more than columnWidth characters long
+Examples
+0)
+
+    
+{"now is the time for all good men",
+ "to come to the aid of their country"}
+20
+Returns: 
+{ "now is the time for",
+  "all good men to come",
+  "to the aid of their",
+  "country" }
+Token order is preserved in the result, but no line exceeds 20 characters in length.
+1)
+
+    
+{"now",
+ "is the time for",
+ "all",
+ "good",
+ "men",
+ "to",
+ "come to the aid",
+ "of",
+ "their",
+ "country"}
+20
+Returns: 
+{ "now is the time for",
+  "all good men to come",
+  "to the aid of their",
+  "country" }
+Each line is made as long as possible without exceeding the column width.
+2)
+
+    
+{"four score and seven years ago", 
+ "our fathers brought forth",
+ "upon this continent",
+ "a new nation",
+ "conceived in liberty", 
+ "and dedicated to the proposition", 
+ "that all men are created",
+ "equal"}
+50
+Returns: 
+{ "four score and seven years ago our fathers brought",
+  "forth upon this continent a new nation conceived",
+  "in liberty and dedicated to the proposition that",
+  "all men are created equal" }
+
+3)
+
+    
+{"th e ow l an d th e pu ss yc at",
+ "we nt to se a",
+ "on a be au ti fu l pe a gr ee n bo at"}
+4
+Returns: 
+{ "th e",
+  "ow l",
+  "an d",
+  "th e",
+  "pu",
+  "ss",
+  "yc",
+  "at",
+  "we",
+  "nt",
+  "to",
+  "se a",
+  "on a",
+  "be",
+  "au",
+  "ti",
+  "fu l",
+  "pe a",
+  "gr",
+  "ee n",
+  "bo",
+  "at" }
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

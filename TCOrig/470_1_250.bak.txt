@@ -1,0 +1,211 @@
+int N; // N = number of doors; the N+1 rooms are numbered 0..N 
+string s;
+int trophy;
+int memo[2][66000];
+int used[2][66000];
+
+int f(int w, int mask) // return best outcome for player w as a number X, where X>=0 if w=0, and X <= 0 if w=1
+{
+	int& r = memo[w][mask];
+	if (used[w][mask])
+	{
+		return r;
+	}
+	used[w][mask] = 1;
+	
+	if (mask == ((1<<N)-1))
+	{
+		return r = 0;
+	}
+	// see if one of us can reach the trophy
+	bool reach0 = true, reach1 = true;
+	for (int i = 0; i < trophy; i++)
+	{
+		int b = s[i]-'A';
+		if ((mask&(1<<b)) == 0)
+		{
+			reach0 = false;
+			break;
+		}
+	}
+	for (int i = trophy; i < N; i++)
+	{
+		int b = s[i]-'A';
+		if ((mask&(1<<b)) == 0)
+		{
+			reach1 = false;
+			break;
+		}
+	}
+	if (reach0 && reach1) // both
+	{
+		return r = 0;
+	}
+	else if (reach0 || reach1)
+	{
+		return r = (w == 0) ? N : -N;
+	}
+		
+	// try opening each unopened door, in turn, and check the results
+	int res[16];
+	memset(res, 0, sizeof(res));
+	int numres = 0;
+	for (char d = 'A'; d <= 'P'; d++)
+	{
+		int p = d-'A';
+		if (mask&(1<<p)) continue; // this door is already open
+		res[numres++] = f(1-w, mask|(1<<p));
+	}
+	// I wish I could figure out this part shorter with abs() :-(
+	sort(&res[0], &res[numres]);
+	if (w == 0)
+	{
+		int p = numres-1;
+		if (res[p] > 0)
+		{
+			while (p >= 0 && res[p] > 0)
+			{
+				r = res[p];
+				p--;
+			}
+		}
+		else if (res[p] == 0)
+		{
+			r = 0;
+		}
+		else
+		{
+			r = res[0];
+		}
+	}
+	else
+	{
+		int p = 0;
+		if (res[p] < 0)
+		{
+			while (p < numres && res[p] < 0)
+			{
+				r = res[p];
+				p++;
+			}
+		}
+		else if (res[p] == 0)
+		{
+			r = 0;
+		}
+		else
+		{
+			r = res[numres-1];
+		}
+	}
+	return r;
+}
+
+int determineOutcome(string doors, int t) 
+{
+	s = doors;
+	N = s.size();
+	trophy = t;
+	memset(used, 0, sizeof(used));
+	memset(memo, -1, sizeof(memo));
+	return f(0, 0); 
+}
+
+Problem Statement
+    
+John and Gogo are playing Doors Game. This game is played in a building containing a single row of N+1 rooms, numbered 0 through N from left to right. One of the rooms is called the trophy room. There's a door between each pair of adjacent rooms. 
+
+Each door has a color, and there are 16 possible colors (represented by uppercase letters 'A' through 'P'). All doors are initially closed.  
+
+Initially, John is in room 0 and Gogo is in room N. 
+
+The two players alternate turns, and John gets the first turn. On each turn, the current player chooses a color which hasn't yet been chosen from among the 16 possible colors. 
+
+All doors, if any, with the chosen color are then opened. At this point, if one of the players can reach the trophy room by walking through only open doors, that player wins and the game ends. If both players can reach the trophy room, the game ends in a draw. 
+
+If neither player can reach the trophy room, the game continues.  
+
+Each player will play according to the following strategy: Each time a player needs to choose a color, he will make make his choice as follows:
+If it's possible for him to choose a color in such a way that he will be able to win no matter what his opponent does, he will choose such a color. 
+If there are several such colors, he will choose the one among them for which the game will end with the fewest total number of colors chosen, assuming that the opponent aims to maximize the number of colors chosen in the game.
+
+Otherwise, if it's possible for him to choose a color in such a way that he will be able to end the game in a draw no matter what his opponent does, he will choose any such color.
+Otherwise, he will choose a color for which the game will end with the largest total number of colors chosen, assuming that his opponent aims to win while minimizing the total number of colors chosen.
+
+You are given the colors of the doors in the string doors. The i-th character in doors is the color of the door connecting rooms i and i+1. 
+
+You are also given an int trophy, which denotes the number of the trophy room. If the game ends in a draw, return 0. Otherwise, let X be the number of colors chosen in the game. If John wins, return X. If Gogo wins, return -X.
+
+Definition
+    
+Class:
+DoorsGame
+Method:
+determineOutcome
+Parameters:
+string, int
+Returns:
+int
+Method signature:
+int determineOutcome(string doors, int trophy)
+(be sure your method is public)
+    
+
+Constraints
+-
+doors will contain between 2 and 50 characters, inclusive.
+-
+Each character in doors will be an uppercase letter 'A'-'P'.
+-
+trophy will be between 1 and N-1, inclusive, where N is the number of characters in doors.
+Examples
+0)
+
+    
+"ABCD"
+2
+Returns: 3
+There are five rooms, with the trophy room in the middle. John will win after he chooses color A and B.
+1)
+
+    
+"ABCC"
+2
+Returns: -2
+In this case, Gogo will win by just choosing color C.
+2)
+
+    
+"ABABAB"
+3
+Returns: 0
+When colors A and B have been chosen, both players will be able to reach the trophy room.
+3)
+
+    
+"ABAPDCAA"
+5
+Returns: -4
+
+4)
+
+    
+"MOCFDCE"
+3
+Returns: 5
+
+5)
+
+    
+"ABCCDE"
+3
+Returns: 0
+
+6)
+
+    
+"ABCCD"
+3
+Returns: 0
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

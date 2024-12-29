@@ -1,0 +1,244 @@
+#include <vector>
+#include <list>
+#include <map>
+#include <set>
+#include <deque>
+#include <stack>
+#include <bitset>
+#include <algorithm>
+#include <functional>
+#include <numeric>
+#include <utility>
+#include <sstream>
+#include <iostream>
+#include <iomanip>
+#include <cstdio>
+#include <cmath>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+typedef vector<string> vs;
+map<string,vs> call;
+
+class Fractionalization {
+public:
+
+
+	
+vector<string> split_nonre(string s, string sep)
+{
+	char *sC = (char *) malloc(s.size()+1);
+	strcpy(sC, s.c_str());
+	char *sepC = (char *) sep.c_str();
+	char *status = NULL;
+	
+	char *word;
+	vector<string> results;
+	while ((word = strtok_r(sC, sepC, &status)) != NULL)
+	{
+		results.push_back(word);
+		sC = NULL;
+	}
+	return results;
+}
+
+int gcd(int a, int b)
+{
+	return b == 0 ? a : gcd(b, a % b);
+}
+
+vs pack(vs steps, int num)
+{
+	vs r;
+	for (int i = 0; i < num; i++)
+	{
+		r.push_back(steps[i]);
+	}
+	return r;
+}
+
+vector<string> expand(int m, int n, string dance)
+{
+	vs ill;
+	ill.push_back("ILLEGAL");
+	
+	if (call.count(dance) == 0 || m >= n)
+	{
+		return ill;
+	}
+	
+	vs steps = call[dance];
+	int k = steps.size();
+	
+	if (k % n == 0)
+	{
+		return pack(steps, m);
+	}
+	
+	int i = 1;
+	while (i*n <= k*m)
+	{
+		i++;
+	}
+	
+	vs first = pack(steps, i-1);  
+	// eaten  up (i-1)/k. What is left is (m/n-(i-1)/k) of the original call. 
+	// Need to make this up out of the next step.
+	// that is, need to take k*(m/n-(i-1)/k) = k*[(m*k-n*(i-1))/(n*k)] = (m*k-n*(i-1))/n
+	int nn = m*k-n*(i-1);
+	int dd = n;
+	int g = gcd(nn, dd);
+	nn /= g;
+	dd /= g;
+
+//printf("i = %d size=%d\n", i, steps.size());
+
+	vs rest = expand(nn, dd, steps[i-1]);
+	if (rest.size() == 0 || rest[0] == "ILLEGAL")
+		return ill;
+	for (int i = 0; i < rest.size(); i++)
+	{
+		first.push_back(rest[i]);
+	}
+	return first;
+}
+	
+vector <string> partial(vector <string> defs, int m, int n, string danceCall) 
+{
+	call.clear();
+	
+	for (int i = 0; i < defs.size(); i++)
+	{
+		vs r = split_nonre(defs[i], " ");
+		string c =  r[0].substr(0, r[0].size()-1);
+		r.erase(r.begin());
+		call[c] = r;
+	}
+	
+	return expand(m, n, danceCall);
+	
+}
+};
+
+
+//Powered by [KawigiEdit]
+Problem Statement
+    
+In modern western square dancing, the dancers execute calls, according to definitions they have memorized. Each call is either an atomic unit, or made up of a sequence of other calls. Experienced dancers are expected to be able to dance not only all the calls they have learned, but also fractions of calls. For example, given the list of calls and their definitions below:
+
+    Trade:          Hinge Hinge
+    CenterTwoTrade: CenterTwoHinge CenterTwoHinge
+    SpinTheTop:     Trade FanTheTop
+    HotFootSpin:    FanTheTop CenterTwoTrade SpinTheTop
+the call "HotFootSpin" has three parts: "FanTheTop" (an atomic unit), "CenterTwoTrade" (which has two parts), and "SpinTheTop" (which also has two parts). Each part of a call is given equal weight, regardless of how many parts it itself is made up of. So, for example, "1/3 HotFootSpin" is simply "FanTheTop", and "2/3 HotFootSpin" is "FanTheTop" followed by "CenterTwoTrade". Other fractionalizations of "HotFootSpin" are also possible. For example, even though the call has three parts, the dancers could do "1/2 HotFootSpin" by doing the first part, followed by 1/2 of the second part. So "1/2 HotFootSpin" is "FanTheTop" followed by "CenterTwoHinge".
+Now consider "3/4 HotFootSpin". After doing the first 2/3 of the call, the dancers would have 1/12 (3/4 - 2/3) left to do. This final 1/12 of the call is 1/4 of the final third: "1/4 SpinTheTop". "SpinTheTop" has only two parts, so 1/4 of it is 1/2 of its first part: "1/2 Trade", which is "Hinge". Therefore, "3/4 HotFootSpin" is "FanTheTop", followed by "CenterTwoTrade", followed by "Hinge".
+You will be given a vector <string> definitions, a fraction m/n, and a string danceCall. Each element of definitions will be formatted as follows: the name of the call being defined, followed by a single colon (':'), followed by a single space, and then a list of 2 or more calls each separated by a single space. The name of each call will consist solely of lowercase and uppercase letters and is case-sensitive. Calls that appear in the definitions of other calls, but do not have a definition themselves, are atomic units and cannot be fractionalized. No definition can refer to a call that is defined later in the list of definitions.
+You are to return the list of calls as a vector <string> that the dancers should perform in order to execute "m/n danceCall". Whenever the dancers are to execute a call in its entirety, simply name that call rather than listing its parts. Do not use other definitions to simplify the list of calls you return. For example, given the following definitions:
+
+    A: One Two
+    B: One Two Three
+    C: One Two Three Four
+for "3/4 C", you should return { "One", "Two", "Three" }, and not { "B" }. If the given fractionalization is not possible, return a vector <string> with the single element: "ILLEGAL".
+Definition
+    
+Class:
+Fractionalization
+Method:
+partial
+Parameters:
+vector <string>, int, int, string
+Returns:
+vector <string>
+Method signature:
+vector <string> partial(vector <string> definitions, int m, int n, string danceCall)
+(be sure your method is public)
+    
+
+Constraints
+-
+definitions will contain between 1 and 6 elements, inclusive.
+-
+Each element of definitions will contain between 6 and 50 characters, inclusive, and be formatted as specified in the problem statement.
+-
+n will be between 2 and 100, inclusive.
+-
+m will be between 1 and n-1, inclusive.
+-
+danceCall will contain between 1 and 50 letters, inclusive.
+Examples
+0)
+
+    
+{ "FiveParts: One Two Three Four Five" }
+2
+5
+"FiveParts"
+Returns: {"One", "Two" }
+
+1)
+
+    
+{ "Trade: Hinge Hinge",
+  "TradeThreeTimes: Trade Trade Trade" }
+5
+6
+"TradeThreeTimes"
+Returns: {"Trade", "Trade", "Hinge" }
+
+2)
+
+    
+{ "Trade: Hinge Hinge",
+  "CenterTwoTrade: CenterTwoHinge CenterTwoHinge",
+  "SpinTheTop: Trade FanTheTop",
+  "HotFootSpin: FanTheTop CenterTwoTrade SpinTheTop" }
+1
+2
+"HotFootSpin"
+Returns: {"FanTheTop", "CenterTwoHinge" }
+
+3)
+
+    
+{ "Trade: Hinge Hinge",
+  "CenterTwoTrade: CenterTwoHinge CenterTwoHinge",
+  "SpinTheTop: Trade FanTheTop",
+  "HotFootSpin: FanTheTop CenterTwoTrade SpinTheTop" }
+3
+4
+"HotFootSpin"
+Returns: {"FanTheTop", "CenterTwoTrade", "Hinge" }
+This example is explained in the problem statement.
+4)
+
+    
+{ "A: One Two",
+  "B: One Two Three",
+  "C: One Two Three Four" }
+3
+4
+"C"
+Returns: {"One", "Two", "Three" }
+This is the final example in the problem statement.
+5)
+
+    
+{ "A: X Y Z",
+  "B: A A A" }
+7
+23
+"B"
+Returns: {"ILLEGAL" }
+
+6)
+
+    
+{ "A: B C",
+  "D: E F" }
+1
+2
+"G"
+Returns: {"ILLEGAL" }
+"G" does not have a definition, and is therefore an atomic unit. Atomic units cannot be fractionalized.
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

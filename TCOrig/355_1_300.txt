@@ -1,0 +1,130 @@
+typedef long double LD;
+typedef long long LL;
+typedef pair<int,int> pi;
+
+LL gcd(LL a, LL b) { return b == 0 ? a : gcd(b, a%b); }
+
+double howMuch(vector <int> percent, vector <int> amount, int need_) 
+{
+
+	LL need = need_;
+	vector<pi> v;
+	n = percent.size();
+	for (int i = 0; i < n; i++)
+	{
+		v.push_back(make_pair(percent[i], amount[i]));
+	}
+	sort(v.begin(), v.end());
+	
+	LL a = 0;
+	LL xn = 0, xd = 1;
+	LD t = 0;
+	for (int i = 0; i < n; i++)
+	{
+		// if adding in amount[i] would keep the concentration below need, then add it all
+		LD b = amount[i];
+		LD y = percent[i];
+		
+		if ((a*(xn)+b*y*xd) <= xd*(a+b) * need)
+		{
+			a += b;
+			LL xn1 = (a*(xn)+b*y*xd);
+			LL xd1 = (a+b)*xd;
+			LL g = gcd(xn1, xd1);
+			xn1 /= g;
+			xd1 /= g;
+			xn = xn1;
+			xd = xd1;
+		}
+		else // add only as much of amount[i] as needed;
+		{
+			t = (double(a)*(double(xn)/double(xd))-double(a)*double(need)) / double(need-y);
+			break;
+		}
+	}
+	return double(a)+double(t);
+	
+}
+Problem Statement
+    
+In Chemistry, there's a different meaning to the word 'solution' than in programming. 
+
+When we mix x liters of some substance with (100-x) liters of water, we get 100 liters of x-% solution of that substance.
+
+You are given several bottles containing solutions of the same substance. 
+
+The i-th bottle contains amount[i] liters of percent[i]-% solution. 
+
+Return the maximal number of liters of need-% solution we can get by pouring together some of these bottles (possibly partially, see example 0).
+
+Definition
+    
+Class:
+MixingLiquids
+Method:
+howMuch
+Parameters:
+vector <int>, vector <int>, int
+Returns:
+double
+Method signature:
+double howMuch(vector <int> percent, vector <int> amount, int need)
+(be sure your method is public)
+    
+
+Notes
+-
+The returned value must have an absolute or relative error less than 1e-9.
+Constraints
+-
+percent will contain between 1 and 50 elements, inclusive.
+-
+Each element of percent will be between 0 and 100, inclusive.
+-
+amount will contain the same number of elements as percent.
+-
+Each element of amount will be between 1 and 1000, inclusive.
+-
+need will be between 0 and 100, inclusive.
+Examples
+0)
+
+    
+{0, 100}
+{20, 30}
+50
+Returns: 40.0
+We have 20 liters of water and 30 liters of pure substance. We need a 50% solution, so we combine all the water with 20 liters of substance.
+1)
+
+    
+{0, 100}
+{20, 30}
+60
+Returns: 50.0
+We can use everything we have.
+2)
+
+    
+{90, 70, 80}
+{10, 10, 10}
+50
+Returns: 0.0
+All our bottles contain too much substance.
+3)
+
+    
+{30, 80, 60}
+{40, 10, 15}
+57
+Returns: 35.18518518518519
+
+4)
+
+    
+{50,50,50}
+{395,971,964}
+50
+Returns: 2330.0
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

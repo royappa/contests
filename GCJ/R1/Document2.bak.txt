@@ -1,0 +1,6 @@
+- A flavor MUST be malted if it is the ONLY flavor liked by some customer(s)
+- For any customer liking both, we can satisfy them with non-malted version
+- And, a customer can like only ONE malted flavor.
+
+So, find the flavors which MUST be malted. 
+If there is some customer who ONLY likes the unmalted version of these must-malted flavors, then this situation is IMPOSSIBLE.

@@ -1,0 +1,140 @@
+int you, home, n;
+
+typedef pair<string,int> keyType;
+
+map<keyType,int> memo;
+map<string,string> shift;
+string path;
+
+int f(string forecast, int cur)
+{
+	if (cur == home)
+		return 0;
+	keyType key = make_pair(forecast, cur);
+	if (memo.count(key) > 0)
+		return memo[key];
+	
+	int steps = 1<<30;
+	int right = (cur+1)%n, left = ((cur-1)%n+n)%n;
+	
+	int rc = (path[right]=='.' && shift[forecast][right] == 'R') + f(path
+	
+	
+int minimumRainTime(string path_, string forecast) 
+{
+	path = path_;
+	home = path.find('H');
+	you = path.find('Y');
+	path[home] = 'C';
+	path[you] = 'C';
+	n = path.size();
+	
+	string a = forecast;
+	for (int i = 1; i <= n; i++)
+	{
+		string b(n, ' ');
+		for (int j = 0; j < n; j++)
+		{
+			b[j] = a[(j+1)%n];
+		}
+		shift[a] = b;
+		cout << a << " " << shift[a] << endl;
+		a = b;
+		
+	}
+	return f(forecast, you);
+	
+}
+
+Problem Statement
+    
+As the ruler of Rainban, you are well aware of the fact that your country often has violent rainstorms. 
+
+Thus, you usually remember to ride the Rainban Official Motorcade to your destination. Today, however, you looked outside and, eschewing common sense, decided to walk to the store. Now, a very bad storm is coming, and your Giant Hole (TM) umbrella has a large hole in it!
+
+You know the path that you need to travel to return to your home. You are currently standing where the 'Y' is and are trying to reach home (the 'H'). The rest of the path consists of either 'C' or '.', corresponding to whether that section of the path is covered (and thus rain-proof) or uncovered, respectively. Both your current location and home are rain-proof. 
+
+You also know the forecast, in which the i-th character is 'R' if it is currently raining at the i-th section of the path, or '.' if it is not.
+
+During each minute, the following events happen:
+
+	You choose whether or not to move. 
+	If you choose to move, you immediately move one step to an adjacent section of the path. 
+	If you choose not to move, you remain in your current section.
+	If you are now standing in an uncovered section and it is raining there, you get wet.
+	The forecast circularly shifts one section to the left. For example, "R..R" would become "..RR" (quotes for clarity).
+	If you are standing in an uncovered section and it is now raining there, you get wet.
+
+So if the path is "Y..H" and the forecast is "R.RR", then choosing to move right every minute would result in the following:
+Forecast: R.RR       R.RR       .RRR       .RRR       RRR.       RRR.
+Path:     Y..H  -->  CY.H  -->  CY.H  -->  C.YH  -->  C.YH  -->  C..Y
+               You        Rain   Get  You   Get  Rain  Get You    Get
+               move       moves  wet  move  wet  moves wet move   home
+Thus, in the above case, you would get wet 3 times on your way home.
+
+
+Return the minimum number of times that you will get wet before returning home, if you time your journey properly. You don't care how long it takes, as long as you eventually get home while as dry as possible.
+
+Definition
+    
+Class:
+RainyDay
+Method:
+minimumRainTime
+Parameters:
+string, string
+Returns:
+int
+Method signature:
+int minimumRainTime(string path, string forecast)
+(be sure your method is public)
+    
+
+Constraints
+-
+path will be between 2 and 50 characters, inclusive.
+-
+Each character in path will be 'Y', 'C', '.', or 'H'.
+-
+There will be exactly one 'Y' and exactly one 'H' in path.
+-
+forecast will contain the same number of characters as path.
+-
+Each character in forecast will be either 'R' or '.'.
+Examples
+0)
+
+    
+"Y..H"
+"R.RR"
+Returns: 3
+The example from the statement.
+1)
+
+    
+"Y.C.H"
+"RRRR."
+Returns: 2
+Here, you wait 2 minutes, then move right twice (getting wet once). You can then wait 1 minute and move right twice again, getting wet once more.
+2)
+
+    
+"Y..C.H"
+"RRR.R."
+Returns: 3
+
+3)
+
+    
+"CCH..Y"
+"RRRR.R"
+Returns: 2
+
+4)
+
+    
+"CCH.........Y"
+"............."
+Returns: 0
+No rain at all in the forecast!
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

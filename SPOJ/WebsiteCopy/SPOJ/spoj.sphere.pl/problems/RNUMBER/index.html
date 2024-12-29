@@ -1,0 +1,372 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<!-- Mirrored from spoj.sphere.pl/problems/RNUMBER/ by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 10 Jan 2006 04:53:49 GMT -->
+<head>
+<title>Sphere Online Judge (SPOJ)  - Problem RNUMBER</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-2">
+<META NAME="Keywords" CONTENT="spoj, online, judge, problem, set, problemset, archive, ACM, Polish, Poland, contest, contester, task, tasks, ADA, Java, Pascal, C, C++, Whitespace, sphere, interest, group, python, ruby, icon, o'caml, caml, ocaml, perl, haskell, bf, brain, clips, prolog, fortran, asm, assembler, asembler, functional, esoteric, programming, languages">
+
+<link href="https://spoj.sphere.pl/gfx/favicon" rel="shortcut icon" type="image/x-icon">
+
+<link href="../../themes/skin3.css" rel="stylesheet" type="text/css" id="theme">
+<style type="text/css">
+<!--
+.maintable {width: 755;} 
+-->
+</style>
+<script type="text/javascript" language="javascript">
+<!--
+function UnCryptMailto(s) {
+	var n=0;
+	var r="";
+	for(var i=0;i<s.length;i++) {		
+		n=s.charCodeAt(i); 
+		if (n>=8364) {n = 128;}
+		r += String.fromCharCode(n+(2));	
+	}
+	return r;
+}
+function linkTo_UnCryptMailto(s)	{
+	location.href=UnCryptMailto(s);
+}
+// -->
+</script>
+
+</head>
+<body>
+<center>
+<table cellpadding="10" cellspacing="0" class="maintable" id="maintable">
+<tr>
+    <td colspan="2" class="header">
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+        <tr>
+		<td class="headerleft"/>
+		<td class="headercenter"><h1>Sphere Online Judge</h1></td>
+		<td class="headerright"/>
+	</tr>
+	</table>
+    </td>
+</tr>
+<tr><td class="menu" width="92" valign="top">
+<form name="login"  action="http://spoj.sphere.pl/problems/RNUMBER/" method="post" 
+	onsubmit="if(document.login.ssl.checked) document.login.action='https://spoj.sphere.pl/problems/RNUMBER/'" style="margin-bottom: 18px"> 
+User: <input name="login_user" type="text" style="width: 85px;" class="form"><BR>
+Password: <input name="password" type="password" style="width: 85px;" class="form"><BR>
+<script language="javascript" type="text/javascript">
+<!--
+document.write('<input type="checkbox" name="ssl" id="ssl" checked>secure<br>');
+//-->
+</script>
+<input name="submit" type="submit" value="Log In" class="button" style="width: 85px;">
+</form><div class="menucmd"><a href="https://spoj.sphere.pl/register">register</a><br><br><a href="https://spoj.sphere.pl/status">status</a><br><a href="https://spoj.sphere.pl/submit">submit</a><br><a href="../classical/sort=0,start=200.html">problems</a><br><br><a href="https://spoj.sphere.pl/">news</a><br><a href="https://spoj.sphere.pl/contests">contests</a><br><a href="https://spoj.sphere.pl/info">info</a><br><a href="https://spoj.sphere.pl/ranks/">ranks</a><br><br><a href="https://spoj.sphere.pl/forum">forum</a><br><a href="https://spoj.sphere.pl/help">help</a><br><a href="https://spoj.sphere.pl/links">links</a><br><hr></div>Server time:<br>2006-01-10<br>05:48:41<a href="../classical/sort=0,start=200.html"></a><br><br>
+<form method="get" action="https://spoj.sphere.pl/search/" class="form" style="width:90px">
+<input type="text" name="query" style="width:85px" maxlength=255 value="" class="form"><br>
+<input type="submit" value="Search" style="width:85px" class="form" title="Search site"><br>
+&nbsp;<a href="https://spoj.sphere.pl/search/problems=on,users=on,contests=on" title="More search options"><small>advanced...</small></a>
+</form></td><td class="content" width="99%"><table class="problems" width="100%">
+<tr class="navigation">
+<td><a href="https://spoj.sphere.pl/submit/RNUMBER/">Submit</a></td>
+<td><a href="https://spoj.sphere.pl/status/RNUMBER/">All submissions</a></td>
+<td><a href="https://spoj.sphere.pl/ranks/RNUMBER/">Best solutions</a></td>
+<td><a href="https://spoj.sphere.pl/problems/RNUMBER.ps">PS</a></td>
+<td><a href="https://spoj.sphere.pl/problems/RNUMBER.pdf">PDF</a></td>
+<td><a href="../classical/sort=0,start=200.html">Back to list</a></td>
+</tr>
+</table>
+
+<div class="prob">
+
+<h2>SPOJ Problem Set </h2>
+<h1>407. Random Number</h1>
+<h2>Problem code: RNUMBER</h2>
+<p align="justify">
+<p>A Black Box algorithm supposes that natural
+number sequence 
+<IMG
+ WIDTH="155" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="504img1.gif"
+ ALT="$u(1), u(2), \dots, u(N)$">
+is sorted
+in non-descending order, <IMG
+ WIDTH="63" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="504img2.gif"
+ ALT="$N \le M$">
+and for each <I>p</i>
+(
+<IMG
+ WIDTH="84" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="504img3.gif"
+ ALT="$1 \le p \le N$">)
+an inequality 
+<IMG
+ WIDTH="111" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="504img4.gif"
+ ALT="$p \le u(p) \le M$">
+is valid.
+</p>
+<P>
+<BR>
+Making tests for this algorithm we have met with the following problem.
+For setting a random sequence
+<IMG
+ WIDTH="52" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="504img5.gif"
+ ALT="$\{u(i)\}$">
+a usual random data generator did not fit. As the sequence
+itself had been imposed certain
+restrictions, the method of choosing the next random element
+(in the interval defined by
+restrictions) did not give the random sequence as a whole.
+</p>
+<P>
+<BR>
+We have come to a conclusion that the problem can be solved in the following
+way. If we arrange
+all possible sequences in certain order (for example, in lexicographical
+order) and assign each
+sequence its number, after choice of the random number it is possible to
+take the correspondent
+sequence for the random one. At the first glance it seems enough to
+make up a program generating
+all these sequences in such order. Alas! Even having not great values
+of <I>M</i> and <I>N</i> it would have
+taken any powerful modern computer centuries to enumerate all such
+sequences. It turned out it was
+possible to avoid generating all sequences if we managed to create
+required sequence according to
+its number immediately. But even this statement does not cover all.
+As the amount of sequences is
+quite large, the number can be a long one, composed of hundreds decimal
+digits, though our
+random data generator could give only normal numbers. We decided to
+produce a long random
+number from a real random number distributed in [0,1]. Namely, present
+the number in binary
+notation: 
+<IMG
+ WIDTH="101" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="504img6.gif"
+ ALT="$0.b(1)b(2)\dots$">,
+where all <I>b</i>(<I>i</i>) = 0 or 1. Let us set a
+regulation to associate such real number
+to an integer from [<I>A</i>,<I>B</i>] segment:
+<P>
+<H3>Formula</h3>
+<BR><P></p>
+<DIV ALIGN="CENTER">
+<IMG
+ WIDTH="666" HEIGHT="76"
+ SRC="504img7.gif"
+ ALT="\begin{displaymath}G(A,B,0.b_1b_2\dots b_p) = \left\{ \begin{array}{ll}
+A, & \m...
+...p, & \mbox{if $b_1=1$} \end{array} \right.
+\end{array} \right.
+\end{displaymath}">
+</div>
+<BR CLEAR="ALL">
+<P></p>
+
+<P>
+Here we suppose, that <IMG
+ WIDTH="55" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="504img8.gif"
+ ALT="$A \le B$">,
+<IMG
+ WIDTH="45" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="504img9.gif"
+ ALT="$p \ge 0$">,
+and ``div 2" is an integer
+division by 2.
+</p>
+<P>
+<BR>
+
+Let <I>M</i>, <I>N</i> (
+<IMG
+ WIDTH="144" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="504img10.gif"
+ ALT="$1 \le N \le M \le 200$">)
+and a binary real number
+<IMG
+ WIDTH="133" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="504img11.gif"
+ ALT="$0.b(1)b(2)\dots b(p)$">
+(
+<IMG
+ WIDTH="95" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="504img12.gif"
+ ALT="$1 \le p \le 400$">)
+be given.
+Write a program to find out the corresponding 
+<IMG
+ WIDTH="155" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="504img1.gif"
+ ALT="$u(1), u(2), \dots, u(N)$">
+sequence, i.e. to find a sequence
+with 
+<IMG
+ WIDTH="197" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="504img13.gif"
+ ALT="$G(1, T, 0.b(1)b(2)\dots b(p))$">
+number in lexicographical order of all
+possible <IMG
+ WIDTH="52" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="504img5.gif"
+ ALT="$\{u(i)\}$">
+for the given
+<I>M</i> and <I>N</i> (<I>T</i> is the quantity of such sequences). Numeration begins with 1.
+Keep in mind that in
+lexicographical order <IMG
+ WIDTH="47" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="504img14.gif"
+ ALT="$\{l(i)\}$">
+proceeds <IMG
+ WIDTH="52" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="504img15.gif"
+ ALT="$\{h(i)\}$">
+if after omitting equal
+beginnings, the first number of
+
+<IMG
+ WIDTH="47" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="504img14.gif"
+ ALT="$\{l(i)\}$">
+tail is smaller than the first number or <IMG
+ WIDTH="52" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="504img15.gif"
+ ALT="$\{h(i)\}$">
+tail.
+Following example illustrates the list of all possible
+sequences for <I>M</i> = 4 and <I>N</i> = 3 in lexicographical order.
+<P>
+<H3>A note (it does not concern the solution of this task):</h3>
+<p>The choice of random binary vector 
+<IMG
+ WIDTH="133" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="504img11.gif"
+ ALT="$0.b(1)b(2)\dots b(p)$">
+does not give an
+absolute uniform random
+data generator if we use the Formula. However, taking into account the
+fact that [<I>A</i>,<I>B</i>] interval is big
+we shall obtain a distribution applicable in most cases.
+<P>
+<H3>Example</h3>
+<PRE>
+1, 2, 3
+1, 2, 4
+1, 3, 3
+1, 3, 4
+1, 4, 4
+2, 2, 3
+2, 2, 4
+2, 3, 3
+2, 3, 4
+2, 4, 4
+3, 3, 3
+3, 3, 4
+3, 4, 4
+4, 4, 4
+</pre>
+
+<P>
+(here <I>T</i>=14)
+<P>
+<h3>Input</h3>
+<p>The first line of the input is an integer K &#8804; 10, followed by K datasets.
+<p>The first line of each dataset contains <I>M</i> and <I>N</i>. The second line
+contains binary real
+number 
+<IMG
+ WIDTH="133" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="504img11.gif"
+ ALT="$0.b(1)b(2)\dots b(p)$">
+(without leading, trailing and other spaces).
+<P>
+<h3>Output</h3>
+<p>For each dataset, write into the output data file the corresponding sequence
+<IMG
+ WIDTH="155" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="504img1.gif"
+ ALT="$u(1), u(2), \dots, u(N)$">.
+The
+sequence numbers should be separated with spaces and end-of-line characters.
+There should be up to 20 numbers in each line. If neccesary, the numbers will have leading blanks to occupy 3 characters.
+<P>
+<h3>Example</h3>
+
+<pre>
+<b>Input:</b>
+
+1
+4 3
+0.01101101011110010001101010001011010
+
+<b>Output:</b>
+
+  2   2   4
+</pre>
+
+
+<hr>
+<table border=0 cellspacing=0 cellpadding=0 align=left>
+<tr><td width=130>Added by:</td><td><a href="https://spoj.sphere.pl/search/'Adrian%20Kuegel'">Adrian Kuegel</a></td></tr>
+<tr><td>Date:</td><td>2005-07-26</td></tr>
+<tr><td>Time limit:</td><td>5s
+</td></tr>
+<tr><td>Source limit:</td><td>50000B</td></tr>
+<tr><td>Resource:</td><td>ACM Northeastern European Regional Contest 1996</td></tr></table>
+</div></td>
+</tr>
+
+<tr>
+<td colspan="2" class="footer">
+
+<script language="javascript" type="text/javascript">
+<!--
+function swapSheet(sheet, caller) {
+    document.getElementById('theme').href=sheet;
+    document.cookie="css_0="+sheet+"; path=/;";
+    caller.href="#bottom";
+}
+
+function setWidth(w, caller) {
+    document.getElementById('maintable').style.width=w;
+    document.cookie="res="+w+"; path=/;";
+    caller.href="#bottom";
+}
+//-->
+
+</script>
+        <table width="100%">
+    <tr>
+	<td align="left">
+            <a href="http://www.pg.gda.pl/eng.html"><IMG src="https://spoj.sphere.pl/gfx/logo-pg" alt="www.pg.gda.pl" border=0 height=36 width=44></a>&nbsp;
+            <a href="http://www.eti.pg.gda.pl/"><IMG src="https://spoj.sphere.pl/gfx/logo-eti" alt="www.eti.pg.gda.pl" border=0 height=36 width=44></a>
+	</td>
+	<td align="center">
+	    page size:
+	    <a href="https://spoj.sphere.pl/?res=755"  onClick="setWidth('755', this)">800x600</a>
+	    <a href="https://spoj.sphere.pl/?res=980"  onClick="setWidth('980', this)">1024x768</a>
+	    <a href="https://spoj.sphere.pl/?res=100%" onClick="setWidth('100%', this)">Full</a>
+	    &nbsp;&nbsp;
+	    theme:
+	    <a href="../../indexb6a4.html?css=/themes/skin1.css" onClick="swapSheet('../../themes/skin1.css', this)">olive</a>
+	    <a href="../../index3840.html?css=/themes/skin2.css" onClick="swapSheet('../../themes/skin2.css', this)">banana</a>
+	    <a href="../../index80f0.html?css=/themes/skin3.css" onClick="swapSheet('../../themes/skin3.css', this)">plum</a>
+	    <br>
+	    <a href="http://sphere.pl/?id=66">spoj team at sphere</a> &copy; 2004-05 all rights reserved
+	</td>
+	<td align="right">
+            <a href="http://task.gda.pl/english/"><IMG src="https://spoj.sphere.pl/gfx/logo-task" alt="task.gda.pl" border=0 height=36 width=44></a>&nbsp;
+            <a href="http://sphere.pl/"><IMG src="https://spoj.sphere.pl/gfx/logo-sphere" alt="sphere.pl" border=0 height=32></a>
+	</td>
+    </tr>
+    </table>
+    </tr></table>
+</center>
+</body>
+
+<!-- Mirrored from spoj.sphere.pl/problems/RNUMBER/ by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 10 Jan 2006 04:53:49 GMT -->
+</html>

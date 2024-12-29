@@ -1,0 +1,89 @@
+
+public class Workshop
+{
+	public int pictureFrames(int[] pieces)
+	{
+		HashMap h = new HashMap();
+		int n = pieces.length;
+		for (int i = 0; i < n; i++)
+		{
+			for (int j = 0; j < n; j++)
+			{
+				for (int k = 0; k < n; k++)
+				{
+					if (i == j || i == k || j == k) continue;
+					int a = pieces[i]; int b = pieces[j]; int c = pieces[k];
+					if (a+b < c || b+c < a || a+c < b) continue;
+					if (b < a) { int t = a; a = b; b = t; }
+					if (c < b) { int t = b; b = c; c = t; }
+					if (b < a) { int t = a; a = b; b = t; }
+					String sig = "" + a + "," + b + "," + c;
+					h.put(sig, 1);
+				}
+			}
+		}
+		return h.size();	
+	}
+}
+
+Problem Statement
+    
+You work in a workshop which makes garden instruments from metal. At the end of each working day there remains a pile of scrap metal that cannot be used to make anything useful. Because you dislike the idea of throwing things away (even scrap metal), you decide to utilize this metal to make some triangular picture frames that can be sold at the local market.
+Given a int[] pieces where each element represents the length of a straight metallic piece, return the number of possible different picture frames that can be made from those pieces. Two picture frames are considered to be identical if each of their corresponding sides is equal in length. If no picture frames can be created from pieces then return 0.
+Definition
+    
+Class:
+Workshop
+Method:
+pictureFrames
+Parameters:
+int[]
+Returns:
+int
+Method signature:
+int pictureFrames(int[] pieces)
+(be sure your method is public)
+    
+
+Notes
+-
+A triangle can be formed if, and only if, for every pair of its sides the sum of that pair is longer than the third side.
+Constraints
+-
+pieces will have between 0 and 50 elements inclusive.
+-
+Each element in pieces will be between 1 and 10000 inclusive.
+-
+pieces will not have any repeated elements.
+Examples
+0)
+
+    
+{1,2,3,4,5}
+Returns: 3
+We can form picture frames with the following sides: {2, 3, 4}, {2, 4, 5} and {3, 4, 5}. So we can form 3 different picture frames.
+1)
+
+    
+{8,5,3}
+Returns: 0
+8 + 5 is longer than 3 and 8 + 3 is longer than 5, but 5 + 3 is not longer than 8. Thus we cannot form a single picture frame from these pieces.
+2)
+
+    
+{4,23,76,22,87,3,1,99}
+Returns: 7
+
+3)
+
+    
+{10000,9999,9998,9997,9996,1,2,3,4,5}
+Returns: 43
+
+4)
+
+    
+{100}
+Returns: 0
+We cannot form any picture frames with just one piece of metal.
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

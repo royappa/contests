@@ -1,0 +1,69 @@
+string eliminated(string original) 
+{
+	
+}	
+
+Problem Statement
+    
+Given a sequence of uppercase letters, we want to remove all but one occurrence of each letter, doing it in such a way that the remaining letters are in alphabetical order. Of course, there may be no way to do this, but if there is, we want to know which letters to remove.
+Create a class MakeUnique that contains a method eliminated that is given a string original, and returns original with the eliminated letters replaced with periods ('.'). The remaining letters must be in alphabetical order.
+If there is no way to do this, return a string with length 0.
+If there are several ways to do this, choose the one with the shortest length between the first and last remaining letters. If there are still several ways, return the string among these that comes earliest lexicographically ('.' comes earlier than any letter in the ASCII sequence).
+Definition
+    
+Class:
+MakeUnique
+Method:
+eliminated
+Parameters:
+string
+Returns:
+string
+Method signature:
+string eliminated(string original)
+(be sure your method is public)
+    
+
+Constraints
+-
+original will contain between 1 and 50 characters inclusive
+-
+each character in original will be an uppercase letter 'A'-'Z'
+Examples
+0)
+
+    
+"ABBBXCXABCX"
+Returns: ".......ABCX"
+The 4 letters ABCX must remain, and in that order. "AB...CX...." would also leave these letters in the appropriate order, but the length between the first and last remaining letters would be longer than in the given answer.
+1)
+
+    
+"ABBBXCXABCB"
+Returns: "A..B.CX...."
+"AB...CX...." and "A.B..CX...." are also possible and have the same length between first and last remaining letters, but they come later lexicographically than the given answer.
+2)
+
+    
+"ABBBXCABCB"
+Returns: ""
+There is no way to eliminate letters and end up with C before X.
+3)
+
+    
+"AABACBXABX"
+Returns: ".AB.C.X..."
+
+4)
+
+    
+"CABDEAFDEGSDABCDEADFGSEFBGS"
+Returns: "............ABCDE..FGS....."
+
+5)
+
+    
+"AAAAAA"
+Returns: ".....A"
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

@@ -1,0 +1,47 @@
+
+Problem Statement
+    
+Building walls with bricks can sometimes be fun, but not in this problem. You have several bricks, some of which are 2 units wide and some of which are 3 units wide. All the bricks are 1 unit high. Your objective is to build a perfect rectangular wall with no empty spaces inside. You can stack the bricks in any pattern you want, but you are not allowed to rotate them. You are not required to use all your bricks.  You are given ints twoBricks and threeBricks, the number of 2 unit wide and 3 unit wide bricks you have, respectively. Return the total number of different perfect walls you can build. Two walls are considered different if at least one of their dimensions (width or height) is different.
+Definition
+    
+Class:
+BuildingWalls
+Method:
+countPossibilities
+Parameters:
+int, int
+Returns:
+int
+Method signature:
+int countPossibilities(int twoBricks, int threeBricks)
+(be sure your method is public)
+    
+Constraints
+-
+twoBricks and threeBricks will each be between 0 and 100000, inclusive.
+-
+twoBricks + threeBricks will be at least 1.
+Examples
+0)
+    
+1
+1
+Returns: 3
+Three different walls of height 1 can be made: One of width 2, one of width 3 and one of width 5.
+1)
+    
+2
+2
+Returns: 11
+The following sizes in (width, height) pairs are possible: (2,1), (3,1), (4,1), (5,1), (6,1), (7,1), (8,1), (10,1), (2,2), (3,2), (5,2) .
+2)
+    
+8
+0
+Returns: 20
+3)
+    
+8
+8
+Returns: 92
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

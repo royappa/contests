@@ -1,0 +1,170 @@
+
+public class SalesPromotion
+{
+	private double discount;
+	private int[] itemPoints;
+	private int[] itemPrice;
+	private int numItems;
+	
+	HashMap cache;
+	
+	private int best(int points, int halfPrice, int n)
+	{
+		if (points == 0 && halfPrice == 0 && n > 0)
+		{
+			int total = 0;
+			for (int i = 0; i < n-1; i++)
+			{
+				total += (int) Math.ceil((double)itemPrice[i]*discount/100.0);
+			}
+			return total;
+		}
+		if (points == 0 && halfPrice == 0 && n == 0)
+		{
+			return 0;
+		}
+		if (n == 0 && (points > 0 || halfPrice > 0))
+		{
+			return -1;
+		}
+		String key = ""+points+":"+halfPrice+":"+n;
+		if (cache.containsKey(key))
+			return ((Integer) cache.get(key)).intValue();
+		
+		// try 3 different ways of doing the last item
+		int bestP = -1, bestH = -1, bestD = -1;
+		if (points >= itemPoints[n-1])
+		{
+			bestP = best(points-itemPoints[n-1], halfPrice, n-1)+0;
+		}
+		if (halfPrice > 0)
+		{
+			bestH = best(points, halfPrice-1, n-1)+(int) Math.ceil((double)itemPrice[n-1]/2.0);
+		}
+		bestD = best(points, halfPrice, n-1)+(int) Math.ceil((double) itemPrice[n-1]*discount/100.0);
+		
+		int b = Math.min(bestP==-1?1000000000:bestP,bestH==-1?1000000000:bestH);
+		if (b == -1)
+		{
+			if (bestD == -1)
+				b = -1;
+			else
+				b = Math.min(bestD, b);
+		}
+				
+		cache.put(key, new Integer(b));
+		return b;
+	}
+	
+	
+Problem Statement
+    
+Your friend has recently been looking through a catalog, and has selected several items she wishes to buy. 
+
+Because of a sales promotion, she has earned credit towards free or discounted products. 
+
+Each item has a cost, and a point value. 
+
+For her referrals, your friend has earned a certain number of points which may be redeemed for items, and a certain number of "half price" items. 
+
+Additionally, she receives a fixed percentage discount on all other items (this is not cumulative with half-price items). 
+
+All prices are rounded up after applying discounts.
+
+Your friend's order is subject to the following restrictions:
+
+Each item must be purchased with points, purchased at half price, or purchased at the fixed discount rate.
+
+Purchasing an item with points is all or nothing; you cannot, for instance, pay for an item partially with points and pay the remainder in cash.
+
+All points must be used.
+
+All half-price items must be used.
+
+All items on the wishlist must be purchased.
+
+Your friend is very excited to place her order, but is very frustrated with what she has found to be a confusing incentive system. 
+
+Being frugal-minded, she wants to get everything on her wishlist at the least possible out-of-pocket expense. 
+
+Knowing your enjoyment of these type of problems, she has come to you for assistance.
+
+You are given an int, points, indicating the number of points your friend must spend; an int, halfPrice, indicating the number of items which are to be purchased at half price; and an int, discount, indicating the fixed discount percentage on all remaining items. 
+
+Finally, you are given a String[], items, indicating the list of items on your friend's wishlist. 
+
+Each element of items will be in the form "pointValue price" (quotes added for clarity), where pointValue and price are both positive integers with no leading zeros. pointValue and will be between 1 and 9999, inclusive. 
+
+price will be between 1 and 99999, inclusive. 
+
+You are to return an int indicating the minimum out of pocket expense your friend must pay to get the items on her wishlist.
+
+Definition
+    
+Class:
+SalesPromotion
+Method:
+bestPrice
+Parameters:
+int, int, int, String[]
+Returns:
+int
+Method signature:
+int bestPrice(int points, int halfPrice, int discount, String[] items)
+(be sure your method is public)
+    
+
+Notes
+-
+The cost of an individual item purchased at half price or the fixed discount rate should always round up when necessary.
+Constraints
+-
+points will be between 0 and 15000, inclusive.
+-
+halfPrice will be between 0 and n, inclusive, where n is the number of elements of items.
+-
+discount will be between 0 and 49, inclusive.
+-
+items will contain between 1 and 50 elements, inclusive.
+-
+Each element of items will be in the form described in the problem statement.
+-
+There will be at least one way to place the order that uses all of the points and half price items.
+Examples
+0)
+
+    
+500
+1
+10
+{"150 500", "350 1000", "500 600", "450 800"}
+Returns: 940
+Here, we're better to use our 500 points on the first two items, rather than the third item. Then, we use our half price discount on the item priced 800 (since it's more expensive than the item priced 600), which costs 400. Finally the item priced 600 we buy for 540 (10% discount), totalling 940.
+1)
+
+    
+500
+1
+10
+{"150 450", "350 700", "500 1200", "450 800"}
+Returns: 1320
+Similar to above, but the items are priced differently, so now it is to our advantage to buy the single item for 500 points.
+2)
+
+    
+1000
+0
+0
+{"200 500", "300 700", "400 900", "500 1100", "600 1300"}
+Returns: 2200
+There's more than one way to use our points, so we have to find the most cost effective.
+3)
+
+    
+0
+0
+0
+{"100 100", "100 200", "100 150", "150 300"}
+Returns: 750
+With no points or discounts of any kind, we just need to add up the total cost.
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

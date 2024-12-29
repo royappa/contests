@@ -1,0 +1,113 @@
+
+typedef long long LL;
+
+LL p10(int x)
+{
+	LL y = 1LL;
+	for (int i = 0; i < x; i++)
+	{
+		y *= 10LL;
+	}
+	return y;
+}		
+
+long long MatchCounting::count(int n) 
+{
+	LL A[150][10];
+	
+	int val[] = { 6, 2, 5, 5, 4, 5, 6, 4, 7, 6 };
+	
+	for (int d = 0; d <= 9; d++)
+	{
+		A[0][d] = 0LL;
+		A[1][d] = 0LL;
+	}
+	for (int i = 2; i <= n; i++)
+	{
+		for (int d = 0; d <= 9; d++)
+		{
+			// compute biggest A[i-val[d]][...]
+			LL m = 0LL;
+			for (int p = 0; p <= 9; p++)
+			{
+				if (i-val[d] >= 1 && A[i-val[d]][p] > m)
+				{
+					m = A[i-val[d]][p];
+				}
+			}	
+			int numd = 0;
+			LL g = m;
+			while (g > 0)
+			{
+				numd++;
+				g /= 10LL;
+			}
+			LL pp = p10(numd);		
+			LL x = pp*((LL) d)+m;
+		}
+	}	
+	// when done
+	LL m = 0LL;
+	for (int d = 0; d <= 9; d++)
+	{
+		if (A[n][d] > m)
+		{
+			m = A[n][d];
+		}
+	}
+	return m+1LL;
+}
+
+Problem Statement
+    
+In order to sharpen their basic arithmetic skills, kids often try to represent numbers using match sticks. As one is only given a limited number, one student is curious how high he can count with his matches.  Each one digit number is represented as follows: - number 8 uses seven matches. - numbers 0, 6 and 9 each use six matches. - numbers 2, 3 and 5 each use five matches. - numbers 4 and 7 each use four matches. - number 1 uses two matches.  Given an int n denoting the number of matches he has at his disposal, return the smallest positive integer that cannot be represented.
+Definition
+    
+Class:
+MatchCounting
+Method:
+count
+Parameters:
+int
+Returns:
+long long
+Method signature:
+long long count(int n)
+(be sure your method is public)
+    
+
+Constraints
+-
+n is between 1 and 128, inclusive.
+Examples
+0)
+
+    
+1
+Returns: 1
+
+1)
+
+    
+2
+Returns: 2
+
+2)
+
+    
+5
+Returns: 6
+
+3)
+
+    
+6
+Returns: 8
+
+4)
+
+    
+9
+Returns: 20
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

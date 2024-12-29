@@ -1,0 +1,60 @@
+import java.util.*;
+public class MatchMaker
+{
+	private class PersonMatch
+	{
+		public String p;
+		public int n;
+
+		PersonMatch(String pp, int nn)
+		{
+			p = pp;
+			n = nn;
+		}
+	}
+
+	public String[] getBestMatches(String[] members, String current, int sf)
+	{
+		ArrayList matches = new ArrayList();
+		String[] curMemberData = {};
+
+                for (int i = 0; i < members.length; i++)
+                {
+                        curMemberData = members[i].split(" ");
+                        if (curMemberData[0].equals(current))
+                        {
+				break;
+			}
+		}
+		for (int i = 0; i < members.length; i++)
+		{
+                        String[] memberData = members[i].split(" ");
+                        int nm = 0;
+                        for (int k = 3; k < memberData.length; k++)
+                        {
+                                if (memberData[k] == curMemberData[k]) nm++;
+                        }
+                        if (nm >= sf && memberData[1] == curMemberData[2])
+                        {
+				PersonMatch p = new PersonMatch(memberData[0], nm);
+				if (matches.size() == 0)
+				{
+					matches.add(p);
+				}
+				else
+				{
+					int j = matches.size()-1;
+					while ( j > 0 && ((PersonMatch) matches.get(j)).n < nm)
+						j--;
+					matches.add(j, p);
+				}
+			}
+		}
+		String[] results = new String[matches.size()];
+		for (int i = 0; i < matches.size()-1; i++)
+		{
+			results[i] = ((PersonMatch) matches.get(i)).p;
+		}
+		return results;
+	}
+}

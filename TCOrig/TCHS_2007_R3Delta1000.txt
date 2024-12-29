@@ -1,0 +1,149 @@
+int visited[60][60];
+int color[60][60];
+int number[60][60]; 
+
+vector<string> g;
+int h, w;
+
+void dfs(int r, int c, int cellColor, int cellNumber)
+{
+	visited[r][c] = 1;
+	color[r][c] = cellColor;
+	number[r][c] = cellNumber;
+	
+	int d[] = {-1,0, 0,1, 1,0, 0,-1};
+	
+	for (int i = 0; i < 4; i++)
+	{
+		int dr = d[2*i], dc = d[2*i+1];
+		if (r+dr >= 0 && r+dr < h && c+dc >= 0 && c+dc < w && !visited[r+dr][c+dc])
+		{
+			dfs(r+dr, c+dc, 1-cellColor, cellNumber);
+		}
+	}
+}
+
+vector <string> color(vector <string> board) 
+{
+	// graph is disjoint
+	// start a dfs at each component
+	// in the dfs, color alternate vertices visited with opposite colors. this is possible due to the nature of the graph.
+	// the larger set gets black
+	// not sure how lexicographic min comes into play
+	
+	memset(visited, 0, sizeof(visited));
+	memset(color, -1, sizeof(color)); // 0 = black, 1 = white, -1 = no color
+	memset(number, -1, sizeof(number)); // to number each component
+	
+	g = board;
+	h = g.size();
+	w = g[0].size();
+	
+	int num = 0;
+	for (int i = 0; i < h; i++)
+	{
+		for (int j = 0; j < w; j++)
+		{
+			if (g[i][j] == '#' && !visited[i][j])
+			{
+				dfs(i, j, 0, num); // start a DFS at this node
+				num++;
+			}
+		}
+	}
+	
+	// process the components. For each, get the blackcount & whitecount.
+
+	vector<int> bc(num, 0);
+	vector<int> wc(num, 0); 
+	
+	for (int i = 0; i < h; i++)
+	{
+		for (int j = 0; j < h; j++)
+		{
+			if (number[i][j] != -1)
+			{
+				bc[number[i][j]] += color[i][j]==0;
+				wc[number[i][j]] += color[i][j]==1;
+			}
+		}
+	}
+	
+	// we will need to flip the colors in components if there are more white than black
+	for (int i = 0; i < h; i++)
+	{
+		for (int j = 0; j < w; j++)
+		{
+			if (g[i][j] == '#')
+			{
+				if (wc[number[i][j]] > bc[number[i][j]])
+				{
+					g[i][j] = color[i][j]==0?'w':'b';
+				}
+				else
+				{
+					g[i][j] = color[i][j]==0?'b':'w';
+				}
+			}
+		}
+	}
+	return g;
+}
+Problem Statement
+    
+You are given a rectangular board containing m x n squares. Some squares on it are missing.
+You must color the existing squares white or black, so that the number of black squares is maximized, and no two existing squares of the same color have a common side.
+You are given the board as a vector <string> board, where the j-th character of the i-th element represents the square at row i, column j. Missing squares are denoted by '.' (dot) and existing squares are denoted by '#' (sharp). Return a vector <string> in the same format, where all '#' characters are replaced with lowercase 'w' for white squares and 'b' for black squares. If there are multiple solutions, return the one among them that comes first lexicographically. That is, you must minimize the first string, if there are still several solutions, minimize the second one, and so on.
+Definition
+    
+Class:
+MoreBlack
+Method:
+color
+Parameters:
+vector <string>
+Returns:
+vector <string>
+Method signature:
+vector <string> color(vector <string> board)
+(be sure your method is public)
+    
+
+Constraints
+-
+board will contain between 1 and 50 elements, inclusive.
+-
+Each element of board will contain between 1 and 50 characters, inclusive.
+-
+All elements of board will contain the same number of characters.
+-
+Each element of board will contain only '.' and '#' characters.
+Examples
+0)
+
+    
+{
+ ".#.", 
+ "###", 
+ ".#."}
+Returns: {".b.", "bwb", ".b." }
+
+1)
+
+    
+{"#.#.#.", ".#.#.#", "#.#.#.", ".#.#.#", "#.#.#.", ".#.#.#"}
+Returns: {"b.b.b.", ".b.b.b", "b.b.b.", ".b.b.b", "b.b.b.", ".b.b.b" }
+
+2)
+
+    
+{"######"}
+Returns: {"bwbwbw" }
+
+3)
+
+    
+{".#.", ".#.", "###", ".#."}
+Returns: {".w.", ".b.", "bwb", ".b." }
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

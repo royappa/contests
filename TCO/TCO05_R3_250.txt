@@ -1,0 +1,102 @@
+
+vector<string> cubes;  // global
+
+bool check(string w)
+{
+	int c = 0;
+	for (int i = 0; i < w.size(); i++)
+	{
+		if (cubes[i].find(w[i]) != string::npos)
+		{
+			c++;
+		}
+	}
+	return c == w.size();
+}
+
+bool canCompose(string w)
+{
+	sort(cubes.begin(), cubes.end());
+	do 
+	{
+		if (check(w))
+		{
+			return true;
+		}
+	} while (next_permutation(cubes.begin(), cubes.end());
+	return false;
+	
+}
+
+vector <int> composeWords(vector <string> _cubes, vector <string> words) 
+{
+	vector<int> r;
+	cubes = _cubes;
+	for (int i = 0; i < words.size(); i++)
+	{
+		if (canCompose(words[i]))
+		{
+			r.push_back(i);
+		}
+	}
+	return r;
+}
+
+Problem Statement
+    
+Children are used to playing with special cubes with letters written on the cubes' faces. The goal of the game is to compose words using such cubes. If you want to compose the word "DOG", you must find 3 cubes, one containing the letter 'D', one containing the letter 'O', and one containing the letter 'G', and orient them so the proper letters are facing upward.
+You are also given a vector <string> words, each element of which contains a word that you would like to spell out using the cubes. Return a vector <int> containing the 0-based indices of each of the words in words that can be composed using the given cubes. Indices in the return value must be sorted in ascending order.
+Definition
+    
+Class:
+PlayingCubes
+Method:
+composeWords
+Parameters:
+vector <string>, vector <string>
+Returns:
+vector <int>
+Method signature:
+vector <int> composeWords(vector <string> cubes, vector <string> words)
+(be sure your method is public)
+    
+
+Constraints
+-
+cubes will contain between 2 and 8 elements, inclusive.
+-
+Each element of cubes will contain exactly 6 uppercase letters ('A' - 'Z').
+-
+words will contain between 1 and 50 elements, inclusive.
+-
+Each element of words will contain between 2 and 8 uppercase letters ('A' - 'Z'), inclusive.
+Examples
+0)
+
+    
+{"ABCDEF", "DEFGHI", "OPQRST", "ZZZZZZ", "YYYYYY"}
+{"CAT", "DOG", "PIZZA"}
+Returns: {1 }
+We can form the word "DOG" using 'D' from the first cube, 'O' from the third and 'G' from the second. Note that if we had used the second cube to get 'D' instead, we would be missing a 'G'.
+1)
+
+    
+{"ABCDEF", "DEFGHI", "OPQRST", "MNZLSA", "QEIOGH", "IARJGS"}
+{"DOG", "CAT", "MOUSE", "BIRD", "CHICKEN", "PIG", "ANIMAL"}
+Returns: {0, 1, 3, 5 }
+
+2)
+
+    
+{"AAAAAA", "AAAAAA", "AAAAAA", "AAAAAA"}
+{"AA", "AAA", "AAAA", "AAAAA", "AAAAAA"}
+Returns: {0, 1, 2 }
+
+3)
+
+    
+{"ABCDEF", "DEFGHI", "OPQRST", "ZZZZZZ", "ZZZZZZ"}
+{"CAT", "DOG", "PIZZA"}
+Returns: {1, 2 }
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

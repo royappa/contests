@@ -1,0 +1,69 @@
+int minMoves(vector <int> startState, vector <int> finishState) 
+{
+	
+}
+
+Problem Statement
+    
+Split-and-merge is a one player game. The player starts out with several piles of coins. With each move, he can either merge two of the piles into a single pile, or split a single pile into two new non-empty piles. You are given a vector <int> startState, containing the starting configuration of the coins, and a vector <int> finishState, containing the target configuration. Each element of the vector <int>s represents the number of coins in a pile. The order of the elements do not matter. For example, {1, 2, 3} and {2, 1, 3} represent the same set of piles. Return the minimal number of moves necessary to reach the finishState from the startState. If a solution doesn't exist then return -1.
+Definition
+    
+Class:
+SplitAndMergeGame
+Method:
+minMoves
+Parameters:
+vector <int>, vector <int>
+Returns:
+int
+Method signature:
+int minMoves(vector <int> startState, vector <int> finishState)
+(be sure your method is public)
+    
+
+Constraints
+-
+startState will contain between 1 and 10 elements, inclusive.
+-
+finishState will contain between 1 and 10 elements, inclusive.
+-
+Each element of startState will be between 1 and 50, inclusive.
+-
+Each element of finishState will be between 1 and 50, inclusive.
+Examples
+0)
+
+    
+{1, 2}
+{3}
+Returns: 1
+Merge the two piles to form a single pile of 3 coins.
+1)
+
+    
+{4, 2}
+{2, 2, 2}
+Returns: 1
+Split the pile of 4 coins into two piles of 2 coins.
+2)
+
+    
+{1, 2, 3, 4, 5, 6}
+{7, 7, 7}
+Returns: 3
+
+3)
+
+    
+{3, 4}
+{1, 6}
+Returns: 2
+One way to do this is to split the pile of 3 coins into a pile of 2 coins and a pile with 1 coin. Then, merge the pile of 2 coins with the pile of 4 coins to form a pile of 6 coins.
+4)
+
+    
+{2}
+{2,1}
+Returns: -1
+A solution doesn't exist.
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

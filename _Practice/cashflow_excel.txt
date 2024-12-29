@@ -1,0 +1,8 @@
+=SUMPRODUCT(
+    $E$2:$E$27 * (
+        ($F$2:$F$27="M") * (TEXT($G$2:$G$27,"mm/yyyy") = TEXT(I2,"mm/yyyy")) + 
+        ($F$2:$F$27="Q") * 3 * (MOD(MONTH(I2) - MONTH($G$2:$G$27) + 12 * (YEAR(I2) - YEAR($G$2:$G$27)), 3) = 0) +
+        ($F$2:$F$27="S") * 6 * (MOD(MONTH(I2) - MONTH($G$2:$G$27) + 12 * (YEAR(I2) - YEAR($G$2:$G$27)), 6) = 0) +
+        ($F$2:$F$27="A") * 12 * (MONTH($G$2:$G$27) = MONTH(I2) * (YEAR($G$2:$G$27) <= YEAR(I2)))
+    )
+)

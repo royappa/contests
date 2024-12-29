@@ -1,0 +1,95 @@
+
+
+int add(int n) 
+{
+	vector<int> d;
+	
+	int nn = n;
+	while (nn > 0)
+	{
+		d.push_back(nn % 10);
+		nn /= 10;
+	}
+	int sum = 0;
+	sort(d.begin(), d.end());
+	map<int,int> used;
+	do
+	{
+		int val = 0;
+		int nd = d.size();
+		for (int i = 0; i < nd; i++)
+		{
+			val = val*10 + d[i];
+		}
+		if (!used[val])
+		{
+			sum += val;
+			used[val] = 1;
+		}
+	} while (next_permutation(d.begin(), d.end()));
+	return sum;
+}
+
+Problem Statement
+    
+We define a permutation of an integer n as an integer that has the same digits as n, but in an arbitrary order. Two permutations of n are considered different if the numbers they represent are not the same. For instance, the set of all possible permutations of the number n = 313 is: {133, 313, 331}.
+
+Given an int n, your task is to find the sum of all its permutations. 
+Definition
+    
+Class:
+PermutationSum
+Method:
+add
+Parameters:
+int
+Returns:
+int
+Method signature:
+int add(int n)
+(be sure your method is public)
+    
+
+Constraints
+-
+n is between 1 and 99999, inclusive.
+-
+No digits of n are zero.
+Examples
+0)
+
+    
+157
+Returns: 2886
+We have: 157 + 175 + 517 + 571 + 715 + 751 = 2886
+1)
+
+    
+313
+Returns: 777
+We have: 133 + 313 + 331 = 777
+2)
+
+    
+1234
+Returns: 66660
+
+3)
+
+    
+5
+Returns: 5
+
+4)
+
+    
+54321
+Returns: 3999960
+
+5)
+
+    
+99999
+Returns: 99999
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

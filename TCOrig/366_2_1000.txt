@@ -1,0 +1,103 @@
+
+int memo[121][121];
+vector<int> v;
+
+int f(int a, int n)
+{
+	if (n == 1)
+	{
+		return v[a];
+	}
+	int& r = memo[a][n];
+	if (r != -1)
+		return r;
+	
+	int sum = 0;
+	for (int i = 0; i < n; i++)
+	{
+		sum += v[a+i];
+	}
+	
+	r = 1<<30;
+	for (int i = 0; i < n; i++)
+	{
+		int f1 = 0, f2 = 0;
+		if (i == 0)
+		{
+			f1 = 0;
+			f2 = f(a+1, n-1);
+		}
+		else if (i == n-1)
+		{
+			f1 = 0;
+			f2 = f(a, n-1);
+		}
+		else
+		{
+			f1 = f(a, (i-1)-a+1);
+			f2 = f(i+1, n-(i-a+1));
+		}
+		r <?= sum-(f1+f2);
+	}
+	
+	return r;
+}
+	
+int maxValue(vector <int> guitarValues) 
+{
+	v = guitarValues;
+	int n = v.size();
+	for (int i = 0; i < n; i++)
+	{
+		v.push_back(guitarValues[i]);
+	}
+	
+	memset(memo, -1, sizeof(memo));
+	return f(0, n, 0);	
+}
+
+Problem Statement
+    
+You have been invited to a TV game show where you will play against another contestant to win free guitars. At the start of the game, there are n guitar cases arranged in a circle, each of which contains a single guitar. You make the first move by choosing one guitar and removing it from its case. The other player then chooses a guitar and removes it from its case. At this point, there might be one or two groups, where a group is defined as a maximal contiguous set of non-empty cases. You continue to take turns choosing guitars, and on each turn, the current player chooses exactly one guitar from each group. The game ends when all the guitars have been chosen.
+ 
+Each player gets to keep all the guitars that he chooses during the game. Your goal is to maximize the total value of the guitars you choose. The guitars in the circle are numbered 0 to n-1 in clockwise order (guitar 0 is next to guitar n-1). You are given a vector <int> guitarValues, the i-th element of which is the value of guitar i. Return the maximum possible total value you can get, assuming your opponent plays a perfect strategy.
+Definition
+    
+Class:
+PickGuitars
+Method:
+maxValue
+Parameters:
+vector <int>
+Returns:
+int
+Method signature:
+int maxValue(vector <int> guitarValues)
+(be sure your method is public)
+    
+
+Constraints
+-
+guitarValues will contain between 2 and 50 elements, inclusive.
+-
+Each element of guitarValues will be between 1 and 10000, inclusive.
+Examples
+0)
+
+    
+{1,5,3,4,5}
+Returns: 10
+You first choose guitar 4 (which has a value of 5). Your opponent chooses guitar 1 (which also has a value of 5). There are now two groups of guitars - one group contains guitar 0 and the other group contains guitars 2 and 3. You must choose one guitar from each group, so you choose guitar 0 from the first group (which has value 1) and guitar 3 from the second group (which has value 4). Your opponent will then choose the last remaining guitar, and the game is over.
+1)
+
+    
+{4,8,4}
+Returns: 12
+Take guitar 1 (which has value 8). Your opponent will choose one of the remaining guitars (both of which have a value of 4), and you will get the other.
+2)
+
+    
+{2,1,4,1,2,1,8,1}
+Returns: 12
+Choose guitar 6 (which has value 8). Your opponent will choose guitar 2 (which has value 4). There are now two groups of guitars. You choose guitars 0 and 4 (both of which have a value of 2). There are now four groups, each containing one guitar, so your opponent will take all the remaining guitars.
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

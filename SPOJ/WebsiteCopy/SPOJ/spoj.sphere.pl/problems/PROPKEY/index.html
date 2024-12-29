@@ -1,0 +1,242 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<!-- Mirrored from spoj.sphere.pl/problems/PROPKEY/ by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 10 Jan 2006 04:48:46 GMT -->
+<head>
+<title>Sphere Online Judge (SPOJ)  - Problem PROPKEY</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-2">
+<META NAME="Keywords" CONTENT="spoj, online, judge, problem, set, problemset, archive, ACM, Polish, Poland, contest, contester, task, tasks, ADA, Java, Pascal, C, C++, Whitespace, sphere, interest, group, python, ruby, icon, o'caml, caml, ocaml, perl, haskell, bf, brain, clips, prolog, fortran, asm, assembler, asembler, functional, esoteric, programming, languages">
+
+<link href="https://spoj.sphere.pl/gfx/favicon" rel="shortcut icon" type="image/x-icon">
+
+<link href="../../themes/skin3.css" rel="stylesheet" type="text/css" id="theme">
+<style type="text/css">
+<!--
+.maintable {width: 755;} 
+-->
+</style>
+<script type="text/javascript" language="javascript">
+<!--
+function UnCryptMailto(s) {
+	var n=0;
+	var r="";
+	for(var i=0;i<s.length;i++) {		
+		n=s.charCodeAt(i); 
+		if (n>=8364) {n = 128;}
+		r += String.fromCharCode(n+(2));	
+	}
+	return r;
+}
+function linkTo_UnCryptMailto(s)	{
+	location.href=UnCryptMailto(s);
+}
+// -->
+</script>
+
+</head>
+<body>
+<center>
+<table cellpadding="10" cellspacing="0" class="maintable" id="maintable">
+<tr>
+    <td colspan="2" class="header">
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+        <tr>
+		<td class="headerleft"/>
+		<td class="headercenter"><h1>Sphere Online Judge</h1></td>
+		<td class="headerright"/>
+	</tr>
+	</table>
+    </td>
+</tr>
+<tr><td class="menu" width="92" valign="top">
+<form name="login"  action="http://spoj.sphere.pl/problems/PROPKEY/" method="post" 
+	onsubmit="if(document.login.ssl.checked) document.login.action='https://spoj.sphere.pl/problems/PROPKEY/'" style="margin-bottom: 18px"> 
+User: <input name="login_user" type="text" style="width: 85px;" class="form"><BR>
+Password: <input name="password" type="password" style="width: 85px;" class="form"><BR>
+<script language="javascript" type="text/javascript">
+<!--
+document.write('<input type="checkbox" name="ssl" id="ssl" checked>secure<br>');
+//-->
+</script>
+<input name="submit" type="submit" value="Log In" class="button" style="width: 85px;">
+</form><div class="menucmd"><a href="https://spoj.sphere.pl/register">register</a><br><br><a href="https://spoj.sphere.pl/status">status</a><br><a href="https://spoj.sphere.pl/submit">submit</a><br><a href="../classical/sort=0,start=250.html">problems</a><br><br><a href="https://spoj.sphere.pl/">news</a><br><a href="https://spoj.sphere.pl/contests">contests</a><br><a href="https://spoj.sphere.pl/info">info</a><br><a href="https://spoj.sphere.pl/ranks/">ranks</a><br><br><a href="https://spoj.sphere.pl/forum">forum</a><br><a href="https://spoj.sphere.pl/help">help</a><br><a href="https://spoj.sphere.pl/links">links</a><br><hr></div>Server time:<br>2006-01-10<br>05:47:20<a href="../classical/sort=0,start=250.html"></a><br><br>
+<form method="get" action="https://spoj.sphere.pl/search/" class="form" style="width:90px">
+<input type="text" name="query" style="width:85px" maxlength=255 value="" class="form"><br>
+<input type="submit" value="Search" style="width:85px" class="form" title="Search site"><br>
+&nbsp;<a href="https://spoj.sphere.pl/search/problems=on,users=on,contests=on" title="More search options"><small>advanced...</small></a>
+</form></td><td class="content" width="99%"><table class="problems" width="100%">
+<tr class="navigation">
+<td><a href="https://spoj.sphere.pl/submit/PROPKEY/">Submit</a></td>
+<td><a href="https://spoj.sphere.pl/status/PROPKEY/">All submissions</a></td>
+<td><a href="https://spoj.sphere.pl/ranks/PROPKEY/">Best solutions</a></td>
+<td><a href="https://spoj.sphere.pl/problems/PROPKEY.ps">PS</a></td>
+<td><a href="https://spoj.sphere.pl/problems/PROPKEY.pdf">PDF</a></td>
+<td><a href="../classical/sort=0,start=250.html">Back to list</a></td>
+</tr>
+</table>
+
+<div class="prob">
+
+<h2>SPOJ Problem Set </h2>
+<h1>37. The Proper Key</h1>
+<h2>Problem code: PROPKEY</h2>
+<p align="justify">
+<p align=justify>
+Many people think that Tetris was invented by two Russian programmers. But that
+is not the whole truth. The idea of the game is very old -- even the Egyptians had
+something similar. But they did not use it as a game. Instead, it was used as
+a&nbsp;very complicated lock. The lock was made of wood and consisted of a large
+number of square fields, laid out in regular rows and columns. Each field was
+either completely filled with wood, or empty. The key for this lock was
+two-dimensional and it was made by joining square parts of the same size
+as the fields of the lock. So they had a 2D lock and 2D key that could be
+inserted into the lock from the top. The key was designed so that it was
+not possible to move it upwards. It could only fall down and it could
+slide sideways -- exactly like in a Tetris game. The only difference is
+that the key could not be rotated. Rotation in Tetris is really a Russian
+invention.
+
+<p align=justify>
+The entry gate into the Pyramid has such a lock. The ACM archaeologists have
+found several keys and one of them belongs to the lock with a very high
+probability. Now they need to try them out and find which one to use. Because
+it is too time-consuming to try all of them, it is better to begin with those keys that
+may be inserted deeper into the lock. Your program should be able to
+determine how deep a given key can be inserted into a given lock.
+
+<H3>Input</H3>
+
+<p align=justify>The input consists of <VAR>T</VAR> test cases. The number of them (<VAR>T</VAR>) is given on
+the first line of the input file.
+Each test case begins with a line containing two integers <VAR>R</VAR> and <VAR>C</VAR>
+(<VAR>1 &lt;= R,C &lt;= 100</VAR>) indicating the key size. Then exactly <VAR>R</VAR> rows follow,
+each containing <VAR>C</VAR> characters. Each character is either a hash mark
+(<CODE>#</CODE>) or a period (<CODE>.</CODE>). A hash mark represents one square field made
+of wood; a period is an empty field. The wooden fields are always connected,
+i.e. the whole key is made of one piece.
+Moreover, the key remains connected even if we cut off arbitrary number of rows
+from its top. There is always at least one
+non-empty field in the top-most and bottom-most rows and the left-most and
+right-most columns.
+
+<p align=justify>After the key description, there is a line containing two integers <VAR>D</VAR> and <VAR>W</VAR>
+(<VAR>1 &lt;= D &lt;= 10000</VAR>,
+<VAR>1 &lt;= W &lt;= 1000</VAR>). The number <VAR>W</VAR> is the lock width,
+and <VAR>D</VAR> is its
+depth. The next <VAR>D</VAR> lines contain <VAR>W</VAR> characters each. The character may be
+either a hash mark (representing the wood) or a period (the free space).
+
+
+<H3>Output</H3>
+
+<p align=justify>Your program should print one line of output for each test case. The line
+should contain the statement
+"<CODE>The key falls to depth <VAR>X</VAR>.</CODE>". Replace <VAR>X</VAR>
+with the maximum depth to which the key can be inserted by moving it down 
+and sliding it to the left or right only. The depth is measured as the distance
+between the bottom side of the key and the top side of the lock. If it is
+possible to move the key through the whole lock and take it away at the bottom
+side, output the sentence "<CODE>The key can fall through.</CODE>".
+
+
+<H3>Example</h3>
+<PRE>
+Sample Input:
+
+4
+2 4
+#.##
+###.
+3 6
+#....#
+#....#
+#..###
+2 3
+##.
+.##
+2 7
+#.#.#.#
+.#.#.#.
+1 1
+#
+1 10
+###....###
+3 2
+##
+.#
+.#
+1 5
+#.#.#
+
+
+Sample output:
+
+The key falls to depth 2.
+The key falls to depth 0.
+The key can fall through.
+The key falls to depth 2.
+</PRE>
+<b>Warning: large Input/Output data, be careful with certain languages</b>
+
+
+<hr>
+<table border=0 cellspacing=0 cellpadding=0 align=left>
+<tr><td width=130>Added by:</td><td><a href="https://spoj.sphere.pl/search/'Adrian%20Kosowski'">Adrian Kosowski</a></td></tr>
+<tr><td>Date:</td><td>2004-06-06</td></tr>
+<tr><td>Time limit:</td><td>5s
+</td></tr>
+<tr><td>Source limit:</td><td>50000B</td></tr>
+<tr><td>Resource:</td><td>ACM Central European Programming Contest, Prague 1999</td></tr></table>
+</div></td>
+</tr>
+
+<tr>
+<td colspan="2" class="footer">
+
+<script language="javascript" type="text/javascript">
+<!--
+function swapSheet(sheet, caller) {
+    document.getElementById('theme').href=sheet;
+    document.cookie="css_0="+sheet+"; path=/;";
+    caller.href="#bottom";
+}
+
+function setWidth(w, caller) {
+    document.getElementById('maintable').style.width=w;
+    document.cookie="res="+w+"; path=/;";
+    caller.href="#bottom";
+}
+//-->
+
+</script>
+        <table width="100%">
+    <tr>
+	<td align="left">
+            <a href="http://www.pg.gda.pl/eng.html"><IMG src="https://spoj.sphere.pl/gfx/logo-pg" alt="www.pg.gda.pl" border=0 height=36 width=44></a>&nbsp;
+            <a href="http://www.eti.pg.gda.pl/"><IMG src="https://spoj.sphere.pl/gfx/logo-eti" alt="www.eti.pg.gda.pl" border=0 height=36 width=44></a>
+	</td>
+	<td align="center">
+	    page size:
+	    <a href="https://spoj.sphere.pl/?res=755"  onClick="setWidth('755', this)">800x600</a>
+	    <a href="https://spoj.sphere.pl/?res=980"  onClick="setWidth('980', this)">1024x768</a>
+	    <a href="https://spoj.sphere.pl/?res=100%" onClick="setWidth('100%', this)">Full</a>
+	    &nbsp;&nbsp;
+	    theme:
+	    <a href="../../indexb6a4.html?css=/themes/skin1.css" onClick="swapSheet('../../themes/skin1.css', this)">olive</a>
+	    <a href="../../index3840.html?css=/themes/skin2.css" onClick="swapSheet('../../themes/skin2.css', this)">banana</a>
+	    <a href="../../index80f0.html?css=/themes/skin3.css" onClick="swapSheet('../../themes/skin3.css', this)">plum</a>
+	    <br>
+	    <a href="http://sphere.pl/?id=66">spoj team at sphere</a> &copy; 2004-05 all rights reserved
+	</td>
+	<td align="right">
+            <a href="http://task.gda.pl/english/"><IMG src="https://spoj.sphere.pl/gfx/logo-task" alt="task.gda.pl" border=0 height=36 width=44></a>&nbsp;
+            <a href="http://sphere.pl/"><IMG src="https://spoj.sphere.pl/gfx/logo-sphere" alt="sphere.pl" border=0 height=32></a>
+	</td>
+    </tr>
+    </table>
+    </tr></table>
+</center>
+</body>
+
+<!-- Mirrored from spoj.sphere.pl/problems/PROPKEY/ by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 10 Jan 2006 04:48:46 GMT -->
+</html>

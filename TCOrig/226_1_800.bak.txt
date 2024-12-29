@@ -1,0 +1,116 @@
+double weightedScore(vector <double> questions, int testScore) 
+{
+	
+}
+
+Problem Statement
+    
+Many types of standardized testing award each test taker a score that is based on how an individual performs when compared to the rest of the population. 
+
+This is done, in part, to correct for inherent differences in the level of difficulty of different tests, and to make the score values more meaningful. 
+
+For instance, saying that someone has an IQ of 130 (where the score is based upon 100 being "average") is more useful that simply saying that someone correctly answered 25 out of 40 questions on "Joe's Intelligence Test".
+
+Standardized scoring typically utilizes two common statistical tools: mean and standard deviation. 
+"Mean" is commonly called the average. Mean is calculated by summing all scores, and dividing by the total number of scores.
+
+Standard deviation is calculated in a multi-step process.
+First, let m = the mean.
+Then, for each score, x, calculate the square of its deviation from the mean, (x - m) ^ 2.
+Sum the individual squares, and divide by the total number of scores.
+Finally, take the square root of that result.
+
+Once these figures are calculated, a raw score can be converted to a standardized score by determining how many standard deviations above or below the mean raw score is. 
+
+A point value is then assigned to the mean and standard deviation. 
+
+For instance, some intelligence tests have a mean score of 100 points, and a standard deviation of 15 points.
+
+You have been assigned the task of writing a program that will calculate the standardized score for an individual, given their raw score (number of questions correct). 
+
+Specifically, it has been explained to you that 1000 points is the average score, and each standard deviation is 300 points. Thus, if an individual's raw score is 1.5 standard deviations above average, their standardized score would be 1450 points.
+
+The test in question has already been administered to a sufficiently large set of testers. Unfortunately, the raw scores of each test individual have been lost. However, a summary of the results, namely the percentage of individuals who correctly answered each question, is still available, and you have been told that this will suffice to determine the mean and standard deviation of the original data set. 
+
+Since the set of testers was very large, you can assume that the percentage of people who got a question correct represents the probability of any given person correctly answering that question.
+
+You are given a vector <double> questions, where each element of questions indicates the percentage of individuals who correctly answered that question. 
+
+You are also given an int testScore indicating the number of questions correctly answered by a new test subject. Using the scoring methodology explained above, you are to return a double indicating the standardized score that should be awarded to this individual.
+Definition
+    
+Class:
+TestScores
+Method:
+weightedScore
+Parameters:
+vector <double>, int
+Returns:
+double
+Method signature:
+double weightedScore(vector <double> questions, int testScore)
+(be sure your method is public)
+    
+
+Notes
+-
+The return value must be within 1e-09 absolute or relative error of the correct answer.
+-
+You may assume that percentages of correct responses for each question are based upon an indefinitely large set of test data.
+-
+For those familiar with typical statistical terminology, note here that we are using a "population standard deviation", since it is assumed that we are dealing with a sufficiently large set of test data.
+Constraints
+-
+questions will contain between 1 and 50 elements, inclusive.
+-
+Each element of questions will be between 0.001 and 0.999, inclusive.
+-
+testScore will be between 0 and n, inclusive, where n is the number of questions.
+Examples
+0)
+
+    
+{0.5, 0.5}
+1
+Returns: 1000.0
+This is a simple case, since the average score is 1, a raw score of 1 is a standardized score of 1000.
+1)
+
+    
+{0.5, 0.5, 0.5}
+3
+Returns: 1519.6152422706632
+Out of 8 test takers, 1 will get no questions correct, 3 will get 1 question correct, 3 will get 2 questions, and 1 will get all 3. We calculate a mean of 1.5, and a standard deviation of Sqrt(3)/2 = 0.866025.
+A score of 3 is 1.5 above the mean, which is 1.73205 * SD. We can then calculate the standardized score.
+2)
+
+    
+{0.2, 0.3, 0.4}
+3
+Returns: 1806.6323435772447
+With harder questions, scores will tend to be lower (mean score is now 0.9), and a perfect score is weighted higher.
+3)
+
+    
+{0.2, 0.3, 0.4}
+0
+Returns: 654.3004241811809
+Same questions as above, but notice here that because of the expected low scores, even getting no questions correct doesn't get too low of a standardized score.
+4)
+
+    
+{0.9, 0.9, 0.9, 0.9}
+0
+Returns: -800.0
+On a fairly easy test, notice that it's possible to score below zero.
+5)
+
+    
+{ 0.956062, 0.592855, 0.405804,
+  0.484474, 0.633413, 0.219248,
+  0.801282, 0.724066, 0.886559,
+  0.794041, 0.324220 }
+7
+Returns: 1037.5680868214772
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

@@ -1,0 +1,139 @@
+#include <vector>
+#include <list>
+#include <map>
+#include <set>
+#include <deque>
+#include <stack>
+#include <bitset>
+#include <algorithm>
+#include <functional>
+#include <numeric>
+#include <utility>
+#include <sstream>
+#include <iostream>
+#include <iomanip>
+#include <cstdio>
+#include <cmath>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+class CakesEqualization {
+public:
+typedef long double LD;
+#define eps 1.0e-9
+
+bool poss(vector<int> &w, LD mid, int maxCuts)
+{
+	int n = w.size();
+	int num = 0;
+	for (int i = 1; i < n; i++)
+	{
+		// how many cuts are needed on w[i] to make the difference w[0] and the biggest resulting piece be less than mid?
+		if (w[i]-w[0] <= mid+eps)
+			continue;
+		int pieces = ceil(eps+LD(w[i])/(mid+w[0]));
+		if (pieces > 1)
+			num += pieces-1;
+	}
+cout << mid << " and maxc = " << maxCuts << " needed " << num << endl;
+	return maxCuts >= num;
+}
+
+double fairDivision(vector <int> w, int maxCuts) 
+{
+	int n = w.size();
+	sort(w.begin(), w.end());
+	LD lo = 0, hi = w[n-1]-w[0];
+	if (hi == 0)
+		return 0;
+	
+	LD mid = 0.0;
+	for (int i = 0; i < 1000; i++)
+	{
+		mid = (hi+lo)/2.0;
+		if (poss(w, mid, maxCuts))
+		{
+			hi = mid;
+		}
+		else
+		{
+			lo = mid;
+		}
+	}
+	return mid;
+}
+};
+
+
+//Powered by [KawigiEdit]
+
+
+Problem Statement
+    
+You are organizing a party and have bought several pieces of cake for it. The weights of these pieces are given in the vector <int> weights, where each element corresponds to the weight of a single piece.
+After looking at the pieces more carefully, you became worried that they have different weights and decided to make these differences smaller. In order to do this, you can make at most maxCuts cuts. With each cut you can choose one of the pieces you currently have and divide it into two distinct pieces. Note that each of these two pieces can be chosen again when making subsequent cuts.
+Your goal is to produce cuts in such way that the difference between the maximal and the minimal pieces' weights becomes as small as possible. Find the best way of making cuts and return the optimal difference.
+Definition
+    
+Class:
+CakesEqualization
+Method:
+fairDivision
+Parameters:
+vector <int>, int
+Returns:
+double
+Method signature:
+double fairDivision(vector <int> weights, int maxCuts)
+(be sure your method is public)
+    
+
+Notes
+-
+Your return value must have an absolute or relative error less than 1e-9.
+Constraints
+-
+weights will contain between 1 and 50 elements, inclusive.
+-
+Each element of weights will be between 1 and 1,000,000,000, inclusive.
+-
+maxCuts will be between 1 and 100,000, inclusive.
+Examples
+0)
+
+    
+{1, 3}
+2
+Returns: 0.0
+First, choose the piece with weight 3 and cut it into pieces with weights 1 and 2. Then, choose the piece with weight 2 and cut it into two pieces with weight 1. Now all pieces have the same weight, so the answer is 0.
+1)
+
+    
+{1, 1, 1, 1, 1}
+4
+Returns: 0.0
+Even though you are allowed to make 4 cuts, there is no sense in making any of them.
+2)
+
+    
+{1, 3}
+1
+Returns: 0.5
+The same case as in example 0, but now you are allowed to make only one cut. The best thing to do is to cut the piece with weight 3 into two pieces with weights 1.5.
+3)
+
+    
+{7, 11, 13}
+10
+Returns: 0.3999999999999999
+
+4)
+
+    
+{13, 69, 41, 37, 80}
+27
+Returns: 1.4666666666666668
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

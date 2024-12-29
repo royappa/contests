@@ -1,0 +1,111 @@
+
+import java.util.*;
+public class CongruenceLock
+{
+	public int minPushes(int cur, int target, int[] buttons)
+	{
+		// do BFS from cur to target, keeping track of visited.
+		// if run out of nodes to visit, return -1
+		HashMap dist = new HashMap();
+		ArrayList visited = new ArrayList();
+		ArrayList q = new ArrayList();
+		q.add(""+cur);
+		visited.add(""+cur);
+		dist.put(""+cur, "0");
+		while (q.size() > 0)
+		{
+			String head = (String) q.get(0);
+			q.remove(0);
+			int headStatus = Integer.parseInt(head);
+			int d = Integer.parseInt((String) dist.get(head));
+			if (head.equals(""+target))
+				return d;
+			for (int i = 0; i < buttons.length; i++)
+			{
+				int nbr = (headStatus + buttons[i]) % 100000;
+				String snbr = "" + nbr;
+				if (visited.contains(snbr))
+					continue;
+				visited.add(snbr);
+				dist.put(snbr, ""+(d+1));
+System.out.println(dist.toString());
+			}
+		}
+		return -1;
+	}
+}
+
+Problem Statement
+    
+A CongruenceLock is a lock which works as follows. It displays a current status which is a number between 0 and 99999, inclusive. The lock opens if a specific status is reached. There are a number of buttons, each labeled with a number between 1 and 99999, inclusive. When a button labeled with the number b is pressed, the new status of the lock becomes (current status + b) mod 100000.  Given an int current, the current status of the lock, an int target, the status at which the lock opens, and a int[] buttons, the numbers labeled on the buttons, return the minimum number of button presses necessary to open the lock. If it is not possible to open the lock, return -1 instead. Each button can be pressed multiple times.
+Definition
+    
+Class:
+CongruenceLock
+Method:
+minPushes
+Parameters:
+int, int, int[]
+Returns:
+int
+Method signature:
+int minPushes(int current, int target, int[] buttons)
+(be sure your method is public)
+    
+
+Notes
+-
+In C++, C#.NET and Java, the expression (a + b) mod 100000 can be written as (a + b) % 100000.
+-
+In VB.NET, the expression (a + b) mod 100000 can be written as (a + b) Mod 100000.
+Constraints
+-
+current is between 0 and 99999, inclusive.
+-
+target is between 0 and 99999, inclusive.
+-
+buttons contains between 1 and 50 elements, inclusive.
+-
+Each element of buttons is between 1 and 99999, inclusive.
+Examples
+0)
+
+    
+10000
+10004
+{1}
+Returns: 4
+The button labeled with "1" is pushed 4 times.
+1)
+
+    
+99880
+89
+{100, 3}
+Returns: 5
+The button labeled with "100" is pushed 2 times and the button labeled with "3" is pushed 3 times.
+2)
+
+    
+11111
+22222
+{4, 6, 2222, 3456}
+Returns: -1
+
+3)
+
+    
+0
+1
+{3}
+Returns: 66667
+
+4)
+
+    
+172
+172
+{1, 2, 3, 5, 7}
+Returns: 0
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

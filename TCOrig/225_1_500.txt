@@ -1,0 +1,206 @@
+#include <vector>
+#include <list>
+#include <map>
+#include <set>
+#include <deque>
+#include <stack>
+#include <bitset>
+#include <algorithm>
+#include <functional>
+#include <numeric>
+#include <utility>
+#include <sstream>
+#include <iostream>
+#include <iomanip>
+#include <cstdio>
+#include <cmath>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+int MAX_INT = 1000;
+int n;
+
+class ComboBoxKeystrokes {
+public:
+
+int iPlus(int a, int b)
+{
+	if (a == MAX_INT || b == MAX_INT)
+		return MAX_INT;
+	return a+b;
+}
+
+int iMin(int a, int b)
+{
+	if (a == MAX_INT) return b;
+	if (b == MAX_INT) return a;
+	return min(a, b);
+}
+int iMax(int a, int b)
+{
+	if (a == MAX_INT) return a;
+	if (b == MAX_INT) return b;
+	return max(a, b);
+}
+
+bool canReach(int a, int b, vector<string> e)
+{
+	if (a == b)
+		return true;
+	if (a < b)
+	{
+		for (int p = a+1; p < b; p++)
+		{
+			if (e[p][0] == e[b][0])
+				return false;
+		}
+		return true;
+	}
+	for (int p = a+1; p < n; p++)
+	{
+		if (e[p][0] == e[b][0])
+			return false;
+	}
+	for (int p = 0; p < b; p++)
+	{
+		if (e[p][0] == e[b][0])
+			return false;
+	}
+	return true;
+}
+
+int minimumKeystrokes(vector <string> e) 
+{
+	n = e.size();
+	if (n == 1)
+		return 0;
+	for (int i = 0; i < n; i++)
+	{
+		e[i][0] = isupper(e[i][0]) ? tolower(e[i][0]) : e[i][0];
+	}
+	
+	int dist[50][50];
+	
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = 0; j < n; j++)
+		{
+			dist[i][j] = canReach(i, j, e) ? 1 : MAX_INT;
+		}
+	}
+	
+	for (int k = 0; k < n; k++)
+	{
+		for (int i = 0; i < n; i++)
+		{
+			for (int j = 0; j < n; j++)
+			{
+				dist[i][j] = iMin(dist[i][j], iPlus(dist[i][k],dist[k][j]));
+			}
+		}
+	}
+	
+	int m = 0;
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = 0; j < n; j++)
+		{
+			m = iMax(m, dist[i][j]);
+		}
+	}
+	return m;			
+}
+
+};
+
+
+
+
+//Powered by [KawigiEdit]
+
+
+Problem Statement
+    
+A "combo box", "choice", or "select box" is a graphical component found in many applications where the current selection is displayed with an arrow on the right side that you can push on to see all the options that can be selected. 
+
+You probably selected an item from a combo box to open this problem.
+
+A common behavior when you try to use a combo box with your keyboard is that the first element in the combo box that starts with the typed character (case insensitive) after the currently selected item becomes selected. 
+
+If there are no elements that start with that character after the currently selected item but there is one before it, the first element in the combo box that starts with that character is selected. 
+
+If no items in the combo box start with that letter, the currently selected element stays selected.
+
+A well-designed combo box will allow you to navigate by keyboard from any selection to any other selection in a minimal number of keystrokes.
+You will be given the selectable contents of the combo box as a vector <string> called elements. 
+
+You are to write a program to find the maximum number of keystrokes absolutely necessary to get to any element from any element in the combo box.
+Definition
+    
+Class:
+ComboBoxKeystrokes
+Method:
+minimumKeystrokes
+Parameters:
+vector <string>
+Returns:
+int
+Method signature:
+int minimumKeystrokes(vector <string> elements)
+(be sure your method is public)
+    
+
+Notes
+-
+The elements in elements may not be unique.
+-
+It takes zero keystrokes to get from an element to itself.
+-
+The keystrokes made are case-insensitive, meaning that if 'a' is hit, the first 'a' or 'A' after the current selection will be selected, whichever occurs first.
+-
+In most real applications, you could use the arrow keys as well as the letter keys. However, in this problem, you may only use letter keys.
+Constraints
+-
+elements will have between 1 and 50 elements, inclusive.
+-
+There will be between 1 and 50 characters in each element of elements, inclusive.
+-
+Each element in elements will consist of upper- and lower-case letters and spaces, but will not start with a space.
+Examples
+0)
+
+    
+{"alpha","beta","gamma","delta"}
+Returns: 1
+Since all the elements in the combo box start with different letters, you can get to any element with one keystroke!
+1)
+
+    
+{"kyky","kalinov","kalmakka","Kavan","Kawigi","kaylin","Klinck","krijgertje","kupo"}
+Returns: 8
+This list of fine coders can only be traversed one at a time, because all elements start with "K".
+2)
+
+    
+{"a","b","c","b","d","b","e","b","f"}
+Returns: 2
+The b's in this list would be an inconvenience, if you couldn't always instantly skip to the entry before them, making them all no more than 2 keystrokes away.
+3)
+
+    
+{"apple","Boy","CaRD","Dog","egG","FruiT",
+ "Grape","hand","Ant","eagle","ice cream",
+ "air","East","Exit","Door","camerA","bad",
+ "fast","Zealot","internAtional","Bead",
+ "Bread","Exit","fast", "actiVe","Cats",
+ "beast","Alligator","drag","castle",
+ "clean","iLlEgAl","crab","Free Willy",
+ "first","dean","Fourth of July","King",
+ "fellow","FrEaK","Elephant","bird","Bible",
+ "creep","create","Deal","eEl","entrance",
+ "cream","Fleece"}
+Returns: 4
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

@@ -1,0 +1,68 @@
+
+Problem Statement
+    
+Consider the set of numbers formed by taking every number between low and high, inclusive, and sorting the digits of each number in non-increasing order (the numbers are initially written without any extra leading zeros). Return the number of distinct numbers in this new set.
+Definition
+    
+Class:
+DistinctDigits
+Method:
+count
+Parameters:
+int, int
+Returns:
+int
+Method signature:
+int count(int low, int high)
+(be sure your method is public)
+    
+
+Constraints
+-
+high will be between 1 and 100,000,000 (10^8), inclusive.
+-
+low will be between 1 and high, inclusive.
+Examples
+0)
+
+    
+1
+20
+Returns: 20
+All of the integers between 1 and 20 have distincts sets of digits.
+1)
+
+    
+1
+30
+Returns: 29
+"21" has the same digits as "12" when sorted. All the rest are still distinct.
+2)
+
+    
+151
+309
+Returns: 98
+
+3)
+
+    
+1
+15000
+Returns: 1641
+
+4)
+
+    
+153697
+154689
+Returns: 318
+
+5)
+
+    
+1000
+10000000
+Returns: 19159
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

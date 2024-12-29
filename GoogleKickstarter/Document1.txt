@@ -1,0 +1,9 @@
+
+Rebooked under same booking & jacket number - Weekender Sentence - Prisoner Type should say INTERMITTENT and INCARCERATION REASON say INTERMITTENT
+Release reason should be INTERMITTENT RELEASE>
+
+If hospital NOT booked out of jail. If we can't match we will move to EXT.
+
+Furloughs - release from custody order, book him out, 3-4 days later remanded to custody.
+= Can we have a buffer of 5-7 days of the meds shut off
+

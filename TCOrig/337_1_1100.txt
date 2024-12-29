@@ -1,0 +1,168 @@
+// COUNTING STRINGS IN SOME ORDER (CORRECT)
+// AND FINDING THE INDEX'ED STRING IN THAT ORDER
+// KEY IDEA: BE ABLE TO GROUP THE ORDER INTO "CHUNKS" SO WE CAN RAPIDLY SKIP UP "CHUNKS" OF THE STRING CORRESPONDING TO ONE LETTER (OR MORE)
+// E.G. IN THIS CASE PERMUTATION OF A STRING ABCD = A+(6 PERMUTATIONS OF BCD), B+(6 PERMUTATIONS OF ACD), ..., D+(6 PERMUTATIONS OF ABC). 
+// THEN RECURSIVELY EACH BCD IS B+(2 PERMUTATIONS OF CD), ETC.
+// IF PERMUTING THEN NEED TO HANDLE DUPLICATE ITEMS LIKE DUPLICATE LETTERS, SEE BELOW. 
+// BASED ON FACT THAT AABBBCC HAS 6!/(2!*3!*2!) PERMUTATIONS
+#include <vector>
+#include <list>
+#include <map>
+#include <set>
+#include <deque>
+#include <stack>
+#include <bitset>
+#include <algorithm>
+#include <functional>
+#include <numeric>
+#include <utility>
+#include <sstream>
+#include <iostream>
+#include <iomanip>
+#include <cstdio>
+#include <cmath>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+typedef long long LL;
+
+class AnagramList {
+public:
+LL fact[21];
+
+LL numPermutations(string s)
+{
+	int n = s.size();
+	LL nf = fact[n];
+	
+	set<char> letters(s.begin(), s.end());
+	for (typeof(letters.begin()) it = letters.begin(); it != letters.end(); it++)
+	{
+		char L = *it;
+		nf /= fact[count(s.begin(), s.end(), L)];
+	}
+	return nf;
+}
+
+string f(string s, int i)
+{
+	int n = s.size();
+	if (n == 1 && i == 0)
+	{
+		return s;
+	}
+	else if (n == 1 && i > 0)
+	{
+		return "";
+	}
+	// n > 1
+	
+	set<char> letters(s.begin(), s.end());
+	for (typeof(letters.begin()) it = letters.begin(); it != letters.end(); it++)
+	{
+		char L = *it;
+		string rest = s;
+		rest.erase(find(rest.begin(), rest.end(), L));
+	
+		LL np = numPermutations(rest);
+		if (i < np)
+		{
+			string t = f(rest, i);
+			if (t == "")
+				return "";
+			return L+t;
+		}
+		i -= np;
+	}
+	return "";		
+}
+
+string getAnagram(string s, int i) 
+{
+	fact[1] = 1;
+	for (LL j = 2; j <= 20; j++)
+	{
+		fact[j] = j*fact[j-1];
+	}
+	
+	sort(s.begin(), s.end());
+	
+	return f(s, i);
+}
+};
+
+
+//Powered by [KawigiEdit]
+
+
+Problem Statement
+    
+An anagram of a string is any string that contains the same characters in any order. 
+
+For example, the anagrams of "tree" are, in alphabetical order: 
+"eert", "eetr", "eret", "erte", "eter", "etre", "reet", "rete", "rtee", "teer", "tere" and "tree".
+
+
+You will be given a string s and an int i. Return the ith (0-based) anagram of s when listed in alphabetical order. 
+If there is no such anagram, return an empty string.
+
+Definition
+    
+Class:
+AnagramList
+Method:
+getAnagram
+Parameters:
+string, int
+Returns:
+string
+Method signature:
+string getAnagram(string s, int i)
+(be sure your method is public)
+    
+
+Constraints
+-
+s will contain between 1 and 20 characters, inclusive.
+-
+Each character of s will be a lowercase letter ('a'-'z').
+-
+i will be between 0 and 2000000000 (2*10^9), inclusive.
+Examples
+0)
+
+    
+"tree"
+1
+Returns: "eetr"
+An example from the problem statement.
+1)
+
+    
+"tree"
+6
+Returns: "reet"
+Another example from the problem statement.
+2)
+
+    
+"tree"
+12
+Returns: ""
+As you can see in the problem statement, the list of anagrams of "tree" only has 12 elements, so none of them has index 12.
+3)
+
+    
+"abcabfebda"
+5000
+Returns: "aadfcabbbe"
+
+4)
+
+    
+"sdoijgfasdkhaiw"
+2000000000
+Returns: "adsdghwiiokfjas"
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

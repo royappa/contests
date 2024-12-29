@@ -1,0 +1,128 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  
+<!-- Mirrored from www.cs.duke.edu/csed/onlineprobs/vector2.html by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 14 Mar 2006 08:55:08 GMT -->
+<head>
+    <title>Vector 2, British Coins</title>
+  </head>
+
+  <body>
+    <h1>Vector 2, British Coins</h1>
+
+<em>
+
+This problem statement is the exclusive and proprietary property of
+TopCoder, Inc. Any unauthorized use or reproduction of this information
+without the prior written consent of TopCoder, Inc. is strictly
+prohibited. (c)2003, TopCoder, Inc. All rights reserved.
+
+</em>
+<p>
+<hr>
+
+<h3>Problem Statement</h3>
+
+
+Prior to 1971, Britain used a system of coins that can be traced back to
+the tim e of Charlemagne.  The three main units of coinage were the
+penny, the shilling, and the pound.  There were 12 pennies in a shilling
+and 20 shillings in a pound.  Given a number pence of pennies, convert
+this amount into pounds, shillings, and pennies by first converting as
+many pennies as possible into pounds, and then converting as many of the
+rema ining pennies as possible into shillings.  Return a 
+tvector&lt;int&gt; of
+size three containing the number of pounds, the number of shillings, and
+the number of pennies, in that order.
+
+
+<P> 
+<h3>Definition</h3>
+
+<UL>
+<LI> Class: none used in this problem
+<LI> Method: coins
+<LI> Parameters: int
+<LI> Returns: tvector&lt;int&gt;
+<LI> Method signature (see below)
+
+</UL>
+
+ <h3>Prototype</h3>
+
+(be sure you have the necessary include files)
+
+<XMP>
+
+#include "tvector.h"
+
+   tvector<int> coins(int pence)
+   {
+           // fill in code here
+   }
+
+</XMP>
+
+<P>
+
+
+<h3>Constraints</h3>
+<UL>
+
+<LI>
+pence is between 0 and 10000, inclusive.
+<P>
+
+<h3>Examples</h3>
+
+<OL>
+<LI>
+<PRE>
+533
+
+Returns: { 2,  4,  5 }
+
+</PRE>
+First, we make 2 pounds, leaving 53 pence.  Then, we make 4 shillings,
+leaving 5 pence.
+
+<P>
+<LI>
+<PRE>    
+0
+
+Returns: { 0,  0,  0 }
+
+</PRE>
+<P>
+
+<P>
+<LI>
+<PRE>
+
+4091
+
+Returns: { 17,  0,  11 }
+</PRE>
+<P>
+<LI>
+<PRE>
+10000
+
+Returns: { 41,  13,  4 }
+
+</PRE>
+</OL>
+
+
+
+
+    <hr>
+    <address><a href="mailto:ola@cs.duke.edu">Owen L. Astrachan</a></address>
+<!-- Created: Tue Sep 23 23:40:19 EDT 2003 -->
+<!-- hhmts start -->
+Last modified: Thu Sep 25 00:10:18 EDT 2003
+<!-- hhmts end -->
+  </body>
+
+<!-- Mirrored from www.cs.duke.edu/csed/onlineprobs/vector2.html by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 14 Mar 2006 08:55:08 GMT -->
+</html>

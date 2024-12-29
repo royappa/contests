@@ -1,0 +1,109 @@
+#define INF (1<<20)
+
+int n;
+vector<int> g;
+
+int memo[60][60][60][60];
+
+
+int f(int a, int b, int last)
+{
+	if (a == b)
+		return 0;
+	
+	int& r = memo[a][b][last];
+	if (r != -1)
+		return r;
+	r = INF;
+	
+	for (int x = 0; x < n; x++)
+	{
+		if (g[a][x] && g[a][x] <= last)
+		{
+			r = min(r, g[x][b]+f(x, b, g[x][b]));
+		}
+	}
+	return r;
+}
+	
+int shortest(vector <string> edges) 
+{
+	n = edges.size();
+	for (int i = 0; i < n; i++)
+	{
+		vector<int> row(n);
+		for (int j = 0; j < n; j++)
+		{
+			row[j] = edges[i][j]=='0' ? 0 : 
+						islower(edges[i][j]) ? edges[i][j]-'a'+1 : edges[i][j]-'A'+27;
+		}
+		g.push_back(row);
+	}
+	memset(memo, -1, sizeof(memo));
+	int dist = f(0, 1, 55);
+	return dist == INF ? -1 : dist;
+	
+}
+
+Problem Statement
+    
+You just qualified for a programming contest which is held in a very far city. Since your family loves you too much, they decided to come along with you. Of course, your little brother will come also. You will drive from your home city to the city where the contest is being held, possibly stopping at several other cities along the way. The time it takes to get from one city to the next is called an interval. If an interval of your trip is ever longer than the previous interval, your brother will start crying and your parents will have to turn the car around and go back home, forcing you to miss the contest. Therefore, you must plan the trip so that doesn't happen. If there are multiple ways to achieve this, you must choose the one that minimizes the total length of the trip.
+You will be given a vector <string> graph containing the distances between the cities where you may stop. The jth character of the ith element of graph is the distance from the ith city to the jth city. If it's '0' (zero), it means that you cannot go directly from the ith city to the jth city. Characters 'a' to 'z' represent distances of 1 to 26, and characters 'A' to 'Z' represent distances of 27 to 52. You live in city 0 and the contest is being held in city 1. Return the length of the shortest route from city 0 to city 1 that will not make your brother cry. If no such route exists, return -1.
+Definition
+    
+Class:
+FamilyTravel
+Method:
+shortest
+Parameters:
+vector <string>
+Returns:
+int
+Method signature:
+int shortest(vector <string> edges)
+(be sure your method is public)
+    
+
+Constraints
+-
+graph will contain between 2 and 50 elements, inclusive.
+-
+Each element of graph will contain exactly n characters, where n is the number of elements in graph.
+-
+Each character in graph will be a '0' (zero), a lowercase letter ('a'-'z') or an uppercase letter ('A'-'Z').
+-
+The jth character of the ith element of graph will be a '0' (zero).
+-
+The jth character of the ith element of graph will be the same as the ith character of the jth element of graph.
+Examples
+0)
+
+    
+{"0ze","z0c","ec0"}
+Returns: 8
+In this case we can go through city 2 with a time of 5 + 3 = 8, instead of the longer direct way of 26.
+1)
+
+    
+{"0zc","z0e","ce0"}
+Returns: 26
+You cannot go through city 2 because the intervals of your trip would be 3, and then 5. The second interval is longer than the first interval, so your brother would start crying. Instead, you must take the longer direct route from city 0 to city 1.
+2)
+
+    
+{"0Zej0","Z0fkh","ef00d","jk00i","0hdi0"}
+Returns: 27
+
+3)
+
+    
+{"00z00","0000a","z00bb","00b0b","0abb0"}
+Returns: 29
+
+4)
+
+    
+{"000a", "00a0", "0a0a", "a0a0"}
+Returns: 3
+Your brother will not cry if several consecutive intervals will be equal.
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

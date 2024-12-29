@@ -1,0 +1,177 @@
+#include <vector>
+#include <list>
+#include <map>
+#include <set>
+#include <deque>
+#include <stack>
+#include <bitset>
+#include <algorithm>
+#include <functional>
+#include <numeric>
+#include <utility>
+#include <sstream>
+#include <iostream>
+#include <iomanip>
+#include <cstdio>
+#include <cmath>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+int debug = 0;
+
+class FixedSizeSums {
+public:
+int memo[200][200][200];
+
+int ways(int sum, int len, int biggest)
+{
+	if (debug) printf("ways(%d, %d, %d)\n", sum, len, biggest);
+	if (len > sum)
+	{
+		if (debug) printf("ret %d\n", 0);
+		return 0;
+	}
+	if (len == 1 && sum <= biggest)
+	{
+		if (debug) printf("ret %d\n", 1);
+		return 1;
+	}
+	if (len == 1 && sum > biggest)
+	{
+		if (debug) printf("ret %d\n", 0);
+		return 0;
+	}
+	if (sum == 0 && len == 0)
+	{
+		if (debug) printf("ret %d\n", 1);
+		return 1;
+	}
+	int& t = memo[sum][len][biggest];
+	if (t != -1)
+		return t;
+	t = 0;
+	for (int first = min(biggest,sum); first >= 1; first--)
+	{
+		t += ways(sum-first, len-1, first);
+	}
+	if (debug) printf("ways(%d, %d, %d) = %d\n", sum, len, biggest, t);
+	return t;
+}
+
+vector<int> part(int sum, int len, int index)
+{
+	if (
+string kthElement(int sum, int len, int index) 
+{
+	memset(memo, -1, sizeof(memo));
+	printf("ways(%d, %d) = %d\n", sum, len, ways(sum, len, sum));
+	for (int i = 1; i <= 150; i++)
+	{
+		for (int j = 1; j <= 150; j++)
+		{
+			int x = ways(i, j, i);
+		}
+	}
+	
+	vector<int> r = part(sum, len, index);
+	return "";
+}
+};
+
+
+//Powered by [KawigiEdit]
+
+
+Problem Statement
+    
+You are given two positive integers, sum and count. Consider all possible ways to express sum as a sum of exactly count positive integers. Two ways are considered equal if we can obtain one from the other by changing the order of the summed numbers. For example, 8=3+2+1+1+1 is the same as 8=1+3+1+2+1, but not the same as 8=3+2+2+1. Thus we will only be interested in such summations where the summed integers are in non-increasing order.
+For example, if sum=8 and count=3, the possible ways are:
+8 = 6+1+1
+8 = 3+3+2
+8 = 4+2+2
+8 = 4+3+1
+8 = 5+2+1
+We may now order these summations in the following way: Order them according to the first summand in decreasing order. In case of a tie, order them according to the second summand, etc. In general, to compare two summations, look at the first summand where they differ. The one where this summand is larger will be earlier in our order.
+For our previous example, the correct order is:
+8 = 6+1+1
+8 = 5+2+1
+8 = 4+3+1
+8 = 4+2+2
+8 = 3+3+2
+You will be given three ints: sum, count and index, where index contains a zero-based index of a summation in the order defined above. Your method should return a string containing that summation in the form "SUM=SUMMAND(1)+...+SUMMAND(count)". If index is too large to specify a valid summation, return an empty string.
+Definition
+    
+Class:
+FixedSizeSums
+Method:
+kthElement
+Parameters:
+int, int, int
+Returns:
+string
+Method signature:
+string kthElement(int sum, int count, int index)
+(be sure your method is public)
+    
+
+Notes
+-
+You may assume that the total number of possible summations will never exceed 2,000,000,000.
+Constraints
+-
+sum is between 1 and 150, inclusive.
+-
+count is between 1 and 150, inclusive.
+-
+index is between 0 and 2,000,000,000, inclusive.
+Examples
+0)
+
+    
+8
+3
+2
+Returns: "8=4+3+1"
+This is the example from the problem statement. Look at the ordered list of possible summations and number them starting with zero.
+1)
+
+    
+13
+1
+0
+Returns: "13=13"
+There is only one possibility here.
+2)
+
+    
+13
+13
+0
+Returns: "13=1+1+1+1+1+1+1+1+1+1+1+1+1"
+Again, there is only one possible summation.
+3)
+
+    
+7
+10
+3
+Returns: ""
+This is impossible. A sum of 10 positive integers is never equal to 7.
+4)
+
+    
+17
+2
+4
+Returns: "17=12+5"
+The first five possible summations are: "17=16+1", "17=15+2", "17=14+3", "17=13+4", and "17=12+5".
+5)
+
+    
+140
+17
+87654321
+Returns: "140=40+31+15+15+9+7+4+4+2+2+2+2+2+2+1+1+1"
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

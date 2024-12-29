@@ -1,0 +1,16 @@
+Greg, Doris, Zoe, Terry
+Get of psych orders that are Good but not showing on the med delivery because of the start/end dates
+Big problem is Linked 
+
+Put in the titration for the 48 dosepack and the instructions
+
+
+1. As Directed: scan the med, and use Individual Exception
+2. refusal:
+- uncheck
+- put mouse in the box
+- scan the med
+
+3. Use the Print with Medications sheet with barcodes for stock meds
+
+4. Scan - highlight, keep on page. Then at the end, deliver at one shot.

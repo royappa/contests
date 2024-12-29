@@ -1,0 +1,1113 @@
+HTTrack3.33+swf launched on Mon, 09 Jan 2006 22:46:37 at https://spoj.sphere.pl/problems/ +*.png +*.gif +*.jpg +*.css +*.js -ad.doubleclick.net/* -*.pdf -*.ps -*forum*
+(winhttrack -qiC2%Ps2u1%s%uN0%I0p3DaK0H0%kf2A25000%f#f -F "Mozilla/4.5 (compatible; HTTrack 3.0x; Windows 98)" -%F "<!-- Mirrored from %s%s by HTTrack Website Copier/3.x [XR&CO'2005], %s -->" -%l "en, en, *" https://spoj.sphere.pl/problems/ -O C:\Misc\SPOJ\WebsiteCopy\SPOJ,C:\Misc\SPOJ\WebsiteCopy\SPOJ +*.png +*.gif +*.jpg +*.css +*.js -ad.doubleclick.net/* -*.pdf -*.ps -*forum* -%A php3,php,php2,asp,jsp,pl,cfm,nsf=text/html )
+
+Information, Warnings and Errors reported for this mirror:
+note:	the hts-log.txt file, and hts-cache folder, may contain sensitive information,
+	such as username/password authentication for websites mirrored in this project
+	do not share these files/folders if you want these information to remain private
+
+22:46:38	Warning: 	File not parsed, looks like binary: https://spoj.sphere.pl/robots.txt
+22:46:39	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/index.html
+22:46:41	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/classical/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/index.html
+22:46:51	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/classical/sort=0,start=50 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=0,start=50.html
+22:46:57	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/classical/sort=0,start=150 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=0,start=150.html
+22:47:04	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/classical/sort=0,start=250 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=0,start=250.html
+22:47:07	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/TEST/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/TEST/index.html
+22:47:08	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/PRIME1/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/PRIME1/index.html
+22:47:08	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/SBSTR1/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/SBSTR1/index.html
+22:47:08	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/ONP/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/ONP/index.html
+22:47:08	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/PALIN/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/PALIN/index.html
+22:47:08	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/ARITH/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/ARITH/index.html
+22:47:09	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/BULK/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/BULK/index.html
+22:47:09	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/CMPLS/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/CMPLS/index.html
+22:47:09	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/DIRVS/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/DIRVS/index.html
+22:47:09	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/CMEXPR/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/CMEXPR/index.html
+22:47:09	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/MMIND/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/MMIND/index.html
+22:47:10	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/HOTLINE/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/HOTLINE/index.html
+22:47:10	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/FCTRL/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/FCTRL/index.html
+22:47:10	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/IKEYB/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/IKEYB/index.html
+22:47:10	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/SHPATH/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/SHPATH/index.html
+22:47:10	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/TETRA/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/TETRA/index.html
+22:47:11	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/CRYPTO1/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/CRYPTO1/index.html
+22:47:11	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/CRYPTO2/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/CRYPTO2/index.html
+22:47:11	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/CRYPTO3/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/CRYPTO3/index.html
+22:47:11	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/CRYPTO4/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/CRYPTO4/index.html
+22:47:11	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/TRICENTR/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/TRICENTR/index.html
+22:47:12	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/PIR/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/PIR/index.html
+22:47:12	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/FCTRL2/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/FCTRL2/index.html
+22:47:12	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/POUR1/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/POUR1/index.html
+22:47:13	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/SBANK/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/SBANK/index.html
+22:47:13	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/HMRO/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/HMRO/index.html
+22:47:13	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/BSHEEP/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/BSHEEP/index.html
+22:47:13	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/HASHIT/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/HASHIT/index.html
+22:47:14	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/BLINNET/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/BLINNET/index.html
+22:47:14	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/MUL/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/MUL/index.html
+22:47:14	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/NHAY/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/NHAY/index.html
+22:47:14	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/TRIP/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/TRIP/index.html
+22:47:14	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/RUNAWAY/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/RUNAWAY/index.html
+22:47:15	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/CODE1/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/CODE1/index.html
+22:47:15	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/PROPKEY/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/PROPKEY/index.html
+22:47:15	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/PIGBANK/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/PIGBANK/index.html
+22:47:15	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/STONE/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/STONE/index.html
+22:47:16	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/LABYR1/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/LABYR1/index.html
+22:47:16	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/WORDS1/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/WORDS1/index.html
+22:47:16	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/BOOKS1/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/BOOKS1/index.html
+22:47:16	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/SCYPHER/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/SCYPHER/index.html
+22:47:17	Warning: 	File has moved from https://spoj.sphere.pl/problems/challenge to https://spoj.sphere.pl/problems/challenge/
+22:47:17	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/ADDREV/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/ADDREV/index.html
+22:47:17	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/COMMEDIA/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/COMMEDIA/index.html
+22:47:18	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/BEADS/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/BEADS/index.html
+22:47:18	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/TOUR/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/TOUR/index.html
+22:47:18	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/INCARDS/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/INCARDS/index.html
+22:47:18	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/HAREFOX/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/HAREFOX/index.html
+22:47:18	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/JULKA/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/JULKA/index.html
+22:47:19	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/?css=/themes/skin1.css -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/indexb6a4.html
+22:47:19	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/?css=/themes/skin2.css -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/index3840.html
+22:47:19	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/?css=/themes/skin3.css -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/index80f0.html
+22:47:22	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/challenge/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/challenge/index.html
+22:47:22	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/tutorial/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/tutorial/index.html
+22:47:36	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/classical/sort=2 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=2.html
+22:47:45	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/classical/sort=6 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=6.html
+22:47:52	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/JASIEK/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/JASIEK/index.html
+22:47:52	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/DYZIO/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/DYZIO/index.html
+22:47:52	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/classical/sort=7 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=7.html
+22:47:53	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/PICAD/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/PICAD/index.html
+22:47:53	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/BIA/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/BIA/index.html
+22:47:53	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/DANCE/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/DANCE/index.html
+22:47:53	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/BRCKTS/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/BRCKTS/index.html
+22:47:53	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/IMP/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/IMP/index.html
+22:47:54	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/SQRBR/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/SQRBR/index.html
+22:47:54	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/PERMUT1/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/PERMUT1/index.html
+22:47:54	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/BALL1/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/BALL1/index.html
+22:47:54	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/CRSCNTRY/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/CRSCNTRY/index.html
+22:47:54	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/CUTOUT/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/CUTOUT/index.html
+22:47:55	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/EXPR1/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/EXPR1/index.html
+22:47:55	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/RELATS1/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/RELATS1/index.html
+22:47:55	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/BAC/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/BAC/index.html
+22:47:56	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/DIVSUM/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/DIVSUM/index.html
+22:47:56	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/TREE1/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/TREE1/index.html
+22:47:56	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/EDIT1/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/EDIT1/index.html
+22:47:56	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/EDIT2/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/EDIT2/index.html
+22:47:57	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/BRICKS/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/BRICKS/index.html
+22:47:57	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/EASYPIE/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/EASYPIE/index.html
+22:47:57	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/MARBLES/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/MARBLES/index.html
+22:47:57	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/BUNDLE/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/BUNDLE/index.html
+22:47:58	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/SHORTCUT/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/SHORTCUT/index.html
+22:47:58	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/RAIN1/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/RAIN1/index.html
+22:47:58	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/DICE1/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/DICE1/index.html
+22:47:58	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/FOOTBALL/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/FOOTBALL/index.html
+22:47:58	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/TREE2/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/TREE2/index.html
+22:47:59	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/HANGLET/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/HANGLET/index.html
+22:47:59	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/MINIMAX/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/MINIMAX/index.html
+22:47:59	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/TWOSQRS/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/TWOSQRS/index.html
+22:48:02	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/CUTSQRS/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/CUTSQRS/index.html
+22:48:02	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/MAYA/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/MAYA/index.html
+22:48:02	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/STPAR/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/STPAR/index.html
+22:48:03	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/PARTY/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/PARTY/index.html
+22:48:03	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/DFLOOR/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/DFLOOR/index.html
+22:48:03	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/BUS/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/BUS/index.html
+22:48:03	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/BABTWR/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/BABTWR/index.html
+22:48:04	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/FISHER/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/FISHER/index.html
+22:48:04	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/LITEPIPE/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/LITEPIPE/index.html
+22:48:04	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/HIGH/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/HIGH/index.html
+22:48:04	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/ALICEBOB/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/ALICEBOB/index.html
+22:48:04	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/BINSTIRL/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/BINSTIRL/index.html
+22:48:08	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/CISTFILL/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/CISTFILL/index.html
+22:48:09	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/MORSE/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/MORSE/index.html
+22:48:09	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/MAYACAL/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/MAYACAL/index.html
+22:48:09	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/EXCHNG/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/EXCHNG/index.html
+22:48:10	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/classical/sort=0,start=100 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=0,start=100.html
+22:48:10	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/classical/sort=5 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=5.html
+22:48:14	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/POTHOLE/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/POTHOLE/index.html
+22:48:14	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/SLEEP/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/SLEEP/index.html
+22:48:15	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/ICERINK/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/ICERINK/index.html
+22:48:15	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/BITMAP/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/BITMAP/index.html
+22:48:15	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/THREECOL/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/THREECOL/index.html
+22:48:15	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/STORE/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/STORE/index.html
+22:48:15	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/MAP/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/MAP/index.html
+22:48:15	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/ALTARS/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/ALTARS/index.html
+22:48:16	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/PRIMIT/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/PRIMIT/index.html
+22:48:16	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/WATER/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/WATER/index.html
+22:48:16	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/PANIC/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/PANIC/index.html
+22:48:16	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/PHRASES/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/PHRASES/index.html
+22:48:16	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/VONNY/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/VONNY/index.html
+22:48:17	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/ORDERS/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/ORDERS/index.html
+22:48:17	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/SHAMAN/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/SHAMAN/index.html
+22:48:17	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/JEWELS/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/JEWELS/index.html
+22:48:18	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/SORTING/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/SORTING/index.html
+22:48:18	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/ZEBRA/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/ZEBRA/index.html
+22:48:18	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/HOLIDAY1/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/HOLIDAY1/index.html
+22:48:18	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/VFMUL/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/VFMUL/index.html
+22:48:19	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/ROMAN/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/ROMAN/index.html
+22:48:19	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/SUMITR/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/SUMITR/index.html
+22:48:19	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/BTOUR/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/BTOUR/index.html
+22:48:19	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/BLOCKS/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/BLOCKS/index.html
+22:48:19	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/HOLIDAY2/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/HOLIDAY2/index.html
+22:48:20	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/STABLEMP/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/STABLEMP/index.html
+22:48:20	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/INTSS/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/INTSS/index.html
+22:48:20	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/SQRROOT/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/SQRROOT/index.html
+22:48:20	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/CHOCOLA/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/CHOCOLA/index.html
+22:48:20	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/CTAIN/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/CTAIN/index.html
+22:48:21	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/TRIPART/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/TRIPART/index.html
+22:48:21	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/CONNECT/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/CONNECT/index.html
+22:48:21	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/PERIOD/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/PERIOD/index.html
+22:48:21	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/CORNET/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/CORNET/index.html
+22:48:21	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/CAVE/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/CAVE/index.html
+22:48:22	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/WMELON/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/WMELON/index.html
+22:48:22	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/WATERWAY/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/WATERWAY/index.html
+22:48:22	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/CTGAME/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/CTGAME/index.html
+22:48:22	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/BICYCLE/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/BICYCLE/index.html
+22:48:23	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/INUMBER/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/INUMBER/index.html
+22:48:23	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/LIFTS/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/LIFTS/index.html
+22:48:23	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/MUDDY/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/MUDDY/index.html
+22:48:23	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/NAPTIME/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/NAPTIME/index.html
+22:48:23	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/SCITIES/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/SCITIES/index.html
+22:48:23	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/NETADMIN/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/NETADMIN/index.html
+22:48:24	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/PON/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/PON/index.html
+22:48:24	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/POLYEQ/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/POLYEQ/index.html
+22:48:24	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/CUBERT/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/CUBERT/index.html
+22:48:24	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/ALIBB/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/ALIBB/index.html
+22:48:25	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/classical/sort=0,start=200 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=0,start=200.html
+22:48:30	Warning: 	File has moved from https://spoj.sphere.pl/problems/?sort=5 to https://spoj.sphere.pl/problems/sort=5
+22:48:32	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/FOOL/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/FOOL/index.html
+22:48:32	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/GAME/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/GAME/index.html
+22:48:32	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/HELP/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/HELP/index.html
+22:48:32	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/TOURS/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/TOURS/index.html
+22:48:33	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/MENU/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/MENU/index.html
+22:48:33	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/HOSPITAL/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/HOSPITAL/index.html
+22:48:33	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/BILLIARD/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/BILLIARD/index.html
+22:48:33	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/RAILROAD/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/RAILROAD/index.html
+22:48:33	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/SPIN/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/SPIN/index.html
+22:48:33	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/HEXAGON/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/HEXAGON/index.html
+22:48:34	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/ACODE/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/ACODE/index.html
+22:48:34	Warning: 	File has moved from https://spoj.sphere.pl/problems/?sort=2 to https://spoj.sphere.pl/problems/sort=2
+22:48:34	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/APRIME/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/APRIME/index.html
+22:48:34	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/HITOMISS/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/HITOMISS/index.html
+22:48:34	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/CONDUIT/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/CONDUIT/index.html
+22:48:34	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/TOANDFRO/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/TOANDFRO/index.html
+22:48:35	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/TRANSL/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/TRANSL/index.html
+22:48:35	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/HIKE/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/HIKE/index.html
+22:48:35	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/TRANK/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/TRANK/index.html
+22:48:35	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/FRACTION/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/FRACTION/index.html
+22:48:36	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/SCANNER/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/SCANNER/index.html
+22:48:36	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/TCUTTER/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/TCUTTER/index.html
+22:48:36	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/LOGIC/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/LOGIC/index.html
+22:48:37	Warning: 	File has moved from https://spoj.sphere.pl/problems/?sort=1 to https://spoj.sphere.pl/problems/sort=1
+22:48:37	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/RNUMBER/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/RNUMBER/index.html
+22:48:37	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/JRIDE/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/JRIDE/index.html
+22:48:37	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/DELCOMM/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/DELCOMM/index.html
+22:48:38	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/WPUZZLES/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/WPUZZLES/index.html
+22:48:38	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/COVER/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/COVER/index.html
+22:48:38	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/NUMQDW/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/NUMQDW/index.html
+22:48:38	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/BONFIRE/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/BONFIRE/index.html
+22:48:38	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/DIV15/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/DIV15/index.html
+22:48:39	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/LAZYPROG/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/LAZYPROG/index.html
+22:48:39	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/NECKLACE/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/NECKLACE/index.html
+22:48:39	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/TRANSP/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/TRANSP/index.html
+22:48:39	Warning: 	File has moved from https://spoj.sphere.pl/problems/?sort=6 to https://spoj.sphere.pl/problems/sort=6
+22:48:39	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/AROAD/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/AROAD/index.html
+22:48:39	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/TRANSP2/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/TRANSP2/index.html
+22:48:40	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/ASSIGN/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/ASSIGN/index.html
+22:48:40	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/PARTPALI/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/PARTPALI/index.html
+22:48:40	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/INCR/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/INCR/index.html
+22:48:40	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/HAJIME/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/HAJIME/index.html
+22:48:41	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/QUEST4/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/QUEST4/index.html
+22:48:41	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/QUEST5/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/QUEST5/index.html
+22:48:41	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/SUBS/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/SUBS/index.html
+22:48:41	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/VOCV/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/VOCV/index.html
+22:48:41	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/LSORT/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/LSORT/index.html
+22:48:42	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/BROW/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/BROW/index.html
+22:48:42	Warning: 	File has moved from https://spoj.sphere.pl/problems/?sort=7 to https://spoj.sphere.pl/problems/sort=7
+22:48:42	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/PAIRINT/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/PAIRINT/index.html
+22:48:42	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/ASSIGN4/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/ASSIGN4/index.html
+22:48:42	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/SEQPAR/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/SEQPAR/index.html
+22:48:43	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/classical/sort=0,start=300 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=0,start=300.html
+22:48:43	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/sort=5 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/sort=5.html
+22:48:43	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/sort=2 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/sort=2.html
+22:48:44	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/sort=1 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/sort=1.html
+22:48:44	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/sort=6 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/sort=6.html
+22:48:46	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/sort=7 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/sort=7.html
+22:48:46	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/SCRAPER/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/SCRAPER/index.html
+22:48:53	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/register/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/register/index.html
+22:49:04	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/submit/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/submit/index.html
+22:49:13	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/info/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/info/index.html
+22:49:31	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/KAMIL/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/KAMIL/index.html
+22:49:31	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/TCONNUM/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/TCONNUM/index.html
+22:49:31	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/TDBFS/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/TDBFS/index.html
+22:49:40	Info: 	engine: transfer-status: link added: https://spoj.sphere.pl/gfx/logo-pg -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/gfx/logo-pg.html
+22:49:40	Info: 	engine: transfer-status: link added: https://spoj.sphere.pl/gfx/logo-eti -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/gfx/logo-eti.html
+22:49:40	Info: 	engine: transfer-status: link added: https://spoj.sphere.pl/gfx/logo-sphere -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/gfx/logo-sphere.html
+22:49:40	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/PAWNS/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/PAWNS/index.html
+22:49:46	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/?sort=5 to https://spoj.sphere.pl/problems/classical/sort=5
+22:49:46	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/?sort=2 to https://spoj.sphere.pl/problems/classical/sort=2
+22:49:46	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/?sort=1 to https://spoj.sphere.pl/problems/classical/sort=1
+22:49:46	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/?sort=7 to https://spoj.sphere.pl/problems/classical/sort=7
+22:49:47	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/sort=0,start=50?sort=5 to https://spoj.sphere.pl/problems/classical/sort=5
+22:49:49	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/BYTEFOOD/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/BYTEFOOD/index.html
+22:49:49	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/SOLSTRAS/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/SOLSTRAS/index.html
+22:49:49	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/JOHNNY/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/JOHNNY/index.html
+22:49:49	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/SOLVING/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/SOLVING/index.html
+22:49:50	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/BURNCITY/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/BURNCITY/index.html
+22:49:50	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/PSPHERE/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/PSPHERE/index.html
+22:49:50	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/HANOI/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/HANOI/index.html
+22:49:50	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/BYTELE/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/BYTELE/index.html
+22:49:51	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/SANTA/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/SANTA/index.html
+22:49:51	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/CTQUINE/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/CTQUINE/index.html
+22:49:51	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/PIVAL/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/PIVAL/index.html
+22:49:51	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/DCODE/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/DCODE/index.html
+22:49:51	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/MFENCE/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/MFENCE/index.html
+22:49:52	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/HWORK/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/HWORK/index.html
+22:49:52	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/TMBOX/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/TMBOX/index.html
+22:49:52	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/ATSHELT/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/ATSHELT/index.html
+22:49:53	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/BRIGAMI/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/BRIGAMI/index.html
+22:49:53	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/DERAIL/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/DERAIL/index.html
+22:49:53	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/CROSSES/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/CROSSES/index.html
+22:49:53	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/EVAL/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/EVAL/index.html
+22:49:53	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/BFORG/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/BFORG/index.html
+22:49:54	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/IMGREC1/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/IMGREC1/index.html
+22:49:54	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/JCROSS/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/JCROSS/index.html
+22:49:54	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/DISPLACE/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/DISPLACE/index.html
+22:49:54	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/MAMMOTH/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/MAMMOTH/index.html
+22:49:55	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/SIZECON/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/SIZECON/index.html
+22:49:55	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/MGAME/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/MGAME/index.html
+22:49:56	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/TMUL/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/TMUL/index.html
+22:49:56	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/TSHPATH/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/TSHPATH/index.html
+22:49:56	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/TCNUMFL/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/TCNUMFL/index.html
+22:49:57	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/TLCS/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/TLCS/index.html
+22:49:57	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/INTEST/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/INTEST/index.html
+22:49:57	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/SUMTRIAN/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/SUMTRIAN/index.html
+22:49:57	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/TPERML/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/TPERML/index.html
+22:49:58	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/KMSL4B/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/KMSL4B/index.html
+22:49:58	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/TCONVEX/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/TCONVEX/index.html
+22:50:05	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/TFOSS/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/TFOSS/index.html
+22:50:05	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/ARMIES/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/ARMIES/index.html
+22:50:05	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/MMATCH/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/MMATCH/index.html
+22:50:06	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/PRINT/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/PRINT/index.html
+22:50:06	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/PL6COL/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/PL6COL/index.html
+22:50:06	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/LEXISORT/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/LEXISORT/index.html
+22:50:06	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/CLTZ/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/CLTZ/index.html
+22:50:06	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/DIV/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/DIV/index.html
+22:50:07	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/J4FUN/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/J4FUN/index.html
+22:50:07	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/DIV2/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/DIV2/index.html
+22:50:07	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/ZZPERM/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/ZZPERM/index.html
+22:50:07	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/TFIB/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/TFIB/index.html
+22:50:08	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/classical/sort=0,start=0 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=0,start=0.html
+22:50:08	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/classical/sort=2,start=50 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=2,start=50.html
+22:50:09	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/classical/sort=2,start=100 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=2,start=100.html
+22:50:09	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/classical/sort=2,start=200 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=2,start=200.html
+22:50:09	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/classical/sort=2,start=150 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=2,start=150.html
+22:50:10	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/classical/sort=2,start=250 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=2,start=250.html
+22:50:11	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/classical/sort=2,start=300 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=2,start=300.html
+22:50:20	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/ACS/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/ACS/index.html
+22:50:20	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/ABWORDS/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/ABWORDS/index.html
+22:50:20	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/AGGRCOW/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/AGGRCOW/index.html
+22:50:20	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/CHICAGO/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/CHICAGO/index.html
+22:50:20	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/ALIENS/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/ALIENS/index.html
+22:50:21	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/ACT/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/ACT/index.html
+22:50:21	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/PERMUT2/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/PERMUT2/index.html
+22:50:21	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/AROUND/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/AROUND/index.html
+22:50:21	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/ASCIRC/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/ASCIRC/index.html
+22:50:22	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/ATMS/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/ATMS/index.html
+22:50:22	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/SCALES/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/SCALES/index.html
+22:50:22	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/BISHOPS/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/BISHOPS/index.html
+22:50:22	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/BOOK/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/BOOK/index.html
+22:50:23	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/BCEASY/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/BCEASY/index.html
+22:50:23	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/BCHARD/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/BCHARD/index.html
+22:50:23	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/BOXES/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/BOXES/index.html
+22:50:23	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/BINGO/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/BINGO/index.html
+22:50:23	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/COINS/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/COINS/index.html
+22:50:23	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/CABLETV/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/CABLETV/index.html
+22:50:24	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/CALLS/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/CALLS/index.html
+22:50:24	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/CHASE1/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/CHASE1/index.html
+22:50:24	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/PALSEC/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/PALSEC/index.html
+22:50:24	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/classical/sort=1 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=1.html
+22:50:25	Info: 	engine: transfer-status: link added: https://spoj.sphere.pl/problems/classical/sort=6,start=50 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=6,start=50.html
+22:50:25	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/classical/sort=6,start=100 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=6,start=100.html
+22:50:29	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/classical/sort=6,start=200 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=6,start=200.html
+22:50:31	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/classical/sort=6,start=250 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=6,start=250.html
+22:50:50	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/classical/sort=-6 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=-6.html
+22:50:56	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/OFBEAT/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/OFBEAT/index.html
+22:50:56	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/REPEATS/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/REPEATS/index.html
+22:50:56	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/UCUBE/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/UCUBE/index.html
+22:50:57	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/PITPAIR/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/PITPAIR/index.html
+22:50:57	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/QTREE/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/QTREE/index.html
+22:50:57	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/EOPERA/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/EOPERA/index.html
+22:50:57	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/RATTERN/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/RATTERN/index.html
+22:50:57	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/FAMILY/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/FAMILY/index.html
+22:50:57	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/POLY1/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/POLY1/index.html
+22:50:58	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/WINDOW1/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/WINDOW1/index.html
+22:50:58	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/ROCKETS/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/ROCKETS/index.html
+22:50:58	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/HARDQ/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/HARDQ/index.html
+22:50:58	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/LANDSCAP/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/LANDSCAP/index.html
+22:50:59	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/PAINTTMP/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/PAINTTMP/index.html
+22:51:00	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/classical/sort=7,start=50 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=7,start=50.html
+22:51:02	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/classical/sort=7,start=150 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=7,start=150.html
+22:51:04	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/classical/sort=7,start=200 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=7,start=200.html
+22:51:13	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/classical/sort=7,start=300 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=7,start=300.html
+22:51:26	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/FSHEEP/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/FSHEEP/index.html
+22:51:26	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/MATH1/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/MATH1/index.html
+22:51:26	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/PLATON/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/PLATON/index.html
+22:51:26	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/classical/sort=-7 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=-7.html
+22:51:26	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/PHONY/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/PHONY/index.html
+22:51:32	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/SUPPER/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/SUPPER/index.html
+22:51:32	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/classical/sort=7,start=0 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=7,start=0.html
+22:51:37	Info: 	engine: transfer-status: link added: https://spoj.sphere.pl/problems/CUTOUT/CUTOUT.png -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/CUTOUT/CUTOUT.png
+22:51:37	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/MOULDS/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/MOULDS/index.html
+22:51:54	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/SHOP/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/SHOP/index.html
+22:52:15	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/SEGVIS/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/SEGVIS/index.html
+22:52:15	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/INTERVAL/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/INTERVAL/index.html
+22:52:15	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/RHOMBS/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/RHOMBS/index.html
+22:52:15	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/SERVERS/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/SERVERS/index.html
+22:52:15	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/SOLIT/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/SOLIT/index.html
+22:52:16	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/STEVE/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/STEVE/index.html
+22:52:16	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/PAYING/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/PAYING/index.html
+22:52:16	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/TTABLE/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/TTABLE/index.html
+22:52:16	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/RENT/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/RENT/index.html
+22:52:16	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/SQDANCE/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/SQDANCE/index.html
+22:52:17	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/MAWORK/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/MAWORK/index.html
+22:52:17	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/HELPR2D2/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/HELPR2D2/index.html
+22:52:17	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/TRANS/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/TRANS/index.html
+22:52:17	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/PARTIT/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/PARTIT/index.html
+22:52:18	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/POSTERS/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/POSTERS/index.html
+22:52:18	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/MAZE/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/MAZE/index.html
+22:52:18	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/GLUE/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/GLUE/index.html
+22:52:18	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/MULTIPLY/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/MULTIPLY/index.html
+22:52:19	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/TAUT/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/TAUT/index.html
+22:52:19	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/LONER/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/LONER/index.html
+22:52:19	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/PLONK/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/PLONK/index.html
+22:52:19	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/COURIER/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/COURIER/index.html
+22:52:19	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/ROCK/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/ROCK/index.html
+22:52:20	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/SUM1SEQ/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/SUM1SEQ/index.html
+22:52:20	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/ROADNET/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/ROADNET/index.html
+22:52:20	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/WORDEQ/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/WORDEQ/index.html
+22:52:20	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/CONTPACK/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/CONTPACK/index.html
+22:52:21	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/FLBRKLIN/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/FLBRKLIN/index.html
+22:52:21	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/RECTNG1/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/RECTNG1/index.html
+22:52:21	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/MUSKET/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/MUSKET/index.html
+22:52:21	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/LITELANG/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/LITELANG/index.html
+22:52:22	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/EMPTY/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/EMPTY/index.html
+22:52:22	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/MONODIG/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/MONODIG/index.html
+22:52:22	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/POLYGAME/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/POLYGAME/index.html
+22:52:22	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/classical/sort=5,start=50 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=5,start=50.html
+22:52:23	Info: 	engine: transfer-status: link added: https://spoj.sphere.pl/problems/classical/sort=5,start=100 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=5,start=100.html
+22:52:23	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/classical/sort=5,start=150 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=5,start=150.html
+22:52:23	Info: 	engine: transfer-status: link added: https://spoj.sphere.pl/problems/classical/sort=5,start=200 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=5,start=200.html
+22:52:27	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/classical/sort=5,start=300 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=5,start=300.html
+22:52:35	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/sort=0,start=150?sort=6 to https://spoj.sphere.pl/problems/classical/sort=6
+22:52:35	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/sort=0,start=150?sort=7 to https://spoj.sphere.pl/problems/classical/sort=7
+22:52:46	Info: 	engine: transfer-status: link added: https://spoj.sphere.pl/problems/classical/sort=5,start=0 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=5,start=0.html
+22:52:56	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/SOPARADE/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/SOPARADE/index.html
+22:53:08	Info: 	engine: transfer-status: link added: https://spoj.sphere.pl/problems/WATERWAY/waterway.png -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/WATERWAY/waterway.png
+22:53:25	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/sort=0,start=250?sort=2 to https://spoj.sphere.pl/problems/classical/sort=2
+22:53:25	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/sort=0,start=250?sort=1 to https://spoj.sphere.pl/problems/classical/sort=1
+22:53:25	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/sort=0,start=250?sort=6 to https://spoj.sphere.pl/problems/classical/sort=6
+22:53:27	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/TWORK/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/TWORK/index.html
+22:53:27	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/CANTON/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/CANTON/index.html
+22:53:27	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/PHDISP/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/PHDISP/index.html
+22:53:27	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/WINDMILL/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/WINDMILL/index.html
+22:53:28	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/ROADS/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/ROADS/index.html
+22:53:28	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/POKER/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/POKER/index.html
+22:53:29	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/MIXTURES/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/MIXTURES/index.html
+22:53:29	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/SEQ/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/SEQ/index.html
+22:53:29	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/LAZYCOWS/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/LAZYCOWS/index.html
+22:53:29	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/EXPEDI/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/EXPEDI/index.html
+22:53:30	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/HAN01/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/HAN01/index.html
+22:53:30	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/IGARB/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/IGARB/index.html
+22:53:30	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/LISA/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/LISA/index.html
+22:53:31	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/PHIDIAS/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/PHIDIAS/index.html
+22:53:38	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/FARMER/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/FARMER/index.html
+22:53:38	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/ONEZERO/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/ONEZERO/index.html
+22:53:38	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/CSTREET/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/CSTREET/index.html
+22:53:38	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/EMPODIA/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/EMPODIA/index.html
+22:53:40	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/BENEFACT/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/BENEFACT/index.html
+22:53:40	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/GREED/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/GREED/index.html
+22:53:40	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/TAXI/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/TAXI/index.html
+22:53:41	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/MATRIX/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/MATRIX/index.html
+22:53:41	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/DECORATE/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/DECORATE/index.html
+22:53:49	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/RPGAMES/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/RPGAMES/index.html
+22:53:49	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/EUROPEAN/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/EUROPEAN/index.html
+22:54:06	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/VHUFFM/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/VHUFFM/index.html
+22:54:08	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical to https://spoj.sphere.pl/problems/classical/
+22:54:17	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/content/adrian:quest4_2.jpg -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/content/adrian_quest4_2.jpg
+22:54:21	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/content/adrian:quest4_1.jpg -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/content/adrian_quest4_1.jpg
+22:54:23	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/content/adrian:quest5.jpg -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/content/adrian_quest5.jpg
+22:54:32	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/sort=-5 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/sort=-5.html
+22:54:50	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/classical/sort=1,start=50 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=1,start=50.html
+22:54:52	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/classical/sort=1,start=100 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=1,start=100.html
+22:54:59	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/classical/sort=1,start=200 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=1,start=200.html
+22:55:05	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/classical/sort=1,start=300 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=1,start=300.html
+22:55:12	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/sort=-1 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/sort=-1.html
+22:55:34	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/status/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/status/index.html
+22:55:34	Warning: 	File has moved from https://spoj.sphere.pl/ranks/ to https://spoj.sphere.pl/ranks/users/
+22:55:34	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/EQBOX/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/EQBOX/index.html
+22:55:35	Warning: 	File has moved from https://spoj.sphere.pl/links to https://spoj.sphere.pl/links/
+22:55:35	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/contests/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/contests/index.html
+22:55:36	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/ranks/users/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/ranks/users/index.html
+22:55:36	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/help/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/help/index.html
+22:55:36	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/links/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/links/index.html
+22:55:37	Warning: 	File has moved from https://spoj.sphere.pl/problems/CUTSQRS to https://spoj.sphere.pl/problems/CUTSQRS/
+22:55:37	Warning: 	File has moved from https://spoj.sphere.pl/problems/PHRASES to https://spoj.sphere.pl/problems/PHRASES/
+22:55:37	Warning: 	File has moved from https://spoj.sphere.pl/problems/PSPHERE to https://spoj.sphere.pl/problems/PSPHERE/
+22:55:37	Warning: 	File has moved from https://spoj.sphere.pl/problems/SOPARADE to https://spoj.sphere.pl/problems/SOPARADE/
+22:55:37	Warning: 	File has moved from https://spoj.sphere.pl/problems/challenge/?sort=5 to https://spoj.sphere.pl/problems/challenge/sort=5
+22:55:37	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/search/problems=on,users=on,contests=on -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/search/problems=on,users=on,contests=on.html
+22:55:40	Warning: 	File has moved from https://spoj.sphere.pl/problems/challenge/?sort=2 to https://spoj.sphere.pl/problems/challenge/sort=2
+22:55:40	Warning: 	File has moved from https://spoj.sphere.pl/problems/challenge/?sort=1 to https://spoj.sphere.pl/problems/challenge/sort=1
+22:55:45	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/challenge/sort=2 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/challenge/sort=2.html
+22:55:46	Warning: 	File has moved from https://spoj.sphere.pl/problems/challenge/?sort=6 to https://spoj.sphere.pl/problems/challenge/sort=6
+22:55:49	Warning: 	File has moved from https://spoj.sphere.pl/problems/challenge/?sort=7 to https://spoj.sphere.pl/problems/challenge/sort=7
+22:55:51	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/challenge/sort=6 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/challenge/sort=6.html
+22:56:00	Info: 	engine: transfer-status: link added: https://spoj.sphere.pl/problems/CROSSES/crosses.png -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/CROSSES/crosses.png
+22:56:00	Warning: 	File has moved from https://spoj.sphere.pl/problems/tutorial/?sort=5 to https://spoj.sphere.pl/problems/tutorial/sort=5
+22:56:01	Info: 	engine: transfer-status: link added: https://spoj.sphere.pl/problems/JCROSS/s1.gif -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/JCROSS/s1.gif
+22:56:02	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/XWORDS/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/XWORDS/index.html
+22:56:03	Warning: 	File has moved from https://spoj.sphere.pl/problems/tutorial/?sort=2 to https://spoj.sphere.pl/problems/tutorial/sort=2
+22:56:04	Warning: 	File has moved from https://spoj.sphere.pl/problems/tutorial/?sort=1 to https://spoj.sphere.pl/problems/tutorial/sort=1
+22:56:05	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/tutorial/sort=2 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/tutorial/sort=2.html
+22:56:07	Warning: 	File has moved from https://spoj.sphere.pl/problems/tutorial/?sort=6 to https://spoj.sphere.pl/problems/tutorial/sort=6
+22:56:10	Warning: 	File has moved from https://spoj.sphere.pl/problems/tutorial/?sort=7 to https://spoj.sphere.pl/problems/tutorial/sort=7
+22:56:11	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/tutorial/sort=6 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/tutorial/sort=6.html
+22:56:15	Info: 	engine: transfer-status: link added: https://spoj.sphere.pl/problems/TSORT/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/TSORT/index.html
+22:56:15	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/HANOI07/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/HANOI07/index.html
+22:56:30	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/classical/sort=2,start=0 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=2,start=0.html
+22:56:43	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/classical/sort=-2 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=-2.html
+22:57:22	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/sort=2?sort=-2 to https://spoj.sphere.pl/problems/classical/sort=-2
+22:57:22	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/sort=2?sort=1 to https://spoj.sphere.pl/problems/classical/sort=1
+22:57:36	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/classical/sort=-1 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=-1.html
+22:57:58	Info: 	engine: transfer-status: link added: https://spoj.sphere.pl/problems/classical/sort=6,start=150 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=6,start=150.html
+22:58:11	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/classical/sort=6,start=300 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=6,start=300.html
+22:58:18	Info: 	engine: transfer-status: link added: https://spoj.sphere.pl/problems/classical/sort=-6,start=100 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=-6,start=100.html
+22:58:24	Info: 	engine: transfer-status: link added: https://spoj.sphere.pl/problems/classical/sort=-6,start=200 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=-6,start=200.html
+22:58:30	Info: 	engine: transfer-status: link added: https://spoj.sphere.pl/problems/classical/sort=-6,start=300 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=-6,start=300.html
+22:58:43	Info: 	engine: transfer-status: link added: https://spoj.sphere.pl/problems/classical/sort=-6,start=0 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=-6,start=0.html
+22:58:47	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/MLAND/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/MLAND/index.html
+22:59:29	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/classical/sort=7,start=250 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=7,start=250.html
+22:59:37	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/sort=7?sort=2 to https://spoj.sphere.pl/problems/classical/sort=2
+22:59:37	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/sort=7?sort=6 to https://spoj.sphere.pl/problems/classical/sort=6
+22:59:39	Info: 	engine: transfer-status: link added: https://spoj.sphere.pl/problems/classical/sort=-7,start=50 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=-7,start=50.html
+22:59:41	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/classical/sort=-7,start=100 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=-7,start=100.html
+22:59:51	Info: 	engine: transfer-status: link added: https://spoj.sphere.pl/problems/classical/sort=-7,start=200 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=-7,start=200.html
+22:59:57	Info: 	engine: transfer-status: link added: https://spoj.sphere.pl/problems/classical/sort=-7,start=300 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=-7,start=300.html
+23:00:10	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/classical/sort=-7,start=0 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=-7,start=0.html
+23:00:14	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/classical/sort=6,start=0 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=6,start=0.html
+23:01:05	Info: 	engine: transfer-status: link added: https://spoj.sphere.pl/problems/RECTNG1/proa.gif -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/RECTNG1/proa.gif
+23:01:08	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/SCUBADIV/ -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/SCUBADIV/index.html
+23:01:21	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/classical/sort=-5 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=-5.html
+23:01:48	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/classical/sort=5,start=250 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=5,start=250.html
+23:01:56	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/sort=5?sort=-5 to https://spoj.sphere.pl/problems/classical/sort=-5
+23:02:26	Info: 	engine: transfer-status: link added: https://spoj.sphere.pl/problems/classical/sort=-5,start=50 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=-5,start=50.html
+23:02:30	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/classical/sort=-5,start=100 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=-5,start=100.html
+23:02:36	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/classical/sort=-5,start=200 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=-5,start=200.html
+23:02:42	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/classical/sort=-5,start=300 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=-5,start=300.html
+23:02:50	Warning: 	File has moved from https://spoj.sphere.pl/problems/sort=5?sort=1 to https://spoj.sphere.pl/problems/sort=1
+23:02:50	Warning: 	File has moved from https://spoj.sphere.pl/problems/sort=5?sort=7 to https://spoj.sphere.pl/problems/sort=7
+23:02:50	Warning: 	File has moved from https://spoj.sphere.pl/problems/sort=2?sort=-2 to https://spoj.sphere.pl/problems/sort=-2
+23:02:50	Warning: 	File has moved from https://spoj.sphere.pl/problems/sort=2?sort=6 to https://spoj.sphere.pl/problems/sort=6
+23:02:55	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/sort=-2 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/sort=-2.html
+23:03:30	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/classical/sort=1,start=150 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=1,start=150.html
+23:03:53	Warning: 	File has moved from https://spoj.sphere.pl/problems/sort=1?sort=2 to https://spoj.sphere.pl/problems/sort=2
+23:03:57	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/classical/sort=-1,start=50 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=-1,start=50.html
+23:04:04	Info: 	engine: transfer-status: link added: https://spoj.sphere.pl/problems/classical/sort=-1,start=150 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=-1,start=150.html
+23:04:14	Info: 	engine: transfer-status: link added: https://spoj.sphere.pl/problems/classical/sort=-1,start=250 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=-1,start=250.html
+23:04:30	Warning: 	File has moved from https://spoj.sphere.pl/problems/sort=1?sort=7 to https://spoj.sphere.pl/problems/sort=7
+23:04:30	Warning: 	File has moved from https://spoj.sphere.pl/problems/sort=6?sort=2 to https://spoj.sphere.pl/problems/sort=2
+23:04:30	Warning: 	File has moved from https://spoj.sphere.pl/problems/sort=6?sort=-6 to https://spoj.sphere.pl/problems/sort=-6
+23:04:33	Warning: 	File has moved from https://spoj.sphere.pl/problems/sort=7?sort=5 to https://spoj.sphere.pl/problems/sort=5
+23:04:33	Warning: 	File has moved from https://spoj.sphere.pl/problems/sort=7?sort=1 to https://spoj.sphere.pl/problems/sort=1
+23:04:33	Warning: 	File has moved from https://spoj.sphere.pl/problems/sort=7?sort=-7 to https://spoj.sphere.pl/problems/sort=-7
+23:04:34	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/sort=-6 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/sort=-6.html
+23:04:44	Info: 	engine: transfer-status: link added: https://spoj.sphere.pl/problems/classical/sort=-1,start=0 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=-1,start=0.html
+23:04:50	Info: 	engine: transfer-status: link added: https://spoj.sphere.pl/status/start=40 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/status/start=40.html
+23:04:56	Info: 	engine: transfer-status: link added: https://spoj.sphere.pl/status/start=80 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/status/start=80.html
+23:05:04	Info: 	engine: transfer-status: link added: https://spoj.sphere.pl/status/start=120 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/status/start=120.html
+23:05:16	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/status/start=160 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/status/start=160.html
+23:05:23	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/status/start=200 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/status/start=200.html
+23:05:38	Info: 	engine: transfer-status: link added: https://spoj.sphere.pl/ranks/users/start=200 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/ranks/users/start=200.html
+23:05:44	Info: 	engine: transfer-status: link added: https://spoj.sphere.pl/ranks/users/start=400 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/ranks/users/start=400.html
+23:05:51	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/ranks/users/start=600 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/ranks/users/start=600.html
+23:06:06	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/ranks/users/start=800 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/ranks/users/start=800.html
+23:06:11	Warning: 	File has moved from https://spoj.sphere.pl/problems/IMP to https://spoj.sphere.pl/problems/IMP/
+23:06:11	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/?sort=6 to https://spoj.sphere.pl/problems/classical/sort=6
+23:06:12	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/ranks/users/start=1000 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/ranks/users/start=1000.html
+23:06:12	Info: 	engine: transfer-status: link added: https://spoj.sphere.pl/problems/challenge/sort=5 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/challenge/sort=5.html
+23:06:18	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/challenge/sort=1 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/challenge/sort=1.html
+23:06:31	Info: 	engine: transfer-status: link added: https://spoj.sphere.pl/problems/challenge/sort=6,start=0 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/challenge/sort=6,start=0.html
+23:06:31	Info: 	engine: transfer-status: link added: https://spoj.sphere.pl/problems/tutorial/sort=5 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/tutorial/sort=5.html
+23:06:41	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/tutorial/sort=1 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/tutorial/sort=1.html
+23:06:55	Info: 	engine: transfer-status: link added: https://spoj.sphere.pl/problems/tutorial/sort=6,start=0 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/tutorial/sort=6,start=0.html
+23:07:02	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/sort=2,start=50?sort=-2 to https://spoj.sphere.pl/problems/classical/sort=-2
+23:07:02	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/sort=2,start=50?sort=6 to https://spoj.sphere.pl/problems/classical/sort=6
+23:07:02	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/sort=2,start=100?sort=5 to https://spoj.sphere.pl/problems/classical/sort=5
+23:07:06	Info: 	engine: transfer-status: link added: https://spoj.sphere.pl/problems/classical/sort=-2,start=50 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=-2,start=50.html
+23:07:13	Info: 	engine: transfer-status: link added: https://spoj.sphere.pl/problems/classical/sort=-2,start=150 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=-2,start=150.html
+23:07:19	Info: 	engine: transfer-status: link added: https://spoj.sphere.pl/problems/classical/sort=-2,start=250 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=-2,start=250.html
+23:07:35	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/sort=2,start=100?sort=6 to https://spoj.sphere.pl/problems/classical/sort=6
+23:07:35	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/sort=2,start=150?sort=5 to https://spoj.sphere.pl/problems/classical/sort=5
+23:07:35	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/sort=2,start=150?sort=1 to https://spoj.sphere.pl/problems/classical/sort=1
+23:07:35	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/sort=2,start=150?sort=7 to https://spoj.sphere.pl/problems/classical/sort=7
+23:07:35	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/sort=2,start=200?sort=-2 to https://spoj.sphere.pl/problems/classical/sort=-2
+23:07:35	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/sort=2,start=200?sort=6 to https://spoj.sphere.pl/problems/classical/sort=6
+23:07:35	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/sort=2,start=250?sort=5 to https://spoj.sphere.pl/problems/classical/sort=5
+23:07:35	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/sort=2,start=250?sort=1 to https://spoj.sphere.pl/problems/classical/sort=1
+23:07:35	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/sort=2,start=250?sort=7 to https://spoj.sphere.pl/problems/classical/sort=7
+23:07:35	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/sort=2,start=300?sort=-2 to https://spoj.sphere.pl/problems/classical/sort=-2
+23:07:35	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/sort=2,start=300?sort=6 to https://spoj.sphere.pl/problems/classical/sort=6
+23:07:45	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/sort=1?sort=7 to https://spoj.sphere.pl/problems/classical/sort=7
+23:07:45	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/sort=6,start=50?sort=2 to https://spoj.sphere.pl/problems/classical/sort=2
+23:07:45	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/sort=6,start=50?sort=-6 to https://spoj.sphere.pl/problems/classical/sort=-6
+23:07:45	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/sort=6,start=100?sort=5 to https://spoj.sphere.pl/problems/classical/sort=5
+23:07:45	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/sort=6,start=100?sort=1 to https://spoj.sphere.pl/problems/classical/sort=1
+23:07:45	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/sort=6,start=100?sort=7 to https://spoj.sphere.pl/problems/classical/sort=7
+23:07:51	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/sort=6,start=200?sort=2 to https://spoj.sphere.pl/problems/classical/sort=2
+23:07:51	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/sort=6,start=200?sort=-6 to https://spoj.sphere.pl/problems/classical/sort=-6
+23:07:51	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/sort=6,start=200?sort=7 to https://spoj.sphere.pl/problems/classical/sort=7
+23:07:51	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/sort=6,start=250?sort=2 to https://spoj.sphere.pl/problems/classical/sort=2
+23:07:51	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/sort=6,start=250?sort=1 to https://spoj.sphere.pl/problems/classical/sort=1
+23:08:07	Info: 	engine: transfer-status: link added: https://spoj.sphere.pl/problems/classical/sort=-6,start=50 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=-6,start=50.html
+23:08:13	Info: 	engine: transfer-status: link added: https://spoj.sphere.pl/problems/classical/sort=-6,start=150 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=-6,start=150.html
+23:08:25	Info: 	engine: transfer-status: link added: https://spoj.sphere.pl/problems/classical/sort=-6,start=250 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=-6,start=250.html
+23:08:33	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/sort=-6?sort=2 to https://spoj.sphere.pl/problems/classical/sort=2
+23:08:33	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/sort=-6?sort=6 to https://spoj.sphere.pl/problems/classical/sort=6
+23:08:48	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/sort=7,start=50?sort=2 to https://spoj.sphere.pl/problems/classical/sort=2
+23:08:48	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/sort=7,start=50?sort=6 to https://spoj.sphere.pl/problems/classical/sort=6
+23:08:53	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/classical/sort=7,start=100 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=7,start=100.html
+23:08:59	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/sort=7,start=300?sort=2 to https://spoj.sphere.pl/problems/classical/sort=2
+23:08:59	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/sort=7,start=300?sort=6 to https://spoj.sphere.pl/problems/classical/sort=6
+23:09:17	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/classical/sort=-7,start=150 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=-7,start=150.html
+23:09:24	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/classical/sort=-7,start=250 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=-7,start=250.html
+23:09:34	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/sort=-7?sort=2 to https://spoj.sphere.pl/problems/classical/sort=2
+23:09:34	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/sort=-7?sort=6 to https://spoj.sphere.pl/problems/classical/sort=6
+23:10:03	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/sort=5,start=50?sort=-5 to https://spoj.sphere.pl/problems/classical/sort=-5
+23:10:03	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/sort=5,start=50?sort=1 to https://spoj.sphere.pl/problems/classical/sort=1
+23:10:03	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/sort=5,start=50?sort=7 to https://spoj.sphere.pl/problems/classical/sort=7
+23:10:18	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/sort=5,start=100?sort=1 to https://spoj.sphere.pl/problems/classical/sort=1
+23:10:18	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/sort=5,start=100?sort=7 to https://spoj.sphere.pl/problems/classical/sort=7
+23:10:18	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/sort=5,start=150?sort=2 to https://spoj.sphere.pl/problems/classical/sort=2
+23:10:18	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/sort=5,start=150?sort=6 to https://spoj.sphere.pl/problems/classical/sort=6
+23:10:18	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/sort=5,start=200?sort=-5 to https://spoj.sphere.pl/problems/classical/sort=-5
+23:10:18	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/sort=5,start=200?sort=1 to https://spoj.sphere.pl/problems/classical/sort=1
+23:10:18	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/sort=5,start=200?sort=7 to https://spoj.sphere.pl/problems/classical/sort=7
+23:10:33	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/sort=5,start=300?sort=2 to https://spoj.sphere.pl/problems/classical/sort=2
+23:10:33	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/sort=5,start=300?sort=1 to https://spoj.sphere.pl/problems/classical/sort=1
+23:10:33	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/sort=5?sort=1 to https://spoj.sphere.pl/problems/classical/sort=1
+23:10:33	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/sort=5,start=0?sort=2 to https://spoj.sphere.pl/problems/classical/sort=2
+23:10:33	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/sort=5,start=0?sort=6 to https://spoj.sphere.pl/problems/classical/sort=6
+23:11:09	Info: 	engine: transfer-status: link added: https://spoj.sphere.pl/problems/classical/sort=-5,start=150 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=-5,start=150.html
+23:11:32	Warning: 	File has moved from https://spoj.sphere.pl/problems/sort=-5?sort=2 to https://spoj.sphere.pl/problems/sort=2
+23:11:32	Warning: 	File has moved from https://spoj.sphere.pl/problems/sort=-5?sort=6 to https://spoj.sphere.pl/problems/sort=6
+23:11:48	Info: 	engine: transfer-status: link added: https://spoj.sphere.pl/problems/classical/sort=1,start=0 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=1,start=0.html
+23:11:56	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/sort=1,start=200?sort=2 to https://spoj.sphere.pl/problems/classical/sort=2
+23:11:56	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/sort=1,start=200?sort=6 to https://spoj.sphere.pl/problems/classical/sort=6
+23:12:13	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/classical/sort=-1,start=100 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=-1,start=100.html
+23:12:39	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/problems/classical/sort=-1,start=300 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=-1,start=300.html
+23:13:03	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/status/start=20 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/status/start=20.html
+23:13:07	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/status/start=60 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/status/start=60.html
+23:13:07	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/status/start=100 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/status/start=100.html
+23:13:13	Info: 	engine: transfer-status: link added: https://spoj.sphere.pl/status/start=240 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/status/start=240.html
+23:13:17	Info: 	engine: transfer-status: link added: https://spoj.sphere.pl/status/start=180 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/status/start=180.html
+23:13:33	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/ranks/users/start=100 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/ranks/users/start=100.html
+23:13:33	Info: 	engine: transfer-status: link added: https://spoj.sphere.pl/status/start=300 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/status/start=300.html
+23:13:36	Info: 	engine: transfer-status: link updated: https://spoj.sphere.pl/ranks/users/start=500 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/ranks/users/start=500.html
+23:13:39	Info: 	engine: transfer-status: link added: https://spoj.sphere.pl/ranks/users/start=700 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/ranks/users/start=700.html
+23:13:46	Info: 	engine: transfer-status: link added: https://spoj.sphere.pl/ranks/users/start=1300 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/ranks/users/start=1300.html
+23:13:46	Info: 	engine: transfer-status: link added: https://spoj.sphere.pl/ranks/users/start=900 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/ranks/users/start=900.html
+23:13:49	Info: 	engine: transfer-status: link added: https://spoj.sphere.pl/ranks/users/start=1500 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/ranks/users/start=1500.html
+23:13:53	Info: 	engine: transfer-status: link added: https://spoj.sphere.pl/problems/challenge/sort=-5 -> C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/challenge/sort=-5.html
+23:14:00	Warning: 	File has moved from https://spoj.sphere.pl/problems/challenge/sort=2?sort=-2 to https://spoj.sphere.pl/problems/challenge/sort=-2
+23:14:00	Warning: 	File has moved from https://spoj.sphere.pl/problems/challenge/sort=2?sort=1 to https://spoj.sphere.pl/problems/challenge/sort=1
+23:14:00	Warning: 	File has moved from https://spoj.sphere.pl/problems/challenge/sort=6?sort=2 to https://spoj.sphere.pl/problems/challenge/sort=2
+23:14:00	Warning: 	File has moved from https://spoj.sphere.pl/problems/challenge/sort=6?sort=-6 to https://spoj.sphere.pl/problems/challenge/sort=-6
+23:14:00	Warning: 	File has moved from https://spoj.sphere.pl/problems/tutorial/sort=2?sort=-2 to https://spoj.sphere.pl/problems/tutorial/sort=-2
+23:14:00	Warning: 	File has moved from https://spoj.sphere.pl/problems/tutorial/sort=2?sort=1 to https://spoj.sphere.pl/problems/tutorial/sort=1
+23:14:00	Warning: 	File has moved from https://spoj.sphere.pl/problems/tutorial/sort=6?sort=2 to https://spoj.sphere.pl/problems/tutorial/sort=2
+23:14:00	Warning: 	File has moved from https://spoj.sphere.pl/problems/tutorial/sort=6?sort=-6 to https://spoj.sphere.pl/problems/tutorial/sort=-6
+23:14:00	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/sort=0,start=0?sort=2 to https://spoj.sphere.pl/problems/classical/sort=2
+23:14:00	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/sort=2,start=0?sort=-2 to https://spoj.sphere.pl/problems/classical/sort=-2
+23:14:00	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/sort=2,start=0?sort=1 to https://spoj.sphere.pl/problems/classical/sort=1
+23:14:00	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/sort=2?sort=7 to https://spoj.sphere.pl/problems/classical/sort=7
+23:14:00	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/sort=-1?sort=2 to https://spoj.sphere.pl/problems/classical/sort=2
+23:14:00	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/sort=-1?sort=6 to https://spoj.sphere.pl/problems/classical/sort=6
+23:14:00	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/sort=6,start=150?sort=5 to https://spoj.sphere.pl/problems/classical/sort=5
+23:14:00	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/sort=6,start=150?sort=1 to https://spoj.sphere.pl/problems/classical/sort=1
+23:14:00	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/sort=6,start=150?sort=7 to https://spoj.sphere.pl/problems/classical/sort=7
+23:14:00	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/sort=6,start=250?sort=7 to https://spoj.sphere.pl/problems/classical/sort=7
+23:14:00	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/sort=6,start=300?sort=2 to https://spoj.sphere.pl/problems/classical/sort=2
+23:14:00	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/sort=6,start=300?sort=1 to https://spoj.sphere.pl/problems/classical/sort=1
+23:14:00	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/sort=-6,start=100?sort=1 to https://spoj.sphere.pl/problems/classical/sort=1
+23:14:00	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/sort=-6,start=100?sort=7 to https://spoj.sphere.pl/problems/classical/sort=7
+23:14:00	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/sort=-6,start=300?sort=2 to https://spoj.sphere.pl/problems/classical/sort=2
+23:14:00	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/sort=-6,start=300?sort=6 to https://spoj.sphere.pl/problems/classical/sort=6
+23:14:00	Error: 	"No data (connection closed)" (-4) after 2 retries at link https://spoj.sphere.pl/problems/COPER/ (from https://spoj.sphere.pl/problems/classical/sort=6)
+23:14:00	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/sort=7,start=250?sort=1 to https://spoj.sphere.pl/problems/classical/sort=1
+23:14:00	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/sort=7,start=250?sort=-7 to https://spoj.sphere.pl/problems/classical/sort=-7
+23:14:00	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/sort=-7,start=50?sort=2 to https://spoj.sphere.pl/problems/classical/sort=2
+23:14:00	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/sort=-7,start=50?sort=6 to https://spoj.sphere.pl/problems/classical/sort=6
+23:14:00	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/sort=-7,start=100?sort=5 to https://spoj.sphere.pl/problems/classical/sort=5
+23:14:00	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/sort=-7,start=100?sort=1 to https://spoj.sphere.pl/problems/classical/sort=1
+23:14:00	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/sort=-7,start=100?sort=7 to https://spoj.sphere.pl/problems/classical/sort=7
+23:14:00	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/sort=-7,start=200?sort=2 to https://spoj.sphere.pl/problems/classical/sort=2
+23:14:00	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/sort=-7,start=200?sort=1 to https://spoj.sphere.pl/problems/classical/sort=1
+23:14:00	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/sort=-7,start=300?sort=2 to https://spoj.sphere.pl/problems/classical/sort=2
+23:14:00	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/sort=-7,start=300?sort=6 to https://spoj.sphere.pl/problems/classical/sort=6
+23:14:00	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/sort=5,start=300?sort=7 to https://spoj.sphere.pl/problems/classical/sort=7
+23:14:00	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/sort=-5,start=200?sort=2 to https://spoj.sphere.pl/problems/classical/sort=2
+23:14:01	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/sort=-5,start=200?sort=6 to https://spoj.sphere.pl/problems/classical/sort=6
+23:14:01	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/sort=1,start=150?sort=2 to https://spoj.sphere.pl/problems/classical/sort=2
+23:14:01	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/sort=1,start=150?sort=6 to https://spoj.sphere.pl/problems/classical/sort=6
+23:14:01	Error: 	"No data (connection closed)" (-4) after 2 retries at link https://spoj.sphere.pl/problems/classical/sort=1,start=250 (from https://spoj.sphere.pl/problems/sort=1)
+23:14:01	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/sort=-1,start=150?sort=2 to https://spoj.sphere.pl/problems/classical/sort=2
+23:14:01	Warning: 	File has moved from https://spoj.sphere.pl/problems/classical/sort=-1,start=150?sort=6 to https://spoj.sphere.pl/problems/classical/sort=6
+23:14:01	Warning: 	File has moved from https://spoj.sphere.pl/problems/sort=-6?sort=2 to https://spoj.sphere.pl/problems/sort=2
+23:14:01	Warning: 	File has moved from https://spoj.sphere.pl/problems/sort=-6?sort=6 to https://spoj.sphere.pl/problems/sort=6
+23:14:01	Warning: 	File has moved from https://spoj.sphere.pl/problems/challenge/sort=5?sort=1 to https://spoj.sphere.pl/problems/challenge/sort=1
+23:14:01	Error: 	"mirror stopped by user" (-1) at link https://spoj.sphere.pl/problems/challenge/sort=2?sort=7 (from https://spoj.sphere.pl/problems/challenge/sort=2)
+23:14:01	Error: 	"mirror stopped by user" (-1) at link https://spoj.sphere.pl/problems/challenge/sort=7 (from https://spoj.sphere.pl/problems/challenge/?sort=7)
+23:14:01	Error: 	"mirror stopped by user" (-1) at link https://spoj.sphere.pl/problems/tutorial/sort=2?sort=7 (from https://spoj.sphere.pl/problems/tutorial/sort=2)
+23:14:01	Error: 	"mirror stopped by user" (-1) at link https://spoj.sphere.pl/problems/tutorial/sort=7 (from https://spoj.sphere.pl/problems/tutorial/?sort=7)
+23:14:01	Error: 	"mirror stopped by user" (-1) at link https://spoj.sphere.pl/problems/classical/sort=2,start=0?sort=7 (from https://spoj.sphere.pl/problems/classical/sort=2,start=0)
+23:14:01	Error: 	"mirror stopped by user" (-1) at link https://spoj.sphere.pl/problems/classical/sort=-2,start=100 (from https://spoj.sphere.pl/problems/classical/sort=-2)
+23:14:01	Error: 	"mirror stopped by user" (-1) at link https://spoj.sphere.pl/problems/classical/sort=-2,start=200 (from https://spoj.sphere.pl/problems/classical/sort=-2)
+23:14:01	Error: 	"mirror stopped by user" (-1) at link https://spoj.sphere.pl/problems/classical/sort=-2,start=300 (from https://spoj.sphere.pl/problems/classical/sort=-2)
+23:14:01	Error: 	"mirror stopped by user" (-1) at link https://spoj.sphere.pl/problems/classical/sort=6,start=300?sort=7 (from https://spoj.sphere.pl/problems/classical/sort=6,start=300)
+23:14:01	Error: 	"mirror stopped by user" (-1) at link https://spoj.sphere.pl/problems/classical/sort=-6,start=200?sort=2 (from https://spoj.sphere.pl/problems/classical/sort=-6,start=200)
+23:14:01	Error: 	"mirror stopped by user" (-1) at link https://spoj.sphere.pl/problems/classical/sort=-7,start=200?sort=7 (from https://spoj.sphere.pl/problems/classical/sort=-7,start=200)
+23:14:01	Error: 	"mirror stopped by user" (-1) at link https://spoj.sphere.pl/problems/FSHEEP/sheep.png (from https://spoj.sphere.pl/problems/FSHEEP/)
+23:14:01	Error: 	"mirror stopped by user" (-1) at link https://spoj.sphere.pl/problems/classical/sort=-5,start=0 (from https://spoj.sphere.pl/problems/classical/sort=-5,start=50)
+23:14:01	Error: 	"mirror stopped by user" (-1) at link https://spoj.sphere.pl/problems/classical/sort=-5,start=250 (from https://spoj.sphere.pl/problems/sort=-5)
+23:14:01	Error: 	"mirror stopped by user" (-1) at link https://spoj.sphere.pl/problems/classical/sort=-1,start=200 (from https://spoj.sphere.pl/problems/sort=-1)
+23:14:01	Error: 	"mirror stopped by user" (-1) at link https://spoj.sphere.pl/problems/sort=-7 (from https://spoj.sphere.pl/problems/sort=7?sort=-7)
+23:14:01	Error: 	"mirror stopped by user" (-1) at link https://spoj.sphere.pl/status/start=0 (from https://spoj.sphere.pl/status/start=40)
+23:14:01	Error: 	"mirror stopped by user" (-1) at link https://spoj.sphere.pl/status/start=220 (from https://spoj.sphere.pl/status/start=120)
+23:14:01	Error: 	"mirror stopped by user" (-1) at link https://spoj.sphere.pl/status/start=140 (from https://spoj.sphere.pl/status/)
+23:14:01	Error: 	"mirror stopped by user" (-1) at link https://spoj.sphere.pl/status/start=260 (from https://spoj.sphere.pl/status/start=160)
+23:14:01	Error: 	"mirror stopped by user" (-1) at link https://spoj.sphere.pl/status/start=280 (from https://spoj.sphere.pl/status/start=200)
+23:14:01	Error: 	"mirror stopped by user" (-1) at link https://spoj.sphere.pl/ranks/users/start=0 (from https://spoj.sphere.pl/ranks/users/start=200)
+23:14:01	Error: 	"mirror stopped by user" (-1) at link https://spoj.sphere.pl/ranks/users/start=300 (from https://spoj.sphere.pl/ranks/users/)
+23:14:01	Error: 	"mirror stopped by user" (-1) at link https://spoj.sphere.pl/ranks/users/start=1100 (from https://spoj.sphere.pl/ranks/users/start=600)
+23:14:01	Error: 	"mirror stopped by user" (-1) at link https://spoj.sphere.pl/ranks/users/start=1200 (from https://spoj.sphere.pl/ranks/users/start=800)
+23:14:01	Error: 	"mirror stopped by user" (-1) at link https://spoj.sphere.pl/ranks/users/start=1400 (from https://spoj.sphere.pl/ranks/users/start=1000)
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=0,start=50a1a1.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=0,start=150a1a1.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/register.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/help.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewforum814c.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewforum345c.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewforuma3f5.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/gfx/logo-pg.gif
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/gfx/logo-sphere.gif
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/BRCKTS.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=0,start=100fda1.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=0,start=1005945.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=0,start=2003604.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=0,start=200fda1.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=0,start=2505945.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/index.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/index1d73.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/search1d73.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/faq1d73.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/templates/subSilver/images/cellpic1.gif
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/templates/subSilver/images/logo_phpBB.gif
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/templates/subSilver/images/icon_mini_search.gif
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/templates/subSilver/images/icon_mini_members.gif
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/groupcp1d73.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/templates/subSilver/images/icon_mini_groups.gif
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/profile1742.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/templates/subSilver/images/icon_mini_register.gif
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/profile2128.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/privmsg8c08.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/templates/subSilver/images/icon_mini_message.gif
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/login1d73.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/templates/subSilver/images/icon_mini_login.gif
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewforum538b.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/posting33a0.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewforum3916.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/templates/subSilver/images/lang_english/post.gif
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/templates/subSilver/images/folder_sticky.gif
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/profilea402.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopicbb28.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/profile442f.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/templates/subSilver/images/icon_latest_reply.gif
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic4335.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopicac8f.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic3490.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic1c87.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/profile5b43.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopicb293.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic39c4.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/profile89fa.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic39ae.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic9329.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopiced10.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic5dca.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/templates/subSilver/images/icon_minipost.gif
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopicec7e.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic281f.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/profilec88a.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopice0e7.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/profileabaa.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic3f10.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic4384.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic026e.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic176f.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic480b.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/profileb473.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic7dbe.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic01ef.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/templates/subSilver/images/folder.gif
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopicb782.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic4393.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/profile7123.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic3db2.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopicea93.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/profilebed4.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic8fd8.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic04a2.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/profilebf90.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic8b1e.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/profiled2de.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic53e5.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic5a9a.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopicf836.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/profilecf7f.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic70f7.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopicb203.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic05e2.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic3f9d.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/profile0a80.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic16c8.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopiceecd.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic7317.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic7b2b.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/profile9512.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic730e.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopicf332.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopicee78.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic70aa.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic9eac.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic5b7c.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopica1d1.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopicf492.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopicbe64.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic2d71.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopica7df.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic9588.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopicb0c5.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic78b5.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic0a72.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopicf13e.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic309a.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopicf29f.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopice78a.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/templates/subSilver/images/folder_hot.gif
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic40bd.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic2e21.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopicd890.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic8f94.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic8786.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic3a15.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic0e54.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic0c06.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic6376.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic6faf.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic7cad.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic0811.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic67fb.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/profile1e74.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic6579.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic35fb.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopicedb8.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopicb058.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic8201.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic5a43.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopicf861.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic788e.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic09ac.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic54c4.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic00fc.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic1bbf.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic3673.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic7e32.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopicd55c.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic047d.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic032d.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopice521.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopice8f5.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/profile0f57.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic903c.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopice9a4.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopicf399.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopicae80.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic7587.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic5bc0.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic2438.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/templates/subSilver/images/folder_new.gif
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/templates/subSilver/images/folder_announce.gif
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/templates/subSilver/images/folder_new_hot.gif
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/templates/subSilver/images/folder_lock_new.gif
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/templates/subSilver/images/folder_lock.gif
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/search2e50.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/index2e50.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/memberlist2e50.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/groupcp2e50.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/profile934c.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/profile0670.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/privmsg3741.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewforum7bfc.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/postingb2bd.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewforum0554.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewforumd894.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic6e32.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/profile54b4.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic3fa6.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic0082.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic2c8b.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic726f.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopicdf37.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic54ba.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/profile9b98.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopica090.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic309a-2.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic8de2.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic0613.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic1409.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/profilef13c.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopicad9f.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic275b.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopicc541.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic63b7.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopicd22c.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic62ba.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/profile058b.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopicc4ad.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic4783.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic4669.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopicdb12.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/profile19a9.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/profile60b6.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic14ea.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/profile53e2.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic2f07.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic61d3.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/profile6b67.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic2dac.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopice021.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/profile6099.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/profile10cd.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic9d36.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/profile025d.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic3e97.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic09f5.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic304c.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic8f58.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopicc47e.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/profile682b.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/profile1a17.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopicce75.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/profileb387.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopicd886.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic377b.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/profile11c8.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopicda25.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic9faa.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/profileae4a.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic3101.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic4bbd.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic373b.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/profile9d32.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/profile76ec.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic586f.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopicf81c.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic6c81.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/profile253a.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopicc16d.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopicd915.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic0ded.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic65f9.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic4103.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/profile39ee.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopicedc9.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopicbdfd.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/profilec06a.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic032d-2.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic2a3d.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopicb262.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopicd1a1.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic5ad5.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic76bf.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic6174.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/profilef2e3.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic630f.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic68d0.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic27ca.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/profilebd3b.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopicabe4.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/profilebfc9.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic9525.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic00cd.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic429e.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopicc125.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic4690.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic7774.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic4068.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic5ceb.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic378c.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/profile17b6.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopicce70.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopicd345.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic92bd.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic5ed5.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic3fbf.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic8668.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/profiled011.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic70ec.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopice835.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic656c.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic50c2.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic7b4d.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopicea51.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopice936.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopicf23a.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopiceaa8.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/profilecfa9.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/profile6ad4.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopicdd9d.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopicdfca.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/profilef8da.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic5d30.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic764f.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic3bfa.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopicf2c2.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic6759.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopicf4b2.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/profileb26d.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic3dd6.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopicfcdf.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic07d8.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic88a7.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/index-2.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/search.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/faq.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/memberlist.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/profile8319.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/profile3cf8.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/privmsgf793.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/login.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/challenge/sort=7.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/gfx/logo-eti.gif
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/tutorial/sort=7.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=0,start=05945.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=7,start=150162a.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/FSHEEP/sheep.png
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=7,start=0a1a1.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=7,start=03604.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=0,start=1004a4d.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=5a1a1.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=55945.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=53604.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=2,start=50fda1.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=2,start=1004bd3.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=2,start=100fda1.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=2,start=1503604.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=2,start=2004a4d.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=2,start=200fda1.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=2,start=2005945.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=2,start=2504bd3.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=2,start=2503604.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=2,start=3004a4d.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=2,start=300fda1.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=2,start=3005945.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=5,start=50a1a1.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=5,start=503604.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=5,start=150c827.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=5,start=150fda1.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=5,start=250c827.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=5,start=250fda1.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=5,start=2505945.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=1,start=1004a4d.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=1,start=100e7fc.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=1,start=1005945.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=1,start=200e7fc.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=1,start=300a1a1.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=1,start=3003604.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=-1,start=200.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/sort=-1a1a1.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/sort=-13604.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=6,start=100a1a1.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=6,start=100ce2a.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/problems/classical/sort=6,start=300ce2a.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/status/start=140.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/ranks/users/start=300.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/templates/subSilver/images/folder_big.gif
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/search33a7.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/profile114c.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewforum4d6b.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic1269.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic1c69.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewforumcf19.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/index982a.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/profilef99a.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic419b.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewforum13b6.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/templates/subSilver/formIE.css
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic713e.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/index4abb.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewforum51ee.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopiccc64.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/profilecb9e.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/profiled8f1.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewforumfdc5.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic01a0.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewforum107e.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopice7b8.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/profilee0b9.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewforumffeb.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/profileb2a4.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic5ab9.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/profile9290.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewforum9df8.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic5ce2.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewforume774.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/index8e20.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/profiledf9e.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic022a.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/templates/subSilver/images/whosonline.gif
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic093d.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/index99d4.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewonline.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/templates/subSilver/images/folder_new_big.gif
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/templates/subSilver/images/folder_locked_big.gif
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/templates/subSilver/images/spacer.gif
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/profilebb28.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/templates/subSilver/images/cellpic2.jpg
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/templates/subSilver/images/cellpic3.gif
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/memberlist1d73.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/templates/subSilver/images/icon_mini_faq.gif
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/templates/subSilver/images/icon_mini_profile.gif
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/profile937e.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/profile3dd7.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/profile2fb2.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/posting6bd9.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewforum227d.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewforumfd67.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic29a1.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/profile9287.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/profileef56.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopicf643.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic0060.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/profile6ecc.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic70b5.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic4d7e.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/profile830e.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopicf00e.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic9056.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopic6316.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/viewtopicf150.html
+23:14:01	Info: 	Purging C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/profileb85b.html
+23:14:01	Info: 	Purging directory C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/templates/subSilver/images/lang_english/
+23:14:01	Info: 	Purging directory C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/templates/subSilver/images/
+23:14:02	Info: 	Purging directory C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/templates/subSilver/
+23:14:02	Info: 	Purging directory C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/templates/
+23:14:02	Info: 	Purging directory C:/Misc/SPOJ/WebsiteCopy/SPOJ/spoj.sphere.pl/forum/
+
+HTTrack Website Copier/3.33 mirror complete in 27 minutes 25 seconds : 968 links scanned, 684 files written (7421564 bytes overall), 503 files updated [2804700 bytes received at 1704 bytes/sec], 6160664 bytes transfered using HTTP compression in 641 files, ratio 29%, 2.1 requests per connection
+(28 errors, 149 warnings, 925 messages)

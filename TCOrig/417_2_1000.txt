@@ -1,0 +1,114 @@
+#include <vector>
+#include <list>
+#include <map>
+#include <set>
+#include <deque>
+#include <stack>
+#include <bitset>
+#include <algorithm>
+#include <functional>
+#include <numeric>
+#include <utility>
+#include <sstream>
+#include <iostream>
+#include <iomanip>
+#include <cstdio>
+#include <cmath>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+
+vector <double> getProbabilities(int lower, int upper, int a, vector <int> opp) 
+{
+	int n = opp.size();
+	vector<double> v(n+1, 0);
+	z = a+x+y;  where x,y is in [L,U]x[L,U] 
+	// z is the equation of a plane and we get a 4-sided piece of the plane
+	// this piece has a projection on the z axis
+	// we also project opp lengths on the z axis and divide each resulting segment by the total
+	
+	
+	return v;
+}
+
+
+
+
+Problem Statement
+    
+The triple jump works as follows. The athlete runs down a runway until he reaches a designated mark. He then makes three consecutive jumps and lands in a sand-filled box. The length of the triple jump is the sum of the lengths of the three consecutive jumps. The winner of the competition is the athlete with the longest triple jump.
+ 
+You are taking part in the competition and jumping after all your opponents. Since you are the last to jump, you already know all your opponents' results. They are given in the vector <int> opponents, where opponents[i] is the length of the i-th opponent's triple jump in centimeters.
+ 
+You have already made the first of your three jumps, and it was first centimeters long. You ask yourself a question: "What is the probability that I will take first place? Second place? And all the other places?". You know that each of your two remaining jumps will be between lower and upper centimeters, inclusive, in length. The lengths will not necessarily be integers, and all possible lengths between lower and upper will be equally likely. Return a vector <double> containing exactly N + 1 elements (N is the number of opponents you have) such that the i-th element (0-indexed) is the probability of you taking (i+1)-th place. Note that your place number is equal to one plus the number of opponents who had longer triple jumps than you.
+Definition
+    
+Class:
+TripleJump
+Method:
+getProbabilities
+Parameters:
+int, int, int, vector <int>
+Returns:
+vector <double>
+Method signature:
+vector <double> getProbabilities(int lower, int upper, int first, vector <int> opponents)
+(be sure your method is public)
+    
+
+Notes
+-
+Each element of your return value must have an absolute or relative error less than 1e-9.
+Constraints
+-
+lower will be between 1 and 1000, inclusive.
+-
+upper will be between lower and 1000, inclusive.
+-
+first will be between lower and upper, inclusive.
+-
+opponents will contain between 1 and 50 elements, inclusive.
+-
+Each element of opponents will be between 1 and 3000, inclusive.
+Examples
+0)
+
+    
+1
+2
+1
+{1,2,3,4}
+Returns: {0.5, 0.5, 0.0, 0.0, 0.0 }
+Your first jump has length 1, and the two subsequent jumps - any lengths between 1 and 2. So your triple jump will have a total length between 3 and 5. This guarantees you at least the second place with an equal chance of getting the first one.
+1)
+
+    
+3
+7
+5
+{9,9,19,19,19}
+Returns: {0.0, 0.0, 0.0, 1.0, 0.0, 0.0 }
+Now the length of your triple jump will be between 11 and 19, and thus you are inevitably fourth. Note that the probability to have a triple jump with length exactly 19 in this case is zero.
+2)
+
+    
+1
+10
+1
+{5}
+Returns: {0.9753086419753086, 0.024691358024691357 }
+
+3)
+
+    
+1
+10
+5
+{1,2,3,5,10,11,12,19}
+Returns: 
+{0.22222222222222227, 0.6234567901234567, 0.05555555555555558, 0.043209876543209846,
+ 0.05555555555555558, 0.0, 0.0, 0.0, 0.0 }
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

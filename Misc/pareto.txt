@@ -1,0 +1,248 @@
+// glob
+
+	vector<string> vf;
+
+
+
+// TESTED
+// This *should* split on multiple spaces, but will not work right on leading/trailing spaces (need to trim)
+
+vector<string> split_space(string s)
+{
+	istringstream fin(s, istringstream::in);
+	vector<string> result;
+	while (!fin.eof())
+	{
+		string x;
+		fin >> x;
+		result.push_back(x);
+	}
+	return result;
+}
+
+// SPLIT_NONRE() - split on separator
+// TESTED- but seems to FAIL sometimes..
+
+vector<string> split_nonre(string s, string sep)
+{
+	char *sC = (char *) s.c_str();
+	char *sepC = (char *) sep.c_str();
+
+	char *word;
+	vector<string> results;
+	while ((word = strtok(sC, sepC)) != NULL)
+	{
+		results.push_back(word);
+		sC = NULL;
+	}
+	return results;
+}
+
+bool worse(string a, string b)
+{
+	vector<string> va = split_nonre(a, " ");
+	vector<string> vb = split_nonre(b, " ");
+	
+	bool better = false;
+	for (int i = 0; i < va.size(); j++)
+	{
+		int pa = find(vf.begin(), vf.end(), va[i]);
+		int pb = find(vf.begin(), vf.end(), vb[i]);
+		if (pa < pb)
+			return true;
+		if (pa > pb)
+			better = true;
+	}
+	return better;
+}
+
+int optima(vector <string> p) 
+{
+	char *f = { "awful", "bad", "fair", "fairly-happy", "happy", "ecstatic" };
+
+	for (int i = 0; i < 6; i++)
+	{
+		vf.push_back(f[i]);
+	}
+	int count = 0;
+	for (int i = 0; i < p.size(); i++)
+	{	
+		bool par = true;
+		for (int j = 0; j < p.size(); j++)
+		{
+			if (i == j) continue;
+			if (worse(p[i], p[j]))
+			{
+				par = false;
+			}
+		}
+		if (par)
+			count++;
+	}
+	return count;
+}
+
+
+Problem Statement
+    
+A government policy will lead to a particular outcome for each person involved. A policy is "suboptimal" if there exists an alternative policy that will not worsen the outcome for anyone and that will provide a better outcome for at least one person. A policy that is not suboptimal is called a "Pareto Optimum". There may be many Pareto Optima.
+Create a class Pareto that contains a method optima that takes a vector <string> policy as input. Each element of policy gives the outcome from one policy choice. Your method should return the number of policy choices that are Pareto Optimal.
+Each element of policy will be formatted as "[feeling] [feeling] [feeling] ..." where each [feeling] describes the outcome for the corresponding person. There will be no leading or trailing spaces, and there will be exactly one space between each pair of adjacent [feeling].
+Each [feeling] is one of the following strings, (given in order of increasing satisfaction)
+"awful", "bad", "fair", "fairly-happy", "happy", "ecstatic"
+Definition
+    
+Class:
+Pareto
+Method:
+optima
+Parameters:
+vector <string>
+Returns:
+int
+Method signature:
+int optima(vector <string> policy)
+(be sure your method is public)
+    
+
+Notes
+-
+two policies with identical outcomes may both be Pareto Optimal
+Constraints
+-
+policy will contain between 1 and 50 elements inclusive
+-
+each element of policy will contain between 3 and 50 characters, inclusive
+-
+each element of policy will be formatted as described above
+-
+each element of policy will contain the same number of [feeling] elements as does every other element of policy.
+Examples
+0)
+
+    
+{"bad bad fairly-happy awful",
+"bad bad bad awful",
+"ecstatic awful ecstatic ecstatic"}
+Returns: 2
+There are four people affected by our choice of policy. The second policy is suboptimal when compared to the first policy. Neither the first nor the third policy is suboptimal (the second person would prefer the first policy over the third policy, while the first person would prefer the third policy). So the first and third policies are Pareto Optimal.
+1)
+
+    
+{"bad ecstatic","bad bad", "awful ecstatic",
+ "fair happy", "fairly-happy fair",
+"fairly-happy fairly-happy", "fair happy"}
+Returns: 4
+The first, fourth, sixth, and seventh are Pareto Optimal. The second is worse than the first, the third is worse than the first, and the fifth is worse than the sixth. The fourth and seventh policies lead to the same outcome, and neither is suboptimal.
+2)
+
+    
+{"happy","bad","fairly-happy","bad","happy"}
+Returns: 2
+Only 1 person is affected by these 5 policy choices, and the first and last choices both leave him feeling "happy", while the other 3 policies are clearly worse.
+3)
+
+    
+{"bad bad bad bad bad happy fairly-happy"}
+Returns: 1
+When there is only one policy choice, it must be Pareto Optimal.
+4)
+
+    
+{"fair fair fair fair fair fair fair fair",
+"bad fair fair fair fair fair fair fair",
+"fairly-happy fair fair fair fair fair fair fair",
+"happy bad bad bad bad bad bad bad",
+"bad happy happy happy happy happy happy happy"}
+Returns: 3
+
+5)
+
+    
+{ "happy bad awful ecstatic fair bad fair awful",
+ "fair awful bad awful ecstatic awful bad awful",
+ "awful awful happy awful ecstatic awful bad fair",
+ "bad bad bad happy happy ecstatic awful ecstatic",
+ "bad bad awful awful fairly-happy fair fair happy",
+ "fair bad bad fair happy bad ecstatic fair"}
+Returns: 6
+
+6)
+
+    
+{ "fair happy fair fairly-happy happy happy happy",
+ "happy fair fairly-happy fair fair fair happy",
+ "happy happy fair fair fairly-happy fair happy",
+ "happy fair fair fairly-happy happy happy happy",
+ "happy fair happy fairly-happy happy happy happy",
+ "fair fair happy fair fair fair fairly-happy"}
+Returns: 3
+
+7)
+
+    
+{ "ecstatic bad fair fair fair ecstatic ecstatic",
+ "ecstatic happy ecstatic awful awful fair awful",
+ "happy fairly-happy bad happy fair fair ecstatic",
+ "awful happy fair fairly-happy fair fair bad",
+ "awful fairly-happy fair bad happy happy happy",
+ "happy happy bad fair happy ecstatic fairly-happy",
+ "fair happy ecstatic bad fairly-happy fair fair",
+ "fairly-happy bad awful bad awful bad ecstatic",
+ "fairly-happy awful bad fair ecstatic bad awful",
+ "fairly-happy bad bad bad awful awful fair",
+ "awful bad bad ecstatic ecstatic fair bad",
+ "fair bad bad fair ecstatic fair ecstatic",
+ "bad awful happy happy fairly-happy happy happy",
+ "ecstatic fair fair awful happy fair happy",
+ "fairly-happy fair awful awful happy awful fair",
+ "bad fair fair fairly-happy bad happy happy",
+ "bad bad fair ecstatic fairly-happy ecstatic bad",
+ "bad fair happy fair awful fair ecstatic",
+ "awful bad bad awful bad awful fairly-happy",
+ "fair fair ecstatic bad bad happy awful",
+ "awful bad ecstatic awful fair fairly-happy happy",
+ "happy bad fair awful awful ecstatic bad",
+ "happy bad bad ecstatic fair fair bad",
+ "bad fairly-happy bad awful fair happy ecstatic",
+ "awful awful happy bad happy ecstatic bad",
+ "awful fair awful awful ecstatic fair fair",
+ "bad fairly-happy awful happy awful bad ecstatic",
+ "ecstatic happy happy fair fairly-happy fair bad",
+ "happy awful happy bad bad fairly-happy fair",
+ "ecstatic fair awful awful awful bad fairly-happy",
+ "fair fair bad fairly-happy awful fair fair",
+ "fair fairly-happy bad happy happy awful fair",
+ "happy ecstatic awful fair fair awful ecstatic",
+ "ecstatic awful fair ecstatic ecstatic happy bad",
+ "awful bad fair ecstatic happy awful fair",
+ "ecstatic happy fair happy happy bad ecstatic",
+ "bad awful awful awful happy ecstatic bad",
+ "ecstatic fair fair bad awful ecstatic bad",
+ "bad happy bad ecstatic bad awful happy",
+ "fairly-happy bad ecstatic awful fair fair awful",
+ "fairly-happy fair awful awful ecstatic bad fair",
+ "fairly-happy bad happy bad fair happy happy",
+ "happy ecstatic fair fairly-happy fair bad bad",
+ "bad bad fairly-happy happy bad bad bad",
+ "happy happy fair fair bad fair awful",
+ "awful fair bad bad happy fair fair",
+ "fair ecstatic happy happy awful fair bad",
+ "awful fairly-happy happy fair happy awful bad",
+ "awful fair bad happy happy ecstatic ecstatic",
+ "bad bad fair ecstatic happy ecstatic ecstatic"}
+Returns: 35
+
+8)
+
+    
+{"fair happy fairly-happy",
+ "fair happy fair",
+ "awful ecstatic fair",
+ "awful ecstatic fair",
+ "fair happy fair",
+ "fair happy fair"
+}
+Returns: 3
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

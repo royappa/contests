@@ -1,0 +1,114 @@
+typedef long long LL;
+typedef long double LD;
+
+long long optimalNumberOfProcessors(int t0, int tp, int ts) 
+{
+	int best = 1;
+	LD bestTime = t0+tp;
+	
+	LD r = LD(tp)/LD(ts);
+	LD s = sqrt(r);
+	for (LL n = -10LL+LL(s); n <= 10LL+int(s); n++)
+	{
+		LD m = LD(tp)/LD(n-1)+LD(ts)*LD(n-1);
+		m >?= t0;
+		if (m < bestTime && n > best)
+		{
+			best = n;
+			bestTime = m;
+		}
+	}
+	return n;
+}
+
+tp/(n-1)+ts*(n-1)
+
+d/dn[f] = 
+
+ts+    tp * ( d(1/n-1) )
+
+( 0-1/(n-1)^2)
+
+
+ts-tp/(n-1)^2 = 0
+
+(n-1)^2*ts-tp = 0
+(n-1)^2 = tp/ts
+
+Problem Statement
+    
+As multiprocessor computers become more widespread in our lives, it becomes more and more important to write parallel programs that can solve tasks using several processors.
+
+However, designing parallel programs is difficult for many reasons. Let us consider two of them. 
+
+First, some amount of work cannot be parallelized and must therefore be executed on a single processor. 
+
+Besides that, when increasing the number of processors, the amount of work needed for synchronization increases. 
+
+We will assume that there is one special processor that controls the execution and executes the unparallelizable part, and that the increase in time due to synchronization is linear in the number of processors.
+
+You are given ints t0, tp, and ts. 
+
+t0 is the number of seconds needed for the execution of the unparallelizable part. 
+tp is the number of seconds needed for execution of the parallelizable part on a single processor. 
+ts is the number of seconds added to the synchronization time for each additional processor.
+
+The time needed to execute the whole task on one processor is t0+tp. 
+
+The time needed to execute the whole task on n > 1 processors is max(t0, tp/(n-1) + ts*(n-1)). 
+
+Here tp/(n-1) is a floating point number. 
+
+Return the number of processors needed to execute the task in minimal time. 
+
+If there are multiple solutions, return the smallest among them.
+
+Definition
+    
+Class:
+MultiprocessorProgramming
+Method:
+optimalNumberOfProcessors
+Parameters:
+int, int, int
+Returns:
+long long
+Method signature:
+long long optimalNumberOfProcessors(int t0, int tp, int ts)
+(be sure your method is public)
+    
+
+Constraints
+-
+t0 will be between 1 and 10^9, inclusive.
+-
+tp will be between 1 and 10^9, inclusive.
+-
+ts will be between 1 and 10^9, inclusive.
+Examples
+0)
+
+    
+1
+10
+1
+Returns: 4
+In this case the optimal number of processors is 4. The time needed to complete the task is max(1,10/3+1*3)=19/3.
+1)
+
+    
+8
+10
+1
+Returns: 3
+In this case the unparallelizable part is too large, so the optimal number of processors is 3. The time needed to complete the task is max(8,10/2+1*2)=8.
+2)
+
+    
+1
+10
+5
+Returns: 1
+In this case synchronization is too difficult, so parallelization is unreasonable.
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

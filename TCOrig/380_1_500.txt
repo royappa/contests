@@ -1,0 +1,121 @@
+int zc(vector<int> cards)
+{
+	int zc = 0;
+	for (int i = 0; i < cards.size(); i++)
+	{
+		if (cards[i] == 0)
+			zc++;
+	}
+	return zc;
+}
+
+int maxCompleteDecks(vector <int> cards, int jokers) 
+{
+	int n = cards.size();
+	sort(cards.begin(), cards.end());
+	// use jokers greedily to replace the scarcest card; repeat
+	
+	if (n == 1)
+		return jokers+cards[0];
+		
+	total = 0;
+	
+	if (zc(cards) > 1)
+	{
+		return 0;
+	}
+	else if (zc(cards) == 1)
+	{
+		int p = 0;
+		if (cards[0] == 0)
+			p = 1;
+		return min(cards[p], jokers);
+	}
+		
+	else if (zc(cards) == 0)
+	{
+		int a = min(jokers, cards[1]);
+		cards[1] -= a;
+		jokers -= a;
+		total += a;
+		return total + min(cards[0], jokers+cards[1]);
+	}
+		
+	
+	return total;
+			
+}
+Problem Statement
+    
+You are given a vector <int> cards, the i-th element of which is the number of cards you have of type i, 
+and an int jokers, the number of jokers you have. 
+You want to construct decks using these cards. 
+
+There are two types of valid decks:
+A deck containing exactly 1 card of each type, and no jokers.
+A deck containing exactly 1 card of each type except one, and exactly 1 joker.
+
+For example, if there are 3 types of cards, the following four decks would be valid: {1, 2, 3}, {J, 2, 3}, {1, J, 3}, {1, 2, J}. 
+
+Return the maximum possible number of valid decks you can construct with the given cards. 
+
+Each card can only be a member of a single deck.
+
+Definition
+    
+Class:
+CompilingDecksWithJokers
+Method:
+maxCompleteDecks
+Parameters:
+vector <int>, int
+Returns:
+int
+Method signature:
+
+int maxCompleteDecks(vector <int> cards, int jokers)
+(be sure your method is public)
+    
+
+Notes
+-
+The total number of types of cards is equal to the total number of elements in cards.
+
+Constraints
+-
+cards will contain between 1 and 50 elements, inclusive.
+-
+Each element of cards will be between 0 and 500,000,000, inclusive.
+-
+jokers will be between 0 and 500,000,000, inclusive.
+Examples
+0)
+
+    
+{10, 15}
+3
+Returns: 13
+10 full decks without jokers and 3 decks with jokers instead of cards of the first type can be compiled.
+1)
+
+    
+{1, 2, 3}
+4
+Returns: 3
+Three decks with one joker each can be compiled: one with the card of the second type changed to joker and two with the card of the first type 
+sreplaced by joker.
+2)
+
+    
+{1}
+5
+Returns: 6
+Note that a deck can be composed of 1 sole joker if there is only 1 type of card.
+3)
+
+    
+{2, 3, 4, 5, 6}
+4
+Returns: 4
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

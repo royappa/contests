@@ -1,0 +1,206 @@
+#include <vector>
+#include <list>
+#include <map>
+#include <set>
+#include <deque>
+#include <stack>
+#include <bitset>
+#include <algorithm>
+#include <functional>
+#include <numeric>
+#include <utility>
+#include <sstream>
+#include <iostream>
+#include <iomanip>
+#include <cstdio>
+#include <cmath>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+typedef struct
+{
+	string dice;
+	int len;
+} State;
+
+class BestYahtzeeScore {
+public:
+
+
+bool equal(string x, int a, int len)
+{
+	for (int i = 0; i < len; i++)
+	{
+		if (x[a] != x[a+i])
+			return false;
+	}
+	return true;
+}
+
+int sum(string x)
+{
+	int t = 0;
+	for (int i = 0; i < 5; i++)
+		t += x[i]-'0';
+	return t;
+}
+
+bool cons(string y, int len)
+{
+	string x = y;
+	x.erase(unique(x.begin(), x.end()), x.end());
+	
+	for (int i = 0; i+len <= x.size(); i++)
+	{
+		bool flag = true;
+		for (int j = 1; j < len; j++)
+		{
+			if (x[i+j] != x[i+j-1]+1)
+				flag = false;
+		}
+		if (flag)
+			return true;
+	}
+	return false;
+}
+
+int calcScore(string x)
+{
+	sort(x.begin(), x.end());
+	int score = 0;
+	if (equal(x, 0, 4) || equal(x, 1, 4))
+		score = max(score, sum(x));
+	if ( (equal(x, 0, 2) && equal(x, 2, 3)) || (equal(x, 0, 3) && equal(x, 3, 2)))
+		score = max(score, 25);
+	if (cons(x, 4))
+		score = max(score, 30);
+	if (cons(x, 5))
+		score = max(score, 40);
+	if (equal(x, 0, 5))
+		score = max(score, 50);
+	return score;
+}
+	
+int bestScore(string rolls) 
+{
+	vector<State> hands;
+	
+	State start;
+	start.dice = rolls.substr(0, 5);
+	start.len = 5;
+	hands.push_back(start);
+	int best = 0;
+	for (int roll = 1; roll <= 2; roll++)
+	{
+		vector<State> newHands;
+		for (int i = 0; i < hands.size(); i++)
+		{
+			best = max(best, calcScore(hands[i].dice));
+			for (int s = 0; s < 32; s++)
+			{
+				string dice = "";
+				for (int j = 0; j < 5; j++)
+				{
+					if ( (s&(1<<j)) != 0)
+					{
+						dice += hands[i].dice[j];
+					}
+				}
+				int rem = 5-dice.size();
+				dice += rolls.substr(hands[i].len, rem);
+				State next;
+				next.dice = dice;
+				best = max(best, calcScore(dice));
+				next.len = hands[i].len+rem;
+				newHands.push_back(next);
+			}
+		}
+		hands = newHands;
+	}
+
+	return best;
+}
+};
+
+
+//Powered by [KawigiEdit]
+
+//Powered by [KawigiEdit]
+
+Problem Statement
+    
+Yahtzee is a game played with 5 dice and a score card. The object of the game is to get the best score. A turn consists of the following:
+Roll all of the dice.
+Keep as many of the dice as you want.
+Re-roll the dice you decide not to keep. Note that at any time if you like your hand you can stop rolling.
+Repeat step two and three. Note that you can throw away some of the dice that you previously kept.
+Now that you've had up to three rolls, record the resulting roll in a single place on your score card (scoring only applies to the final hand you keep).
+Your score card is divided up as follows:
+4 of a kind - 4 or more dice the same, scores the face value of ALL the dice.
+full house - 3 dice equal to each other with the other 2 dice equal to each other as well. Scores 25 points.
+small straight - Any 4 of the dice in consecutive order, scores 30 points.
+large straight - All 5 dice in consecutive order, scores 40 points.
+yahtzee - All 5 dice equal to each other, scores 50 points.
+
+You are given a string rolls containing fifteen numbers, the first five of which are your first roll, and the next ten what you would get if you continued to roll in order. For instance, if input is "123456123456123" your first roll gives you "12345". If you keep the 1, 2, and 5, and reroll the other two your hand would now look like "12615". Now if you keep the two 1's and reroll the other three, your final hand would be "12314". You are to return the best possible score you can get.
+Definition
+    
+Class:
+BestYahtzeeScore
+Method:
+bestScore
+Parameters:
+string
+Returns:
+int
+Method signature:
+int bestScore(string rolls)
+(be sure your method is public)
+    
+
+Notes
+-
+You can choose only 1 category. That is, you can not get points for 2 categories if your hand satisfies requirements for both.
+-
+Straights cannot wrap around. "12346" would count as a small straight, but not a large straight.
+-
+You can reorder your dice as you want to fit into a category. That is, "64523" can be reordered as "23456" and scored as a large straight.
+Constraints
+-
+rolls will contain exactly 15 characters.
+-
+Each character in rolls will be between '1' and '6', inclusive.
+Examples
+0)
+
+    
+"354621111111111"
+Returns: 50
+You get 3, 5, 4, 6 and 2 after the first roll. You should re-roll all dice and get with 1 on all five faces.
+1)
+
+    
+"666663213214444"
+Returns: 50
+Here you get Yahtzee after the first roll. You should keep all the dice.
+2)
+
+    
+"652353235164412"
+Returns: 40
+After the first roll you get "65235" and throw away all the dice. The second roll gives you "32351". You should keep "235" and re-roll the other two dice. You finish with "23564", which is a large straight.
+3)
+
+    
+"265241155222313"
+Returns: 25
+
+4)
+
+    
+"144165526421151"
+Returns: 0
+You can't satisfy the requirements for any category.
+ 
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.	

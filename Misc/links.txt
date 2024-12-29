@@ -1,0 +1,21 @@
+ArrayList
+http://java.sun.com/j2se/1.4.2/docs/api/java/util/ArrayList.html
+
+
+1D Array
+http://java.sun.com/j2se/1.4.2/docs/api/java/util/Arrays.html
+
+2D arrays
+http://leepoint.net/notes-java/25data/35arrays/40arraysmulti.html
+
+String
+http://java.sun.com/j2se/1.4.2/docs/api/java/lang/String.html
+
+Regexp
+http://java.sun.com/j2se/1.4.2/docs/api/java/util/regex/Pattern.html
+http://leepoint.net/notes-java/25data/25strings/40regular_expressions/26pattern-matcher.html
+http://java.sun.com/j2se/1.4.2/docs/api/java/util/regex/Matcher.html
+
+HashMap
+http://java.sun.com/j2se/1.4.2/docs/api/java/util/HashMap.html
+http://java.sun.com/j2se/1.4.2/docs/api/java/util/HashSet.html

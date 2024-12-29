@@ -1,0 +1,111 @@
+int optimalPrice(vector <int> price, vector <int> cost) 
+{
+	int n = price.size();
+	int bestPrice = 1<<30;
+	int bestProfit = 0;
+	for (int i = 0; i < n; i++)
+	{
+		// try price[i]
+		int profit = 0;
+		for (int j = 0; j < n; j++)
+		{
+			if (price[i] <= price[i] && price[i]-cost[j] > 0)
+			{
+				profit += price[i]-cost[j];
+			}
+		}
+		if (profit > 0)
+		{
+			if (profit > bestProfit)
+			{
+				bestPrice = price[i];
+				bestProfit = profit;
+			}
+			else if (profit == bestProfit && price[i] < bestPrice)
+			{
+				bestPrice = price[i];
+			}
+		}
+	}
+	if (bestProfit == 0) return 0;
+	return bestPrice;
+}
+Problem Statement
+    
+You are planning to release a new product on the market and you want to find a strategy that will maximize your profit. 
+
+That strategy will include fixing the optimal price for the product. 
+
+You have made a customer list containing the maximum price each potential customer is willing to pay. 
+
+You also know how much it costs to deliver the product to each of those customers. 
+
+You are responsible for paying all the shipping costs, so if it's too expensive to deliver the product to a customer, you can choose not to sell to that customer.  
+
+You will be given vector <int>s price and cost, where price[i] is the maximum price customer i is willing to pay for the product and cost[i] is the cost of delivering the product to customer i. 
+
+Return the price for the product that maximizes profit. 
+
+If there are multiple such prices, return the smallest among them. If it's impossible to achieve a positive profit, return 0.
+
+Definition
+    
+Class:
+SellingProducts
+Method:
+optimalPrice
+Parameters:
+vector <int>, vector <int>
+Returns:
+int
+Method signature:
+int optimalPrice(vector <int> price, vector <int> cost)
+(be sure your method is public)
+    
+
+Constraints
+-
+price will contain between 1 and 50 elements, inclusive.
+-
+Each element of price will be between 1 and 10^6, inclusive.
+-
+cost will contain the same number of elements as price.
+-
+Each element of cost will be between 0 and 10^6, inclusive.
+Examples
+0)
+
+    
+{13,22,35}
+{0,0,0}
+Returns: 22
+If we sell the product at 13 then all three would buy it.(3x13=39) If we sell the product at 22 then only two would buy it. (2x22=44) If we sell the product at 35 then only one would buy it. (1x35=35) So, 22 is the optimal price for our product.
+1)
+
+    
+{13,22,35}
+{5,15,30}
+Returns: 13
+If we sell the product at 13 then all three would buy it, but we would only sell to the first one.(13-5=8) If we sell the product at 22 then only two would buy it, but we would only sell to the second one.(22-15=7). If we sell the product at 35 then only one would buy it. (35-30=5) So, 13 is the optimal price for our product.
+2)
+
+    
+{13,22,35}
+{15,30,40}
+Returns: 0
+Here it is too expensive to sell to anyone. So the optimal price is 0.
+3)
+
+    
+{10,10,20,20,5}
+{1,5,11,15,0}
+Returns: 10
+If we sell the product at 10 we gain 9 from the first customer and 5 from the second one(Total profit = 14). If we sell the product at 20 we gain 9 from the third customer and 5 from the fourth one(Total profit = 14). So both 10 and 20 are optimal prices but we must choose the smallest one.
+4)
+
+    
+{13,17,14,30,19,17,55,16}
+{12,1,5,10,3,2,40,19}
+Returns: 17
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

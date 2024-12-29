@@ -1,0 +1,138 @@
+int mat[800][800];
+typedef pair<int,int> pi; // row, col
+
+vector<string> split_nonre(string s, string sep)
+{
+	char *sC = (char *) malloc(s.size()+1);
+	strcpy(sC, s.c_str());
+	char *sepC = (char *) sep.c_str();
+	char *status = NULL;
+	
+	char *word;
+	vector<string> results;
+	while ((word = strtok_r(sC, sepC, &status)) != NULL)
+	{
+		results.push_back(word);
+		sC = NULL;
+	}
+	return results;
+}
+
+bool attacks(pi a, pi b, int W)
+{
+	int d[] = {-1,-2, -2,-1, -2,1, -1,2, 1,2, 2,1, 2,-1, 1,-2};
+	
+	int ar = a.first, ac = a.second;
+	int br = b.first, bc = b.second;
+	for (int i = 0; i < 8; i++)
+	{
+		int dr = d[2*i], dc = d[2*i+1];
+		if (ar+dr < 0 || ar+dr >= W || ac+dc < 0 || ac+dc >= W)
+			continue;
+		if (ar+dr == br && ac+dc == bc)
+			return true;
+	}
+	return false;
+}
+			
+int makeFriendly(int X, vector <string> pos) 
+{
+	
+	memset(mat, 0, sizeof(mat));
+	
+	vector<pi> knights;
+	for (int i = 0; i < pos.size(); i++)
+	{
+		vector<string> vs = split_nonre(pos[i], " ");
+		for (int j = 0; j < vs.size(); j++)
+		{
+			knights.push_back(make_pair(vs[j][1]-'0'-1, vs[j][0]-'A'));
+		}
+	}
+	int n = knights.size();
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = i+1; j < n; j++)
+		{
+			if (attacks(knights[i], knights[j], X))
+			{
+				mat[i][j] = mat[j][i] = 1;
+			}
+		}
+	}
+			
+}
+
+Problem Statement
+    
+There are several knights located on a NxN chessboard. Chessboard rows are numbered from 1 to N, inclusive. Chessboard columns are numbered with single characters from 'A' to 'A'+N-1, inclusive. For example, a standard 8x8 chessboard has rows 1...8 and columns A...H.
+A knight is a chess piece that attacks the following squares (marked with X symbols):   If one of those squares is occupied by some other knight, those two knights are attacking each other.
+An arrangement of knights is called friendly if no knight attacks another knight. Your task is to determine the minimum number of knights that can be removed to make a friendly arrangement. You will be given an int N denoting the size of the chessboard and a vector <string> pos containing the knight positions. Each element of pos will contain a space separated list of <COL><ROW> knight positions on the board where <COL> is the column and <ROW> is the row. Each <COL> is a letter between 'A' and 'A'+N-1, inclusive, and each <ROW> is an integer between 1 and N, inclusive, with no leading zeros. There will be no leading or trailing spaces.
+Definition
+    
+Class:
+Knights
+Method:
+makeFriendly
+Parameters:
+int, vector <string>
+Returns:
+int
+Method signature:
+int makeFriendly(int N, vector <string> pos)
+(be sure your method is public)
+    
+
+Constraints
+-
+N will be between 1 and 26, inclusive.
+-
+pos will contain between 1 and 50 elements, inclusive.
+-
+pos will be formatted as described in the statement.
+-
+Each element of pos will contain between 2 and 50 characters, inclusive.
+-
+No two knights will occupy the same position.
+Examples
+0)
+
+    
+5
+{"A2 A4", "B1 B5", "D1 D5 E2 E4 C3"}
+Returns: 1
+8 knights on the chessboard are attacked by knight C3, so it should be removed.
+1)
+
+    
+2
+{"A1 A2 B1 B2"}
+Returns: 0
+This is a 2x2 chessboard, so no knight is under attack.
+2)
+
+    
+6
+{"A1 A5 B3 C1 C5 D2 D4 E6 F5"}
+Returns: 3
+One possible way is to remove B3, C5 and D4.
+3)
+
+    
+8
+{"A2 A4 A5 A6 B2 B5 B6 B7 B8",
+ "C3 C8 D1 D2 D3 D4 D5 D6 D8",
+ "E1 E3 E8 F1 F2 F8 G3 G5 H4 H7 H8"}
+Returns: 12
+
+4)
+
+    
+9
+{"A3 A4 A5 A7 A8 B6 B8 C3 C6",
+ "C7 C9 D4 D5 D8 D9 E1 E3 E7",
+ "F2 G2 G6 G7 H2 H9 I2 I4 I5",
+ "I6 I7 I8 I9"}
+Returns: 10
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

@@ -1,0 +1,8 @@
+registration:
+html: 
+admin: 6-13; testing 20+
+conversion:
+security testing:
+full system test: 
+google search testing & optimization
+adv search testing & optimization

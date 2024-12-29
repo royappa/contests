@@ -1,0 +1,89 @@
+int badData(vector <string> roll) 
+{
+	map<char,int> lets;
+	char top, left, right;
+	int n = roll.size();
+	for (int i = 0; i < n; i++)
+	{
+		char t = roll[i][0], f = roll[i][1], r = roll[i][2];
+		if (i == 0)
+		{
+			top = t;
+			front = f;
+			right = r;
+		}
+		else
+		{
+			if (top !=
+		if (top == front || top == right || front == right)
+			return i;
+		
+		lets[t] = lets[f] = lets[r] = 1;
+		if (lets.size() > 6)
+			return i;
+		
+	}
+	if (lets.size() != 6)
+		return n-1;
+	return -1;
+}
+
+Problem Statement
+    
+A six-sided die has each of its sides labeled with a distinct letter. We repeatedly roll it and record the result. We can only see three sides, so each roll is recorded as a string of 3 letters, denoting the labels on the visible sides in the order top,front,right.
+ 
+        ______   
+       / A   /| 
+      /_____/ | 
+      |     |C|  
+      | B   | /   
+      |_____|/     
+For the above roll, we should record "ABC"
+We want to check the data for consistency -- we know that the data recording process is error-prone. Create a class AlphaDice that contains a method badData that is given a vector <string> roll giving the recorded data, and that returns the (0-based) index of the first entry in roll that, when combined with its predecessors, is inconsistent.
+If all the roll data are consistent with some distinct labeling of the die, return -1.
+Definition
+    
+Class:
+AlphaDice
+Method:
+badData
+Parameters:
+vector <string>
+Returns:
+int
+Method signature:
+int badData(vector <string> roll)
+(be sure your method is public)
+    
+
+Constraints
+-
+roll will contain between 1 and 50 elements inclusive
+-
+each element of roll will have length 3 and will contain only 'A'-'Z'
+Examples
+0)
+
+    
+{"ABC","ZCB"}
+Returns: -1
+This is the example above where there is a Z on the bottom. On the second roll the die was oriented so the Z was on the top, the C at the front, and the B on our right. These data are consistent with a distinctly labeled die.
+1)
+
+    
+{"ABC","DEF","BCA","GHI","ABC"}
+Returns: 3
+The first 3 were consistent with a die with 6 distinct labels, but the "GHI" must be bad data since we could not possibly observe more than 6 different labels.
+2)
+
+    
+{"ABA","CDE","CDE","CDE","CDE"}
+Returns: 0
+The first observation shows two sides labeled with 'A'
+3)
+
+    
+{"ABC","DEF","BCF"}
+Returns: 2
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

@@ -1,0 +1,69 @@
+	public String[] justify(String[] paragraph, int width)
+	{
+		
+	}
+	
+Problem Statement
+    
+When a paragraph is justified, the widths of the spaces on each line except the last are adjusted so that each line except the last has exactly the same width. 
+
+This is done in such a way that each space within a line has the same width (spaces can have any width, not just integral ones). 
+
+This can lead to some lines with undesirably wide spaces. For example, if each line is 20 characters long, and one line contains 10 characters and 1 space, while the next contains 15 characters and 3 spaces, the space in the first line will be far wider than the spaces in the next line.  
+
+Your task is to find a way to place the words in a paragrah so that the width of the widest space is as small as possible. You may assume that each letter has the same width, and that each space must be at least as wide as one letter. You will be given a String[], paragraph, representing the text to be justified, and an int width, indicating the width (in letters) that each line except the last must have. You should always place at least two words on each line except the last (the constraints ensure this is possible). The constraints will ensure that the return is unique. You should return a String[], each element of which represents a single line. Keep in mind that the last line of the return will not be justified. Words within a line should be separated by single spaces, and there should be no leading or trailing spaces.
+Definition
+    
+Class:
+Justify
+Method:
+justify
+Parameters:
+String[], int
+Returns:
+String[]
+Method signature:
+String[] justify(String[] paragraph, int width)
+(be sure your method is public)
+    
+
+	
+Notes
+-
+A word is a sequence of non-space characters that is not a substring of any other sequence of non-space characters.
+Constraints
+-
+paragraph will contain between 1 and 50 elements, inclusive.
+-
+Each element of paragraph will contain between 1 and 50 characters ('a'-'z', 'A'-'Z', '.', ',', '-' and ' ').
+-
+No element of paragraph will contain leading, trailing, or double spaces.
+-
+width will be between 10 and 80, inclusive.
+-
+There will be a way to place the words in paragraph such that each line except the last has at least two words.
+-
+The best return will be unique.
+Examples
+0)
+
+    
+{"the quick brown fox jumps over the lazy dog"}
+13
+Returns: { "the quick",  "brown fox",  "jumps over",  "the lazy dog" }
+With the width this small, the best we can do is to have some spaces that are 5 times as wide as letters. In the first line, for instance, there are 8 letters, and only one space. Note that the last line need not be justified.
+1)
+
+    
+{"the quick brown fox", "jumps over the lazy dog"}
+20
+Returns: { "the quick brown fox",  "jumps over the lazy",  "dog" }
+We can do much better with the same words, but a larger width. In this case, the widest space is only 1.3333 times as wide as a letter.
+2)
+
+    
+{"the"}
+80
+Returns: { "the" }
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

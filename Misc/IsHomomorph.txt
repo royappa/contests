@@ -1,0 +1,161 @@
+import java.util.*;
+public class IsHomomorphism
+{
+	public String[] numBad(String[] source, String[] target, int[] mapping)
+	{
+	}
+}
+
+Problem Statement
+    
+An operation table tells you which value is produced when a particular operation is applied to two operands. For example,
+  0123
+ +----
+0|0000                            0000
+1|0123    or more succinctly      0123
+2|0202                            0202
+3|0321                            0321
+is a table for standard integer multiplication mod 4. In the table on the left, the first row and column refer to the operands. This information is implicit in the more succinct form. Looking at the table we can see that 2 is produced when the operation is applied to 2 and 3. More precisely, if the table above defines the operation @, then a@b is the value in row a column b of the table.  Using a table you could describe any operation by putting the correct values in the table. In this problem you will be given two String[]s source and target which are tables describing two operations. The tables will be in the succinct form shown above, where the first row and column are assumed to correspond to 0, and so forth. For added convenience, all results will be single digits, the tables will always be square, and will never have more than 10 rows.  In addition, you will be given a int[] mapping which will contain the same number of elements as source and target. mapping defines a function that maps the value i to mapping[i]. For example, if mapping = {2,2,1,3} then 0 and 1 map to 2, 2 maps to 1, and 3 maps to 3.  A homomorphism, for the purposes of this problem, will be a mapping that preserves the following equality:
+mapping(a@b) = mapping(a)~mapping(b) for all a,b
+For all a,b means a and b can assume all values between 0 and len-1 inclusive, where len is the number of elements in source. @ denotes the operation defined by source, and ~ denotes the operation defined by target.  Your method will return a String[] containing all pairs (a,b) for which the above equality fails to hold true for the given mapping. The pair (a,b) should be denoted as (quotes for clarity) "(a,b)" where a,b have no extra leading zeros. Note that the String contains no spaces. The returned String[] should be sorted in ascending order by a value, with ties broken using ascending b values. There should be no repeats.
+Definition
+    
+Class:
+IsHomomorphism
+Method:
+numBad
+Parameters:
+String[], String[], int[]
+Returns:
+String[]
+Method signature:
+String[] numBad(String[] source, String[] target, int[] mapping)
+(be sure your method is public)
+    
+
+Constraints
+-
+source will contain between 2 and 10 elements inclusive
+-
+target will contain the same number of elements as source
+-
+mapping will contain the same number of elements as source
+-
+Each element of mapping must be between 0 and len-1 inclusive, where len is the number of elements in source
+-
+Each element of source must contain exactly len characters, where len is the number of elements in source
+-
+Each element of target must contain exactly len characters, where len is the number of elements in source
+-
+Each character in source and target will be in the first len characters of (quotes for clarity) "0123456789", where len is the number of elements in source
+Examples
+0)
+
+    
+{"0000",
+ "0123",
+ "0202",
+ "0321"}
+{"0000",
+ "0123",
+ "0202",
+ "0321"}
+{0,1,2,3}
+Returns: { }
+source and target are identical, and mapping takes every element to itself. Clearly all pairs will satisfy the equality.
+1)
+
+    
+{"0123456",
+ "1234560",
+ "2345601",
+ "3456012",
+ "4560123",
+ "5601234",
+ "6012345"}
+{"0123456",
+ "1234560",
+ "2345601",
+ "3456012",
+ "4560123",
+ "5601234",
+ "6012345"}
+{1,3,2,1,2,1,1}
+Returns: 
+{ "(0,0)",
+  "(0,1)",
+  "(0,2)",
+  "(0,3)",
+  "(0,4)",
+  "(0,5)",
+  "(0,6)",
+  "(1,0)",
+  "(1,1)",
+  "(1,2)",
+  "(1,3)",
+  "(1,4)",
+  "(1,5)",
+  "(1,6)",
+  "(2,0)",
+  "(2,1)",
+  "(2,2)",
+  "(2,3)",
+  "(2,4)",
+  "(2,5)",
+  "(3,0)",
+  "(3,1)",
+  "(3,2)",
+  "(3,3)",
+  "(3,4)",
+  "(3,5)",
+  "(4,0)",
+  "(4,1)",
+  "(4,2)",
+  "(4,3)",
+  "(4,4)",
+  "(4,5)",
+  "(4,6)",
+  "(5,0)",
+  "(5,1)",
+  "(5,2)",
+  "(5,3)",
+  "(5,4)",
+  "(5,5)",
+  "(6,0)",
+  "(6,1)",
+  "(6,4)",
+  "(6,6)" }
+
+2)
+
+    
+{"012",
+ "120",
+ "210"}
+{"012",
+ "120",
+ "110"}
+{0,1,2}
+Returns: { "(2,0)" }
+The pair (2,0) is the only one that breaks the equality. To verify this breakage: mapping of 2@0 = mapping of 2 = 2 (mapping of 2)~(mapping of 0) = (2)~(0)=1
+3)
+
+    
+{"012",
+ "120",
+ "210"}
+{"012",
+ "120",
+ "210"}
+{1,2,0}
+Returns: { "(0,0)",  "(0,1)",  "(0,2)",  "(1,0)",  "(1,2)",  "(2,0)",  "(2,2)" }
+
+4)
+
+    
+{"01","10"}
+{"10","01"}
+{1,0}
+Returns: { }
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

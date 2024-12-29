@@ -1,0 +1,183 @@
+#include <vector>
+#include <list>
+#include <map>
+#include <set>
+#include <deque>
+#include <stack>
+#include <bitset>
+#include <algorithm>
+#include <functional>
+#include <numeric>
+#include <utility>
+#include <sstream>
+#include <iostream>
+#include <iomanip>
+#include <cstdio>
+#include <cmath>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+class LargestGap {
+public:
+typedef pair<int,int> pi;
+
+#define MOD(x,m)  (((x)%(m)+(m))%(m))
+
+int g(pi bl, pi bl2, int N)
+{
+	int bs = bl.first, blen = bl.second;
+	int bs2 = bl2.first, blen2 = bl2.second;
+	int g1 = MOD(bs+blen, N);
+	return bs2-g1;
+}
+
+vector<int> f(vector<pi> bl, int N)
+{
+	int n = bl.size();
+	vector<int> r;
+	for (int i = 0; i < n; i++)
+	{
+		r.push_back(g(bl[i], bl[MOD(i+1,n)], N));
+	}
+	return r;
+}
+		
+int getLargest(vector <string> board) 
+{
+	string s = "";
+	for (int i = 0; i < board.size(); i++)
+	{
+		s += board[i];
+	}
+	
+	vector<pi> bl;
+	int n = s.size();
+	int c = 0;
+	int i = 0;
+	if (s[n-1] == 'X' && s[0] == 'X')
+	{
+		while (s[i] == 'X')
+			i++;
+	}
+	while (c < n)
+	{
+		if (s[i] == 'X' && s[MOD(i-1,n)] == '.')
+		{
+			int bs = i, blen = 0;
+			while (s[i] == 'X')
+			{
+				c++;
+				i = MOD(i+1,n);
+				blen++;
+			}
+			bl.push_back(make_pair(bs,blen));
+			continue;
+		}
+		if (s[i] == '.')
+		{
+			i = MOD(i+1,n);
+			c++;
+		}
+	}
+	//for (int i = 0; i < bl.size(); i++) cout << bl[i].first << " " << bl[i].second << endl;
+	vector<int> best;
+	int ind = -1;
+	for (int i = 0; i < bl.size(); i++)
+	{
+		vector<pi> t = bl;
+		
+		int m = bl.size();
+		int k = MOD(i-1,m);
+		bl[k].second += bl[i].second;
+		
+		vector<int> gaps = f(t, n);
+		//cout << bl[i].first << " " << bl[i].second << endl; for (int i = 0; i < gaps.size(); i++) cout << gaps[i] << endl;
+		if (gaps > best)
+		{
+			best = gaps;
+			ind = bl[i].first;
+		}
+	}
+	return ind;				
+}
+};
+
+
+//Powered by [KawigiEdit]
+
+
+Problem Statement
+    
+Given a vector <string> board, concatenate all its elements, in order, to get a single string representing a circular board consisting of uppercase 'X' and '.' characters. "Circular" means that the first and the last characters on the board are consecutive. Maximal consecutive groups of 'X' characters form blocks and maximal consecutive groups of '.' characters form gaps. The size of the gap is the number of '.' characters in it.
+
+You want to remove exactly one block from the board, getting a circular board of smaller size. 
+
+For each possible block to be removed consider the board after its removal, construct an array of all gaps' sizes on the board and 
+sort this array in non-ascending order. 
+
+Choose the block for which the described array is lexicographically maximal (see notes for the description of lexicographical array comparison). 
+
+Return the smallest 0-based index among all characters in this block (indices are taken in the concatenated string). 
+
+In case of a tie choose the block which results in the smallest return value.
+
+Definition
+    
+Class:
+LargestGap
+Method:
+getLargest
+Parameters:
+vector <string>
+Returns:
+int
+Method signature:
+int getLargest(vector <string> board)
+(be sure your method is public)
+    
+
+Notes
+-
+Let vector <int>s A and B contain the same number of elements. Then A is lexicographically larger than B if A contains a larger value at the first position where A and B differ.
+Constraints
+-
+board will contain between 1 and 50 elements, inclusive.
+-
+Each element of board will contain between 1 and 50 characters, inclusive.
+-
+board will contain only uppercase 'X' and '.' characters.
+-
+board will contain at least two blocks.
+Examples
+0)
+
+    
+{".....X.X......."}
+Returns: 5
+Remove the first block.
+1)
+
+    
+{"XXXX","....","XXXX","....","XXXX","...."}
+Returns: 0
+There are three blocks whose smallest indices are 0, 8, 16, respectively.
+The board after removing each of the blocks look as follows:
+The 1st block: "....XXXX....XXXX....".
+The 2nd block: "XXXX........XXXX....".
+The 3rd block: "XXXX....XXXX........".
+All three results produce the same gaps array {8,4}. So we return the smallest index among {0,8,16}.
+2)
+
+    
+{"XXX.........XX...........XX..X"}
+Returns: 12
+There are three gaps and three blocks (recall that the board is circular).
+3)
+
+    
+{"XXX","X.....","....XX..XXXXXX","X........X..",".XXX."}
+Returns: 32
+There are 5 blocks and 5 gaps. There are two ways to maximize the largest gap, but only one of them also maxmizes the second largest one.
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

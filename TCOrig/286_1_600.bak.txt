@@ -1,0 +1,93 @@
+int bestPosition(int players, int G, int R, int B) 
+{
+	
+}
+
+Problem Statement
+    
+A gift is successively wrapped in sheets of colored paper, one inside the other. Several players sitting in a circle take turns passing the gift around. 
+At each turn, the player holding the gift removes the outer sheet of paper, and depending on the color of that outer sheet, performs one of the following actions:
+
+	Green ('G'): The gift is passed to the next player in the current direction.
+	Red ('R'): The direction is reversed, and the gift is passed to the next player in the new direction.
+	Black ('B'): The player leaves the circle and is out of the game. The gift is passed to the next player in the current direction.
+	
+The direction at the beginning of the game is initially clockwise. The player who receives the gift with no wrapping wins the gift.
+As an example, consider four players numbered 0 through 3 in clockwise order. The gift is wrapped in the following colors: "GBRG" (the first letter is the color of the outermost sheet). The game proceeds as follows:
+
+Player 0 removes the outermost green sheet of paper and passes the gift to player 1 (the next player in clockwise order).
+Player 1 removes a black sheet of paper and is eliminated. The gift is passed to player 2 (the next player in clockwise order).
+Player 2 removes a red sheet of paper, so the direction is reversed to counter-clockwise, and the gift is passed to player 0 (the next player in counter-clockwise order since player 1 is out).
+Player 0 removes a green sheet of paper and passes the gift to player 3 (the next player in counter-clockwise order).
+Player 3 gets the gift with no wrapping, so he is the winner.
+
+Suppose you know the number of sheets of each color used to wrap the gift before the game starts, but not the order in which they were used. Write a class BallGift with a method bestPosition that takes the number of players in the game and the number of green, red and black paper sheets used, and returns the best initial position in the circle at which to sit -- the one with the highest probability of being a winner. If a tie exists, return the position with the lowest index. Position 0 is the starting position, position 1 is the next position in clockwise order, etc.
+Definition
+    
+Class:
+BallGift
+Method:
+bestPosition
+Parameters:
+int, int, int, int
+Returns:
+int
+Method signature:
+int bestPosition(int players, int green, int red, int black)
+(be sure your method is public)
+    
+
+Constraints
+-
+players will be between 1 and 30, inclusive.
+-
+green, red and black will each be between 0 and 15, inclusive.
+-
+black will be less than players.
+Examples
+0)
+
+    
+4
+3
+0
+0
+Returns: 3
+With four players and only three green sheets, it is clear that the last player wins.
+1)
+
+    
+4
+0
+1
+0
+Returns: 3
+The last player wins again here because there is only a single sheet of paper, and it's red, meaning that the first player will pass the gift to the next person in counter-clockwise order.
+2)
+	
+    
+4
+1
+1
+0
+Returns: 0
+There are two possible ways in which the gift is wrapped, so player 0 and player 2 have equal chances of winning. We return 0 because it is the lower index.
+3)
+
+    
+4
+1
+1
+1
+Returns: 1
+
+4)
+
+    
+4
+2
+2
+2
+Returns: 0
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

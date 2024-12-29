@@ -1,0 +1,209 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<!-- Mirrored from spoj.sphere.pl/problems/PARTPALI/ by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 10 Jan 2006 04:54:05 GMT -->
+<head>
+<title>Sphere Online Judge (SPOJ)  - Problem PARTPALI</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-2">
+<META NAME="Keywords" CONTENT="spoj, online, judge, problem, set, problemset, archive, ACM, Polish, Poland, contest, contester, task, tasks, ADA, Java, Pascal, C, C++, Whitespace, sphere, interest, group, python, ruby, icon, o'caml, caml, ocaml, perl, haskell, bf, brain, clips, prolog, fortran, asm, assembler, asembler, functional, esoteric, programming, languages">
+
+<link href="https://spoj.sphere.pl/gfx/favicon" rel="shortcut icon" type="image/x-icon">
+
+<link href="../../themes/skin3.css" rel="stylesheet" type="text/css" id="theme">
+<style type="text/css">
+<!--
+.maintable {width: 755;} 
+-->
+</style>
+<script type="text/javascript" language="javascript">
+<!--
+function UnCryptMailto(s) {
+	var n=0;
+	var r="";
+	for(var i=0;i<s.length;i++) {		
+		n=s.charCodeAt(i); 
+		if (n>=8364) {n = 128;}
+		r += String.fromCharCode(n+(2));	
+	}
+	return r;
+}
+function linkTo_UnCryptMailto(s)	{
+	location.href=UnCryptMailto(s);
+}
+// -->
+</script>
+
+</head>
+<body>
+<center>
+<table cellpadding="10" cellspacing="0" class="maintable" id="maintable">
+<tr>
+    <td colspan="2" class="header">
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+        <tr>
+		<td class="headerleft"/>
+		<td class="headercenter"><h1>Sphere Online Judge</h1></td>
+		<td class="headerright"/>
+	</tr>
+	</table>
+    </td>
+</tr>
+<tr><td class="menu" width="92" valign="top">
+<form name="login"  action="http://spoj.sphere.pl/problems/PARTPALI/" method="post" 
+	onsubmit="if(document.login.ssl.checked) document.login.action='https://spoj.sphere.pl/problems/PARTPALI/'" style="margin-bottom: 18px"> 
+User: <input name="login_user" type="text" style="width: 85px;" class="form"><BR>
+Password: <input name="password" type="password" style="width: 85px;" class="form"><BR>
+<script language="javascript" type="text/javascript">
+<!--
+document.write('<input type="checkbox" name="ssl" id="ssl" checked>secure<br>');
+//-->
+</script>
+<input name="submit" type="submit" value="Log In" class="button" style="width: 85px;">
+</form><div class="menucmd"><a href="https://spoj.sphere.pl/register">register</a><br><br><a href="https://spoj.sphere.pl/status">status</a><br><a href="https://spoj.sphere.pl/submit">submit</a><br><a href="../classical/sort=0,start=200.html">problems</a><br><br><a href="https://spoj.sphere.pl/">news</a><br><a href="https://spoj.sphere.pl/contests">contests</a><br><a href="https://spoj.sphere.pl/info">info</a><br><a href="https://spoj.sphere.pl/ranks/">ranks</a><br><br><a href="https://spoj.sphere.pl/forum">forum</a><br><a href="https://spoj.sphere.pl/help">help</a><br><a href="https://spoj.sphere.pl/links">links</a><br><hr></div>Server time:<br>2006-01-10<br>05:48:45<a href="../classical/sort=0,start=200.html"></a><br><br>
+<form method="get" action="https://spoj.sphere.pl/search/" class="form" style="width:90px">
+<input type="text" name="query" style="width:85px" maxlength=255 value="" class="form"><br>
+<input type="submit" value="Search" style="width:85px" class="form" title="Search site"><br>
+&nbsp;<a href="https://spoj.sphere.pl/search/problems=on,users=on,contests=on" title="More search options"><small>advanced...</small></a>
+</form></td><td class="content" width="99%"><table class="problems" width="100%">
+<tr class="navigation">
+<td><a href="https://spoj.sphere.pl/submit/PARTPALI/">Submit</a></td>
+<td><a href="https://spoj.sphere.pl/status/PARTPALI/">All submissions</a></td>
+<td><a href="https://spoj.sphere.pl/ranks/PARTPALI/">Best solutions</a></td>
+<td><a href="https://spoj.sphere.pl/problems/PARTPALI.ps">PS</a></td>
+<td><a href="https://spoj.sphere.pl/problems/PARTPALI.pdf">PDF</a></td>
+<td><a href="../classical/sort=0,start=200.html">Back to list</a></td>
+</tr>
+</table>
+
+<div class="prob">
+
+<h2>SPOJ Problem Set </h2>
+<h1>428. Particular Palindromes</h1>
+<h2>Problem code: PARTPALI</h2>
+<p align="justify">
+<p>A palindromic decimal integer reads the same forward and backward.
+For example, the following numbers are palindromic.</p>
+
+<p>6, 55, 282, 5005, 78187, 904409, 3160613, 11111111</p>
+
+<p>Palindromic integers are plentiful. In fact, any integer not
+divisible by 10 has an infinite number of multiples that are
+palindromic. (The standard representation of a nonzero multiple of 10
+cannot be palindromic since its reversal would have a leading 0.)</p>
+
+<p>Write a program to determine, for a given positive integer, how
+many of its positive multiples are palindromes of a given length.</p> 
+
+
+
+<h3>Input</h3>
+
+<p>
+The first line of the input will specify an integer n indicating the
+number of problem instances to follow, one to a line.  Each of the
+ensuing  n  lines will specify a pair of positive integers   m,s
+separated by a single space, with 
+1 <  m  < 1000,  s < 20.    (For m,s in this range, there are
+fewer than 2^32 palindromes among the s-digit multiples of m.)  Each
+line will terminate with an end-of-line.</p>
+
+
+<h3>Output</h3>
+
+<p>The output should indicate  for each m,s, exactly how many s-digit
+positive palindromes are divisible by m, with one problem instance per
+line.   </p> 
+
+
+<h3>Example</h3>
+
+<pre>
+<b>Input:</b>
+5	
+3 1	
+25 3	
+12 4	
+30 3
+81 6
+
+
+<b>Output:</b>
+3
+2
+7
+0
+0
+
+</pre>
+
+<p><b>Explanation:</b> There are three positive 1-digit multiples of
+3, namely, 3, 6, and 9; all 1-digit numbers are trivially palindromes.
+Among the 3-digit palindromes, 525 and 575 are multiples of 25.  The
+4-digit multiples of 12 that are palindromes are 2112, 2772, 4224,
+4884, 6336, 6996, 8448.   There are no positive palindromic numbers
+ending in 0 (since we do not allow leading 0's).  No 6-digit
+palindromes are divisible by 81.</p>
+
+
+
+<hr>
+<table border=0 cellspacing=0 cellpadding=0 align=left>
+<tr><td width=130>Added by:</td><td><a href="https://spoj.sphere.pl/search/'Sebastian%20Kanthak'">Sebastian Kanthak</a></td></tr>
+<tr><td>Date:</td><td>2005-10-26</td></tr>
+<tr><td>Time limit:</td><td>5s
+</td></tr>
+<tr><td>Source limit:</td><td>50000B</td></tr>
+<tr><td>Resource:</td><td>ACM Pacific Northwest Regional Contest 2003</td></tr></table>
+</div></td>
+</tr>
+
+<tr>
+<td colspan="2" class="footer">
+
+<script language="javascript" type="text/javascript">
+<!--
+function swapSheet(sheet, caller) {
+    document.getElementById('theme').href=sheet;
+    document.cookie="css_0="+sheet+"; path=/;";
+    caller.href="#bottom";
+}
+
+function setWidth(w, caller) {
+    document.getElementById('maintable').style.width=w;
+    document.cookie="res="+w+"; path=/;";
+    caller.href="#bottom";
+}
+//-->
+
+</script>
+        <table width="100%">
+    <tr>
+	<td align="left">
+            <a href="http://www.pg.gda.pl/eng.html"><IMG src="https://spoj.sphere.pl/gfx/logo-pg" alt="www.pg.gda.pl" border=0 height=36 width=44></a>&nbsp;
+            <a href="http://www.eti.pg.gda.pl/"><IMG src="https://spoj.sphere.pl/gfx/logo-eti" alt="www.eti.pg.gda.pl" border=0 height=36 width=44></a>
+	</td>
+	<td align="center">
+	    page size:
+	    <a href="https://spoj.sphere.pl/?res=755"  onClick="setWidth('755', this)">800x600</a>
+	    <a href="https://spoj.sphere.pl/?res=980"  onClick="setWidth('980', this)">1024x768</a>
+	    <a href="https://spoj.sphere.pl/?res=100%" onClick="setWidth('100%', this)">Full</a>
+	    &nbsp;&nbsp;
+	    theme:
+	    <a href="../../indexb6a4.html?css=/themes/skin1.css" onClick="swapSheet('../../themes/skin1.css', this)">olive</a>
+	    <a href="../../index3840.html?css=/themes/skin2.css" onClick="swapSheet('../../themes/skin2.css', this)">banana</a>
+	    <a href="../../index80f0.html?css=/themes/skin3.css" onClick="swapSheet('../../themes/skin3.css', this)">plum</a>
+	    <br>
+	    <a href="http://sphere.pl/?id=66">spoj team at sphere</a> &copy; 2004-05 all rights reserved
+	</td>
+	<td align="right">
+            <a href="http://task.gda.pl/english/"><IMG src="https://spoj.sphere.pl/gfx/logo-task" alt="task.gda.pl" border=0 height=36 width=44></a>&nbsp;
+            <a href="http://sphere.pl/"><IMG src="https://spoj.sphere.pl/gfx/logo-sphere" alt="sphere.pl" border=0 height=32></a>
+	</td>
+    </tr>
+    </table>
+    </tr></table>
+</center>
+</body>
+
+<!-- Mirrored from spoj.sphere.pl/problems/PARTPALI/ by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 10 Jan 2006 04:54:05 GMT -->
+</html>

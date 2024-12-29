@@ -1,0 +1,132 @@
+typedef long double LD;
+int n;
+vector<int> v;
+int bc[10];
+LD memo[65][6][1001];
+
+LD f(int mask, int p, int t)  // return expected number of turns if "mask" students are left, and p'th student is next, simulated to "t" rounds
+{
+//cout << mask << " " << p << " " << t << endl;
+	int num = bc[mask];
+	if (num == 1)
+		return 0;
+	if (t == 1000)
+		return 0; // only one player left, or simulation limit reached
+	
+	while ((mask & (1<<p)) == 0)
+		p = (p + 1) % n;
+//cout << p << endl;
+
+	if (memo[mask][p][t] >= -(1.0e-9))
+		return memo[mask][p][t];
+		
+	// this student should choose the target who will result in the game ending soonest
+	LD mx = 1.0e307;
+	for (int q = 0; q < n; q++)
+	{
+		if ((mask & (1<<q)) == 0) continue; // q is already out
+		if (p == q) continue;
+		LD x = (LD(v[p]) * f(mask&~(1<<q), p+1, t+1) + LD((100-v[p])) * f(mask, p+1, t+1))/100.0;
+		if (x < mx+1e-9)
+			mx = x;
+	}
+	mx += 1.0;
+	return memo[mask][p][t] = mx;
+}
+	
+double duration(vector <int> probability) 
+{
+	v = probability;
+	n = v.size();
+	
+	for (int i = 0; i < 10; i++)
+	{
+		int x = i;
+		bc[i] = 0;
+		while (x)
+		{
+			x &= x-1;
+			bc[i]++;
+		}
+	}
+	for (int i = 0; i < 65; i++)
+	{
+		for (int j = 0; j <= 6; j++)
+		{
+			for (int k = 0; k < 1001; k++)
+			{
+				memo[i][j][k] = -1.0;
+			}
+		}
+	}
+	
+	return (double) f((1<<n)-1, 0, 0);
+}
+
+Problem Statement
+    
+There are n students standing in a circle and playing a game with a ball. 
+
+The students are numbered from 0 to n-1 in clockwise order. 
+
+On each turn, a student must take the ball and throw it at another student in the circle. 
+
+Student i has a probability[i] percent chance of hitting the target student, and if he is successful, the student who is hit must leave the circle. 
+
+Turns go in clockwise order, and student 0 gets the first turn. 
+
+They are not allowed to skip turns. The game ends when there is only one student left in the circle.  
+
+The students are playing this game against their will, so their common goal is to finish the game in the least number of turns. Return the expected number of turns the game will last.
+
+Definition
+    
+Class:
+SchoolTrip
+Method:
+duration
+Parameters:
+vector <int>
+Returns:
+double
+Method signature:
+double duration(vector <int> probability)
+(be sure your method is public)
+    
+
+Notes
+-
+The returned value must be accurate to within a relative or absolute value of 1E-9.
+-
+Each student does not worry about how long he will stay in the circle, only the total game time matters.
+Constraints
+-
+probability will contain between 2 and 6 elements, inclusive.
+-
+Each element of probability will be between 10 and 100, inclusive.
+Examples
+0)
+
+    
+{100,23}
+Returns: 1.0
+The first student will certainly hit the second one, so the game will be finished after 1 turn.
+1)
+
+    
+{50,50}
+Returns: 2.0
+With probability 1/2 the game will be finished after 1 turn, with probability 1/4 after 2 turns, .. with probability 1/2^k after k turns. The infinite sum 1*1/2 + 2*1/4 + 3*1/8 +.. n*1/2^n = 2.
+2)
+
+    
+{25,50,75}
+Returns: 3.892383478590375
+
+3)
+
+    
+{100,100,100,42,11}
+Returns: 4.0
+The first two students will start out by hitting the last two students. After that, there will be three students remaining, and all of them always hit their targets, so only two more turns will be required for the game to end.
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

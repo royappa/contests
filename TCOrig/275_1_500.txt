@@ -1,0 +1,155 @@
+// CORRECT
+#include <vector>
+#include <list>
+#include <map>
+#include <set>
+#include <deque>
+#include <stack>
+#include <bitset>
+#include <algorithm>
+#include <functional>
+#include <numeric>
+#include <utility>
+#include <sstream>
+#include <iostream>
+#include <iomanip>
+#include <cstdio>
+#include <cmath>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+class Horoscope {
+public:
+int memo[3000][60][2];
+int R, W;
+string s;
+int n;
+
+int f(int p, int k, int b)
+{
+	if (p == n)
+	{
+		return 0;
+	}
+	int& r = memo[p][k][b];
+	if (r != -1)
+	{
+		return r;
+	}
+	
+	char cur = s[p];
+	if (b == 0) // last k were right
+	{
+		if (k < R) 	// cur can be right or wrong
+		{	
+			r = (cur == 'G') + f(p+1, k+1, 0); 			// cur is right
+			r = max(r, (cur == 'B') + f(p+1, 1, 1)); 	// cur is wrong
+		}
+		else		// cur can only be wrong		
+		{
+			r = (cur == 'B') + f(p+1, 1, 1);
+		}
+	}
+	else 		// last k were wrong
+	{
+		if (k < W) // cur can be right or wrong
+		{
+			r = (cur == 'B') + f(p+1, k+1, 1);			// cur is wrong
+			r = max(r, (cur == 'G') + f(p+1, 1, 0)); 	// cur is right
+		}
+		else		// cur can only be right
+		{
+			r = (cur == 'G') + f(p+1, 1, 0);
+		}
+	}
+	return r;
+}
+	
+int maxGoodDays(vector <string> predictions, int R_, int W_) 
+{
+	s = "";
+	for (int i = 0; i < predictions.size(); i++)
+	{
+		s += predictions[i];
+	}
+	
+	n = s.size();
+	R = R_;
+	W = W_;
+	
+	memset(memo, -1, sizeof(memo));
+	
+	return max(f(0, 0, 0), f(0, 0, 1)); // f(i, k, b) = maxGood in s[i..n-1], given that last k are right (if b = 0) or wrong (if b = 1)
+	
+}
+};
+
+
+//Powered by [KawigiEdit]
+
+
+Problem Statement
+    
+Recently, you went to a fair where one of the attractions was an oracle who would give you your horoscope for the next several days. She wasn't very precise though; all she would say is whether you would have a Good ('G') or Bad ('B') day on a particular day. Besides not being very precise, she was very inconsistent: she could be right AT MOST R times in a row, and she could be wrong AT MOST W times in a row.  Create a class Horoscope, which contains a method maxGoodDays. The method takes a vector <string> predictions, an int R and an int W as input. The elements of predictions are strings containing only the characters 'G' or 'B', indicating whether your horoscope for that day was predicted to be good or bad. (Note that you should concatenate the elements of predictions and consider the entire string the predictions). The method should return the maximum number of Good days that you can experience given the predictions, and values for R and W.
+Definition
+    
+Class:
+Horoscope
+Method:
+maxGoodDays
+Parameters:
+vector <string>, int, int
+Returns:
+int
+Method signature:
+int maxGoodDays(vector <string> predictions, int R, int W)
+(be sure your method is public)
+    
+
+Constraints
+-
+predictions will contain between 1 and 50 elements inclusive.
+-
+Each element of predictions will contain between 1 and 50 characters inclusive.
+-
+Each element of predictions will contain only the characters 'G' or 'B'.
+-
+R will be between 1 and 50 inclusive.
+-
+W will be between 1 and 50 inclusive.
+Examples
+0)
+
+    
+{"GGGG"}
+4
+1
+Returns: 4
+Since R is 4, the oracle can be Right for all 4 predicted days. In this case, the maximum number of good days you would experience is 4.
+1)
+
+    
+{"GGGG"}
+2
+2
+Returns: 3
+Here, the oracle can't be Right for all 4 days. One way of achieving 3 Good days (which is the maximum possible in this case) is for the oracles predictions to be Right, Wrong, Right, Right for the 4 days respectively. Thus, the return value here is 3.
+2)
+
+    
+{"GBGBBB"}
+3
+4
+Returns: 6
+
+3)
+
+    
+{"GGGBBBGBGGGB", "GGBBBBBBBBBGBGBGBGBGBGBGBGBBBBBBBBBBBBBBGGGG", "G"}
+4
+35
+Returns: 56
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

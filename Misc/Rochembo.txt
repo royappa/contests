@@ -1,0 +1,103 @@
+import java.util.*;
+
+public class Rochambo
+{
+	private int check(char opp, char me)
+	{
+		String pat = ""+opp+me;
+		if (pat.equals("RR")) return 0;
+		if (pat.equals("RP")) return 1;
+		if (pat.equals("RS")) return 0;
+		if (pat.equals("PR")) return 0;
+		if (pat.equals("PP")) return 0;
+		if (pat.equals("PS")) return 1;
+		if (pat.equals("SR")) return 1;
+		if (pat.equals("SP")) return 0;
+		if (pat.equals("SS")) return 0;
+		return 0;
+	}
+	private char beat(char opp)
+	{
+		return opp == 'R' ? 'P' :
+			opp == 'P' ? 'S' : 'R';
+	}
+	private other(char a, char b)
+	{
+		String pat = ""+a+b;
+		if (pat.equals("RS") || pat.equals("SR")) return 'P';
+		if (pat.equals("RP") || pat.equals("PR")) return 'S';
+		return 'R';
+	}
+	
+	public int wins(String opp)
+	{
+		int nw = 0;
+		nw += check(opp[0], 'R');
+		nw += check(opp[1], 'R');
+		for (i = 2; i < opp.length; i++)
+		{
+			char my;
+			if (opp[i-2] == opp[i-1]) my = beat(opp[i-1]);
+			else my = beat(other(opp[i-1], opp[i-2]));
+			nw += check(opp[i], my);
+		}
+		return nw;	
+	}
+}
+Problem Statement
+    
+In each round of the two-player game of Rochambo, you and your opponent simultaneously display one of three gestures: Rock, Paper, or Scissors. If both of you have made the same move, the outcome is a tie. Otherwise, Rock beats Scissors, Scissors beats Paper, and Paper beats Rock.
+An optimal strategy against an opponent who makes random moves is to play randomly yourself. However, most people are incapable of generating a truly random series of moves, and it may be possible to exploit patterns in their play. According to one theory, the human mind works in the following manner. After making two consecutive moves of the same kind, the next move is likely to be the same as the previous two. But after making two different consecutive moves, the next move is likely to be different from the previous two.
+Given a String containing a record of your opponent's moves, calculate how many rounds you would win if you believed in this theory. Each gesture is represented by its initial letter. Your first two moves are always Rock. Thereafter, taking into account your opponent's previous two moves, you must apply the psychological theory described above to predict your opponent's next move, and counter it with the move that would defeat it.
+Definition
+    
+Class:
+Rochambo
+Method:
+wins
+Parameters:
+String
+Returns:
+int
+Method signature:
+int wins(String opponent)
+(be sure your method is public)
+    
+
+Constraints
+-
+opponent contains between 2 and 50 characters, inclusive
+-
+each character in opponent is one of 'R', 'P', or 'S'
+Examples
+0)
+
+    
+"PS"
+Returns: 1
+Your first two moves are always Rock, so you lose the first round and win the second round.
+1)
+
+    
+"PSRRPS"
+Returns: 3
+You lose the first round and win the second round. The theory predicts that because your opponent has played Paper and Scissors in the first two rounds, he will play something different, namely Rock, in the third round. Accordingly, you play Paper. Your opponent does, in fact, play Rock, so you win the third round. The theory predicts that your opponent will play Paper in the fourth round, so you play Scissors. He actually plays Rock, so you lose. In the fifth round, the theory predicts that because your opponent has played Rock twice in a row, he will play it yet again, so you counter with Paper. Since he also plays Paper, this round is a tie. In the sixth round, the theory predicts Scissors, so you play Rock. Your opponent plays Scissors, and you win the round. In total, you have won three rounds.
+2)
+
+    
+"PSRPSRPRSR"
+Returns: 7
+
+3)
+
+    
+"SRPSRPSPRSPRPSRPSRP"
+Returns: 16
+
+4)
+
+    
+"RPPPRRPSSSRRRSRSPPSSPRRPSRRRRSPPPPSSPSSSSSRSSSRPRR"
+Returns: 18
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

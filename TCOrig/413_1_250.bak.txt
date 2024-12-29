@@ -1,0 +1,100 @@
+double minCommonDifference(int a0, vector <int> seq_) 
+{
+	int n = seq_.size();
+	vector<int> seq(n+1,0);
+	seq[0] = a0;
+	for (int i = 0; i < seq_.size(); i++)
+	{
+		seq[i+1] = seq_[i];
+	}
+	
+	double d = seq[1]-a0;
+	for (int i = 1; i <= n; i++)
+	{
+		if (a0+i*(d+1) < seq[i])
+			return -1;
+	}
+	return 0;
+}
+
+
+Problem Statement
+    
+NOTE: This problem statement contains subscripts that may not display properly if viewed outside of the applet.
+ 
+In mathematics, an arithmetic progression or arithmetic sequence is a sequence of numbers such that the difference of any two successive members of the sequence is a constant. For instance, the sequence 3, 5, 7, 9, 11, 13... is an arithmetic progression with common difference 2. 
+An arithmetic sequence can always be represented as an=a0+n*d.
+
+
+You will be given a sequence seq, where seq_i = [a_i+1] for some nondecreasing arithmetic sequence a (both indices are 0-based). [x] denotes the floor function (see Notes). The sequence a is defined as a0+i*d. Return the minimal possible value for d. If no possible value exists for d, return -1 instead.
+Definition
+    
+Class:
+ArithmeticProgression
+Method:
+minCommonDifference
+Parameters:
+int, vector <int>
+Returns:
+double
+Method signature:
+double minCommonDifference(int a0, vector <int> seq)
+(be sure your method is public)
+    
+
+Notes
+-
+[x] denotes the floor function of x which returns the highest integer less than or equal to x. For example, [3.4] = 3, [0.6] = 0, [-1.2] = -2 and [-0.6] = -1.
+-
+Your return value must be accurate to within an absolute or relative tolerance of 1E-9.
+Constraints
+-
+seq will contain between 0 and 50 elements, inclusive.
+-
+Each element of seq will be between -10^6 and 10^6, inclusive.
+-
+a0 will be between -10^6 and 10^6, inclusive.
+Examples
+0)
+
+    
+0
+{6, 13, 20, 27}
+Returns: 6.75
+
+1)
+
+    
+1
+{2, 3, 4, 5, 6}
+Returns: 1.0
+
+2)
+
+    
+3
+{}
+Returns: 0.0
+Since the sequence a is nondecreasing, d must be at least 0.
+3)
+
+    
+3
+{3, 3, 3, 3, 4}
+Returns: 0.2
+
+4)
+
+    
+1
+{-3}
+Returns: -1.0
+
+5)
+
+    
+0
+{6, 14}
+Returns: -1.0
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

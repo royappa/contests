@@ -1,0 +1,131 @@
+#include <vector>
+#include <list>
+#include <map>
+#include <set>
+#include <deque>
+#include <stack>
+#include <bitset>
+#include <algorithm>
+#include <functional>
+#include <numeric>
+#include <utility>
+#include <sstream>
+#include <iostream>
+#include <iomanip>
+#include <cstdio>
+#include <cmath>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+class TreeSpreading {
+public:
+typedef long long LL;
+
+LL memo[11][11][11][11][5];
+
+LL count(int a, int b, int c, int d, int last)
+{
+	if (a == 0 && b == 0 && c == 0 && d == 0)
+	{
+		return 1LL;
+	}
+	
+	// memo..
+	
+	LL& ways = memo[a][b][c][d][last+1];
+	if (ways != -1LL)
+		return ways;
+		
+	ways = 0LL;
+	if (a > 0 && last != 0)
+		ways += count(a-1, b, c, d, 0);
+	if (b > 0 && last != 1)
+		ways += count(a, b-1, c, d, 1);
+	if (c > 0 && last != 2)
+		ways += count(a, b, c-1, d, 2);
+	if (d > 0 && last != 3)
+		ways += count(a, b, c, d-1, 3);
+	return ways;
+}	
+	
+long long countArrangements(int a, int b, int c, int d) 
+{
+	for (int i = 0; i < 11; i++)
+		for (int j = 0; j < 11; j++)
+			for (int k = 0; k < 11; k++)
+				for (int m = 0; m < 11; m++)
+					for (int n = 0; n < 6; n++)
+						memo[i][j][k][m][n] = -1LL;
+					
+	return count(a, b, c, d, -1);	
+}
+};
+
+
+//Powered by [KawigiEdit]
+
+Problem Statement
+    
+A farmer is planting a line of trees across the front of his house. He has four different kinds of trees he would like to plant. However, for aesthetic reasons, he does not want two of the same type of tree next to each other. Beyond that, any arrangement of trees is considered acceptable.
+You are given ints a, b, c, and d, indicating how many of each type of tree the farmer is going to plant. You are to return a long long indicating the number of acceptable ways in which the trees can be ordered.
+Definition
+    
+Class:
+TreeSpreading
+Method:
+countArrangements
+Parameters:
+int, int, int, int
+Returns:
+long long
+Method signature:
+long long countArrangements(int a, int b, int c, int d)
+(be sure your method is public)
+    
+
+Notes
+-
+Each tree of a given type is identical to others of the same type, thus swapping the positions of two of the same type of tree does not consitute a new arrangement.
+Constraints
+-
+a, b, c, and d will be between 0 and 10, inclusive.
+Examples
+0)
+
+    
+1
+1
+0
+0
+Returns: 2
+There are only two trees to place, and they can go in either order.
+1)
+
+    
+2
+2
+0
+0
+Returns: 2
+There are two possible arrangements: ABAB or BABA. Any others have two identical trees adjacent to one another.
+2)
+
+    
+1
+1
+1
+1
+Returns: 24
+Since all four trees are different, they can be arranged in any order, so the answer is 4!.
+3)
+
+    
+3
+2
+1
+1
+Returns: 96
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

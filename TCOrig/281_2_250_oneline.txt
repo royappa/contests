@@ -1,0 +1,118 @@
+bool unMatchedLeft(string text)
+{
+	int last = -1;
+	for (int i = 0; i < text.size(); i++)
+	{
+		if (text[i] == '[')
+		{
+			bool found = false;
+			last = (last == -1) ? i : last;
+			for (int j = last+1; j < text.size(); j++)
+			{
+				if (text[j] == ']')
+				{
+					last = j;
+					found = true;
+					break;
+				}
+			}
+			if (!found)
+				return false;
+		}
+	}
+	return true;
+}
+
+bool unMatchedRight(string text)
+{
+	int last = -1;
+	int n = text.size();
+	for (int i = n-1; i >= 0; i--)
+	{
+		if (text[i] == ']')
+		{
+			bool found = false;
+			last = (last == -1) ? i : last;
+			for (int j = last-1; j >= 0; j--)
+			{
+				if (text[j] == '[')
+				{
+					found = true;
+					last = j;
+					break;
+				}
+			}
+			if (!found)
+				return false;
+		}
+	}
+	return true;
+}
+
+string complete(string text) 
+{
+
+	while (unMatchedLeft(text))
+	{
+		string R = "]";
+		text = text + R;
+		//cout << text << endl;
+	}
+	while (unMatchedLeft(text))
+	{
+		string L = "[";
+		text = L + text;
+	}
+	return text;
+}
+
+Problem Statement
+    
+A series of brackets is complete if we can pair off each left bracket '[' with a right bracket ']' that occurs later in the series. 
+
+Every bracket must participate in exactly one such pair.
+
+Given a string text add the minimal number of brackets to the beginning and/or end of text to make it complete. 
+
+Return the result.
+Definition
+    
+Class:
+CompletingBrackets
+Method:
+complete
+Parameters:
+string
+Returns:
+string
+Method signature:
+string complete(string text)
+(be sure your method is public)
+    
+
+Constraints
+-
+text will have between 1 and 50 characters inclusive.
+-
+text will contain only the characters '[' and ']'.
+Examples
+0)
+
+    
+"[["
+Returns: "[[]]"
+Add two ']' to the end to make this complete.
+1)
+
+[][]
+    
+"]["
+Returns: "[][]"
+Add one to the beginning and one to the end.
+2)
+
+    
+"[[[[]]]]"
+Returns: "[[[[]]]]"
+This is already complete.
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

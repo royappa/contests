@@ -1,0 +1,64 @@
+int chooseOne(vector <string> words) 
+{
+	int n = words.size();
+	
+	int bag = (1<<n)-1;
+	
+}
+
+Problem Statement
+    
+You are participating in a famous TV Quiz. In the final stage of this quiz you must guess the correct answer for a question posed by the quizmaster. The quizmaster tells you the length of the answer. The quiz consists of one or more turns. On each turn, you may either answer the question or ask for a hint. You must be sure of the solution before answering the question. When asking for a hint, you tell a letter to the quizmaster, and he reveals all occurrences of this letter to you. Unfortunately, your prize decreases with each hint, so you want to win the game with as few hints as possible.
+You are given a list of all possible answers in the vector <string> words. Return the minimal number of hints needed to determine the correct answer.
+Definition
+    
+Class:
+Answer
+Method:
+chooseOne
+Parameters:
+vector <string>
+Returns:
+int
+Method signature:
+int chooseOne(vector <string> words)
+(be sure your method is public)
+    
+
+Constraints
+-
+words will contain between 2 and 18 elements, inclusive.
+-
+Each element of words will contain between 1 and 50 characters, inclusive.
+-
+Each element of words will have the same length.
+-
+Each element of words will contain only upper-case letters between 'A' and 'Z'.
+-
+Each elements of words will be distinct.
+Examples
+0)
+
+    
+{"CAT", "DOG", "ANT"}
+Returns: 1
+You ask the quizmaster to reveal all occurrences of the letter 'A'. The answer is "ANT" if 'A' happens to be the first letter, "CAT" if it is the second, and "DOG" if no letter was revealed.
+1)
+
+    
+{"A", "D", "E"}
+Returns: 2
+
+2)
+
+    
+{"DOG", "CAT", "ANT", "DON", "ANN"}
+Returns: 2
+
+3)
+
+    
+{"FXFE", "SPOH", "ICFK", "JGHT", "TAMY", "OBBX", "IPIR", "YTBJ", "WXCZ", "WQSN", "CHEI"}
+Returns: 4
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

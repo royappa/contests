@@ -1,0 +1,104 @@
+double p;
+double memo[120][120];
+
+double f(int i, int j) // probability that a Serving team with i points defeats a non-serving team with j points.
+{
+	if (i >= 15 && i-j >= 2)
+	{
+		return 1.0;
+	}
+	if (j >= 15 && j-i >= 2)
+	{
+		return 0.0;
+	}
+	
+	double& r = memo[i][j];
+	if (r != -1.0)
+	{
+		return r;
+	}
+	
+	r = p*f(i+1, j) + (1.0-p)*(1.0-f(j+1, i));
+}
+	
+double win(int sScore, int rScore, double probWinServe) 
+{
+	p = probWinServe;
+	for (int i = 0; i < 120; i++)
+	{
+		for (int j = 0; j < 120; j++)
+		{
+			memo[i][j] = -1.0;
+		}
+	}
+	return f(sScore, rScore);
+}
+
+Problem Statement
+    
+In the current "rally scoring" used in volleyball, each serve results in one point, either for the serving team or for the receiving team. Whoever wins the point is the server on the next point. The winning team is the first team to win at least 15 points and be at least 2 points ahead of the other team.
+Suppose that two teams are playing a game, and that they are evenly matched. On each point, whichever team serves has a fixed probability, probWinServe, that they will win the point. (Of course, the receiving team will win the point with probability 1.0 - probWinServe.)
+Create a class Volleyball that contains a method win that is given sScore (the current score of the serving team), rScore (the current score of the receiving team), and probWinServe. It returns the probability that the serving team will win the game.
+Definition
+    
+Class:
+Volleyball
+Method:
+win
+Parameters:
+int, int, double
+Returns:
+double
+Method signature:
+double win(int sScore, int rScore, double probWinServe)
+(be sure your method is public)
+    
+
+Notes
+-
+The returned value must be accurate to within a relative or absolute value of 1E-9.
+Constraints
+-
+sScore and rScore will be between 0 and 100 inclusive.
+-
+probWinServe will be greater than or equal to 0.01
+-
+probWinServe will be less than or equal to .99
+-
+If either sScore or rScore is greater than 14, then sScore=rScore or else sScore=rScore+1.
+-
+If sScore equals 0, then rScore will also be 0.
+Examples
+0)
+
+    
+13
+13
+.5
+Returns: 0.5
+The teams are tied, and it doesn't matter who is serving since probWinServe is 0.5. So the chance of either team winning is the same.
+1)
+
+    
+1
+14
+0.01
+Returns: 3.355704697986578E-27
+In order for the serving team to win this game it would have to win its next 13 serves and then do well after that. So its probability of winning is less than .01 to the 13th power.
+2)
+
+    
+8
+12
+0.4
+Returns: 0.046377890909090946
+
+3)
+
+    
+4
+3
+0.01
+Returns: 0.6662085066547871
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

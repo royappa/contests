@@ -1,0 +1,157 @@
+
+#define INF (1<<30)
+
+vector<string> A;
+int H, W;
+int memo1[51][3001];
+int memo2[51][51][51];
+
+int f2(int row, int p, int maxStrokes) // return fewest mispaints for "row", assuming that [p..W) is left unpainted
+{
+	if (p == W)
+		return 0;
+	if (maxStrokes == 0)
+		return (W-p);
+	
+	int& r = memo2[row][p][maxStrokes];
+	if (r != -1)
+		return r;
+	r = INF;
+	for (int S = p; S < W; S++)
+	{
+		for (int len = 1; len <= W-p; len++)
+		{
+			// paint a stripe of length len starting at S
+			int wc = 0, bc = 0;
+			for (int j = 0; j < len; j++)
+			{
+				wc += A[row][S+j]=='W';
+				bc += A[row][S+j]=='B';
+			}
+			
+			r <?= (S-p)+min(wc,bc)+f(S+len, maxStrokes-1);
+		}
+	}
+	return r;
+}
+			
+			
+int f(int row, int maxStrokes) // return fewest mispaints for rows [p..H), using maxStrokes
+{
+	if (row == H)
+		return 0;
+	if (maxStrokes == 0)
+		return (H-row)*W;
+	int& r = memo1[row][maxStrokes];
+	if (r != -1)
+		return r;
+	
+	r = INF;
+	for (int s = 0; s <= min(W,maxStrokes); s++)
+	{
+		// try using s strokes on current row
+		int t1 = f2(row, 0, s); // 
+		int t2 = t1+f(row+1, maxStrokes-s);
+		r <?= t2;
+	}
+	return r;
+}
+
+int leastBad(vector <string> picture, int maxStrokes) 
+{
+	A = picture;
+	H = A.size();
+	W = A[0].size();
+	memset(memo1, -1, sizeof(memo1));
+	memset(memo2, -1, sizeof(memo2));
+	return f(0, maxStrokes);
+}
+Problem Statement
+    
+You have been given a vector <string> picture. Each character in picture represents a space in the picture. A 'B' designates a space that needs to be painted black, and a 'W' denotes a space that must be painted white. The painting device you have been given only makes horizontal strokes, of any length, exactly one space high. In addition, it can only use 1 color at a time. Due to the nature of the paint, a space cannot be painted twice. For example, the following picture could be colored in 6 distinct strokes:
+picture = {"BBBBBBBBBBBBBBB",
+           "WWWWWWWWWWWWWWW",
+	   "WWWWWWWWWWWWWWW",
+           "WWWWWBBBBBWWWWW"}
+You would use 1 stroke for each of the first 3 lines, and then 3 strokes on the last line.  This wouldn't be an issue if we had forever to paint the picture. Unfortunately, you only have enough time to make at most maxStrokes distinct strokes. Any more strokes would put you past your deadline. Since finishing on time is more important than getting it perfect, you are willing to mispaint some of the spaces. Return the fewest number of spaces that can be mispainted while still using no more than maxStrokes strokes. An unpainted space is considered mispainted.
+Definition
+    
+Class:
+MiniPaint
+Method:
+leastBad
+Parameters:
+vector <string>, int
+Returns:
+int
+Method signature:
+int leastBad(vector <string> picture, int maxStrokes)
+(be sure your method is public)
+    
+
+Constraints
+-
+picture will contain between 1 and 50 elements inclusive.
+-
+Each element of picture will contain between 1 and 50 characters inclusive.
+-
+Each element of picture will contain the same number of characters.
+-
+Each character in each element of picture will be (quotes for clarity) 'B' or 'W'.
+-
+maxStrokes will be between 0 and 3000 inclusive.
+Examples
+0)
+
+    
+{
+"BBBBBBBBBBBBBBB",
+"WWWWWWWWWWWWWWW",
+"WWWWWWWWWWWWWWW",
+"WWWWWBBBBBWWWWW"}
+6
+Returns: 0
+Exactly enough strokes to finish the job.
+1)
+
+    
+{
+"BBBBBBBBBBBBBBB",
+"WWWWWWWWWWWWWWW",
+"WWWWWWWWWWWWWWW",
+"WWWWWBBBBBWWWWW"}
+4
+Returns: 5
+One stroke for each row produces the least problem.
+2)
+
+    
+{
+"BBBBBBBBBBBBBBB",
+"WWWWWWWWWWWWWWW",
+"WWWWWWWWWWWWWWW",
+"WWWWWBBBBBWWWWW"}
+0
+Returns: 60
+Now the entire picture will be mispainted.
+3)
+
+    
+{
+"BWBWBWBWBWBWBWBWBWBWBWBWBWBWBW",
+"BWBWBWBWBWBWBWBWBWBWBWBWBWBWBW",
+"BWBWBWBWBWBWBWBWBWBWBWBWBWBWBW",
+"BWBWBWBWBWBWBWBWBWBWBWBWBWBWBW",
+"BWBWBWBWBWBWBWBWBWBWBWBWBWBWBW",
+"BWBWBWBWBWBWBWBWBWBWBWBWBWBWBW"}
+100
+Returns: 40
+This one needs a lot of strokes.
+4)
+
+    
+{"B"}
+1
+Returns: 0
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

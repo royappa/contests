@@ -1,0 +1,175 @@
+#include <vector>
+#include <list>
+#include <map>
+#include <set>
+#include <deque>
+#include <stack>
+#include <bitset>
+#include <algorithm>
+#include <functional>
+#include <numeric>
+#include <utility>
+#include <sstream>
+#include <iostream>
+#include <iomanip>
+#include <cstdio>
+#include <cmath>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+class SquareFreeNumbers {
+public:
+typedef long long LL;
+
+#define MIL 1000000
+LL p[MIL+1];
+LL primes[100000];
+
+int f(LL x, LL d) // return number of multiples of d in the range [1,x]
+{
+	return (x+d-1)/d;
+}
+
+int getCount(long long mn, long long mx) 
+{
+	for (int i = 0; i <= MIL; i++)
+	{
+		p[i] = 1;
+	}
+	p[0] = 0;
+	p[1] = 0;
+	bool found;
+	int d = 2;
+	do
+	{
+		int q = d+d;
+		while (q <= MIL)
+		{
+			p[q] = 0;
+			q += d;
+		}
+		found = false;
+		for (int j = d+1; d <= MIL; j++)
+		{
+			if (p[j] == 1)
+			{
+				d = j;
+				found = true;
+				break;
+			}
+		}
+	}
+	while (found);
+
+
+
+	int numprimes = 0;
+	for (int i = 1; i <= MIL; i++)
+	{
+		if (p[i])
+			primes[numprimes++] = i;
+	}
+	
+	for (int i = 0; i < numprimes; i++)
+	{
+		primes[i] = primes[i]*primes[i];
+	}
+	// now we have the squares of first primes
+	set<LL> s;
+	for (LL x = mn; x <= mx; x++)
+	{
+		if (x % 4 != 0 && x % 9 != 0)
+		{
+			//cout << x<< endl;
+			s.insert(x);
+		}
+	}
+	for (int i = 0; i < numprimes; i++)
+	{
+		LL d = primes[i];
+		if ((mn == mx && mn%d == 0) || f(mn, d) != f(mx, d)) // primes[i] has a multiple in the range)
+		{
+//cout << d << endl;
+			LL first;
+			if (mn % d == 0)
+			{
+				first = mn;
+			}
+			else
+			{
+				first = (mn/d)*d;
+				if (first < mn)
+					first += d;
+			}
+			while (first <= mx)
+			{
+				s.erase(first);
+				first += d;
+			}
+		}
+	}
+/*
+
+	for (typeof(s.begin()) it = s.begin(); it != s.end(); it++)
+	{
+		cout << *it << endl;
+	}
+*/
+	return s.size();
+	
+}
+
+};
+
+
+//Powered by [KawigiEdit]
+
+
+Problem Statement
+    
+A number is called square-free if it is not divisible by a perfect square which is greater than one. A perfect square is the square of an integer. Return the number of square-free numbers between min and max, inclusive.
+Definition
+    
+Class:
+SquareFreeNumbers
+Method:
+getCount
+Parameters:
+long long, long long
+Returns:
+int
+Method signature:
+int getCount(long long min, long long max)
+(be sure your method is public)
+    
+
+Constraints
+-
+min will be between 1 and 1,000,000,000,000, inclusive.
+-
+max will be between min and (min + 1,000,000), inclusive.
+Examples
+0)
+
+    
+1
+10
+Returns: 7
+Numbers 4, 8 and 9 are not square-free.
+1)
+
+    
+15
+15
+Returns: 1
+min and max can be equal.
+2)
+
+    
+1
+1000
+Returns: 608
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

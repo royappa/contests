@@ -1,0 +1,82 @@
+#define MOD 1000003
+vector<int> v;
+int n;
+
+int f(int mask) // how many match the patterns in mask?
+{
+	int r = 1;
+	for (int
+int howMany(vector <string> patterns, int k) 
+{
+	v = patterns;
+	n = v.size();
+	int r = 0;
+	for (int i = 0; i < (1<<n); i++)
+	{
+		if (__builtin_popcount(i) == k)
+		{
+			r = (r + f(i))%MOD;
+		}
+	}
+	return r;
+}
+
+Problem Statement
+    
+You are given a vector <string> patterns, each element of which is a single pattern. Each pattern contains only lowercase letters and question marks ('?'). A string matches a pattern if it has the same length as the pattern, and at each position, either the corresponding characters are equal or the character in the pattern is a question mark. For example, "abc" matches "a?c", but not "a?b" or "abc?". Return the number of strings consisting of only lowercase letters that match exactly k of the given patterns, modulo 1,000,003.
+Definition
+    
+Class:
+SetOfPatterns
+Method:
+howMany
+Parameters:
+vector <string>, int
+Returns:
+int
+Method signature:
+int howMany(vector <string> patterns, int k)
+(be sure your method is public)
+    
+
+Constraints
+-
+patterns will contain between 1 and 15 elements, inclusive.
+-
+k will be between 1 and the number of elements in patterns, inclusive.
+-
+Each element of patterns will contain between 1 and 50 characters, inclusive.
+-
+Each element of patterns will have the same length.
+-
+Each element of patterns will contain only lowercase letters ('a' - 'z') and question marks ('?').
+Examples
+0)
+
+    
+{"?"}
+1
+Returns: 26
+Every lowercase letter matches this pattern.
+1)
+
+    
+{"a","b","c"}
+1
+Returns: 3
+"a" or "b" or "c".
+2)
+
+    
+{"a?","?b"}
+2
+Returns: 1
+The only possible solution is "ab".
+3)
+
+    
+{"?????"}
+1
+Returns: 881343
+26^5 mod 1000003 = 881343.
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

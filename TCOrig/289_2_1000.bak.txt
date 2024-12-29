@@ -1,0 +1,143 @@
+int calc(int L, vector<int> speed, vector<int> light, vector<int> start)
+{
+	int t = 0;
+	vector<int> road[L];
+	
+	
+}
+vector <int> getFirstRed(int L, vector <int> speeds, vector <int> lights) 
+{
+	int numLight = lights.size();
+	
+	vector<int> start;
+	
+	vector<int> best;
+	int bestTime = 1<<30;
+	for (int a = 1; a <= 5; a++)
+	for (int b = 1; b <= 5; b++)
+	for (int c = 1; c <= 5; c++)
+	for (int d = 1; d <= 5; d++)
+	for (int e = 1; e <= 5; e++)
+	for (int f = 1; f <= 5; f++)
+	{
+		int[] tmp = {a, b, c, d, e, f};
+		start.clear();
+		for (int i = 0; i < numLight; i++)
+		{
+			start[i] = tmp[i];
+		}
+		int t = calc(L, speeds, lights, start);
+		if (t < bestTime)
+		{
+			bestTime = t;
+			best = start;
+		}
+	}
+	return best;		
+}
+
+Problem Statement
+    
+A new road has been opened. 
+It is L meters long, and it is divided into one-meter sections called positions. 
+There are traffic lights at various positions on the road. If there's a traffic light at position i, it means that a car at position i must wait until the light is green before it can proceed to position i+1. Traffic lights are either red or green, and they change every five seconds.
+There are some cars waiting to enter into the road. Each car is one meter long, and there can never be more than one car at a single position of the road. Once a car enters the road it cannot overtake other cars. The cars' speeds are given in the vector <int> speeds, where the i-th element is the speed of the i-th car. Each traffic light starts out red, but the duration of that first red light varies between one and five seconds, inclusive. Then, the five second cycle starts. The initial red light duration may be different for each traffic light.
+Suppose that the road goes from left to right. The cars move as follows:
+
+Step 1: Each car already in the road (from right to left) tries to move rightward as many positions as its speed indicates, but it can be blocked by another car or a red traffic light (here rightward means increasing its position). 
+Then, if position 0 of the road is free, the car with the lowest index in speeds that has not yet entered the road enters at position 0, without moving. This step takes one second.
+Step 2: The traffic lights are updated, if necessary. This step takes no time.
+Step 3: If all the cars have left the road, stop, otherwise go to Step 1.
+
+You are given L, the road length, speeds, the speed of each car, and lights, the position of each traffic light. Determine the duration of the first red light for each traffic light that minimizes the total time it takes for all the cars to leave the road (that is, the number of seconds elapsed until the last car leaves the road). Return a vector <int>, where the i-th element is the duration of the first red light of the i-th traffic light. If two solutions give the same time, return the one that comes first lexicographically.
+Definition
+    
+Class:
+GreenWave
+Method:
+getFirstRed
+Parameters:
+int, vector <int>, vector <int>
+Returns:
+vector <int>
+Method signature:
+vector <int> getFirstRed(int L, vector <int> speeds, vector <int> lights)
+(be sure your method is public)
+    
+
+Notes
+-
+When a car leaves the road (by moving past the rightmost position on the road), it can no longer block the other cars.
+-
+Solution A comes earlier than B lexicographically if A has a lower value than B in the first position at which they differ.
+Constraints
+-
+L will be between 1 and 500, inclusive.
+-
+speeds will contain between 0 and 10 elements, inclusive.
+-
+Each element of speeds will be between 1 and 30, inclusive.
+-
+lights will contain between 0 and 5 elements, inclusive.
+-
+Each element of lights will be between 0 and L-2, inclusive.
+-
+All the elements of lights will be distinct.
+Examples
+0)
+
+    
+10
+{1}
+{0}
+Returns: {1 }
+Second 1: There are initially no cars in the road. Since position 0 is unoccupied, the car is able to enter the road. Second 2: The traffic light has just turned green. The car can move right to position 1. Second 10: The car moves from position 8 to position 9 (the last position on the road). Second 11: The car leaves the road. 
+1)
+
+    
+50
+{1}
+{4, 5, 6, 7, 8}
+Returns: {1, 2, 3, 4, 5 }
+
+2)
+
+    
+300
+{2, 1}
+{16}
+Returns: {4 }
+When the duration of the first red light is 4 seconds, neither car will ever be blocked by a red light.
+3)
+
+    
+300
+{1, 2}
+{16}
+Returns: {3 }
+Although the second car has to wait for the traffic light for one second, it is fast enough to catch up with the first one.
+4)
+
+    
+60
+{12, 15, 20}
+{58}
+Returns: {1 }
+Remember that once a car leaves the road, it no longer blocks the other cars.
+5)
+
+    
+340
+{16, 15, 29, 7, 9, 15, 2}
+{125, 156, 274, 309, 211}
+Returns: {5, 1, 1, 1, 1 }
+
+6)
+
+    
+494
+{11, 7, 11, 6}
+{438, 251}
+Returns: {3, 1 }
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

@@ -1,0 +1,135 @@
+#define BAD 1073741825
+
+int memo[31][31][31][2][31];
+
+int f(int na, int nb, int nc, int carry, int d) // return smallest d-digit number possible to make out of na,nb,nc (1-counts), with given carry out
+{
+	int& r = memo[na][nb][nc][carry][d];
+	if (r != -1)
+		return r;
+
+	r = BAD;	
+	if (d == 1)
+	{	
+		if (carry == 0)
+		{
+			if (na+nb == 0 && nc == 0) r <?= 0;
+			if (na+nb == 1 && nc == 1) r <?= 1;
+		}
+		else
+		{
+			if (na == 1 && nb == 1 && nc == 0) r <?= 0;
+			if (na+nb == 1 && nc == 1) r <?= 1
+	}
+	
+	if (carry == 0) // carry out has to be zero
+	{
+		// carry in = 0 cases
+		//0+0 +0 = 0 +0
+		//0+1 +0 = 1 +0
+		//1+0 +0 = 1 +0
+		//1+1 +0 = 0 +1 NOT OK - gives carry out of 1
+		r <?= f(na, nb, nc, 0, d-1);
+		if (nb > 0 && nc > 0) r <?= 2*f(na, nb-1, nc-1, 0, d-1);
+		if (na > 0 && nc > 0) r <?= 2*f(na-1, nb, nc-1, 0, d-1);		
+	}
+	else if (carry == 1) // carry out has to be 1
+	{
+		//0+0 +1 = 1 +0  NOT OK - carry out is 0
+		//0+1 +1 = 0 +1
+		//1+0 +1 = 0 +1
+		//1+1 +1 = 1 +1
+		if (nb > 0) r <?= f(na, nb-1, nc, 1, d-1);
+		if (na > 0) r <?= f(na-1, nb, nc, 1, d-1);
+		if (na > 0 && nb > 0 && nc > 0) r <?= f(na-1, nb-1, nc-1, 1, d-1);	
+	}
+	return r;
+}
+
+int blen(int x)
+{
+	return x <= 1 ? 1 : 1+blen(x/2);
+}
+
+int rearrange(int a, int b, int c) 
+{
+	int d = max(blen(a), max(blen(b), blen(c)));
+	memset(memo, -1, sizeof(memo));
+	LL ret = f(__builtin_popcount(a), __builtin_popcount(b), __builtin_popcount(c), 0, d); 
+	return ret == BAD ? -1 : ret;
+}
+
+Problem Statement
+    
+You are given three integers: a, b and c. Convert each of them into their binary representations with no leading zeroes. Let x be the number of binary digits in the longest of the three. Add leading zeroes to the others until all of them have exactly x digits.
+Transform a, b and c into a', b' and c', such that a'+b'=c', by optionally reordering the digits within each number. Leading zeroes are allowed. If there are several ways to do this, use the one that minimizes c'.
+For example, let a = 7, b = 6 and c = 9. In binary notation, a = 111, b = 110 and c = 1001. We add leading zeroes to a and b so that all of them have exactly four digits: a = 0111, b = 0110, c = 1001. Now, if we reorder the digits within each number to get a' = 0111, b' = 0011 and c' = 1010, we satisfy a' + b' = c' (7 + 3 = 10). There is another way to do this as well (7 + 5 = 12), but this is the way that minimizes c'.
+You are given ints a, b and c. Return the minimal possible value of c'. If there is no solution, return -1.
+Definition
+    
+Class:
+BinarySum
+Method:
+rearrange
+Parameters:
+int, int, int
+Returns:
+int
+Method signature:
+int rearrange(int a, int b, int c)
+(be sure your method is public)
+    
+
+Constraints
+-
+a, b and c will each be between 1 and 2^30, inclusive.
+Examples
+0)
+
+    
+7
+6
+9
+Returns: 10
+The example from the problem statement.
+1)
+
+    
+1
+1
+2
+Returns: 2
+
+2)
+
+    
+1
+1
+4
+Returns: 2
+Leading zeroes are allowed.
+3)
+
+    
+3
+3
+9
+Returns: 6
+
+4)
+
+    
+1
+1
+1
+Returns: -1
+
+5)
+
+    
+32517565
+204650420
+4096
+Returns: -1
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

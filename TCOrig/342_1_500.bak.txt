@@ -1,0 +1,189 @@
+#define MODULUS 1000000007
+
+vector<string> res;
+int maxLen, n;
+
+map<string,int> memo;
+
+int f(string pat, string s)
+{
+	if (pat has no %s)
+	{
+		return pat==s;
+	}
+	if (min string possible from pat is longer than s)
+	{
+		return 0;
+	}
+	
+	for (int i = 0; i < n; i++)
+	{
+		
+	
+	
+	
+		
+	
+int findDecompositions(string str, vector <string> resources) 
+{
+	res = resources;
+	maxLen = 0;
+	n = res.size();
+	for (int i = 0; i < n; i++)
+	{
+		maxLen = max(maxLen, res[i].size());
+	}
+	
+	int count = 0;
+	for (int i = 0; i < n; i++)
+	{
+		count = (count + f(res[i], s)) % MODULUS;
+	}
+	return count;
+	
+}
+Problem Statement
+    
+You are working on a large software project and there is a broad assortment of warning or error messages that your users might see in the course of using your product.
+
+In order to support localization (translation of these messages into other languages), all of the strings used to create error and warning messages are stored in a resource library. 
+
+The actual message might be constructed out of more than one resource string. 
+
+The way this is implemented (for the sake of this problem) is that within a resource string, any instance of "%s" is replaced with another resource string. 
+
+That other resource string might also have a "%s" in it that is replaced with yet another resource string. 
+
+For example, if you have resource strings {"I am %s.", "Bob", "a %s coder", "good"}, you could replace the "%s" in "I am %s." with "Bob", and you'd have the output string "I am Bob.". 
+
+Alternatively, you could replace the "%s" in "a %s coder" with "good", and you'd end up with "a good coder". 
+
+Then you could replace the "%s" in "I am %s." with "a good coder", and you'd end up with "I am a good coder."
+
+
+Constructing these strings is the easy part. 
+
+Often when customers have problems, they only know the last error message they saw. 
+
+In order to troubleshoot their problems, you need to know what resource was used to construct an error message. 
+
+Sometimes, there might be more than one possibility. 
+
+Given a message str and the set of resource strings, resources, return the number of ways str might have been constructed from the elements in resources, modulo 1000000007. 
+
+If there is more than one element in resources that is the same, each instance should be considered distinct (see example 8 for clarification).
+
+Definition
+    
+Class:
+ReverseResources
+Method:
+findDecompositions
+Parameters:
+string, vector <string>
+Returns:
+int
+Method signature:
+int findDecompositions(string str, vector <string> resources)
+(be sure your method is public)
+    
+
+Notes
+-
+All instances of "%s" must be replaced with another string, because str will have no '%' characters in it.
+Constraints
+-
+str will contain between 1 and 30 characters, inclusive.
+-
+resources will contain between 1 and 50 elements, inclusive.
+-
+Each element of resources will have contain between 1 and 50 characters, inclusive.
+-
+Each element of resources will contain only letters ('A'-'Z' or 'a'-'z'), digits ('0'-'9'), and '%', '.', ',', '!' and spaces (' ').
+-
+str will contain only letters ('A'-'Z' or 'a'-'z'), digits ('0'-'9'), '.', ',', '!' and spaces (' ').
+-
+Each occurrence of '%' in an element of resources will be followed by an 's'.
+-
+None of the elements of resources will be just "%s".
+Examples
+0)
+
+    
+"Error in module foo, code 123."
+
+{"foo", "123", "Error in module %s.", "%s, code %s"}
+Returns: 1
+
+This string's decomposition is fairly obvious.
+
+1)
+
+    
+"The fox jumped over the dog."
+{"The fox %s over the dog.",
+ "lazy",
+ "brown",
+ "jump%s",
+ "s",
+ "ed",
+ "The %s",
+ "fox %s",
+ "%s over %s",
+ "the dog."}
+Returns: 5
+Using parenthesized expressions to represent substitutions, the five ways to decompose this string are:
+The fox (jump(ed)) over the dog.
+The (fox ((jump(ed)) over (the dog.)))
+The ((fox (jump(ed))) over (the dog.))
+(The (fox (jump(ed)))) over (the dog.)
+The (fox (jump((ed) over (the dog.))))
+2)
+
+    
+"abcde"
+{"%sc%s", "b", "de", "a%s"}
+Returns: 2
+Decompositions this time are:
+(a(b))c(de)
+a((b)c(de))
+3)
+
+    
+"abcde"
+{"%se", "a%s", "%sb%s", "%sc%s", "%sd%s"}
+Returns: 0
+If all the strings have %s in them, there are never any valid decompositions!
+4)
+
+    
+"aaaaa"
+{"a","%s%s"}
+Returns: 14
+
+5)
+
+    
+"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+{"a","aa","%s%s","%sa","a%s","aaa","aa%s","a%sa",
+"a%s%s","%saa","%sa%s","%s%sa","%s%s%s","aaaa",
+"aaa%s","aa%sa","aa%s%s","a%saa","a%sa%s","a%s%sa",
+"a%s%s%s","%saaa","%saa%s","%sa%sa","%sa%s%s",
+"%s%saa","%s%sa%s","%s%s%sa","%s%s%s%s","aaaaa",
+"aaaa%s","aaa%sa","aaa%s%s","aa%saa","aa%sa%s",
+"aa%s%sa","aa%s%s%s","a%saaa","a%saa%s","a%sa%sa",
+"a%sa%s%s","a%s%saa","a%s%sa%s","a%s%s%sa",
+"a%s%s%s%s","%saaaa","%saaa%s","%saa%sa","%saa%s%s"}
+Returns: 879704799
+
+6)
+
+    
+"aa"
+{"a", "a", "%s%s", "%s%s"}
+Returns: 8
+
+The elements in resources may not be distinct, but should be considered distinct. In this example, either "%s%s" could be used and either or both "a"s could be used, in either order.
+
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

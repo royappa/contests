@@ -1,0 +1,8 @@
+
+typeof(m.begin()) it		auto it = m.begin()
+
+x >?= y						x = x > y ? x : y;			// Loss of joy
+
+
+memset(x, -1, sizeof(x))	Make sure to include <cstring.h>
+

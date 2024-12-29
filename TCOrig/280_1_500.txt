@@ -1,0 +1,130 @@
+int W, H;
+int BIG = (1<<30);
+map<string,int> memo;
+char buf[128];
+
+int calc(int lastW, int lastRow, int n)
+{
+	if (n == 0)	 // no cells left to cut
+	{
+		return 0;
+	}
+	
+	sprintf(buf, "%d:%d:%d", lastW, lastRow, n);
+	if (memo.count(buf) > 0)
+	{
+		return memo[buf];
+	}
+	
+	int best = BIG;
+	if (lastRow == 0)	 // first row
+	{
+		int wMax = min(n, W);
+		for (int w = 1; w <= wMax && (n-w) <= w*(H-(lastRow+1)) && lastRow < H; w++)
+		{
+			int cost = calc(w, 1, n-w);
+			if (w != W)
+			{
+				cost++;
+			}
+			best = min(best, cost);
+		}
+	}
+	else // other rows
+	{
+		int wMax = min(n, lastW);
+		for (int w = 1; w <= wMax && (now) <= w*(H-(lastRow+1)) && lastRow < H; w++)
+		{
+			int cost = calc(w, lastRow+1, n-w);
+			cost += (lastW-w);
+			if (w != W)
+			{
+				cost++;
+			}
+			best = min(best, cost);
+		}
+	}
+	memo[buf] = best;
+	return best;
+}
+			
+			
+int cutLength(int _W, int _H, int n) 
+{
+	W = _W;
+	H = _W;
+	
+	// check all the ways to add up L1+L2+...+Lk = n
+	// such that W>=L1>=L2>=L3>=...>=Lk>0 &&  1 <= k <= H
+	memo.clear();
+	return calc(0, 0, n); // last, cellsLeft = n
+}
+Problem Statement
+    
+On a piece of paper you draw a rectangular grid whose outer edges coincide with the edges of the paper. Every grid cell is exactly 1 unit by 1 unit. You can use scissors to cut out groups of cells along grid lines. The length of a cut is given as the number of units that the scissors need to travel along grid lines.
+Given that the grid has dimensions width units by height units return the minimum length of a cut that cuts out exactly n cells from the piece of paper.
+Definition
+    
+Class:
+GridCut
+Method:
+cutLength
+Parameters:
+int, int, int
+Returns:
+int
+Method signature:
+int cutLength(int width, int height, int n)
+(be sure your method is public)
+    
+
+Constraints
+-
+width will be between 1 and 1000 inclusive.
+-
+height will be between 1 and 1000 inclusive.
+-
+n will be between 1 and width*height inclusive.
+Examples
+0)
+
+    
+4
+2
+3
+Returns: 3
+ 
+We cut along the dotted lines to obtain the blue cells. The lengths of the dotted lines add up to 3.
+1)
+
+    
+3
+2
+4
+Returns: 2
+ 
+2)
+
+    
+100
+1
+43
+Returns: 1
+Here we will never need more than one cut to cut away any number of squares.
+3)
+
+    
+10
+20
+15
+Returns: 8
+
+4)
+
+    
+4
+5
+20
+Returns: 0
+All cells are used, so no cuts are needed.
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

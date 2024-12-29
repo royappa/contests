@@ -1,0 +1,58 @@
+#include <vector>
+#include <list>
+#include <map>
+#include <set>
+#include <deque>
+#include <stack>
+#include <bitset>
+#include <algorithm>
+#include <functional>
+#include <numeric>
+#include <utility>
+#include <sstream>
+#include <iostream>
+#include <iomanip>
+#include <cstdio>
+#include <cmath>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+class FallingBall {
+public:
+map<int,int> cellcol;
+int n;
+int memo[50][50];
+int f(int row, int col) // number of paths which go from (row,col) to bottom, and which visit all the cells in rows >= row
+{
+	if (row == n)
+		return 1;
+	int& r = memo[row][col];
+	if (r != -1)
+		return r;
+	
+	r = 0;
+	if (cellcol.count(row) > 0 && cellcol[row] != col)
+		return 0;
+	return r = f(row+1, col) + f(row+1, col+1);
+}
+
+int howMany(vector <string> cells, int n_) 
+{
+	n = n_;
+	for (int i = 0; i < cells.size(); i++)
+	{
+		int row, col;
+		sscanf(cells[i].c_str(), "%d%d", &row, &col);
+		if (cellcol.count(row) > 0 && cellcol[row] != col)
+			return 0;
+		cellcol[row] = col;
+	}
+	memset(memo, -1, sizeof(memo));
+	return f(0, 0)/2;
+}	
+};
+
+
+//Powered by [KawigiEdit]

@@ -1,0 +1,10 @@
+-- stack backtrace
+try
+{
+code
+}
+catch (Exception e)
+{
+	e.PrintStackTrace();
+	System.out.println(e);
+}

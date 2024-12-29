@@ -1,0 +1,69 @@
+
+Problem Statement
+    
+Yesterday, when you were passing by the newsstand near your home, you saw an advertisement for lottery games. 
+
+The advertisement said "Choose m different numbers between 1 and n, inclusive. 
+
+We will also randomly pick m different numbers between 1 and n, inclusive, and if you have at least k numbers in common with us, you win!".
+
+You want to know the probability of winning this lottery game. You are given three integers n, m, and k as described above. Return the probability of winning the game.
+Definition
+    
+Class:
+TwoLotteryGames
+Method:
+getHigherChanceGame
+Parameters:
+int, int, int
+Returns:
+double
+Method signature:
+double getHigherChanceGame(int n, int m, int k)
+(be sure your method is public)
+    
+
+Notes
+-
+Your return must have relative or absolute error less than 1E-9.
+Constraints
+-
+n will be between 2 and 8, inclusive. 
+-
+m will be between 1 and n-1, inclusive. 
+-
+k will be between 1 and m, inclusive. 
+Examples
+0)
+
+    
+3
+2
+1
+Returns: 1.0
+Here you and the organizers will choose 2 numbers among 3. It will be 4 numbers in total, so at least 1 number in your and their sets will repeat for sure.
+1)
+
+    
+3
+1
+1
+Returns: 0.3333333333333333
+Now you and the organizers will choose 1 number. These numbers will be the same with probability 1/3.
+2)
+
+    
+8
+2
+1
+Returns: 0.4642857142857143
+
+3)
+
+    
+8
+4
+2
+Returns: 0.7571428571428571
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

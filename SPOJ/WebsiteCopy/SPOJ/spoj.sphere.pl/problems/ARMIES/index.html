@@ -1,0 +1,227 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<!-- Mirrored from spoj.sphere.pl/problems/ARMIES/ by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 10 Jan 2006 04:56:13 GMT -->
+<head>
+<title>Sphere Online Judge (SPOJ)  - Problem ARMIES</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-2">
+<META NAME="Keywords" CONTENT="spoj, online, judge, problem, set, problemset, archive, ACM, Polish, Poland, contest, contester, task, tasks, ADA, Java, Pascal, C, C++, Whitespace, sphere, interest, group, python, ruby, icon, o'caml, caml, ocaml, perl, haskell, bf, brain, clips, prolog, fortran, asm, assembler, asembler, functional, esoteric, programming, languages">
+
+<link href="https://spoj.sphere.pl/gfx/favicon" rel="shortcut icon" type="image/x-icon">
+
+<link href="../../themes/skin3.css" rel="stylesheet" type="text/css" id="theme">
+<style type="text/css">
+<!--
+.maintable {width: 755;} 
+-->
+</style>
+<script type="text/javascript" language="javascript">
+<!--
+function UnCryptMailto(s) {
+	var n=0;
+	var r="";
+	for(var i=0;i<s.length;i++) {		
+		n=s.charCodeAt(i); 
+		if (n>=8364) {n = 128;}
+		r += String.fromCharCode(n+(2));	
+	}
+	return r;
+}
+function linkTo_UnCryptMailto(s)	{
+	location.href=UnCryptMailto(s);
+}
+// -->
+</script>
+
+</head>
+<body>
+<center>
+<table cellpadding="10" cellspacing="0" class="maintable" id="maintable">
+<tr>
+    <td colspan="2" class="header">
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+        <tr>
+		<td class="headerleft"/>
+		<td class="headercenter"><h1>Sphere Online Judge</h1></td>
+		<td class="headerright"/>
+	</tr>
+	</table>
+    </td>
+</tr>
+<tr><td class="menu" width="92" valign="top">
+<form name="login"  action="http://spoj.sphere.pl/problems/ARMIES/" method="post" 
+	onsubmit="if(document.login.ssl.checked) document.login.action='https://spoj.sphere.pl/problems/ARMIES/'" style="margin-bottom: 18px"> 
+User: <input name="login_user" type="text" style="width: 85px;" class="form"><BR>
+Password: <input name="password" type="password" style="width: 85px;" class="form"><BR>
+<script language="javascript" type="text/javascript">
+<!--
+document.write('<input type="checkbox" name="ssl" id="ssl" checked>secure<br>');
+//-->
+</script>
+<input name="submit" type="submit" value="Log In" class="button" style="width: 85px;">
+</form><div class="menucmd"><a href="https://spoj.sphere.pl/register">register</a><br><br><a href="https://spoj.sphere.pl/status">status</a><br><a href="https://spoj.sphere.pl/submit">submit</a><br><a href="../classical/sort=7,start=0.html">problems</a><br><br><a href="https://spoj.sphere.pl/">news</a><br><a href="https://spoj.sphere.pl/contests">contests</a><br><a href="https://spoj.sphere.pl/info">info</a><br><a href="https://spoj.sphere.pl/ranks/">ranks</a><br><br><a href="https://spoj.sphere.pl/forum">forum</a><br><a href="https://spoj.sphere.pl/help">help</a><br><a href="https://spoj.sphere.pl/links">links</a><br><hr></div>Server time:<br>2006-01-10<br>05:50:10<a href="../classical/sort=7,start=0.html"></a><br><br>
+<form method="get" action="https://spoj.sphere.pl/search/" class="form" style="width:90px">
+<input type="text" name="query" style="width:85px" maxlength=255 value="" class="form"><br>
+<input type="submit" value="Search" style="width:85px" class="form" title="Search site"><br>
+&nbsp;<a href="https://spoj.sphere.pl/search/problems=on,users=on,contests=on" title="More search options"><small>advanced...</small></a>
+</form></td><td class="content" width="99%"><table class="problems" width="100%">
+<tr class="navigation">
+<td><a href="https://spoj.sphere.pl/submit/ARMIES/">Submit</a></td>
+<td><a href="https://spoj.sphere.pl/status/ARMIES/">All submissions</a></td>
+<td><a href="https://spoj.sphere.pl/ranks/ARMIES/">Best solutions</a></td>
+<td><a href="https://spoj.sphere.pl/problems/ARMIES.ps">PS</a></td>
+<td><a href="https://spoj.sphere.pl/problems/ARMIES.pdf">PDF</a></td>
+<td><a href="../classical/sort=7,start=0.html">Back to list</a></td>
+</tr>
+</table>
+
+<div class="prob">
+
+<h2>SPOJ Problem Set </h2>
+<h1>490. Armies</h1>
+<h2>Problem code: ARMIES</h2>
+<p align="justify">
+<p>
+	Two enemy countries - <i>Bajtocja</i> and <i>Megabajtolandia</i>
+- are preparing for crucial war with each other. Each country has built an army 
+consisting of some number of divisions, and each division consists of some 
+number of soldiers. The way of waging the war, given by strategists from each 
+contry, consists of sending the division with the most man power to fight, i.e. 
+starting from the most numerous division to the least.
+<p>
+	Thus, first each country will send its division with the most man power. If one 
+	of these divisions has more soldiers than the other, then the war is over and 
+	the winner is the owner of the larger division. If the man power of each of the 
+	divisions sent is the same then all the soldiers will kill each other and the 
+	next most numerous division is sent to fight. The man powers of the second 
+	divisions decide the war if and only if they are not the same. If not, the 
+	battle is carried on in aforementioned way. If, at some moment, one army runs 
+	out of divisions and the second one does not, then the war is over and the 
+	first army is the loser. If both armies run out of divisions then the war is 
+	over and there is a draw.<br>
+	<br>
+	Give the result of the war, without any blood and murder.<br>
+	<br>
+	Write a program, which:<br>
+	<ul>
+		<li>
+			reads from standard input the description of <i>Bajtocja's</i> and <i>Megabajtolandia's
+			</i>
+		army, respectively,
+		<li>
+		computes the result of the war,
+		<li>
+			writes it to standard output.</li>
+	</ul>
+	<h3>Input</h3>
+<p>
+	The first line of input contains one integer <i>D</i> (<i>1</i><=<i>D</i><=30) 
+	meaning the number of test cases. The description of each test case contains <i>4</i>
+	lines. In the first, there is one integer <i>B</i> (<EM>1</EM> <= <i>B</i> <= 
+	50 000) meaning the number of divisions in  <i>Bajtocja's</i> army. 
+	The second line contains <i>B</i> integers <i>b<sub>i</sub></i> (1 <=<i> b<sub>i</sub></i>
+	<= 1 000 000 000) (separated by single space) meaning the man power (the 
+	number of soldiers) of consequtive divisions of <i>Megabajtolandia's</i> army. In 
+	the third line, there is one integer <i>M</i> (<EM>1</EM> <= <i>M</i> <= 
+	50 000) meaning the number of divisions of <i>Megabajtolandia's</i> army. 
+	The fourth line contains <i>M</i> integers <i>m<sub>i</sub></i> (1 <=<i> m<sub>i</sub></i>
+	< = 1 000 000 000) (separated by single space) meaning the man power of 
+	consequtive divisions of <i>Megabajtolandia's</i> army.
+	<h3>Output</h3>
+<p>
+	For each test case, your program should write, in separate lines, exactly one 
+	word:<br>
+	<ul>
+		<li>
+			"Bajtocja" in case the winner is <i>Bajtocja</i>,
+		<li>
+			"Megabajtolandia" in case the winner is <i>Megabajtolandia</i>,
+		<li>
+			"Draw" in case of a draw.<br>
+		</li>
+	</ul>
+	<h3>Example</h3>
+<p>
+	<pre><b>Sample input:</b>
+3
+3
+1 3 4
+3
+4 4 1
+4
+2 5 3 4
+3
+5 6 4
+4
+6 1 2 5
+4
+5 2 6 1
+
+<b>Sample output:</b>
+Megabajtolandia
+Megabajtolandia
+Draw
+</pre>
+
+
+<hr>
+<table border=0 cellspacing=0 cellpadding=0 align=left>
+<tr><td width=130>Added by:</td><td><a href="https://spoj.sphere.pl/search/'Rafał%20Nowak'">Rafał Nowak</a></td></tr>
+<tr><td>Date:</td><td>2005-02-07</td></tr>
+<tr><td>Time limit:</td><td>3s
+</td></tr>
+<tr><td>Source limit:</td><td>5000B</td></tr>
+<tr><td>Resource:</td><td>Winter sparing in Poznan, Poznan 2005 (22th January)</td></tr></table>
+</div></td>
+</tr>
+
+<tr>
+<td colspan="2" class="footer">
+
+<script language="javascript" type="text/javascript">
+<!--
+function swapSheet(sheet, caller) {
+    document.getElementById('theme').href=sheet;
+    document.cookie="css_0="+sheet+"; path=/;";
+    caller.href="#bottom";
+}
+
+function setWidth(w, caller) {
+    document.getElementById('maintable').style.width=w;
+    document.cookie="res="+w+"; path=/;";
+    caller.href="#bottom";
+}
+//-->
+
+</script>
+        <table width="100%">
+    <tr>
+	<td align="left">
+            <a href="http://www.pg.gda.pl/eng.html"><IMG src="https://spoj.sphere.pl/gfx/logo-pg" alt="www.pg.gda.pl" border=0 height=36 width=44></a>&nbsp;
+            <a href="http://www.eti.pg.gda.pl/"><IMG src="https://spoj.sphere.pl/gfx/logo-eti" alt="www.eti.pg.gda.pl" border=0 height=36 width=44></a>
+	</td>
+	<td align="center">
+	    page size:
+	    <a href="https://spoj.sphere.pl/?res=755"  onClick="setWidth('755', this)">800x600</a>
+	    <a href="https://spoj.sphere.pl/?res=980"  onClick="setWidth('980', this)">1024x768</a>
+	    <a href="https://spoj.sphere.pl/?res=100%" onClick="setWidth('100%', this)">Full</a>
+	    &nbsp;&nbsp;
+	    theme:
+	    <a href="../../indexb6a4.html?css=/themes/skin1.css" onClick="swapSheet('../../themes/skin1.css', this)">olive</a>
+	    <a href="../../index3840.html?css=/themes/skin2.css" onClick="swapSheet('../../themes/skin2.css', this)">banana</a>
+	    <a href="../../index80f0.html?css=/themes/skin3.css" onClick="swapSheet('../../themes/skin3.css', this)">plum</a>
+	    <br>
+	    <a href="http://sphere.pl/?id=66">spoj team at sphere</a> &copy; 2004-05 all rights reserved
+	</td>
+	<td align="right">
+            <a href="http://task.gda.pl/english/"><IMG src="https://spoj.sphere.pl/gfx/logo-task" alt="task.gda.pl" border=0 height=36 width=44></a>&nbsp;
+            <a href="http://sphere.pl/"><IMG src="https://spoj.sphere.pl/gfx/logo-sphere" alt="sphere.pl" border=0 height=32></a>
+	</td>
+    </tr>
+    </table>
+    </tr></table>
+</center>
+</body>
+
+<!-- Mirrored from spoj.sphere.pl/problems/ARMIES/ by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 10 Jan 2006 04:56:13 GMT -->
+</html>

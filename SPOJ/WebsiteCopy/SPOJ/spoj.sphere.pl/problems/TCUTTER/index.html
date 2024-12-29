@@ -1,0 +1,214 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<!-- Mirrored from spoj.sphere.pl/problems/TCUTTER/ by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 10 Jan 2006 04:53:48 GMT -->
+<head>
+<title>Sphere Online Judge (SPOJ)  - Problem TCUTTER</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-2">
+<META NAME="Keywords" CONTENT="spoj, online, judge, problem, set, problemset, archive, ACM, Polish, Poland, contest, contester, task, tasks, ADA, Java, Pascal, C, C++, Whitespace, sphere, interest, group, python, ruby, icon, o'caml, caml, ocaml, perl, haskell, bf, brain, clips, prolog, fortran, asm, assembler, asembler, functional, esoteric, programming, languages">
+
+<link href="https://spoj.sphere.pl/gfx/favicon" rel="shortcut icon" type="image/x-icon">
+
+<link href="../../themes/skin3.css" rel="stylesheet" type="text/css" id="theme">
+<style type="text/css">
+<!--
+.maintable {width: 755;} 
+-->
+</style>
+<script type="text/javascript" language="javascript">
+<!--
+function UnCryptMailto(s) {
+	var n=0;
+	var r="";
+	for(var i=0;i<s.length;i++) {		
+		n=s.charCodeAt(i); 
+		if (n>=8364) {n = 128;}
+		r += String.fromCharCode(n+(2));	
+	}
+	return r;
+}
+function linkTo_UnCryptMailto(s)	{
+	location.href=UnCryptMailto(s);
+}
+// -->
+</script>
+
+</head>
+<body>
+<center>
+<table cellpadding="10" cellspacing="0" class="maintable" id="maintable">
+<tr>
+    <td colspan="2" class="header">
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+        <tr>
+		<td class="headerleft"/>
+		<td class="headercenter"><h1>Sphere Online Judge</h1></td>
+		<td class="headerright"/>
+	</tr>
+	</table>
+    </td>
+</tr>
+<tr><td class="menu" width="92" valign="top">
+<form name="login"  action="http://spoj.sphere.pl/problems/TCUTTER/" method="post" 
+	onsubmit="if(document.login.ssl.checked) document.login.action='https://spoj.sphere.pl/problems/TCUTTER/'" style="margin-bottom: 18px"> 
+User: <input name="login_user" type="text" style="width: 85px;" class="form"><BR>
+Password: <input name="password" type="password" style="width: 85px;" class="form"><BR>
+<script language="javascript" type="text/javascript">
+<!--
+document.write('<input type="checkbox" name="ssl" id="ssl" checked>secure<br>');
+//-->
+</script>
+<input name="submit" type="submit" value="Log In" class="button" style="width: 85px;">
+</form><div class="menucmd"><a href="https://spoj.sphere.pl/register">register</a><br><br><a href="https://spoj.sphere.pl/status">status</a><br><a href="https://spoj.sphere.pl/submit">submit</a><br><a href="../classical/sort=0,start=200.html">problems</a><br><br><a href="https://spoj.sphere.pl/">news</a><br><a href="https://spoj.sphere.pl/contests">contests</a><br><a href="https://spoj.sphere.pl/info">info</a><br><a href="https://spoj.sphere.pl/ranks/">ranks</a><br><br><a href="https://spoj.sphere.pl/forum">forum</a><br><a href="https://spoj.sphere.pl/help">help</a><br><a href="https://spoj.sphere.pl/links">links</a><br><hr></div>Server time:<br>2006-01-10<br>05:48:41<a href="../classical/sort=0,start=200.html"></a><br><br>
+<form method="get" action="https://spoj.sphere.pl/search/" class="form" style="width:90px">
+<input type="text" name="query" style="width:85px" maxlength=255 value="" class="form"><br>
+<input type="submit" value="Search" style="width:85px" class="form" title="Search site"><br>
+&nbsp;<a href="https://spoj.sphere.pl/search/problems=on,users=on,contests=on" title="More search options"><small>advanced...</small></a>
+</form></td><td class="content" width="99%"><table class="problems" width="100%">
+<tr class="navigation">
+<td><a href="https://spoj.sphere.pl/submit/TCUTTER/">Submit</a></td>
+<td><a href="https://spoj.sphere.pl/status/TCUTTER/">All submissions</a></td>
+<td><a href="https://spoj.sphere.pl/ranks/TCUTTER/">Best solutions</a></td>
+<td><a href="https://spoj.sphere.pl/problems/TCUTTER.ps">PS</a></td>
+<td><a href="https://spoj.sphere.pl/problems/TCUTTER.pdf">PDF</a></td>
+<td><a href="../classical/sort=0,start=200.html">Back to list</a></td>
+</tr>
+</table>
+
+<div class="prob">
+
+<h2>SPOJ Problem Set </h2>
+<h1>405. Tin Cutter</h1>
+<h2>Problem code: TCUTTER</h2>
+<p align="justify">
+<P>
+In a Tin Cutting factory there is a machine for cutting parts from tin plates. It has an
+extraordinarily sharp knife able to make horizontal or vertical segment cuts in the tin plates. Each
+cutting process consists of a sequence of such cuts. Each segment cut is given by its endpoints that
+are always located inside the tin plate. During the cutting process some parts of tin plate can fall
+out and so some holes in the plate can emerge.
+<P>
+<P>
+Factory management needs to predict the number of holes in the plate at the end of the
+given sequence of cuts. Write a program that answers this question. Single segment cuts are not
+considered to be holes.
+<P>
+<P>
+Here there are examples of some situations that can arise after cutting:
+<P>
+<center><img src=308img5.gif></center>
+<P align="center">
+two holes two holes one hole one hole
+</P>
+<h3>Input</h3>
+<p>The input file consists of blocks of lines. Each block except the last
+describes one cutting
+process. In the first line of the block there is a number  <IMG WIDTH=64 HEIGHT=26 ALIGN=MIDDLE ALT="tex2html_wrap_inline33" SRC="308img1.gif"  > 
+
+indicating the number of segment
+cuts in the cutting process. These cuts are defined by the following <I>N</I>
+lines. The line defining one
+segment cut has the form  <IMG WIDTH=78 HEIGHT=25 ALIGN=MIDDLE ALT="tex2html_wrap_inline37" SRC="308img2.gif"  >  where  <IMG WIDTH=46 HEIGHT=25 ALIGN=MIDDLE ALT="tex2html_wrap_inline39" SRC="308img3.gif"  >  and  <IMG WIDTH=46 HEIGHT=25 ALIGN=MIDDLE ALT="tex2html_wrap_inline41" SRC="308img4.gif"  > 
+are the co-ordinates of the end
+points of the segment cut. They are separated by one space. The co-ordinates
+are integers and
+always define horizontal or vertical segment (i.e. segment parallel
+with <I>x</I> or <I>y</I> axis).
+</P>
+<P>
+The last block consists of just one line containing 0.
+<P>
+<h3>Output</h3>
+<p>The output file contains the lines corresponding to the blocks in the input
+file. Each such line
+contains the number of holes that remain in the tin plate after the
+execution of the corresponding
+cuts.
+</P>
+<P>
+There is no line in the output file corresponding to the
+last "null" block of the input file.
+<P>
+<h3>Example</h3>
+
+<pre>
+<b>Input:</b>
+
+4
+0 1 1 1
+1 1 1 0
+1 0 0 0
+0 0 0 1
+2
+0 1 2 1
+1 2 1 0
+0
+
+<b>Output:</b>
+
+1
+0
+</pre>
+
+
+<hr>
+<table border=0 cellspacing=0 cellpadding=0 align=left>
+<tr><td width=130>Added by:</td><td><a href="https://spoj.sphere.pl/search/'Adrian%20Kuegel'">Adrian Kuegel</a></td></tr>
+<tr><td>Date:</td><td>2005-07-26</td></tr>
+<tr><td>Time limit:</td><td>5s
+</td></tr>
+<tr><td>Source limit:</td><td>50000B</td></tr>
+<tr><td>Resource:</td><td>ACM Central European Regional Contest 1996</td></tr></table>
+</div></td>
+</tr>
+
+<tr>
+<td colspan="2" class="footer">
+
+<script language="javascript" type="text/javascript">
+<!--
+function swapSheet(sheet, caller) {
+    document.getElementById('theme').href=sheet;
+    document.cookie="css_0="+sheet+"; path=/;";
+    caller.href="#bottom";
+}
+
+function setWidth(w, caller) {
+    document.getElementById('maintable').style.width=w;
+    document.cookie="res="+w+"; path=/;";
+    caller.href="#bottom";
+}
+//-->
+
+</script>
+        <table width="100%">
+    <tr>
+	<td align="left">
+            <a href="http://www.pg.gda.pl/eng.html"><IMG src="https://spoj.sphere.pl/gfx/logo-pg" alt="www.pg.gda.pl" border=0 height=36 width=44></a>&nbsp;
+            <a href="http://www.eti.pg.gda.pl/"><IMG src="https://spoj.sphere.pl/gfx/logo-eti" alt="www.eti.pg.gda.pl" border=0 height=36 width=44></a>
+	</td>
+	<td align="center">
+	    page size:
+	    <a href="https://spoj.sphere.pl/?res=755"  onClick="setWidth('755', this)">800x600</a>
+	    <a href="https://spoj.sphere.pl/?res=980"  onClick="setWidth('980', this)">1024x768</a>
+	    <a href="https://spoj.sphere.pl/?res=100%" onClick="setWidth('100%', this)">Full</a>
+	    &nbsp;&nbsp;
+	    theme:
+	    <a href="../../indexb6a4.html?css=/themes/skin1.css" onClick="swapSheet('../../themes/skin1.css', this)">olive</a>
+	    <a href="../../index3840.html?css=/themes/skin2.css" onClick="swapSheet('../../themes/skin2.css', this)">banana</a>
+	    <a href="../../index80f0.html?css=/themes/skin3.css" onClick="swapSheet('../../themes/skin3.css', this)">plum</a>
+	    <br>
+	    <a href="http://sphere.pl/?id=66">spoj team at sphere</a> &copy; 2004-05 all rights reserved
+	</td>
+	<td align="right">
+            <a href="http://task.gda.pl/english/"><IMG src="https://spoj.sphere.pl/gfx/logo-task" alt="task.gda.pl" border=0 height=36 width=44></a>&nbsp;
+            <a href="http://sphere.pl/"><IMG src="https://spoj.sphere.pl/gfx/logo-sphere" alt="sphere.pl" border=0 height=32></a>
+	</td>
+    </tr>
+    </table>
+    </tr></table>
+</center>
+</body>
+
+<!-- Mirrored from spoj.sphere.pl/problems/TCUTTER/ by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 10 Jan 2006 04:53:48 GMT -->
+</html>

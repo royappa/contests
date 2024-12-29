@@ -1,0 +1,207 @@
+
+vector<string> split_nonre(string s, string sep)
+{
+	char *sC = (char *) malloc(s.size()+1);
+	strcpy(sC, s.c_str());
+	char *sepC = (char *) sep.c_str();
+	char *status = NULL;
+	
+	char *word;
+	vector<string> results;
+	while ((word = strtok_r(sC, sepC, &status)) != NULL)
+	{
+		results.push_back(word);
+		sC = NULL;
+	}
+	return results;
+}
+
+int next[110][110]; 	// next stop for i'th bus when it is at j'th station
+int lastpos[110];		// last stop of i'th bus
+int dist[110];			// distance since last stop
+	
+int returnTime(int ZZ, vector <string> buses) 
+{
+	int bStatus, bPos;
+	int n = buses.size();
+	bool bOnBus = false;
+	for (int i = 0; i < n; i++)
+	{
+		vector<string> w = split_nonre(buses[i], " ");
+		int k = w.size();
+		for (int j = 0; j < k; j++)
+		{
+			next[i][atoi(w[j].c_str())] = atoi(w[(j+1)%k].c_str());
+		}
+		lastpos[i] = atoi(w[0].c_str());
+		if (lastpos[i] == 0 && !bOnBus)
+		{
+			bStatus = 1;
+			bPos = i;
+			bOnBus = true;
+		}
+		dist[i] = 0;
+	}
+	if (!bOnBus)
+	{
+		bStatus = 0;
+		bPos = 0;
+	}
+		
+	int t = 0;
+	bool start = !bOnBus;
+	do
+	{
+		// move all buses
+		bool bSteppedOff = false;
+		for (int i = 0; i < n; i++)
+		{
+			dist[i]++;
+			int dest = next[i][lastpos[i]]
+			if (abs(lastpos[i]-dest) == dist[i])
+			{
+				dist[i] = 0;
+				lastpos[i] = dest;
+				if (bStatus == 1 && bPos == i) // billy was on this bus
+				{
+					bStatus = 0;
+					bPos = dest;
+					bSteppedOff = true;
+				}
+			}
+		}
+		if ((start || !bSteppedOff) && bStatus == 0) // billy is at some station and didn't just step off
+		{
+			start = false;
+			for (int i = 0; i < n; i++)
+			{
+				if (lastpos[i] == bPos && dist[i] == 0) // some bus has reached billy
+				{
+					bStatus = 1;
+					bPos = i;
+					break;
+				}
+			}
+		}
+		t++;	
+		if (!start && bStatus == 0 && bPos == 0)
+			return t;
+	}
+	while (t <= 1000);
+	return -1;		
+}
+
+Problem Statement
+    
+Little Billy enjoys riding the bus. Whenever he is bored he decides to go on a bus trip.
+
+There are N bus stations in Billy's town, numbered from 0 to N-1, and some bus routes connecting some of them. 
+
+Little Billy starts at station 0, at time 0, waits for the next bus to arrive and takes it. 
+
+Note that little Billy can take a bus that leaves station 0 at time 0. 
+
+The constraints guarantee that there will always be at least one bus route that passes through station 0. 
+He gets off at the next bus stop along the route, waits for another bus to arrive at that station, and takes it. 
+He rides the bus to the next stop and waits for another bus, and so on. 
+Note that Billy must take a bus at a time strictly greater than the time he arrived at that station. 
+If multiple buses arrive at the same station at the same time, Billy takes the one that comes first in the input (see below). He stops as soon as he returns to station 0.
+
+You will be given a vector <string> buses describing each of the bus routes in Billy's town. 
+
+The ith element of buses will be a space delimited list of integers representing the locations, in order, along the ith bus route. 
+
+The route of each bus is cyclic, meaning that when the bus is at the last station in the list, it goes to the first station in the list and continues its route from the start. 
+
+Each bus starts its route at time 0. 
+
+The time it takes for a bus to travel between two locations, in minutes, is equal to the absolute difference between the numbers. Note that two bus routes could be identical.
+
+For example, the route of a bus described by the string "0 4 2" is as follows: it starts at time 0 in station 0 and arrives at station 4 at time 4. 
+
+Next, it arrives at station 2 at time 6, and back at station 0 at time 8. 
+The bus continues its route and arrives at station 4 at time 12, then at station 2 at time 14, back to station 0 at time 16, and so on.
+
+Return the number of minutes it takes Billy to return to station 0. If he doesn't get back to station 0 in 1000 minutes or less, return -1 instead.
+
+Definition
+    
+Class:
+BusTrip
+Method:
+returnTime
+Parameters:
+int, vector <string>
+Returns:
+int
+Method signature:
+int returnTime(int N, vector <string> buses)
+(be sure your method is public)
+    
+
+Constraints
+-
+N will be between 2 and 100, inclusive.
+-
+buses will contain between 1 and 50 elements, inclusive.
+-
+Each element of buses will contain between 3 and 50 characters, inclusive.
+-
+Each element of buses will be a space delimited list of integers between 0 and N-1, inclusive.
+-
+The numbers in each element of buses will be distinct.
+-
+Each element of buses will contain at least two integers.
+-
+There will be at least one number 0 in buses.
+-
+Each number in each element of buses will contain no leading zeroes.
+-
+Each element of buses will contain no leading or trailing spaces.
+Examples
+0)
+
+    
+3
+{"0 1 2"}
+Returns: 12
+There is only one bus route. Billy takes a bus from this route three times, each time riding it for one minute. At time 0 he takes it at station 0 and arrives at station 1 at time 1. Four minutes later, the bus passes through station 1 again and Billy takes it, to arrive at station 2 at time 6. Finally the bus passes through station 2 the third time at time 10, and two minutes later little Billy arrives back at location 0.
+1)
+
+    
+51
+{"0 5 10 15 20 25 30 35 40 50"}
+Returns: 1000
+Again, only one bus. Billy rides it a few times until he finally returns to location 0 at time 1000.
+2)
+
+    
+3
+{"0 1 2", "2 1 0"}
+Returns: -1
+Billy can never return to station 0 in this scenario. Both buses arrive at station 1 at the same times, and Billy will always take the first one. When he's at station 2, he will take the second bus, only to return to station 1 and take the first bus again.
+3)
+
+    
+5
+{"0 1 2 3 4", "3 1 2 0", "4 1 2 3 0", "1 2 0 3 4", "4 0"}
+Returns: 12
+Each bus arrives exactly on time and little Billy rides each of them.
+4)
+
+    
+25
+{"24 14 9 7 2", "21 4 18 24 7 1 2 11 8 9 14 16 5 17 13 23 19 15 22", "12 22 24 9 1 5 10 8 7 18 16 19 4 13 17", 
+ "14 5 17 9 23 7 16 22 10 4 6", "19 8 1 9 24 3 5 22 16 7 6 4 10 23 17 0 13 15", 
+ "2 16 10 13 14 1 11 20 0 24 22 23 19 4 18", "19 15 18 0", "15 9 22 5 20 8 23 14 24 18 21 6 13 19", 
+ "2 6 19 3 21 10 20 22 24 13 16 15 8 18 17 14 5", "19 10 1 7 5 11 21 8 14 0 17 23 12 2 3 16"}
+Returns: 157
+
+5)
+
+    
+100
+{"0 10 30 45 60 46 39 31 20", "9 20 0 86"}
+Returns: -1
+In this case, Billy returns to station 0 at time 1001, so we return -1.
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

@@ -1,0 +1,225 @@
+#include <vector>
+#include <list>
+#include <map>
+#include <set>
+#include <deque>
+#include <stack>
+#include <bitset>
+#include <algorithm>
+#include <functional>
+#include <numeric>
+#include <utility>
+#include <sstream>
+#include <iostream>
+#include <iomanip>
+#include <cstdio>
+#include <cmath>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+typedef long long LL;
+vector<LL> T(21);
+vector<LL> memo(21);
+vector<LL> S(20);
+
+ante> royappa: first you find the root (subracting the number of trees for a particular root from the index)
+ante> royappa: now suppose there are x possible left subtrees and y possible right subrees
+System> rem is viewing the source of tomek's 1000-point problem.
+System> nicka81 is viewing the source of ante's 1000-point problem.
+ante> royappa: there are a total of x*y trees, when you sort them you get x blocks with y entries in each block
+ante> royappa: each block corresponds to one left subree
+System> paranoia is viewing the source of tomek's 1000-point problem.
+System> jambon_vn is viewing the source of pablo.aguilar's 250-point problem.
+ante> royappa: you get the index of the left subtree by div (which block)
+ante> royappa: you get the index of the right subtree by mod (where in the block)
+ante> royappa: hope this helps
+
+class EncodingTrees {
+public:
+
+
+LL numBST(int n)
+{
+	if (n <= 1)
+	{
+		return 1LL;
+	}
+	if (n == 2LL)
+	{
+		return 2LL;
+	}
+	
+	LL &total = memo[n];
+	if (total != -1)
+		return total;
+		
+	total = 0LL;
+	for (int i = 1; i <= n; i++)
+	{
+		total += numBST(i-1) * numBST(n-i);
+	}
+	return total;
+}
+
+
+string findCode(int N, int k)
+{
+	LL sum = 0;
+	for (int i = 1; i <= N; i++) 
+	{
+		sum += S[i];
+	}
+	
+	if (k > sum)
+	{
+		return "";
+	}
+	
+	int i;
+	for (i = 1; i <= N; i++)
+	{
+		if (k < S[i])
+		{
+			break; // tree starts with i
+		}
+		k -= S[i];
+	}
+		
+	string x = "";
+	x += ('a'+i);
+	return x + getCode(N, k);
+	
+}
+
+string getCode(int N, int k) 
+{
+	// handle N=1 case separately
+	for (int t = 0; t <= 20; t++)
+	{
+		T[t] = 0LL;
+		memo[t] = -1LL;
+	}
+		
+	for (int t = 0; t <= 20; t++)
+	{
+		T[t] = numBST(t);
+		//cout << t <<  " " << T[t] << endl;
+	}
+	
+	for (int t = 1; t <= N; t++) 
+	{
+		S[t] = T[t-1] * T[N-t];
+		//cout << t << " " << S[t] << endl;
+	}
+	return "";
+	
+	//return findCode(N, k);
+}
+};
+
+
+//Powered by [KawigiEdit]
+
+Problem Statement
+    
+A binary tree is either empty or it consists of a root node and two binary trees, called the left subtree and the right subtree of the root node. Each node of our binary trees will contain one lowercase letter. We say that a binary tree is a binary search tree (BST) if and only if for each node the following conditions hold:
+
+All letters in the left subtree of the node occur earlier in the alphabet than the letter in the node.
+
+All letters in the right subtree of the node occur later in the alphabet than the letter in the node.
+
+Note that if a tree is a BST, then each subtree of this tree is also a BST. As a consequence, if the tree is non-empty, then both subtrees of the root node are BSTs again.
+Examples of BSTs with 4 nodes:
+    c        b        a
+   / \      / \        \
+  b   d    a   d        c
+ /            /        / \
+a            c        b   d
+
+A pre-order code of a BST is a string obtained in the following way:
+The pre-order code of an empty BST is an empty string.
+
+The pre-order code of a non-empty BST is obtained in the following way: Let L and R be the pre-order codes of the left and right subtree, respectively. Then the pre-order code of the whole BST is the concatenation of the letter in its root node, L and R (in this order).
+The pre-order codes for the trees above are "cbad", "badc" and "acbd", respectively.
+
+Consider all BSTs with exactly N nodes containing the first N lowercase letters. 
+
+Order these trees alphabetically by their pre-order codes. 
+
+Our sequence of BSTs is one-based, i.e., the index of the first tree in this sequence is 1. 
+
+Return the pre-order code of the BST at the specified index in this sequence. 
+
+If index is larger than the number of BSTs with exactly N nodes, return an empty string.
+Definition
+    
+Class:
+EncodingTrees
+Method:
+getCode
+Parameters:
+int, int
+Returns:
+string
+Method signature:
+string getCode(int N, int index)
+(be sure your method is public)
+    
+
+Notes
+-
+You may assume that the number of our BSTs with 19 nodes doesn't exceed 2,000,000,000.
+Constraints
+-
+N is between 1 and 19, inclusive.
+-
+index is between 1 and 2,000,000,000, inclusive.
+Examples
+0)
+
+    
+2
+1
+Returns: "ab"
+There are 2 BSTs with 2 nodes. The first of them is
+a
+ \
+  b
+1)
+
+    
+2
+2
+Returns: "ba"
+The second one is
+  b
+ /
+a
+2)
+
+    
+2
+3
+Returns: ""
+There are only 2 BSTs with 2 nodes, so the empty string is returned for an index of 3.
+3)
+
+    
+4
+9
+Returns: "cbad"
+The 14 valid pre-order codes of BSTs with 4 nodes: abcd, abdc, acbd, adbc, adcb, bacd, badc, cabd, cbad, dabc, dacb, dbac, dcab, dcba. The 9th tree:
+    c
+   / \
+  b   d
+ /
+a
+4)
+
+    
+15
+14023
+Returns: "abcdeohgfniljkm"
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

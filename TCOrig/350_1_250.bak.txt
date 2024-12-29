@@ -1,0 +1,91 @@
+int howMany(int lowerBound, int upperBound) 
+{
+	set<int> v;
+	
+	v.push_back(0);
+	v.push_back(1);
+	
+	for (int b = 2; b <= 2236; b++)
+	{
+		int x = b*b;
+		while (x <= 5000000)
+		{
+			v.push_back(x);
+			x *= b;
+		}
+	}
+	int c = 0;
+	for (int i = lowerBound; i <= upperBound; i++)
+	{
+		for (typeof(v.begin()) it = v.begin(); it != v.end(); it++)
+		{
+			int x = *it;
+			int y = 
+	}
+	return c;
+}
+
+Problem Statement
+    
+A non-negative integer n is said to be a sum of two perfect powers if there exist two non-negative integers a and b such that a^m + b^k = n 
+for some positive integers m and k, both greater than 1. 
+
+Given two non-negative integers lowerBound and upperBound, return the number of integers between lowerBound and upperBound, inclusive, that are sums of two perfect powers.
+
+Definition
+    
+Class:
+SumsOfPerfectPowers
+Method:
+howMany
+Parameters:
+int, int
+Returns:
+int
+Method signature:
+int howMany(int lowerBound, int upperBound)
+(be sure your method is public)
+    
+
+Constraints
+-
+lowerBound will be between 0 and 5000000, inclusive.
+-
+upperBound will be between lowerBound and 5000000, inclusive.
+Examples
+0)
+
+    
+0
+1
+Returns: 2
+0 and 1 are both sums of two perfect powers since 0 = 0 + 0 and 1 = 12 + 02.
+1)
+
+    
+5
+6
+Returns: 1
+5 is a sum of two perfect powers since 5 = 22 + 12 while 6 is not.
+2)
+
+    
+25
+30
+Returns: 5
+Only 30 is not a sum of two perfect powers.
+3)
+
+    
+103
+103
+Returns: 0
+There may be no desired integers in the range.
+4)
+
+    
+1
+100000
+Returns: 33604
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

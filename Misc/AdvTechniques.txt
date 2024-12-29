@@ -1,0 +1,41 @@
+Sorting
+
+Binary search / bisection : TCO2007R1C_1_500.txt
+
+Ternary search to find max/min of a function which first decreases and then increase (or vice versa). Need not be convex but must be "unimodal"
+	http://forums.topcoder.com/?module=Thread&threadID=506787&start=0&mc=16#507863
+BFS
+	Multistate BFS
+DFS
+	Multistate DFS
+	Flood fill
+Floyd (all pairs shortest paths)
+Warshall (transitive closure)
+Brute Force:
+	Nested Loops (various types/gotchas)
+	Backtracking (try to place / un-place each item in turn, then go to next level)
+	All permutations with next_permutation()   (watch out if there are dupes in the input, next_permutation() won't do n! cases - need to map)
+	All subsets using masks
+	All partitions
+	Permutation cycles (?)
+Memoization (pure recursive function, most likely with scalar params, but try simple vector params too, or vector encoded as numeric)
+Dynamic Programming (for things like subset-sum problem, if it seems like the recursion depth would be too much)
+
+
+	
+	
+Floating point
+	- Use long double internally then convert to double?
+	- Use rational math, but rember to use long long since the multiplications may overflow
+	
+Misc 
+	Binary search: make sure interval exceeds endpoints 
+	Percentage: make sure to account for div/mult by 100
+
+
+READ THE SPECS	READ THE SPECS READ THE SPECS READ THE SPECS	READ THE SPECS READ THE SPECS READ THE SPECS	READ THE SPECS READ THE SPECS
+READ THE SPECS	READ THE SPECS READ THE SPECS READ THE SPECS	READ THE SPECS READ THE SPECS READ THE SPECS	READ THE SPECS READ THE SPECS
+READ THE SPECS	READ THE SPECS READ THE SPECS READ THE SPECS	READ THE SPECS READ THE SPECS READ THE SPECS	READ THE SPECS READ THE SPECS
+READ THE SPECS	READ THE SPECS READ THE SPECS READ THE SPECS	READ THE SPECS READ THE SPECS READ THE SPECS	READ THE SPECS READ THE SPECS
+READ THE SPECS	READ THE SPECS READ THE SPECS READ THE SPECS	READ THE SPECS READ THE SPECS READ THE SPECS	READ THE SPECS READ THE SPECS
+READ THE SPECS	READ THE SPECS READ THE SPECS READ THE SPECS	READ THE SPECS READ THE SPECS READ THE SPECS	READ THE SPECS READ THE SPECS

@@ -1,0 +1,2 @@
+Always use g++ -O3
+run dos2unix on .txt files

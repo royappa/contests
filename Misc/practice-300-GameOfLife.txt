@@ -1,0 +1,87 @@
+// 9:20
+
+import java.util.*;
+public class GameOfLife
+{
+	char grid[][];
+	int adj[][];
+
+	private int addmod(int a, int b, int n)
+	{
+		int x = (a + b) % n;
+		if (x < 0) x += n;
+		return x;
+	}
+
+	public int alive(String[] start, String rules, int generations)
+	{
+		// init grid 
+		int numRows = start.length;
+		int numCols = start[0].length();
+			
+		grid = new char[numRows][numCols];
+		adj = new int[numRows][numCols];
+
+		for (int i = 0;  i < numRows; i++)
+		{
+			for (int j = 0; j < numCols; j++)
+			{
+				grid[i][j] = start[i].charAt(j);
+			}
+		}	
+		// generate
+		for (int g = 0; g < generations; g++)
+		{
+			for (int r = 0; r < numRows; r++)
+			{
+				for (int c = 0; c < numCols; c++)
+				{
+					adj[r][c] = 0;
+				}
+			}
+			// count
+			for (int r = 0; r < numRows; r++)
+			{
+				for (int c = 0; c < numCols; c++)
+				{
+					int count = 0; int rr, cc;
+					rr = addmod(r, 1, numRows); cc = addmod(c, 0, numCols); if (grid[rr][cc] == 'X') count++;
+					rr = addmod(r, 1, numRows); cc = addmod(c, 1, numCols); if (grid[rr][cc] == 'X') count++;
+					rr = addmod(r, 0, numRows); cc = addmod(c, 1, numCols); if (grid[rr][cc] == 'X') count++;
+					rr = addmod(r, -1, numRows); cc = addmod(c, 1, numCols); if (grid[rr][cc] == 'X') count++;
+					rr = addmod(r, -1, numRows); cc = addmod(c, 0, numCols); if (grid[rr][cc] == 'X') count++;
+					rr = addmod(r, -1, numRows); cc = addmod(c, -1, numCols); if (grid[rr][cc] == 'X') count++;
+					rr = addmod(r, 0, numRows); cc = addmod(c, -1, numCols); if (grid[rr][cc] == 'X') count++;
+					rr = addmod(r, 1, numRows); cc = addmod(c, -1, numCols); if (grid[rr][cc] == 'X') count++;
+					adj[r][c] = count;
+				}
+			}
+			// life rules
+			for (int r = 0; r < numRows; r++)
+			{
+				for (int c = 0; c < numCols; c++)
+				{
+					int ind = adj[r][c];
+					char rule = rules.charAt(ind);
+					grid[r][c] = (rule=='D') ? '.' :
+							(rule == 'B') ? 'X' : grid[r][c];
+				}
+			}
+
+		} // end loop g
+		
+		// count
+		int numAlive = 0;
+		for (int i = 0; i < numRows; i++)
+		{
+			for (int j = 0; j < numCols; j++)
+			{
+				if (grid[i][i] == 'X')
+				{
+					numAlive++;
+				}
+			}
+		}
+		return numAlive;
+	}
+}

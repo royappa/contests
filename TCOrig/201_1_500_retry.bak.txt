@@ -1,0 +1,190 @@
+
+Problem Statement
+    
+A certain software developer has decided to play a web-based role playing game in his spare time. 
+
+However, it gets very tedious at certain points, and he wants to write a robot to play it for him during these tedious times. 
+
+To work towards that, he has mapped a large section of the game. Simply programming a robot to go from a specific starting point and execute a sequence of events is too simple, so he wants to make it smarter, by being able to determine where it is on the map. 
+
+The only way to describe a given location on the map is by which directions the player can move from that location - any combination of north, south, east, and west.
+
+The developer has programmed the robot to move around several times from its initial location, in order to get its bearings.
+
+You are to write a class RPGRobot, with a method which takes a vector <string> map detailing the area mapped out by the developer, and another string movements, which indicates the first several movements by the robot, and in which directions the robot could have moved from each location visited.
+map will be formatted according to the following grammar (single quotes are for clarification only):
+
+map             ::= <EVENROW> (<ODDROW> <EVENROW>)+
+EVENROW         ::= <ASTERISK> (<HORIZONTAL WALL> <ASTERISK>)+
+ODDROW          ::= <VERTICAL WALL> (<GAMESPACE> <VERTICAL WALL>)+
+HORIZONTAL WALL ::= '-' OR <SPACE>
+VERTICAL WALL   ::= '|' OR <SPACE>
+SPACE           ::= ' '
+ASTERISK        ::= '*'
+GAMESPACE       ::= ' '
+In the above grammar, a <HORIZONTAL WALL> or <VERTICAL WALL> that is a <SPACE> indicates that the player can move between the two adjacent <GAMESPACE>s. Otherwise, the player cannot move between adjacent <GAMESPACE>s. The map is given in order from west to east, north to south. That is, the first element of map is the northernmost row in the map, and the first character of the first element of map is the northwesternmost character in the map.
+
+movements will be formatted according to the following grammar (single quotes are for clarification only):
+movements  ::= <DIRECTIONS> (',' <MOVE> ' ' <DIRECTIONS>)*
+DIRECTIONS ::= ('' OR 'N') ('' OR 'S') ('' OR 'W') ('' OR 'E')
+MOVE       ::= 'N' OR 'S' OR 'W' OR 'E'
+The data represented by movements will be self-consistent. i.e., if the robot moves east from location X, it must be able to move back west, and moving west would take it back to location X. Further, if movements indicates that the robot moves east from location X, east must be in the <DIRECTIONS> element for location X.
+The first <DIRECTIONS> element indicates what directions the player can move from the initial location. Each subsequent <MOVE>,<DIRECTIONS> pair indicates that the robot moved in the <MOVE> direction, and from where it ended up, it could move in the directions specified by <DIRECTIONS>.
+For example, "NSW,W NS" means that in the initial location, the player could move north, south, or west, and that the robot moved the player west. From that location the player could move north or south.
+Your job is to determine which <GAMESPACE> locations could have been the starting location, and return them in a vector <string>, where each element is an ordered pairs of coordinates "x,y", where x is the horizontal axis starting at 0 in the northwest corner of the given map and increasing east, and y is the vertical axis starting at 0 in the northwest corner and increasing south. If a possible starting location is not within the bounds of the map, then do not return it. The elements of the return value must be sorted in ascending order first by x coordinate, and then by y coordinate. The x and y coordinates in the return value should not have leading zeros.
+Definition
+    
+Class:
+RPGRobot
+Method:
+where
+Parameters:
+vector <string>, string
+Returns:
+vector <string>
+Method signature:
+vector <string> where(vector <string> map, string movements)
+(be sure your method is public)
+    
+
+Notes
+-
+It is legal for the player to exit the mapped portion of the game. Since it is unmapped, nothing is known about it.
+-
+When the player moves from one <GAMESPACE>, he moves directly to another <GAMESPACE>, not to the character in between.
+-
+In the grammar, the '+' following an element means that one or more of that element must occur, while a '*' following an element means that zero or more of that element must occur.
+Constraints
+-
+map will be formatted exactly as described above.
+-
+map will contain between 3 and 49 elements, inclusive.
+-
+Every element of map will contain between 3 and 49 characters, inclusive.
+-
+Every element of map will have the same number of characters.
+-
+Every element of map will contain only the following characters: ' ', '*', '|', '-'.
+-
+movements will be formatted exactly as describe above.
+-
+movements will have between 1 and 50 characters, inclusive.
+-
+movements will contain only the letters 'N', 'S', 'W', 'E', and the characters ',' and ' ' (comma and space).
+-
+movements will be self-consistent.
+Examples
+0)
+
+    
+{"* *",
+ "| |",
+ "*-*"}
+"N"
+Returns: { "1,1" }
+There is only one starting position, and the player can go north from there. There is no movement specified, so he must have started here.
+1)
+
+    
+{"* *-*",
+ "| | |",
+ "* * *",
+ "| | |",
+ "*-*-*"}
+"N,N NS"
+Returns: { "1,3" }
+Given only the initial "N" of movements, the player could have started in either (1,3) or (3,3). However, after moving north, the player can go both north and south, eliminating (3,3) as a starting position.
+2)
+
+    
+{"*-*-*",
+ "     ",
+ "* * *",
+ "     ",
+ "* * *"}
+"SWE,S NSWE"
+Returns: { "1,1",  "3,1" }
+
+3)
+
+    
+{"* *-* *",
+ "|     |",
+ "* *-* *",
+ "|     |",
+ "* *-* *"}
+"NSE,E WE,E NSW,N NSW"
+Returns: { "1,1",  "1,3" }
+Note that starting at (1,1) ends up with the player at (5,-1). Although the player ends up off the map, he started inside, and thus it is a valid starting location.
+4)
+
+    
+{"* *-*",
+ "| | |",
+ "* * *",
+ "| | |",
+ "*-*-*"}
+"N,N S"
+Returns: { "3,3" }
+Identical to Example 1, except that the player can only go south after going north, eliminating (1,3) as a starting point, instead of (3,3).
+5)
+
+    
+{"*-*",
+ "| |",
+ "*-*"}
+"N"
+Returns: { }
+The only location is not a possible starting location for this configuration.
+6)
+
+    
+{"* * * *",
+ "       ",
+ "*-*-*-*"}
+ 
+"NWE,N NSE,E SWE,S NWE"
+Returns: { "1,1",  "3,1",  "5,1" }
+
+7)
+
+    
+{"* * * *-* * * *-*-* * * * * *-* *",  
+ "  |     | |     |   |         |  ",  
+ "* * *-* * *-* * * * * * * * *-* *",
+ "| | |   | | |       |     |     |",
+ "* * *-*-* *-*-*-* * * * * * *-*-*", 
+ "  |     | |   | |   |   |     | |", 
+ "*-* *-* * *-*-* *-*-*-* * *-* *-*", 
+ "    | |     |     | |   |   | |  ", 
+ "*-*-* *-*-*-*-* *-*-*-* *-*-* * *", 
+ "| |   |         | | |       |    ", 
+ "*-*-* * * *-* *-*-* * * * *-*-* *", 
+ "  | |     | | | | | |     | | |  ", 
+ "*-* *-* * * *-* *-*-* *-* * *-*-*", 
+ "  | |   | | | |   |   | | |   |  ", 
+ "*-* * * *-* * *-*-*-* * * * * * *", 
+ "|     | | |   |   |   | | |      ", 
+ "* *-*-*-*-*-* *-* * * *-* *-* *-*", 
+ "  | | |         |   | |   |   |  ", 
+ "* * *-*-*-* *-* *-*-*-*-*-*-*-*-*", 
+ "| |     |   | | | |     |     | |", 
+ "* *-* * *-* *-*-*-*-* * *-*-*-* *", 
+ "    | | | | |   | | | |     | |  ", 
+ "* *-*-*-*-* *-*-* *-* *-*-* * *-*", 
+ "  | | | | |   |         | | |    ", 
+ "*-*-*-* *-*-* * *-* *-* * * *-*-*", 
+ "|   | |           |   | | |     |", 
+ "* *-* * * *-*-* *-*-*-* *-* * *-*", 
+ "      |     | | | |     |       |", 
+ "*-* * * * * *-*-* * * * * *-* * *", 
+ "|           | |       |   | |   |", 
+ "* * *-*-* *-*-* * * *-*-* * * *-*", 
+ "|   | | | | |   | | | | | |   | |", 
+ "*-* * *-* * * * * * *-* *-* *-*-*", 
+ "  |     | | |   |             | |", 
+ "*-* *-* *-* * * * *-* *-* *-*-*-*"}
+"NW,W SE,S NSW,W NSWE"
+Returns: { "1,23" }
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

@@ -1,0 +1,105 @@
+
+	public int longestMatch(String seq1, String seq2)
+	{
+		int max = 0;
+		int n1 = seq.length(), n2 = seq2.length();
+		
+		if (n1 > n2)
+		{
+			String t = s1;
+			s1 = s2;
+			s2 = t;
+			int n = n1;
+			n1 = n2;
+			n2 = n;
+		}
+		for (int s1 = 0; s1 < n1; s1++)
+		{
+			for (int len = 1; s1+len <= n1; len++)
+			{
+				for (int s2 = 0; s2+len <= n2; s2++)
+				{
+					if (seq1.substring(s1, s1+len).equals(seq2.substring(s2, s2+len)))
+					{
+						if (len > max)
+							max = len;
+					}
+				}
+			}
+		}
+		return max;
+	}
+	
+Problem Statement
+    
+You are investigating the possible common ancestors of different species. One of the techniques you use is to search for common substrings of DNA between species. The longer the common substring, the more closely the species are related. In this case you will be looking for substrings of DNA which appear in the DNA of each of two different species. Each DNA sample is represented by a sequence of any of the letters "ACGT" in any order.
+Given two strings representing DNA from two species find the length of the longest string which is a substring of both of the input strings.
+In this problem "substring" has the usual definition. A string X is a substring of a string Y if and only if string X can be created from string Y by deleting zero or more consecutive characters from the start of string Y, and deleting zero or more consecutive characters from the end of string Y.
+For example "AAAAAAAAAAAAAAAAAAAAACCCGGGGGGGGGGGGG" "AAAACCCGGGGGGGGGGGGGGGGTTTTTTTTTGGGGGGGGGGGG"  returns 20 corresponding to "AAAACCCGGGGGGGGGGGGG"
+Definition
+    
+Class:
+DNASingleMatcher
+Method:
+longestMatch
+Parameters:
+String, String
+Returns:
+int
+Method signature:
+int longestMatch(String sequence1, String sequence2)
+(be sure your method is public)
+    
+
+Notes
+-
+In real DNA matching the sequence "ACTG" is the same as its reversal "GTCA". But for this problem we will ignore that. We are matching ordered strings of characters, not real DNA fragments. "ACTG" and "GTCA" are different.
+Constraints
+-
+sequence1 and sequence2 will each contain between 1 and 50 characters inclusive.
+-
+sequence1 and sequence2 will consist of only characters from the set { 'A', 'C', 'G', 'T' }
+Examples
+0)
+
+    
+"AAAAAAAAAAAAAAAAAAAAACCCGGGGGGGGGGGGG"
+"AAAACCCGGGGGGGGGGGGGGGGTTTTTTTTTGGGGGGGGGGGG"
+Returns: 20
+The example from above.
+1)
+
+    
+"CAT"
+"AT"
+Returns: 2
+
+2)
+
+    
+"TCTCTCTCTCTCTCTCTCTCTCTCTCTCTCTCTCTCTCTCTCTCTCTCTC"
+"GAGAGGAGAAAGAGAGAGAAGAGAGGAGGAAAGAGAGAGAAAAGAGGGAA"
+Returns: 0
+
+3)
+
+    
+"ACGTACGTACGTACGTACGTACGTACGTACGTACGTACGTACGTACGTAC"
+"GTACGTACGTACGTACGTACGTACGTACGTACGTACGTACGTACGTACGT"
+Returns: 48
+
+4)
+
+    
+"TC"
+"CATCAT"
+Returns: 2
+
+5)
+
+    
+"CGCATTAGATTCAGAG"
+"CGCATGAGTAGATTC"
+Returns: 7
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

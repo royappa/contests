@@ -1,0 +1,250 @@
+// C++ VECTOR SORT OF VECTOR OF STRUCTS/RECORDS
+// C++ VECTOR SORT COMPAR COMPARISON COMPARE FUNCTION COMPARE BY MULTIPLE COLUMNS
+
+using namespace std;
+typedef struct {
+	string name;
+	int count[100];
+	int scores[100];
+} CompRec;
+
+CompRec comp[100];
+
+
+typedef map<string,int> vsi;
+vector<int> sortab;
+string order;
+int N;
+
+bool tied (CompRec a, CompRec b, int m)
+{
+	int am = abs(m)-1;
+	if (am == 0)
+	{
+		return a.name == b.name;
+	}
+	return a.scores[am] == b.scores[am];
+}
+
+bool lessThan(CompRec a, CompRec b, int m)
+{
+	int am = abs(m)-1;
+	if (am == 0)
+	{
+		return m < 0 ? a.name > b.name : a.name < b.name;
+	}
+	return m < 0 ? (order[am-1] == 'H' ? a.scores[am] < b.scores[am] : a.scores[am] > b.scores[am])
+				 : (order[am-1] == 'H' ? a.scores[am] > b.scores[am] : a.scores[am] < b.scores[am]);
+}
+
+// THE COMPARISON FUNCTION, ANY SUB-FUNCTIONS IT CALLS, AND ANY EXTERNAL DATA IT NEEDS, ARE ALL GLOBAL..
+
+bool compar(CompRec a, CompRec b)
+{
+	for (int i = 0; i < sortab.size(); i++)
+	{
+		if (tied(a, b, sortab[i]))
+			continue;
+		return lessThan(a, b, sortab[i]);
+	}
+	return true;
+}
+
+class ResultsTable {
+public:
+
+
+vector <string> generateTable(vector <string> results, vector <int> _sort, string _order) 
+{
+	sortab = _sort;
+	order = _order;
+	
+	for (int i = 0; i < results.size(); i++)
+	{
+		for (int j = 0; j < 100; j++)
+		{
+			comp[i].count[j] = 0;
+		}
+	}
+	vsi index;
+	int num = 0;
+	N = order.size();
+	for (int i = 0; i < results.size(); i++)
+	{
+		int metric, count, score;
+		char buf[100];
+		sscanf(results[i].c_str(), "%s %d %d %d", buf, &metric, &count, &score);
+		string name = buf;
+		int pos = 0;
+		if (index.count(name) == 0)
+		{
+			pos = index[name] = num;
+			num++;
+			comp[pos].name = name;
+		}
+		else
+		{
+			pos = index[name];
+		}
+		if (count > comp[pos].count[metric])
+		{
+			comp[pos].count[metric] = count;
+			comp[pos].scores[metric] = score;
+		}
+	}
+	vector<CompRec> data;
+	for (int i = 0; i < num; i++)
+	{
+		data.push_back(comp[i]);
+		//cout << data[i].name << endl;
+		for (int j = 0; j < 10; j++)
+		{
+			//cout << "\t" << data[i].count[j] << " " << data[i].scores[j] << endl;
+		}
+	}
+	
+	for (int i = 0; i < num; i++)
+	{
+		for (int m = 1; m <= N; m++)
+		{
+			if (data[i].count[m] == 0)
+			{
+				data[i].scores[m] = order[m-1] == 'H' ? -10000 : 10000;
+			}
+		}
+	}
+	sort(data.begin(), data.end(), compar);
+	vector<string> r;
+	for (int i = 0; i < data.size(); i++)
+	{
+		char buf[1024];
+		sprintf(buf, data[i].name.c_str());
+		for (int j = 1; j <= N; j++)
+		{
+			strcat(buf, " ");
+			char b2[100];
+			if (data[i].count[j] == 0)
+			{
+				sprintf(b2, "-");
+			}
+			else
+			{
+				sprintf(b2, "%d", data[i].scores[j]);
+			}
+			strcat(buf, b2);
+		}
+		r.push_back(buf);
+	}
+	return r;
+		
+}
+};
+
+
+
+Problem Statement
+    
+You need to create a table of results for a contest you recently hosted. 
+
+Each participant was evaluated on up to N different performance metrics, and you now need a table summarizing the performance of each competitor on each metric. 
+
+Making things more difficult is the fact that some competitors may have been evaluated on certain metrics more than once, while others may not have been evaluated on certain metrics at all.  
+
+You will be given a vector <string>, results, representing the results of the contest. 
+
+Each element of results will be formatted as "NAME METRIC COUNT SCORE". 
+
+NAME is the name of the competitor, METRIC is a number between 1 and N, inclusive, COUNT is the number of prior evaluations for the particular competitor on the particular metric, and SCORE is the score that competitor received. 
+
+If a competitor receives multiple scores for the same metric, you should only consider the one with the highest COUNT. 
+
+Furthermore, you will be given a string, order, the ith character (indexed from 1) of which represents whether a high score ('H') or a low score ('L') is desirable on metric i.  You should generate a table with one row per competitor and N+1 columns. The columns in each row should be separated by single spaces. The first column should contain the competitor's name, while the remaining columns contain the scores of the competitor, ordered by metric number. 
+
+Furthermore, you should sort the rows according to a vector <int>, sort. You should first sort the table by column abs(sort[0]) (indexed from 1). If there is a tie, you should sort by column abs(sort[1]), and so on. In each case, if the element of sort is greater than one, you should sort the competitors from best to worst, and if the element is less than negative one, you should sort from worst to best. 
+
+A +1 in sort indicates that you should sort in ascending alphabetical order by competitor name (column 1), while a -1 indicates descending order by competitor name. If a competitor has received no score for a particular metric, it should be considered worse than all of the competitors with scores, and you should put a '-' where the score would be.
+Definition
+    
+Class:
+ResultsTable
+Method:
+generateTable
+Parameters:
+vector <string>, vector <int>, string
+Returns:
+vector <string>
+Method signature:
+vector <string> generateTable(vector <string> results, vector <int> sort, string order)
+(be sure your method is public)
+    
+
+Notes
+-
+Competitor names are case sensitive.
+-
+When sorting by name, uppercase letters come before lowercase letters.
+Constraints
+-
+sort will contain exactly N+1 elements, where N is the number of metrics and is between 1 and 49, inclusive.
+-
+Each element of sort will be non-zero and between -(N+1) and (N+1), inclusive.
+-
+Each element of sort will have a distinct absolute value.
+-
+order will contain exactly N characters, each of which will be 'H' or 'L'.
+-
+results will contain between 1 and 50 elements, inclusive.
+-
+Each element of results will be formatted as "NAME METRIC COUNT SCORE".
+-
+NAME will contain between 1 and 20 letters ('a'-'z' and 'A'-'Z'), inclusive.
+-
+METRIC will be an integer between 1 and N, inclusive, with no leading zeros.
+-
+COUNT will be an integer between 1 and 100, inclusive, with no leading zeros.
+-
+SCORE will be an integer between -1000 and 1000, inclusive, with no leading zeros.
+-
+No two elements of results will have the same NAME, METRIC and COUNT.
+Examples
+0)
+
+    
+{"A 1 1 54","A 2 1 20","a 1 1 23","a 2 1 50"}
+{-1,2,-3}
+"HL"
+Returns: { "a 23 50",  "A 54 20" }
+The first element of sort is -1, indicating that we should first sort by competitors' names in descending order. Hence, a comes first, followed by A.
+1)
+
+    
+{"A 1 1 54","A 2 1 20","B 1 1 23","B 2 1 50"}
+{-2,-3,1}
+"HL"
+Returns: { "B 23 50",  "A 54 20" }
+In this example, we are to sort first by column 2 (metric 1) in order from worst to best. Since higher scores are better on metric 1 (because of the 'H' in order), we put B first, who has a 23 on metric 1, and A next, with a 54 on metric 1.
+2)
+
+    
+{"A 1 1 54","A 2 1 20","B 1 1 54"}
+{2,4,-3,1}
+"HLH"
+Returns: { "B 54 - -",  "A 54 20 -" }
+There is a tie on both metric 1 and metric 3 (columns 2 and 4) and since B was not scored on metric 2, he is considered to have done worse.
+3)
+
+    
+{"q 3 90 444","J 2 6 347","b 3 17 -543","I 2 13 897","M 3 55 -439"}
+{4,-2,-1,-3}
+"LHH"
+Returns: { "q - - 444",  "M - - -439",  "b - - -543",  "J - 347 -",  "I - 897 -" }
+
+4)
+
+    
+{"f 1 37 -861","s 1 92 -829","v 2 78 247","M 1 30 -31","E 1 45 -646"}
+{3,1,2}
+"LL"
+Returns: { "v - 247",  "E -646 -",  "M -31 -",  "f -861 -",  "s -829 -" }
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

@@ -1,0 +1,118 @@
+class FractionSplit {
+public:
+	vector <string> getSum(int, int);
+};
+
+int gcd(int a, int b)
+{
+	if (b == 0) return a;
+	return gcd(b, a%b);
+}
+
+vector <string> FractionSplit::getSum(int n, int d) 
+{
+	vector<string> r;
+	
+	while (n > 0)
+	{
+		for (int den = 2; ; den++)
+		{
+			if (n*den - d >= 0)
+			{
+				int nn = n*den-d;
+				int dd = d*den;
+				int g = gcd(nn, dd);
+				n = nn/g;
+				d = dd/g;
+				char buf[100];
+				sprintf(buf, "1/%d", den);
+				r.push_back(buf);
+				break;
+			}
+		}
+	}
+	return r;		
+}
+
+
+Problem Statement
+    
+Unit fractions are defined by having 1 in the numerator position. 
+
+Any positive fraction of the form n/d can be rewritten as a finite sum of distinct unit fractions. 
+
+When n<d, such a sum can be found by repeatedly subtracting the largest possible unit fraction until you reach 0.  
+
+For example, if you begin with 4/5 then the largest unit fraction you can subtract is 1/2. 
+
+You are then left with 3/10. 
+
+The largest unit fraction you can subtract from 3/10 is 1/4. 
+
+You are then left with 1/20. 
+
+The largest unit fraction you can subtract is 1/20 leaving you with 0. 
+
+You should return a vector <string> giving the sequence of fractions you subtract, in the order you subtract them. 
+
+Each should be given in the form "1/q" where q is a positive integer with no leading zeros. 
+
+In the example just given, you would return
+ {"1/2","1/4","1/20"} 
+Definition
+    
+Class:
+FractionSplit
+Method:
+getSum
+Parameters:
+int, int
+Returns:
+vector <string>
+Method signature:
+vector <string> getSum(int n, int d)
+(be sure your method is public)
+    
+
+Constraints
+-
+d will be between 2 and 16 inclusive.
+-
+n will be between 1 and d-1 inclusive.
+Examples
+0)
+
+    
+4
+5
+Returns: {"1/2", "1/4", "1/20" }
+The example above.
+1)
+
+    
+2
+3
+Returns: {"1/2", "1/6" }
+1/2 is the largest unit fraction that can be subtracted from 2/3. The unit fraction 1/6 remains after the subtraction.
+2)
+
+    
+1
+2
+Returns: {"1/2" }
+1/2 is the largest unit fraction you can subtract.
+3)
+
+    
+15
+16
+Returns: {"1/2", "1/3", "1/10", "1/240" }
+
+4)
+
+    
+14
+15
+Returns: {"1/2", "1/3", "1/10" }
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

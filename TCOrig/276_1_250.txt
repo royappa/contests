@@ -1,0 +1,32 @@
+vector<pair<int,int> > prices;
+int memo[100];
+int solve(int q)
+{
+	if (q <= 0)
+		return 0;
+	
+	int &best = memo[q];
+	if (best != -1)
+		return best;
+		
+	best = 1<<30;
+	for (int i = 0; i < prices.size(); i++)
+	{
+		best = min(best, prices[i].second+solve(q-prices[i].first));
+	}
+	return best;
+}
+	
+int bestDeal(vector <string> p, int quantity) 
+{
+	for (int i = 0; i < p.size(); i++)
+	{
+		int c, u;
+		sscanf(p[i].c_str(), "%d %d", &u, &c);
+		prices.push_back(make_pair(u, c));
+	}
+	
+	memset(memo, -1, sizeof(memo));
+	return solve(quantity);
+		
+}

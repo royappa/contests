@@ -1,0 +1,117 @@
+import java.util.*;
+ 
+public class NoZero {
+  int c (long x){
+    String s = "" + x;
+    long amt = 1, val = 0;
+    for (int i = s.length() - 1; i >= 0; i--){
+      long j = s.charAt(i) - '0';
+      val += amt * j;
+      amt *= 9;
+    }
+    return (int) val;
+  }
+ 
+  int d (long x){
+    long amt = 1;
+    while (true){
+      amt *= 9;
+      if (amt * 9 < 0) break;
+    }
+ 
+    ArrayList arr = new ArrayList();
+ 
+    while (amt >= 1){
+      arr.add (new Long (x / amt));
+      x -= amt * (x / amt);
+      amt /= 9;
+    }
+ 
+    while (((Long) arr.get (0)).longValue() == 0) arr.remove (0);
+    
+    long [] y = new long[arr.size()];
+    for (int i = 0; i < y.length; i++) y[i] = ((Long) arr.get(i)).longValue();
+    boolean changed = true;
+    while (changed){
+ 
+      changed = false;
+      for (int i = 0; i < y.length; i++){
+        if (y[i] == 0){
+          y[i-1]--;
+          y[i] += 9;
+          changed = true;
+        }
+      }
+ 
+      arr = new ArrayList();
+      for (int i = 0; i < y.length; i++){
+        arr.add (new Long (y[i]));
+      }
+      while (((Long) arr.get (0)).longValue() == 0) arr.remove (0);
+    
+      y = new long[arr.size()];
+      for (int i = 0; i < y.length; i++) y[i] = ((Long) arr.get(i)).longValue();
+ 
+    }
+ 
+    String s = "";
+    for (int i = 0; i < y.length; i++)
+      s += y[i];
+ 
+    return Integer.parseInt (s);
+  }
+ 
+  public int subtract (int big, int small){
+    int val = c (big);
+    int val2 = c (small);
+    int val3 = val - val2;
+ 
+    return  d((long) val3);
+  }
+}
+************************************************
+import java.util.*;
+import java.math.*;
+ 
+public class ASeries {
+  public int longest (int [] x){
+    HashMap h = new HashMap();
+    Arrays.sort (x);
+    for (int i = 0; i < x.length; i++){
+      Integer k = new Integer (x[i]);
+      if (h.containsKey (k)){
+        h.put (k, new Integer (((Integer) h.get (k)).intValue() + 1));
+      }
+      else
+        h.put (k, new Integer (1));
+    }
+ 
+//    System.out.println (h);
+ 
+    int maxlen = 0;
+ 
+    for (int i = 0; i < x.length; i++){
+      for (int j = i; j < x.length; j++){
+        HashMap h2 = (HashMap) h.clone();
+        int first = x[i];
+        int second = x[j];
+        int diff = second - first;
+        int len = 0;
+        while (true){
+          Integer k = new Integer (first);
+          if (!h2.containsKey (k)) break;
+          int num = ((Integer) h2.get (k)).intValue();
+          if (num == 0) break;
+          h2.put (k, new Integer (num - 1));
+          first += diff;
+          len++;
+        }
+        maxlen = Math.max (maxlen, len);
+      }
+    }
+    return maxlen;    
+  }
+}
+ 
+ 
+*************************************************

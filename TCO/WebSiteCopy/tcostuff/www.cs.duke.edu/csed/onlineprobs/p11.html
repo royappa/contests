@@ -1,0 +1,205 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  
+<!-- Mirrored from www.cs.duke.edu/csed/onlineprobs/p11.html by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 14 Mar 2006 08:55:06 GMT -->
+<head>
+    <title>Weekly Problem #11</title>
+  </head>
+
+  <body>
+    <h1>Weekly Problem #11</h1>
+
+<em>
+This problem statement is the exclusive and proprietary property of
+TopCoder, Inc. Any unauthorized use or reproduction of this information
+without the prior written consent of TopCoder, Inc. is strictly
+prohibited. (c)2003, TopCoder, Inc. All rights reserved.
+</em>
+
+<p>
+<hr>
+
+<h3>Problem Statement</h3>
+
+In a single-elimination tournament, the schedule is determined by
+placing the teams in a vertical list called "the tournament bracket". In
+the first round the top two teams in the bracket play each other, then
+the next two, etc. In the second round the top two remaining teams play
+each other, then the next two, etc. This continues until there is only
+one team left -- the tournament winner.
+<P>
+The number of teams in the tournament should be a power of 2 -- if it
+isn't, byes are added to the bracket. Byes are never placed so that they
+will "play" each other. When a team's opponent is "bye", there is no
+game played and the team automatically advances as if it had won a
+game. Here is an example with a bracket of length 4 containing one bye
+(see Example 0).
+<PRE>
+
+
+             ROUND 1       ROUND 2
+      Duke
+          |--------- Duke
+      UCLA              |
+                        |-------- MIT
+      bye               |
+          |---------- MIT
+      MIT
+</PRE>
+<P>
+We have the tournament bracket (including any byes) from last year's
+tournament. We also have a list of the results of the games in the order
+in which they were played. We want to figure out who won last year's
+tournament. Create a class Tourney that contains a method winner that is
+given a <code>tvector&lt;string&gt; bracket</code> 
+and a <code>string results</code> and that returns the name
+of the winning team as a <code>string</code>. 
+The bracket is given in order from top
+to bottom, and the results are given as a string of 'H' or 'L'
+indicating for each game (in the order in which the games were played)
+whether the Higher or Lower team from the bracket won that game. results
+contains a character for each real game, but not for byes.
+
+<P> 
+<h3>Definition</h3>
+
+<UL>    
+<LI> Class: Tourney
+<LI> Method: winner
+<LI> Parameters: <code>tvector&lt;string&gt;</code>, <code>string</code>
+<LI> Returns: <code>string</code>
+<LI>Method signature: 
+<PRE>
+    string winner(const tvector&lt;string&gt;&amp; bracket, const string&amp; results)
+</PRE>
+
+(be sure your method is public)
+<P>    
+
+ <h3>Class</h3>
+
+
+<XMP>
+
+#include<string>
+using namespace std;
+#include "tvector.h"
+class Tourney
+{
+    public:
+    string winner(const tvector<string>& bracket, 
+                  const string& results)
+    {
+            // fill in code here
+    }
+};
+</XMP>
+
+<P>
+<h3>Notes</h3
+
+<UL>
+<LI> It is possible that two teams with the same name could be in the
+tournament.
+</UL>
+
+<P>
+<h3>Constraints</h3>
+<UL>
+<LI> the number of elements in bracket will be a power of 2 between 2 and
+32 inclusive
+<P>
+<LI> each element in bracket will have length between 1 and 50 inclusive
+<P>
+<LI> each element in bracket will contain only uppercase characters
+'A'-'Z', or will be "bye"
+<P>
+<LI> no two bye elements will be placed such that they would play each
+other
+<P>
+<LI> the length of results will be exactly one less than the number of
+non-bye elements in bracket
+<P>
+<LI> each character of results will be uppercase 'H' or uppercase 'L'
+
+</UL>
+
+<P>
+<h3>Examples</h3>
+<OL>
+<LI>
+<PRE>
+bracket = {"DUKE","UCLA","bye","MIT"}
+
+results = "HL"
+
+
+</PRE>
+
+Returns:  "MIT"
+<P>
+
+DUKE played UCLA in the first round and MIT advanced with a bye. DUKE
+won since the first game was won by the team higher on the bracket. In
+the second round, MIT beat DUKE since the second game was won by the
+lower team.
+<P>
+<LI>
+<PRE>    
+
+bracket = {"A","B","C","bye","D","E","F","bye"}
+
+results = "LHHLH"
+
+
+</PRE>
+
+Returns "B"
+<P>
+
+  Round 1: B beat A, D beat E <br>
+  Round 2: B beat C, F beat D <br>
+  Round 3: B beat F <br>
+
+<P>
+<LI>
+<PRE>    
+bracket = {"MIT","bye"}	
+
+results = ""
+
+</PRE>
+<P>
+Returns: "MIT"
+<P>
+
+<LI>
+<PRE>
+
+bracket = {"STANFORD","bye","STANFORD","bye"}
+
+results = "L"
+
+
+</PRE>
+<P>
+Returns: "STANFORD"
+<P>
+
+</OL>
+
+
+
+
+
+
+    <hr>
+    <address><a href="mailto:ola@cs.duke.edu">Owen L. Astrachan</a></address>
+<!-- Created: Wed Feb 26 10:34:13 EST 2003 -->
+<!-- hhmts start -->
+Last modified: Wed Jul 23 10:30:35 EDT 2003
+<!-- hhmts end -->
+  </body>
+
+<!-- Mirrored from www.cs.duke.edu/csed/onlineprobs/p11.html by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 14 Mar 2006 08:55:06 GMT -->
+</html>

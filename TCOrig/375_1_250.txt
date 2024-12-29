@@ -1,0 +1,94 @@
+typedef long long LL;
+
+LL gcd(LL a, LL b) 
+{
+	return b == 0 ? a : gcd(b, a % b);
+}
+
+long long getContinuation(int n) 
+{
+	LL g = 1;
+	LL tmp = n;
+	while (tmp > 0)
+	{
+		g = (g*(tmp%10))/gcd(g,tmp%10);
+		tmp /= 10;
+	}
+	for (int p = 0; ; p++)
+	{
+		char buf[100];
+		sprintf(buf, "%d%s", n, string(p,'0').c_str());
+		LL t;
+		sscanf(buf, "%lld", t);
+		LL rem = t % g;
+		if (rem == 0)
+			return t;
+		// t = n*10^p+q, where q < 10^p
+		int m = g-rem;
+		// find smallest number q < 10^p such that q % g == m
+		
+	
+}
+Problem Statement
+    
+Given an integer n, find the smallest integer that starts with n and is divisible by every non-zero digit of n (all in decimal notation).
+Definition
+    
+Class:
+DivisibleByDigits
+Method:
+getContinuation
+Parameters:
+int
+Returns:
+long long
+Method signature:
+long long getContinuation(int n)
+(be sure your method is public)
+    
+
+Notes
+-
+An integer A starts with an integer B if the string representation of B is a prefix of the string representation of A (both in decimal notation with no leading zeroes).
+Constraints
+-
+n will be between 1 and 1000 000 000, inclusive.
+Examples
+0)
+
+    
+13
+Returns: 132
+We need a number that starts with 13 and is divisible by 1 (always true) and by 3. The smallest one is 132.
+1)
+
+    
+648
+Returns: 648
+If n is divisible by all its non-zero digits, the answer to the problem is n itself.
+2)
+
+    
+566
+Returns: 56610
+The resulting number must be divisible by 5, so it should end either with 0 or with 5. But a number ending with 5 is odd and can't be divisible by 6. So the last digit of the answer must be 0. In order to make the number divisible by 6, we need to put something before this 0, and the smallest appropriate digit is 1.
+3)
+
+    
+1000000000
+Returns: 1000000000
+
+4)
+
+    
+987654321
+987654321360
+Returns: 987654321360
+
+5)
+
+    
+83
+Returns: 8304
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

@@ -1,0 +1,215 @@
+int n;
+vector < vector<int> > A;
+
+int visited[110];
+
+bool check(int pe, int ps)
+{
+	int q[110], qn, qh, qt;
+
+	qn = qh = qt = 0;
+	q[qt++] = pe;
+	qn++;
+	visited[pe] = 1;
+	
+	while (qn > 0)
+	{
+		int t = q[qh++];
+		qn--;
+		if (t == ps)
+			return false;
+		
+		for (int i = 0; i < A[t].size(); i++)
+		{
+			if (!visited[A[t][i]])
+			{
+				visited[A[t][i]] = 1;
+				q[qt++] = A[t][i];
+				qn++;
+			}
+		}
+	}
+	return false;
+}
+	
+int minObstacles(vector <string> maze) 
+{
+
+	vector<pi> v;
+	map<pi,int> rev;
+	int pex = -1, pey = -1, psx = -1, psy = -1;
+	
+	int rows = maze.size();
+	int cols = maze[0].size();
+	
+	n = 0;
+	for (int i = 0; i < maze.size(); i++)
+	{
+		for (int j = 0; j < maze[0].size(); j++)
+		{
+			if (maze[i][j] != '#')
+			{
+				v.push_back(make_pair(i, j));
+				rev[make_pair(i, j)] = n;
+				if (maze[i][j] == 'P')
+				{
+					if (pex == -1)
+					{
+						pe = n;
+						pex = i;
+						pey = j;
+					}
+					else
+					{
+						ps = n;
+						psx = i;
+						psy = j;
+					}
+				}
+				n++;				
+			}
+		}
+	}
+	
+	A.resize(n);
+	
+	int d[] = {0,-1, -1,0, 0,1, 1,0};
+	
+	for (int i = 0; i < n; i++)
+	{
+		int r = v[i].first, c = v[i].second;
+		for (int k = 0; k < 4; k++)
+		{
+			int dr = d[2*k], dc = d[2*k+1];
+			if (r+dr < 0 || r+dr >= rows || c+dc < 0 || c+dc >= cols)
+				continue;
+			if (maze[r+dr][c+dc] != '#')
+			{
+				int ind = rev[make_pair(r+dr, c+dc)];
+				A[i].push_back(ind);
+			}
+		}
+	}
+	
+	if (abs(pex-psx) == 0 && abs(pey-psy) <= 1)
+	{
+		return -1;
+	}
+	if (abs(pey-psy) == 0 && abs(pex-psx) <= 1)
+	{
+		return -1;
+	}
+	
+	for (int i = 0; i < n; i++)
+	{
+		memset(visited, 0, sizeof(visited));
+		visited[i] = 1;
+		if (check())
+			return 1;
+		visited[i] = 0;
+	}
+
+	}
+	
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = i+1; j < n; j++)
+		{
+			memset(visited, 0, sizeof(visited));
+			visited[i] = visited[j] = 1;
+			if (check())
+				return 1;
+			visited[i] = visited[j] = 0;
+		}
+	}
+	
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = i+1; j < n; j++)
+		{
+			for (int k = j+1; k < n; k++)
+			{
+				memset(visited, 0, sizeof(visited));
+				visited[i] = visited[j] = visited[k] = 1;
+				if (check())
+					return 1;
+				visited[i] = visited[j] = visited[k] = 0;
+			}
+		}
+	}
+	
+	return 4;
+}
+
+Problem Statement
+    
+A maze is a rectangular grid, where each cell is either an empty space or an obstacle. The Prince of Persia is initially positioned in one empty cell, and the Princess is in another one.
+
+Each of them can move from one empty cell to another one only if these cells are adjacent, i. e., share a common side. 
+None of them can appear in a cell with an obstacle.
+
+Their common target is to move into the same cell.
+
+The terrible usurper Jaffar doesn't want that to happen. He is going to put obstacles into some currently empty cells in order to prevent their meeting. He cannot put the obstacles in the cells where the Prince and the Princess are initially located, but he can use any other empty cells.
+You will be given a vector <string> maze containing empty cells ('.'), obstacles ('#') and the initial positions of the Prince and the Princess ('P').
+Return the minimum number of obstacles that Jaffar must put to separate the Prince and the Princess. If he is unable to separate them, return -1.
+Definition
+    
+Class:
+PrinceOfPersia
+Method:
+minObstacles
+Parameters:
+vector <string>
+Returns:
+int
+Method signature:
+int minObstacles(vector <string> maze)
+(be sure your method is public)
+    
+
+Constraints
+-
+maze will contain between 1 and 10 elements, inclusive.
+-
+Each element of maze will contain between 1 and 10 characters, inclusive.
+-
+Each element of maze will contain the same number of characters.
+-
+Each element of maze will contain only dots ('.'), number signs ('#') and uppercase 'P' characters.
+-
+There will be exactly two 'P' characters in the elements of maze.
+Examples
+0)
+
+    
+{"P....",
+ "...##",
+ "##...",
+ "....P"}
+Returns: 1
+Jaffar will put an obstacle in one of the two central cells of the maze.
+1)
+
+    
+{".....",
+ ".P.P.",
+ "....."}
+Returns: 3
+One of the solutions for Jaffar that uses 3 obstacles is to build a "wall" in the middle column.
+2)
+
+    
+{".#P.",
+ ".P#."}
+Returns: 0
+The royal persons are already securely separated.
+3)
+
+    
+{"####",
+ "#PP#",
+ "####"}
+Returns: -1
+Remember, Jaffar can't put an obstacle in a cell marked "P".
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

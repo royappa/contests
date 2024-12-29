@@ -1,0 +1,158 @@
+// COUNTING STRINGS IN SOME ORDER (CORRECT)
+// AND FINDING THE INDEX'ED STRING IN THAT ORDER
+// KEY IDEA: BE ABLE TO GROUP THE ORDER INTO "CHUNKS" SO WE CAN RAPIDLY SKIP UP "CHUNKS" OF THE STRING CORRESPONDING TO ONE LETTER (OR MORE)
+// E.G. IN THIS CASE, WE KNOW THE LAST CHARACTER IS K % (SOMETHING) SO WE CAN EASILY COMPUTE IT
+// THIS IS A DIFFERENT IDEA OF CHUNKING THAN IN 337_1_1100 (ALSO DONE & CORRECT)
+#include <vector>
+#include <list>
+#include <map>
+#include <set>
+#include <deque>
+#include <stack>
+#include <bitset>
+#include <algorithm>
+#include <functional>
+#include <numeric>
+#include <utility>
+#include <sstream>
+#include <iostream>
+#include <iomanip>
+#include <cstdio>
+#include <cmath>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+
+class LicensePlate {
+public:
+string getPlate(string s, int k) 
+{
+	string ustr = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	string nstr = "0123456789";
+	string astr = nstr+ustr;
+	
+	// EXAMPLE IF S="XYZanu". Then the last letter is the k%26'th uppercase letter. And the rest is k/26'th part of the prefix (all except last).
+	int n = s.size();
+	string r = "";
+	for (int i = n-1; i >= 0; i--)
+	{
+		if (s[i] == 'u')
+		{
+			r = ustr[k%26]+r;
+			k /= 26;
+		}
+		else if (s[i] == 'n')
+		{
+			r = nstr[k%10]+r;
+			k /= 10;
+		}
+		else if (s[i] == 'a')
+		{
+			r = astr[k%36]+r;
+			k /= 36;
+		}
+		else
+		{
+			r = s[i]+r;
+		}
+	}
+	return k > 0 ? "" : r; // if anything is still left to put then can't be done
+}
+};
+
+
+//Powered by [KawigiEdit]
+
+Problem Statement
+    
+Almost every different government in the world has a different method of assigning license plates to vehicles. 
+
+In any of these systems, it is possible to take all possible plates, arrange them in lexicographical order, and number them, where the first plate is 0, the second plate is 1, etc. 
+
+Your local government has decided to do this with the license plates that it issues, and right before you leave to eat lunch, you have been assigned this daunting project. So that you can actually have a warm meal today, you have decided to write a program to do this for you.
+
+You will be given a string format, containing the format of the local license plates. 
+
+Each character of format will be either an uppercase letter ('A'-'Z'), a number ('0'-'9'), a space (' '), a dash ('-'), or the lowercase letters 'u', 'n', or 'a'. 
+
+If the character is a 'u', it means that any uppercase letter can be used in that place. 
+If the character is an 'n', it means that any number can be used in that place. 
+If the character is an 'a', it means that any uppercase letter or number can be used in that place. 
+
+If the character is not a lowercase letter, then the character in that spot must be the one used in format. 
+
+For instance, if the format was "AB-una", then "AB-C52" and "AB-D3G" would be legal license plates, but "AC-D3G", "AB-111", and "AB-DEF" would not.
+
+Given the format, you are to return the n-th earliest (0-indexed) license plate that can be formed in this system. 
+
+If the n-th license plate cannot be formed using the given format, return an empty string. 
+
+Note that numbers occur earlier lexicographically than letters (e.g., '4' comes before 'B').
+Definition
+    
+Class:
+LicensePlate
+Method:
+getPlate
+Parameters:
+string, int
+Returns:
+string
+Method signature:
+string getPlate(string format, int n)
+(be sure your method is public)
+    
+
+Constraints
+-
+format will contain between 1 and 50 characters, inclusive.
+-
+Each character of format will be an uppercase letter ('A'-'Z'), a number ('0'-'9'), a space (' '), a hyphen ('-'), or the lowercase letters 'a', 'n', or 'u'.
+-
+n will be between 0 and 2^31-1, inclusive.
+Examples
+0)
+
+    
+"ABu"
+2
+Returns: "ABC"
+The license plates in this format are "ABA", "ABB", "ABC", "ABD", etc. We return the 2nd (0-based) element in this list, which is "ABC".
+1)
+
+    
+"ABn"
+2
+Returns: "AB2"
+
+2)
+
+    
+"ABa"
+12
+Returns: "ABC"
+Remember that numbers come first in lexicographical order.
+3)
+
+    
+"A BC"
+2
+Returns: ""
+There are only 1 possible license plate in this format ("ABC"), so we must return a blank plate.
+4)
+
+    
+"una"
+8732
+Returns: "Y2K"
+
+5)
+
+    
+"ABa  DEuF-GHuJ KL-aMNaa5390u"
+1345876
+Returns: "AB0  DEAF-GHBJ KL-3MNXW5390M"
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

@@ -1,0 +1,29 @@
+VOTE!
+
+I have a question. You've just finished an SRM, and you want to see how others solved the problems. If all coders have submitted a solution, whose do you look at first? Vote for your top 3.
+
+Now, I figure we all open You Know Who's programs, just because he's #1. And he's high on my list, too. But this is not about popularity or stardom. I want to know whose programs you find most Educational, Useful and/or Entertaining to examine and study: in short, whose programs do you get the most out of?
+
+Please list your #1,#2 and #3 in order. If there are more than 5 responses I will tabulate the votes. You don't need to give a reason as I have given below, but here is my list.
+
+**********MY VOTES*****************
+
+1. jms137: The Professor. If there is an "Academic Way" to solve a problem, this will usually be the best place to look. The one your CS Professor would approve of: clear, stepwise algorithms, combined with careful, elegant, concise code. But he's not above getting his hands dirty ... when that would be The Right Thing to do...
+
+An especially good resource for us Java coders.
+
+
+2. marian: The Programmer. Yes, we're all programmers here, but Marian knows AND uses all the tricks in the book - judiciously. Denser code, but the logic is still transparent. As the saying goes, it is kept "as simple as possible, but no simpler". Just the right amount of cleverness that makes you say, "Gee, I could have thought of that." 
+
+Except, you didn't.
+
+
+3. SnapDragon: The Psychokiller. You open the code and see a few sparse lines of what looks like primitive C. You think, "This can't be correct, it's too simple..."  
+
+But it IS correct, so you feel some awe, and maybe even a little... fear. You wonder, what kind of a Mind produces such tightly twisted logic? As you begin to feverishly unravel the knots, you see that there IS a method to this madness. Cool, calculating, and and precise. Quite simply, each of your three steps have been rolled into one. And as you scurry along, trying desperately to keep up but never quite succeeding, you realize that you will always be the apprentice, never the Sorcerer: this is a Mind that will always be two steps ahead of you. Your fear grows... these might be matters in which you would be wiser not to dabble.
+
+Was that the sound of your front door creaking open? You stifle a scream of sheer terror... You close the Applet.
+
+***********************************
+
+OK, OK, so I got a little carried away. Just vote.

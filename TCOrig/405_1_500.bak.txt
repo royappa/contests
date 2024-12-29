@@ -1,0 +1,243 @@
+vector<string> split_nonre(string s, string sep)
+{
+	char *sC = (char *) malloc(s.size()+1);
+	strcpy(sC, s.c_str());
+	char *sepC = (char *) sep.c_str();
+	char *status = NULL;
+	
+	char *word;
+	vector<string> results;
+	while ((word = strtok_r(sC, sepC, &status)) != NULL)
+	{
+		results.push_back(word);
+		sC = NULL;
+	}
+	return results;
+}
+
+#include <vector>
+#include <list>
+#include <map>
+#include <set>
+#include <deque>
+#include <stack>
+#include <bitset>
+#include <algorithm>
+#include <functional>
+#include <numeric>
+#include <utility>
+#include <sstream>
+#include <iostream>
+#include <iomanip>
+#include <cstdio>
+#include <cmath>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+class FoldThePaper {
+public:
+#include <vector>
+#include <list>
+#include <map>
+#include <set>
+#include <deque>
+#include <stack>
+#include <bitset>
+#include <algorithm>
+#include <functional>
+#include <numeric>
+#include <utility>
+#include <sstream>
+#include <iostream>
+#include <iomanip>
+#include <cstdio>
+#include <cmath>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+class FoldThePaper {
+public:
+vector<string> split_nonre(string s, string sep)
+{
+	char *sC = (char *) malloc(s.size()+1);
+	strcpy(sC, s.c_str());
+	char *sepC = (char *) sep.c_str();
+	char *status = NULL;
+	
+	char *word;
+	vector<string> results;
+	while ((word = strtok_r(sC, sepC, &status)) != NULL)
+	{
+		results.push_back(word);
+		sC = NULL;
+	}
+	return results;
+}
+
+int getValue(vector <string> paper) 
+{
+	int rows = paper.size();
+	int A[12][12];
+	memset(A, 0, sizeof(A));
+	int cols = 0;
+	for (int i = 0; i < rows; i++)
+	{
+		vector<string> w = split_nonre(paper[i], " ");
+		cols = w.size();
+		for (int j = 0; j < cols; j++)
+		{
+			A[i][j] = atoi(w[j].c_str());
+		}
+	}
+	
+	int B[12][12], C[12][12];
+	int rfolds = rows-1, cfolds = cols-1;
+	int m = -(1<<25);
+	for (int rm = 0; rm < (1<<rfolds); rm++)
+	{
+		// fold A into B according to rm
+		memcpy(B, A, sizeof(B));
+		int start = 0;
+		for (int i = 0; i < rfolds; i++)
+		{
+			if ((rm & (1<<i)) == 0) continue;
+			// fold between rows i & i+1
+			int p = 0;
+			for (int k = i; k >= start; k--, p++)
+			{
+				for (int j = 0; j < cols; j++)
+				{
+					B[i+1+p][j] += A[k][j];
+				}
+			}
+			start = i+1;
+		}		
+		memcpy(C, B, sizeof(B));
+		// B[start..rows-1] contains folded
+		for (int cm = 0; cm < (1<<cfolds); cm++)
+		{
+			//fold B into C according to cm & calculate largest
+			memcpy(B, C, sizeof(B));
+			int cstart = 0;
+			for (int j = 0; j < cfolds; j++)
+			{
+				if ((cm & (1<<j)) == 0) continue;
+				int p = 0;
+				for (int k = j; k >= cstart; k--, p++)
+				{
+					for (int i = start; i < rows; i++)
+					{
+						B[i][j+1+p] += C[i][k];
+					}
+				}
+				cstart = j+1;
+			}
+			for (int i = start; i < rows; i++)
+			{
+				for (int j = cstart; j < cols; j++)
+				{
+					m >?= B[i][j];
+				}
+			}
+		}
+	}
+	return m;			
+}
+};
+
+
+//Powered by [KawigiEdit]
+};
+
+
+//Powered by [KawigiEdit]
+
+
+Problem Statement
+    
+You have a rectangular piece of paper that's divided into 1x1 cells, each of which has an integer value. The paper will be described by a vector <string> paper. The ith element of paper will be a space delimited list of integers, where the jth integer of the ith element of paper represents the value of the jth cell of the ith row of the paper.  You want to perform a sequence of folds on the paper, where you may fold anywhere along an axis that is in between two rows or columns of the paper. After performing a fold, we wish to model the folded paper as a new, flat piece of paper. We will do this by considering two overlapping cells as a single cell, with a value that is the sum of the individual cells.  You wish to perform a sequence of folds such that the value of some single cell in the resulting piece of paper is as large as possible. Return this value.
+Definition
+    
+Class:
+FoldThePaper
+Method:
+getValue
+Parameters:
+vector <string>
+Returns:
+int
+Method signature:
+int getValue(vector <string> paper)
+(be sure your method is public)
+    
+
+Constraints
+-
+paper will contain between 1 and 12 elements, inclusive.
+-
+Each element of paper will be a single-space delimited list of integers with no leading or trailing spaces.
+-
+Each element of paper will contain between 1 and 12 integers, inclusive.
+-
+Each element of paper will contain the same number of integers.
+-
+Each element of paper will contain between 1 and 50 characters, inclusive.
+-
+Each integer in paper will be between -100 and 100, inclusive.
+-
+Each integer in paper will have no leading zeros.
+-
+An integer in paper equal to zero will not have a preceding negative sign.
+Examples
+0)
+
+    
+{
+"1 1 1",
+"1 1 1"
+}
+Returns: 6
+We can collapse every cell onto the upper-left cell.
+1)
+
+    
+{
+"1 -1",
+"1 -1"
+}
+Returns: 2
+We should perform only the fold between the two rows, and take the resulting left column.
+2)
+
+    
+{
+"1 -1 -1 1",
+"-1 -1 -1 -1",
+"-1 -1 -1 -1",
+"1 -1 -1 1"
+}
+Returns: 4
+Folding between the middle rows then the middle columns allows us to combine the four corner cells.
+3)
+
+    
+{
+"20 13 -2 100",
+"-12 0 4 -3",
+"4 1 -36 21"
+}
+Returns: 131
+
+4)
+
+    
+{
+"0"
+}
+Returns: 0
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

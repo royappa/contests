@@ -1,0 +1,168 @@
+typedef long long LL;
+typedef pair<LL,LL> pLL;
+
+pLL eea2(LL a, LL b)
+{
+	if (a == 0)
+	{
+		return make_pair(1LL, 0LL);
+	}
+	else if (b == 0)
+	{
+		return make_pair(0LL, 1LL);
+	}
+	if (a % b == 0)
+	{
+		return make_pair(0LL, 1LL);
+	}
+	else
+	{
+		pLL t = eea2(b, a % b);
+		LL m = t.first, n = t.second;
+
+		return make_pair(n, m-n*(a / b));
+	}
+}
+
+// extended euclidean algorithm: bezout's identity
+// given a,b > 0, return m,n s.t. m*a+n*b = gcd(a,b);
+// considers gcd(a,0) = 0 = gcd(0, b)
+// handles negative numbers, with gcd(a,b) = gcd(+-a, +-b) >= 0
+pLL eea(LL a, LL b)
+{
+	pLL t;
+	if (a < 0 && b < 0)
+	{
+		t = eea2(-a, -b);
+		t.first *= -1LL;
+		t.second *= -1LL;
+	}
+	else if (a < 0)
+	{
+		t = eea2(-a, b);
+		t.first *= -1LL;
+	}
+	else if (b < 0)
+	{
+		t = eea2(a, -b);
+		t.second *= -1LL;
+	}
+	else
+	{
+		t = eea2(a, b);
+	}
+	return t;
+}
+
+LL gcd(LL a, LL b)
+{
+	return b == 0 ? a : gcd(b, a % b);
+}
+
+long long getTime(vector <string> reels, string req) 
+{
+	int n = req.size();
+	for (int i = 0; i < n; i++)
+	{
+		if (reels[i].find(req[i]) == -1)
+			return -1;
+	}
+	// Let sizes of each reel be m0,m1,..,m(n-1)
+	// Let characters required be r0,r1,,...,r(n-1)
+	// Let position of ri in reel i be ai, e.g. r0 occurs at position a0 in reel 0
+	// Then ri occurs at time ti, such that ti = ai (mod mi)
+	// Goal is to find a t such that t = pi (mod mi), for all i
+	// Hence, use Chinese Remainder Theorem
+	vector<LL> m(n), a(n);
+	for (int i = 0; i < n; i++)
+	{
+		m[i] = reels[i].size();
+		a[i] = reels[i].find(req[i]);
+	}
+	// check if we can use the chinese remainder theorem
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = i+1; j < n; j++)
+		{
+			if (a[i] % gcd(m[i], m[j]) != a[j])
+				return -1;
+		}
+	}
+	// now we can use the CRT even if some of the m's are not pairwise relatively prime
+	
+			
+
+Problem Statement
+    
+A display mechanism is built from several spinning reels arranged in a line, from left to right. Each reel has a number of distinct letters on its perimeter, and only one of them is visible at a time. The visible letter changes every second. Each reel may have a different number of letters.
+You are given a vector <string> reels, where reels[k] represents the letters on the k-th reel.
+At time 0, each reel shows the letter at index 0 from the corresponding element of reels. At every second, the visible letter changes from the letter at index i to the letter at index i+1. Since reels are circular, the first letter shows up again after the last one.
+Return the first second when the text displayed is equal to requiredText, or -1 if this will never happen.
+Definition
+    
+Class:
+RollingLetters
+Method:
+getTime
+Parameters:
+vector <string>, string
+Returns:
+long long
+Method signature:
+long long getTime(vector <string> reels, string requiredText)
+(be sure your method is public)
+    
+
+Notes
+-
+The return value will fit in a signed 64 bit integer.
+Constraints
+-
+reels will contain between 1 and 50 elements, inclusive.
+-
+Each element of reels will contain between 2 and 26 uppercase letters ('A'-'Z'), inclusive.
+-
+Characters in each element of reels will be distinct.
+-
+requiredText will contain exactly N uppercase letters ('A'-'Z'), where N is the number of elements in reels.
+Examples
+0)
+
+    
+{"XYZ", "DEF", "OPRS"}
+"YES"
+Returns: 7
+The message displayed at each second is:
+0: XDO
+1: YEP
+2: ZFR
+3: XDS
+4: YEO
+5: ZFP
+6: XDR
+7: YES
+1)
+
+    
+{"ABC","ABC"}
+"AB"
+Returns: -1
+The only possible messages are "AA", "BB", "CC".
+2)
+
+    
+{"ABC"}
+"X"
+Returns: -1
+There is no 'X' on the reel.
+3)
+
+    
+{"CPKHFQEYXVMODNRTSGUBLJ", "TJLSURVHFQPAXGCEI", "JXNSGADPEWICKLFMVOQ", "UOFVKGQIJRECMWXADTPNL",
+"OREWASJFLY", "HBEC", "ESDRVXCNQUFWKGTOLH", "CPLTAMBHYSQDVJIORNW", "CG"}
+"CAIIEHLQC"
+Returns: 4088392
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.			
+	
+}

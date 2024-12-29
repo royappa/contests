@@ -1,0 +1,179 @@
+//////////////////////////////////////////////////////////////////////
+//// FINAL CORRECT VERSION THAT PASSES SYSTESTS
+//// BOTH THE PRIME GENERATOR AND THE PERMUTATION GENERATOR ARE CORRECT 
+//// PERMUTATION GENERATOR IS GOOD AT LEAST TO 8!, MAY BE BETTER BEYOND THAT WITH INTEGER QUEUE
+////
+public class PrimeAnagrams
+{
+	private boolean[] isPrime;
+	
+	public int[] primes(String anagram)
+	{
+		isPrime = new boolean[1000001]; 
+		Arrays.fill(isPrime, true);
+		isPrime[0] = isPrime[1] = false;
+		for (int i = 3; i <= 1000000; i++)
+		{
+			for (int j = 2; j*j <= i; j++)
+			{
+				if (i%j == 0)
+				{
+					isPrime[i] = false;
+					break;
+				}
+			}
+		}
+		int n = anagram.length();
+		LinkedList q = new LinkedList();
+		HashMap seen = new HashMap();
+		
+		int minProd = Integer.MAX_VALUE;
+		int best1 = 0, best2 = 0, best3 = 0;
+		// FIRST, generate all digit permutations of original string (thanks to brogers)
+		// then partition into sets of 3
+		q.add(anagram);
+		seen.put(anagram, "yes");
+	
+		while (q.size() > 0)
+		{
+			String head = (String) q.remove(0);	// get current permutation
+			char[] dig = head.toCharArray();
+			
+			/// THIS NEXT CODE IS THE PART TO "TEST" THE CURRENT PERMUTATION, in "head" variable
+			for (int i = 1; i <= n-2; i++)
+			{
+				if (dig[0] == '0')
+					continue;
+					
+				int num1 = 0, num2 = 0, num3 = 0;
+				for (int k = 0; k < i; k++)
+					num1 = num1*10+(dig[k]-'0');
+				if (!isPrime[num1])
+					continue;				
+				for (int j = i+1; j <= n-1; j++)
+				{
+					num2 = num3 = 0;
+					if (dig[i] == '0' || dig[j] == '0')
+						continue;
+					for (int k = i; k < j; k++)
+						num2 = num2*10+dig[k]-'0';
+					if (!isPrime[num2])
+						continue;
+					for (int k = j; k < n; k++)
+						num3 = num3*10+dig[k]-'0';
+					if (isPrime[num3])
+					{
+						int t = num1*num2*num3;
+						if (t < minProd)
+						{
+							minProd = t;
+							best1 = num1;
+							best2 = num2;
+							best3 = num3;
+						}
+					}
+				}
+			}
+			// End of  testing current permutation. 
+			// Now generate all other permutations "reachable" from this one by swapping.
+			// GENERATE PERMUTATIONS BY SWAPPING
+			for (int i = 0; i < n; i++)
+			{
+				for (int j = i+1; j < n; j++)
+				{
+					char ti = dig[i];
+					char tj = dig[j];
+					dig[i] = tj;
+					dig[j] = ti;
+					String next = new String(dig);
+					if (!seen.containsKey(next))
+					{
+						q.add(next);
+						seen.put(next, "yes");
+					}
+					dig[i] = ti;
+					dig[j] = tj;
+				}
+			}
+		}
+		if (minProd == Integer.MAX_VALUE)
+			return new int[0];
+		int[] best = new int[] { best1, best2, best3 };
+		Arrays.sort(best);
+		return best;	
+	} 
+}
+	
+	
+Problem Statement
+    
+You will be given a string of digits that supposedly come from three prime numbers. The digits will be given in a random order. Your task is to find the three prime numbers, if they exist. If there are three such primes, return them sorted least to greatest. If there is more than one possible set of three primes, return the set with the smallest product. If there is no such set, return { }.
+
+For example, the five digits of the primes 5, 13, and 19 could be given to you as "39151". There are several other sets of prime numbers that could also be rearranged to give this input, for example { 5, 31, 19 } and { 3, 11, 59 }. The set with the smallest product is { 5, 13, 19 }, so those are the three primes your method should return.
+
+Each digit of each prime will be present in the input. For example, if the input contains exactly two occurrences of the digit "1" (as in the example above), you must use the digit "1" exactly twice.
+
+Any zeros in the input may not be used as leading zeros in any of the three primes.
+
+Definition
+    
+Class:
+PrimeAnagrams
+Method:
+primes
+Parameters:
+String
+Returns:
+int[]
+Method signature:
+int[] primes(String anagram)
+(be sure your method is public)
+    
+
+Notes
+-
+If you find two sets of primes with the same product, you have made a startling discovery!
+Constraints
+-
+anagram will contain between 3 and 8 characters, inclusive.
+-
+Each character of anagram will be a digit.
+Examples
+0)
+
+    
+"39151"
+Returns: { 5,  13,  19 }
+This is the example from the problem statement.
+1)
+
+    
+"921179"
+Returns: { 2,  17,  199 }
+
+2)
+
+    
+"01123"
+Returns: { 2,  3,  101 }
+The input may have a leading zero, but the primes may not. {2, 3, 011} is not a valid answer.
+3)
+
+    
+"0707070"
+Returns: { }
+
+4)
+
+    
+"222"
+Returns: { 2,  2,  2 }
+
+5)
+
+    
+"123"
+Returns: { }
+
+1 is not prime.
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

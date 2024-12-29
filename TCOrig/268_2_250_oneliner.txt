@@ -1,0 +1,33 @@
+#include <vector>
+#include <list>
+#include <map>
+#include <set>
+#include <deque>
+#include <stack>
+#include <bitset>
+#include <algorithm>
+#include <functional>
+#include <numeric>
+#include <utility>
+#include <sstream>
+#include <iostream>
+#include <iomanip>
+#include <cstdio>
+#include <cmath>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+class CrossWordPuzzle {
+public:
+int countWords(vector <string> board, int size, int n = 50, string s = "$", int p = 0) 
+{
+	return n == 0 ? 0 : n > board.size() ? countWords(board, size, n-1, "$", p) : s == "" ? 0 : 
+	       (p = (s=="$"?s=("X"+board[n-1]+"X"):s).find("X"+string(size,'.')+"X")) != -1 ? 
+		   	1+countWords(board, size, n, s.substr(p+size+1), p):countWords(board, size, n-1,"$", p);
+}
+};
+
+
+//Powered by [KawigiEdit]	

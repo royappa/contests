@@ -1,0 +1,202 @@
+class RegularSeason {
+public:
+
+	typedef pair<string,int> typeScore;
+	int rounds;
+	
+	bool fnCompar(const typeScore &a, const typeScore &b)
+	{
+		int winA = a.second;
+		int winB = b.second;
+		int winAR = floor( 0.5 + (double) winA * rounds / 100.0 );
+		int winBR = floor( 0.5 + (double) winB * rounds / 100.0 );
+		if (winAR != winBR)
+			return winAR > winBR;
+		if (winA != winB)
+			return winA > winB;
+		
+		return a.first < b.first;
+	}
+	
+	vector <string> RegularSeason::finalStandings(vector <string> teams, int _rounds) 
+	{
+		int n = teams.size();
+		vector<typeScore> scores;
+		rounds = _rounds;
+		
+		for (int i = 0; i < n; i++)
+		{
+			istringstream istr;
+			istr >> scores[i].first;
+			int score = 0;
+			for (int j = 0; j < n; j++)
+			{
+				if (j == i)
+					continue;
+				int s;
+				istr >> s;
+				score += s;
+				scores[j].second += (100-s);
+			}
+			scores[i].second = score;
+		}
+		sort(scores.begin(), scores.end(), fnCompar);
+		vector<string> result;
+		for (int i = 0; i < n; i++)
+		{
+			int s = floor(0.5 + (double) scores[i].second * rounds / 100.0);
+			char buf[100];
+			sprintf(buf, "%s %d", scores[i].first, s);
+			result.push_back(buf);
+		}
+		return result;
+	}
+
+};
+
+
+
+Problem Statement
+    
+A new basketball season will start this autumn, and you want to predict its results. You have been watching the tournaments for ages and following the teams closely, so you can exactly determine the probability that a particular team will win a match vs some other team. Now you want to know, given these probabilities, how many games each of the teams is expected to win in the upcoming tournament.  You will be given a vector <string>, teams. Each element of teams will be formatted as "NAME P1 P2 ... PN", where NAME is the name of the team, and P1, P2, ..., PN are the probabilities that this team will win home games against the 1st, 2nd, ..., Nth teams, respectively (the ith probability for the ith team will always be equal to 0). Ties are not possible due to the rules, so if the ith team has a probability p of beating the jth team in a home game, then the jth team has a probability of (100-p) of beating the ith team when the ith team is at home. 
+
+Finally, you will be given an int rounds, which gives you the number of rounds in the championship. 
+
+This means that team A will play 2*rounds games against each other team B (rounds as the visitors and rounds as the home team). 
+
+You should predict the expected number of games each team will win in the tournament. 
+
+You should round your prediction to the nearest integer (.5 rounds up).  
+
+The return value should be a vector <string>, with each element formatted as "NAME NUMBER", where NAME is the name of the team, and NUMBER is the predicted number of wins. NUMBER should have no extra leading zeroes. The return value should be sorted by NUMBER in decreasing order (so the first element of the result will represent the most probable champion). If several teams have the same rounded number of wins, sort them using predicted number of wins before rounding (again in decreasing order); if a tie still remains, sort the tied teams by NAME in ascending alphabetical order.
+Definition
+    
+Class:
+RegularSeason
+Method:
+finalStandings
+Parameters:
+vector <string>, int
+Returns:
+vector <string>
+Method signature:
+vector <string> finalStandings(vector <string> teams, int rounds)
+(be sure your method is public)
+    
+
+Notes
+-
+If a team has a probability of p that it will win a particular game, then that game contributes p/100 to the expected number of games the team will win. However, it is advisable that you wait to divide by 100 until you have completed the summation of the expected number of wins (in order to avoid problems with floating point precision).
+Constraints
+-
+teams will contain between 2 and 20 elements, inclusive.
+-
+No element of teams will contain more than 50 characters.
+-
+Each element of teams will be formatted as "NAME P1 P2 ... Pn".
+-
+Each NAME will contain only uppercase letters ('A'-'Z').
+-
+P1, P2, ..., Pn will each be an integer between 0 and 100, inclusive, with no extra leading zeros.
+-
+The ith probability of the ith element of teams will be 0.
+-
+rounds will be between 1 and 10, inclusive.
+-
+No two elements of teams will have the same NAME.
+Examples
+0)
+
+    
+{"A 0 10 50",
+"B 100 0 100",
+"C 50 10 0"}
+5
+Returns: { "B 19",  "A 6",  "C 6" }
+Teams A and C are each expected to win half of their games against the other. A and C will both lose all their road games against team B. They are both expected to win 0.5 home games against B (0.1 * 5). Summarizing and rounding 0.5 up will give us the result:
+B - 19 wins.
+A - 6 wins.
+C - 6 wins.
+Be aware of rounding AFTER calculating the summary for each team. Also, the sum of predictions for all teams may be NOT equal to the sum of games played (there were 30 games played, but teams are predicted to have 31 wins after the rounding).
+1)
+
+    
+{"SPURS 0 33 67 100",
+"LAKERS 67 0 33 100",
+"WOLVES 33 67 0 100",
+"KINGS 0 75 75 0"}
+2
+Returns: { "SPURS 8",  "LAKERS 7",  "WOLVES 7",  "KINGS 3" }
+
+2)
+
+    
+{"A 0 10 20 30 40 50 60 70 80 90",
+"AA 90 0 10 20 30 40 50 60 70 80",
+"AAA 80 90 0 10 20 30 40 50 60 70",
+"AAAA 70 80 90 0 10 20 30 40 50 60",
+"AAAAA 60 70 80 90 0 10 20 30 40 50",
+"AAAAAA 50 60 70 80 90 0 10 20 30 40",
+"AAAAAAA 40 50 60 70 80 90 0 10 20 30",
+"AAAAAAAA 30 40 50 60 70 80 90 0 10 20",
+"AAAAAAAAA 20 30 40 50 60 70 80 90 0 10",
+"AAAAAAAAAA 10 20 30 40 50 60 70 80 90 0"}
+10
+Returns: 
+{ "A 90",
+  "AA 90",
+  "AAA 90",
+  "AAAA 90",
+  "AAAAA 90",
+  "AAAAAA 90",
+  "AAAAAAA 90",
+  "AAAAAAAA 90",
+  "AAAAAAAAA 90",
+  "AAAAAAAAAA 90" }
+Don't forget about alphabetical order.
+3)
+
+    
+{"WF 0 0 71 10 62 87 49 75 50","OZ 38 0 79 55 36 96 63 17 37",
+"C 13 75 0 96 61 2 33 5 64","LCG 13 85 87 0 60 72 86 1 12",
+"GDDYC 71 62 21 6 0 17 63 34 32","B 37 66 81 81 53 0 61 80 90",
+"XK 14 63 40 25 13 86 0 6 43","YVN 57 30 55 22 31 11 81 0 13",
+"SKGAN 28 79 90 79 75 62 36 86 0"}
+10
+Returns: 
+{ "SKGAN 99",
+  "WF 93",
+  "B 92",
+  "LCG 84",
+  "YVN 80",
+  "OZ 76",
+  "GDDYC 72",
+  "C 63",
+  "XK 62" }
+
+4)
+
+    
+{
+"ZSN 0 61 70 44 69 40 84 59 20",
+"SJKB 95 0 88 39 99 18 90 58 44",
+"EBIUF 63 71 0 5 28 26 41 90 71",
+"MA 73 90 39 0 40 91 31 39 57",
+"NPT 35 74 75 74 0 74 14 20 27",
+"JVY 68 92 37 52 11 0 91 20 52",
+"ZBOW 66 44 69 9 8 7 0 2 35",
+"HH 31 70 14 39 6 68 73 0 20",
+"P 70 62 66 54 9 55 5 98 0"}
+10
+Returns: 
+{ "MA 94",
+  "NPT 92",
+  "P 89",
+  "JVY 84",
+  "SJKB 77",
+  "ZSN 75",
+  "EBIUF 74",
+  "HH 74",
+  "ZBOW 61" }
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

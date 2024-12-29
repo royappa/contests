@@ -1,0 +1,73 @@
+// CORRECT
+// Key idea: reconstruct the orignal number based on its "digits", then factor that number directly, and then just check
+// if the factors are in fact an "NC" factorization.
+
+typedef long long LL;
+typedef vector<int> vi;
+
+bool matches(LL f, LL f2, vi d)
+{
+	int n = d.size();
+	vector<int> fd, f2d;
+
+	while (f > 0)
+	{
+		fd.push_back(f%10LL);
+		f /= 10LL;
+	}
+	while (f2 > 0)
+	{
+		f2d.push_back(f2%10LL);
+		f2 /= 10LL;
+	}
+	vector<int> r(n,0);
+	for (int i = 0; i < f2d.size(); i++)
+	{
+		for (int j = 0; j < fd.size(); j++)
+		{
+			r[j+i] += fd[j]*f2d[i];
+		}
+	}
+
+	for (int i = 0; i < n; i++)
+	{
+		if (r[i] != d[i])
+			return false;
+	}
+	return true;
+}
+
+
+long long NCMultiplication::findFactors(vector <int> digits)
+{
+	LL num = 0;
+
+	for (int i = 0; i < digits.size(); i++)
+	{
+		num = 10*num+digits[i];
+	}
+	LL f = 1LL;
+	LL mm = 100000000000000LL;
+	LL bestA = -1LL;
+	reverse(digits.begin(), digits.end());
+	while (f*f <= num)
+	{
+		if (num % f == 0LL)
+		{
+			LL f2 = num / f;
+			if (matches(f, f2, digits))
+			{
+				LL A = max(f, f2);
+				LL B = min(f, f2);
+				if (A-B < mm)
+				{
+					mm = A-B;
+					bestA = A;
+				}
+			}
+		}
+		f++;
+	}
+	return bestA;
+}
+

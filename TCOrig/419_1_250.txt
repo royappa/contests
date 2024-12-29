@@ -1,0 +1,150 @@
+string getText(vector <string> c, vector <int> time) 
+{
+	string s = "";
+	vector<string> newc;
+	vector<int> newt;
+	int n = c.size();
+	for (int i = 0; i < n; i++)
+	{
+		if (c[i][0] == 't')
+		{
+			newc.push_back(c[i]);
+			newt.push_back(time[i]);
+		}
+		else
+		{
+			int t;
+			sscanf(c[i].c_str(), "type%d", &t);
+			int num = 0;
+			for (int j = i+1; j < n; j++)
+			{
+				if (c[j][0] == 't') continue;
+				int t2;
+				sscanf(c[j].c_str(), "undo%d", &t2);
+				if (time[j]-time[i] <= t2)
+				{
+					num++;
+				}
+			}
+			if (num % 2 == 0)
+			{
+				newc.push_back(c[i]);
+				newt.push_back(time[i]);
+			}
+		}
+	}
+	for (int i = 0; i < newc.size(); i++)
+	{
+		if (c[i][0] == 't')
+		{
+			s += substr(c[i], int(c[i].size())-1);
+		}
+		else
+		{
+			int t;
+			sscanf(c[i].c_str(), "undo%d", &t);
+			int p = s.size();
+			p--;
+			while (p >= 0 && newt[i]-newt[p] <= t)
+			{
+				s[p] = ' ';
+				p--;
+			}
+			s += " ";
+		}
+	}
+	string r = "";
+	for (int i = 0; i < s.size(); i++)
+	{
+		if (s[i] != ' ')
+			r += s[i];
+	}
+	return r;			
+}
+
+
+Problem Statement
+    
+You are writing a simple text editor that supports only the following two commands:
+	"type c" where c is a character: Append character c to the end of the current text.
+	"undo t" where t is an integer: Undo all operations that were performed in the previous t seconds in reverse order.
+All quotes are for clarity only. 
+
+The text in the editor is initially empty.
+
+For example, consider the following sequence of commands:
+Second 1: type a
+Second 2: type b
+Second 3: type c
+Second 5: undo 3
+At the end of second 3, the text is "abc". At second 5, all commands performed in the previous 3 seconds are undone in reverse order. This means 'c' is removed, and then 'b' is removed. The text becomes just "a".
+Note that "undo" commands can also be undone. For example:
+Second 1: type a
+Second 2: type b
+Second 3: undo 2
+Second 4: undo 2
+After second 2, the text is "ab". After second 3, everything is undone, and the text becomes empty. At second 4, the previous "undo" is undone, so the text becomes "ab" again. Then, the "type b" is also undone and the text becomes just "a".
+You are given a vector <string> commands and a vector <int> time. Each element of commands is a single command, and commands[i] is performed at time[i]. The commands are given in chronological order. Return the text after all the commands are executed.
+Definition
+    
+Class:
+Undo
+Method:
+getText
+Parameters:
+vector <string>, vector <int>
+Returns:
+string
+Method signature:
+string getText(vector <string> commands, vector <int> time)
+(be sure your method is public)
+    
+
+Constraints
+-
+commands will contain between 1 and 50 elements, inclusive.
+-
+Each element of commands will be either "type c" where c is a lowercase letter ('a'-'z') or "undo t" where t is an integer between 1 and 10^9, inclusive, with no leading zeroes (quotes for clarity only).
+-
+time will contain the same number of elements as commands.
+-
+Each element of time will be between 1 and 10^9, inclusive.
+-
+The elements of time will be in strictly ascending order.
+Examples
+0)
+
+    
+{"type a", "type b", "type c", "undo 3"}
+{1, 2, 3, 5}
+Returns: "a"
+The first example from the problem statement.
+1)
+
+    
+{"type a", "type b", "undo 2", "undo 2"}
+{1,2,3,4}
+Returns: "a"
+The second example from the problem statement.
+2)
+
+    
+{"type a", "undo 1", "undo 1"}
+{1,2,3}
+Returns: "a"
+
+3)
+
+    
+{"type a", "type b", "type c", "undo 10"}
+{1, 2, 3, 1000}
+Returns: "abc"
+Note that "undo" can undo nothing if it is too late.
+4)
+
+    
+{"undo 1"}
+{1}
+Returns: ""
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

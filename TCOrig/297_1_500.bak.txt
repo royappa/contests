@@ -1,0 +1,205 @@
+
+char newL[40][40], L[40][40];
+
+void place(int ff, int mr, int mc, int h, int w)
+{
+	// UDLR
+	
+	if ((ff&1) && mr > 0 && L[mr-1][mc] != '#') // up
+	{
+		for (int j = 0; j < w; j++)
+		{
+			newL[mr-1][j] = '#';
+		}
+	}
+	if ((ff&2) && mr < h-1 && L[mr+1][mc] != '#') // down
+	{
+		for (int j = 0; j < w; j++)
+		{
+			newL[mr+1][j] = '#';
+		}
+	}
+	if ((ff&4) && mc > 0 && L[mr][mc-1] != '#') // left
+	{
+		for (int j = 0; j < h; j++)
+		{
+			newL[j][mc-1] = '#';
+		}
+	}
+	if ((ff&8) && mc < w-1 && L[mr][mc+1] != '#') // right
+	{
+		for (int j = 0; j < h; j++)
+		{
+			newL[j][mc+1] = '#';
+		}
+	}
+}
+
+int visited[40][40];
+
+bool contained(int mr, int mc, int h, int w)
+{
+	if (mr <= 0 || mr >= h-1 || mc <= 0 || mc >= w-1)
+		return false; // is on boundary, thus not contained
+		
+	int d[] = {0,-1, -1,0, 0,1, 1,0};
+	
+	for (int k = 0; k < 4; k++)
+	{
+		int dr = d[2*k], dc = d[2*k+1];
+		int xr = mr+dr, xc = mc+dc;
+		if (newL[xr][xc] != '#' && !visited[xr][xc])
+		{
+			visited[xr][xc] = 1;
+			if (!contained(xr, xc, h, w))
+				return false;
+		}
+	}
+	return true;
+}
+		
+int capture(vector <string> origL) 
+{
+	int h = L.size(), w = L[0].size();
+	
+	for (int r = 0; r < h; r++)
+	{
+		for (int c = 0; c < w; c++)
+		{
+			L[r][c] = origL[r][c];
+		}
+	}
+	int bc[16];
+	for (int i = 0; i < 16; i++)
+	{
+		int b = 0;
+		for (int j = 0; j < 4; j++)
+		{
+			if (i & (1<<j))
+				b++;
+		}
+		bc[i] = b;
+	}
+	
+	int minFF = 100;
+	for (int mr = 0; mr < h; mr++)
+	{
+		for (int mc = 0; mc < w; mc++)
+		{
+			if (L[mr][mc] != '^')
+				continue;
+			if (mr == 0 || mr == h-1 || mc == 0 || mc == w-1)
+				continue;
+			// possible monster slot.
+			// count how many ff's are needed to contain the monster, if placed at (mr,mc)
+			for (int ff = 0; ff < 16; ff++)
+			{
+				if (bc[ff] >= minFF)
+					continue;
+				memcpy(newL, L, sizeof(newL));
+				place(ff, mr, mc, h, w);
+				memset(visited, 0, sizeof(visited));
+				if (contained(mr, mc, h, w))
+				{
+					minFF = min(minFF, bc[ff]);
+				}
+			}
+		}
+	}
+	return minFF == 100 ? -1 : minFF;
+}
+
+Problem Statement
+    
+Your task is to place a monster inside a labyrinth, and prevent it from escaping by placing force fields around it. 
+
+A force field creates a barrier that fills an entire row or column, so that the monster cannot enter it. 
+
+There is no interference between walls and force fields, so force fields freely cross through the labyrinth walls. 
+
+The labyrinth consists of empty spaces, denoted by '.', and walls, denoted by '#'. 
+
+Locations where you can initially place the monster are denoted by '^', and otherwise behave like empty space.
+
+The monster can move up, down, left, and right, but not diagonally. 
+
+If there is a path the monster can follow that ends outside of the map and does not go through any fields occupied by a wall or a force field, the monster will escape. 
+
+Given that you get to choose the initial location of the monster, as well as the positions of the force fields, return the minimum number of force fields needed to prevent the monster from escaping from the labyrinth, or return -1 if the task is impossible. 
+
+Note that force fields cannot cross through the initial position of the monster, and also cannot be created outside of the map (see Example 2).
+
+For example, consider the labyrinth below:
+.######..
+.#^^^^#..
+.#^^^^#..
+.#^^^^#..
+.##^^##..
+...^^....
+One way to contain the monster using only one force field is to position the monster as denoted by M, and create the force field denoted by F's:
+.######..
+.#....#..
+.#.M..#..
+.#....#..
+FFFFFFFFF
+.........
+Definition
+    
+Class:
+CageTheMonster
+Method:
+capture
+Parameters:
+vector <string>
+Returns:
+int
+Method signature:
+int capture(vector <string> labyrinth)
+(be sure your method is public)
+    
+
+Constraints
+-
+labyrinth will contain between 1 and 40 elements, inclusive.
+-
+Each element of labyrinth will contain between 1 and 40 characters, inclusive.
+-
+All elements of labyrinth will be of the same length.
+-
+Each element of labyrinth will consist only of characters '.', '#' and '^'.
+-
+labyrinth will contain at least one '^' character.
+Examples
+0)
+
+    
+{
+".######..",
+".#^^^^#..",
+".#^^^^#..",
+".#^^^^#..",
+".##^^##..",
+"...^^...."}
+Returns: 1
+This is the example from the problem statement.
+1)
+
+    
+{
+".....",
+".^#^.",
+".#^#.",
+"..#.."}
+Returns: 0
+We can contain the monster by simply placing it in between the four walls.
+2)
+
+    
+{
+"#....",
+"^#...",
+"#...."}
+Returns: -1
+Since we cannot create a force field in column -1, we cannot prevent the monster from escaping.
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

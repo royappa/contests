@@ -1,0 +1,31 @@
+Here are my annotated solutions. I had to change some of my assumptions (and answers!) when reading people's solutions.
+
+I had originally planned to have a higher penalty time (2-5 minutes), which would make it more of a "treasure hunt". Then I got worried it would take too much time to play, so at the last minute I decided to make it something where you either knew the answer quickly or knew you could figure it out *very* quickly. It probably would have worked better as a treasure hunt where you could gamble on spending some time to look up the answer.
+
+Not that "score" really matters, I wasn't really planning on crowning a winner. :-)
+
+1. This question was definitely too hard. I should have said "List any two targets..". What I hoped was that people would name [handle]Petr[/handle], [handle]snewman[/handle] and [handle]Yarin[/handle]. But the question was cunningly worded to make [handle]Yarin[/handle] a wrong answer because he switched to C# relatively late in his illustrious career at TC, and used C++ at the time he held target status. Others have been mentioned above - I didn't know [handle]tomek[/handle] used Java at some point, for example. 
+2. Subjective question, so any answer is correct. The "usual suspects" is a reference to a humorous comment by [handle]misof[/handle] in this <a href='http://forums.topcoder.com/?module=Thread&threadID=510290&start=0&mc=12#535857'>thread</a>. We don't really need to enumerate the specific members of this cabal, do we? They know who they are. We know who they are. They know that we know. :-)
+3. Many people would know of [handle]Eryx[/handle]'s antics in <a href='http://www.topcoder.com/stat?c=coder_room_stats&rd=6535&cr=8355516'>SRM 236</a> to (it is thought) protest Ironman seeding.
+4. This was tougher. I had [handle]krijgertje[/handle] in mind in <a href='http://www.topcoder.com/stat?c=coder_room_stats&rd=5851&cr=9906197'>SRM 205</a>. Definitely a treasure-hunt style question.
+5. Name two coders who have been rated yellow or higher, at the same time, in all three types of ratings (algorithm,design,development)
+	[handle]dplass[/handle],[handle]WishingBone[/handle],[handle]adic[/handle].
+6. California. I got this one wrong. I thought the answer was (b), and meant to trick people into putting (a). Anyway, this revelation ruined one of my favorite mental images, which is that of [handle]Rustyoldman[/handle] doing SRM's from a hammock on the veranda of his beach house, his algorithmic concentration interrupted only by the occasional dolphin exuberantly leaping out of the sparkling blue sea (or the occasional scantily-clad nubile young thing strolling by...). Then again, he is in California, so that could still apply. (Maybe not the dolphin).
+7. [handle]dok[/handle] says "This is fixed." The period is mandatory. It has been pointed out that [handle]TheFaxman[/handle] sometimes says "This is fixed", which is faux-dok.
+8. [handle]duner[/handle]
+9. (a), <a href='http://www.topcoder.com/stat?c=country_avg_rating'>China</a>
+10. [handle]krijgertje[/handle]. I was hoping to get a few [handle]mathijs[/handle] responses.
+11. Uncle [handle]misof[/handle], of course. I didn't know [handle]nicka81[/handle] was once from Slovakia. Interesting.
+12. [handle]JongMan[/handle].
+13. [handle]natori[/handle].
+14. SRM 294 had 1029, as seen from the <a href='http://www.topcoder.com/tc?module=MatchList'>Match Archive</a>. Sorry the question wasn't clear.
+15. [handle]ZorbaTHut[/handle]. I once thought [handle]venco[/handle], but he skipped clear over green. I think we all expect one of the usual suspects to qualify sometime soon.
+16. "C++Sucks" and/or "skcuS++C". I did not know about the latter. I guess it would show on machines that are opposite-word-endian to Intel architectures. I wish I had known or thought about it, in which case I would have made both mandatory to be considered correct (hee hee). [handle]Rustyoldman[/handle] submitted the reversed version. Hm, I think read somewhere that he uses a Mac...
+17. Various aspects of [handle]Pops[/handle]' laugh have been mentioned in the forums. Here's a random reference by [handle]HiltonLange[/handle] (who is himself a good subject for future trivia quizzes...): http://forums.topcoder.com/?module=Thread&threadID=508792&start=0&mc=4#523897
+18. (d), grey: <= 899, green: 900-1199, blue: 1200-1499, yellow: 1500-2199, red: >= 2200
+I got this wrong myself when I first thought of it. Ugh.
+19. I believe [handle]OlexiyO[/handle] is the admin formerly known as [handle]Olexiy[/handle].
+20. <a href='http://www.topcoder.com/stat?c=round_overview&er=5&rd=6534'>SRM 235</a>, Petr's first match. I idly ran across this a while ago which gave me the idea for a trivia quiz. [handle]duner[/handle]'s "Argh" is exactly the reaction I was hoping to elicit. Highly gratifying. :-) However, I didn't think of this type of thing happening in the Qualification rounds, as some of you did. Nice catch.
+
+
+Hope y'all had fun. :-)

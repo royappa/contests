@@ -1,0 +1,117 @@
+string nextInteger(vector <int> A, string cur) 
+{
+	string err = "INVALID INPUT";
+	if (cur[0] == '0')
+	{
+		return err;
+	}
+	sort(A.begin(), A.end());
+	for (int i = 0; i < cur.size(); i++)
+	{
+		int x = cur[i]-'0';
+		if (find(A.begin(), A.end(), x) == A.end())
+			return err;
+	}
+
+	int n = A.size();
+	
+	int m = cur.size()-1;
+
+	while (m >= 0)
+	{
+		if ((cur[m]-'0') < A[n-1])
+		{
+			for (int i = 0; i < n; i++)
+			{
+				if (cur[m]-'0' < A[i])
+				{
+					cur[m] = char('0'+A[i]);
+					return cur;
+				}
+			}
+		}
+		m--;
+	}
+	return cur+char('0'+A[0]);
+	
+}
+Problem Statement
+    
+As part of a larger scale project, you need to write a component which generates consecutive positive integers. Only certain digits may appear in the input and in the integers generated, and leading zeros aren't allowed.
+You are given a vector <int> allowed containing the list of allowed digits, and a string current representing the current integer. Return a string representing the first integer larger than current composed only of digits in allowed.
+If current represents an invalid integer according to the first paragraph, return "INVALID INPUT" (quotes for clarity).
+Definition
+    
+Class:
+IntegerGenerator
+Method:
+nextInteger
+Parameters:
+vector <int>, string
+Returns:
+string
+Method signature:
+string nextInteger(vector <int> allowed, string current)
+(be sure your method is public)
+    
+
+Constraints
+-
+allowed will contain between 0 and 10 elements, inclusive.
+-
+Each element in allowed will be between 0 and 9, inclusive.
+-
+allowed will contain no duplicates.
+-
+current will contain between 1 and 10 digits ('0'-'9'), inclusive.
+Examples
+0)
+
+    
+{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 }
+"16"
+Returns: "17"
+With all digits available, the next number is 17.
+1)
+
+    
+{ 0, 1, 2, 3, 4, 5, 6, 8, 9 }
+"16"
+Returns: "18"
+The digit 7 is no longer allowed, so the next smallest valid integer is 18.
+2)
+
+    
+{ 3, 5, 8 }
+"548"
+Returns: "INVALID INPUT"
+The current number may not contain disallowed digits.
+3)
+
+    
+{ 5, 3, 4 }
+"033"
+Returns: "INVALID INPUT"
+Leading zeros aren't allowed either.
+4)
+
+    
+{ 9, 8, 7, 6, 5, 4, 3, 2, 1, 0 }
+"999"
+Returns: "1000"
+
+5)
+
+    
+{ 0, 1, 2, 3, 4, 5 }
+"0"
+Returns: "INVALID INPUT"
+The generator only works with positive integers.
+6)
+
+    
+{ 1 }
+"1"
+Returns: "11"
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

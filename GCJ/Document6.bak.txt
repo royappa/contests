@@ -1,0 +1,12 @@
+O(N^3) algorithm is OK, N <= 500
+
+2 3 4 5 6 7
+
+r(n) = number of ints in S that are <= n
+n -> {r(n) -> r(r(n)) .. -> 1}
+               S2
+               
+Let's say S2 has k items  {a,b,..r(n)}
+
+	   
+     

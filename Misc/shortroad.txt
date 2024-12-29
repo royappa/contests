@@ -1,0 +1,65 @@
+
+Problem Statement
+    
+You are in a big flat city, and wish to travel to a road. The road is an infinite straight line that may have any orientation, but you are restricted to only moving in the four cardinal directions. If the city is represented by the xy-plane, your starting location is the point (x0, y0) and the road is the line a*x + b*y = 1. You can change directions at any point and travel as far as you want in each direction, but you can only travel parallel to the x or y-axis. Write a class ManhattanMovement with a method getDistance that takes four ints a, b, x0, and y0 and returns the shortest distance you must travel in order to reach the road.
+Definition
+    
+Class:
+ManhattanMovement
+Method:
+getDistance
+Parameters:
+int, int, int, int
+Returns:
+double
+Method signature:
+double getDistance(int a, int b, int x0, int y0)
+(be sure your method is public)
+    
+
+Notes
+-
+A return value with either an absolute or relative error of less than 1e-9 is considered correct.
+Constraints
+-
+a, b, x0, and y0 will all be between -2147483648 and 2147483647, inclusive.
+-
+a and b will not both equal zero.
+Examples
+0)
+
+    
+1
+2
+-2
+3
+Returns: 1.5
+Moving straight south (in the negative y-direction) yields the shortest distance.
+1)
+
+    
+37
+37
+42
+19
+Returns: 60.97297297297297
+Moving either straight south or straight west yields the same minimum distance.
+2)
+
+    
+-100
+0
+-999999
+314159
+Returns: 999998.99
+
+3)
+
+    
+0
+-2147483648
+1
+100000
+Returns: 100000.00000000047
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

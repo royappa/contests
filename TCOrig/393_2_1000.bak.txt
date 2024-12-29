@@ -1,0 +1,213 @@
+#include <vector>
+#include <list>
+#include <map>
+#include <set>
+#include <deque>
+#include <stack>
+#include <bitset>
+#include <algorithm>
+#include <functional>
+#include <numeric>
+#include <utility>
+#include <sstream>
+#include <iostream>
+#include <iomanip>
+#include <cstdio>
+#include <cmath>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+class PowerAdapters {
+public:
+vector<string> split_nonre(string s, string sep)
+{
+	char *sC = (char *) malloc(s.size()+1);
+	strcpy(sC, s.c_str());
+	char *sepC = (char *) sep.c_str();
+	char *status = NULL;
+	
+	char *word;
+	vector<string> results;
+	while ((word = strtok_r(sC, sepC, &status)) != NULL)
+	{
+		results.push_back(word);
+		sC = NULL;
+	}
+	return results;
+}
+
+int n;
+
+int memo[66000];
+
+int f(int mask)
+{
+	if (__builtin_popcount(mask) == n)
+	{
+		return 0;
+	}
+	int& r = memo[mask];
+	if (r != -1)
+		return r;
+	
+	r = 1<<30;
+	for (int i = 0; i < n; i++)
+	{
+		if (mask & (1<<i)) continue; // we have i already
+		int canReach = 0;
+		for (int j = 0; j < n; j++)
+		{
+			if ((mask & (1<<j)) != 0)
+			{
+				canReach |= A[j][i];
+			}
+		}
+		r <?= (1-canReach)+f(mask|(1<<i));
+		//cout << mask << " " << i << " " << canReach << " " << r << endl;
+	}
+	return r;
+}
+			
+			
+int needed(vector <string> adapters, vector <string> v, string homeCountry) 
+{
+	memset(memo, -1, sizeof(memo));
+	if (find(v.begin(), v.end(), homeCountry) != v.end())
+	{
+		int start = find(v.begin(), v.end(), homeCountry)-v.end();
+		return f(1<<start);
+	}
+	return f(0);
+}
+};
+
+
+//Powered by [KawigiEdit]
+
+
+Problem Statement
+    
+Jane is about to go on a round-the-world trip. She is taking her laptop so she can compete in TopCoder competitions while she is away, but she is worred that she may not be able to charge the batteries. 
+
+The power supply unit for her laptop has a plug suitable for the country that she lives in, but each country that she is visiting on her travels uses a different type of plug for their power outlets. 
+
+Fortunately she can buy adapters to help her solve the problem. 
+
+An adapter has a socket of one type, connected to a plug of another type, so she can plug the adapter into the power outlet, then plug her laptop into the adapter. 
+
+Adapters can also be chained. 
+
+For example, consider the case where her laptop has a US-style plug, and she has two adapters: one from a US socket to a European plug, and one from a European socket to a UK plug. 
+
+She can plug her laptop into the first adapter, plug the first adapter into the second one, and then plug that into a UK power outlet to charge her laptop. She has already traveled widely, so might already own some adapters. 
+
+What is the minimum number of additional adapters she will have to purchase in order to be able to charge her laptop in every country on her itinerary, assuming that she can buy an adapter from any country's socket to any other country's plug.
+
+You are given a vector <string> adapters containing the details of the adapters that she already owns. 
+
+Each element details a single adapter and is formatted "<socket> <plug>" (quotes for clarity), where <socket> and <plug> are both strings specifying country names. 
+
+The adapter accepts a plug of type <socket>, and converts it to a plug of type <plug>. 
+
+The names of the countries Jane is visiting are given in a vector <string> itinerary and her home country is given in the string homeCountry. 
+
+Return the minimum number of additional adapters she needs to buy to be able to charge her computer in every country on her itinerary, given that her laptop plug is of type homeCountry.
+
+Definition
+    
+Class:
+PowerAdapters
+Method:
+needed
+Parameters:
+vector <string>, vector <string>, string
+Returns:
+int
+Method signature:
+int needed(vector <string> adapters, vector <string> itinerary, string homeCountry)
+(be sure your method is public)
+    
+
+Constraints
+-
+adapters will contain between 0 and 50 elements, inclusive.
+-
+Each element of adapters will contain between 3 and 50 characters, inclusive.
+-
+Each element of adapters will be formatted "<socket> <plug>" (quotes for clarity), where <socket> and <plug> are non-empty strings containing only uppercase letters ('A' - 'Z').
+-
+In each element of adapters, <socket> and <plug> will be distinct.
+-
+itinerary will contain between 1 and 16 elements, inclusive.
+-
+Each element of itinerary will contain between 1 and 50 uppercase letters ('A' - 'Z'), inclusive.
+-
+Each element of itinerary will be distinct.
+-
+homeCountry will contain between 1 and 50 uppercase letters ('A' - 'Z'), inclusive.
+Examples
+0)
+
+    
+{"USA EUROPE","EUROPE UK"}
+{"UK","EUROPE"}
+"USA"
+Returns: 0
+The example from the problem statement. Jane is travelling to Europe and the UK and already has enough adapters to charge her laptop everywhere on her journey.
+1)
+
+    
+{"USA CANADA","USA UK","GERMANY AUSTRALIA","GERMANY CANADA","AUSTRALIA USA","UK CANADA","JAPAN USA","JAPAN USA"}
+{"AUSTRALIA","CANADA"}
+"UK"
+Returns: 1
+
+2)
+
+    
+{"INDIA EGYPT","USA GERMANY","CHINA SPAIN","GERMANY NETHERLANDS","NETHERLANDS CHINA"}
+{"CHINA","GERMANY","SPAIN"}
+"NETHERLANDS"
+Returns: 1
+Jane already has an adapter for China and she can chain two together (Netherlands-China and China-Spain) to charge her laptop in Spain, so she only needs 1 additional adapter for Germany.
+3)
+
+    
+{"AUSTRALIA GERMANY","CANADA INDIA","AUSTRALIA USA","USA INDIA","USA AUSTRALIA","CANADA GERMANY","USA AUSTRALIA","USA CANADA"}
+{"AUSTRALIA","CANADA"}
+"CANADA"
+Returns: 1
+Jane's home country can be on her itinerary.
+4)
+
+    
+{"SPAIN AUSTRALIA","SPAIN NETHERLANDS","AUSTRALIA EGYPT"}
+{"AUSTRALIA","EGYPT","NETHERLANDS"}
+"UK"
+Returns: 1
+Jane needs to buy a UK-Spain adapter.
+5)
+
+    
+{"CMCUG MEIACWT","CMCUG QLLUJCMB","MEIACWT UKINFV"
+,"ODK QLLUJCMB","MEIACWT SXGBGF","CWW TUQ","YUAYI MEIACWT"
+,"MEIACWT ODK","QLLUJCMB AGNAE","AGNAE GACPM","QLLUJCMB MAO"
+,"KNCUTEW NNA","ODK MEIACWT","QJQUY ODK","AGNAE MEIACWT"}
+{"AGNAE","ODK","TUQ","YUAYI"}
+"AGNAE"
+Returns: 2
+
+6)
+
+    
+{"LALJ DMZEQ","ANKNMMUQ YINE","MAYNYVOM KQWCGASA"
+,"YWEU DMZEQ","MAO YAE","CWNFS IAWGRCX","KQWCGASA CNUL"
+,"CWNFS DMZEQ","QBHQCU EPMAKOI","CNUL KQWCGASA"
+,"ANKNMMUQ YOXOQVO","YAE MAYNYVOM","IAWGRCX DMZEQ"}
+{"CWNFS","DMZEQ","ISO","YOKKMK"}
+"YINE"
+Returns: 3
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

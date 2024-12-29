@@ -1,0 +1,177 @@
+	private class Compare implements Comparator
+	{
+		private ArrayList names;
+		private ArrayList lostTo;
+		private int n;
+		Compare(String[] _names, String[] _lostTo, int _n)
+		{
+			names = new ArrayList();
+			lostTo = new ArrayList();
+			n = _n;
+			for (int i = 0; i < n; i++)
+			{
+				names.add(_names[i]);
+				lostTo.add(_lostTo[i]);
+			}
+		}
+		
+		public int compare(Object oa, Object ob)
+		{
+			String a = (String) oa;
+			String b = (String) ob;
+			return compare_rec(a, b);
+		}
+		
+		private int numWins(String x)
+		{
+			int num = 0;
+			for (int i = 0; i < n; i++)
+			{
+				if (((String) lostTo.get(i)).equals(x))
+					num++;
+			}
+			return num;
+		}
+		private int compare_rec(String a, String b)
+		{
+			int ia = names.indexOf(a);
+			int ib = names.indexOf(b);
+			String aLost = (String) lostTo.get(ia);
+			String bLost = (String) lostTo.get(ib);
+			if (a.equals(b)) return 0;
+			int na = numWins(a);
+			int nb = numWins(b);
+			if (na != nb) return na - nb;
+			return compare_rec(aLost, bLost);			
+		}
+	}
+
+	public String[] rankTeams(String[] names, String[] lostTo)
+	{
+		int n = names.length;
+		
+		String[] ranked = new String[n];
+		System.arraycopy(names, 0, ranked, 0, n);
+		Arrays.sort(ranked, new Compare(names, lostTo, n));
+		return ranked;
+	}
+
+Problem Statement
+    
+A single elimination tournament consists of several rounds. In the first round, each competitor plays against one other competitor and the loser is eliminated. 
+
+In the second round, each competitor that was not eliminated in the first round plays against another such competitor, and the loser is again eliminated. 
+
+This process is repeated, eliminating half of the remaining competitors each round, until precisely one competitor remains. This competitor is declared the champion.  
+
+In practice, one is often interested in ranking all the competitors in a tournament, not just the champion. 
+
+Here is one way of doing this:
+If competitor A won more games than competitor B did in the tournament, then A should be ranked higher than B.
+
+If competitor A and competitor B won the same number of games in the tournament, recursively compare the ranks of the competitor C that eliminated A and the competitor D that eliminated B. 
+
+Then, A should be ranked above B if and only if C is ranked above D.
+
+The intuition behind the second rule is that losing to a good competitor is better than losing to a bad competitor.  
+
+You must implement this scheme for ranking the competitors in a single elimination tournament. 
+
+You will be given a String[] names and a String[] lostTo. 
+
+The former argument gives the names of the competitors in a tournament, and the latter argument describes if and how each competitor was eliminated. 
+
+Specifically, the ith element f lostTo will be the name of the competitor that beat the ith competitor in names, or it will be "" if that competitor never lost. 
+
+You should return a String[] giving the names of the competitors, sorted from highest rank to lowest rank as described above.
+
+Definition
+    
+Class:
+TournamentRanker
+Method:
+rankTeams
+Parameters:
+String[], String[]
+Returns:
+String[]
+Method signature:
+String[] rankTeams(String[] names, String[] lostTo)
+(be sure your method is public)
+    
+
+Notes
+-
+The constraints ensure that names and lostTo uniquely specify a valid single elimination tournament.
+Constraints
+-
+The number of elements in names must be a power of 2 and must be between 2 and 32 inclusive.
+-
+Each element of names will contain between 1 and 50 characters inclusive.
+-
+Each character in names will either be a space (' '), or a capital letter ('A'-'Z').
+-
+No two elements of names will be equal.
+-
+The number of elements in lostTo will be equal to the number of elements in names.
+-
+Exactly one element of lostTo will be equal to ""; each remaining element of lostTo will be equal to an element of names.
+-
+If competitor A has n wins, as specified by names and lostTo, then it will have eliminated exactly one competitor with k wins for each k satisfying 0 <= k < n.
+Examples
+0)
+
+    
+{"RODDICK", "SCHUETTLER", "FERREIRA", "AGASSI"}
+{"SCHUETTLER", "AGASSI", "AGASSI", ""}
+Returns: { "AGASSI",  "SCHUETTLER",  "FERREIRA",  "RODDICK" }
+This test case represents the semifinals and finals of the 2003 Australian Open tennis tournament, illustrated below:
+    RODDICK ----+
+                +--- SCHUETTLER -+
+    SCHUETTLER -+                |
+                                 +--- AGASSI
+    FERREIRA ---+                |
+                +--- AGASSI -----+
+    AGASSI -----+
+AGASSI is ranked highest with two wins, followed by SCHUETTLER with one win. FERREIRA and RODDICK both have zero wins, so we compare the rankings of the competitors that beat them. Since FERREIRA lost to AGASSI, RODDICK lost to SCHUETTLER, and AGASSI is ranked above SCHUETTLER, we rank FERREIRA above RODDICK.
+1)
+
+    
+{"DUKE", "SETON HALL", "ILLINOIS", "CINCINNATI",
+ "NORTH CAROLINA", "TEXAS", "XAVIER", "MISSISSIPPI STATE"}
+{"", "DUKE", "DUKE", "ILLINOIS",
+ "TEXAS", "XAVIER", "DUKE", "XAVIER"}
+Returns: 
+{ "DUKE",
+  "XAVIER",
+  "ILLINOIS",
+  "TEXAS",
+  "SETON HALL",
+  "MISSISSIPPI STATE",
+  "CINCINNATI",
+  "NORTH CAROLINA" }
+This test case represents three rounds of the 2004 NCAA men's basketball tournament, illustrated below:
+    DUKE --------------+
+                       +--- DUKE -----+
+    SETON HALL --------+              |
+                                      +--- DUKE ---+
+    ILLINOIS ----------+              |            |
+                       +--- ILLINOIS -+            |
+    CINCINNATI --------+                           |
+                                                   +--- DUKE
+    NORTH CAROLINA ----+                           |
+                       +--- TEXAS ----+            |
+    TEXAS -------------+              |            |
+                                      +--- XAVIER -+
+    XAVIER ------------+              |
+                       +--- XAVIER ---+
+    MISSISSIPPI STATE -+
+DUKE is ranked first with three wins, followed by XAVIER with two wins. ILLINOIS and TEXAS come next, having one win each. Since ILLINOIS lost to DUKE and XAVIER lost to TEXAS, ILLINOIS should be ranked above TEXAS. The remaining teams are ranked similarly. SETON HALL is ranked highest among them since they lost to top-ranked DUKE, whereas NORTH CAROLINA is ranked lowest among them since they lost to fourth-ranked TEXAS.
+2)
+
+    
+{"JAVA", "VISUAL BASIC"}
+{"VISUAL BASIC", ""}
+Returns: { "VISUAL BASIC",  "JAVA" }
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

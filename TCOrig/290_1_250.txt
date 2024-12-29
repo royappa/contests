@@ -1,0 +1,122 @@
+typedef pair<int,int> pii;
+
+int fewestClicks(string _clock, string _cur) 
+{
+	pii clock, cur; 	
+	
+	sscanf(_clock.c_str(), "%d:%d", &clock.first, &clock.second);
+	sscanf(_cur.c_str(),   "%d:%d", &cur.first, &cur.second);
+	
+	queue<pii> q;
+	map<pii,int> dist;
+	q.push(clock);
+	dist[clock] = 0;
+	
+	while (q.size() > 0)
+	{
+		pii head = q.front();
+		q.pop();
+		if (head == cur)
+			return dist[head];
+		int h = head.first, m = head.second;
+		// hour button
+		pii next = make_pair((h+1)%24, (m+1)%60);
+		if (dist.count(next) == 0)
+		{
+			q.push(next);
+			dist[next] = dist[head]+1;
+		}
+		// min
+		next = make_pair(h, (m+1)%60);
+		if (dist.count(next) == 0)
+		{
+			q.push(next);
+			dist[next] = dist[head]+1;
+		}
+	}
+	return -1;
+}
+
+Problem Statement
+    
+You have noticed that your digital clock does not show the correct current time. 
+
+You know what the correct time is, so there should be no problem setting it. 
+
+Your clock has two buttons - one is supposed to increment the hour by 1, and the other is supposed to increment the minute by 1. 
+
+The hour is a two digit value between 00 and 23, inclusive, and the minute is a two digit value between 00 and 59, inclusive. 
+
+The values wrap around, so pressing the hour button when the hour is 23 will change the hour to 00, and pressing the minute button when the minute is 59 will change the minute to 00. 
+
+Pressing the hour button should never affect the minute value, and pressing the minute button should never affect the hour value (see note). 
+
+
+However, the hour button on your clock is broken, and when pressed, increments both the hour and minute by 1. 
+
+You want to find the minimal number of button presses needed to set the correct time on the clock.
+
+For example, if the clock shows the time as 03:12 and you know the current time is 04:15, you should press the hour button once and the minute button twice for a total of three button presses. 
+
+After pressing the hour button, the time changes to 04:13, and after pressing the minute button twice, the time changes to 04:15. You must perform the button presses immediately - you cannot wait until the time on the clock changes by itself.
+
+You are given a string clockTime, the time shown on the clock, and a string currentTime, the correct current time, both formatted as "HH:MM" (quotes added for clarity), where HH is the hour value and MM is the minute value.
+
+Definition
+    
+Class:
+BrokenClock
+Method:
+fewestClicks
+Parameters:
+string, string
+Returns:
+int
+Method signature:
+int fewestClicks(string clockTime, string currentTime)
+(be sure your method is public)
+    
+
+Notes
+-
+If the clock displays 23:59, pressing the hour button will change the time to 00:00, but pressing the minute button will change it to 23:00.
+Constraints
+-
+clockTime and currentTime are each formatted as "HH:MM" (quotes added for clarity) where HH is a two digit integer between 00 and 23, inclusive, and MM is a two digit integer between 00 and 59, inclusive.
+Examples
+0)
+
+    
+"03:12"
+"04:15"
+Returns: 3
+The example from the problem statement.
+1)
+
+    
+"07:07"
+"13:21"
+Returns: 14
+You have to press the hour button six times and the minute button eight times.
+2)
+
+    
+"14:55"
+"14:05"
+Returns: 10
+The minute button never changes the hour.
+3)
+
+    
+"23:14"
+"00:20"
+Returns: 6
+
+4)
+
+    
+"18:43"
+"18:43"
+Returns: 0
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

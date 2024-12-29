@@ -1,0 +1,49 @@
+
+Problem Statement
+    
+The digits 4 and 7 are lucky digits, and all other digits are unlucky. A first level lucky number is a positive integer whose decimal representation is a palindrome that contains only lucky digits. A palindrome is a number that reads the same forward and backward. John and Brus would like to count the number of first level lucky numbers within a specified range.
+You are given long longs a and b. Return the number of first level lucky numbers between a and b, inclusive.
+Definition
+    
+Class:
+TheLuckyNumbersLevelOne
+Method:
+find
+Parameters:
+long long, long long
+Returns:
+long long
+Method signature:
+long long find(long long a, long long b)
+(be sure your method is public)
+    
+Constraints
+-
+a will be between 1 and 10^18, inclusive.
+-
+b will be between a and 10^18, inclusive.
+Examples
+0)
+    
+1
+100
+Returns: 4
+The first level lucky numbers within this range are 4, 7, 44 and 77.
+1)
+    
+45
+54
+Returns: 0
+There are no first level lucky numbers here.
+2)
+    
+477444774
+477444774
+Returns: 1
+The given range contains only one integer and it is a first level lucky number.
+3)
+    
+456789123
+789123456
+Returns: 24
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

@@ -1,0 +1,95 @@
+void getCircle(int
+int countCircles(vector <int> x, vector <int> y) 
+{
+	int n = x.size();
+	
+	set< vector<int> > s;
+	
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = i+1; j < n; j++)
+		{
+			for (int k = j+1; k < n; k++)
+			{			
+				int ax = x[i], ay = y[i], bx = x[j], by = y[j], cx = x[k], cy = y[k];
+				int A, B, C, D, E, F, G;
+				A = bx-ax;
+				B = by-ay;
+				C = cx-ax;
+				D = cy-ay;
+				E = A*(ax+bx)+B*(ay+by);
+				F = C*(ax+cx)+D*(ay+cy);
+				G = 2*(A*(cy-by)-B*(cx-bx));
+				if (G == 0)
+					continue;
+				int px = (D*E-B*F)/G;
+				int py = (A*F-C*E)/G;
+				
+				s.insert( getCircle(x[i], y[i], x[j], y[j], x[k], y[k]) );
+			}
+		}
+	}
+	return s.size();
+}
+Problem Statement
+    
+Making a crop circle is a difficult job because it is hard to see what one is doing. You have found a farm with boulders scattered around, and have realised that it would be easiest to use a circle that passes through three or more of the boulders. You have started wondering how many different circles you could produce in this way. Given vector <int> x and vector <int> y, return the number of distinct circles that can be made. The boulders are at (x[0], y[0]), (x[1], y[1]), etc.
+Definition
+    
+Class:
+CropCircles
+Method:
+countCircles
+Parameters:
+vector <int>, vector <int>
+Returns:
+int
+Method signature:
+int countCircles(vector <int> x, vector <int> y)
+(be sure your method is public)
+    
+
+Notes
+-
+The field is large enough that a circle can be made through any three boulders that do not lie in a straight line.
+-
+When four or more boulders lie on the same circle, this circle should still only be counted once.
+Constraints
+-
+x and y will each contain between 1 and 50 elements, inclusive.
+-
+x and y will contain the same number of elements.
+-
+Each element of x and y will be between 0 and 500, inclusive.
+-
+No two boulders will be in the same location.
+Examples
+0)
+
+    
+{1, 2, 1, 2, 8}
+{2, 1, 8, 9, 9}
+Returns: 1
+The five points all lie on a common circle.
+1)
+
+    
+{0, 4, 7}
+{3, 3, 3}
+Returns: 0
+The three points lie on a single line, so there is no circle that passes through them.
+2)
+
+    
+{0, 10, 10, 10, 20}
+{10, 0, 10, 20, 10}
+Returns: 5
+
+3)
+
+    
+{0, 10, 11, 10, 21}
+{10, 0, 11, 20, 10}
+Returns: 10
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

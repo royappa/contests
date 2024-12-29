@@ -1,0 +1,163 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  
+<!-- Mirrored from www.cs.duke.edu/csed/onlineprobs/mat3.html by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 14 Mar 2006 08:55:10 GMT -->
+<head>
+    <title>Weekly Problem Matrix 3</title>
+  </head>
+
+  <body>
+    <h1>Weekly Problem Matrix 3</h1>
+
+<em>
+
+This problem statement is the exclusive and proprietary property of
+TopCoder, Inc. Any unauthorized use or reproduction of this information
+without the prior written consent of TopCoder, Inc. is strictly
+prohibited. (c)2002, TopCoder, Inc. All rights reserved.
+
+</em>
+<P>
+<hr>
+
+<h3>Problem Statement</h3>
+
+You are given a sheet of paper with a given height and width.  You are also
+given a set of rectangles to shade in on the paper.  Your job is to return the
+total area on the paper covered by the rectangles drawn on the paper.  The top
+left corner of the paper has coordinates (0,0), and the bottom right corner of
+the paper has coordinates (width,height).
+<P>
+
+Create a class Shade that contains the method area, which takes as parameters
+the height and width of the paper, and a 
+<tt>tvector&lt;string&gt;</tt> coordinates, with each
+element of coordinates containing two diagonally opposed points of a shaded
+rectangle.  This method returns the total area shaded on the paper.
+<P>
+Here is an example of paper with width = 2 and height = 3.  Rectangle "0,0,1,2"
+is shaded with '*'.
+<PRE>
+
+(0,0) ___________ (2,0)
+     | * * |     |
+     |* * *|     |
+     | * * |     |
+     |* * *|     |
+     |_*_*_|     |
+(0,2)|     (1,2) |
+     |           |
+     |___________|
+(0,3)             (2,3)
+
+</PRE>
+
+<P>
+<h3>Definition</h3>
+<UL>
+<LI> Class: Shade
+<LI> Method: area
+<LI> Parameters: int, int, <tt>tvector&lt;string&gt;</tt>
+<LI> Returns: int
+Method signature (be sure your method is public):  
+<PRE>
+int area(int height, int width, <tt>tvector&lt;string&gt;</tt> coordinates);
+</PRE>
+
+</UL>
+<h3>Prototype</h3>
+<PRE>
+ #include <string>
+ using namespace std;
+ #include "tvector.h"
+
+ class Shade
+ {
+   public:
+    int area(int height, int width, 
+             tvector&lt;string&gt; coordinates);
+    {
+         // fill in this function (and others you can write)
+    }
+ };
+
+</PRE>
+
+<P>
+<h3>Constraints</h3>
+<UL>
+<LI> height and width are ints between 1 and 100 (inclusive)
+<LI> coordinates will contain between 1 and 50 rectangles (inclusive)
+<LI> coordinates will be formatted "x1,y1,x2,y2" where the point 
+(x1,y1) is one
+corner of a rectangle, and (x2,y2) is the opposing corner (the two points form
+a diagonal for the rectangle), with ',' separating the coordinates, and no
+spaces will exist in the string
+<LI> each element of coordinates will have length between 1 and 50, inclusive
+<LI> a rectangle's x1 and x2 coordinates are between 0 and width, inclusive
+<LI> a rectangle's y1 and y2 coordinates are between 0 and height, inclusive
+<LI> x1 will not equal x2, y1 will not equal y2
+<LI> coordinates may have leading zeros, so "01" is allowed
+
+</UL>
+<P>
+<h3>Examples</h3>
+
+<OL type='0'>
+<LI>
+<PRE>
+
+height = 10
+width = 10
+coordinates = {"0,0,01,1","1,1,5,6","0,1,4,5"}
+
+returns 25
+</PRE>
+The area "1,1,4,5" is shaded twice, but only gets counted once. There are 21
+area units contained in the first two rectangles, and 4 contained in the
+non-overlapping area of the third rectangle.
+
+<LI>
+<PRE>
+
+</PRE>
+height = 10
+width = 10
+coordinates = {"0,0,1,1","1,1,5,6"}
+
+returns 21
+
+<LI>
+
+<PRE>
+height = 100
+width = 100
+coordinates = {"0,0,10,15","3,18,54,68","36,87,20,68"}
+
+returns 3004
+
+</PRE>
+<LI>
+<PRE>
+
+height = 100
+width = 100
+coordinates = {"0,0,1,1","1,1,5,6","1,100,3,79"}
+
+
+returns 63
+
+
+</PRE>
+</OL>
+
+    <hr>
+    <address><a href="mailto:ola@cs.duke.edu">Owen L. Astrachan</a></address>
+<!-- Created: Mon Jan  6 14:27:13 EST 2003 -->
+<!-- hhmts start -->
+Last modified: Tue Sep 30 10:14:11 EDT 2003
+<!-- hhmts end -->
+  </body>
+
+<!-- Mirrored from www.cs.duke.edu/csed/onlineprobs/mat3.html by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 14 Mar 2006 08:55:10 GMT -->
+</html>

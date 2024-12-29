@@ -1,0 +1,78 @@
+vector<int> counts, powers;
+map<int,int> memo;
+
+int chooseGuns(vector <int> _counts, vector <int> _powers, int N) 
+{
+	counts = _counts;
+	powers = _powers;
+	return best(0, 0, N);	
+}
+
+Problem Statement
+    
+Some guns are placed in a line. The guns are sorted by their type. You will get N consecutive guns for your regiment and, of course, you want to maximize the sum of your guns' powers.
+You will be given vector <int>s counts and powers. counts[i] is the number of guns of type i, and powers[i] is the power of each gun of type i. Guns are given in the same order that they are in the line. Return the maximal sum of gun power that you can get.
+Definition
+    
+Class:
+RegimentArming
+Method:
+chooseGuns
+Parameters:
+vector <int>, vector <int>, int
+Returns:
+int
+Method signature:
+int chooseGuns(vector <int> counts, vector <int> powers, int N)
+(be sure your method is public)
+    
+
+Constraints
+-
+counts will have between 1 and 50 elements, inclusive.
+-
+powers will have between 1 and 50 elements, inclusive.
+-
+counts and powers will have the same number of elements.
+-
+Each element of counts will be between 1 and 1000000, inclusive.
+-
+Each element of powers will be between 1 and 1000, inclusive.
+-
+N will be between 1 and 1000000, inclusive.
+-
+N will be between 1 and the sum of elements in counts, inclusive.
+Examples
+0)
+
+    
+{5, 37, 4}
+{7, 2, 8}
+20
+Returns: 65
+We can take 5 guns with power 7 and 15 guns with power 2.
+1)
+
+    
+{5, 37, 4}
+{7, 4, 8}
+20
+Returns: 96
+We can take 4 guns with power 8 and 16 guns with power 4.
+2)
+
+    
+{5, 37, 4}
+{7, 4, 8}
+46
+Returns: 215
+We can take all the guns.
+3)
+
+    
+{761,263,698,811,201,493,385,621,626,171}
+{204,464,251,438,241,351,181,915,473,589}
+2515
+Returns: 1264085
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

@@ -1,0 +1,130 @@
+			m.put(new String(form2), new Integer(gen));
+
+import java.util.*;
+public class CircleBugs
+{
+	public	int cycleLength(String formation)
+	{
+		int n = formation.length();
+		char[] form1 = new char[n];
+		char[] form2 = new char[n];
+		formation.getChars(0, n, form2, 0);
+		
+		int gen = 0;
+		HashMap m = new HashMap();
+		m.put(formation, new Integer(gen));
+		
+		do
+		{
+			gen++;
+			System.arraycopy(form2, 0, form1, 0, n);
+			for (int i = 0; i < n; i++)
+			{
+				int j = (i+1)%n;
+				if (form1[i] != form1[j])
+				{
+					form2[i] = 'G';
+				}
+				else
+				{
+					form2[i] = 'R';
+				}
+			}
+			for (int i = 1; i < n; i++)
+			{
+				for (j = 0; j < n; j++)
+				{
+					form1[j] = form2[(i+1)%n];
+				}
+				String key = new String(form1);
+				if (m.containsKey(key)
+					return (gen-(Integer) m.get(key)).intValue();
+			}
+			for (int i = 0; i < n; i++)
+			{
+				form1[n-i-1] = form2[i];
+			}
+			String key = new String(form1);
+			if (m.containsKey(key)
+				return (gen-(Integer) m.get(key)).intValue();
+			for (int i = 1; i < n; i++)
+			{
+				for (j = 0; j < n; j++)
+				{
+					form1[j] = form2[(i+1)%n];
+				}
+				String key = new String(form1);
+				if (m.containsKey(key)
+					return (gen-(Integer) m.get(key)).intValue();
+			}
+			m.put(new String(form2), new Integer(gen));
+		} while (true);
+
+		return rot;
+	}
+
+}
+
+
+Problem Statement
+    
+A group of social bugs lives in a circular formation. These bugs are either red or green. Once every minute, a new green bug appears between each pair of adjacent bugs of different colors, and a new red bug appears between each pair of adjacent bugs of the same color. After that, all the original bugs die and the process is repeated. It is known that every initial formation of bugs will always lead to a cycle. The cycle length of the formation is defined as the amount of time between any of its two identical formations. Two formations are considered identical if one formation can be achieved by rotating and/or reversing the other one. For example via rotation, "RRGG" is identical to "RGGR", but it is NOT identical to "RGRG". Via reversal, "RRGGRG" is identical to "GRGGRR" and now via rotation it is also identical to "RRGRGG".
+Given a String formation of bugs on a circle return the length of the cycle for that formation. Each character in formation will be either 'R' or 'G' representing the red and green bugs respectively. The formation is circular, so the bug represented by the first character is adjacent to the bug represented by the last character in formation.
+Definition
+    
+Class:
+CircleBugs
+Method:
+cycleLength
+Parameters:
+String
+Returns:
+int
+Method signature:
+int cycleLength(String formation)
+(be sure your method is public)
+    
+
+Constraints
+-
+formation will only contain 'R' and 'G' characters, where 'R' is a red bug and 'G' is a green bug.
+-
+formation will have between 3 and 30 characters inclusive.
+Examples
+0)
+
+    
+"RRG"
+Returns: 1
+A red bug appears between the first and second bugs, a green bug appears between the second and third bugs, and a green bug appears between the third and first bugs. Thus the formation of the second generation is RGG. By repeating the process, we find that third generation is GRG. Notice that RGG and GRG are identical formations and thus we have a cycle of length 1.
+1)
+
+    
+"RRGRG"
+Returns: 3
+RRGRG goes to RGGGG. RGGGG goes to GRRRG. GRRRG goes to GRRGR. Now, GRRGR is identical to RRGRG - our starting formation. There were 3 transformations, so the method should return 3.
+2)
+
+    
+"RRRRRRRRRR"
+Returns: 1
+Formations where all bugs are red will always lead to the same formation.
+3)
+
+    
+"RGGGGGGGGG"
+Returns: 6
+
+4)
+
+    
+"GGRRGGRGRGRRGRRRGGR"
+Returns: 511
+
+5)
+
+    
+"RGGGGGGGGGGGGGGGGGGGGGGGGGGGR"
+Returns: 16383
+This is the worst case
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

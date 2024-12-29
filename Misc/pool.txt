@@ -1,0 +1,108 @@
+	public String decrypt(String pool, int[] data, int[] keys)
+	{
+		int poolLen = pool.length();
+		char[] ret = new char[data.length];
+		for (int i = 0; i < data.length; i++)
+		{
+			int k = 1;
+			while (true)
+			{
+				if ((data[i]*k)%keys[i] == 1)
+					break;
+				k++;
+			}
+			ret[i] = pool.charAt(k%poolLen);
+		}
+		
+		return new String(ret);
+	}
+	
+Problem Statement
+    
+You and your friends have decided to create your own encryption scheme (bad idea). An encrypted message consists of 3 parts:
+1) A String called the pool
+2) A int[] called the data
+3) A int[] called the keys
+To decrypt character i of the message, first find the smallest positive integer k such that
+          (data[i] * k) % keys[i] = 1   
+Above % denotes the modulus operator. 
+
+Character i of the message will be character j in pool, where j is given by
+          j = k % (length of pool)
+Return the decrypted String. 
+
+Constraints will ensure that the ith element of data is relatively prime to the ith element of keys. 
+
+In other words, the largest positive integer that divides data[i] and keys[i] will be 1, for all i.
+Definition
+    
+Class:
+TerribleEncryption
+Method:
+decrypt
+Parameters:
+String, int[], int[]
+Returns:
+String
+Method signature:
+String decrypt(String pool, int[] data, int[] keys)
+(be sure your method is public)
+    
+
+Constraints
+-
+pool will contain between 2 and 50 characters inclusive.
+-
+Each character in pool will be a letter ('A'-'Z', 'a'-'z').
+-
+data will contain between 1 and 50 elements inclusive.
+-
+keys will contain the same number of elements as data.
+-
+Each element of data will be between 1 and 100000 inclusive.
+-
+Each element of keys will be between 2 and 5000 inclusive.
+-
+Element i of keys will be relatively prime to element i of data.
+Examples
+0)
+
+    
+"ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15}
+{17,17,17,17,17,17,17,17,17,17,17,17,17,17,17}
+Returns: "BJGNHDFPCMOKELI"
+
+1)
+
+    
+"AEIOUAEIOUaeiouaeiou"
+{1,2,3,4,5,6,7,8,9,10,1,2,3,4,5}
+{2,3,4,5,6,7,8,9,10,11,13,15,16,17,18}
+Returns: "EIOUAEIOUaEOeoe"
+
+2)
+
+    
+"abcdeffedcbaABCDEFFEDCBA"
+{10,10,10,10,10,10,10,10,10,10,10}
+{3,7,11,13,17,19,23,29,31,37,41}
+Returns: "bfbeAcedecB"
+
+3)
+
+    
+"abcdefghijklmnopqrstuvwxyz"
+{11,11,11,11,11,11,11,11,11,11,11,11,11,11,11}
+{2,3,4,5,6,7,8,9,10,12,13,14,15,16,17}
+Returns: "bcdbfcdfblgjldo"
+
+4)
+
+    
+"HmmBlahHmmBlah"
+{1,1,1,1,1,1,1}
+{10,9,8,7,6,5,4}
+Returns: "mmmmmmm"
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

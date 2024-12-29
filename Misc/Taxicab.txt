@@ -1,0 +1,109 @@
+
+	public String calculateFare(int[] blocks)
+	{
+		double blockLen = 0.05;
+		int n = blocks.length;
+		int units = 1;
+		double dist = 0.0;
+		double fare = 2.50;
+		for (int i = 0; i < n; i++)
+		{
+			double blockDist = blocks[i]*blockLen;
+			double speed = blockDist*60;
+			if (speed < 6)
+			{
+				fare += units*0.40+1;
+				units = 0;
+			}
+			else 
+			{
+				dist += blockDist;
+			}
+		}
+		DecimalFormat df = new DecimalFormat("#.##");
+		return df.formatDouble(fare).trim();		
+	}
+	
+Problem Statement
+    
+Taxicabs in New York City have a complicated fare structure:
+$2.50 for the first unit or fraction thereof if there is less than one total unit.
+
+$0.40 for each additional unit, where a unit is defined as:
+
+1/5 of a mile, when the taxicab is traveling at 6 miles an hour or more, or
+
+60 seconds, when the taxicab is traveling at less than 6 miles an hour.
+
+You will be given the number of blocks the cab travels each minute and you are to calculate the total fare in dollars and cents. 
+
+(There are 20 blocks in a mile.) 
+
+You may assume that the taxi's speed is constant during each minute. Note that the number of units accumulated during a minute may not be an integer.
+
+Return the total fare as a String (without a dollar sign), with exactly two digits to the right of the decimal point and no extraneous leading zeros.
+Definition
+    
+Class:
+Taxicab
+Method:
+calculateFare
+Parameters:
+int[]
+Returns:
+String
+Method signature:
+String calculateFare(int[] blocks)
+(be sure your method is public)
+    
+
+Notes
+-
+You should assume instant acceleration/deceleration between segments.
+-
+There are 20 blocks in a mile.
+-
+There are 100 cents in a dollar.
+Constraints
+-
+blocks will contain between 1 and 50 elements, inclusive.
+-
+Each element of blocks will be between 0 and 30, inclusive.
+Examples
+0)
+
+    
+{0}
+Returns: "2.50"
+You didn't go anywhere, but you still get charged $2.50 for getting into the cab.
+1)
+
+    
+{4, 4}
+Returns: "2.90"
+You went four blocks (1/5 mile) the first minute, which cost you $2.50, and 4 blocks (another 1/5 mile) the second minute, which cost you $0.40 because your speed was 12 mph (1/5 mile / 1/60 hour)
+2)
+
+    
+{10, 2}
+Returns: "3.30"
+You go 10 blocks in the first minute. This is 2.5 fifths-of-a-mile; the first 1/5 mile costs $2.50 and the other 1.5 costs $0.60. The second minute, you go only 2 blocks, but it is still at least 6 mph. Two blocks is 0.5 fifths-of-a-mile, so you get charged another $0.20, for a total of $2.50 + $0.60 + $0.20 = $3.30.
+3)
+
+    
+{1,1,1,1,1,1,1,1,1,1}
+Returns: "6.10"
+Even though you went 1/2 mile (2.5 fifths of a mile), the cab never went more than 6 mph, so you get charged by-the-minute. $2.50 for the first minute and 40 cents for each additional minute brings you to $6.10.
+4)
+
+    
+{2,2}
+Returns: "2.50"
+
+5)
+
+    
+{0,2,1}
+Returns: "3.10"
+Counterintuitively, the second minute costs less than the third, even though you go faster during the second minute.
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

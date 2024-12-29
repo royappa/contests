@@ -1,0 +1,181 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  
+<!-- Mirrored from www.cs.duke.edu/csed/onlineprobs/matrix2.html by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 14 Mar 2006 08:55:09 GMT -->
+<head>
+    <title>Matrix 2, Names with Highest Score</title>
+  </head>
+
+  <body>
+    <h1>Matrix 2, Names with Highest Score</h1>
+
+<em>
+
+</em>
+<p>
+<hr>
+
+<h3>Problem Statement</h3>
+
+Your task is to return the name of the player with the highest score. If 
+there is more than one player with the highest score, then you should return
+a string with the names of all the players with the highest score, with 
+names separated by a "-". The order of these names should be in the same
+order they appear in the array they are given in. A player's name should
+only appear once. 
+
+<p>You are 
+given a vector called <tt>names</tt> of player names and a matrix called
+<tt>scores </tt> with scores for some sport, where 
+each row in the matrix represents the scores of a player on 
+the team and each column is the scores in a game. 
+Thus, the entry <tt>scores[k][j]</tt> in the matrix is the number
+of points scored by player <tt>k</tt> for game <tt>j</tt>. The corresponding
+player's name is in <tt>names[k]</tt>. 
+<P>
+
+
+For example, suppose the game is Duke basketball,  there are 14 players on 
+the team, and they have played three games so far. The first column below is 
+the Names vector and the next three columns are in the matrix scores. 
+<p>
+<pre>
+Deng         18   12    17
+Horvath      17    0    17
+Redick        9   16    23
+Ewing        13   23    6
+Melchionni   21    9    3
+Dockery       9    6    4
+Duhon        12   11    6
+Williams     16   12   17
+Borman        0    0    0
+Davidson      0    0    0
+Randolph     23   12   18
+Thompson     15    4    0
+Johnson       0    0    2
+Means         0    0    0
+</pre>
+<P>
+
+The string returned should be <tt>"Redick-Ewing-Randolph" </tt> as 23 is
+the highest score and those are the three players with the highest score.
+Note there is no dash after Randolph.
+<P>
+
+
+
+<P> 
+<h3>Definition</h3>
+
+<UL>
+<LI> Class: none used in this problem
+<LI> Method: nameHighScore
+<LI> Parameters: tvector&lt;string&gt;, tmatrix&lt;int&gt;
+<LI> Returns: string
+<LI> Method signature (see below)
+
+</UL>
+
+ <h3>Prototype</h3>
+
+(be sure you have the necessary include files)
+
+<XMP>
+
+#include "tvector.h"
+#include "tmatrix.h"
+
+   string nameHighScore(const tvector<string> & names, tmatrix <int> &  scores)
+   {
+           
+   }
+
+</XMP>
+
+<P>
+
+
+<h3>Constraints</h3>
+<UL>
+
+<LI>
+scores.numrows() is equal to names.size()
+<P>
+</UL>
+
+<P>
+<h3>Examples</h3>
+
+<OL>
+<LI>
+<PRE>
+Deng         18   12    17
+Horvath      17    0    17
+Redick        9   16    23
+Ewing        13   23    6
+Melchionni   21    9    3
+Dockery       9    6    4
+Duhon        12   11    6
+Williams     16   12   17
+Borman        0    0    0
+Davidson      0    0    0
+Randolph     23   12   18
+Thompson     15    4    0
+Johnson       0    0    2
+Means         0    0    0
+
+Returns: Redick-Ewing-Randolph
+
+</PRE>
+The highest score is 23, obtained by Redick, Ewing and Randolph
+
+<p>
+<LI>
+<PRE>
+ Ed  10 14 29 17
+ Mo  29  4 13 29
+ Jo  11  3  5 18
+
+Returns: Ed-Mo
+
+</PRE>
+The highest score is 29, obtained by both Ed and Mo.
+
+
+<P>
+<LI>
+<PRE>    
+  a  3 4
+  b  1 2
+
+Returns: a
+
+</PRE>
+<P> 4 is the highest score, which a obtained.
+
+<P>
+<LI>
+<PRE>
+  a  3 4
+  b  3 4
+
+Returns: a-b
+   
+</PRE>
+<P>
+4 is the highest score, both a and b have the highest score.
+</OL>
+
+
+
+
+    <hr>
+    <address><a href="mailto:rodger@cs.duke.edu">Susan H. Rodger</a></address>
+<!-- Created: Tue Sep 23 23:40:19 EDT 2003 -->
+<!-- hhmts start -->
+Last modified: Thu Nov 20 09:38:59 EST 2003
+<!-- hhmts end -->
+  </body>
+
+<!-- Mirrored from www.cs.duke.edu/csed/onlineprobs/matrix2.html by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 14 Mar 2006 08:55:09 GMT -->
+</html>

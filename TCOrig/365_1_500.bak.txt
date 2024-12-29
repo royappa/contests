@@ -1,0 +1,63 @@
+vector <string> maxAptitude(vector <string> numbers) {
+	
+}
+
+Problem Statement
+    
+You are given a vector <string> numbers containing a set of distinct non-negative integers (no leading zeroes). Let m be the smallest integer in numbers, and let M be the largest integer in numbers. An arithmetic progression of integers a+id, a+(i+1)d, ..., a+(j-1)d, a+jd is called proper if it satisfies all of the following conditions:
+It contains at least 3 distinct integers from numbers.
+All of the numbers in the progression are integers between m and M, inclusive.
+If it were extended in either direction, condition 2 would no longer be satisfied. In other words, neither a+(i-1)d nor a+(j+1)d are between m and M, inclusive. (See example 0 for further clarification.)
+Given a proper arithmetic progression, let a be the number of integers in the progression that are contained in numbers, and let b be the total number of integers in the progression. The aptitude of the progression is defined as a divided by b. Given numbers, return the maximal aptitude of a proper arithmetic progression as a vector <string> containing exactly 2 elements representing 2 integers (with no leading zeroes), first of which divided by the second equals the maximal aptitude. The first and the second elements of vector <string> you return must represent non-negative integers which do not have common divisors greater than 1. Return {"0", "1"} if no proper arithmetic progression exists.
+Definition
+    
+Class:
+ArithmeticProgressions
+Method:
+maxAptitude
+Parameters:
+vector <string>
+Returns:
+vector <string>
+Method signature:
+vector <string> maxAptitude(vector <string> numbers)
+(be sure your method is public)
+    
+
+Constraints
+-
+numbers will contain between 1 and 50 elements, inclusive.
+-
+Each element of numbers will contain between 1 and 18 characters, inclusive.
+-
+Each character of every element of numbers will be a digit ('0'-'9').
+-
+No element of numbers will contain '0' (zero) as its first character.
+-
+All elements of numbers will be distinct.
+Examples
+0)
+
+    
+{"1", "3", "5", "8"}
+Returns: {"3", "4" }
+We have two proper arithmetic progressions here: 1, 2, 3, 4, 5, 6, 7, 8 and 1, 3, 5, 7. Both of them can not be extended since neither 0, nor 9 lies in [1; 8] in the first case and neither -1, nor 9 lies in [1; 8] in the second case. 4 elements of the first progression belong to numbers and so its aptitude is 4/8 = 1/2. 3 elements of the second progression belong to numbers and so its aptitude is 3/4, which is highest possible in this case.
+1)
+
+    
+{"1", "3", "5", "7", "9", "11", "13", "15", "17", "19"}
+Returns: {"1", "1" }
+The elements of numbers form a proper arithmetic progression, hence its aptitude is 1.
+2)
+
+    
+{"1", "999999999999999999"}
+Returns: {"0", "1" }
+There are not enough elements in numbers to form a proper arithmetic progression.
+3)
+
+    
+{"1", "7", "13", "3511", "1053", "10", "5"}
+Returns: {"3", "391" }
+The elements of numbers are not necessarily sorted.
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

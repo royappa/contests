@@ -1,0 +1,75 @@
+Allow nurses to adjust copay amounts in Log Notes	YES
+Anthem number prefix	YTA856-INMATE# - Terry to send copy
+Chronic Care follow up days	30
+Chronic Care initial days	30
+Acute Care follow up days	7
+Acute Care initial days	1
+Pharmacy account name	RECEIVED
+Create Non-Med Order to “Remove from Cart” when med order is discontinued	YES
+Lab link to Result Viewer	www.labcorpbeacon.com 
+Protocols link to local files	“MPRSC FORMS AND PROTOCOLS” – see email
+Allow providers to review segregation assessments	NO, initially
+Segregation review providers	NO, initially
+Exclude refills from copay report	NO
+Hours to deliver pharmacy order	0
+Include "All Active Problems" criteria on some reports	YES
+Include Dental Assessment in BMS	NO
+Initial Screening Interval	3 days (internal goal for BMS, it’s only DOC that wants 14)
+Use Acute Care Timer	YES
+Use Chronic Care Timer	YES
+Show "include vital signs" on some reports	YES
+Show "form" on med orders	NO
+Use Mental Health Initial Timer	NO, initially (Use SBAR until we talk with MH provider)
+Mental Health Care follow up days	NO, initially (Use SBAR until we talk with MH provider)
+Mental Health Care initial days	n/a
+Kitchen Trustee Recipients (emails of users)	n/a, initially
+Max Login Attempts	5 (reduce to 3 later)
+Minimum Reorder Days (medication low threshold)	5 days
+o	QOH Threshold (Used in RENEWAL OF MEDICATIONS report)	1
+Password Expiration (days)	90 days
+Radiology Zip Password	n/a
+Radiology PDF Password	n/a
+Radiology Failure Email Recipients	n/a
+Separate TB form from BMS	YES
+Show tasks for nurses	NO
+TB Abnormal Results Email Address	classification   rwild@mprsc.org 
+TB Normal Results Email Address classification   rwild@mprsc.org
+TB PPD Results Email Address classification   rwild@mprsc.org
+Show comments section on NON-SBAR encounters create/view/edit	NO
+Pharmacy Email	RECEIVED
+Email addresses for people to be BCC'ed on SBAR emails (NotificationsEmails)	N/A
+Disable Refill Copay For Legacy Medications	N/A
+Default provider for signatures	Dr. Reese
+Pharmacy Request Cutoff Time	before 4 M-F, by 12 on Sat.
+Pharmacy Server URL	RECEIVED
+Show DOB In NonMed Order Progress Report	NO
+Consecutive Exception Report Standard (ex	Failed to Show, Refused)	Discuss after pill pass
+Max Last Vitals Days (used for DNC on segregation report)	later (probably 7 days)
+Missed Time (int) For Recurring Orders	
+Enable “Do Not Send To Pharmacy” feature	YES
+List of users allowed to use "Do Not Send To Pharmacy”	all nurses
+Session timeout	40 minutes
+BMS Warning Text Provider Name	Dr. Reese
+Users to remove from SBAR communications dropdown	later
+Users to add to SBAR communications dropdown	later
+Enable Clinic Stock Delivery Add Task	NO
+Missed Time For Orders (Hours)	2 hours
+RadiologyAttachmentIntfcStatusDefaultFinal	FALSE (internal)
+Domains for user emails that are allowed to be added during user creation	MPRSC.ORG
+Work Day Start Time	0500
+Work Day End Time	2359
+EFAX Domain	EUGENE sent
+Consecutive Exception Days To Scan	3
+Consecutive Exception Tasks Daily Check Time	0300
+Legacy NonMed Transport	
+Reset Followup Timers On New Bookings	later
+Hide "All Medical Providers" in dropdowns	YES
+LIDS Label	no change
+Hide Trigon Number	YES
+Hide USMS Number	YES
+Hide District	YES
+Hide Local Jurisdiction	NO
+Paper Pharmacy	NO
+All Providers Must Sign Off (keep tasks active for other providers when a provider signs off)	NO
+BMS AWS Score Required	YES
+TB Follow Up Screening Interval In Months	12

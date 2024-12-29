@@ -1,0 +1,74 @@
+int step1(int state, int btn)
+{
+	int dir[] = {0,-1,-1,0,0,1,1,0};
+	int r = btn / 4, c = btn % 4;
+	
+	for (int k = 0; k < 8; k += 2)
+	{
+		int dr = dir[k], dc = dir[k+1];
+		if (r+dr < 0 || r+dr >= 4 || c+dc < 0 || c+dc >= 4)
+		{
+			continue;
+		}
+		flipbit(state, (r+dr)*4+(c+dc));
+	}
+	flipbit(state, btn);
+	return state;		
+}
+
+int step2(int state, int btn)
+{
+	flipbit(state, btn);
+	return state;
+}
+
+int fewestMoves(vector <string> board) 
+{
+	int state = 0;
+	for (int i = 0; i < 4; i++)
+	{
+		for (int j = 0; j < 4; j++)
+		{
+			if (board[i][j] == '1')
+			{
+				int pos = i*4+j;
+				setbit(state, pos);
+			}
+		}
+	}
+	int n = 1<<16;
+	vector<int> dist(n+1, 1<<30);
+	vector<bool> used(n+1, false);
+
+	dist[state] = 0;
+	
+	priority_queue<pii> pq;
+	pq.push(make_pair(0, state));
+	
+	while (pq.size() > 0)
+	{
+		pii closest = pq.top(); pq.pop();
+		int d = -closest.first, v = closest.second; // STL pq is max-heap by default, too lazy to change.
+		if (d > dist[v]) // this is to handle stupid STL pq, which does not have an update. So we may have outdated vertices in PQ, must ignore.
+			continue;
+					
+		for (int i = 0; i < 16; i++) 
+		{
+			int state1 = step1(v, i);
+			if (d+1 < dist[state1])
+			{
+				dist[state1] = d+1;
+				pq.push(make_pair(-dist[state1], state1));
+			}
+			int state2 = step2(v, i);
+			if (state2 == state1)
+				continue;
+			if (d+2 < dist[state2])
+			{
+				dist[state2] = d+2;
+				pq.push(make_pair(-dist[state2], state2));
+			}			
+		}
+	}
+	return dist[0];
+}

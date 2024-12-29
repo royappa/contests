@@ -1,0 +1,73 @@
+vector<string> messages;
+vector<int> result;
+int n;
+
+void backtrack(int k, int best)
+{
+	if (k == n)
+	{
+		return;
+	}
+	
+	for (int i = 0; 
+vector <int> getRank(vector <string> _messages) 
+{
+	messages = _messages;
+	for (int i = 0; i < n; i++)
+		result.push_back(-1);
+		
+	backtrack(result, 0, 1<<30);
+	return result;
+}
+
+Problem Statement
+    
+Character j in element i (both 0-based) of messages denotes how many messages employee i sent to employee j. You will return a vector <int> containing the hierarchy of the employees within the company. Element 0 is the highest ranked employee, and so forth. The returned ranking should minimize the number of messages sent from lower ranked employees to higher ranked employees. If multiple solutions are possible, return the one with element 0 minimal. If there are still ties, minimize element 1, etc.
+Definition
+    
+Class:
+CompanyMessages
+Method:
+getRank
+Parameters:
+vector <string>
+Returns:
+vector <int>
+Method signature:
+vector <int> getRank(vector <string> messages)
+(be sure your method is public)
+    
+
+Constraints
+-
+messages will contain between 2 and 15 elements inclusive.
+-
+Each element of messages will contain exactly N characters, where N is the number of elements in messages.
+-
+Each character in messages will be a digit ('0'-'9').
+-
+Character i in element i of messages will be '0'.
+Examples
+0)
+
+    
+{"000",
+ "000",
+ "000"}
+Returns: {0, 1, 2 }
+Here no messages are sent.
+1)
+
+    
+{"000",
+ "100",
+ "010"}
+Returns: {2, 1, 0 }
+Person 2 sends a message to person 1 and person 1 sends one to person 0. The hierarchy is clear.
+2)
+
+    
+{"012105","601745","830479","043086","349904","649810"}
+Returns: {4, 2, 1, 5, 0, 3 }
+A lot of messages sent around.
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

@@ -1,0 +1,240 @@
+import java.util.*;
+
+public class Cubism
+{
+
+	private int countLines(char[][] slab, String color)
+	{
+		String w; int count = 0;
+System.out.println("NEWSLAB");
+		for (int r = 0; r < 4; r++)
+		{
+			w = "";
+			for (int c = 0; c < 4; c++)
+			{
+				w += slab[r][c];
+			}
+			count += (color.equals("W") && w.equals("WWWW")) ? 1 :
+					(color.equals("B") && w.equals("BBBB")) ? 1 : 0;
+		}
+		for (int c = 0; c < 4; c++)
+		{
+			w = "";
+			for (int r = 0; r < 4; r++)
+			{
+				w += slab[r][c];
+			}
+			count += (color.equals("W") && w.equals("WWWW")) ? 1 :
+					(color.equals("B") && w.equals("BBBB")) ? 1 : 0;
+		}
+		w = "";
+		for (int x = 0; x < 4; x++)
+		{
+			w += slab[x][x];
+		}
+		count += color.equals("W") && w.equals("WWWW") ? 1 :
+					color.equals("B") && w.equals("BBBB") ? 1 : 0;
+		w = "";
+		for (int x = 0; x < 4; x++)
+		{
+			w += slab[3-x][x];
+		}
+		count += color.equals("W") && w.equals("WWWW") ? 1 :
+					color.equals("B") && w.equals("BBBB") ? 1 : 0;
+for (int r = 0; r < 4; r++) 
+{
+ w = "";
+for (int c = 0; c < 4; c++) w += slab[r][c];
+System.out.println(w);
+}
+System.out.println("***:"+count);
+		return count;
+	}
+	public int lines(String[] lattice, String color)
+	{
+		char[][][] cube = new char[4][4][4]; 
+		int s, r, c;
+		color = color.equals("black") ? "B" : "W";
+		for (s = 0; s < 4; s++)
+		{
+			String slice = lattice[s];
+			for (r = 0; r < 4; r++)
+			{
+				String row = slice.substring(r*4,r*4+4);
+				for (c = 0; c < 4; c++)
+				{
+					cube[s][r][c] = row.charAt(c);
+				}
+			}
+		}
+
+		//3*16+12*2+3 = 48+24+4
+		//top to bottom
+System.out.println("XYZ");
+		char[][] slab = new char[4][4];
+		int numLines = 0;
+		for (s = 0; s < 4; s++)
+		{
+			for (r = 0; r < 4; r++)
+			{
+				for (c = 0; c < 4; c++)
+				{
+					slab[r][c] = cube[s][r][c];
+				}
+			}
+			numLines += countLines(slab, color);
+		}
+		//north to south
+System.out.println("XYZ");
+		for (s = 0; s < 4; s++)
+		{
+			for (r = 0; r < 4; r++)
+			{
+				for (c = 0; c < 4; c++)
+				{
+					slab[r][c] = cube[r][s][c];
+				}
+			}
+			numLines += countLines(slab, color);
+		}
+		// west to east
+System.out.println("XYZ");
+		for (s = 0; s < 4; s++)
+		{
+			for (r = 0; r < 4; r++)
+			{
+				for (c = 0; c < 4; c++)
+				{
+					slab[r][c] = cube[r][c][s];
+				}
+			}
+			numLines += countLines(slab, color);
+		}
+		int ss, sr, sc;
+		String w = "";
+		ss = 0; sr = 0; sc = 0;
+		for (int i = 0; i < 4; i++)
+		{
+			w += cube[ss+i][sr+i][sc+i];
+		}
+		numLines += color.equals("W") && w.equals("WWWW") ? 1 :
+				color.equals("B") && w.equals("BBBB") ? 1 : 0;
+		ss = 0; sr = 0; sc = 3;
+		w = "";
+		for (int i = 0; i < 4; i++)
+		{
+			w += cube[ss+i][sr+i][sc-i];
+		}
+		numLines += color.equals("W") && w.equals("WWWW") ? 1 :
+				color.equals("B") && w.equals("BBBB") ? 1 : 0;
+		ss = 0; sr = 3; sc = 3;
+		w = "";
+		for (int i = 0; i < 4; i++)
+		{
+			w += cube[ss+i][sr-i][sc-i];
+		}
+		numLines += color.equals("W") && w.equals("WWWW") ? 1 :
+				color.equals("B") && w.equals("BBBB") ? 1 : 0;
+		ss = 0; sr = 3; sc = 0;
+		w = "";
+		for (int i = 0; i < 4; i++)
+		{
+			w += cube[ss+i][sr-i][sc+i];
+		}
+		numLines += color.equals("W") && w.equals("WWWW") ? 1 :
+				color.equals("B") && w.equals("BBBB") ? 1 : 0;
+		return numLines;
+	}
+}
+
+
+Problem Statement
+    
+64 cubes are packed into a four-by-four-by-four lattice. (No, not the kind used to make salad. Forget lettuce! Think of a three-dimensional grid.) Each cube is either black or white.
+The lattice configuration is described by a String[] containing four elements of 16 characters each. Imagine the lattice resting on a table with one face oriented north. If we cut the lattice into four slices parallel to the tabletop, then the first String describes the topmost slice, the second describes the second slice from the top, and so on. Each String lists the contents of a slice row by row from north to south, and from west to east within each row. Every character has one of two values: "B" stands for a black cube, "W" for a white one.
+We say that a line consists of four cubes, all the same color, arranged sequentially in any orthogonal or diagonal direction. A line may be such that consecutive cubes touch each other with their faces, or such that they touch with their edges, or such that they touch with their corners. All four cubes must be aligned in the same direction. Two lines are distinct if they are not formed of the same four cubes.
+Given a lattice configuration and a color, count the number of distinct lines formed by cubes of that color.
+Definition
+    
+Class:
+Cubism
+Method:
+lines
+Parameters:
+String[], String
+Returns:
+int
+Method signature:
+int lines(String[] lattice, String color)
+(be sure your method is public)
+    
+
+Constraints
+-
+lattice contains exactly four elements
+-
+each element of lattice is exactly 16 characters long
+-
+each character is either 'B' or 'W'
+-
+color is either "black" or "white"
+Examples
+0)
+
+    
+{"BBBBBWWWBWWWBWWW",
+ "BWWWWWWWWWWWWWWW",
+ "BWWWWWWWWWWWWWWW",
+ "BWWWWWWWWWWWWWWW"}
+"black"
+Returns: 3
+Black lines lie along three edges of the lattice and meet at a corner.
+1)
+
+    
+{"BWWWWWWWWWWWWWWW",
+ "WWWWWBWWWWWWWWWW",
+ "WWWWWWWWWWBWWWWW",
+ "WWWWWWWWWWWWWWWB"}
+"black"
+Returns: 1
+A black line stretches diagonally between two corners, its endpoints as far apart as any two cubes of the lattice can be.
+2)
+
+    
+{"WWWWWWWWWWWWWWWW",
+ "WWWWWWWWWWWWWWWW",
+ "WWWWWWWWWWWWWWWW",
+ "WWWWWWWWWWWWWWWW"}
+"black"
+Returns: 0
+There are no black lines here.
+3)
+
+    
+{"WWWWWWWWWWWWWWWW",
+ "WWWWWWWWWWWWWWWW",
+ "WWWWWWWWWWWWWWWW",
+ "WWWWWWWWWWWWWWWW"}
+"white"
+Returns: 76
+This is the greatest number of lines possible in a lattice.
+4)
+
+    
+{"WWWWWWWWWBWWWWWW",
+ "WWWBWWWWWWWWWWWW",
+ "WWWWWWWWWWWWBWWW",
+ "WWWBWWWWWWWWWWWW"}
+"white"
+Returns: 58
+
+5)
+
+    
+{"BWBWBWBWBWBWBWBW","BWBWBWBWBWBWBWBW",
+ "BWBWBWBWBWBWBWBW","BWBWBWBWBWBWBWBW"}
+"white"
+Returns: 20
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

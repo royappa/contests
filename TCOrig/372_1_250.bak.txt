@@ -1,0 +1,150 @@
+int getExitTime(vector <string> lanes) 
+{
+	int n = lanes.size();
+	vector<int> yielded(n, 0);
+	
+	for (int t = 0; ; t++)
+	{
+		for (int i = 0; i < n; i++)
+		{
+			if (lanes[i].size() > 0 && yielded[i])
+			{
+				if (lanes[i][0] == 'D')
+					return t;
+				yielded[i] = 0;
+				lanes[i] = lanes[i].substr(1);
+				break;
+			}
+			else if (lanes[i].size() > 0)
+			{
+				mustYield = false;
+				for (int j = i+1; j < n; j++)
+				{
+					if (lanes[j].size() > 0 && yielded[j])
+					{
+						mustYield = true;
+						break;
+					}
+				}
+				if (mustYield)
+				{
+					yielded[i] = 1;
+				}
+				else
+				{
+					yielded[i] = 0;
+					lanes[i] = lanes[i].substr(1);
+				}
+			}
+		}
+	}
+	return -1;
+}
+
+Problem Statement
+    
+During today's meeting of the Council of Rainban, your advisors warned you about the growing traffic problems in your fair country. 
+
+It seems that the Daring Ostrich Society has shut down the Rainban Access Motorway due to the annual migration of ostriches across the highway. 
+
+This is rather unfortunate, as many cars are now trapped on the highway. Construction crews have begun to build an emergency exit so that the trapped cars can exit, but there will be chaos without rules on when cars can exit. 
+
+To promote friendly driving, you decide to enforce the following rules:
+* A car may not exit if there is a car in front of it in its lane.
+* A car may not exit if a car in a lower numbered lane is about to exit.
+* Once a car has reached the front of its lane, it must (if possible) yield exactly once to a car from a higher numbered lane. 
+
+This means that the car will allow a car from a higher numbered lane to exit (if one exists).
+
+If a car has fulfilled all of the above requirements, it may exit the highway. 
+The next car in that lane (if there is one) then moves to the front of the lane.
+
+As an example, suppose that there are five cars in the highway, as pictured below (with the front of the lane located on the left):
+0 A B
+1 C D
+2 E
+
+Car A has not yet yielded, so it must yield. The same happens for car C. Car E cannot yield (as there are no cars in higher lanes), and so it exits. Now car A fulfills the exiting rules (having yielded to car E), and it can exit. Car B moves up to the front, but has not yet yielded, and thus must yield to car C. Car B then can exit, followed by car D.
+
+You will be given currentLanes. 
+
+The i-th element of currentLanes corresponds to the cars currently located in lane i. 
+The 0-th character in each element corresponds to the car at the front of the lane. 
+No car in currentLanes has yielded yet. 
+The car represented by the character 'D' is a diplomat from a far-off country. 
+You want to know how many cars exit in front of this diplomat (so that you know whether you have time to take a bath before his arrival), 
+and return this number.
+
+Definition
+    
+Class:
+RoadConstruction
+Method:
+getExitTime
+Parameters:
+vector <string>
+Returns:
+int
+Method signature:
+int getExitTime(vector <string> currentLanes)
+(be sure your method is public)
+    
+
+Constraints
+-
+currentLanes will contain between 1 and 50 elements, inclusive.
+-
+Each element of currentLanes will contain between 1 and 50 characters, inclusive.
+-
+Each character of currentLanes will be an uppercase letter ('A'-'Z').
+-
+There will be exactly one 'D' in currentLanes.
+Examples
+0)
+
+    
+{"AB",
+ "CD",
+ "E"}
+Returns: 4
+The example from the problem statement.
+1)
+
+    
+{"AH",
+ "D",
+ "BCG",
+ "E",
+ "F"}
+Returns: 2
+Car F goes first. Having yielded right of way, car A moves next, followed by car D (which already yielded to car F).
+2)
+
+    
+{"AAA",
+ "A",
+ "AAA",
+ "A",
+ "AAD",
+ "A",
+ "AAB"}
+Returns: 13
+Multiple cars can be represented by the same letter, but there will be exactly one diplomat.
+3)
+
+    
+{"DEFGHIJK"}
+Returns: 0
+
+4)
+
+    
+{"I",
+ "WANT",
+ "TO",
+ "DRINK",
+ "SOME",
+ "COFFEE"}
+Returns: 5
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

@@ -1,0 +1,10 @@
+2*(11+9)*1+ 2*(9+7)*6+ 2*(7+5)*3+2*(5+3)*5+9*8
+
+
+//if (debug) printf("Lake edges from %d,%d: \n", r, c);
+
+//if (debug) { printf("eLake: "); for (auto z : eLake) { printf(" %d %d", z.first, z.second); printf("\n");} }
+//if (debug) printf("\n");
+//if (debug) { printf("Lake: %d,%d\n", r, c); for (auto z : eLake) { printf(" %d,%d", z.first, z.second); } printf("\n");}
+//if (debug) printf ("e-volume of %d,%d = %d\n", nr, nc, max(waterLevel-h[nr][nc], 0));
+//if (debug) printf ("i-volume of %d,%d = %d\n", dr, dc, waterLevel-h[dr][dc]);

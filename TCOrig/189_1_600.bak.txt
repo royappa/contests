@@ -1,0 +1,70 @@
+
+Problem Statement
+    
+You are writing the scheduler for a small hardware device with a single input peripheral and a single output peripheral. Typically, programs that run on the device must make exclusive use of the input for some amount of time, then do a negligible number of calculations and finally make exclusive use of the output for some amount of time. For example, a program might require 4 seconds of input, and then 2 seconds of output. We assume that the output may immediately follow the input (but doesn't have to) and that no time is required before the input, or after the output. Furthermore, while one program is using the input, no other program may use it, and similarly for the output. However, one program may use the input, while a different program uses the output. Also, the scheduler may let a program use the input (or output) for some amount of time, then let a different program use the input (or output) for a while, and finally let the first program go back and use it some more.  Your task is, given a vector <int>, A, and a vector <int>, B, representing the amounts of time that a number of programs must use the input device and the output device, respectively, determine the schedule of programs that minimizes the total time required for all the programs to finish, and return that time. Corresponding elements of A and B represent a single program.
+Definition
+    
+Class:
+ScheduleResources
+Method:
+schedule
+Parameters:
+vector <int>, vector <int>
+Returns:
+int
+Method signature:
+int schedule(vector <int> A, vector <int> B)
+(be sure your method is public)
+    
+
+Constraints
+-
+A will contain between 1 and 20 elements, inclusive.
+-
+A and B will contain the same number of elements.
+-
+Each element of A and B will be between 1 and 100, inclusive.
+Examples
+0)
+
+    
+{7,6,3}
+{9,7,3}
+Returns: 25
+The following diagram displays an optimal schedule:
+           |         time
+           |         1         2
+           |1234567890123456789012345
+-----------+------------------------
+Program 0  |      AAAAAAABBBBBBBBB
+Program 1  |AAAAAABBBBBBB
+Program 2  |             AAA      BBB
+We start program 1 right away and it uses the input for 6 seconds. Then, we start program 0 on input, while program 1 moves on the output. Both of these finish after 7 more seconds, for 13 total. Now, we start program 2 on input, and move program 0 on to its output. After 3 seconds, program 2 finishes with the input, but it can't use the output until program 0 finishes - 6 seconds later. Once program 0 finishes, program 2 can use the output for 3 seconds. Adding all this up, we get a total of 25 seconds.
+1)
+
+    
+{8,1,6}
+{1,6,3}
+Returns: 16
+           |         time
+           |         1         
+           |12345678901234567
+-----------+------------------------
+Program 0  |     AA  AAAAAAB
+Program 1  |ABBBBBB
+Program 2  | AAAA  AABBB
+2)
+
+    
+{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
+{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
+Returns: 21
+
+3)
+
+    
+{4,5,6}
+{1,1,6}
+Returns: 16
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

@@ -1,0 +1,112 @@
+	public int transform(String start, String finish)
+	{
+		int n = start.length();
+		char[] fin = finish.toCharArray();
+		LinkedList q = new LinkedList();
+		HashMap dist = new HashMap();
+		
+		q.add(start);
+		dist.put(start, new Integer(0));
+
+		int best = 10000; // what SHOULD this be..?
+		while (q.size() > 0)
+		{
+			String head = (String) q.remove(0);
+			char[] tempHead = head.toCharArray();				
+			int diff = 0;
+			for (int i =0; i < n; i++)
+				diff += Math.abs(tempHead[i]-fin[i]);
+			int swaps = ((Integer) dist.get(head)).intValue();
+			best = Math.min(diff+swaps, best);
+			for (int i = 0; i < n; i++)
+			{
+				for (int j = i+1; j < n; j++)
+				{
+					char chi = tempHead[i];
+					char chj = tempHead[j];
+					tempHead[i] = chj;
+					tempHead[j] = chi;
+					String t = new String(tempHead);
+					if (!dist.containsKey(t))
+					{
+						q.add(t);
+						dist.put(t, new Integer(swaps+1));
+					}
+					tempHead[i] = chi;					
+					tempHead[j] = chj;
+				}
+			}		
+		}
+		return best;
+	}
+	
+	
+Problem Statement
+    
+You will be given 2 numbers start and finish each with the same number of digits. Both may have leading zeros. You are going to transform start into finish using the following kinds of transformation steps:
+
+1) Increment a digit less than 9 by 1. For example, changing 354 to 364.
+2) Decrement a digit greater than 0 by 1. For example, changing 354 to 254.
+3) Swapping two digits. For example, changing 354 to 453.
+
+Return the fewest number of transformation steps required to change start into finish.
+
+Definition
+    
+Class:
+NumberChanger
+Method:
+transform
+Parameters:
+String, String
+Returns:
+int
+Method signature:
+int transform(String start, String finish)
+(be sure your method is public)
+    
+
+Constraints
+-
+start will contain between 1 and 8 characters inclusive.
+-
+Each character in start will be a digit ('0'-'9').
+-
+finish will contain the same number of characters as start.
+Examples
+0)
+
+    
+"01234567"
+"01234567"
+Returns: 0
+No steps required.
+1)
+
+    
+"11119999"
+"99991111"
+Returns: 4
+4 swaps does the trick.
+2)
+
+    
+"55555555"
+"12345678"
+Returns: 16
+Swapping is of no use here.
+3)
+
+    
+"77771111"
+"00446688"
+Returns: 16
+
+4)
+
+    
+"12"
+"30"
+Returns: 3
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

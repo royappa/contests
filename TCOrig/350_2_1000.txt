@@ -1,0 +1,144 @@
+int checkIfProper(int n, vector <string> actions) 
+{
+	vector<int> par(n+1, 0);
+	
+	for (int k = 0; k < actions.size(); k++)
+	{
+		string s = actions[k];
+		if (s[0] == 'P')
+		{
+			int i, j;
+			sscanf(s.c_str(), "PUT %d INSIDE %d", &i, &j);
+			if (par[i] != 0 || par[j] != 0)
+				return -1;
+			par[i] = j;
+		}
+		else if (s[1] == 'E')
+		{
+			int i, j;
+			sscanf(s.c_str(), "SET %d LOOSE", &i);
+			if (par[i] != 0)
+				return -1;
+			for (int m = 1; m <= n; m++)
+			{
+				if (par[m] == i)
+				{
+					par[m] = 0;
+				}
+			}
+		}
+		else
+		{
+			int i, j;
+			sscanf(s.c_str(), "SWAP %d WITH %d", &i, &j);
+			vector<int> ii, ij;
+			for (int m = 1; m <= n; m++)
+			{
+				if (par[m] == i)
+				{
+					ii.push_back(m);
+				}
+				if (par[m] == j)
+				{
+					ij.push_back(m);
+				}
+			}
+			for (int m = 0; m < ii.size(); m++)
+			{
+				par[ii[m]] = j;
+			}
+			for (int m = 0; m < ij.size(); m++)
+			{
+				par[ij[m]] = i;
+			}
+		}
+	}
+	int c = 0;
+	for (int m = 1; m <= n; m++)
+	{
+		if (par[m] != 0 && par[m] < m)
+			return -1;
+		if (par[m] == 0)
+			c++;
+	}
+	return c;			
+}
+
+Problem Statement
+    
+We have n bags numbered from 1 to n. Each bag can contain bags in its interior, which themselves can contain more bags. For the purposes of this problem, bag i is said to be inside bag j if and only if bag i is immediately contained in bag j. For example, if bag 1 contains bag 2, which contains bag 3, then bag 3 is inside bag 2, but it is not inside bag 1. All bags are initially empty and lying on the floor. We will perform a sequence of actions, each of which is one of the following types:
+
+"PUT i INSIDE j" - Put bag i inside bag j. Both bag i and bag j must currently be on the floor for this action to be valid.
+
+"SET i LOOSE" - Remove all the bags currently inside bag i and place them on the floor. Bag i must currently be on the floor for this action to be valid.
+
+"SWAP i WITH j" - Swap the contents of bag i with the contents of bag j (i.e., take all the bags that are inside bag i and put them inside bag j, and vice versa). 
+
+Both bag i and bag j must currently be on the floor for this action to be valid.
+
+The final configuration of bags is said to be proper if no bag lies inside a bag with a smaller number. Given n, the number of bags, and actions, the sequence of actions to perform on the bags, determine if the final configuration is proper. 
+
+If so, return the number of bags that are on the floor in the final configuration. 
+
+If it is not proper or if any of the actions are invalid, return -1 instead. 
+
+See examples for further clarification.
+Definition
+    
+Class:
+BagsQuiz
+Method:
+checkIfProper
+Parameters:
+int, vector <string>
+Returns:
+int
+Method signature:
+int checkIfProper(int n, vector <string> actions)
+(be sure your method is public)
+    
+
+Constraints
+-
+n will be between 1 and 50, inclusive.
+-
+actions will contain between 0 and 50 elements, inclusive.
+-
+Each element of actions will be formatted as "PUT i INSIDE j" (where i and j are two distinct integers between 1 and n, inclusive, with no leading zeroes), "SET i LOOSE" (where i is an integer between 1 and n, inclusive, with no leading zeroes), or "SWAP i WITH j" (where i and j are two distinct integers between 1 and n, inclusive, with no leading zeroes). All quotes for clarity only.
+Examples
+0)
+
+    
+2
+{"PUT 1 INSIDE 2"}
+Returns: 1
+Bag 1 is put inside bag 2 so only 1 bag remains on the floor.
+1)
+
+    
+2
+{"PUT 1 INSIDE 2", "SET 2 LOOSE"}
+Returns: 2
+No effect on the initial configuration.
+2)
+
+    
+2
+{"PUT 2 INSIDE 1"}
+Returns: -1
+This time the obtained configuration is improper since bag 2 lies inside a bag with a smaller number.
+3)
+
+    
+4
+{"PUT 3 INSIDE 2", "SWAP 4 WITH 2", "PUT 2 INSIDE 4", "SET 1 LOOSE"}
+Returns: 2
+
+4)
+
+    
+3
+{"PUT 1 INSIDE 2", "PUT 3 INSIDE 1"}
+Returns: -1
+We can not perform the last command since the bag 1 is not on the floor.
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

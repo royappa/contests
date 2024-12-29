@@ -1,0 +1,77 @@
+string find(int D) 
+{
+	
+}
+
+Problem Statement
+    
+To obtain the reverse of a number, write it backwards from right to left. 
+
+For example, the reverse of 1234 is 4321, and the reverse of 100 is 1 (leading zeroes are always ignored). 
+
+Return the smallest non-negative number x, such that the difference x - reverse(x) is equal to D. 
+
+If no such number exists, return "NONE" (quotes for clarity) instead.
+
+Definition
+    
+Class:
+ReverseDistance
+Method:
+find
+Parameters:
+int
+Returns:
+string
+Method signature:
+string find(int difference)
+(be sure your method is public)
+    
+
+Constraints
+-
+D will be between 1 and 1000000, inclusive.
+Examples
+0)
+
+    
+18
+Returns: "20"
+20 - 2 = 18. 18 can be also achieved in other ways like 42 - 24, but 20 is the smallest possible number.
+1)
+
+    
+15
+Returns: "NONE"
+It's impossible to find a number with a difference of 15.
+2)
+
+    
+4275
+Returns: "5080"
+5080 - 805 = 4275
+3)
+
+    
+900
+Returns: "101001"
+101001 - 100101 = 900
+4)
+
+    
+1989
+Returns: "100990"
+100990 - 99001 = 1989
+5)
+
+    
+857232
+Returns: "860300"
+860300 - 3068 = 857232
+6)
+
+    
+45
+Returns: "50"
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

@@ -1,0 +1,134 @@
+vector <string> makeColumns(vector <string> words) 
+{
+	int m1 = 0, m2 = 0;
+	int n = words.size();
+	for (int i = 0; i < n; i++)
+	{
+		if (i < n/2)
+		{
+			m1 = max(m1, words[i].size());
+		}
+		else
+		{
+			m2 = max(m2, words[i].size());
+		}
+	}
+	
+	vector<string> r;
+	for (int i = 0; i < n/2; i++)
+	{
+		int j = i+n/2;
+		string s = words[i], t = words[j];
+		int k = m1-int(s.size());
+		s += string(k, ' ');
+		k = m2-int(t.size());
+		t = string(k, ' ')+t;
+		r.push_back(s+"*"+t);
+	}
+	return r;
+		
+}
+
+Problem Statement
+    
+You are given a vector <string> words containing an even number of elements n. You want to place the words into two columns. 
+
+The first n/2 elements of words must be placed in the first column, and the last n/2 elements of words must be in the second column. 
+
+The order of the words in the input must be preserved. 
+
+You are to return a vector <string> containing the words aligned into columns as described below.
+
+The first element of the resulting vector <string> must contain the first elements of each of the two columns, the second element of the result must contain the second elements of both columns and so on. 
+
+Each of the columns must be as narrow as possible; in other words, the width of each of the columns must be equal to the length of the longest word it contains. 
+
+For each column, the width of each row must be the same (but the widths of the rows in the first and in the second columns may differ). 
+
+If some words in a column are narrower than the width of the column, they must be padded with spaces. 
+
+The words in the first column must be aligned to the left (so, all spaces will be added to the right side of words that require them), and the words in the second column must be aligned to the right. 
+
+The columns must be separated by a single character column containing only '*'.
+
+Definition
+    
+Class:
+SimpleTextProcessor
+Method:
+makeColumns
+Parameters:
+vector <string>
+Returns:
+vector <string>
+Method signature:
+vector <string> makeColumns(vector <string> words)
+(be sure your method is public)
+    
+
+Constraints
+-
+words will contain between 2 and 50 elements, inclusive.
+-
+words will contain an even number of elements.
+-
+Each element of words will contain only lowercase letters ('a'-'z').
+-
+Each element of words will contain between 1 and 20 characters, inclusive.
+Examples
+0)
+
+    
+{"a", "b", "c", "d"}
+Returns: {"a*c", "b*d" }
+
+1)
+
+    
+{"very", "exciting", "programming", "competition"}
+Returns: {"very    *programming", "exciting*competition" }
+
+2)
+
+    
+{"simple", "test"}
+Returns: {"simple*test" }
+
+3)
+
+    
+{"this", "software", "includes", "a", "number", "of", "subcomponents", "with",
+"separate", "copyright", "notices", "and", "license", "terms"}
+Returns: 
+{"this         *     with",
+ "software     * separate",
+ "includes     *copyright",
+ "a            *  notices",
+ "number       *      and",
+ "of           *  license",
+ "subcomponents*    terms" }
+
+4)
+
+    
+{"abcdeabcdeabcdeabcde", "abcdeabcdeabcdeabcde", 
+"abcdeabcdeabcdeabcde", "abcdeabcdeabcdeabcde", 
+"abcdeabcdeabcdeabcde", "abcdeabcdeabcdeabcde", 
+"abcdeabcdeabcdeabcde", "abcdeabcdeabcdeabcde", 
+"abcdeabcdeabcdeabcde", "abcdeabcdeabcdeabcde", 
+"abcdeabcdeabcdeabcde", "abcdeabcdeabcdeabcde", 
+"abcdeabcdeabcdeabcde", "abcdeabcdeabcdeabcde", 
+"abcdeabcdeabcdeabcde", "abcdeabcdeabcdeabcde", 
+"abcdeabcdeabcdeabcde", "abcdeabcdeabcdeabcde"}
+Returns: 
+{"abcdeabcdeabcdeabcde*abcdeabcdeabcdeabcde",
+ "abcdeabcdeabcdeabcde*abcdeabcdeabcdeabcde",
+ "abcdeabcdeabcdeabcde*abcdeabcdeabcdeabcde",
+ "abcdeabcdeabcdeabcde*abcdeabcdeabcdeabcde",
+ "abcdeabcdeabcdeabcde*abcdeabcdeabcdeabcde",
+ "abcdeabcdeabcdeabcde*abcdeabcdeabcdeabcde",
+ "abcdeabcdeabcdeabcde*abcdeabcdeabcdeabcde",
+ "abcdeabcdeabcdeabcde*abcdeabcdeabcdeabcde",
+ "abcdeabcdeabcdeabcde*abcdeabcdeabcdeabcde" }
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

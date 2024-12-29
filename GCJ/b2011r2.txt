@@ -1,0 +1,45 @@
+#include <vector>
+#include <list>
+#include <map>
+#include <set>
+#include <deque>
+#include <stack>
+#include <bitset>
+#include <algorithm>
+#include <functional>
+#include <numeric>
+#include <utility>
+#include <sstream>
+#include <iostream>
+#include <iomanip>
+#include <cstdio>
+#include <cmath>
+#include <cstdlib>
+#include <ctime>
+#include <queue>
+
+using namespace std;
+int debug = 1;
+typedef long long LL;
+typedef long double LD;
+
+
+int main()
+{
+	int T;
+
+	cin >> T;
+
+	for (int testCase = 0; testCase < T; testCase++)
+	{
+		int R, C, D;
+		cin >> R >> C >> D;
+		
+		int x = solve(R, C, D, data);
+		if (x == -1)
+			printf("Case #%d: IMPOSSIBLE\n", testCase+1);
+		else
+			printf("Case #%d: %d\n", testCase+1, x);
+	}
+	return 0;
+}

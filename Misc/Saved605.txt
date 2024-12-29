@@ -1,0 +1,83 @@
+#include <vector>
+#include <list>
+#include <map>
+#include <set>
+#include <queue>
+#include <deque>
+#include <stack>
+#include <bitset>
+#include <algorithm>
+#include <functional>
+#include <numeric>
+#include <utility>
+#include <sstream>
+#include <iostream>
+#include <iomanip>
+#include <cstdio>
+#include <cmath>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+
+class AlienAndHamburgers {
+public:
+int getNumber(vector <int> type, vector <int> taste) 
+{
+	int A = 0;
+	int n = type.size();
+	vector<int> used(101, 0);
+	for (int i = 0; i < n; i++)
+	{
+		if (taste[i] >= 0)
+		{
+			used[type[i]] = 1;
+			A += taste[i];
+		}
+	}
+	map<int,int> neg;
+	for (int i = 0; i < n; i++)
+	{
+		if (taste[i] < 0)
+		{
+			if (used[type[i]]) continue;
+			if (neg.find(type[i]) != neg.end())
+			{
+				neg[type[i]] = max(neg[type[i]], taste[i]);
+			}
+			else
+			{
+				neg[type[i]] = taste[i];
+			}
+		}
+	}
+	int Y = 0;
+	for (int i = 1; i <= 100; i++)
+	{
+		if (used[i])
+			Y++;
+	}
+	vector<int> neg2;
+	for (auto it = neg.begin(); it != neg.end(); it++)
+	{
+		neg2.push_back(it->second);
+	}
+	sort(neg2.rbegin(), neg2.rend());
+	for (int i = 0; i < neg2.size(); i++)
+	{
+		if ((Y+1)*(A+neg2[i]) > Y*A)
+		{
+			Y++;
+			A += neg2[i];
+		}
+	}
+	return Y*A;	
+						
+}
+
+};
+
+
+<%:testing-code%>
+//Powered by KawigiEdit 2.1.8 (beta) modified by pivanof!

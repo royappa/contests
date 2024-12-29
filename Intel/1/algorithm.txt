@@ -1,0 +1,45 @@
+// deterministic algorithm
+nodes
+	v1...vn
+
+cost matrix:
+	cost[vi][vj] = [a1,...,ak: sorted list of vertices that are adjacent to vi, that are closer to vj than vi]
+	free[vi][vi] = true if edge is free
+	
+Algorithm
+
+build cost matrix // 100^3
+initialize pos[pi], dst[pi]
+while (numLeft > 0) // 2*100
+{
+	for (each pi such that pos[pi] != dst[pi]) // 2000
+	{
+		vi = pos[pi];
+		vj = dst[pi];
+		for (each a in cost[vi][vj] in order) // 100
+		{
+			if (free[vi][a])
+			{
+				pos[pi] = a;
+				if (pos[pi] == dst[pi])
+					numLeft--;
+				free[vi][vj] = 0;
+				routed = true;
+				break;
+			}
+		}
+	}
+	update steplist;
+}
+
+// randomized algorithm
+
+vector d = <dist(pos[i], dst[i])> // score vector
+
+.. score(d) = norm(d)
+
+1. generate candidate partial-schedules Ci with time Ti and score Si s.t. Si <= 0.05*score(initial_dist);
+	- Use an algoir
+2. Pick best partial-schedule C
+3. Generate remaining schedule of C deterministically
+

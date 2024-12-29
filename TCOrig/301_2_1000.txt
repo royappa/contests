@@ -1,0 +1,98 @@
+
+string s;
+int memo[51][51];
+
+char match(char ch)
+{
+	return ch == '(' ? ')' :
+			ch == '[' ? ']' : '}';
+}
+
+int best(int a, int b)
+{
+	if (a > b)
+		return 0;
+	else if (b == a+1)
+		return match(s[a]) != s[b];
+	int& r = memo[a][b];
+	if (r != -1)
+		return r;
+		
+	r = (match(s[a]) != s[b]) + best(a+1, b-1);
+	
+	for (int j = a+1; j <= b-2; j++)
+	{
+		int x = (match(s[a]) != s[j]) + best(a+1, j-1) +
+				(match(s[j+1] != s[b]) + best(j+1, b-1);
+		r = min(x, r);
+	}
+	return r;
+}
+	
+int getMinErrors(string s_) 
+{
+	string s = s_;
+	int n = s.size();
+	memset(memo, -1, sizeof(memo));
+	
+	return best(0, n-1);
+}
+
+Problem Statement
+    
+Given a string of parentheses, we must turn it into a well formed string by changing as few characters as possible (we cannot delete or insert characters).
+
+There are 3 kinds of parentheses: regular (), brackets [] and curly brackets {}. Each pair has an opening ('(', '[' and '{' respectively) and a closing (')', ']' and '}') character.
+
+A well formed string of parentheses is defined by the following rules:
+
+The empty string is well formed.
+If s is a well formed string, (s), [s] and {s} are well formed strings.
+If s and t are well formed strings, the concatenation st is a well formed string.
+As examples, "([{}])", "" and "(){}[]" are well formed strings and "([}]", "([)]" and "{" are malformed strings.
+Given a string s of parentheses, return the minimum number of characters that need to be changed to make it into a well formed string.
+Definition
+    
+Class:
+CorrectingParenthesization
+Method:
+getMinErrors
+Parameters:
+string
+Returns:
+int
+Method signature:
+int getMinErrors(string s)
+(be sure your method is public)
+    
+
+Notes
+-
+Changing a character is selecting one position in the string and changing the character in that position to any other parentheses character.
+Constraints
+-
+s will have between 0 and 50 characters, inclusive.
+-
+s will have an even number of characters.
+-
+Each character of s will be '(', '[', '{', ')', ']' or '}'.
+Examples
+0)
+
+    
+"([{}])()[]{}"
+Returns: 0
+This is already well formed.
+1)
+
+    
+"([)]"
+Returns: 2
+With two changes you can get "([])" (there are other ways with the same number of changes).
+2)
+
+    
+"([{}[]"
+Returns: 1
+Simply changing the second character will give you "(){}[]".
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

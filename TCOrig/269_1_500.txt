@@ -1,0 +1,156 @@
+vector<string> A;
+
+vector<int> b;
+
+bool canBlow(double D)
+{
+	int num = 0;
+	for (each bomb b in field) // 2500
+	{
+		S_all = {b};
+		S_cur = S_all;
+		do
+		{
+			S_new = {};
+			for (each bomb b in S_cur) // 2500
+			{
+				for (each item nb in blast radius D of b) // 2500^2
+				{
+					S_new = S_new U { nb };
+				}
+			}
+			if (S_new == S_cur)
+				break;
+			S_all = S_all U S_new;
+			S_old = S_new;
+		}
+		if (S_all contains all secrets)
+			num++;
+	}
+	return num == number of items;
+}
+
+double chooseBomb(vector <string> field) 
+{
+	A = field;
+	double L = 1.0, R = sqrt(20000);
+	double mid;
+	for (int i = 0; i < 40; i++)
+	{
+		double mid = (L+R)/2.0;
+		if (canBlow(mid))
+		{
+			R = mid;
+		}
+		else
+		{
+			L = mid;
+		}
+	}
+	return mid;
+}
+
+Problem Statement
+    
+You will be given a map of the bunker. 
+
+The map will consist of bombs ('*'), empty cells ('.') and secret objects ('?') arranged on a regular grid. 
+
+For security reasons, in case of danger, all secret objects in the bunker should be destroyed by the explosion of any one bomb. 
+
+A bomb explosion destroys all objects in range D, where D depends on the bomb type. 
+
+A bomb explosion also causes all other bombs in range D to explode. 
+
+More formally, an item (a secret object or a bomb) will be affected by a bomb explosion if the distance between the centers of their cells is not greater than D.
+
+You will be given a vector <string> field. 
+
+Return the minimal value of D that will ensure that all secret objects will be destroyed by the explosion of any one bomb.
+
+Definition
+    
+Class:
+SecurityBunker
+Method:
+chooseBomb
+Parameters:
+vector <string>
+Returns:
+double
+Method signature:
+double chooseBomb(vector <string> field)
+(be sure your method is public)
+    
+
+Notes
+-
+The returned value must be accurate to 1e-9 relative or absolute.
+Constraints
+-
+field will contain between 1 and 50 elements, inclusive.
+-
+Each element of field will contain between 1 and 50 characters, inclusive.
+-
+Each element of field will contain the same number of characters.
+-
+field will contain only the characters '*', '.', and '?'.
+-
+field will contain between 1 and 100 '*' characters, inclusive.
+-
+field will contain between 1 and 100 '?' characters, inclusive.
+Examples
+0)
+
+    
+{"*.*",
+ ".?.",
+ "*.*"}
+Returns: 1.4142135623730951
+The answer is the distance from the secret object to any one of the bombs.
+1)
+
+    
+{"*****", 
+ ".?.?.",
+ "..?..",
+ ".?.?.",
+ "*****"}
+Returns: 3.0
+With D>=1, the explosion of any bomb will explode all other bombs in the same row.
+2)
+
+    
+{"*****",
+ "....*",
+ "....*",
+ ".?..*",
+ "....*",
+ "*...*",
+ "*****"}
+Returns: 2.23606797749979
+
+3)
+
+    
+{"*.*.*.*",
+ ".?.?.?."}
+Returns: 2.0
+D=2 is enough to explode all bombs and the secret objects with them.
+4)
+
+    
+{"?*..*?....?",
+ "...........",
+ "....*......",
+ "...?.......",
+ ".*....**?..",
+ "*......?...",
+ ".......*...",
+ ".......?.*.",
+ "..*.......*",
+ "?........?.",
+ "......?*?.."}
+Returns: 5.0
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

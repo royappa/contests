@@ -1,0 +1,104 @@
+	public int numSwaps(int M, int N)
+	{
+		int swaps = 0;
+		
+		for (int i = 1; i <= M; i++)
+		{
+			for (int j = 1; j <= N; j++)
+			{
+				if (i == j)
+					continue;
+				int ind1 = (i-1)*M+(j-1);
+				int ind2 = (j-1)*N+(i-1);
+				if (ind1 != ind2)
+					swaps++;
+			}
+		}
+		return swaps/2;
+	}
+	
+Problem Statement
+    
+NOTE: This problem statement contains subscripts and superscripts which may not display properly for plugin users. 
+The elements of a two-dimensional matrix with M rows and N columns are usually stored as a linear array of length M*N. Assuming "row-major" order, elements are stored left-to-right, then top-to-bottom (the same order that we read English text on a written page). For example, the following matrix A, with M=3 and N=3:
+
+    0 1 2
+    3 4 5
+    6 7 8
+is stored as: { 0, 1, 2, 3, 4, 5, 6, 7, 8 }.
+The transpose of a matrix A (denoted AT) is obtained by exchanging its rows and columns. Element ATij equals Aji , and if A has M rows and N columns, AT will have N rows and M columns. For example, the transpose of the above matrix is:
+
+    0 3 6
+    1 4 7
+    2 5 8
+and is stored as: { 0, 3, 6, 1, 4, 7, 2, 5, 8 }.
+Computing the transpose of the square matrix "in place" (overwriting the original matrix) in this example is easy: it involves swapping 3 pairs of elements: 1 and 3, 2 and 6, and 5 and 7. Elements 0, 4, and 8 do not need to be moved.
+It is a bit more tricky when the matrix is not square. For example, the matrix:
+
+    12 58 23
+    81 74 96
+is stored as { 12, 58, 23, 81, 74, 96 }. Its transpose is:
+
+    12 81
+    58 74 
+    23 96
+and is stored as: { 12, 81, 58, 74, 23, 96 }. This also requires 3 swaps. (See example 1 below.)
+Given M and N, return the minimum number of swaps necessary to take the transpose of a matrix of that size in place.
+Definition
+    
+Class:
+Transpose
+Method:
+numSwaps
+Parameters:
+int, int
+Returns:
+int
+Method signature:
+int numSwaps(int M, int N)
+(be sure your method is public)
+    
+
+Notes
+-
+Assume that you know nothing about the actual values of the elements in the matrix, and that you cannot reduce the number of swaps by looking for pairs of identical elements.
+Constraints
+-
+M and N will be between 1 and 100, inclusive.
+Examples
+0)
+
+    
+3
+3
+Returns: 3
+This is the example above.
+1)
+
+    
+2
+3
+Returns: 3
+Initial array: { a, b, c, x, y, z } Swap positions 1 and 2: { a, c, b, x, y, z } Swap positions 1 and 3: { a, x, b, c, y, z } Swap positions 3 and 4: { a, x, b, y, c, z } After 3 swaps, the array has been transposed in place.
+2)
+
+    
+3
+5
+Returns: 10
+
+3)
+
+    
+50
+50
+Returns: 1225
+
+4)
+
+    
+49
+51
+Returns: 2492
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

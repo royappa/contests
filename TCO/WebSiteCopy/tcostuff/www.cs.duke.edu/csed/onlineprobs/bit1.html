@@ -1,0 +1,146 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  
+<!-- Mirrored from www.cs.duke.edu/csed/onlineprobs/bit1.html by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 14 Mar 2006 08:55:10 GMT -->
+<head>
+    <title>Bits or Brute or ...</title>
+  </head>
+
+  <body>
+    <h1>Bits or Brute or ...</h1>
+
+<em>
+
+This problem statement is the exclusive and proprietary property of
+TopCoder, Inc. Any unauthorized use or reproduction of this information
+without the prior written consent of TopCoder, Inc. is strictly
+prohibited. (c)2002, TopCoder, Inc. All rights reserved.
+
+</em>
+
+<h3>Problem Statement</h3>
+
+You are the project manager for your company's largest software
+development project.  You know that the best software has the most code,
+but there is a limit.  Use too much code and your supervisor will say
+there is bloated code.  Given a list of the sizes of various components
+you could include in the software, and the maximum amount of code you
+are allowed to have, determine the biggest size the sofware can be (your
+software must be less than or equal to the maximum).  For example: 
+<pre>
+   sizes = {25,50,60,120} maximum = 130 
+</pre>
+Your method will return 120 since all other combinations of components
+either produce less code, or are greater than the 130 limit.  If no
+software can be built return -1(see last example).
+<P>
+
+
+<h3>Definition</h3>
+
+<UL>    
+<LI> Class: CodeBloat
+<LI> Method: biggest
+      <LI> Parameters: <code>tvector&lt;int&gt;, int </code>
+<LI> Returns: <code> int</code>
+<LI>Method signature: 
+<PRE>
+  int biggest(const tvector&lt;int&gt;&amp; sizes, int maximum)
+</PRE>
+
+(be sure your method is public)
+<P>    
+
+ <h3>Class</h3>
+
+
+<XMP>
+
+class CodeBloat
+{
+    public:
+
+      int biggest(const tvector<int>& sizes, int maximum)
+      {
+            // fill in code here
+      }
+};
+</XMP>
+
+<h3>Notes</h3>
+
+If no software can be built return -1
+
+<h3>Constraints</h3>
+<UL>
+<LI> sizes must contain between 1 and 20 elements inclusive
+<P>
+<LI> Each element of sizes must be between 1 and 10000 inclusive
+<P>
+<LI> maximum must be between 1 and 1000000 inclusive
+
+</UL>
+
+
+<P>
+<h3>Examples</h3>
+<OL>
+<LI>
+<PRE>
+{25,50,60,120}
+130
+
+</PRE>
+
+Returns: 120
+<P>
+This is the example from above.
+<LI>
+<PRE>
+{1,2,3,4,5}
+15
+
+</PRE>
+Returns: 15
+<P>
+All of the code can be used
+<P>
+<LI>
+<PRE>
+{20,40,45,60,60}
+86
+
+</PRE>
+Returns: 85
+<P>
+Using 40 and 45 will produce the largest amount of code.
+<LI>
+<PRE>
+{89,73,20,5,5,10000,900}
+995
+
+</PRE>
+Returns: 994
+<P>
+<LI>
+<PRE>
+{122}
+1
+
+</PRE>
+Returns: -1
+
+</OL>
+
+
+
+    <hr>
+    <address><a href="mailto:ola@cs.duke.edu">Owen L. Astrachan</a></address>
+<!-- Created: Wed Apr 14 09:48:51 EDT 2004 -->
+<!-- hhmts start -->
+Last modified: Wed Apr 14 09:53:25 EDT 2004
+<!-- hhmts end -->
+  </body>
+
+<!-- Mirrored from www.cs.duke.edu/csed/onlineprobs/bit1.html by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 14 Mar 2006 08:55:10 GMT -->
+</html>

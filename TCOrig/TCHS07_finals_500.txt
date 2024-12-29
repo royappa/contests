@@ -1,0 +1,122 @@
+vector<string> t;
+
+void flip(int r, int c)
+{
+	int flips = 0;
+	for (int i = 0; i <= r; i++)
+	{
+		for (int j = 0; j <= c; j++)
+		{
+			t[i][j] = '0'+(1-(t[i][j]-'0'));
+		}
+	}
+	return;
+}
+	
+int minMovesCount(vector <string> t_) 
+{
+	t = t_;
+	int h = table.size(), w = t[0].size();
+	
+	int lr = h-1, lc = c-1;
+	
+	int flips = 0;
+	do
+	{
+		flips += t[lr][lc] == '1';
+		
+		for (int i = lr-1; i >= 0; i--)
+		{
+			// flip from 0,0 -> i,lc
+			if (t[i][lc] == '1')
+			{
+				flip(i, lc);
+				flips++;
+			}
+		}
+		
+		for (int i = lc-1; i >= 0; i--)
+		{
+			if (t[lr][i] == '1')
+			{
+				flip(lr, i);
+				flips++;
+			}
+		}
+		
+		if (lr > 0)
+			lr--;
+		if (lc > 0)
+			lc--;
+	}
+	while (lr != 0 || lc != 0);
+	
+	return flips;
+	
+}
+
+Problem Statement
+    
+You are given a vector <string> table containing only zeroes and ones and describing a rectangular grid. The j-th character of the i-th element of table corresponds to the value in the i-th row and j-th column of the grid (all indices are 0-based). Return the minimal number of moves required to change all the cells in the grid to zeroes. This will always be possible.
+
+In each move, you choose a single cell (R, C) in the grid (R-th row, C-th column). This inverts the values of all cells (r, c), where r is between 0 and R, inclusive, and c is between 0 and C, inclusive. Inverting the value of a cell means changing zero to one and vice versa.
+Definition
+    
+Class:
+ZeroesAndOnesGrid
+Method:
+minMovesCount
+Parameters:
+vector <string>
+Returns:
+int
+Method signature:
+int minMovesCount(vector <string> table)
+(be sure your method is public)
+    
+
+Constraints
+-
+table will contain between 1 and 50 elements, inclusive.
+-
+Each element of table will contain only '0' (zero) and '1' (one) characters.
+-
+Each element of table will contain the same number of characters.
+-
+Each element of table will contain between 1 and 50 characters, inclusive.
+Examples
+0)
+
+    
+{"0000", 
+ "0000"}
+Returns: 0
+All the cells are already zeroes, so nothing needs to be inverted.
+1)
+
+    
+{"11111", 
+ "11111"}
+Returns: 1
+Choose the cell in the bottom right corner to invert the whole grid.
+2)
+
+    
+{"01", 
+ "01"}
+Returns: 2
+
+3)
+
+    
+{"00", 
+ "01"}
+Returns: 4
+
+4)
+
+    
+{"010101011010000101010101"}
+Returns: 20
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

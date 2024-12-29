@@ -1,0 +1,77 @@
+vector <int> sequence(int N, int L) 
+{
+	vector<int> v;
+	for (int i = L; i <= 100; i++)
+	{
+		// if a list of length i exists, return it
+		if (N % (2*i) != 0) continue;
+		int k = (N-2*i*(i-1))/(2*i);
+		for (int j = 0; j < i; j++)
+		{
+			v.push_back(k+j);
+		}
+		return v;
+	}
+	return v;
+}
+
+Problem Statement
+    
+Given a number N and a length L, find the shortest list of at least L consecutive non-negative integers whose sum is N. If the length of that list is 100 or smaller, return the sequence as a vector <int> in ascending order. If there is no such sequence or its length is larger than 100, return { }.
+Definition
+    
+Class:
+SequenceSums
+Method:
+sequence
+Parameters:
+int, int
+Returns:
+vector <int>
+Method signature:
+vector <int> sequence(int N, int L)
+(be sure your method is public)
+    
+
+Constraints
+-
+N will be between 1 and 1000 000 000, inclusive.
+-
+L will be between 2 and 100, inclusive.
+Examples
+0)
+
+    
+18
+2
+Returns: {5, 6, 7 }
+18 can be expressed as 5 + 6 + 7 or 3 + 4 + 5 + 6. Both of these lists contain more than 2 elements, so you should return the shortest among them.
+1)
+
+    
+18
+4
+Returns: {3, 4, 5, 6 }
+Now the correct answer is 3 + 4 + 5 + 6 because 5 + 6 + 7 contains less than 4 elements.
+2)
+
+    
+18
+5
+Returns: { }
+Both possible presentations of 18 contain less than 5 elements, so there's no answer for this case.
+3)
+
+    
+45
+10
+Returns: {0, 1, 2, 3, 4, 5, 6, 7, 8, 9 }
+
+4)
+
+    
+1000000000
+2
+Returns: {199999998, 199999999, 200000000, 200000001, 200000002 }
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

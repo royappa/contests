@@ -1,0 +1,105 @@
+// ONELINER (correct)
+string optimize(string p, int s = 0, int q = 0, string t = "") 
+{
+	return t = string(s,'*')+string(q,'?'), p.size() == 0 ? t : isalpha(p[0]) ? t+p[0]+optimize(p.substr(1)) : 
+			   optimize(p.substr(1), s||(p[0]=='*'), q+(p[0]=='?'));
+}
+
+
+string crunch(string x)
+{
+	int sc = 0, qc = 0;
+	for (int i = 0; i < x.size(); i++)
+	{
+		if (x[i] == '*')
+			sc++;
+		if (x[i] == '?')
+			qc++;
+	}
+	return (sc>0?"*":"")+string(qc, '?');
+}
+
+string optimize(string p) 
+{
+	string r = "", x = "";
+	for (int i = 0; i < p.size(); i++)
+	{
+		if (isletter(p[i]))
+		{
+			r += crunch(x) + p[i];
+			x = "";
+		}
+		else
+		{
+			x += p[i];
+		}
+	}
+	r += crunch(x);
+	return r;
+}
+Problem Statement
+    
+Some dictionaries use a word pattern that consists of letters, '?' symbols which each denote exactly one letter, and '*' symbols which each denote zero or more letters.
+
+Interestingly, some patterns represent the same set of words. For example, "*??*a" and "?*?a" (quotes for clarity only) patterns both represent all words that consist of three or more letters and end with 'a'.
+
+You will be given a string pattern. 
+
+Your method should return the shortest pattern that represents the same set of words as the given pattern. 
+Return the lexicographically first in case of tie.
+
+Definition
+    
+Class:
+PatternOptimizer
+Method:
+optimize
+Parameters:
+string
+Returns:
+string
+Method signature:
+string optimize(string pattern)
+(be sure your method is public)
+    
+
+Notes
+-
+Note that '*' comes before '?' in the lexicographical order.
+Constraints
+-
+pattern will contain between 1 and 50 characters, inclusive.
+-
+pattern will contain only letters ('a'-'z', 'A'-'Z'), '?' and '*'.
+Examples
+0)
+
+    
+"*??*a"
+Returns: "*??a"
+
+1)
+
+    
+"*b**a*"
+Returns: "*b*a*"
+
+2)
+
+    
+"cla??"
+Returns: "cla??"
+
+3)
+
+    
+"*?*?*?*"
+Returns: "*???"
+
+4)
+
+    
+"T***nd?*"
+Returns: "T*nd*?"
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

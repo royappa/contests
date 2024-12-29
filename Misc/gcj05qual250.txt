@@ -1,0 +1,133 @@
+#include <vector>
+#include <list>
+#include <map>
+#include <set>
+#include <deque>
+#include <stack>
+#include <bitset>
+#include <algorithm>
+#include <functional>
+#include <numeric>
+#include <utility>
+#include <sstream>
+#include <iostream>
+#include <iomanip>
+#include <cstdio>
+#include <cmath>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+class SalesFigures {
+public:
+vector<string> split_nonre(string s, string sep)
+{
+	char *sC = (char *) malloc(s.size()+1);
+	strcpy(sC, s.c_str());
+	char *sepC = (char *) sep.c_str();
+	char *status = NULL;
+	
+	char *word;
+	vector<string> results;
+	while ((word = strtok_r(sC, sepC, &status)) != NULL)
+	{
+		results.push_back(word);
+		sC = NULL;
+	}
+	return results;
+}
+
+int getCount(vector <string> sales, string client, string product)
+{
+	int count = 0;
+	for (int i = 0; i < sales.size(); i++)
+	{
+		vector<string> v = split_nonre(sales[i], " ");
+		if (v[0] == client)
+		{
+			for (int j = 1; j < v.size(); j += 2)
+			{
+				if (v[j] == product)
+				{
+					count += atoi(v[j+1].c_str());
+				}
+			}
+		}
+	}
+	return count;
+}
+};
+
+
+
+
+
+
+
+
+Problem Statement
+    
+A company stores sales data in a single, cumbersome file. Each line of the file represents one sale and is formatted as:
+    CLIENT_ID CNT_1 PRODUCT_1 CNT_2 PRODUCT_2 ...
+This indicates that CNT_1 units of PRODUCT_1 were sold to the client whose id is CLIENT_ID, and CNT_2 units of PRODUCT_2 and so on. You have been tasked with figuring out how many units of a particular product have been sold over time to a particular client. You will be given a vector <string> sales, a string, client, and a string, product. You are to return an int representing how many units of product were sold to client in sales.
+Definition
+    
+Class:
+SalesFigures
+Method:
+getCount
+Parameters:
+vector <string>, string, string
+Returns:
+int
+Method signature:
+int getCount(vector <string> sales, string client, string product)
+(be sure your method is public)
+    
+
+Constraints
+-
+sales will contain between 1 and 50 elements, inclusive.
+-
+Each element of sales will be formatted as described in the problem statement, with at least 1 product and at most 50 characters.
+-
+CLIENT_ID and each PRODUCT_* will contain between 1 and 10 uppercase letters ('A'-'Z'), inclusive.
+-
+Each CNT_* will represent an integer between 1 and 999, inclusive, with no leading zeros.
+-
+client will contain between 1 and 10 uppercase letters ('A'-'Z'), inclusive.
+-
+product will contain between 1 and 10 uppercase letters ('A'-'Z'), inclusive.
+Examples
+0)
+
+    
+{"BOB 1 SHOE",
+ "JOHN 2 SHOE",
+ "BOB 3 SHOE 1 HORSE"}
+"BOB"
+"SHOE"
+Returns: 4
+
+1)
+
+    
+{"MEG 1 TV 1 VCR 10 DVD 3 DVD",
+ "HARRY 2 TV 6 DVD",
+ "MEG 11 DVD",
+ "MEG 2 TV",
+ "HARRY 101 DVD"}
+"MEG"
+"DVD"
+Returns: 24
+Note that "DVD" occurs twice in the first element.
+2)
+
+    
+{"GEORGE 999 PETS"}
+"BOB"
+"SHOE"
+Returns: 0
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

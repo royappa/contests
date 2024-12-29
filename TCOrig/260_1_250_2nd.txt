@@ -1,0 +1,84 @@
+bool square(int x)
+{
+	double sr = sqrt(x);
+	int s = round(sr);
+	return s*s == x;
+}
+
+int countPoints(int r2) 
+{
+	double sr = sqrt(r2);
+	
+	int r = round(sr);
+
+	for (int x = 0; x <= r; x++)
+	{
+		int x2 = x*x, y2 = r2-x2;
+		if (square(y2))
+		{
+			cout << x2 << " " << y2 << endl;
+			if (x2 == 0 || y2 == 0)
+				count += 2;
+			else
+				count += 4;
+		}
+	}
+	return count;
+}
+
+
+Problem Statement
+    
+You will be given rSquare, the square of the radius of a circle. You are to return the number of lattice points (points with integer coordinates) that lie on the circumference of a circle with this radius centered at the origin of the (cartesian) coordinate system.
+Definition
+    
+Class:
+GridPointsOnCircle
+Method:
+countPoints
+Parameters:
+int
+Returns:
+int
+Method signature:
+int countPoints(int rSquare)
+(be sure your method is public)
+    
+
+Constraints
+-
+rSquare will be between 1 and 2,000,000,000, inclusive.
+Examples
+0)
+
+    
+1
+Returns: 4
+A circle with radius 1 centered at the origin goes through 4 lattice points: (1,0), (0,1), (-1,0) and (0,-1).
+1)
+
+    
+25
+Returns: 12
+A circle with radius 5 goes through the points (+/-3, +/-4), (+/-4, +/-3), (0, +/-5) and (+/-5, 0) (12 points).
+-3,-4
+-3
+2)
+
+    
+3
+Returns: 0
+No lattice point is at distance sqrt(3) from the origin.
+3)
+
+    
+44
+Returns: 0
+
+4)
+
+    
+50
+Returns: 12
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

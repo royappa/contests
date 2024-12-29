@@ -1,0 +1,162 @@
+
+vector<int> keys;
+string ops;
+int numKeys;
+int numOps;
+
+int numPress[1000][1000];
+
+int numPlain(int n)
+{
+	if (n == 0 && keys[0] == 0)
+		return 1;
+	int count = 0;
+	while (n > 0)
+	{
+		count++;
+		int last = n % 10;
+		bool found = false;
+		for (int i = 0; i < numKeys; i++)
+		{
+			if (keys[i] == last)
+			{
+				found = true;
+				break;
+			}
+		}
+		if (!found)
+			return -1;
+		n /= 10;
+	}
+	return count;
+}
+
+int P(int target)
+{
+	for (int x = 0; x <= 999; x++)
+	{
+		int minOps = 1<<30;
+		for (int a = 0; a < x; a++)
+		{
+			for (int b = 0; b < x; b++)
+			{
+				if (numPress[b] == -1 || numPress[a] == -1)
+				{
+					continue;
+				}
+				for (int i = 0; i < numOps; i++)
+				{
+					if ( (ops[i] == '+' && (a+b) == target) ||
+						 (ops[i] == '-' && (a-b) == target) ||
+						 (ops[i] == '*' && (a*b) == target) ||
+						 (ops[i] == '/' && b > 0 && (a/b) == target) )					 
+					{
+						int z = numPress[x];
+						if (z != -1)
+						{
+							minOps = min(minOps, z+1);
+						}
+					}
+				}
+			}
+		}
+		numPress[x] = minOps;
+	}
+	return numPress[999];
+}
+
+int BrokenCalculator::fewestKeys(vector <int> _keys, string operators, int target) 
+{
+	sort(_keys.begin(), _keys.end());
+	keys = _keys;
+	numKeys = keys.size();
+	ops = operators;
+	numOps = ops.size();
+	for (int i = 0; i <= 999; i++)
+	{
+		numPress[i] = numPlain(target);
+	}
+	
+	return P(target);
+}
+
+
+Problem Statement
+    
+You wish to enter a whole number onto your simple four-function calculator. Unfortunately for you, some of the keys are broken. Nonetheless, rather than buy a new calculator, you enjoy the challenge presented before you.
+
+Your calculator is a very primitive one, and can only display positive numbers with up to three digits. Initially, your display does not show anything, until you press a number key. Any time an operation exceeds the number 999, it causes an error, and you cannot continue.
+
+You are given vector <int> keys, indicating which numeric keys are still functional, and string operators indicating which of the four operators are available to you. Assume that the equals key is always available. Finally, you are given int target, indicating the number you wish to display.
+
+When you perform a division, your calculator performs an integer division, dropping any remainder. Thus, pressing "23/7=" yields 3, and "3/8" yields 0. Pressing the equals key completes any calculation, and any subsequent key presses after pressing equals discards the current display, and starts a new calculation.
+
+You are to return an int indicating the minimum number of key presses necessary to display the target number. If it is not possible to ever get your display to show the target number, return -1.
+
+Definition
+    
+Class:
+BrokenCalculator
+Method:
+fewestKeys
+Parameters:
+vector <int>, string, int
+Returns:
+int
+Method signature:
+int fewestKeys(vector <int> keys, string operators, int target)
+(be sure your method is public)
+    
+
+Notes
+-
+Like most simple four function calculators, pressing any operator has the effect of performing an "equals" on anything entered so far, and operations are performed in exactly the order entered. Thus, 2 + 2 * 3 = evaluates to 12 (instead of 8, as with typical order of operations).
+Constraints
+-
+keys will contain between 1 and 10 elements, inclusive.
+-
+Each element of keys will be between 0 and 9, inclusive.
+-
+No two elements of keys will be the same.
+-
+operators will contain between 1 and 4 characters, inclusive.
+-
+Each character of operators will be '+', '-', '*', or '/'.
+-
+No two characters of operators will be the same.
+-
+target will be between 0 and 999, inclusive.
+Examples
+0)
+
+    
+{0, 1, 2, 3}
+"+"
+5
+Returns: 4
+Here, if we type "2 + 3 =", our calculator will display "5", thus, we need four key presses.
+1)
+
+    
+{0}
+"+-*/"
+5
+Returns: -1
+With only a "0" to press, no operations will get us to the number 5.
+2)
+
+    
+{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+"/-+*"
+124
+Returns: 3
+With all of the keys available to us, we need only type in the number we want. Notice that the order in which we define the operators doesn't matter.
+3)
+
+    
+{1, 2, 4, 8}
+"+-*/"
+875
+Returns: 8
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

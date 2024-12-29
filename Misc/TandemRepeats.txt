@@ -1,0 +1,106 @@
+
+	private boolean matches(String a, String b, int k)
+	{
+		int diff = 0;
+		for (int i = 0; i < a.length(); i++)
+		{
+			if (a.charAt(i) != b.charAt(i))
+			{
+				diff++;
+			}
+		}
+		return diff <= k;
+	}
+	public int maxLength(String dna, int k)
+	{
+		int max = 0;
+		int n = dna.length();
+		for (int s = 0; s < n; s++)
+		{
+			for (int len = max+1; s+2*len<=n; len++)
+			{
+				String a = dna.substring(s, s+len);
+				String b = dna.substring(s+len, s+2*len);
+				if (matches(a, b, k))
+				{
+					max = len;
+				}
+			}
+		}
+		return max;		
+	}
+	
+Problem Statement
+    
+An important problem in DNA analysis is finding tandem repeats. A tandem repeat occurs when a base sequence of nucleotides appears twice in a row. (In this problem, a base sequence is simply a contiguous substring and a nucleotide is simply a letter.) For example, in the DNA sequence "GATCATCA", the base sequence "ATC" appears twice in a row. 
+
+In contrast, "ATCGATC" is not a tandem repeat of the base sequence "ATC" because of the 'G' in between the two copies.
+
+Real DNA often contains errors in which one nucleotide is substituted for another. A k-approximate tandem repeat occurs when a base sequence of nucleotides appears twice in a row, allowing the second copy of the base sequence to differ from the first copy in at most k nucleotides. 
+
+For example, in the DNA sequence "GATCATGA", the base sequence "ATC" is immediately repeated with a single error as "ATG". 
+
+Thus, "ATCATG" is a 1-approximate tandem repeat. Note that both copies of the base sequence must be the same length.
+
+Given a DNA sequence dna (represented as a String) and a limit k on the number of errors, find the length of the longest sequence that appears in dna as the base sequence of a k-approximate tandem repeat. 
+
+Note that a k-approximate tandem repeat contains at most k errors, but it is allowed to contain fewer errors.
+Definition
+    
+Class:
+TandemRepeats
+Method:
+maxLength
+Parameters:
+String, int
+Returns:
+int
+Method signature:
+int maxLength(String dna, int k)
+(be sure your method is public)
+    
+
+Constraints
+-
+dna contains between 2 and 50 characters, inclusive.
+-
+Every character in dna is a 'G', 'A', 'T', or 'C'.
+-
+k is between 0 and 5, inclusive.
+Examples
+0)
+
+    
+"GATCATCA"
+0
+Returns: 3
+A tandem repeat with a base sequence of length 3 is "ATCATC", with base sequence "ATC".
+1)
+
+    
+"GATCATGA"
+1
+Returns: 3
+A 1-approximate tandem repeat is "ATCATG". The base sequence "ATC" is repeated with a single error.
+2)
+
+    
+"GATCATGA"
+0
+Returns: 0
+This example has no tandem repeats.
+3)
+
+    
+"AGAGAAAGAA"
+3
+Returns: 5
+
+4)
+
+    
+"ATTAGCATTGCACACCTTGAGGACTTAGACAAACCTAGTACACAGGTGTA"
+5
+Returns: 11
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

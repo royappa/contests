@@ -1,0 +1,158 @@
+
+int f(vector<string> &b, int r, int c, string& r1, string& r2)
+{
+	int num = 0;
+	for (int i = 0; i < 8; i++)
+	{
+		if (i % 2 == 0)
+		{
+			for (int j = 0; j < 8; j++)
+			{
+				num += b[r+i][c+j] != r1[j];
+			}
+		}
+		else
+		{
+			for (int j = 0; j < 8; j++)
+			{
+				num += b[r+i][c+j] != r2[j];
+			}	
+		}
+	}
+	return num;
+}
+
+int minimumChanges(vector <string> board) 
+{
+	int M = board.size(), N = board[0].size();	
+	int best = 1<<30;
+	for (int r = 0; r+8 <= M; r++)
+	{
+		for (int c = 0; c+8 <= N; c++)
+		{
+			best <?= f(board, r, c, "BWBWBWBW", "WBWBWBWB");
+			best <?= f(board, r, c, "WBWBWBWB", "BWBWBWBW");
+		}
+	}
+	return best;
+}
+Problem Statement
+    
+In the attic of your house you found an M×N board, divided into MN unit squares. Some of the squares are black and the others are white. You decided that you will make a chessboard out of the board by cutting out an 8×8 region and throwing away the rest of the board.
+
+The only problem is that the board is not painted in the alternate black/white pattern you need for the chessboard. Thus after you cut out the 8×8 chessboard, you will have to repaint some of the squares. Of course, you can pick which 8×8 region to cut out.
+
+You are given the current colors of the squares as a vector <string> board. Character c in element r of board is 'W' if the cell at coordinates (r,c) is white, and 'B' if it is black. Your task is to find the minimum number of squares you will need to repaint after cutting out the 8×8 region.
+Definition
+    
+Class:
+RepaintTheChessboard
+Method:
+minimumChanges
+Parameters:
+vector <string>
+Returns:
+int
+Method signature:
+int minimumChanges(vector <string> board)
+(be sure your method is public)
+    
+
+Notes
+-
+On a correctly colored chessboard each square is either black or white, and no two squares that share a side have the same color. (Note that according to this definition there are two valid colorings: one with a white, the other with a black square in the upper left corner.)
+Constraints
+-
+board will contain between 8 and 50 elements, inclusive.
+-
+Each element of board will contain between 8 and 50 characters, inclusive.
+-
+All elements of board will have the same length.
+-
+Each character in each element of board will be either 'B' or 'W'.
+Examples
+0)
+
+    
+{"BWBWBWBW",
+ "WBWBWBWB",
+ "BWBWBWBW",
+ "WBWBWBWB",
+ "BWBWBWBW",
+ "WBWBWBWB",
+ "BWBWBWBW",
+ "WBWBWBWB"}
+Returns: 0
+This is a perfect chessboard, no repainting (and no cutting) necessary.
+1)
+
+    
+{"WBWBWBWB",
+ "BWBWBWBW",
+ "WBWBWBWB",
+ "BWBBBWBW",
+ "WBWBWBWB",
+ "BWBWBWBW",
+ "WBWBWBWB",
+ "BWBWBWBW"}
+Returns: 1
+This is almost a perfect chessboard, except for one square. (Using 0-based indices, the incorrectly colored square is element 3, character 3 of board.)
+2)
+
+    
+{"BBBBBBBBBBBBBBBBBBBBBBB",
+ "BBBBBBBBBBBBBBBBBBBBBBB",
+ "BBBBBBBBBBBBBBBBBBBBBBB",
+ "BBBBBBBBBBBBBBBBBBBBBBB",
+ "BBBBBBBBBBBBBBBBBBBBBBB",
+ "BBBBBBBBBBBBBBBBBBBBBBB",
+ "BBBBBBBBBBBBBBBBBBBBBBB",
+ "BBBBBBBBBBBBBBBBBBBBBBB",
+ "BBBBBBBBBBBBBBBBBBBBBBW"}
+Returns: 31
+If we take the 8×8 piece in the lower right corner, we will have one white square, and we will only need 31 more.
+3)
+
+    
+{"BBBBBBBBBB",
+ "BBWBWBWBWB",
+ "BWBWBWBWBB",
+ "BBWBWBWBWB",
+ "BWBWBWBWBB",
+ "BBWBWBWBWB",
+ "BWBWBWBWBB",
+ "BBWBWBWBWB",
+ "BWBWBWBWBB",
+ "BBBBBBBBBB"}
+Returns: 0
+Here we have a perfect chessboard in the middle of the given board.
+4)
+
+    
+{"WBWBWBWB",
+ "BWBWBWBW",
+ "WBWBWBWB",
+ "BWBBBWBW",
+ "WBWBWBWB",
+ "BWBWBWBW",
+ "WBWBWWWB",
+ "BWBWBWBW"}
+Returns: 2
+For this board the minimum number of changes is 2: We need to change one black square into a white one, and one white square into a black one.
+5)
+
+    
+{"BWWBWWBWWBWW",
+ "BWWBWBBWWBWW",
+ "WBWWBWBBWWBW",
+ "BWWBWBBWWBWW",
+ "WBWWBWBBWWBW",
+ "BWWBWBBWWBWW",
+ "WBWWBWBBWWBW",
+ "BWWBWBWWWBWW",
+ "WBWWBWBBWWBW",
+ "BWWBWBBWWBWW",
+ "WBWWBWBBWWBW"}
+Returns: 15
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

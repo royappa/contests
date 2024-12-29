@@ -1,0 +1,180 @@
+vector<string> board;
+int n;
+
+int dist[11][11][11][11];
+
+int dk(int sr, int sc, int k, int tr, int tc)
+{
+	return (dist[sr][sc][tr][tc]+k-1)/k;
+}
+	
+int f(int tr, int tc)
+{
+	int m = 0;
+	for (int r = 0; r < n; r++)
+	{	
+		for (int c = 0; c < n; c++)
+		{
+			if (board[r][c] != '.')
+			{
+				memset(visited, 0, sizeof(visited));
+				m += dk(r, c, board[r][c]-'0', tr, tc))
+			}
+		}
+	}
+	return m;
+}
+
+int knight(int i, int j, int k, int w)
+{
+	int qx[101], qy[101], qh = 0, qt = 0, qn = 0;
+	int d[101][101];
+	qx[qt] = i;
+	qy[qt] = j;
+	qt++;
+	qn++;
+	memset(v, 0, sizeof(v));
+	d[i][j] = -1;
+	while (qn > 0)
+	{
+		int hi = qx[qh], hj = qy[qh];
+		qh--;
+		qn--;
+		if (hi == k && hj == w)
+			return d[hi][hj];
+		int dd[] = {-2,-1, -2,1, -1,2, 1,2, 2,1, 2,-1, 1,-2, -1,-2};
+		for (int p = 0; p < 8; p++)
+		{
+			int dr = hi+dd[2*p], dc = hj+dd[2*p+1];
+			if (dr < 0 || dr >= n || dc < 0 || dc >= n)
+				continue;
+			if (d[dr][dc] != -1)
+				continue;
+			d[dr][dc] = d[hi][hj]+1;
+			qx[qt] = dr;
+			qy[qt] = dc;
+			qt++;
+			qn++;
+		}
+	}
+	return -1;
+}
+
+int minimalMoves(vector <string> board_) 
+{
+	board = board_;
+	n = board.size();
+		
+	for (int i = 0; i < n; i++)
+	for (int j = 0; j < n; j++)
+	for (int k = 0; k < n; k++)
+	for (int w = 0; w < n; w++)
+		dist[i][j][k][w] = knight(i, j, k, w);
+		
+	int moves = 1<<30;
+	for (int r = 0; r < n; r++)
+	{
+		for (int c = 0; c < n; c++)
+		{
+			moves <?= f(r, c);
+		}
+	}
+	return moves==(1<<30) ? -1 : moves;
+}
+Problem Statement
+    
+A rider is a fantasy chess piece that can jump like a knight several times in a single move. (See notes for a description of how a knight jumps.) A rider that can perform a maximum of K jumps during a single move is denoted as a K-rider. 
+
+For example, a 2-rider can jump once or twice during a single move, and a 1-rider is a traditional knight.
+ 
+ There are some riders of different types on a chessboard. You are given a vector <string> board representing the layout of the pieces. 
+ 
+ The j-th character of the i-th element of board is the content of the square at row i, column j. If the character is a digit K between '1' and '9', the square contains a K-rider. Otherwise, if the character is a '.', the square is empty. 
+ 
+ Return the minimal total number of moves necessary to move all the riders to the same square. 
+ 
+ Only one piece can move during each move. Multiple riders can share the same squares at all times during the process. 
+ 
+ Return -1 if it is impossible.
+ 
+Definition
+    
+Class:
+CollectingRiders
+Method:
+minimalMoves
+Parameters:
+vector <string>
+Returns:
+int
+Method signature:
+int minimalMoves(vector <string> board)
+(be sure your method is public)
+    
+
+Notes
+-
+A traditional knight has up to 8 moves from a square with coordinates (x,y) to squares (x+1,y+2), (x+1,y-2), (x+2,y+1), (x+2,y-1), (x-1,y+2), (x-1,y-2), (x-2,y+1), (x-2,y-1), and can not move outside the chessboard.
+Constraints
+-
+board will contain between 1 and 10 elements, inclusive.
+-
+Each element of board will contain between 1 and 10 characters, inclusive.
+-
+All elements of board will have the same length.
+-
+board will contain only positive digits ('1'-'9') and '.' characters.
+-
+board will contain at least one digit.
+Examples
+0)
+
+    
+{"...1",
+ "....",
+ "2..."}
+Returns: 2
+The 2-rider can jump from (2,0) to (0,1) in the first move, and then from (0,1) to (2,2) to (0,3) in the second.
+1)
+
+    
+{"........",
+ ".1......",
+ "........",
+ "....3...",
+ "........",
+ "........",
+ ".7......",
+ "........"}
+Returns: 2
+In 2 moves, we can move all the pieces to the cell initially occupied by the 1-rider.
+2)
+
+    
+{"..",
+ "2.",
+ ".."}
+Returns: 0
+No moves are necessary.
+3)
+
+    
+{".1....1."}
+Returns: -1
+
+4)
+
+    
+{"9133632343",
+ "5286698232",
+ "8329333369",
+ "5425579782",
+ "4465864375",
+ "8192124686",
+ "3191624314",
+ "5198496853",
+ "1638163997",
+ "6457337215"}
+Returns: 121
+Kind of maximal test.
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

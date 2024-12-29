@@ -1,0 +1,122 @@
+
+vector<string> split_nonre(string s, string sep)
+{
+	char *sC = (char *) malloc(s.size()+1);
+	strcpy(sC, s.c_str());
+	char *sepC = (char *) sep.c_str();
+	char *status = NULL;
+	
+	char *word;
+	vector<string> results;
+	while ((word = strtok_r(sC, sepC, &status)) != NULL)
+	{
+		results.push_back(word);
+		sC = NULL;
+	}
+	return results;
+}
+
+typedef long long LL;
+int howManyFriends(vector <string> avail, vector <string> dislike, int K) 
+{
+	int n = dislike.size();
+	
+	vector<LL> v(n,0);
+	for (int i = 0; i < n; i++)
+	{
+		vector<string> w = split_nonre(dislike[i], " ");
+		int mask = 0;
+		for (int j = 0; j < w.size(); j++)
+		{
+			if (w[j].size() == 0) continue;
+			int p = find(dislike.begin(), dislike.end(), w[j]) - dislike.begin();
+			mask |= 1LL<<p;
+		}
+		v[i] = mask;
+	}
+		
+	int best = 0;
+	for (int i = 0; i < (1<<n); i++)
+	{
+		LL bad = 0;
+		for (int j = 0; j < n; j++)
+		{
+			if (i & (1<<j))
+			{
+				bad |= v[j];
+			}
+		}
+		int poss = avail.size() - __builtin_popcountll(bad);
+		if (poss >= K)
+		{
+			best >?= __builtin_popcount(i);
+		}
+	}
+	return best;
+}
+
+Problem Statement
+    
+You are going to make a fruit birthday cake for a party. There are several kinds of fruit you can choose from, and you must choose at least K different kinds to put on the cake. However, some of your friends don't like certain kinds of fruits, and they will refuse to eat a cake containing any of those fruits. You want as many of your friends as possible to eat the cake.  You are given a vector <string> availableFruits, where each element is a kind of fruit that you can put on the cake. You are also given a vector <string> friendsDislikings, where each element is a space-separated list of the kinds of fruits that one of your friends doesn't like. Return the largest number of friends that can eat the cake, assuming that you must use at least K different kinds of fruits.
+Definition
+    
+Class:
+BirthdayCake
+Method:
+howManyFriends
+Parameters:
+vector <string>, vector <string>, int
+Returns:
+int
+Method signature:
+int howManyFriends(vector <string> availableFruits, vector <string> friendsDislikings, int K)
+(be sure your method is public)
+    
+
+Constraints
+-
+availableFruits will contain between 1 and 50 elements, inclusive.
+-
+Each element of availableFruits will contain between 1 and 50 characters, inclusive.
+-
+Each element of availableFruits will contain only lowercase letters ('a' - 'z').
+-
+All elements of availableFruits will be distinct.
+-
+friendsDislikings will contain between 1 and 20 elements, inclusive.
+-
+Each element of friendsDislikings will contain between 1 and 50 characters, inclusive.
+-
+Each element of friendsDislikings will be a space-separated list of fruit names without any leading or trailing spaces.
+-
+Each fruit name in each element of friendsDislikings will consist of lowercase letters ('a' - 'z') only.
+-
+Fruit names in each element of friendsDislikings will all be distinct.
+-
+K will be between 1 and the number of elements in availableFruits, inclusive.
+Examples
+0)
+
+    
+{ "apple", "orange", "strawberry", "cherry" }
+{ "apple orange", "apple cherry", "strawberry orange", "cherry", "apple" }
+2
+Returns: 3
+You can make your cake using strawberries and oranges and friends 1, 3 and 4 (0-based) will eat it.
+1)
+
+    
+{ "strawberry", "orange", "apple", "lemon", "watermelon" }
+{ "orange", "apple", "lemon", "watermelon" }
+1
+Returns: 4
+A strawberry cake is a perfect match here.
+2)
+
+    
+{ "apple", "orange" }
+{ "strawberry" }
+2
+Returns: 1
+Note that friends may dislike a fruit you don't even have.
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

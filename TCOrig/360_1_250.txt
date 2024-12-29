@@ -1,0 +1,160 @@
+vector<string> split_nonre(string s, string sep)
+{
+	char *sC = (char *) malloc(s.size()+1);
+	strcpy(sC, s.c_str());
+	char *sepC = (char *) sep.c_str();
+	char *status = NULL;
+	
+	char *word;
+	vector<string> results;
+	while ((word = strtok_r(sC, sepC, &status)) != NULL)
+	{
+		results.push_back(word);
+		sC = NULL;
+	}
+	return results;
+}
+
+int A[25][25];
+int rows, cols;
+
+int maxmemo[25][25], minmemo[25][25];
+
+
+int fmax(int k, int used) // used = used columns
+{
+	if (k == n)
+	{
+		return 0;
+	}
+	int& r = maxmemo[k][used];
+	if (r != -1)
+		return r;
+		
+	r = 0;
+	for (int i = 0; i < cols; i++)
+	{
+		if (used & (1<<i) == 0)
+		{
+			r = max(r, A[k][i]+f(k+1, used|(1<<i));
+		}
+	}
+	return r;
+}
+
+
+int fmin(int k, int used) // used = used columns
+{
+	if (k == n)
+	{
+		return 0;
+	}
+	int& r = minmemo[k][used];
+	if (r != -1)
+		return r;
+		
+	r = 0;
+	for (int i = 0; i < cols; i++)
+	{
+		if (used & (1<<i) == 0)
+		{
+			r = min(r, A[k][i]+f(k+1, used|(1<<i));
+		}
+	}
+	return r;
+}
+
+string hypothesis(vector <string> table) 
+{
+	rows = table.size();
+	for (int i = 0; i < rows; i++)
+	{
+		vector<string> v = split_nonre(table[i], " ");
+		cols = v.size();
+		for (int j = 0; j < cols; j++)
+		{
+			sscanf(v[j].c_str(), "%d", &A[i][j]);
+		}
+	}
+	
+	memset(maxmemo, -1, sizeof(maxmemo));
+	memset(minmemo, -1, sizeof(minmemo));
+	
+	int x = fmax(0, 0), y = fmin(0, 0);
+	
+	return x == y ? "CORRECT" : "INCORRECT";
+	
+}
+Problem Statement
+    
+There is a rectangular table with an integer written in each cell.
+
+Later, Jessie will come and select some cells in such a way that each row and each column contains no more than one selected cell. She will always select the maximum possible number of cells. However, there might be several possible selections of that size.
+
+Larry suggested a hypothesis: 
+
+"No matter what maximum selection Jessie choses, the sum of the numbers in the selected cells will always be the same."
+
+Given a vector <string> table, check whether Larry's hypothesis is correct and return "CORRECT" or "INCORRECT" (quotes for clarity only).
+
+Definition
+    
+Class:
+SumOfSelectedCells
+Method:
+hypothesis
+Parameters:
+vector <string>
+Returns:
+string
+Method signature:
+string hypothesis(vector <string> table)
+(be sure your method is public)
+    
+
+Constraints
+-
+table will contain between 1 and 20 elements, inclusive.
+-
+Each element of table will be contain between 1 and 50 characters, inclusive.
+-
+Each element of table will be a space-separated list of integers.
+-
+Each element of table will contain the same number of entries.
+-
+Each element of table will contain between 1 and 20 entries, inclusive.
+-
+All numbers in the table will be between 1 and 50, inclusive, with no leading zeroes.
+Examples
+0)
+
+    
+{"5 6 6"}
+Returns: "INCORRECT"
+Jessie will select exactly one cell. The sum will be either 5 or 6.
+1)
+
+    
+{"11 12 13 14",
+ "21 22 23 24",
+ "31 32 33 34",
+ "41 42 43 44"}
+Returns: "CORRECT"
+There are 4! = 24 possible selections for Jessie, but it can be shown that each of them gives the sum of 1 + 2 + 3 + 4 + 10 + 20 + 30 + 40 = 110.
+2)
+
+    
+{"3 7",
+ "3 7",
+ "3 7"}
+Returns: "CORRECT"
+Jessie will select exactly one 3 and exactly one 7 giving a total of 10.
+3)
+
+    
+{"1 2 3",
+ "4 5 6",
+ "9 8 7"}
+Returns: "INCORRECT"
+Jessie can get 13 (2 + 4 + 7) or 15 (1 + 6 + 8) or 17 (3 + 5 + 9).
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

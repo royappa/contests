@@ -1,0 +1,109 @@
+vector <int> transform(vector <int> t, int L) 
+{
+	int n = t.size();
+	for (int i = L; i >= 1; i--)
+	{
+		vector<int> t2(n);
+		int k = 0;
+		int m = n/(1<<i);
+		for (int j = 0; j < m/2; j++)
+		{
+			int x = t[j];
+			int y = t[j+m];
+			int a = (x+y)/2;
+			int b = (x-y)/2;
+			t2[k] = a; 
+			t2[k+1] = b;
+			k += 2;
+		}
+		for (int j = 0; j < m; j++)
+		{
+			t[j] = t2[j];
+		}
+	}
+	return t;
+}
+
+Problem Statement
+    
+The Haar wavelet transform is possibly the earliest wavelet transform, introduced by Haar in 1909. 
+
+The 1-dimensional version of this transform operates on a sequence of integer data as follows: 
+First separate the sequence into pairs of adjacent values, starting with the first and second values, then the third and fourth values, etc. 
+Next, calculate the sums of each of these pairs, and place the sums in order into a new sequence. 
+Then, calculate the differences of each of the pairs (subtract the second value of each pair from the first value), and append the differences in order to the end of the new sequence. 
+The resulting sequence is a level-1 transform. 
+
+Note that this requires the input sequence to have an even number of elements.  
+
+The above describes a level-1 transform. 
+
+To perform a level-2 transform, we repeat the above procedure on the first half of the sequence obtained from the level-1 transform. The second half of the sequence remains unchanged from the previous level. 
+
+This pattern continues for higher level transforms (i.e., a level-3 transform operates with the first quarter of the sequence, and so on). 
+
+Note that this is always possible when the number of elements is a power of 2.  
+
+Given the output of a level-L 1D Haar transform in vector <int> transformedData, create a class InverseHaar1D with a method transform which returns the original data. 
+
+That is, when a level-L 1D Haar transform is applied to your return value, one should obtain transformedData.  See the examples for clarification.
+Definition
+    
+Class:
+InverseHaar1D
+Method:
+transform
+Parameters:
+vector <int>, int
+Returns:
+vector <int>
+Method signature:
+vector <int> transform(vector <int> transformedData, int L)
+(be sure your method is public)
+    
+
+Constraints
+-
+transformedData will contain exactly 2, 4, 8, 16 or 32 elements.
+-
+Each element of transformedData will be between -10000 and 10000, inclusive.
+-
+L will be between 1 and log2(# of elements in transformedData) inclusive.
+-
+The elements of transformedData will constitute a valid Haar transform.
+Examples
+0)
+
+    
+{101, -53}
+1
+Returns: {24, 77 }
+Consider the sequence {24, 77}. Then, the level-1 Haar transform is simply {24+77, 24-77} = {101, -53}, which is exactly transformedData.
+1)
+
+    
+{3, 8, -1, -2}
+1
+Returns: {1, 2, 3, 5 }
+Consider the sequence {1, 2, 3, 5}. Start by forming 3=1+2, the sum of the first pair; 8=3+5, the sum of the second pair; -1=1-2, the difference of the first pair; and finally, -2=3-5, the difference of the second pair. To form the output, we create a sequence of the sums in order, and the differences in order. Then, the output for the Haar wavelet transform would be {3, 8, -1, -2}, which is exactly transformedData.
+2)
+
+    
+{11, -5, -1, -2}
+2
+Returns: {1, 2, 3, 5 }
+From the previous example, the level-1 Haar transform of {1, 2, 3, 5} gives {3, 8, -1, -2}. Then, the level-2 transform of {1, 2, 3, 5} is simply {11, -5, -1, -2} (11=3+8, -5=3-8), which is once again exactly transformedData.
+3)
+
+    
+{369, 477, 451, 262, 47, 135, 
+ -125, -2, 18, -23, 30, 101, 
+ -5, -18, 54, -20, 11, 45, -5, 
+ 70, -24, 2, -50, 15, 55, -62, 
+ -23, -17, 44, -8, -44, -52}
+3
+Returns: 
+{62, 51, 70, 25, 32, 37, 81, 11, 72, 96, 70, 68, 43, 93, 25, 10, 67, 12,
+ 11, 73, 56, 79, 68, 85, 68, 24, 15, 23, 6, 50, 12, 64 }
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

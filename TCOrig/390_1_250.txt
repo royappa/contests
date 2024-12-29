@@ -1,0 +1,86 @@
+typedef long long LL;
+
+int getSmallest(int number, int k) 
+{
+	LL n = number%k;
+	int copies = 0;
+	LL p = 1, x = number;
+	while (x)
+	{
+		x /= 10;
+		p *= 10;
+	}
+	set<int> seen;
+	while (n != 0)
+	{
+		copies++;
+		n = n*p+number;
+		n %= k;
+		if (seen.count(n) > 0)
+			return -1;
+		seen.insert(n);
+	}
+	return copies;
+}
+
+
+Problem Statement
+    
+Given a positive integer number, concatenate one or more copies of number to create an integer that is divisible by k. Do not add any leading zeroes. Return the least number of copies needed, or -1 if it is impossible.
+Definition
+    
+Class:
+ConcatenateNumber
+Method:
+getSmallest
+Parameters:
+int, int
+Returns:
+int
+Method signature:
+int getSmallest(int number, int k)
+(be sure your method is public)
+    
+
+Constraints
+-
+number will be between 1 and 1,000,000,000, inclusive.
+-
+k will be between 1 and 100,000, inclusive.
+Examples
+0)
+
+    
+2
+9
+Returns: 9
+At least 9 copies are needed, since 222222222 is divisible by 9.
+1)
+
+    
+121
+11
+Returns: 1
+121 is divisible by 11.
+2)
+
+    
+1
+2
+Returns: -1
+You can never get an even number by concatenating only 1's.
+3)
+
+    
+35
+98765
+Returns: 9876
+The resulting integer could be really big.
+4)
+
+    
+1000000000
+3
+Returns: 3
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

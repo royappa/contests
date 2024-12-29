@@ -1,0 +1,100 @@
+	public int evaluate(String expr)
+	{
+		ArrayList stack = new ArrayList();
+		
+		String[] w = expr.split();
+		for (int i = 0; i < n; i++)
+		{
+			char ch = w[i].charAt(0);
+			if (Character.isDigit(ch))
+				stack.add(0, new Integer(atoi(w[i])));
+			else if (ch == '+' || ch == '-' || ch == '*')
+			{
+				int top = ((Integer) stack.get(0)).intValue();
+				int next = ((Integer) stack.get(1)).intValue();
+				int result = ch=='+'?top+next :
+						ch=='*'?top*next:top-next;
+				stack.remove(0);
+				stack.remove(0);
+				stack.add(0, new Integer(result));
+			}
+			else
+			{
+				int top = ((Integer) stack.get(0)).intValue();
+				stack.remove(0);
+				stack.add(0, new Integer(-top));
+			}
+		}
+		return ((Integer) stack.get(0)).intValue();
+	}
+	
+Problem Statement
+    
+Reverse Polish Notation (RPN) is a notation for writing arithmetic expressions that is famous for not needing parentheses. Perhaps best known for its use in certain calculators, RPN is also commonly used in virtual machines such as the JVM. The distinguishing feature of RPN is that arithmetic operators are written after their arguments. For example, the infix expression "3 - 4" would be written in RPN as "3 4 -" (all quotes for clarity only). Similarly, the infix expression "(3 - 4) * 5" would be written in RPN as "3 4 - 5 *". Notice how no parentheses were necessary in the RPN expression. No confusion is possible, because the infix expression "3 - (4 * 5)" would be written in RPN as "3 4 5 * -".
+An RPN expression is evaluated using a stack. The expression is processed from left to right. Each number is pushed onto the stack as it is encountered. When an operator is encountered, the appropriate number of arguments are popped off the stack, the operation is performed, and the result is pushed back onto the stack. The final answer is the value on the top of the stack when the end of the expression is reached. The supported arithmetic operators are addition ('+'), subtraction ('-'), multiplication ('*'), and unary negation ('~')
+For example, the RPN expression "2 3 + 6 ~ 7 * -" would be evaluated as shown in the following table:
+    Remaining Expression   Stack     New Stack
+      2 3 + 6 ~ 7 * -      []        [2]
+        3 + 6 ~ 7 * -      [2]       [2 3]      <---- Stacks grow to the right
+          + 6 ~ 7 * -      [2 3]     [5]
+            6 ~ 7 * -      [5]       [5 6] 
+              ~ 7 * -      [5 6]     [5 -6]
+                7 * -      [5 -6]    [5 -6 7]
+                  * -      [5 -6 7]  [5 -42]
+                    -      [5 -42]   [47]       <---- Final answer is 47
+You will write a method that takes an RPN expression expr as a String, evaluates it, and returns its final value. The expression will contain only digits ('0'-'9'), arithmetic operators ('+', '-', '*', '~'), and spaces (' '). Only single-digit numbers will be allowed, and all numbers and operators will be separated by single spaces, with no leading or trailing spaces.
+An RPN expression is malformed if evaluating it would leave more than one value on the stack, or if evaluating it would cause some operator to try to pop an empty stack. Your method should return -999 if expr is malformed.
+Definition
+    
+Class:
+RPN
+Method:
+evaluate
+Parameters:
+String
+Returns:
+int
+Method signature:
+int evaluate(String expr)
+(be sure your method is public)
+    
+
+Constraints
+-
+expr contains an odd number of characters between 1 and 33, inclusive.
+-
+Every character in a (zero-based) odd position in expr is a space (' ').
+-
+Every character in a (zero-based) even position in expr is either a digit ('0'-'9') or one of the characters '+', '-', '*', or '~'.
+Examples
+0)
+
+    
+"2 3 + 6 ~ 7 * -"
+Returns: 47
+The example above.
+1)
+
+    
+"5 ~ ~ ~"
+Returns: -5
+Multiple negations are allowed.
+2)
+
+    
+"9 8 7 * * 4 5 - -"
+Returns: 505
+
+3)
+
+    
+"1 + 2 + 3"
+Returns: -999
+
+4)
+
+    
+"1 9 ~ 2 8 * +"
+Returns: -999
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

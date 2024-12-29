@@ -1,0 +1,139 @@
+
+import java.util.*;
+import java.util.regex.*;
+
+public class PartySeats
+{
+	public String[] seating(String[] attendees)
+	{
+		int n = attendees.length;
+		int mid = (n+2)/2;
+		String[] seating = new String[n+2];
+		for (int i = 0; i < n; i++)
+		{
+			seating[i] = "";
+		}
+		seating[0] = "HOST";
+		seating[mid] = "HOSTESS";
+		String[] boys = new String[n];
+		String[] girls = new String[n];
+		int nb = 0, ng = 0;
+		for (int i = 0; i < n; i++)
+		{
+			String[] w = attendees[i].split(" ");
+			if (w[1].equals("boy"))
+			{
+				boys[nb++] = w[0];
+			}
+			else
+			{
+				girls[ng++] = w[0];
+			}
+		}
+		Arrays.sort(boys, 0, nb);
+		Arrays.sort(girls, 0, ng);
+		int ib = 0, ig = 0;
+		String empty = new String[0];
+		for (int p = 1; p < n+2-1; p++)
+		{
+			if (p == mid) continue;
+			if (p%2==1)
+			{
+				// need a girl
+				if (ig < ng)
+				{
+					seating[p] = girls[ig++];
+				}
+				else
+				{
+					return empty;
+				}
+			}
+			else
+			{
+				if (ib < nb)
+				{
+					seating[p] = boys[ib++];
+				}
+				else
+				{
+					return empty;
+				}
+			}
+		}
+		return seating;		
+	}
+}
+
+Problem Statement
+    
+It is time to arrange the seating around a circular table for a party. We want to alternate boys and girls around the table. We have a list of all the attendees and their genders. Each attendee is specified by a String that consists of the name, followed by one space, followed by either "boy" or "girl".
+
+In addition to the attendees, we need to seat the HOST (a boy) and the HOSTESS (a girl) with the HOSTESS directly across from the HOST. That means that half the attendees should be on the HOST's left, and half on his right.
+Create a class PartySeats that contains a method seating that is given a String[] attendees that lists all the attendees and their genders. The method returns a String[] that gives the seating plan, starting with "HOST" and proceeding clockwise around the table, including all the attendees and the HOSTESS.
+
+If there is more than one possible seating plan, return the one that comes first lexicographically. "First lexicographically" means that each successive element in the return should be chosen to be the earliest alphabetically that is consistent with a legal seating plan. If there is no legal seating plan, the return should contain 0 elements.
+
+Definition
+    
+Class:
+PartySeats
+Method:
+seating
+Parameters:
+String[]
+Returns:
+String[]
+Method signature:
+String[] seating(String[] attendees)
+(be sure your method is public)
+    
+
+Constraints
+-
+attendees will contain between 1 and 50 elements inclusive
+-
+each element of attendees will consists of a name followed by a single space followed by either "boy" or "girl". There will be no leading or trailing spaces.
+-
+each name will contain between 1 and 20 characters inclusive
+-
+each name will contain only uppercase letters 'A'-'Z'
+-
+no name will be "HOST" or "HOSTESS"
+Examples
+0)
+
+    
+{"BOB boy","SAM girl","DAVE boy","JO girl"}
+Returns: { "HOST",  "JO",  "BOB",  "HOSTESS",  "DAVE",  "SAM" }
+A girl must follow the HOST, and JO comes earliest lexicographically. Then comes a boy, and BOB is the earliest lexicographically. HOSTESS must come next so she can be opposite the HOST and then DAVE and SAM must follow in that order to honor the alternating gender requirement.
+1)
+
+    
+{"JOHN boy"}
+Returns: { }
+There are more boys than girls so we cannot alternate.
+2)
+
+    
+{"JOHN boy","CARLA girl"}
+Returns: { }
+There is no way to alternate gender and also have the HOST sit directly across from the HOSTESS
+3)
+
+    
+{"BOB boy","SUZIE girl","DAVE boy","JO girl",
+"AL boy","BOB boy","CARLA girl","DEBBIE girl"}
+Returns: 
+{ "HOST",
+  "CARLA",
+  "AL",
+  "DEBBIE",
+  "BOB",
+  "HOSTESS",
+  "BOB",
+  "JO",
+  "DAVE",
+  "SUZIE" }
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

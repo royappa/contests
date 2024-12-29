@@ -1,0 +1,102 @@
+typedef long double LD;
+
+vector <double> getPoints(vector <int> x, vector <int> m) 
+{
+	int n = x.size();
+	vector<double> r(n-1,0);
+	
+	for (int i = 0; i < n-1; i++)
+	{
+		// calculate r[i] = the equilibrium point between x[i] and x[i+1]
+		LD mid = 0;
+		// left force = sum(G*mi*mr/(di-rx)^2)  for points 0..i
+		// right force = same for points i+1..n-1
+		LD lx = x[i], rx = x[i+1];
+		for (int j = 0; j < 1000; j++)
+		{
+			mid = (lx + rx)/2.0;
+			LD lf = force(0, i, mid), rf = force(i+1, n-1, mid);
+			if (lf > rf)
+			{
+				lx = mid;
+			}
+			else
+			{
+				rx = mid;
+			}
+		}
+		r[i] = (double) mid;
+	}
+	return r;		
+}
+
+Problem Statement
+    
+There are N points situated on a straight line. The i-th point is located at coordinate x[i] and has a mass of m[i]. The location of each point is strongly fixed and cannot be changed by any forces. Coordinates of all points are distinct.
+When another point P is added on the line and its position is not fixed, the point falls under the impact of gravitational forces from each of the given N points. Points located to the left of P force it to the left, and points located to the right of P force it to the right. When two points are located a distance of d apart and have masses m1 and m2, the value of gravitational force between them is F = G * m1 * m2 / d^2, where G is some positive constant.
+Point P is said to be an equilibrium point if the vector sum of gravitational forces from all points on P equals zero. 
+
+In other words, the sum of the values of gravitational forces between P and all the points located to the left of P must be the same as the sum of the values of gravitational forces between P and all the points located to the right of P.
+
+It is known that there always exist exactly N-1 equilibrium points. Return a vector <double> containing their coordinates sorted in ascending order.
+Definition
+    
+Class:
+EquilibriumPoints
+Method:
+getPoints
+Parameters:
+vector <int>, vector <int>
+Returns:
+vector <double>
+Method signature:
+vector <double> getPoints(vector <int> x, vector <int> m)
+(be sure your method is public)
+    
+
+Notes
+-
+Each element of your return value must have an absolute or relative error less than 1e-9.
+-
+You don't need to know the mass of point P and the value of constant G to solve the problem.
+Constraints
+-
+x will contain between 2 and 50 elements, inclusive.
+-
+m will contain the same number of elements as x.
+-
+Each element of x will be between 1 and 1000, inclusive.
+-
+Each element of m will be between 1 and 1000, inclusive.
+-
+x will be sorted in strictly ascending order.
+Examples
+0)
+
+    
+{1, 2}
+{1, 1}
+Returns: {1.5 }
+When two points have the same mass, the equilibrium point is located exactly halfway between them.
+1)
+
+    
+{1, 2}
+{1, 1000}
+Returns: {1.0306534300317156 }
+When two points have distinct masses, the equlibrium point is located closer to the point with lesser mass.
+2)
+
+    
+{1, 2, 3}
+{1, 2, 1}
+Returns: {1.4060952084922507, 2.5939047915077493 }
+There are two equilibrium points located symmetrically with respect to the middle point of the input points.
+3)
+
+    
+{2, 3, 5, 7}
+{3, 2, 7, 5}
+Returns: {2.532859446114924, 3.7271944335152813, 6.099953640852538 }
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

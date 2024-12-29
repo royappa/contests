@@ -1,0 +1,108 @@
+{
+	private boolean isUnique(String pattern, String beep, int n)
+	{
+		int count = 0;
+		for (int i = 0; i < n; i++)
+		{
+			String p = pattern+pattern;
+			p = p.substring(i);
+			if (p.matches(beep+".*$"))
+				count++;
+		}
+		return count==1;
+	}
+	
+	private int distance(int cur, int target, int n)
+	{
+		return cur < target ? target-cur : (n-cur)+target;
+	}
+	private int count(String pattern, int start, int target, int n)
+	{
+		String beep = "";
+		for (int i = 0; i < n; i++)
+		{
+			int next = (start + 1) % n;
+			beep += pattern.charAt(next);
+			if (isUnique(pattern, beep, n))
+			{
+				return beep.length()+distance(next, target, n)-1;
+			}
+		}
+		return -1;
+	}
+	public int worstCase(String pattern, int target)
+	{
+		int n = pattern.length();
+		int max = -1;
+		for (int start = 0; start < n; start++)
+		{
+			int num = start == target ? -1 : count(pattern, start, target, n);
+			if (num == -1)
+				continue;
+			max = num > max ? num : max;
+			System.out.println(start + " " + max);		
+		}
+		return max;
+	}
+	
+Problem Statement
+    
+Consider a simple Input/Output system. The system input consists of a button that you can press, while the system output consists of an audible beep. 
+
+The system logic consists of a state machine that transitions from one state to the next every time the button is pressed. At the last state, the machine transitions to the first state when the button is pressed. 
+
+On some state transitions, the audible beep is sounded, and on others it is not. The pattern of beeps mapped to states is known ahead of time.
+
+You are given a String pattern of beeps for state transitions. 
+
+The i-th character of pattern (0-based index) will be a 'B' if there is a beep when state i is entered, and will be a 'N' if there is no beep. 
+
+You are also given an int targetState to achieve, but not the starting state. 
+
+Return the worst case scenario of the most number of times you must press the button to guarantee the machine is in the targetState. If it is not possible to always ensure you can end on the targetState, return -1.
+
+Definition
+    
+Class:
+SimpleIO
+Method:
+worstCase
+Parameters:
+String, int
+Returns:
+int
+Method signature:
+int worstCase(String pattern, int targetState)
+(be sure your method is public)
+    
+
+Constraints
+-
+pattern will have between 2 and 50 characters, inclusive.
+-
+pattern will only contain the characters 'B' and 'N'.
+-
+targetState will be between 0 and the length of pattern - 1, inclusive.
+Examples
+0)
+
+    
+"BNB"
+0
+Returns: 4
+In the worst case, the first state is state 2. In this case, you press the button 2 times before we narrow down that the state is now state 1. You must now press the button 2 more times to get back to state 0.
+1)
+
+    
+"BNBNBNBN"
+3
+Returns: -1
+In this case, we can only tell if we are on an even or odd state, we cannot determine the exact state.
+2)
+
+    
+"BBNNBNBBBBNBBBBBB"
+3
+Returns: 18
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

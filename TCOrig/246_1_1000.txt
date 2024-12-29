@@ -1,0 +1,119 @@
+  ARG n
+        /* ans, the "answer", will be brought to the square root by   */
+        /* successive approximation.                                  */
+  ans = n / 2                   /* initial guess at an answer         */
+  prevans = n                   /* "previous answer"                  */
+  do until prevans = ans        /* i.e., no more improvement is found */
+     prevans = ans              /* save previous answer               */
+     ans = ( prevans + ( n / prevans ) ) / 2
+  end
+return ans
+
+long long gcd (long long a, long long b)
+{
+	return b == 0LL? a : gcd(b, a%b);
+}
+
+string approximate(int N, int D) 
+{
+	// closest to sqrt(N) where den <= D
+	
+	double s = sqrt((double) N);
+	double best = 1e99;
+	
+	long long bestNum = 0LL, bestDen = 0LL;
+	
+	for (int d = 2; d <= D; d++)
+	{
+		// calc num, den
+		// sqrt calculation - stop when den > d
+		long long prevNum = N;
+		long long prevDen = 1LL;
+		long long num=N;
+		long long den=2LL;
+		while (den <= d)
+		{
+			// prevans = ans
+			prevNum = num;
+			prevDen = den;
+			
+			// ans = (prevans + (n/prevans) ) / 2;
+			num = 4LL*2LL*prevNum*prevNum+2LL*N*4LL*prevDen*prevDen;
+			den = 4LL*4LL*prevNum*prevDen;
+			
+			long long g = gcd(num, den);
+			num /= g;
+			den /= g;
+		}
+		// save best
+		num = prevNum;
+		den = prevDen;
+		double diff = abs(s - ( (double)num / (double)den ));
+		if ( diff < best)
+		{
+			best = diff;
+			bestNum = num;
+			bestDen = den;
+		}			
+	}
+	char buf[1000];
+	sprintf(buf, "%ld/%ld", bestNum, bestDen);
+	string ret = buf;
+	return ret;		
+}
+
+
+Problem Statement
+    
+You are developing a new calculator with a square root function. To make things simple for your clients, you have decided to approximate square roots as simple fractions, rather than displaying a long sequence of digits.
+You will be given N and D and should return the fraction closest to sqrt(N) for which the denominator is not greater than D. The fraction should be returned in the form "A/B" where A and B are positive integers with no common factors greater than one.
+Definition
+    
+Class:
+CalcRoot
+Method:
+approximate
+Parameters:
+int, int
+Returns:
+string
+Method signature:
+string approximate(int N, int D)
+(be sure your method is public)
+    
+
+Constraints
+-
+N will be between 1 and 1000000, inclusive.
+-
+D will be between 1 and 1000, inclusive.
+Examples
+0)
+
+    
+4
+10
+Returns: "2/1"
+
+1)
+
+    
+5
+3
+Returns: "7/3"
+sqrt(5) = 2.236
+2)
+
+    
+12
+10
+Returns: "31/9"
+sqrt(12) = 3.464
+3)
+
+    
+23743
+763
+Returns: "98462/639"
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

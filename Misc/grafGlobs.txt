@@ -1,0 +1,201 @@
+public class grafixGlobs
+{
+	public int[] execute(String[] commands, int sel)
+	{
+		HashMap globs = new HashMap();
+		Arraylist ids = new ArrayList();
+		
+		for (int i = 0; i < commands; i++)
+		{
+			String[] w = String.split(commands[i], " ");
+			String cmd = w[0];
+			if (cmd.equals("make"))
+			{
+				// find lowest avail globid
+				int i = 0;
+				String idStr;
+				while (true)
+				{
+					idStr = ""+i;
+					if (ids.contains(idStr))
+					{
+						i++;
+						continue;
+					}
+					break;
+				}
+				// now id == i
+				String obj = arg.substring(0,1);
+				ids.add(idStr);
+				String[] olist = { obj };
+				globs.put(idStr, new ArrayList(olist));
+			}
+			if (cmd.equals("delete"))
+			{
+				int p = ids.indexOf(w[1]);
+				ids.remove(p);
+			}
+			if (cmd.equals("merge"))
+			{
+				String id1 = w[1];
+				String id2 = w[2];
+				int p = ids.indexOf(id2); // make id2 available again
+				ids.remove(p);
+				ArrayList olt = globs.get(id1);
+				ArrayList ols = globs.get(id2);
+				for (int k = 0; k < ols.size(); k++)
+				{
+					olt.add(ols.get(k));
+				}
+			}
+			if (cmd.equals("split"))
+			{
+				int p = ids.indexOf(w[1]);
+				ids.remove(p);
+				String[] types = { "a", "c", "p" };
+				ArrayList olsplit = globs.get(w[1]);
+				for (int t = 0; t < 3; t++)
+				{
+					for (int k = 0; k < olsplit.size(); k++)
+					{
+						String o = olsplit.get(k);
+						if (o.equals(types[t]))
+						{
+							//
+							int n = 0;
+							String idS;
+							while (true)
+							{
+								idS = ""+n;
+								if (ids.contains(idS))
+								{
+									n++;
+									continue;
+								}
+								break;
+							}
+							// new id == n
+							ids.add(idS);
+							String[] olist2 = { o };
+							globs.put(idS, new ArrayList(olist2));							
+							//
+						}
+					}				
+				
+				}
+			}
+			
+		}
+		
+		//return results
+		int[] result = new int[3];
+		int ac = 0, cc = 0, pc = 0;
+		String idSel = ""+sel;
+		if (globs.contains(idSel))
+		{
+			ArrayList objects = globs.get(idSel);
+			for (int j = 0; j < objects.size(); j++)
+			{
+				String o = objects.get(i);
+				if (o.equals("a")) ac++;
+				if (o.equals("c")) cc++;
+				if (o.equals("p")) pc++;
+			}
+			result[0] = ac; 
+			result[1] = cc; 
+			result[2] = pc;					
+			return result;
+		}
+		int[] empty = {};
+		return empty;
+	}
+}
+
+Problem Statement
+    
+Note: This problem statement includes images that may not appear if you are using a plugin. For best results, use the Arena editor.
+In the vector-drawing mode of the grafix software package, the user plots geometric objects of three kinds: arcs, circles, and polygons. These objects are grouped into collections known as globs. A newly made object automatically belongs to a glob of which it is the sole member. The user can later choose to merge two globs into one, or to split one glob so that each of its objects is delegated to a glob on its own. Each glob bears a unique identification number or ID, which is crucial to updating the document. Your job is to take a sequence of drawing instructions expressed in the grafix internal language, and execute them according to the rules laid out below.
+An instruction is a string that takes one the following forms.
+  make OBJ
+  delete ID
+  merge ID ID
+  split ID
+In these forms, "OBJ" is a placeholder for one of the following values.
+  arc
+  circle
+  polygon
+Furthermore, "ID" is a placeholder for the string representation of an existing glob ID, which must be a non-negative integer. The string representation will not be padded with zeros, and no instruction will be padded with extraneous spaces on either side or between its tokens.
+Before you execute the first instruction, the document is empty, so no glob IDs are in use. When a "make" instruction is executed, you must form a new glob whose ID is the lowest non-negative integer that isn't currently in use as a glob ID. The sole member of the new glob will be an object of the type named by the "make" instruction.
+To execute a "delete" instruction, you take the glob whose ID is specified by the instruction, discard all the objects it contains, and liberate its ID for future use.
+The "merge" instruction specifies two different IDs. The first one identifies the target glob, to which you must add the members of the second glob, called the source glob. Immediately thereafter, the source glob is to be destroyed and its ID liberated. Note that globs do not contain other globs, but only objects. Thus, the consequence of a merge operation is that the target glob contains more objects than before, namely its prior contents as well as the objects drawn from the source glob.
+The "split" instruction liberates the ID of the specified glob and then reassigns each of its member objects to an individual glob bearing the lowest available ID, in the following order. First the arcs are reassigned, then the circles, and finally the polygons. The specified glob is finally discarded. Its ID, if it was not reused by one of its member objects, remains available.
+You are given a sequence of drawing instructions in the String[] commands. After executing all instructions in order, you are to determine the contents of the glob whose ID is specified by the int sel. If there is no such glob, return an empty int[]. Otherwise, return an int[] with three values declaring, in order, the number of arcs, circles, and polygons in that glob.
+Definition
+    
+Class:
+grafixGlobs
+Method:
+execute
+Parameters:
+String[], int
+Returns:
+int[]
+Method signature:
+int[] execute(String[] commands, int sel)
+(be sure your method is public)
+    
+
+Constraints
+-
+commands contains between 1 and 50 elements, inclusive
+-
+each element of commands adheres to the format described above
+-
+commands is a feasible sequence, so each ID refers to an existing glob when it is used
+-
+sel is between 0 and 999, inclusive
+Examples
+0)
+
+    
+{"make polygon", "make circle", "make polygon", "merge 0 1", "merge 2 0", "split 2"}
+0
+Returns: { 0,  1,  0 }
+ 
+
+1)
+
+    
+{"make circle", "make circle", "make arc", "merge 2 1", "delete 0",
+ "split 2", "delete 0", "make polygon"}
+0
+Returns: { 0,  0,  1 }
+ 
+
+2)
+
+    
+{"make circle", "make circle", "make arc", "merge 2 1", "delete 0",
+ "split 2", "delete 0", "make polygon"}
+2
+Returns: { }
+There is no glob with ID 2.
+3)
+
+    
+{"make arc"}
+999
+Returns: { }
+
+4)
+
+    
+{"make polygon", "make polygon", "make arc", "make circle",
+ "make circle", "delete 3", "make polygon", "make arc",
+ "make arc", "merge 1 3", "merge 1 4", "merge 2 1", "make arc",
+ "make arc", "make circle", "make circle", "merge 6 5",
+ "split 6", "merge 2 1"}
+2
+Returns: { 2,  1,  2 }
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

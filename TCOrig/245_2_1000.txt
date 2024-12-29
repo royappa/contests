@@ -1,0 +1,130 @@
+
+LL k;
+
+LL points(int c, int r)
+{
+	LL pow = 1;
+	while (r > 0)
+	{
+		pow *= k;
+		r--;
+	}
+	return pow*c*c;
+}
+
+LL cost(int n, int r)
+{
+	if (n == 0)
+	{
+		return 0;
+	}
+	
+	LL best = 1LL<<60;
+	
+	for (int p = 0; p < n; p++)
+	{
+		LL cur = points(p, r) + cost(n-p, r+1);
+		best = min(best, cur);
+	}
+	
+	return best;
+	
+}
+
+long long mincost(int n, int _k) 
+{
+	k = _k;	
+	return cost(n, 1);
+	
+}
+
+Problem Statement
+    
+You are a playing a card game consisting of 1 or more rounds in which you may purchase 1 or more cards during each round. 
+
+The cost of buying c cards in round r is k^r * c^2 (in the first round, r = 0). 
+
+For example, if k = 2, and you buy 4 cards in the first round, 1 card in the second round, and 1 card in the third round, it would cost:
+2^0 * 4^2 = 16 for the first four cards,
+2^1 * 1^2 = 2 for the fifth card,
+2^2 * 1^2 = 4 for the last card.
+
+The six cards cost you 22. 
+
+There is a cheaper way to buy 6 cards: buy 3, then 2, then 1 for a cost of 9+8+4 = 21. 
+
+Suppose you wish to buy n cards given some round multipler k. Return the minimum cost of purchasing the cards.
+Definition
+    
+Class:
+CardCosts
+Method:
+mincost
+Parameters:
+int, int
+Returns:
+long long
+Method signature:
+long long mincost(int n, int k)
+(be sure your method is public)
+    
+
+Notes
+-
+Watch for overflow errors; a 32-bit dataype is not sufficient for this problem.
+Constraints
+-
+n is between 0 and 1000000 inclusive.
+-
+k is between 1 and 1000 inclusive.
+Examples
+0)
+
+    
+6
+2
+Returns: 21
+This is the example from the problem definitiion. The best solution is to purchase 3 cards at 9, then 2 cards at 8, then 1 card at 4.
+1)
+
+    
+400
+1000
+Returns: 160000
+k is too large to be worthwhile. Purchase all cards on the first round.
+2)
+
+    
+1000000
+1000
+Returns: 999000001000
+Watch for overflow.
+3)
+
+    
+113772
+188
+Returns: 12875219937
+
+4)
+
+    
+0
+654
+Returns: 0
+
+5)
+
+    
+1000000
+1
+Returns: 1000000
+
+6)
+
+    
+1000000
+2
+Returns: 500000500000
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

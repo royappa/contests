@@ -1,0 +1,84 @@
+typedef pair<int,int> pi;
+
+int finalPos(int n, int k, vector <string> remove) 
+{
+	set<pi> s;
+	s.insert(make_pair(1,n));
+	
+	for (int i = 0; i < remove.size(); i++)
+	{
+		int a, b;
+		sscanf(remove[i].c_str(), "%d-%d", &a, &b);
+		for (typeof(s.begin()) it = s.begin(); it != s.end(); it++)
+		{
+			pi x = trim(*it, a, b);
+			
+}
+Problem Statement
+    
+When items are removed from the middle of a sequence, the positions of all the items further down the sequence change. We are given a sequence and a list of removals that will occur. We want to be able to determine which item ends up in a specified position.
+
+We refer to the positions in our sequence starting with 1. Let the items in our sequence initially be 1, 2, ..., n. 
+
+Let k be the specified final position, and let remove be a list of strings that gives the removals in order. Each removal is in the form "lo-hi" where lo and hi are positive integers (with no leading zeros) giving the range of positions whose items are to be removed. Each removal refers to the items by current position (not original position) in the sequence and includes both lo and hi. So if n is 8 and removal is {"3-4","4-5"} the sequence after the first removal is 1, 2, 5, 6, 7, 8 and the final sequence is 1, 2, 5, 8.
+
+Create a class Removal that contains a method finalPos that takes as input n, the original sequence length, k the final position of interest, and remove, a vector <string> of removals formatted as described above. 
+
+The method returns the item that ends up in position k, or returns -1 if no item ends up in position k (i.e. if there are fewer than k items left after all the removals).
+
+Definition
+    
+Class:
+Removal
+Method:
+finalPos
+Parameters:
+int, int, vector <string>
+Returns:
+int
+Method signature:
+int finalPos(int n, int k, vector <string> remove)
+(be sure your method is public)
+    
+
+Constraints
+-
+n will be between 1 and 2,000,000,000 inclusive.
+-
+k will be between 1 and n inclusive.
+-
+remove will contain between 1 and 50 elements inclusive.
+-
+Each element of remove will be formatted as "lo-hi".
+-
+In each element of remove, neither lo nor hi will have leading zeros.
+-
+In each element of remove, 0 < lo <= hi <= n.
+-
+In each element of remove, hi will be less than or equal to the number of items remaining after the preceding removals.
+Examples
+0)
+
+    
+8
+3
+{"3-4","4-5"}
+Returns: 5
+As described above, the final sequence will be 1, 2, 5, 8, so item 5 ends up in position 3 of the final sequence.
+1)
+
+    
+100
+13
+{"19-50","19-50","19-19"}
+Returns: 13
+None of these removals affects position 13.
+2)
+
+    
+100
+39
+{"19-50","19-50","19-19"}
+Returns: -1
+The final sequence contains less than 39 items.
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

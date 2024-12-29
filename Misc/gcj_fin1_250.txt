@@ -1,0 +1,160 @@
+// THIS IS CORRECT
+#include <vector>
+#include <list>
+#include <map>
+#include <set>
+#include <deque>
+#include <stack>
+#include <bitset>
+#include <algorithm>
+#include <functional>
+#include <numeric>
+#include <utility>
+#include <sstream>
+#include <iostream>
+#include <iomanip>
+#include <cstdio>
+#include <cmath>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+typedef long long LL;
+map<pair<int,pair<string,string > >,LL> memo;
+
+class PalindromePatterns {
+public:
+// return longest suffix of f that is a prefix of s
+
+string ltrim(string s, string f)
+{
+	for (int i = 0; i < f.size(); i++)
+	{
+		string suff = f.substr(i);
+		string x = s.substr(0, suff.size());
+		if (suff == x)
+			return suff;
+	}
+	return "";	
+}
+
+// return longest prefix of f that is a suffix of s
+string rtrim(string s, string f)
+{
+	if (s.size() > f.size())
+		s = s.substr(s.size()-f.size());
+	return s;
+}
+
+		
+LL calc(int n, string f, string leftContext, string rightContext)
+{
+	int k = f.size(), leftLen = leftContext.size(), rightLen = rightContext.size();
+	if (leftLen >= k && leftContext.substr(leftLen-k) == f)
+		return 0LL;
+	if (rightLen >= k && rightContext.substr(0, k) == f)
+		return 0LL;
+	if (n == 0)
+	{
+		if ((leftContext+rightContext).find(f) != string::npos)
+			return 0LL;
+		return 1LL;
+	}
+	string a = "a", b = "b";
+	if (n == 1)
+	{
+		LL c = 0;
+		if ((leftContext+a+rightContext).find(f) == string::npos)
+			c++;
+		if ((leftContext+b+rightContext).find(f) == string::npos)
+			c++;
+		return c;
+	}
+	pair<int,pair<string,string> > key = make_pair(n, make_pair(leftContext, rightContext));
+	if (memo.count(key) > 0)
+		return memo[key];
+	string la = rtrim(leftContext+a, f), ar = ltrim(a+rightContext, f);
+	string lb = rtrim(leftContext+b, f), br = ltrim(b+rightContext, f);
+	
+	LL val = calc(n-2, f, la, ar) + calc(n-2, f, lb, br);
+	memo[key] = val;
+	return val;
+}
+
+LL howMany(string forbidden, int n)
+{
+	if (n == 0)
+		return 1LL;
+	if (n == 1)
+	{
+		return (forbidden == "a") ? 1 : (forbidden == "b") ? 1 : 2;
+	}
+	
+	return calc(n, forbidden, "", "");
+}
+
+};
+
+Problem Statement
+    
+Using only the letters 'a' and 'b' return how many palindromes of length len do not have forbidden as a substring. 
+A palindrome is a word that is unchanged by reversing it.
+Definition
+    
+Class:
+PalindromePatterns
+Method:
+howMany
+Parameters:
+String, int
+Returns:
+long
+Method signature:
+long howMany(String forbidden, int len)
+(be sure your method is public)
+    
+
+Constraints
+-
+forbidden will contain between 1 and 5 characters inclusive.
+-
+len will be between 1 and 100 inclusive.
+-
+Each character in forbidden must be 'a' or 'b'.
+Examples
+0)
+
+    
+"a"
+5
+Returns: 1
+Only one possible palindrome.
+1)
+
+    
+"aaaaa"
+5
+Returns: 7
+7 of the 8 possible palindromes work here.
+2)
+
+    
+"aa"
+10
+Returns: 8
+
+3)
+
+    
+"aa"
+30
+Returns: 987
+
+4)
+
+    
+"a"
+1
+Returns: 1
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

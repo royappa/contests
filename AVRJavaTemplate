@@ -1,0 +1,3 @@
+private int atoi(String w) { return Integer.parseInt(w); }
+private double atod(String w) { return Double.parseDouble(w); }
+

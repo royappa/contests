@@ -1,0 +1,237 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<!-- Mirrored from spoj.sphere.pl/problems/DCODE/ by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 10 Jan 2006 04:55:56 GMT -->
+<head>
+<title>Sphere Online Judge (SPOJ)  - Problem DCODE</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-2">
+<META NAME="Keywords" CONTENT="spoj, online, judge, problem, set, problemset, archive, ACM, Polish, Poland, contest, contester, task, tasks, ADA, Java, Pascal, C, C++, Whitespace, sphere, interest, group, python, ruby, icon, o'caml, caml, ocaml, perl, haskell, bf, brain, clips, prolog, fortran, asm, assembler, asembler, functional, esoteric, programming, languages">
+
+<link href="https://spoj.sphere.pl/gfx/favicon" rel="shortcut icon" type="image/x-icon">
+
+<link href="../../themes/skin3.css" rel="stylesheet" type="text/css" id="theme">
+<style type="text/css">
+<!--
+.maintable {width: 755;} 
+-->
+</style>
+<script type="text/javascript" language="javascript">
+<!--
+function UnCryptMailto(s) {
+	var n=0;
+	var r="";
+	for(var i=0;i<s.length;i++) {		
+		n=s.charCodeAt(i); 
+		if (n>=8364) {n = 128;}
+		r += String.fromCharCode(n+(2));	
+	}
+	return r;
+}
+function linkTo_UnCryptMailto(s)	{
+	location.href=UnCryptMailto(s);
+}
+// -->
+</script>
+
+</head>
+<body>
+<center>
+<table cellpadding="10" cellspacing="0" class="maintable" id="maintable">
+<tr>
+    <td colspan="2" class="header">
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+        <tr>
+		<td class="headerleft"/>
+		<td class="headercenter"><h1>Sphere Online Judge</h1></td>
+		<td class="headerright"/>
+	</tr>
+	</table>
+    </td>
+</tr>
+<tr><td class="menu" width="92" valign="top">
+<form name="login"  action="http://spoj.sphere.pl/problems/DCODE/" method="post" 
+	onsubmit="if(document.login.ssl.checked) document.login.action='https://spoj.sphere.pl/problems/DCODE/'" style="margin-bottom: 18px"> 
+User: <input name="login_user" type="text" style="width: 85px;" class="form"><BR>
+Password: <input name="password" type="password" style="width: 85px;" class="form"><BR>
+<script language="javascript" type="text/javascript">
+<!--
+document.write('<input type="checkbox" name="ssl" id="ssl" checked>secure<br>');
+//-->
+</script>
+<input name="submit" type="submit" value="Log In" class="button" style="width: 85px;">
+</form><div class="menucmd"><a href="https://spoj.sphere.pl/register">register</a><br><br><a href="https://spoj.sphere.pl/status">status</a><br><a href="https://spoj.sphere.pl/submit">submit</a><br><a href="../classical/sort=7,start=0.html">problems</a><br><br><a href="https://spoj.sphere.pl/">news</a><br><a href="https://spoj.sphere.pl/contests">contests</a><br><a href="https://spoj.sphere.pl/info">info</a><br><a href="https://spoj.sphere.pl/ranks/">ranks</a><br><br><a href="https://spoj.sphere.pl/forum">forum</a><br><a href="https://spoj.sphere.pl/help">help</a><br><a href="https://spoj.sphere.pl/links">links</a><br><hr></div>Server time:<br>2006-01-10<br>05:49:56<a href="../classical/sort=7,start=0.html"></a><br><br>
+<form method="get" action="https://spoj.sphere.pl/search/" class="form" style="width:90px">
+<input type="text" name="query" style="width:85px" maxlength=255 value="" class="form"><br>
+<input type="submit" value="Search" style="width:85px" class="form" title="Search site"><br>
+&nbsp;<a href="https://spoj.sphere.pl/search/problems=on,users=on,contests=on" title="More search options"><small>advanced...</small></a>
+</form></td><td class="content" width="99%"><table class="problems" width="100%">
+<tr class="navigation">
+<td><a href="https://spoj.sphere.pl/submit/DCODE/">Submit</a></td>
+<td><a href="https://spoj.sphere.pl/status/DCODE/">All submissions</a></td>
+<td><a href="https://spoj.sphere.pl/ranks/DCODE/">Best solutions</a></td>
+<td><a href="https://spoj.sphere.pl/problems/DCODE.ps">PS</a></td>
+<td><a href="https://spoj.sphere.pl/problems/DCODE.pdf">PDF</a></td>
+<td><a href="../classical/sort=7,start=0.html">Back to list</a></td>
+</tr>
+</table>
+
+<div class="prob">
+
+<h2>SPOJ Problem Set </h2>
+<h1>273. The Modern Dress Code</h1>
+<h2>Problem code: DCODE</h2>
+<p align="justify">
+Byteland is making preparations for the approaching period of <i>feasts,  cabaret shows, and general merrymaking</i>. The women in Byteland are especially excited about the Grand Ball to be held on the last Saturday of the holiday period, and have already started making preparations. At present, one of the most important questions for every lady seems to be: <i>What should I put on?</i>. This problem is far more important than you might imagine possible, since the months after the period of feasts will offer no celebrations whatsoever, and during this time every lady likes to think back to how charming and original she looked at the ball. And of course, you have to remember that if two female friends come to the party dressed in the same dresses they will both be the subject of jokes and chuckled remarks for years.
+</p>
+<p>
+As in most difficult problems among ladies, the gentlemen of Byteland are forcibly involved and asked to help out. So, every day each woman asks her man for advice on what to wear. Unfortunately very few men in Byteland know anything at all about fashion so they all come to you and ask for help. 
+</p>
+<p>
+You do not have a lot of to do with Bytelandian fashion either but, as a computer specialist and a generally clever person who never gives up, you know how to address any problem. You have modeled the situation as follows:
+<ul>
+<li>there are 1<=k<=20 days left till the grand feast, 
+<li>dresses in Byteland come in different colors, which you have numbered with integers starting from 0,
+<li>the relationships between Bytelandian women are given by a graph (adjacent nodes denote two friends),
+<li>every lady would like to have a dress of different color than all her friends, otherwise she will be most unhappy.
+</ul>
+<p>
+You have a plan to provide the men with a simple set of rules to help them determine the best, most unique color of clothes for their ladies. Since you only have a limited amount of time to spare, each man will have to content himself with the same algorithm from you. Because most of the men don't use a computer, you should use a very simple language to express your algorithm.
+
+<h3>Task</h3>
+<p>
+Prepare an algorithm which, if applied properly by all the men, will guarantee that as few of the ladies as possible are unhappy due to their dresses.
+</p>
+<p>
+A short description of the language you should use is given below:
+<ul>
+<li>
+each program is a list of rules,
+<li>
+each <tt>< rule ></tt> is of the form:
+<pre>< rule >::= if < comp_condition > then { < comp_command > };
+
+< comp_command >::=< command >;
+< comp_command >::=< command >; < comp_command >
+
+< comp_condition >::=< condition >
+< comp_condition >::=not < comp_condition >
+< comp_condition >::=(< comp_condition > or < comp_condition >)
+< comp_condition >::=(< comp_condition > and < comp_condition >)</pre>
+Please note that after each <tt>< command ></tt> and <tt>< rule ></tt> you must put a semicolon.
+<br><br>
+<li>
+<tt>< command ></tt> is simply an assignment of the form:
+<pre>< command >::= < symbol >:=< expr ></pre>
+<li>
+<tt>< symbol ></tt> can be one of the following strings:
+<ul>
+<li>a state component: <tt>color, a, b</tt>,
+<li>an additional local variable: <tt>l0, l1, l2, l3, l4, l5, l6, l7, l8, l9</tt>.
+</ul> 
+<li>The expression <tt>< expr ></tt> should be constructed using:
+<ul>
+<li>writable symbols (as given above) and several special read-only variables which give you some information about the graph:
+<pre>
+deg       degree of current vertex
+delta     maximum vertex degree in a graph 
+n         number of vertices 
+m         number of edges
+nr        number of possible colors
+daysleft  number of days remaining till the ball
+</pre>
+<li>
+operators (in order of precedence):
+<pre>
++ -       arithmetic plus and minus
+* / %     arithmetic multiplication, division and remainder 
+</pre>
+<li>function <tt>rnd(< expr >)</tt>, returning a random number between 0 and <tt>< expr > - 1</tt> inclusive.
+<li>functions <tt>mina, minb, minc</tt> returning the minimal value of variable <tt>a, b, color</tt> respectively, taken over all the neighbours of the vertex (or the smallest integer for a vertex without neighbours). Functions <tt>maxa, maxb, maxc</tt> act similarly for maximum values of variables.
+</ul>
+<li>
+<tt>< condition ></tt> is a logical expression taking one of two forms:
+<pre>< condition >::= < expr > < operator > < expr >
+< condition >::= < exist-operator > ( < expr > )
+</pre> The binary <tt>< operator ></tt> is one of the comparison operators ==, <, or >. The unary <tt>< exist-operator ></tt> is one of the following functions: <tt>Eaeq, Ebeq, Eceq</tt>, which return true iff  for some neighbour of the given vertex the value of variable <tt>a, b, color</tt>, respectively, is equal to <tt>< expr ></tt>.
+</ul>
+<p>
+The algorithm has to be applied by every man every day. More formally speaking: at the start of the process all variables have random values. Every morning all the men assign 0 to their variables <tt>l0,l1,...,l9</tt>. Exactly at noon, each lady comes to ask for advice. The man does all he can to help her: he processes all his rules from top to bottom, and repeats the process as long as at least one of the IF clauses is true. (However, if he has to do it more than one hundred times, he will give up in dispair). Then he tells the lady the color he has chosen for her. Every evening, the men meet at the pub, and when they have nothing left to talk about, they exchange information about how the women are boring them, and what values of <tt>a, b</tt> and <tt>color</tt> they have had to come up with today. (It is interesting to note that, as a side effect, functions <tt>E_eq</tt>, <tt>min_</tt> and <tt>max_</tt> actually make use of the previous day's values of the neighbours' variables.) 
+<p>Finally, on the day of the ball the women put on clothing corresponding to the color last suggested by their men and it is time to judge how effective your algorithm has been. (This is one of these tasks which, if done badly, may result in getting the programmer lynched by an angry mob.)
+
+<h3>Score</h3>
+<p>
+There are 50 test cases on which your program will be tested. Graphs used in tests will have no more than 25 vertices. Your score is the sum of scores of your program taken over all test cases. For each test case the score is equal to the ratio of the number of correctly colored vertices (i.e. such that 0<= color< nr and Eceq(color) is false) to the total number of vertices. If all vertices are correctly colored, a bonus of 1/(1+ <i>maximum color used</i>) points is awarded.
+<p>A program will be assessed as Compilation Error if it cannot be interpreted due to syntactic errors. If on a given day the rules for a vertex cannot be processed within 100 iterations or the entire simulation takes more than about 60s, your program will be judged as Time Limit Exceeded.
+
+<h3>Example</h3>
+<p>
+Submit code in the language TEXT, <a href="http://sphere.pl/~kosowski/SPOJ/DCODE">the judge</a> will interpret it properly. Here is an example of a simple single-rule program.
+<pre>
+<b>Code:</b>
+if (l0==0 and not Eceq ((color-1)%n)) then {color:=(color-1)%n; l0:=1;};
+
+<b>Score:</b>
+5.491
+</pre>
+
+<hr>
+<table border=0 cellspacing=0 cellpadding=0 align=left>
+<tr><td width=130>Added by:</td><td><a href="https://spoj.sphere.pl/search/'Łukasz%20Kuszner'">Łukasz Kuszner</a></td></tr>
+<tr><td>Date:</td><td>2004-12-31</td></tr>
+<tr><td>Time limit:</td><td>60s
+</td></tr>
+<tr><td>Source limit:</td><td>50000B</td></tr>
+<tr><td>Resource:</td><td>DASM Programming League 2004, problemset 5</td></tr></table>
+</div></td>
+</tr>
+
+<tr>
+<td colspan="2" class="footer">
+
+<script language="javascript" type="text/javascript">
+<!--
+function swapSheet(sheet, caller) {
+    document.getElementById('theme').href=sheet;
+    document.cookie="css_0="+sheet+"; path=/;";
+    caller.href="#bottom";
+}
+
+function setWidth(w, caller) {
+    document.getElementById('maintable').style.width=w;
+    document.cookie="res="+w+"; path=/;";
+    caller.href="#bottom";
+}
+//-->
+
+</script>
+        <table width="100%">
+    <tr>
+	<td align="left">
+            <a href="http://www.pg.gda.pl/eng.html"><IMG src="https://spoj.sphere.pl/gfx/logo-pg" alt="www.pg.gda.pl" border=0 height=36 width=44></a>&nbsp;
+            <a href="http://www.eti.pg.gda.pl/"><IMG src="https://spoj.sphere.pl/gfx/logo-eti" alt="www.eti.pg.gda.pl" border=0 height=36 width=44></a>
+	</td>
+	<td align="center">
+	    page size:
+	    <a href="https://spoj.sphere.pl/?res=755"  onClick="setWidth('755', this)">800x600</a>
+	    <a href="https://spoj.sphere.pl/?res=980"  onClick="setWidth('980', this)">1024x768</a>
+	    <a href="https://spoj.sphere.pl/?res=100%" onClick="setWidth('100%', this)">Full</a>
+	    &nbsp;&nbsp;
+	    theme:
+	    <a href="../../indexb6a4.html?css=/themes/skin1.css" onClick="swapSheet('../../themes/skin1.css', this)">olive</a>
+	    <a href="../../index3840.html?css=/themes/skin2.css" onClick="swapSheet('../../themes/skin2.css', this)">banana</a>
+	    <a href="../../index80f0.html?css=/themes/skin3.css" onClick="swapSheet('../../themes/skin3.css', this)">plum</a>
+	    <br>
+	    <a href="http://sphere.pl/?id=66">spoj team at sphere</a> &copy; 2004-05 all rights reserved
+	</td>
+	<td align="right">
+            <a href="http://task.gda.pl/english/"><IMG src="https://spoj.sphere.pl/gfx/logo-task" alt="task.gda.pl" border=0 height=36 width=44></a>&nbsp;
+            <a href="http://sphere.pl/"><IMG src="https://spoj.sphere.pl/gfx/logo-sphere" alt="sphere.pl" border=0 height=32></a>
+	</td>
+    </tr>
+    </table>
+    </tr></table>
+</center>
+</body>
+
+<!-- Mirrored from spoj.sphere.pl/problems/DCODE/ by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 10 Jan 2006 04:55:56 GMT -->
+</html>

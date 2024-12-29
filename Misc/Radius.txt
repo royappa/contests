@@ -1,0 +1,57 @@
+	public double minRadius(int[] x, int[] y)
+	{
+		int minx = 1000, miny = 1000, maxx = -1000, maxy = -1000;
+		int n = x.length;
+		for (int i = 0; i < n; i++)
+		{
+			minx = Math.min(minx, x[i]);
+			miny = Math.min(miny, y[i]);
+			maxx = Math.max(maxx, x[i]);
+			maxy = Math.max(maxy, y[i]);
+		}
+	}
+Problem Statement
+    
+Our problem is where to locate our TV station's broadcasting antenna. We know the locations of the towns we should serve. We must place the antenna at a point whose coordinates are both integers. Fortunately, we are located on the flat, flat prairie, so the only remaining issue is to locate the antenna to minimize the broadcast radius that includes all the towns.
+We have int[] x and int[] y giving the locations of the towns; the i-th element of x and y gives the coordinates of the i-th town. Create a class TVAntenna that contains a method minRadius that is given x and y, and returns the minimum broadcast radius that can reach all the towns from a location with integer coordinates.
+Definition
+    
+Class:
+TVAntenna
+Method:
+minRadius
+Parameters:
+int[], int[]
+Returns:
+double
+Method signature:
+double minRadius(int[] x, int[] y)
+(be sure your method is public)
+    
+
+Notes
+-
+If the return has either a relative or absolute error less than 1.0E-9 it is acceptable.
+Constraints
+-
+x will contain between 1 and 50 elements inclusive.
+-
+y will contain the same number of elements as x.
+-
+Each element in x and y will be between -200 and 200 inclusive.
+Examples
+0)
+
+    
+{2,0,0,1}
+{0,1,-1,1}
+Returns: 1.4142135623730951
+The towns are located at (2,0), (0,1), (0,-1) and (1,1). The obvious location for the antenna is at (1,0). From there the distances to the four towns are 1, sqrt(2), sqrt(2) and 1, so a broadcast radius of sqrt(2) will reach all four towns. The next best location for the antenna at integer coordinates would be at (1,1) but then one of the towns would be sqrt(5) away from the antenna.
+1)
+
+    
+{3}
+{99}
+Returns: 0.0
+Locate the tower right in the one town.
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

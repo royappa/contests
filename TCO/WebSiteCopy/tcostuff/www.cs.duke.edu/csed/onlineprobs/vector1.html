@@ -1,0 +1,136 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  
+<!-- Mirrored from www.cs.duke.edu/csed/onlineprobs/vector1.html by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 14 Mar 2006 08:55:08 GMT -->
+<head>
+    <title>Vector 1, Yahtzee</title>
+  </head>
+
+  <body>
+    <h1>Vector 1, Yahtzee</h1>
+
+<em>
+
+This problem statement is the exclusive and proprietary property of
+TopCoder, Inc. Any unauthorized use or reproduction of this information
+without the prior written consent of TopCoder, Inc. is strictly
+prohibited. (c)2002, TopCoder, Inc. All rights reserved.
+
+</em>
+<p>
+<hr>
+
+<h3>Problem Statement</h3>
+
+This task is about the scoring in the first phase of the die-game
+Yahtzee, where five dice are used. The score is determined by the values
+on the upward die faces after a roll. The player gets to choose a value,
+and all dice that show the chosen value are considered active. The score
+is simply the sum of values on active dice.
+<P>
+
+Say, for instance, that a player ends up with the die faces showing 2,
+2, 3, 5 and 4. Choosing the value two makes the dice showing 2 active
+and yields a score of 2 + 2 = 4, while choosing 5 makes the one die
+showing 5 active, yielding a score of 5.
+<P>
+
+Your method will take as input an tvector&lt;int&gt; toss, where each element
+represents the upward face of a die, and return the maximum possible
+score with these values.
+<P>
+
+
+
+<P> 
+<h3>Definition</h3>
+
+<UL>
+<LI> Class: none used in this problem
+<LI> Method: maxPoints
+<LI> Parameters: tvector&lt;int&gt;
+<LI> Returns: int
+<LI> Method signature (see below)
+
+</UL>
+
+ <h3>Prototype</h3>
+
+(be sure you have the necessary include files)
+
+<XMP>
+
+#include "tvector.h"
+
+   int maxPoints(tvector<int> toss)
+   {
+           // fill in code here
+   }
+
+</XMP>
+
+<P>
+
+
+<h3>Constraints</h3>
+<UL>
+
+<LI>
+toss will contain exactly 5 elements.
+<P>
+<LI>
+Each element of toss will be between 1 and 6, inclusive.
+
+<P>
+<h3>Examples</h3>
+
+<OL>
+<LI>
+<PRE>
+{ 2, 2, 3, 5, 4 }
+
+Returns: 5
+
+</PRE>
+The example from the text.
+
+
+<P>
+<LI>
+<PRE>    
+
+{ 6, 4, 1, 1, 3 }
+
+Returns: 6
+
+
+</PRE>
+<P>
+Selecting 1 as active yields 1 + 1 = 2, selecting 3 yields 3, selecting
+4 yields 4 and selecting 6 yields 6, which is the maximum number of
+points.
+<P>
+<LI>
+<PRE>
+{ 5, 3, 5, 3, 3 }
+
+Returns: 10
+   
+</PRE>
+<P>
+Two 5's is better than three 3's.
+</OL>
+
+
+
+
+    <hr>
+    <address><a href="mailto:ola@cs.duke.edu">Owen L. Astrachan</a></address>
+<!-- Created: Tue Sep 23 23:40:19 EDT 2003 -->
+<!-- hhmts start -->
+Last modified: Tue Sep 23 23:44:05 EDT 2003
+<!-- hhmts end -->
+  </body>
+
+<!-- Mirrored from www.cs.duke.edu/csed/onlineprobs/vector1.html by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 14 Mar 2006 08:55:08 GMT -->
+</html>

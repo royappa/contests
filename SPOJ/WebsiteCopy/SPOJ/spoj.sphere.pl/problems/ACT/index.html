@@ -1,0 +1,273 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<!-- Mirrored from spoj.sphere.pl/problems/ACT/ by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 10 Jan 2006 04:57:22 GMT -->
+<head>
+<title>Sphere Online Judge (SPOJ)  - Problem ACT</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-2">
+<META NAME="Keywords" CONTENT="spoj, online, judge, problem, set, problemset, archive, ACM, Polish, Poland, contest, contester, task, tasks, ADA, Java, Pascal, C, C++, Whitespace, sphere, interest, group, python, ruby, icon, o'caml, caml, ocaml, perl, haskell, bf, brain, clips, prolog, fortran, asm, assembler, asembler, functional, esoteric, programming, languages">
+
+<link href="https://spoj.sphere.pl/gfx/favicon" rel="shortcut icon" type="image/x-icon">
+
+<link href="../../themes/skin3.css" rel="stylesheet" type="text/css" id="theme">
+<style type="text/css">
+<!--
+.maintable {width: 755;} 
+-->
+</style>
+<script type="text/javascript" language="javascript">
+<!--
+function UnCryptMailto(s) {
+	var n=0;
+	var r="";
+	for(var i=0;i<s.length;i++) {		
+		n=s.charCodeAt(i); 
+		if (n>=8364) {n = 128;}
+		r += String.fromCharCode(n+(2));	
+	}
+	return r;
+}
+function linkTo_UnCryptMailto(s)	{
+	location.href=UnCryptMailto(s);
+}
+// -->
+</script>
+
+</head>
+<body>
+<center>
+<table cellpadding="10" cellspacing="0" class="maintable" id="maintable">
+<tr>
+    <td colspan="2" class="header">
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+        <tr>
+		<td class="headerleft"/>
+		<td class="headercenter"><h1>Sphere Online Judge</h1></td>
+		<td class="headerright"/>
+	</tr>
+	</table>
+    </td>
+</tr>
+<tr><td class="menu" width="92" valign="top">
+<form name="login"  action="http://spoj.sphere.pl/problems/ACT/" method="post" 
+	onsubmit="if(document.login.ssl.checked) document.login.action='https://spoj.sphere.pl/problems/ACT/'" style="margin-bottom: 18px"> 
+User: <input name="login_user" type="text" style="width: 85px;" class="form"><BR>
+Password: <input name="password" type="password" style="width: 85px;" class="form"><BR>
+<script language="javascript" type="text/javascript">
+<!--
+document.write('<input type="checkbox" name="ssl" id="ssl" checked>secure<br>');
+//-->
+</script>
+<input name="submit" type="submit" value="Log In" class="button" style="width: 85px;">
+</form><div class="menucmd"><a href="https://spoj.sphere.pl/register">register</a><br><br><a href="https://spoj.sphere.pl/status">status</a><br><a href="https://spoj.sphere.pl/submit">submit</a><br><a href="../classical/sort=2,start=300.html">problems</a><br><br><a href="https://spoj.sphere.pl/">news</a><br><a href="https://spoj.sphere.pl/contests">contests</a><br><a href="https://spoj.sphere.pl/info">info</a><br><a href="https://spoj.sphere.pl/ranks/">ranks</a><br><br><a href="https://spoj.sphere.pl/forum">forum</a><br><a href="https://spoj.sphere.pl/help">help</a><br><a href="https://spoj.sphere.pl/links">links</a><br><hr></div>Server time:<br>2006-01-10<br>05:50:26<a href="../classical/sort=2,start=300.html"></a><br><br>
+<form method="get" action="https://spoj.sphere.pl/search/" class="form" style="width:90px">
+<input type="text" name="query" style="width:85px" maxlength=255 value="" class="form"><br>
+<input type="submit" value="Search" style="width:85px" class="form" title="Search site"><br>
+&nbsp;<a href="https://spoj.sphere.pl/search/problems=on,users=on,contests=on" title="More search options"><small>advanced...</small></a>
+</form></td><td class="content" width="99%"><table class="problems" width="100%">
+<tr class="navigation">
+<td><a href="https://spoj.sphere.pl/submit/ACT/">Submit</a></td>
+<td><a href="https://spoj.sphere.pl/status/ACT/">All submissions</a></td>
+<td><a href="https://spoj.sphere.pl/ranks/ACT/">Best solutions</a></td>
+<td><a href="https://spoj.sphere.pl/problems/ACT.ps">PS</a></td>
+<td><a href="https://spoj.sphere.pl/problems/ACT.pdf">PDF</a></td>
+<td><a href="../classical/sort=2,start=300.html">Back to list</a></td>
+</tr>
+</table>
+
+<div class="prob">
+
+<h2>SPOJ Problem Set </h2>
+<h1>359. Alpha Centauri Tennis</h1>
+<h2>Problem code: ACT</h2>
+<p align="justify">
+<p> As you may know, planets of Alpha Centauri (if they indeed do exist) 
+would provide excellent conditions for intelligent life forms. <BR><BR>
+
+It is indeed true that there is a small Earthlike planet near Alpha 
+Centauri, inhabited by a population of no particular significance. 
+These humanlike creatures have much in common with us. Living in 
+similar comunities and having similar body structure and behavioral 
+patterns, they unsurprisingly appreciate (approximately) the same 
+time-killing activities as we do. One of these, the second most 
+popular after Alpha Centauri Croquet, is the Alpha Centauri Tennis. <BR><BR>
+
+Although its rules differ from Earth Tennis, the two player 
+version of Alpha Centauri Tennis resembles it in many ways. 
+Same as Earth Tennis, it is played on a rectangular court 
+divided into two parts by a net. Two players, standing on 
+opposite sides of it, use a stringed racket to hit a ball 
+back and forth to each other. There are certain rules how 
+to hit the ball. The player who forces his opponent to 
+violate one of these rules wins the current ball. The aim
+ of both players is to win enough balls to win a game, enough
+ games to win a set and enough sets to win the whole match. 
+In the N player version of the Alpha Centauri Tennis a ball 
+can be won by any one of the N players. Although technical 
+details of this can be difficult to imagine, Alpha Centaurians 
+are extremely inventive. <BR><BR>
+
+In the general N-player version, players serve in turns, 
+following order determined before the match. Moreover, 
+they shift when starting individual games and sets. For 
+example, the players are A, B and C. They are ordered 
+alphabetically. Player A serves the first ball of the 
+first game. When the ball is won by one of the players, 
+its B's turn to serve. After the game is won by one of
+the players, player B starts the second game. Finally,
+when the first set is won by someone, player B starts 
+the second set. This repeats, always shifted by one player, 
+until the match ends. <BR><BR>
+
+For three players the serving order looks as follows: <BR>
+Set 1: <BR>
+Game 1: A,B,C,A,B,C... <BR>
+Game 2: B,C,A,.... <BR>
+Game 3: C,A,B,.... <BR>
+Game 4: A,B,C,.... <BR>
+... <BR>
+Set 2: <BR>
+Game 1: B,C,A,B,.... <BR>
+Game 2: C,A,B,.... <BR>
+Game 3: A,B,C,A,... <BR>
+... <BR>
+
+There are exact rules for counting the number of 
+balls/games/sets won by a player. <BR><BR>
+
+<b>RULES FOR WINNING A GAME</b><BR>
+The state of a game can be described by assigning a non-negative 
+number of points to each of the players. At the beginning of 
+a game, the score of each player is zero. <BR><BR>
+
+Note: In Earth terminology, 0 points is called "love", 1 point 
+is a "fifteen", 2 points is a "thirty", 3 points is a "forty" 
+and 4 points is an "advantage". Be glad that you don't have to 
+learn the Centaurian terminology :) <BR><BR>
+
+When a player P just won a ball, the new score is determined 
+by using the first rule from the list that applies to the 
+situation. <BR><BR>
+
+If P currently has 3 points and no other player has more than 
+2 points, P wins the current game. <BR>
+If P currently has 4 points, he wins the game. <BR>
+If any other player currently has 4 points, that player 
+loses one point. P gains a point. <BR><BR>
+
+<B>RULES FOR WINNING A SET</B><BR>
+The set is won by the first player that at the same time: <BR><BR>
+
+won at least 6 games in this set <BR>
+won at least 2 games more than any other player <BR><BR>
+
+<B>RULES FOR WINNING A MATCH</B><BR>
+The winner is the first player to win at least three sets. 
+A set in which no other player won a game counts as two won sets. <BR><BR>
+
+<B>Problem specification</B><BR>
+An observer from the Intergalactic Tennis Federation was 
+watching a tournament in Alpha Centauri Tennis. Being unable
+ to understand Alpha Centaurian language, he only managed 
+to write down the winner of each ball. Now, for each match, 
+knowing the sequence in which the players were winning the 
+balls, he would like to somehow determine its winner. <BR>
+<BR>
+</p>
+
+<h3>Input</h3>
+<p>
+t - the number of test cases [t <= 150]
+than t test cases follows, each corresponding to 
+one match. Each line contains the number of players N [N <= 10] 
+and a string S consisting of uppercase letters [2 <= S <= 50000]. 
+The players are represented by the first N letters of the English 
+alphabet. If the i-th letter of S is X, it means the player X 
+won the i-th ball from the beggining of the match. You may assume 
+that the match transcripts are correct and complete. <BR>
+<BR>
+The order in which the players serve is the same as the order of 
+their letters in the English alphabet. <BR>
+</p>
+
+<h3>Output</h3>
+<p>For each line, output a single character, being the letter of 
+the player who won the corresponding match. 
+</p>
+
+<h3>Example</h3>
+
+<pre>
+<b>Input:</b>
+1
+3 BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB 
+
+<b>Output:</b>
+B
+</pre>
+<p>
+(B has won two sets, each of them by winning 6 games, while A and C 
+won none. Thus each of these sets counts as two and B has won the match.) </p>
+
+
+<hr>
+<table border=0 cellspacing=0 cellpadding=0 align=left>
+<tr><td width=130>Added by:</td><td><a href="https://spoj.sphere.pl/search/'Roman%20Sol'">Roman Sol</a></td></tr>
+<tr><td>Date:</td><td>2005-05-13</td></tr>
+<tr><td>Time limit:</td><td>1s
+</td></tr>
+<tr><td>Source limit:</td><td>10000B</td></tr>
+<tr><td>Resource:</td><td>IPSC 2005</td></tr></table>
+</div></td>
+</tr>
+
+<tr>
+<td colspan="2" class="footer">
+
+<script language="javascript" type="text/javascript">
+<!--
+function swapSheet(sheet, caller) {
+    document.getElementById('theme').href=sheet;
+    document.cookie="css_0="+sheet+"; path=/;";
+    caller.href="#bottom";
+}
+
+function setWidth(w, caller) {
+    document.getElementById('maintable').style.width=w;
+    document.cookie="res="+w+"; path=/;";
+    caller.href="#bottom";
+}
+//-->
+
+</script>
+        <table width="100%">
+    <tr>
+	<td align="left">
+            <a href="http://www.pg.gda.pl/eng.html"><IMG src="https://spoj.sphere.pl/gfx/logo-pg" alt="www.pg.gda.pl" border=0 height=36 width=44></a>&nbsp;
+            <a href="http://www.eti.pg.gda.pl/"><IMG src="https://spoj.sphere.pl/gfx/logo-eti" alt="www.eti.pg.gda.pl" border=0 height=36 width=44></a>
+	</td>
+	<td align="center">
+	    page size:
+	    <a href="https://spoj.sphere.pl/?res=755"  onClick="setWidth('755', this)">800x600</a>
+	    <a href="https://spoj.sphere.pl/?res=980"  onClick="setWidth('980', this)">1024x768</a>
+	    <a href="https://spoj.sphere.pl/?res=100%" onClick="setWidth('100%', this)">Full</a>
+	    &nbsp;&nbsp;
+	    theme:
+	    <a href="../../indexb6a4.html?css=/themes/skin1.css" onClick="swapSheet('../../themes/skin1.css', this)">olive</a>
+	    <a href="../../index3840.html?css=/themes/skin2.css" onClick="swapSheet('../../themes/skin2.css', this)">banana</a>
+	    <a href="../../index80f0.html?css=/themes/skin3.css" onClick="swapSheet('../../themes/skin3.css', this)">plum</a>
+	    <br>
+	    <a href="http://sphere.pl/?id=66">spoj team at sphere</a> &copy; 2004-05 all rights reserved
+	</td>
+	<td align="right">
+            <a href="http://task.gda.pl/english/"><IMG src="https://spoj.sphere.pl/gfx/logo-task" alt="task.gda.pl" border=0 height=36 width=44></a>&nbsp;
+            <a href="http://sphere.pl/"><IMG src="https://spoj.sphere.pl/gfx/logo-sphere" alt="sphere.pl" border=0 height=32></a>
+	</td>
+    </tr>
+    </table>
+    </tr></table>
+</center>
+</body>
+
+<!-- Mirrored from spoj.sphere.pl/problems/ACT/ by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 10 Jan 2006 04:57:22 GMT -->
+</html>

@@ -1,0 +1,130 @@
+// 
+#include <vector>
+#include <list>
+#include <map>
+#include <set>
+#include <deque>
+#include <stack>
+#include <bitset>
+#include <algorithm>
+#include <functional>
+#include <numeric>
+#include <utility>
+#include <sstream>
+#include <iostream>
+#include <iomanip>
+#include <cstdio>
+#include <cmath>
+#include <cstdlib>
+#include <ctime>
+
+#include <ext/hash_map>	// NEED THIS 
+
+using namespace std;
+typedef long long LL;
+using namespace __gnu_cxx; // NEED THIS
+#define MX ((1LL<<32)-1)
+
+namespace __gnu_cxx  
+{
+	template<> class hash<LL>
+	{
+		public:
+		
+	    size_t operator()(const long long& L) const		
+	    {
+	    	return hash<int>()(L); 
+	    	// If worried about the above, use this hash function which hashes the hi/low words of L separately:
+	    	// but above should work great most of the time, just check it
+	    	// return hash<int>()(L&MX) ^ hash<int>()( (L&(MX<<32))>>32 );
+	    }	      
+	};    
+}
+ 
+
+class KSubstring {
+public:
+
+
+
+vector <int> maxSubstring(int A0, int X, int Y, int M, int n) 
+{
+  vector<LL> A(n,0);
+  
+  A[0] = A0;
+  
+  for (int i = 1; i < n; i++)
+  {
+    A[i] = (LL(A[i-1])*LL(X)+LL(Y))%M;
+  }
+  
+  //{1 5 11 3 2 13}
+  //A.push_back(1); A.push_back(5); A.push_back(11); A.push_back(3); A.push_back(2); A.push_back(13);
+  //n = A.size();
+ 
+  vector<LL> S(n, 0);
+  S[0] = A[0];
+ 
+  for (int i = 1; i < n; i++)
+  {
+    S[i] = S[i-1]+A[i];
+  }
+ 
+  LL bval = 1LL<<60;
+  int bk = 0;
+  
+  for (int k = n/2; k >= 1; k--)
+  {  
+    LL val = 1LL << 60;	
+    hash_map<LL, int> T1, T2;
+	vector<LL> Q;
+    for (int i = 0; i+k <= n; i++)
+    {
+      LL a = S[i+k-1]-(i == 0 ? 0 : S[i-1]);     
+      if (T1.count(a) > 0 && T1[a]+k <= i) 
+      {
+      	val = 0;
+      	goto fin;
+      }
+      else if (T1.count(a) > 0)
+      {
+      	T2[a] = i;
+      }
+      else
+      {
+      	Q.push_back(a);
+      	T1[a] = i;
+      	T2[a] = i;
+      }
+    }   
+	sort(Q.begin(), Q.end());
+	for (int i = 1; i < Q.size(); i++)
+    {
+      LL x = Q[i], y = Q[i-1];      
+      if (x-y < val)
+      {
+      	LL ix = T1[x], iy = T2[y];
+      	if (ix+k <= iy || iy+k <= ix)
+      	{
+      		val = x-y;
+      	}
+      }
+    } 
+    fin: 
+    if (val < bval)
+    {
+      bval = val;
+      bk = k;
+    }        
+  }
+  
+  vector<int> res;
+  res.push_back(bk);
+  res.push_back(int(bval));
+ // cout << p << " " << bk << " " << bval << endl;
+  return res;      
+}
+};
+
+
+//Powered by [KawigiEdit]

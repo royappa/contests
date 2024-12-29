@@ -1,0 +1,1 @@
+while(<>){ s/[^TDLF]/1/g; s/[TDLF]/2*/g; print eval($_)." ";}

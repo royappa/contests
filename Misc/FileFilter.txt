@@ -1,0 +1,72 @@
+	public String[] filter(String[] files, String[] extensions)
+	{
+		String[] res = new String[files.length];
+		for (int i = 0; i < files.length; i++)
+		{
+			res[i] = "DENY";
+			for (int j = 0; j < extensions.length; j++)
+			{
+				if (files[i].toLowerCase().matches(".*\\."+extensions[j].toLowerCase()+"$"))
+				{
+					res[i] = "ALLOW";
+					break;
+				}
+			}
+		}
+		return res;
+	}
+
+Problem Statement
+    
+You are working on the backend of a system that allows people to upload files. For security reasons, you want to restrict the file extensions of the files they upload. You will be given a String[], extensions, containing a list of allowed extensions. You will also be given a String[], files, containing the names of a number of files. Your task is to return a String[], each element of which is either "ALLOW" or "DENY", corresponding to the elements of files with the same indices. If a filename ends with a period ('.') followed by an allowed extension, ignoring case, then it is to be allowed, otherwise it should be denied.
+Definition
+    
+Class:
+FileFilter
+Method:
+filter
+Parameters:
+String[], String[]
+Returns:
+String[]
+Method signature:
+String[] filter(String[] files, String[] extensions)
+(be sure your method is public)
+    
+
+Constraints
+-
+files will contain between 0 and 50 elements, inclusive.
+-
+extensions will contain between 0 and 50 elements, inclusive.
+-
+Each element of files will contain between 2 and 50 letters ('a'-'z' and 'A'-'Z') and periods.
+-
+The last character of each element of files will be a letter.
+-
+Each element of files will contain at least one period.
+-
+Each element of extensions will contain between 1 and 50 lowercase letters ('a'-'z').
+Examples
+0)
+
+    
+{"algorithm.txt","algorithms.html","wingl.exe","yourDoc.PIF","graph.gIf"}
+{"txt","html","gif","doc"}
+Returns: { "ALLOW",  "ALLOW",  "DENY",  "DENY",  "ALLOW" }
+
+1)
+
+    
+{}
+{"exe","pif"}
+Returns: { }
+
+2)
+
+    
+{".bashrc","bash.rc"}
+{"rc"}
+Returns: { "DENY",  "ALLOW" }
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

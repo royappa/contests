@@ -1,0 +1,48 @@
+
+Problem Statement
+    
+The digits 4 and 7 are lucky digits, and all other digits are unlucky. A third level lucky number is a positive integer that is divisible by at least one lucky digit. John and Brus have written down all the third level lucky numbers between a and b, inclusive, and now they would like to count the number of occurrences of each digit between 0 and 9, inclusive, in the numbers they have written.
+Return a vector<long long> containing exactly 10 elements, where the i-th element (0-based) is the total number of occurrences of digit i.
+Definition
+    
+Class:
+TheLuckyNumbersLevelThree
+Method:
+find
+Parameters:
+long long, long long
+Returns:
+vector<long long>
+Method signature:
+vector<long long> find(long long a, long long b)
+(be sure your method is public)
+    
+Constraints
+-
+a will be between 1 and 10^16, inclusive.
+-
+b will be between a and 10^16, inclusive.
+Examples
+0)
+    
+1
+10
+Returns: {0, 0, 0, 0, 1, 0, 0, 1, 1, 0 }
+There are three third level lucky numbers in this range - 4, 7, 8.
+1)
+    
+78
+79
+Returns: {0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }
+No third level lucky numbers here.
+2)
+    
+1
+47
+Returns: {2, 4, 7, 3, 7, 1, 2, 1, 2, 0 }
+3)
+    
+21
+91
+Returns: {4, 2, 7, 4, 9, 3, 7, 5, 7, 2 }
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

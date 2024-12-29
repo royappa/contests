@@ -1,0 +1,57 @@
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+#include <string.h>
+using namespace std;
+
+
+//https://www.hackerrank.com/contests/hourrank-6/challenges/bear-and-steady-gene
+
+// partial credit solution :-/
+
+typedef long long LL;
+
+int main()
+{
+	int n;
+	string s;
+	cin >> n;
+	cin >> s;
+
+	vector A(n, 0), C(n, 0), T(n, 0), G(n, 0);
+	A[0] = s[0] == 'A';
+	C[0] = s[0] == 'C';
+	T[0] = s[0] == 'T';
+	G[0] = s[0] == 'G';
+	for (int i = 1; i < n; i++)
+	{
+		A[i] = A[i-1]+(s[i] == 'A');
+		C[i] = C[i-1]+(s[i] == 'C');
+		T[i] = T[i-1]+(s[i] == 'T');
+		G[i] = G[i-1]+(s[i] == 'G');
+	}
+	int na = A[n-1], nc = C[n-1], nt = T[n-1], ng = G[n-1];
+
+	int best = n+1;
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = i; j < n; j++)
+		{
+			if (len >= best) continue;
+			int xa = 0, xc = 0, xg = 0, ct = 0;
+			if (i > 0)
+			{
+				xa = A[j]-A[i-1];
+				xc = C[j]-C[i-1];
+				xt = T[j]-T[i-1];
+				xg = G[j]-G[i-1];
+			}
+			int diff = abs(na-n/4)+abs(nc-n/4)+abs(nt-n/4)+abs(ng-n/4);
+			if (len == diff)
+				best = min(best, len);
+		}
+	}
+	cout << len << endl;
+}

@@ -1,0 +1,76 @@
+
+	public int round(int n, int b)
+	{
+		if (n % b == 0)
+		{
+			return n/b;
+		}
+		if (n < b)
+		{
+			return n - 0 < b - n ? 0 : b;
+		}
+		int m = n/b;
+		return n-(m-1)*b < n-m*b ? (m-1)*b : m*b;
+	}
+	
+Problem Statement
+    
+Most of the time when rounding a given number, it is customary to round to some multiple of a power of 10. However, there is no reason why we cannot use another multiple to do our rounding to. For example, you could round to the nearest multiple of 7, or the nearest multiple of 3.
+Given an int n and an int b, round n to the nearest value which is a multiple of b. If n is exactly halfway between two multiples of b, return the larger value.
+Definition
+    
+Class:
+Rounder
+Method:
+round
+Parameters:
+int, int
+Returns:
+int
+Method signature:
+int round(int n, int b)
+(be sure your method is public)
+    
+
+Constraints
+-
+n will be between 1 and 1000000, inclusive.
+-
+b will be between 2 and 500, inclusive.
+Examples
+0)
+
+    
+5
+10
+Returns: 10
+This is a standard rounding base. We round up because 5 is an equal distance between 0 and 10.
+1)
+
+    
+4
+10
+Returns: 0
+
+2)
+
+    
+100
+3
+Returns: 99
+100 is closer to 99 than 102.
+3)
+
+    
+123456
+7
+Returns: 123459
+
+4)
+
+    
+49
+7
+Returns: 49
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

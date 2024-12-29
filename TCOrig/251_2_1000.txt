@@ -1,0 +1,87 @@
+
+int maxCover(vector <string> r, int qa, int qb) 
+{
+	
+}
+
+Problem Statement
+    
+There are some rectangles on a plane, with sides parallel to the axes. 
+
+They may intersect and overlap. You are to place a rectangle q on this plane (its sides must also be parallel to axes) and want to cover the maximum possible number of rectangles.  
+
+You are given a vector <string> rectangles, each element of which is formatted as "X1 Y1 X2 Y2", where X1 and Y1 are the coordinates of the lower left corner of a rectangle, and X2 and Y2 are the coordinates of the upper right corner. 
+
+You are given the lengths of the sides of q - qa and qb. You are to return the maximum number of rectangles that can be covered by q. A rectangle is covered by q if it lies fully inside q (for example, "1 1 2 2" is covered by "-1 1 2 100").
+Definition
+    
+Class:
+OneMoreRectangle
+Method:
+maxCover
+Parameters:
+vector <string>, int, int
+Returns:
+int
+Method signature:
+int maxCover(vector <string> rectangles, int qa, int qb)
+(be sure your method is public)
+    
+
+Notes
+-
+The rectangle you place may be oriented in either of the two possible ways.
+Constraints
+-
+rectangles will contain between 0 and 50 elements, inclusive.
+-
+Each element of rectangles will be formatted as "X1 Y1 X2 Y2".
+-
+X1, Y1, X2, and Y2 will each be an integer between -1000000000 and 1000000000, inclusive, with no extra leading zeros.
+-
+X2 will be greater than X1, and Y2 will be greater than Y1.
+-
+qa and qb will be between 1 and 1000000000 inclusive.
+Examples
+0)
+
+    
+{"1 1 2 2","2 2 3 3","3 3 4 4"}
+2
+2
+Returns: 2
+q is 2x2, so it may cover the first and second rectangles, or the second and third ones - answer is 2.
+1)
+
+    
+{"1 1 5 5","1 1 4 2","1 1 2 4", "2 3 5 5"}
+3
+3
+Returns: 2
+q may cover "1 1 4 2" and "1 1 2 4".
+2)
+
+    
+{"1 1 4 2","1 2 2 5","4 1 5 4","2 4 5 5"}
+3
+3
+Returns: 1
+
+3)
+
+    
+{"1 1 4 2","1 2 2 5","4 1 5 4","2 4 5 5"}
+4
+4
+Returns: 4
+
+4)
+
+    
+{"1 4 6573 345","23 4366 23545 366783","54 7895 2565 23567","3456 345 475457 45767654",
+"-234 -654885 0 0","-32654 -43256 -34 -5463","-10000 -10000 10000 10000"}
+100000
+100000
+Returns: 4
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

@@ -1,0 +1,194 @@
+// PROPER USE/COMPILATION OF HASHMAP HASH_MAP IN TOPCODER
+// SEE ALL LINES THAT SAY "NEED THIS" BELOW - esp the INCLUDEs!
+#include <vector>
+#include <list>
+#include <map>
+#include <set>
+#include <deque>
+#include <stack>
+#include <bitset>
+#include <algorithm>
+#include <functional>
+#include <numeric>
+#include <utility>
+#include <sstream>
+#include <iostream>
+#include <iomanip>
+#include <cstdio>
+#include <cmath>
+#include <cstdlib>
+#include <ctime>
+#include <ext/hash_map>	// NEED THIS 
+
+using namespace std;
+
+using namespace __gnu_cxx; // NEED THIS
+
+// NEED A HASH FUNCTION DEFINED WHICH TAKES YOUR OBJECT AND RETURNS A SIZE_T.
+// To build your hash function you can use the builting hash<int>()(int) and hash<char *>()(char *). See below.
+// So you have to boil your thing to be hashed into either an int (or long long), or a char*.
+
+// MAKE SURE TO DELETE UNUSED CODE
+
+namespace __gnu_cxx  
+{
+	template<> class hash<std::string > // REPLACE the Type here too with the domain-type
+	{
+		public:
+		typedef pair<int,int> pii;
+		
+	    size_t operator()(const string& str) const		// If Hash domain is a STRING, use this
+	    {
+	    	return hash<const char *>()(str.c_str());
+	    }
+	    
+	    size_t operator()(const pair<int,int> p) const	// for pair<int,int> use this. Similarly for anything else, make a unique string then hash.
+	    {
+	    	char buf[100];
+	    	sprintf(buf, "%d:%d", p.first, p.second);
+	    	return hash<const char *>()(buf);
+	    }	
+	    
+	    // This is better for pair<int,int> than above because sprintf() is very slow.
+	    
+	    // In general: the system provides hash<int>()(int) and hash<char *>()(char *), which both return size_t.
+	    // Can build up bigger hashes by adding up each individual item in the hash and multiplying by some small unique prime (3,5,..) and the modding
+	    // the sum (as you go) so it fits in size_t.
+	    // The trick with xor below is for pairs and works "ok".
+	    // see my discussion here: http://forums.topcoder.com/?module=Thread&threadID=572036&start=0
+	    
+		size_t operator()(const pair<int, int> &pr) const {
+             return hash<int>()(pr.first)^hash<int>()(pr.second);
+         }	    
+	};
+}
+
+
+
+class AntiPalindrome {
+public:
+
+hash_map<string,string> memo;
+
+string f(string s)
+{
+	int n = s.size();
+	if (n <= 1)
+	{
+		return s;
+	}
+	if (memo.count(s) > 0)
+		return memo[s];
+	
+	vector<int> v(26, 0);
+	for (int i = 0; i < n; i++)
+	{
+		v[s[i]-'a']++;
+	}
+	for (int i = 0; i < 26; i++)
+	{
+		if (v[i] > (n+1)/2)
+		{
+			return memo[s] = "NONE";
+		}
+	}
+	for (int i = 0; i < n/2; i++)
+	{
+		for (int j = n-1; j > i && s[j] != s[i]; j--)
+		{
+			if (j < n-1 && s[j] == s[j+1]) continue;
+			string t = s;
+			t.erase(t.begin()+j);
+			t.erase(t.begin()+i);
+			string r = f(t);
+			if (r != "NONE")
+			{
+				r.insert(r.begin(), s[i]);
+				r.insert(r.end(), s[j]);
+				return memo[s] = r;
+			}
+		}
+	}
+	return memo[s] = "NONE";
+}
+	
+string rearrange(string s) 
+{
+	sort(s.begin(), s.end());
+	string r = f(s);
+	return r == "NONE" ? "" : r;		
+
+
+}
+};
+
+
+//Powered by [KawigiEdit]
+
+
+Problem Statement
+    
+A string p is called anti-palindrome if p[i] doesn't equal to p[n - i - 1] for each 0 <= i < (n-1)/2, where n is the length of p. 
+
+It means that each character (except the middle in the case of a string of odd length) must be different from its symmetric character. 
+
+For example, "c", "cpp", "java" are anti-palindrome, but "test", "pp" and "weather" are not.
+
+You are given a string s. 
+
+Rearrange its letters in such a way that the resulting string is anti-palindrome. 
+
+If there are several solutions, return the one that comes earliest alphabetically. If it is impossible to do it, return the empty string.
+
+Definition
+    
+Class:
+AntiPalindrome
+Method:
+rearrange
+Parameters:
+string
+Returns:
+string
+Method signature:
+string rearrange(string s)
+(be sure your method is public)
+    
+
+Constraints
+-
+s will contain between 1 and 50 characters, inclusive.
+-
+s will contain only lowercase letters ('a'-'z').
+Examples
+0)
+
+    
+"test"
+Returns: "estt"
+
+1)
+
+    
+"aabbcc"
+Returns: "aabcbc"
+
+2)
+
+    
+"reflectionnoitcelfer"
+Returns: "cceeeeffiillnnoorrtt"
+
+3)
+
+    
+"hello"
+Returns: "ehllo"
+
+4)
+
+    
+"www"
+Returns: ""
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

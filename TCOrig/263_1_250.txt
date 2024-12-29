@@ -1,0 +1,124 @@
+#include <vector>
+#include <list>
+#include <map>
+#include <set>
+#include <deque>
+#include <stack>
+#include <bitset>
+#include <algorithm>
+#include <functional>
+#include <numeric>
+#include <utility>
+#include <sstream>
+#include <iostream>
+#include <iomanip>
+#include <cstdio>
+#include <cmath>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+class DVDPlayer {
+public:
+vector <string> findMovies(vector <string> m) 
+{
+	map<string,string> inside, orig;
+	
+	int n = m.size();
+	for (int i = 0; i < n; i++)
+	{
+		orig[m[i]] = m[i];
+		inside[m[i]] = m[i];
+	}
+	
+	string last = m[0];
+	for (int i = 1; i < n; i++)
+	{
+		string next = m[i];
+		inside[last] = inside[next];
+		last = next;
+	}
+	
+	vector< pair<string,string> > watched;
+	
+	map<string,bool> done;
+	for (int i = 0; i < n-1; i++)
+	{
+		if (inside[m[i]] != orig[m[i]] && !done[m[i]] && m[i] != m[n-1])
+		{
+			done[m[i]] = true;
+			watched.push_back(make_pair(m[i], inside[m[i]]));
+		}
+	}
+	sort(watched.begin(), watched.end());
+	vector<string> r;
+	for (int i = 0; i < watched.size(); i++)
+	{
+		char buf[1024];
+		sprintf(buf, "%s is inside %s's case", watched[i].first.c_str(), watched[i].second.c_str());
+		r.push_back(buf);
+	}
+	return r;	
+}
+};
+
+
+//Powered by [KawigiEdit]	
+
+
+Problem Statement
+    
+You own a large selection of DVDs that you and your friends enjoy. Unfortunately, your friends aren't the most considerate bunch, so each DVD is not necessarily returned to its respective case. When your friends want to watch a movie, they go through each of your DVD cases one by one until they find the movie they want to watch. They then take that DVD out, and switch it with the one that's currently in the player.
+You will be given a vector <string> moviesWatched: a list of all the movies watched in an unspecified time period, in the order they were watched. Assume you only own one copy of each movie. The DVD player is initially empty, and each DVD starts in its own case. You should return a vector <string> where each element describes a movie that is in a different movie's case after all DVDs in moviesWatched have been viewed. These elements should be of the format "<movie1> is inside <movie2>'s case". The list should be ordered alphabetically by the title of <movie1>. The last DVD in moviesWatched will still be in the DVD player at the end of the simulation, so it should never appear as <movie1> in the returned list.
+Definition
+    
+Class:
+DVDPlayer
+Method:
+findMovies
+Parameters:
+vector <string>
+Returns:
+vector <string>
+Method signature:
+vector <string> findMovies(vector <string> moviesWatched)
+(be sure your method is public)
+    
+
+Constraints
+-
+moviesWatched will contain between 2 and 50 elements, inclusive.
+-
+Each element of moviesWatched will contain between 1 and 20 characters, inclusive.
+-
+Each element of moviesWatched will consist of only lowercase letters ('a' - 'z').
+-
+No two consecutive elements of moviesWatched will be equal.
+Examples
+0)
+
+    
+{"citizenkane", "casablanca", "thegodfather"}
+Returns: 
+{"casablanca is inside thegodfather's case",
+ "citizenkane is inside casablanca's case" }
+Your friends first remove Citizen Kane from its DVD case and put it in the player. They then look for Casablanca, find it in its own case, and swap it with the DVD in the player. Finally, they look for The Godfather, find it in its own case, and swap it with Casablanca. Note that the output is sorted alphabetically, with "casablanca" before "citizenkane".
+1)
+
+    
+{"starwars", "empirestrikesback", "returnofthejedi",
+ "empirestrikesback", "returnofthejedi",
+ "phantommenace", "starwars"}
+Returns: 
+{"empirestrikesback is inside returnofthejedi's case",
+ "phantommenace is inside empirestrikesback's case",
+ "returnofthejedi is inside phantommenace's case" }
+After the first time your friends watch Star Wars, they put it in the Empire Strikes Back DVD case. When they want to watch it the second time, they find the case that it's in and swap it with Phantom Menace, the disk currently in the DVD player. Therefore, Phantom Menace ends up in the Empire Strikes Back's case.
+2)
+
+    
+{"a", "x", "a", "y", "a", "z", "a"}
+Returns: { }
+All movies are back in their original cases (except movie "a", which is in the DVD player).
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

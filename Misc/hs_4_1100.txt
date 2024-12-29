@@ -1,0 +1,152 @@
+char buf[100];
+map<string,int> memo;
+
+// return true if we can make at least n units of type u within constraints c,t
+bool f(int n, int u, int c, time t)
+{
+	int tp, cp;
+	if (t <= 0 || c <= 0)
+	{
+		return 0;
+	}
+	if (u == 0)
+	{
+		tp = t/times[u];
+		cp = c/costs[u];
+		return min(tp, cp) >= n;
+	}
+	
+	sprintf(buf, "%d:%d:%d:%d", n, u, c, t);
+	if (memo.count(buf) > 0)
+	{
+		return memo[buf];
+	}
+	int r = 0;
+	tp = t/times[u];
+	cp = c/costs[u];
+	for (int i = 1; i <= 50; i++)
+	{
+		// try to make i of unit u-1, then use those to make as many possible items of type u in the time allotted
+		if (f(i, u-1, c-i*costs[u] 
+		
+	}
+	
+	memo[buf] = r;
+	return r;
+}
+
+int getMost(vector <int> costs, vector <int> times, int totCost, int totTime) 
+{
+
+	int N = costs.size();
+	for (int i = 50; i >= 0; i--)
+	{
+		if (f(i, N-1, totCost, totTime))
+		{
+			return i;
+		}
+	}
+	return 0;
+}
+Problem Statement
+    
+Your master construction unit can build 1 unit of type 0 in times[0] seconds at a cost of costs[0]. 
+
+Each unit of type 0, once built, can in turn build 1 unit of type 1 in times[1] seconds at a cost of costs[1]. 
+
+Type 1 units can build units of type 2, and so forth. 
+
+Let N denote the number of elements in times. 
+
+Given totTime seconds, return the greatest number of units of type N-1 that can be created without exceeding a total cost of totCost.
+
+Definition
+    
+Class:
+ProductionOptimization
+Method:
+getMost
+Parameters:
+vector <int>, vector <int>, int, int
+Returns:
+int
+Method signature:
+int getMost(vector <int> costs, vector <int> times, int totCost, int totTime)
+(be sure your method is public)
+    
+
+Constraints
+-
+costs will contain between 2 and 50 elements, inclusive.
+-
+times will contain the same number of elements as costs.
+-
+Each element of costs will be between 1 and 100, inclusive.
+-
+Each element of times will be between 1 and 100, inclusive.
+-
+totTime will be between 1 and 100, inclusive.
+-
+totCost will be between 1 and 100, inclusive.
+Examples
+0)
+
+    
+{1,1}
+{1,1}
+3
+3
+Returns: 2
+Build 1 unit 0, and then 2 of unit 1.
+1)
+
+    
+{1,1}
+{1,1}
+5
+3
+Returns: 3
+Build 2 of unit 0. The first will be able to build 2 of unit 1. The second will be able to build 1.
+	    #0 #1
+t = 1   1  0 
+t = 2   2  1
+t = 3   2  3
+
+2)
+
+    
+{
+1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1}
+{
+1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1}
+100
+100
+Returns: 51
+A lot of unit types.
+3)
+
+    
+{1, 1}
+{3, 12}
+100
+27
+Returns: 6
+
+4)
+
+    
+{20,1}
+{20,1}
+17
+19
+Returns: 0
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

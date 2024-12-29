@@ -1,0 +1,175 @@
+vector <int> place(vector <string> town) 
+{
+	int height = town.size();
+	int width = town[0].size();
+	
+	int counts[50][50];
+
+	int dist[50][50];
+	
+	// dist[r][c] = dist to nearest cab company
+	for (int r = 0; r < height; r++)
+	{
+		for (int c = 0; c < width; c++)
+		{
+			int best = 150;
+			for (int i = 0; i < height; i++)
+			{
+				for (int j = 0; j < width; j++)
+				{
+					if (town[i][j] == 'T')
+					{
+						int d = abs(i-r)+abs(j-c);
+						best = min(d, best);
+					}
+				}
+			}
+			dist[r][c] = best;
+		}
+	}
+			
+	for (int r = 0; r < height; r++)
+	{
+		for (int c = 0; c < height; c++)
+		{
+			counts[r][c] = 0; // number of customers who will call me at HQ(r,c)
+			if (town[r][c] == '-')
+			{
+				for (int i = 0; i < height; i++)
+				{
+					for (int j = 0; j < width; j++)
+					{
+						if (town[i][j] == 'X')
+							continue;
+						int d = abs(i-r)+abs(j-c);
+						if (d < dist[i][j])
+						{
+							counts[r][c]++;
+						}
+					}
+				}
+			}
+		}
+	}
+	int best = -1;
+	int bestR = -1, bestC = -1;
+	for (int r = 0; r < height; r++)
+	{
+		for (int c = 0; c < width; c++)
+		{
+			//cout << counts[r][c] << " ";
+			if (town[r][c] == '-' && counts[r][c] > best)
+			{
+				bestR = r;
+				bestC = c;
+				best = counts[r][c];
+			}
+		}
+	}
+	
+	vector<int> r;
+	r.push_back(bestR);
+	r.push_back(bestC);
+	return r;		
+}
+
+Problem Statement
+    
+You are the manager of a taxi company and you are planning to expand your services to a new city. 
+
+This particular city has the whole taxi system centralized on a computer. 
+
+Clients who need taxi transportation can call a special number and give their location. 
+
+The computer will then automatically contact the nearest taxi company to send a car and pick them up. 
+
+Your goal is to set up the headquarters of your company in a place that maximizes your profit. 
+
+Assume you have enough personnel and cars, and your only concern is to get as many requests as possible. 
+
+You are given the rectangular map of the city, where 'X' represents a space occupied by buildings, 
+'-' represents a free spot (street) and 
+'T' represents a free spot occupied by a taxi company. 
+
+You can set up your headquarters in any of the free spots at the same cost, and your potential customers are the ones that are calling from a location that is strictly closer to your taxi company than to any other existent taxi company (in the situation of equal distances, the older taxi companies are given preference). 
+
+A client can appear in any of the free spots with the same probability. 
+
+The distance from one point of the city to another is defined as the Manhattan distance between those two points:  
+(absolute value of difference in x-coordinates) + (absolute value of difference in y-coordinates)
+
+ You are given a String[] town representing the map of the city and you are to determine the 0-indexed position (y, x) of your company's headquarters, where (y, x) represents the xth character of the yth element of town. Return a int[] consisting of two elements, the first element representing the y-coordinate and the second element representing the x-coordinate. 
+ 
+ If several locations are candidates for maximizing your profit, return the one with the smallest y-coordinate. If there is still a tie, return the one with the smallest x-coordinate.
+Definition
+    
+Class:
+TaxiBusiness
+Method:
+place
+Parameters:
+vector <string>
+Returns:
+vector <int>
+Method signature:
+vector <int> place(vector <string> town)
+(be sure your method is public)
+    
+
+Constraints
+-
+town will contain between 1 and 50 elements, inclusive.
+-
+Each element of town will contain between 1 and 50 characters, inclusive.
+-
+All elements in town have the same number of characters.
+-
+Each character in town is either 'X', '-' or 'T'.
+-
+town contains at least one '-' character.
+Examples
+0)
+
+ T--X
+ -X--
+ --X-
+ X--T
+ 
+{"T--X","-X--","--X-","X--T"}
+Returns: {0, 1 }
+The best your company can do is to cover 3 locations. This can be achieved by placing its headquarters at either (0, 1), (1, 0), (1, 2), (2, 1), (2, 3) or (3, 1). Because of the tie-breaking rules, you should return {0, 1}. In this case, you control the following 3 locations: (0, 1), (0, 2) and (1, 2).
+1)
+---
+-T*
+---
+    
+{"---","-T-","---"}
+Returns: {0, 1 }
+A ghost town with no buildings and a taxi company in the center. If you put the headquarters in a corner, you only control that spot. But if you put it in any of the four non-corner spots, you can also take control over the two adjacent corners. Out of these four solutions, {0, 1} has the smallest x-index.
+2)
+
+    
+{"TXT","TTT","T-T"}
+Returns: {2, 1 }
+The only unoccupied spot is (2, 1), so you should put your taxi company there.
+3)
+
+    
+{"-XXX","-XTX","-XXX","----"}
+Returns: {2, 0 }
+Five spots is the maximum you can get and this can only be achieved if you put your cars at {2, 0}. The other taxi company at (1, 2) would remain with (1, 2), (3, 2) and (3, 3).
+4)
+
+    
+{"XXX-","----","-XXX","----","XXX-","----","-XXX"}
+Returns: {0, 3 }
+There are no taxi companies in the city, so you can put the headquarters in any free spot. However, due to tie-breaking constraints, you should return {0, 3}.
+5)
+
+XXXXXXXXXXXXXXXXXXXX
+-------------------T
+
+{"XXXXXXXXXXXXXXXXXXXX","-------------------T"}
+Returns: {1, 18 }
+You can control every free spot except for the rightmost one - where a taxi company is already installed.
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

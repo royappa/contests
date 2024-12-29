@@ -1,0 +1,83 @@
+
+Problem Statement
+    
+This problem statement contains superscripts that may not display correctly in some plugins. If that's the case, use the arena to see them.
+You have recently bought a game of extended dominoes. Each domino is a rectangle partitioned into two squares, and each square contains a number between 0 and 9, inclusive. There are exactly 45 pieces - one for each pair of distinct numbers. Pieces may be reversed, so while there is only one piece containing the numbers 1 and 2, it can be used in either of the following ways:
+   +---+---+     +---+---+
+   | 1 | 2 |     | 2 | 1 |
+   +---+---+     +---+---+
+Unfortunately, some of the pieces have disappeared, but there is still a possible game left: How many ways are there to construct a cycle collection with all the remaining pieces?
+A cycle collection is a set of 1 or more cycles that do not share pieces. A cycle is constructed by ordering and orienting the pieces in such a way that the left number of the piece in position i is equal to the right number of the piece in position i-1, and the left number of the piece in the first position is equal to the right number of the piece in the last position (positions are numbered from left to right).
+   +---+---++---+---++---+---++---+---++---+---++---+---+
+   | 1 | 2 || 2 | 5 || 5 | 4 || 4 | 2 || 2 | 8 || 8 | 1 |   
+   +---+---++---+---++---+---++---+---++---+---++---+---+
+
+   +---+---++---+---++---+---++---+---++---+---++---+---+
+   | 1 | 2 || 2 | 4 || 4 | 5 || 5 | 2 || 2 | 8 || 8 | 1 |   
+   +---+---++---+---++---+---++---+---++---+---++---+---+
+
+   +---+---++---+---++---+---+  +---+---++---+---++---+---+
+   | 1 | 2 || 2 | 8 || 8 | 1 |  | 4 | 5 || 5 | 2 || 2 | 4 |   
+   +---+---++---+---++---+---+  +---+---++---+---++---+---+
+The figure above shows three possible cycle collections that use the same set of pieces. We say that each piece is connected to the two pieces that surround it, and the first and last pieces are also connected. Two cycles are considered the same if each piece is connected to the same two other pieces in both cycles. Two cycle collections are the same if they contain the same set of cycles.
+You will be given the existing pieces as a vector <string> pieces, where each element contains exactly two digits representing the two numbers on a single domino. Return the number of distinct cycle collections that can be formed with these pieces.
+Definition
+    
+Class:
+ExtendedDominoes
+Method:
+countCycles
+Parameters:
+vector <string>
+Returns:
+long long
+Method signature:
+long long countCycles(vector <string> pieces)
+(be sure your method is public)
+    
+
+Notes
+-
+Remember that each cycle collection must use all the pieces, and no two cycles in a collection can share pieces.
+Constraints
+-
+pieces will contain between 1 and 45 elements, inclusive.
+-
+Each element of pieces will contain exactly 2 characters.
+-
+Each character of each element of pieces will be a digit ('0'-'9').
+-
+In each element of pieces the value of its first character will be less than the value of its second character.
+-
+No two elements of pieces will be equal.
+-
+The number of cycles for pieces will be less than 263.
+Examples
+0)
+
+    
+{"12","25","45","24","28","18"}
+Returns: 3
+The example in the problem statement.
+1)
+
+    
+{"01","12","23","34","45"}
+Returns: 0
+There is no way to form a cycle here.
+2)
+
+    
+{"09","12","24","14","57","79","05"}
+Returns: 1
+The only possibility is:
+   +---+---++---+---++---+---++---+---+  +---+---++---+---++---+---+
+   | 0 | 9 || 9 | 7 || 7 | 5 || 5 | 0 |  | 1 | 2 || 2 | 4 || 4 | 1 |   
+   +---+---++---+---++---+---++---+---+  +---+---++---+---++---+---+
+3)
+
+    
+{"34","35","36","37","45","46","47","56","57","67"}
+Returns: 243
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

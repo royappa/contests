@@ -1,0 +1,168 @@
+void makeBest(int seats, string& config, int& used)
+{
+	// 0   ""
+	// 1   .S
+	// 2   S.S
+	// 3   .SS.S
+	// 4   S.SS.S
+	// 5   .SS.SS.S
+	// 6   S.SS.SS.S
+	
+	if (seats == 0)
+	{
+		config = "";
+		used = 0;
+	}
+	else if (seats == 1)
+	{
+		config = ".S";
+		used = 1;
+	}
+	else if (seats == 2)
+	{
+		config = "S.S";
+		used = 1;
+	}
+	else
+	{
+		config = 0;
+		used = 0;
+		if (seats %2 == 0)
+		{
+			config = "S";
+			seats--;
+		}
+		while (seats > 1)
+		{
+			config += ".SS";
+			seats -= 2;
+			used++;
+		}
+		config += ".S";
+		used++;
+	}
+	return;
+}
+
+vector <string> mostAisleSeats(int width, int seats) 
+{
+	int aisles = width-seats;
+	
+	int maxSeats = 2*aisles;   // S.SS.SS.S
+	
+	string config;
+	if (seats <= maxSeats) // enough aisles
+	{
+		int aislesUsed;
+		makeBest(seats, config, aislesUsed); // configure the seats optimally, and return the number of aisles used
+		if (aisles-aislesUsed > 0)
+		{
+			string empty = string(aisles-aislesUsed, '.');
+			config = empty+config;
+		}
+	}
+	else // not enough aisles
+	{
+		int dummy;
+		makeBest(maxSeats, config, dummy);
+		string rest = string(maxSeats-seats, 'S');
+		config = config+rest;
+	}
+	vector<string> r;
+	if (config.size() <= 50)
+	{
+		r.push_back(config);
+	}
+	else if (config.size <= 100)
+	{
+		r.push_back(config.substr(0, 50));
+		r.push_back(config.substr(50));
+	}
+	else
+	{
+		r.push_back(config.substr(0, 50));
+		int n = config.size();
+		r.push_back(config.substr(n-50));
+	}
+	return r;
+	
+}
+
+Problem Statement
+    
+Note: this problem statement contains an image that may not display properly if viewed outside the applet.
+When on a long flight, it is often helpful to be in an aisle seat (a seat adjacent to an aisle). This way you don't need to bother another passenger when you need to go to the restroom or take a walk. However, because large airliners are built to hold as many passengers as possible, only a limited number of seats can be aisle seats.
+A typical arrangement of 10 seats in a single row with 2 aisles is as follows:
+ 
+Aisle seats are colored green in the above example (there are four such seats), while center and window seats are colored orange.
+All of the seats are equally wide and each aisle has the same width as a single seat. If an airplane's row is wide enough to fit width seats or aisles, and the airline wants exactly seats seats to be fitted in a row, find the arrangement which maximizes the number of aisle seats. A row should be formatted as a string of characters so that seats and aisles are represented by 'S' and '.' (dot) characters, respectively. If there are multiple arrangements which maximize the number of aisle seats, find the lexicographically smallest one (the dot character comes before 'S' in the lexicographical order).
+You are to return the required arrangement (or part of it) as a vector <string> containing no more than 2 strings:
+If width is 50 or less, return the entire arrangement as a single string inside the vector <string>.
+If width is between 51 and 100 (inclusive), return the entire arrangement as two strings, split after the first 50 characters.
+If width is more than 100, return two strings containing the first and last 50 characters of the arrangement, respectively.
+Definition
+    
+Class:
+AirlinerSeats
+Method:
+mostAisleSeats
+Parameters:
+int, int
+Returns:
+vector <string>
+Method signature:
+vector <string> mostAisleSeats(int width, int seats)
+(be sure your method is public)
+    
+
+Constraints
+-
+width will be between 1 and 100000, inclusive.
+-
+seats will be between 0 and width, inclusive.
+Examples
+0)
+
+    
+6
+3
+Returns: {"..SS.S" }
+All three seats can be made aisle seats and this is the lexicographically smallest such arrangement.
+1)
+
+    
+6
+4
+Returns: {"S.SS.S" }
+This is the only arrangement where all four seats are aisle seats.
+2)
+
+    
+12
+10
+Returns: {"S.SS.SSSSSSS" }
+The picture in the problem statement shows another arrangement with the maximum number of aisle seats, but this one is lexicographically smaller.
+3)
+
+    
+11
+7
+Returns: {".SS.SS.SS.S" }
+
+4)
+
+    
+52
+52
+Returns: {"SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS", "SS" }
+
+5)
+
+    
+200
+2
+Returns: 
+{"..................................................",
+ "...............................................S.S" }
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

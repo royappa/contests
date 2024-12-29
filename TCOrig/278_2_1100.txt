@@ -1,0 +1,83 @@
+int organize(vector <int> A) 
+{
+	sort(A.begin(), A.end());
+	
+}
+
+Problem Statement
+    
+We have some coins on the table. Each coin is characterized by its size. 
+We want to arrange these coins into successive piles so that the following hold:
+
+The size of the top coin in each pile is strictly greater than the size of all the other coins in the same pile.
+The size of the top coin in each pile is strictly greater than the size of the top coin in the previous pile.
+The number of coins in each pile is strictly greater than the number of coins in the previous pile.
+
+You will be given a vector <int> sizes, each element of which represents the size of a coin on the table. 
+Return the maximal number of piles that we can organize according to the given rules. 
+
+Each coin should be used in exactly one pile.
+Definition
+    
+Class:
+CoinPiles
+Method:
+organize
+Parameters:
+vector <int>
+Returns:
+int
+Method signature:
+int organize(vector <int> sizes)
+(be sure your method is public)
+    
+
+Notes
+-
+The maximal element of sizes will be unique, so it's always possible to form at least one pile.
+Constraints
+-
+sizes will have between 1 and 50 elements, inclusive.
+-
+Each element of sizes will be between 1 and 1000, inclusive.
+-
+The maximal element of sizes will be unique.
+Examples
+0)
+
+    
+{1, 2, 2, 2, 2, 3}
+Returns: 2
+It's impossible to make 3 piles according to the given rules.
+1)
+
+    
+{1, 1, 2, 2, 2, 3}
+Returns: 3
+We can make 3 piles: {1}, {2,1} and {3, 2, 2}. The piles are listed in order and the coins in each pile are listed from top to bottom.
+2)
+
+    
+{1, 2, 2, 2, 3, 4}
+Returns: 3
+
+3)
+
+    
+{701, 701, 646, 701, 559, 559, 646, 701, 646, 881}
+Returns: 4
+
+4)
+
+    
+{701, 701, 646, 701, 559, 559, 646, 701, 701, 881}
+Returns: 3
+
+5)
+
+    
+{60, 348, 60, 18, 60, 60, 400, 38, 211, 150, 348, 348, 
+ 60, 400, 462, 60, 97, 400, 164}
+Returns: 5
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

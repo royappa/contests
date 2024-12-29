@@ -1,0 +1,230 @@
+vector<string> results;
+int n;
+
+int getWins(int a)
+{
+	int t = 0;
+	for (int i = 0; i < n; i++)
+	{
+		if (i == a)
+			continue;
+		for (int j = 0; j < n; j++)
+		{
+			if (i == j)
+				continue;
+			if (results[i] == 'W')
+				t++;
+		}
+	}
+	return t;
+}
+
+
+int getTot(int a)
+{
+	int t = 0;
+	for (int i = 0; i < n; i++)
+	{
+		if (i == a)
+			continue;
+		for (int j = 0; j < n; j++)
+		{
+			if (i == j)
+				continue;
+			if (results[i] != '-')
+				t++;
+		}
+	}
+	return t;
+}
+
+
+int comparSched(int a, int b)
+{
+	int nwa = getWins(a);
+	int tga = getTot(a);
+	int nwb = getWins(b);
+	int tgb = getTot(b);
+	
+	return nwa*tgb - nwb*tga;
+}
+bool compar(int i, int j)
+{
+	if (i == j)
+		return true;
+	int x = comparSched(i, j);
+	if (x != 0)
+	{
+		return x < 0 ? false : true;
+	}
+	return team[i] < team[j];
+}
+
+vector <string> calculate(vector <string> teams, vector <string> _results) 
+{
+	n = teams.size();
+	vector<int> v(n);
+	for (int i = 0; i < n; i++)
+		v[i] = i;
+		
+	results = _results;
+	sort(v.begin(), v.end(), compar);
+	vector<string> r;
+	for (int i = 0; i < n; i++)
+	{
+		r.push_back(teams[v[i]]);
+	}
+	return r;
+}
+
+Problem Statement
+    
+A common way to rank athletic teams is based on each team's winning percentage. 
+
+However, when two teams have similar percentages, the team that played against better opponents will be ranked above the team that had easier opponents. 
+
+The measure of how difficult a team's opponents are, is known as the team's strength of schedule. 
+
+A team that has faced tough opponents is said to have a strong schedule, and a team with poor opponents is said to have a weak schedule.
+
+We will use the cumulative winning percentage of Team X's opponents (the teams that Team X played against) as a measure of Team X's strength of schedule. 
+
+This percentage is the number of wins recorded by Team X's opponents divided by the total games they played, 
+** excluding games that were played against Team X.
+
+Given a vector <string> of teams that contains the name of each team and a vector <string> results that indicates the outcome of games played during the season, return a vector <string> containing the names of the teams, ordered from strongest schedule to weakest. 
+
+Teams with equivalent schedule strengths should appear in increasing alphabetical order.
+
+Element i of results corresponds to team i whose name is found in teams at index i. 
+Character j of element i of results will be one of 'W', 'L' or '-' respectively indicating whether team i won, lost, or did not play a game against team j.
+
+Definition
+    
+Class:
+ScheduleStrength
+Method:
+calculate
+Parameters:
+vector <string>, vector <string>
+Returns:
+vector <string>
+Method signature:
+vector <string> calculate(vector <string> teams, vector <string> results)
+(be sure your method is public)
+    
+
+Constraints
+-
+teams will contain between 3 and 50 elements, inclusive.
+-
+teams and results will contain the same number of elements.
+-
+Each element of teams will contain between 1 and 50 characters, inclusive.
+-
+Each element of teams will only contain uppercase letters ('A'-'Z').
+-
+Each element of teams will be distinct.
+-
+Each element of results will contain N characters, where N is the number of elements in teams.
+-
+Each element of results will only contain 'W', 'L' and '-'.
+-
+The ith character of the ith element of results will be '-'.
+-
+If the jth character of the ith element of results is 'W' then the ith character of the jth element of results will be 'L', and vice versa.
+-
+Every team will play at least two games.
+Examples
+0)
+
+    
+{"BEARS",
+ "GIANTS",
+ "COWBOYS",
+ "BRONCOS",
+ "DOLPHINS",
+ "LIONS"}
+{"-WLWW-",
+ "L-WL-W",
+ "WL---W",
+ "LW--L-",
+ "L--W--",
+ "-LL---"}
+Returns: {"BEARS", "DOLPHINS", "BRONCOS", "COWBOYS", "GIANTS", "LIONS" }
+This season's results gives us the following win/loss records:
+        wins - losses
+BEARS      3 - 1
+GIANTS     2 - 2  (1 loss to the BEARS)
+COWBOYS    2 - 1  (1 win against the BEARS)
+BRONCOS    1 - 2  (1 loss to the BEARS)
+DOLPHINS   1 - 1  (1 loss to the BEARS)
+LIONS      0 - 2  (did not play the BEARS)
+The BEARS's opponents are the GIANTS, COWBOYS, BRONCOS and DOLPHINS. Their combined win/loss record is 6-6 (6 wins, 6 losses), but when we exclude games played against the BEARS, this record becomes 5-3. So, the BEARS have a schedule strength of 5/8 = .625
+Here are the cumulative records and winning percentages calculated for each team:
+           Record    Winning %
+BEARS      5 - 3    5/8 = .625
+GIANTS     4 - 4    4/8 = .5
+COWBOYS    4 - 3    4/7 = .5714
+BRONCOS    4 - 3    4/7 = .5714
+DOLPHINS   3 - 2    3/5 = .6
+LIONS      2 - 3    2/5 = .4
+1)
+
+    
+{"BEARS",
+ "COWBOYS",
+ "GIANTS",
+ "PACKERS"}
+{"-LLW",
+ "W-WW",
+ "WL--",
+ "LL--"}
+Returns: {"GIANTS", "BEARS", "COWBOYS", "PACKERS" }
+
+2)
+
+    
+{"AZTECS",
+ "COUGARS",
+ "COWBOYS",
+ "FALCONS",
+ "HORNEDFROGS",
+ "LOBOS",
+ "RAMS",
+ "REBELS",
+ "UTES"}
+{"---L-L--W",
+ "--LL-LWL-",
+ "-W--WWLLW",
+ "WW---L--W",
+ "--L--W-L-",
+ "WWLWL-LW-",
+ "-LW--W-L-",
+ "-WW-WLW--",
+ "L-LL-----"}
+Returns: 
+{"HORNEDFROGS",
+ "COUGARS",
+ "RAMS",
+ "LOBOS",
+ "REBELS",
+ "UTES",
+ "COWBOYS",
+ "AZTECS",
+ "FALCONS" }
+
+3)
+
+    
+{"E", "D", "C", "B", "Z"}
+{
+"--LLL",
+"---LL",
+"W---L",
+"WW---",
+"WWW--"
+}
+Returns: {"D", "E", "C", "Z", "B" }
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

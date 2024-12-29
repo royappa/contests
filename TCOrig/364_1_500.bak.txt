@@ -1,0 +1,176 @@
+int numPlants;
+vector<string> C;
+string plants;
+int memo[66000];
+int bitCount[66000];
+int n;
+#define ON(mask,b)  (((mask) & (1<<(b))) != 0)
+#define OFF(mask,b) (((mask) & (1<<(b))) == 0)
+
+int f(int m) // minimum cost to wake up numPlants, given that "m" are already alive
+{
+	if (bitCount[m] >= numPlants-bu)
+	{
+		return 0; // enough are already alive
+	}
+	int& r = memo[m];
+	int r = 1<<30;
+	
+	for (int j = 0; j < n; j++)
+	{
+		if (OFF(m, j)) // j is not awake
+		{
+			for (int i = 0; i < n; i++)
+			{
+				if (ON(m, i)) // we can use i to wake j
+				{
+					r = min(r, cost(C[i][j]
+	}
+	memo[mask] = r;
+	return r;
+}
+	
+int minCost(vector <string> connectionCost, string plantList, int numPlants_) 
+{
+	numPlants = numPlants_;
+	C = connectionCost;
+	plants = plantList;
+	
+	int alive = 0;
+	for (int i = 0; i < plants.size(); i++)
+	{
+		if (plants[i] == 'Y')
+		{
+			alive |= 1<<i;
+		}
+	}
+	n = plants.size();
+	memset(bitCount, 0, sizeof(bitCount));
+	for (int i = 0; i < 66000; i++)
+	{
+		int x = i;
+		while (x)
+		{
+			bitCount[i]++;
+			x &= x-1;
+		}
+	}
+	memset(memo, -1, sizeof(memo));
+	return f(alive);
+}
+Problem Statement
+    
+Our hero, Homer, has just woken to a horrible discovery! 
+
+While sleeping at work, several of the power plants in the state have lost power. 
+
+Even worse, his boss is on the way to his office, and if he doesn't have the situation fixed in time, he'll be fired. 
+
+He's called you, desperately asking for help, and you've agreed to help him figure things out.
+
+Homer has given you connectionCost, in which the j-th character of the i-th element indicates the cost to restart power plant j using power plant i; a digit ('0'-'9') stands for a cost of 0-9, while an uppercase letter ('A'-'Z') stands for a cost of 10-35. 
+
+Homer has also given you the plantList, in which the i-th character indicates whether the i-th plant is still working after the power outage; a 'Y' indicates that it has power, otherwise, it is an 'N'. 
+
+A plant can only be used to power another plant if it currently has power. 
+
+Finally, he gives you numPlants, the minimum number of plants that need to be powered to save Homer's job. 
+
+You need to return the minimum cost needed to power at least numPlants plants.
+
+Definition
+    
+Class:
+PowerPlants
+Method:
+minCost
+Parameters:
+vector <string>, string, int
+Returns:
+int
+Method signature:
+int minCost(vector <string> connectionCost, string plantList, int numPlants)
+(be sure your method is public)
+    
+
+Constraints
+-
+connectionCost will contain exactly N elements, where N is between 1 and 16, inclusive.
+-
+Each element of connectionCost will contain exactly N characters.
+-
+Each character of connectionCost will be a digit ('0'-'9') or uppercase letter ('A'-'Z').
+-
+plantList will contain exactly N characters.
+-
+Each character of plantList will be 'Y' or 'N'.
+-
+At least one character of plantList will be 'Y'.
+-
+numPlants will be between 0 and N, inclusive.
+Examples
+0)
+
+    
+{"024",
+ "203",
+ "430"}
+"YNN"
+3
+Returns: 5
+The cheapest way is to restart plant 1 using plant 0. Once plant 1 is active, you can then use it to restart plant 2.
+1)
+
+    
+{"0AB",
+ "A0C",
+ "CD0"}
+"YNN"
+3
+Returns: 21
+Here we can use plant 0 to restart both of the others.
+2)
+
+    
+{"1ABCD",
+ "35HF8",
+ "FDM31",
+ "AME93",
+ "01390"}
+"NYNNN"
+5
+Returns: 14
+
+3)
+
+    
+{"012",
+ "123",
+ "234"}
+"NNY"
+2
+Returns: 2
+
+4)
+
+    
+{"1309328",
+ "DS2389U",
+ "92EJFAN",
+ "928FJNS",
+ "FJS0DJF",
+ "9FWJW0E",
+ "23JFNFS"}
+"YYNYYNY"
+4
+Returns: 0
+
+5)
+
+    
+{"01","20"}
+"YN"
+2
+Returns: 1
+The cost to restart plant 0 using plant 1 may differ from the cost of restarting plant 1 using plant 0.
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

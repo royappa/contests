@@ -1,0 +1,122 @@
+vector<string> split_nonre(string s, string sep)
+{
+	char *sC = (char *) malloc(s.size()+1);
+	strcpy(sC, s.c_str());
+	char *sepC = (char *) sep.c_str();
+	char *status = NULL;
+	
+	char *word;
+	vector<string> results;
+	while ((word = strtok_r(sC, sepC, &status)) != NULL)
+	{
+		results.push_back(word);
+		sC = NULL;
+	}
+	return results;
+}
+
+int seg(vector <string> s) 
+{
+	int m = 0;
+	for (int i = 0; i < s.size(); i++)
+	{
+		vector<string> w = split_nonre(s[i], ".");
+		for (int j = 0; j < w.size(); j++)
+		{
+			if (w[j].size() > 0 && w[j][0] == 'x')
+			{
+				m >?= w[j].size();
+			}
+		}
+	}
+	return m;
+				
+}
+
+int longest(vector <string> s) 
+{
+	int m = seg(s);
+	vector<string> t;
+	
+	for (int i = 0; i < s[0].size(); i++)
+	{
+		string r = "";
+		for (j = 0; j < s.size(); j++)
+		{
+			r += s[j][i];
+		}
+		t.push_back(r);
+	}
+	m = max(m, seg(t));
+				
+}
+
+Problem Statement
+    
+       xxxxx...
+       ....xxxx
+       .x.....x
+       .xxxxxxx
+Your are given a picture of a snake. Lowercase 'x' characters indicate parts of the snake, and '.' characters represent empty areas. 
+
+The snake consists of a sequence of horizontal and vertical segments. Successive segments in the snake share an 'x', which is considered to be in both segments. No two 'x's from different segments of the snake are horizontally or vertically adjacent.
+
+Given a vector <string> snake, return the length of the longest segment in the snake. The picture is formed using successive elements of snake as successive rows in the picure.
+
+Definition
+    
+Class:
+Snaky
+Method:
+longest
+Parameters:
+vector <string>
+Returns:
+int
+Method signature:
+int longest(vector <string> snake)
+(be sure your method is public)
+    
+
+Constraints
+-
+snake contains between 1 and 50 elements, inclusive.
+-
+Each element of snake contains the same number of characters.
+-
+Each element of snake contains between 1 and 50 characters, inclusive.
+-
+Each character in each element of snake is a period ('.') or a lowercase 'x'.
+-
+If two 'x's are adjacent to each other in the picture, they are in the same segment.
+-
+The picture shows just one connected snake, using at least 2 'x's.
+
+Examples
+0)
+
+    
+{"x.xxx.xxx",
+ "x.x.x.x.x",
+ "xxx.xxx.x"}
+Returns: 3
+This snake consists of 9 segments, each of length 3.
+1)
+
+    
+{"xxxx..",
+ "...x..",
+ "...x..",
+ "......"}
+Returns: 4
+One segment is length 4, the other is length 3.
+2)
+
+    
+{"...x................",
+ "...x................",
+ "....................",
+ "...................."}
+Returns: 2
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

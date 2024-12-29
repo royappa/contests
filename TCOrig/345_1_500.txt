@@ -1,0 +1,94 @@
+
+vector<int> t, s;
+int n, M;
+int memo[60][3000];
+
+int f(int p, int k) // best that I can get from boxes p..n, with k moves left
+{
+	if (p == n-1) // last box; k moves left = number of stones left in box
+	{
+		return k%2==1?t[p]:0;
+	}
+	int& r = memo[p][k];
+	
+int getScore(vector <int> treasure, vector <int> stones) 
+{
+	t = treasure;
+	s = stones;
+	n = t.size();
+	M = accumulate(s.begin(), s.end(), 0);
+	
+	memset(memo, -1, sizeof(memo));
+	
+	return f(0, M);
+}
+Problem Statement
+    
+You and your friend are playing a game. There is a number of treasure chests hidden under piles of stones. 
+
+That is, the i-th chest has stones[i] stones piled on top of it. 
+
+You take turns taking exactly one stone from the top of one of the chests. 
+
+Whoever takes the last stone from the top of a chest takes the chest and the treasure inside. 
+
+The inside of the i-th chest is worth treasure[i]. The game objective is to gather as much treasure as possible.
+
+Unfortunately, your friend is a cyborg and always makes the best possible move (maximizing his final win). 
+
+Given stones and treasure, return the maximum total amount you can get from the chests given that you move first.
+
+Definition
+    
+Class:
+StoneGame
+Method:
+getScore
+Parameters:
+vector <int>, vector <int>
+Returns:
+int
+Method signature:
+int getScore(vector <int> treasure, vector <int> stones)
+(be sure your method is public)
+    
+
+Constraints
+-
+stones will contain between 1 and 50 elements, inclusive.
+-
+stones and treasure will contain the same number of elements.
+-
+Each element of stones will be between 1 and 10^6, inclusive.
+-
+Each element of treasure will be between 1 and 10^6, inclusive.
+Examples
+0)
+
+    
+{3,2}
+{1,2}
+Returns: 5
+In your first move you take the stone from the 0-th chest and take its treasure. Then your friend must take a stone from the 1-st chest leaving you with one stone on the 1-st chest. You take the last stone in your second move and take the contents of the 1-st chest.
+1)
+
+    
+{5,4,3,2,1}
+{1,1,1,1,1}
+Returns: 9
+
+2)
+
+    
+{5,5}
+{2,2}
+Returns: 0
+
+3)
+
+    
+{1}
+{10}
+Returns: 0
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

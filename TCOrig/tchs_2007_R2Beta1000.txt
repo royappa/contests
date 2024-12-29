@@ -1,0 +1,189 @@
+#include <vector>
+#include <list>
+#include <map>
+#include <set>
+#include <deque>
+#include <stack>
+#include <bitset>
+#include <algorithm>
+#include <functional>
+#include <numeric>
+#include <utility>
+#include <sstream>
+#include <iostream>
+#include <iomanip>
+#include <cstdio>
+#include <cmath>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+class LatticeCrossword {
+public:
+vector<string> words;
+
+int f(string up, string down, string left, string right)
+{
+	int count = 0;
+	
+	int nu = up.size(), nd = down.size(), nl = left.size(), nr = right.size();
+	
+	for (int i = 0; i < nu; i++)
+	for (int j = 0; j < nl; j++)
+	if (up[i] == left[j])
+	for (int i2 = i+2; i2 < nu; i2++)
+	for (int k = 0; k < nr; k++)
+	if (up[i2] == right[k])
+	for (int m = 0; m < nd; m++)
+	for (int j2 = j+2; j2 < nl; j2++)
+	if (down[m] == left[j2] && m+(i2-i) < nd && k+(j2-j) < nr && down[m+i2-i] == right[k+j2-j])
+		count++;
+	return count;
+}
+
+int crossword(string a, string b, string c, string d) 
+{
+	words.push_back(a);
+	words.push_back(b);
+	words.push_back(c);
+	words.push_back(d);
+	
+	sort(words.begin(), words.end());
+	
+	int count = 0;
+	do
+	{
+		count += f(words[0], words[1], words[2], words[3]);
+	}
+	while (next_permutation(words.begin(), words.end()));
+	
+	return count;
+}
+};
+
+
+//Powered by [KawigiEdit]
+
+Problem Statement
+    
+A lattice crossword is a variant of a crossword where exactly 4 words are arranged in the form of a lattice (like a '#' sign). 
+Given 4 words, a, b, c and d, return the number of different lattice crosswords that can be created according to the following rules:
+
+Each of the four given words must appear in the crossword exactly once.
+
+Two of the four words must be printed vertically, from top to bottom.
+
+
+Two of the four words must be printed horizontally, from left to right.
+
+Each horizontal word must cross both vertical words (each through exactly one common letter).
+Each vertical word must cross both horizontal words (each through exactly one letter).
+
+The horizontal words must be separated by at least one row.
+The vertical words must be separated by at least one column.
+
+Two lattice crosswords are considered different if at least one of the words is at a different position. 
+
+The position of a word is determined by the row and column position of its first letter. 
+
+Row 0 is the row of the topmost letter in the crossword, and column 0 is the column of the leftmost letter in the crossword.
+
+      c
+      o
+    p n
+    r t
+topcoder
+    b s
+  solution
+    e
+    m
+
+Here the leftmost letter is "t" of the "topcoder" and the topmost letter is "c" of the "contest". So, the positions of the words are: "topcoder" - (0, 4) "contest" - (6, 0) "problem" - (4, 2) "solution" - (2, 6) 
+
+Another one lattice crossword, which can be constructed using this words is:
+    t
+    o
+    p s
+    c o
+  problem
+    d u
+contest
+    e i
+      o
+      n
+
+Definition
+    
+Class:
+LatticeCrossword
+Method:
+crossword
+Parameters:
+string, string, string, string
+Returns:
+int
+Method signature:
+int crossword(string a, string b, string c, string d)
+(be sure your method is public)
+    
+
+Constraints
+-
+a, b, c and d will each contain between 3 and 15 characters, inclusive.
+-
+a, b, c and d will be distinct.
+-
+a, b, c and d will contain only lowercase letters ('a'-'z').
+Examples
+0)
+
+    
+"topcoder"
+"contest"
+"problem"
+"solution"
+Returns: 2
+Example from the problem statement.
+1)
+
+    
+"coder"
+"number"
+"rober"
+"joker"
+Returns: 0
+No lattice crossword can be constructed.
+2)
+
+    
+"lattice"
+"crossword"
+"disticnt"
+"approach"
+Returns: 4
+
+3)
+
+    
+"zaxb"
+"axc"
+"cxd"
+"bxdy"
+Returns: 2
+Two lattice crosswords:
+           z
+zaxb       axc
+ x x  and  x x
+ cxd       bxdy
+   y
+4)
+
+    
+"aaaaaaaaaaaaaaa"
+"aaaaaaaaaaaaba"
+"aaaaaaaaaaaaaab"
+"baaaaaaaaaaaaaa"
+Returns: 10082176
+A lot of crosswords.
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

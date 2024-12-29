@@ -1,0 +1,76 @@
+
+Problem Statement
+    
+You work for a company that stores its goods in a large underground vault. There have been flood warnings, and it may be necessary to seal the vault to protect it from flood waters. The vault is a series of rooms that are connected by doors, each of which can only be sealed from one of the rooms it connects. To ensure that the rooms are as safe as possible, you want to seal every individual door in the vault. You can't do this, however, just by sealing any door you see, because you could close off a section of the vault and be unable to seal doors in that section, or you could seal yourself in the vault!  
+
+You begin (and must end) in room 0. When you seal a room, you close all doors in that room that must be sealed from that side. 
+
+If there are other doors that go to that room that must be sealed from the other side, they remain open (but the room is still considered sealed). 
+
+Given a vector <string>, rooms, describing the vault, return a vector <int> that gives the order in which to seal the rooms. If there exist multiple solutions, return the one that is lexicographically first. 
+
+When ordered lexicographically, vector <int> A comes before vector <int> B if and only if for the smallest i such that A[i]!=B[i], A[i]<B[i]. 
+
+Keep in mind that every room must be sealed, even though in some cases sealing a room does not close any doors.  Each element of rooms will be a comma delimited list of numbers. The i-th element of rooms will list all rooms adjacent to room i that must be sealed from room i. For any two rooms i and j, there will be at most one door connecting them. If there is a door connecting them, i will be listed as adjacent to j, or vice versa, but not both.
+
+Definition
+    
+Class:
+UndergroundVault
+Method:
+sealOrder
+Parameters:
+vector <string>
+Returns:
+vector <int>
+Method signature:
+vector <int> sealOrder(vector <string> rooms)
+(be sure your method is public)
+    
+
+Notes
+-
+There can be cycles. For example: room i has a door to room j that must be sealed from room i, room j has a door to room k that must be sealed from room j, and room k has a door to room i that must be sealed from room k.
+Constraints
+-
+rooms will contain between 1 and 50 elements, inclusive.
+-
+Each element of rooms will contain only the digits '0'-'9' and commas.
+-
+Each element of rooms will only contain values between 0 and the number of elements in rooms - 1, inclusive, and no value will have leading zeros.
+-
+No element of rooms will contain leading or trailing commas, or more than one commma between values.
+-
+Element i of rooms will not contain the value i.
+-
+No element of rooms will contain the same value more than once.
+-
+If element i of rooms contains j, element j of rooms will not contain i.
+-
+There will be a way to seal all the rooms and end in room 0.
+Examples
+0)
+
+    
+{"1","2",""}
+Returns: { 2,  1,  0 }
+We can't seal room 0 first, because then we won't be able to reach any other rooms. We can't seal room 1 first either because then we can't reach room 2 to seal it. The only way is to seal room 2, then 1, then finally 0.
+1)
+
+    
+{"1","2","3","1"}
+Returns: { 3,  2,  1,  0 }
+Rooms 1, 2, and 3 form a cycle. Each one must seal a door to the next one in the cycle. The only way to seal all the rooms is to go to room 3, seal it, and then work backwards through the cycle.
+2)
+
+    
+{"3,5","2","8","","","6,7","","1,8","4"}
+Returns: { 2,  1,  3,  4,  6,  8,  7,  5,  0 }
+
+3)
+
+    
+{"1,2","3","3,5","4","",""}
+Returns: { 1,  4,  3,  5,  2,  0 }
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

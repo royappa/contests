@@ -1,0 +1,105 @@
+// Compute integer partitions
+// partitions[p][k] = partition of a number p where the largest piece is of size k
+
+int partitions[4001][4001];
+
+
+static const int mod = 179424673;
+
+int howMany(vector <int> charPoly, vector <int> minPoly) 
+{
+	int n = charPoly.size();
+	memset(partitions, 0, sizeof(partitions));
+	
+	
+	for (int k = 0; k <= 4000; k++)
+	{
+		partitions[0][k] = partitions[1][k] = 1;
+	}
+	for (int p = 0; p <= 4000; p++)
+	{
+		partitions[p][1] = 1;
+	}
+	partitions[0][0] = 1;
+	
+	for (int p = 2; p <= 4000; p++)
+	{
+		for (int k = 1; k <= 4000; k++)
+		{
+			if (k <= p)
+			{
+				partitions[p][k] = (partitions[p][k-1] + partitions[p-k][k]) % mod;
+			}
+			else
+			{
+				partitions[p][k] = partitions[p][p];
+			}
+		}
+	}
+
+	long long m = 1;
+	for (int i = 0; i < n; i++)
+	{
+		m = (m * partitions[charPoly[i]-minPoly[i]][minPoly[i]]) % mod;
+	}
+	
+	return int(m);
+}
+
+Problem Statement
+    
+You will be given 2 vector <int>s charPoly and minPoly, each containing N positive integers. A Jordan form is determined by choosing, for each index i, a partition of charPoly[i] such that no component of the partition exceeds minPoly[i] and at least 1 component is equal to minPoly[i]. A partition of a value v is an ordered list of positive integers that sum to v. Two Jordan forms are equivalent if they have the same partition for each i. Return the number of distinct Jordan forms mod 179424673.
+Definition
+    
+Class:
+NumJordanForms
+Method:
+howMany
+Parameters:
+vector <int>, vector <int>
+Returns:
+int
+Method signature:
+int howMany(vector <int> charPoly, vector <int> minPoly)
+(be sure your method is public)
+    
+
+Constraints
+-
+charPoly will contain between 1 and 50 elements, inclusive.
+-
+minPoly will contain the same number of elements as charPoly.
+-
+Each element of charPoly will be between 1 and 4000, inclusive.
+-
+Element i of minPoly will be between 1 and charPoly[i], inclusive.
+Examples
+0)
+
+    
+{5}
+{1}
+Returns: 1
+Only one Jordan form is possible here.
+1)
+
+    
+{5}
+{3}
+Returns: 2
+There are 2 partitions of 5 that are possible here: (1,1,3) and (2,3).
+2)
+
+    
+{1,2,3,4,5,6,7,8,9}
+{1,2,3,3,3,3,3,3,3}
+Returns: 840
+
+3)
+
+    
+{4000,4000,4000,4000,4000}
+{500,1000,1500,2000,2500}
+Returns: 41788067
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

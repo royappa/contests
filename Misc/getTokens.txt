@@ -1,0 +1,89 @@
+
+Problem Statement
+    
+TeX, a popular typesetting program, has a peculiar way of reading input from the user. In this problem, we will examine one aspect of the input process. When the initial routines of TeX read characters from an input String, all characters except (quotes for clarity) '^' are handled the same (this is actually oversimplified; real TeX is more complicated). The ASCII values of non-caret characters are returned, in sequence, as they are read. For example,
+	 input = "aAbB cd"
+returned value = {97,65,98,66,32,99,100}.
+Note that the ASCII values for 'a', 'B', and ' ' are 97, 66, and 32 respectively. The exception to this rule involves carets ('^'). The following 'caret rules' are listed in order of precedence, from highest to lowest. When reading the input, the highest precedence rule that applies is used.
+1) Two consecutive carets followed immediately by 2 lowercase hex digits should be converted into a single character whose ASCII value is determined by the hex digits (hex is an abbreviation for base-16). A lowercase hex digit is either in the range '0'-'9' or 'a'-'f'. For example, "^^61" would result in {97} as the returned value.
+2) Two consecutive carets followed by a single character whose ASCII value k is above 63, should be replaced with a single character whose ASCII value is k-64.
+3) Two consecutive carets followed by a single character whose ASCII value k is below 64, should be replaced with a single character whose ASCII value is k+64.
+4) A single caret should cause the ASCII value of a caret, namely 94, to be returned.
+Rules can only be applied, in order of precedence, to the next characters being read. For example, when processing "^^^5e5e" you cannot immediately replace the ^^5e with a single ^ (5e is the hex value of 94). The caret rule will be applied to the ^^^, since it is leftmost. One application of a caret rule can cause future applications to occur. For example, "^^5e^5e" will become ^^5e and then ^ so you would return {94}. See the examples for further clarification.
+Definition
+    
+Class:
+TeXLeX
+Method:
+getTokens
+Parameters:
+String
+Returns:
+int[]
+Method signature:
+int[] getTokens(String input)
+(be sure your method is public)
+    
+
+Notes
+-
+In hexadecimal, values 'a'-'f' represent 10,11,12,13,14, and 15 respectively.
+-
+Since hexadecimal is base-16, the second digit from the right is the 16s column. For example, the number a7 is interpreted as (10*16)+(7*1) = 167.
+-
+Remember, only lowercase hexadecimal letters can be used with rule 1.
+Constraints
+-
+input will contain between 1 and 50 characters inclusive.
+-
+Each character of input will have ASCII value between 32 and 126 inclusive.
+Examples
+0)
+
+    
+"aAbB cd"
+Returns: { 97,  65,  98,  66,  32,  99,  100 }
+From above.
+1)
+
+    
+"^^ ^^5e"
+Returns: { 96,  94 }
+"^^ ^^5e" => apply caret rule to "^^ "  => "`^^5e"
+	  => return value of ` (96)     => "^^5e"
+	  => apply caret rule to "^^5e" => "^"
+	  => return value of ^ (94)
+2)
+
+    
+"^^"
+Returns: { 94,  94 }
+Only the last caret rule applies.
+3)
+
+    
+"^^^5e5e"
+Returns: { 30,  53,  101,  53,  101 }
+From above.
+4)
+
+    
+"^^5e^5e^5e^5e^ abASFs&*^@%#"
+Returns: { 96,  97,  98,  65,  83,  70,  115,  38,  42,  94,  64,  37,  35 }
+
+5)
+
+    
+"^^5E ^^40"
+Returns: { 117,  69,  32,  64 }
+Beware of the capital hex letter E.
+6)
+
+    
+"^^`2^^^^OC^^c^^xJ^^Dq9GQpe^^)^^i_&_Q<^^@>|AL8^^d^^"
+Returns: 
+{ 32,  50,  30,  94,  79,  67,  35,  56,  74,  4,  113,  57,  71,  81,
+  112,  101,  105,  41,  95,  38,  95,  81,  60,  0,  62,  124,  65,  76,
+  56,  36,  94,  94 }
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

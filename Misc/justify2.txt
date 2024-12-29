@@ -1,0 +1,62 @@
+	public String[] justify(String[] textIn)
+	{
+		int max = 0;
+		int n = textIn.length;
+		for (int i = 0; i < n; i++)
+			max = Math.max(textIn[i], max);
+		
+		for (int i = 0; i < n; i++)
+		{
+			int d = max-textIn[i].length();
+			for (int j = 0; j < d; j++)
+				textIn[i] = " " + textIn[i];
+		}
+		return textIn;
+	}
+	
+Problem Statement
+    
+We have a collection of Strings, and we want to right justify them. Create a class Justifier that contains a method justify that is given a String[] textIn and returns a String[] containing the same Strings, right justified, in the same order as they appear in textIn.
+The returned Strings should be padded on the left with space characters so that they are all the same length as the longest String in textIn.
+Definition
+    
+Class:
+Justifier
+Method:
+justify
+Parameters:
+String[]
+Returns:
+String[]
+Method signature:
+String[] justify(String[] textIn)
+(be sure your method is public)
+    
+
+Constraints
+-
+textIn will contain between 1 and 50 elements inclusive
+-
+each element of textIn will contain only uppercase letters 'A'-'Z'
+-
+each element of textIn will contain between 1 and 50 characters inclusive
+Examples
+0)
+
+    
+{"BOB","TOMMY","JIM"}
+Returns: { "  BOB",  "TOMMY",  "  JIM" }
+The longest String is "TOMMY" which has 5 characters. So the returned Strings all contain exactly 5 characters.
+1)
+
+    
+{"JOHN","JAKE","ALAN","BLUE"}
+Returns: { "JOHN",  "JAKE",  "ALAN",  "BLUE" }
+No padding is necessary since they all contain the same number of characters.
+2)
+
+    
+{"LONGEST","A","LONGER","SHORT"}
+Returns: { "LONGEST",  "      A",  " LONGER",  "  SHORT" }
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

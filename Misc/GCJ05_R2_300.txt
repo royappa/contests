@@ -1,0 +1,199 @@
+#include <vector>
+#include <list>
+#include <map>
+#include <set>
+#include <deque>
+#include <stack>
+#include <bitset>
+#include <algorithm>
+#include <functional>
+#include <numeric>
+#include <utility>
+#include <sstream>
+#include <iostream>
+#include <iomanip>
+#include <cstdio>
+#include <cmath>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+vector<string> maze;
+typedef pair<int,int> pi;
+typedef vector<pi> pos;
+int height;
+vector<pos> q(150000);
+map<pos,bool> visited;
+map<pos,int> dist;
+
+int qhead, qtail, qnum;
+class FatMaze {
+public:
+
+bool allowed(int r, int c)
+{
+	return (r >= 0 && r < height && c >= 0 && c < maze[r].size() && maze[r][c] != 'X');
+}
+
+int minSteps(vector <string> _maze)
+{
+	maze = _maze;
+	height = maze.size();
+	
+
+	qhead = 0;
+	qtail = 0;
+	qnum = 0;
+	
+	pos node;
+	for (int i = 0; i < height; i++)
+	{
+		for (int j = 0; j < maze[i].size(); j++)
+		{
+			if (maze[i][j] == 'P')
+			{
+				node.push_back(make_pair(i, j));
+			}
+		}
+	}
+	sort(node.begin(), node.end());
+	
+	q[qtail++] = node;
+	qnum++;
+	visited[node] = true;
+	dist[node] = 0;
+	
+	int dir[4][2] = { {0,1}, {0,-1}, {1,0}, {-1,0} };
+	
+	while (qnum > 0)
+	{
+		pos head = q[qhead++];
+		//for (int i = 0; i < head.size(); i++) cout << head[i].first << "," << head[i].second << "/"; cout << endl;
+		qnum--;
+		for (int i = 0; i < head.size(); i++)
+		{
+			if (maze[head[i].first][head[i].second] == 'G')
+			{
+				return dist[head];
+			}
+		}
+		for (int d = 0; d < 4; d++)
+		{
+			int dr = dir[d][0], dc = dir[d][1];
+			pos v;
+			bool bad = false;
+			for (int i = 0; i < head.size(); i++)
+			{
+				pi x = make_pair(head[i].first+dr, head[i].second+dc);
+				if (!allowed(x.first, x.second))
+				{
+					bad = true;
+					break;
+				}
+				v.push_back(x);
+			}
+			if (bad)
+				continue;
+			sort(v.begin(), v.end());
+			if (!visited[v])
+			{
+				visited[v] = true;
+				dist[v] = dist[head]+1;
+				q[qtail++] = v;
+				qnum++;
+			}
+		}
+	}
+	return -1;
+	
+}
+
+};
+	
+	
+Problem Statement
+    
+Your team is stuck in a maze. The 'P' characters in maze show where your group is located. The 'X' characters are walls, the 'G' characters are goals, and the '.' characters are empty spots. Taking 1 step involves moving every 'P' character 1 space upward, leftward, rightward, or downward. All of the 'P' characters must move in the same direction. A step cannot cause any 'P' character to cover an 'X' character, or leave the confines of the maze. When any 'P' character covers a 'G' character you are done. Return the least number of steps required to finish the maze. If finishing is not possible, return -1. Note that the maze need not be rectangular, and that the left edges are always aligned.
+Definition
+    
+Class:
+FatMaze
+Method:
+minSteps
+Parameters:
+String[]
+Returns:
+int
+Method signature:
+int minSteps(String[] maze)
+(be sure your method is public)
+    
+
+Constraints
+-
+maze will contain between 1 and 10 elements inclusive.
+-
+Each element of maze will contain between 1 and 10 characters inclusive.
+-
+Each character in maze will be 'X', '.', 'G', or 'P'.
+Examples
+0)
+
+    
+{"PP",
+ "PP",
+ "..",
+ "..",
+ "..",
+ "..........",
+ ".........G"}
+Returns: 13
+Remember you cannot leave the confines.
+1)
+
+    
+{"PP",
+ "PP",
+ "..",
+ "..",
+ "..",
+ ".........",
+ ".........G"}
+Returns: -1
+The goal is in a corner we cannot fit into.
+2)
+
+    
+{"P.X",
+ "P.X",
+ "P.X",
+ "P.X.....PG"}
+Returns: 1
+One of us has managed to sneak by the wall.
+3)
+
+    
+{"P",
+ "PP",
+ "PPP",
+ "....",
+ "X....",
+ "XX....",
+ "XXX....",
+ "XXXX...G"}
+Returns: 10
+
+4)
+
+    
+{"PP....GGGG"}
+Returns: 5
+
+5)
+
+    
+{"G"}
+Returns: -1
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

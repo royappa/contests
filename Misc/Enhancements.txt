@@ -1,0 +1,74 @@
+Hi,
+
+I've been on TC for the last couple months, and, like anybody else, while I find it a great system and a lot of fun, I had a few pet peeves. It took something personal to get me to write them all down. :-)
+
+Here they are.
+----------------------------------
+1. Display ALL high scorers in match editorials. 
+
+On the last SRM 218, I tied for the high score but my name wasn't shown, I'm guessing the system only picks up the alphabetically first. While I can only gnash my teeth at losing this rare chance for a small morsel of glory, Given the competitiveness of the matches, ties are not uncommon, I'm sure. So maybe we can prevent it happening to some other tc'er in the future. Hey, us little people have dreams, too! 
+----------------------------------
+2.Print all scores to 2 decimal places with zero padding
+
+	e.g. on http://www.topcoder.com/stat?&c=round_overview and likewise on the page which is displayed if you change the number of results to show. Otherwise scores don't line up nicely.
+----------------------------------
+3. Don't compress spaces in Last Match Results. 
+
+I think the HTML output is doing this. But in systests, spaces usually ARE significant. I know this because I lost a problem on SRM 213 because my answer returned "30dXXX1s" instead of "30dX1" (X == space).  My solution failed because it returned too many spaces, take a look at the results:
+http://www.topcoder.com/stat?c=problem_solution&rm=151471&rd=5859&pm=2893&cr=8415268
+If you see where it shows the failed output, it would appear that my solution matched the correct answer, which of course it doesn't, really, because of the extra spaces. (Bah) So maybe that output could replaces spaces with &nbsp; or whatever to make spaces properly fill.
+----------------------------------
+4. Print date/time of the contest, as well as the number of contestants in each division.
+
+http://www.topcoder.com/stat?&c=round_overview&rd=5864 
+The number of contestants would make the "submissions" number more meaningful.
+----------------------------------
+5. Show elapsed time next to score (hh:mm:ss), rather than time-of-submission (in hh:mm).
+
+I.e. In the Applet, Active Contests -> ... -> Division Summary
+	* If you right-click a contestant name and hit "info", it shows you the time of submission. But, it always shows the REAL TIME, whereas I think what is much more interesting if it would show the elapsed time. Let's say someone called SnapDragon solves a problem and the time is shown as 10:03. Most of us, knowing who that is, would assume the elapsed time was a freakish 3 minutes. But a newbie would have to check the contest starting time first (how?) or know the scoring system. And in the practice rooms, real time doesn't make any sense at all, while elapsed time is somewhat more meaningful. 
+	
+In general, it would be nice to show elapsed time in more places (side-by-side with points). Right now you have to work to see it. I had to write me a little perl script to print elapsed time for a given (actual_score,max_score). Hey, that'd be a nice division 2 easy!
+----------------------------------	
+6. Add an easy way to see ALL competitors, with scores on EACH problem, for any given SRM. 
+
+The closest you can come is DURING an SRM, and BEFORE systests. 
+
+	(A) In the Division Summary, before Systests, we can see scores. But after systests, the individual scores are overwritten with text of "Passed", "Failed" or "Failed Challenge"  
+	(B) In a practice room, if you press the green "Summary" button window, it shows the actual scores of everybody. Is there a way to see that display, for ALL contestants (NOT room-by-room), for a completed match?
+	
+Format (A) is much less entertaining to read because the actual scores are hidden. So once a contest is over, it's really difficult to see the results in format (B). 
+
+I once thought I could trick the web site (not the applet) into showing this by munging one of the URLs, but I can't remember how. Basically I gugess it would be nice to see this page: http://www.topcoder.com/stat?&c=last_match WITHOUT the room-by-room breakdown but with all division contestants in one screen. (Once the SRM is over, the rooms are less important but it would be nice to see where you stand in the whole group).
+
+----------------------------------
+7. KawigiEdit bug?
+
+Not sure if this is the right place, but, I have a strange problem pop up in KawigiEdit, both in practice and in the last two SRM's: sometimes, when you select text in the Source Code window, it disappears. It's still "there", but it's blanked-out. To duplicate this
+	a. First highlight text in the Problem statement (top window). 
+	b. Then while that is still highlighted, select some text in the lower (source code window).  
+	c. Click on the highlighted text in the lower window to de-highlight it. 
+	d. Then try to higlight it again - it should disappear. 
+I'm using Java 1.4.2 and would be willing to help the author duplicate this more precisely.
+----------------------------------
+8. KawigiEdit suggestion
+
+In the test window, could the Test Input be echo'ed as well, for each example?
+----------------------------------
+10. Display the room number in the arena practice rooms. 
+
+Right now it shows you the match name like "SRM 188 Div 1". If you are systematically working through the practices, it's nice to know which is the "NExt room" to visit after you finish (or "give up", for some of us) on the current one.
+----------------------------------
+11. Auto-completion of numeric usernames
+
+When chatting, I've noticed it does not auto-complete usernames that start with a digit. Some poor guys with names like 666Evil will wonder why nobody ever talks to them (well.. that particular one might not need to wonder). 
+----------------------------------
+12. Login screen of arena
+
+This last one is a bit strange but, on the applet login, I didn't realize for the longest time you could hit Enter to login and would instead try to tab to the Go button. But you can't TAB to the Go button so I kept using the mouse to login. I know you can just hit Enter to login, but I bet a lot of people are using the mouse to click Go because you can't TAB to it. So if possible, make the Go button tab-able (?), and preferably move it to the LEFT of the HTTP tunneling. (or earlier in the tab-order).
+----------------------------------
+
+Regardless of how these are resolved, my thanks to everyone at TC for putting out such a great product!
+
+- royappa
+

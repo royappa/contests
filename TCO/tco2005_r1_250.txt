@@ -1,0 +1,121 @@
+double bottomRange(double tmin, double tmax, double lmin, double lmax, double rmin, double rmax)
+{
+	double left[] = { lmin, lmax };
+	double top[] = { tmin, tmax };
+	double right[] = { rmin, rmax };
+	
+	double ax = 0, ay = lmax;
+	double bx = tmax, by = lmin-rmax;
+	
+	double maxLen = (by-ay)*(by-ay)+(bx-ax)*(bx-ax);
+	
+	double ay1 = lmin, ay2 = lmax;
+	double by1 = lmin-rmax, by2 = lmax-rmin;
+	double minLen;
+	if ((ay1 >= by1 && ay1 <= by2) || (ay2 >= by1 && ay2 <= by2) ||
+	    (by1 >= ay1 && by1 <= ay2) || (by2 >= ay1 && by2 <= ay1))
+	    minLen = tmin;
+	else
+	{
+		bx = tmin;
+		minLen = 0;
+	}
+	return abs(sqrt(maxLen)-sqrt(minLen));
+	
+}
+
+Problem Statement
+    
+You want to draw a rectangle on a piece of paper. Unfortunately, you are not a perfect draftsman. The lines you make, although straight, do not always have the correct lengths. 
+
+The top edge has length in the inclusive range [topMin,topMax], the left edge in the inclusive range [leftMin,leftMax], and the right edge in the inclusive range [rightMin,rightMax]. 
+
+Fortunately, the left, top and right edges are at right angles to each other and meet (where applicable) at their ends. 
+
+The bottom edge is made by connecting the bottom end of the left edge to the bottom end of the right edge. Return the maximum length the bottom edge could be minus the minimum length the bottom edge could be.
+
+
+Definition
+    
+Class:
+RectangleError
+Method:
+bottomRange
+Parameters:
+double, double, double, double, double, double
+Returns:
+double
+Method signature:
+double bottomRange(double tmin, double tmax, double lmin, double lmax, double rmin, double rmax)
+(be sure your method is public)
+    
+
+Notes
+-
+Your return value must have an absolute or relative error less than 1e-9.
+Constraints
+-
+Each input will be between 5 and 100 inclusive.
+-
+topMin will not be greater than topMax.
+-
+leftMin will not be greater than leftMax.
+-
+rightMin will not be greater than rightMax.
+Examples
+0)
+
+    
+50
+50
+50
+50
+50
+50
+Returns: 0.0
+A perfect square! The bottom edge will be exactly 50 units long.
+1)
+
+    
+5
+5
+50
+50
+5
+5
+Returns: 0.0
+A perfect trapezoid! Unfortunately, we wanted a rectangle. Nevertheless, the length of the bottom edge is uniquely determined.
+2)
+
+    
+5
+100
+5
+100
+5
+100
+Returns: 132.93114224133723
+Here we drew the rectangle with our eyes closed.
+3)
+
+    
+5
+10
+15
+20
+25
+30
+Returns: 10.95668856545447
+
+4)
+
+    
+10
+20
+30
+40
+35
+45
+Returns: 15.0
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

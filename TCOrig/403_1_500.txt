@@ -1,0 +1,195 @@
+// CORRECT MATRIX POWER/MATRIX EXPONENTIATION/MATRIX MULTIPLICATION
+class TheLuckySequence {
+public:
+bool isLucky(int n)
+{
+	while (n > 0)
+	{
+		int d = n % 10;
+		if (d != 4 && d != 7)
+			return false;
+		n /= 10;
+	}
+	return true;
+}
+int lastDig(int n)
+{
+	char buf[100];
+	sprintf(buf, "%d", n);
+	string s = buf;
+	return s[s.size()-1]-'0';
+}
+int firstDig(int n)
+{
+	char buf[100];
+	sprintf(buf, "%d", n);
+	string s = buf;
+	return s[0]-'0';
+}
+
+#define MODULUS 1234567891
+
+// DO NOT CHANGE THIS long-long to int
+typedef long long MTYPE;
+typedef vector<MTYPE> vT;
+typedef vector<vT> matrixT;
+
+// return new zero-filled matrix
+matrixT matNew(int rows, int cols)
+{
+	matrixT m(rows);
+
+	for (int i = 0; i < rows; i++)
+	{
+		vT v(cols, 0);
+		m[i] = v;
+	}
+	return m;
+}
+
+// Not very efficient because of matrices being dynamically created - only use
+// if number of calls will be reasonable!
+// X is (p x q) and Y is (q x r)
+// Note this procedure has NOT been tested with anything other than squaring of two square matrices (i.e. as used below).
+matrixT matMult(matrixT X, matrixT Y)
+{
+	int p = X.size(), q = X[0].size(), r = Y[0].size();
+	matrixT C = matNew(p, r);
+	for (int i = 0; i < p; i++)
+	{
+		for (int j = 0; j < r; j++)
+		{
+			MTYPE sum = 0;
+			for (int k = 0; k < q; k++)
+			{
+				MTYPE prod = (X[i][k]*Y[k][j])%MODULUS;
+				sum = (sum + prod) % MODULUS;
+			}
+			C[i][j] = sum;
+		}
+	}
+	return C;
+}
+
+// A must be square
+matrixT matPow(matrixT A, int p)
+{
+	int n = A.size();
+	if (p == 0)
+	{
+		matrixT R = matNew(n, n);
+		for (int i = 0; i < n; i++)
+		{
+			for (int j = 0; j < n; j++)
+			{
+				R[i][j] = i==j;
+			}
+		}
+		return R;
+	}
+	if (p == 1)
+		return A;
+	matrixT X = matPow(A, p/2);
+	matrixT Y = matMult(X, X);
+	if (p % 2)
+		Y = matMult(Y, A);
+	return Y;
+}
+		
+int count(vector <int> numbers, int length) 
+{
+	vector<int> lucky;
+	for (int i = 0; i < numbers.size(); i++)
+	{
+		if (isLucky(numbers[i]))
+			lucky.push_back(numbers[i]);
+	}
+	sort(lucky.begin(), lucky.end());
+	lucky.erase(unique(lucky.begin(), lucky.end()), lucky.end());
+	int n = lucky.size();
+	if (n == 0)
+		return 0;
+	matrixT A = matNew(n, n);
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = 0; j < n; j++)
+		{
+			A[i][j] = lastDig(lucky[i]) == firstDig(lucky[j]);
+		}
+	}
+	matrixT M = matPow(A, length-1);
+	int result = 0;
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = 0; j < n; j++)
+		{
+			result = (result + M[i][j]) % MODULUS;
+		}
+	}
+	return result;	
+}
+};
+
+Problem Statement
+    
+John thinks 4 and 7 are lucky digits, and all other digits are not lucky. A lucky number is a number that contains only lucky digits in decimal notation.
+A lucky sequence is a sequence of length numbers A[0], A[1], ..., A[length - 1] that satisfies all of the following properties:
+Each number A[i] is lucky, where 0 <= i < length.
+For each i, where 0 <= i < length, there exists at least one j such that A[i] = numbers[j].
+For each i, where 0 <= i < length - 1, the last digit of A[i] is the same as the first digit of A[i + 1].
+You are given a vector <int> numbers and an int length. Return the number of distinct lucky sequences modulo 1234567891.
+Definition
+    
+Class:
+TheLuckySequence
+Method:
+count
+Parameters:
+vector <int>, int
+Returns:
+int
+Method signature:
+int count(vector <int> numbers, int length)
+(be sure your method is public)
+    
+
+Notes
+-
+Two lucky sequences A[0], A[1], ..., A[length - 1] and B[0], B[1], ..., B[length - 1] are considered distinct if there exists i, 0 <= i < length, such that A[i] ? B[i].
+Constraints
+-
+numbers will contain between 1 and 50 elements, inclusive.
+-
+Each element of numbers will be between 1 and 1,000,000,000, inclusive.
+-
+length will be between 1 and 1,000,000,000, inclusive.
+Examples
+0)
+
+    
+{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+1
+Returns: 2
+There are only two lucky numbers among these ten integers.
+1)
+
+    
+{47, 74, 47}
+3
+Returns: 2
+We can construct only two different sequences (47, 74, 47) and (74, 47, 74).
+2)
+
+    
+{100, 4774, 200, 747, 300}
+47
+Returns: 2
+
+3)
+
+    
+{44, 47, 74, 77}
+2
+Returns: 8
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

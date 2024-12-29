@@ -1,0 +1,43 @@
+
+int getBest(vector<string> g, int r, int c, int len)
+{
+	int height = g.size();
+	int width = g[0].size();
+	
+	int best = len;
+	for (int dr = -1; dr <= 1; dr++)
+	{
+		for (int dc = -1; dc <= 1; dc++)
+		{
+			int vr = hr+dr, vc = hc+dc;
+			if (! (vr >= 0 && vr < height && vc >= 0 && vc <= width) )
+				continue;
+			if (g[vr][vc] != (char) (g[r][c]+1))
+				continue;
+			best = max(getBest(g, vr, vc, len+1), best);
+		}
+	}
+	return best;
+}
+
+
+int length(vector <string> grid) 
+{
+	
+	int height = grid.size();
+	int width = grid[0].size();
+	
+	maxLen = 0;
+	for (int r = 0; r < height; r++)
+	{
+		for (int c = 0; c < width; c++)
+		{
+			if (grid[r][c] == 'A')
+			{
+				int len = getBest(grid, r, c, 1);
+				maxLen = max(len, maxLen);
+			}
+		}
+	}
+	return maxLen;
+}

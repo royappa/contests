@@ -1,0 +1,7 @@
+I'd like to thank the writers of the contest analysis for taking the time to explain not just a solution for this problem, but a general technique that can be used to solve other problems. It took me a lot of effort to understand the analysis and the sample solutions provided, and as part of that effort I wrote some other programs. I am sharing those programs with my own notes in case it will help people who need an even more detailed explanation. Any comments or corrections gratefully accepted.
+
+I will submit three programs:
+
+1) A decimal version of the "count" function provided in the analysis
+2) My version of the problem B solution. It is a bit longer than the reference solution, but it requires less case-analysis. For example, if the problem said the special operation is "OR" instead of "AND", my version requires no thought to change.
+3) I made up another problem and show how to solve it using the general decimal solution template.

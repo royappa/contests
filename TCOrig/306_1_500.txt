@@ -1,0 +1,135 @@
+typedef long long LL;
+
+int N; // number of bulbs
+int NBT; // number of buttons
+
+vector<string> switches;
+
+
+// f(b, S) = number of configurations possible of bulbs 0..b-1, bulb b is in state S, and the last switch flipped was last
+LL f(int b, int S, int last)
+{
+	if (N == 1)
+	{
+		return 1LL+poss(last);
+	}
+	.. memo..
+	
+	
+
+}
+
+long long countPossibleConfigurations(vector <string> switches_) 
+{
+	switches = switches_;
+	NBT = switches.size();
+	N = switches[0].size();	 	
+	
+	LL total = 0;
+	for (int state = 0; state <= 1; state++)
+	{
+		for (int button = 0;button < NBT; button++)
+		{
+			total += f(N, state, button);
+		}
+	}
+	
+	return total;  
+}
+
+Problem Statement
+    
+In a ballroom, there are some light bulbs and some switches that control those bulbs. However, the switches and the bulbs are not related in a logical way. Each switch is connected to a subset of the bulbs, and when a switch is flipped, all the bulbs connected to that switch change state (the ones that were off are turned on, and the ones that were on are turned off). Bulbs that are not connected to the flipped switch remain as they were.
+The states of all the bulbs in the room can be described as a configuration of lights. If there are N bulbs, there are 2^N possible configurations. Two configurations are distinct if a bulb in one configuration has a different state than that same bulb in the other configuration.
+You will be given the connections between the switches and bulbs as a vector <string> switches. The jth character of the ith element of switches is 'Y' if the ith switch is connected to the jth bulb, and 'N' otherwise. 
+
+All the bulbs are initially off. 
+
+Return the number of distinct configurations of lights that can be achieved using this setup.
+Definition
+    
+Class:
+LightSwitches
+Method:
+countPossibleConfigurations
+Parameters:
+vector <string>
+Returns:
+long long
+Method signature:
+long long countPossibleConfigurations(vector <string> switches)
+(be sure your method is public)
+    
+
+Constraints
+-
+switches will have between 1 and 50 elements, inclusive.
+-
+Each element of switches will have exactly N characters, where N is between 1 and 50, inclusive.
+-
+Each character of each element of switches will be 'Y' or 'N'.
+Examples
+0)
+
+    
+{"YYN",
+ "NNY",
+ "YYY",
+ "NNN"}
+Returns: 4
+In this example, there are three bulbs and four switches. The first switch is connected to the first two lights, the second switch is connected to the third light, the third switch is connected to all three lights, and the fourth switch is connected to nothing.
+The possible configurations are (- for OFF and + for ON): - - - The initial configuration. + + - This can be achieved by flipping the first switch. - - + This can be achieved by flipping the second switch. + + + This can be achieved by flipping the first switch and then the second switch. 
+1)
+
+    
+{"NNNNYYYNYYNYYYYYNYY"}
+Returns: 2
+There are only two possible configurations here - the initial configuration where all the bulbs are off, and the configuration that results from flipping the switch once.
+2)
+
+    
+{"NYNYNYN",
+ "YNYNYNY",
+ "YYNNNYN",
+ "NNNYNYN",
+ "YYYYYNN",
+ "YNNNNYN"}
+Returns: 32
+
+3)
+
+    
+{"YNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN",
+ "NYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN",
+ "NNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN",
+ "NNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN",
+ "NNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN",
+ "NNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN",
+ "NNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN",
+ "NNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN",
+ "NNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN",
+ "NNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN",
+ "NNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN",
+ "NNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN",
+ "NNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN",
+ "NNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN",
+ "NNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN",
+ "NNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN",
+ "NNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN",
+ "NNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN",
+ "NNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN",
+ "NNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN",
+ "NNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNN",
+ "NNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNN",
+ "NNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNN",
+ "NNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNNN",
+ "NNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNNN",
+ "NNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNNN",
+ "NNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNN",
+ "NNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNN",
+ "NNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNN",
+ "NNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNN"}
+Returns: 1073741824
+Each of the first 30 bulbs can be turned on and off individually while the remaining 20 bulbs are impossible to turn on. Any combination of states among the first 30 bulbs is possible, so the number of configurations is 2^30.
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

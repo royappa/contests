@@ -1,0 +1,221 @@
+	private class cardSorter implements Comparator
+	{
+		private int compare(Object a, Object b)
+		{
+			String sa = (String) a;
+			String sb = (String) b;
+			String suits = "CDHS";
+			String cards = "23456789TJQKA";
+			char suita = a.charAt(0), carda = a.charAt(1);
+			char suitb = b.charAt(0), cardb = b.charAt(1);
+			int va = (suits.indexOf(suita)+1)*100+cards.indexOf(carda);
+			int vb = (suits.indexOf(suitb)+1)*100+cards.indexOf(cardb);
+			return va-vb;			
+		}
+	}
+	
+	public String sortedHand(String hand)
+	{
+		int n = hand.length()/2;
+		String [] cards = new String[n];
+		for (int i = 0; i <= n-2; i += 2)
+		{
+			cards[i] = hand.substring(i,i+2);
+		}
+		Collections.sort(cards, new cardSorter());
+		String sorted = "";
+		for (int i = 0; i < n; i++)
+		{
+			sorted += cards[i];
+		}
+		return cards;			
+	}
+	
+Problem Statement
+    
+A deck of cards contains 52 cards. Each card has a suit (Clubs, Diamonds, Hearts, or Spades) and a value (2, 3, ..., 9, 10, Jack, Queen, King, or Ace).
+
+In the game of bridge a hand consists of 13 or fewer cards from the deck. The values of the cards are ordered as shown above, with Ace having the highest value. Suppose that hand is given as a String giving the cards in the hand. 
+
+Each card is represented by a suit character C, D, H, or S followed by a value character 2, 3, ..., 9, T, J, Q, K, or A. There are no spaces separating adjacent cards in hand.
+
+Create a class BridgeSort that contains a method sortedHand that is given a String hand and that returns the String that represents the hand in sorted order. The proper order is to list all the cards that are Clubs, then all the Diamonds, then all the Hearts, and finally all the Spades, with the cards within each suit listed in order of ascending value.
+Definition
+    
+Class:
+BridgeSort
+Method:
+sortedHand
+Parameters:
+String
+Returns:
+String
+Method signature:
+String sortedHand(String hand)
+(be sure your method is public)
+    
+
+Constraints
+-
+hand will contain an even number of characters between 2 and 26 characters inclusive.
+-
+hand will contain a sequence of cards, each being a suit character followed by a value character as described in the problem statement.
+-
+The cards in hand will be distinct.
+Examples
+0)
+
+    
+"HAH2H3C4D5ST" 
+Returns: "C4D5H2H3HAST"
+This hand contains the 4 of Clubs, which must come before all the other cards because Clubs comes before all the other suits. The 5 of Diamonds is next because Diamonds are the next suit. Next come the three Heart cards, in order of ascending value, namely 2 then 3 then Ace (which is represented by the A). Finally the 10 of Spades is last because of its suit.
+1)
+
+    
+"H3SAHA"
+Returns: "H3HASA"
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.
+
+Problem Statement
+    
+Given a test point, (testPointX, testPointY), and the vertices of a simple polygon, vertices, determine if the test point is in the interior, in the exterior or on the boundary of the polygon. Return the String "INTERIOR", "EXTERIOR", or "BOUNDARY".
+
+For simplicity, all sides of the polygon will be horizontal or vertical, and the vertices and the test point will all be at integer coordinates. 
+
+The x and y coordinates of the vertices will given in the String[] vertices where each element represents a single vertex, formatted as "<x> <y>". 
+
+There is an edge from vertices[i] to vertices[i+1] for i from 0 to n-2, and an edge from vertices[n-1] to vertices[0] where n is the number of vertices (and the number of edges) in the polygon.
+
+Definition
+    
+Class:
+PointInPolygon
+Method:
+testPoint
+Parameters:
+String[], int, int
+Returns:
+String
+Method signature:
+String testPoint(String[] vertices, int testPointX, int testPointY)
+(be sure your method is public)
+    
+
+Notes
+-
+A simple polygon is a polygon that may or may not be convex, but self-intersection is not allowed. Not even at a single point.
+Constraints
+-
+vertices will contain an even number of elements between 4 and 50 inclusive.
+-
+Each element of vertices is formatted as follows "<x> <y>" (quotes for clarity). With exactly one space between <x> and <y> and no leading or trailing spaces.
+-
+<x> and <y> will consist of an optional minus sign followed by between 1 and 4 digit characters inclusive. There will be no leading zeros.
+-
+Each <x> and <y> value in each element of vertices will be between -1000 and 1000 inclusive.
+-
+The elements of vertices taken in order will specify the vertices of a valid simple polygon.
+-
+Each edge of this polygon will be either exactly horizontal or exactly vertical.
+-
+No three consecutive vertices will be colinear.
+-
+No two elements of vertices will be the same.
+-
+No edges will overlap or intersect, except where adjacent edges meet pairwise at vertices.
+-
+testPointX and testPointY will both be between -1000 and 1000 inclusive
+Examples
+0)
+
+    
+{"0 0",
+ "0 10",
+ "10 10",
+ "10 0"}
+5
+5
+Returns: "INTERIOR"
+A simple example of a square of side 10.
+1)
+
+    
+{"0 0",
+ "0 10",
+ "10 10",
+ "10 0"}
+10
+15
+Returns: "EXTERIOR"
+Outside the same square.
+2)
+
+    
+{"0 0",
+ "0 10",
+ "10 10",
+ "10 0"}
+5
+10
+Returns: "BOUNDARY"
+On an edge of the square
+3)
+
+    
+{"-100 -90", "-100 100","100 100", "100 -100",
+ "-120 -100","-120 100","-130 100","-130 -110",
+ "110 -110", "110 110", "-110 110","-110 -90"}
+0
+0
+Returns: "EXTERIOR"
+  A more complex geometry
+4)
+
+    
+{"0 0","0 1000","1000 1000","1000 800",
+ "200 800","200 600","600 600","600 400",
+ "200 400","200 200","1000 200","1000 0"}
+100
+500
+Returns: "INTERIOR"
+ 
+5)
+
+    
+{"0 1000","1000 1000","1000 800",
+ "200 800","200 600","600 600","600 400",
+ "200 400","200 200","1000 200","1000 0","0 0"}
+322
+333
+Returns: "EXTERIOR"
+
+6)
+
+    
+{"500 0","500 100","400 100","400 200","300 200",
+ "300 300","200 300","200 400","100 400","100 500",
+ "0 500","0 400","-100 400","-100 300","-200 300",
+  "-200 200","-300 200","-300 100","-400 100","-400 0",
+  "-500 0","-500 -100","-400 -100","-400 -200","-300 -200",
+  "-300 -300","-200 -300","-200 -400","-100 -400","-100 -500",
+  "0 -500","0 -400","100 -400","100 -300","200 -300",
+  "200 -200","300 -200","300 -100","400 -100","400 0"}
+200
+200
+Returns: "INTERIOR"
+ 
+7)
+
+    
+{"1 0","2 0","2 1","3 1","3 0","4 0","4 -1","5 -1","5 0",
+ "6 0","6 2","0 2","0 3","-1 3","-1 4","0 4","0 6","1 6",
+ "1 7","0 7","0 8","-2 8","-2 2","-8 2","-8 0","-7 0",
+ "-7 -1","-6 -1","-6 0","-4 0","-4 1","-3 1","-3 0",
+ "-2 0","-2 -6","0 -6","0 -5","1 -5","1 -4","0 -4",
+ "0 -3","-1 -3","-1 -2","0 -2","0 -1","1 -1"} 
+0
+0
+Returns: "INTERIOR"
+ 
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

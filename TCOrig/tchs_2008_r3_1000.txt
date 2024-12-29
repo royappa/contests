@@ -1,0 +1,85 @@
+vector<int> left;
+int n;
+
+int cover(vector <int> left_, int width, int a, int b) 
+{
+	if (width > b-a+1)
+		return -1;
+		
+	left = left_;
+	n = left.size();
+	if (n*width < b-a+1)
+		return -1;
+	
+}
+
+Problem Statement
+    
+You are given a board consisting of infinitely many squares in a row, numbered from left to right starting with 1. There are some rectangles laid out on top of the board, all of height 1 and width width. The left side of the i-th rectangle is lined up with the the left side of square left[i], so it exactly covers the area of the board between squares left[i] and left[i] + width - 1, inclusive.  You want to move the rectangles so that they exactly cover the area between squares a and b, inclusive, and none of the other squares. 
+
+Moving one rectangle one square to the left or to the right counts as one move. Rectangles are allowed to overlap. Return the minimal number of moves required to achieve the goal, or -1 if it's not possible.
+
+Definition
+    
+Class:
+RectanglesArrangement
+Method:
+cover
+Parameters:
+vector <int>, int, int, int
+Returns:
+int
+Method signature:
+int cover(vector <int> left, int width, int a, int b)
+(be sure your method is public)
+    
+
+Constraints
+-
+left will contain between 1 and 50 elements, inclusive.
+-
+width will be between 1 and 1000, inclusive.
+-
+Each element of left will be between 1 and 1000, inclusive.
+-
+a will be between 1 and 1000, inclusive.
+-
+b will be between a and 1000, inclusive.
+Examples
+0)
+
+    
+{ 1, 2, 7 }
+1
+4
+4
+Returns: 8
+Rectangles have width 1, so they're actually squares. We want to cover only the fourth square of the board, so we should just move all our rectangles there.
+1)
+
+    
+{ 2, 2 }
+2
+1
+4
+Returns: 2
+We move one rectangle one field to the right, and the other one field to the left.
+2)
+
+    
+{ 1, 2, 3 }
+3
+1
+10
+Returns: -1
+With these rectangles we can cover at most 9 squares.
+3)
+
+    
+{ 12, 43, 67, 86, 93 }
+12
+4
+28
+Returns: 230
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

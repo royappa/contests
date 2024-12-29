@@ -1,0 +1,85 @@
+#include <vector>
+#include <list>
+#include <map>
+#include <set>
+#include <deque>
+#include <stack>
+#include <bitset>
+#include <algorithm>
+#include <functional>
+#include <numeric>
+#include <utility>
+#include <sstream>
+#include <iostream>
+#include <iomanip>
+#include <cstdio>
+#include <cmath>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+class DiscountCombination {
+public:
+
+vector<int> cost, per;
+int n;
+int price;
+double memo[50][50][27][18];
+
+double f(int p, int d1, int d2, int d3)
+{
+	double& r = memo[p][d1][d2][d3];
+	if (r >= 0.0)
+		return r;
+	
+	r = 0.0;	
+	if (p == n)
+	{
+		double x = price;
+		for (int i = 0; i < d1; i++)
+		{
+			x *= (100.0-1);
+			x /= 100.0;
+		}
+		for (int i = 0; i < d2; i++)
+		{
+			x *= (100.0-2);
+			x /= 100.0;
+		}
+		for (int i = 0; i < d3; i++)
+		{
+			x *= (100.0-3.0);
+			x /= 100.0;
+		}
+		return r = x;
+	}
+	double r1 = cost[p]+f(p+1, d1+(per[p]==1),d2+(per[p]==2),d3+(per[p]==3));
+	double r2 = f(p+1, d1, d2, d3);
+	r = r1 <? r2;
+	return r;
+}
+
+double minimumPrice(vector <string> v, int price_) 
+{
+	n = v.size();
+	price = price_;
+	for (int i = 0; i < n; i++)
+	{
+		int c, p;
+		sscanf(v[i].c_str(), "%d%d", &c, &p);
+		cost.push_back(c);
+		per.push_back(p);
+	}
+
+	for (int i = 0; i < 50; i++)
+	for (int j = 0; j < 50; j++)
+	for (int k = 0; k < 27; k++)
+	for (int m = 0; m < 18; m++)
+		memo[i][j][k][m] = -1.0;
+	return f(0,0,0,0);
+}
+};
+
+
+//Powered by [KawigiEdit]

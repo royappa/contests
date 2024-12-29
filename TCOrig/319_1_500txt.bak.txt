@@ -1,0 +1,96 @@
+typedef long long LL;
+map<int,LL> left, right;
+map<int,LL> nk;
+
+map< pair<LL,LL>, LL> cm;
+
+LL choose(LL n, LL m)
+{
+	pair<LL,LL> key = make_pair(n, m);
+	if (cm.count(key) > 0)
+		return cm[key];
+		
+	LL r = 1;
+	LL k = n-m;
+	while (n > 0 || m > 0 || k > 0)
+	{
+		if (n > 0)
+		{
+			r *= n;
+			n--;
+		}
+		if (m > 0 && r % m == 0)
+		{
+			r /= m;
+			m--;
+		}
+		if (k > 0 && r % k == 0)
+		{
+			r /= k;
+			k--;
+		}
+	}
+	cm[key] = r;
+	return r;
+}
+		
+int numKids(int root)
+{
+	if (nk.count(root) > 0)
+		return nk[root];
+		
+	int v = 0;
+	if (left.count(root) == 0 && right.count(root) == 0)
+		v = 1;
+	else if (left.count(root) == 0)
+		v = 1 + numKids(right[root]);
+	else if (right.count(root) == 0)
+		v = 1 + numKids(left[root]);
+	else
+		v = 1 + numKids(left[root])+numKids(right[root]);
+	
+	nk[root] = v;
+	
+	return v;
+}
+
+
+Ll f(int root) 
+{
+	LL numL = left.count(root) > 0 ? numKids(left[root]);
+	LL numR = right.count(root) > 0 ? numKids(right[root]); 
+	
+	if (numL+numR == 0)
+	{
+		// leaf node
+		return 1LL; // only one way with empty string of letters, or one character of letters
+	}
+	
+	LL vL = numL > 0 ? f(left[root]) : 1LL;
+	LL vR = numR > 0 ? f(right[root]) : 1LL;
+	
+	return (vL*vR)*choose(numL+numR, numL);
+	
+}
+	
+long long numInputs(vector <int> t) 
+{
+	int n = t.size();
+	
+	for (int i = 0; i < n; i++)
+	{
+		int r = t[i];
+		vector<int>::iterator it L = find(t.begin(), t.end(), r*2);
+		vector<int>::iterator it R = find(t.begin(), t.end(), r*2+1);
+		if (L != t.end())
+		{
+			left[r] = *L;
+		}
+		if (R != t.end())
+		{
+			right[r] = *R;
+		}
+	}
+	return f(t[0]);	
+	
+}

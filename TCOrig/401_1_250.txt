@@ -1,0 +1,81 @@
+typedef long long LL;
+LL memo[40][40];
+
+int F;
+
+LL f(int last, int k) 
+{
+	if (k >= F)
+		return 1;
+	
+	LL& r = memo[last][k];
+	
+	if (r != -1LL)
+		return r;
+	
+	r = 0;
+	for (int a = 1; a <= min(F-k, last); a++)
+	{
+		r += f(a, k+1);	
+	}
+	return r;
+}
+	
+long long countDiagrams(int F_) 
+{
+	F = F_;
+	memset(memo, -1, sizeof(memo));
+	return f(F+1, 0);
+}
+
+Problem Statement
+    
+A Ferrers diagram of the partition of positive number n = a1 + a2 + ... + ak, for a list a1, a2, ..., ak of k positive integers 
+with a1 >= a2 >= ... >= ak is an arrangement of n boxes in k rows, such that the boxes are left-justified, 
+the first row is of length a1, the second row is of length a2, and so on, with the kth row of length ak. 
+
+Let's call a FIELD diagram of order F a Ferrers diagram with a1 <= F, a2 <= F - 1, ..., ak <= F - k + 1, 
+so a FIELD diagram can have a number of rows which is less than or equal to F. 
+
+Your method will be given F, it should return the total number of FIELD diagrams of order F.
+
+
+Definition
+    
+Class:
+FIELDDiagrams
+Method:
+countDiagrams
+Parameters:
+int
+Returns:
+long long
+Method signature:
+long long countDiagrams(int fieldOrder)
+(be sure your method is public)
+    
+
+Constraints
+-
+fieldOrder will be between 1 and 30, inclusive
+Examples
+0)
+
+    
+2
+Returns: 4
+There are four possible FIELD diagrams for F equal to 2, corresponding to partitions: (1), (2), (1, 1), (2,1). They are shown in the picture below. There white stands for unused space in a row and red for boxes, corresponding to FIELD diagrams.
+ 
+1)
+
+    
+3
+Returns: 13
+
+2)
+
+    
+5
+Returns: 131
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

@@ -1,0 +1,122 @@
+/*
+for (d = 1; d <= X=NumDigits(N); d++)
+{
+	for (sub = 000...999)
+	{
+		total += count of numbers containing sub starting at position d, that are <= N;
+		
+		X..........1=d
+		....sub.....
+		.. exclude numbers containing any other sub starting at position d-1,..,1
+	}
+}
+*/
+
+int p10(int x)
+{
+	int t = 1;
+	
+	while (x-- > 0)
+	{
+		t *= 10;
+	}
+	return t;
+}
+		
+
+int countInvalidCodes(int N) 
+{
+	int X = 0;
+	int NN = N;
+	while (NN > 0)
+	{
+		NN /= 10;
+		X++;
+	}
+	int count[30][10];
+	for (int d = 0; d < 30; d++)
+		for (int sub = 0; sub <= 9; sub++)
+			count[d][sub] = 0;
+			
+	for (int sub = 0; sub <= 9; sub++)
+	{
+		count[3][sub] = 1;
+	}
+	count[3][0] = 0;
+	
+	char buf[100];
+	
+	int total = 0;
+	for (int d = 4; d <= X; d++)
+	{
+		for (int sub = 0; sub <= 9; sub++)
+		{
+			sprintf(buf, "%d%d%d", sub, sub, sub);
+			for (int i = 0; i < d-3; i++)
+			{
+				char b2[10];
+				sprintf(b2, "9");
+				strcat(buf, b2);
+			}
+			int z = atoi(buf);
+			total += (N-z) * p10(d-3);
+			for (int k = 3; k < d; k++)
+			{
+				for (int s = 0; s <= 9; s++)
+				{
+					total -= count[k][s];
+				}
+			}
+		}	
+	}
+	
+	return total;	
+}
+Problem Statement
+    
+You are creating a storage management system. This system should create new PLU codes for new items. The requirements state that a PLU code must be a positive integer that does not contain three consecutive equal digits. For example, PLU codes 11211, 73399, 655 and 30 are valid PLU codes, but 11111, 73339, 555 and 3000 are invalid (they contain 111, 333, 555 and 000 respectively). For statistical purposes you want to count the number of invalid PLU codes.
+You will be given an int N. You should return the number of invalid PLU codes that are less than N.
+Definition
+    
+Class:
+PluCodeGenerator
+Method:
+countInvalidCodes
+Parameters:
+int
+Returns:
+int
+Method signature:
+int countInvalidCodes(int N)
+(be sure your method is public)
+    
+
+Constraints
+-
+N will be between 1 and 1 000 000 000, inclusive.
+Examples
+0)
+
+    
+111
+Returns: 0
+The first invalid PLU code is 111, so there are no invalid PLU codes less than 111.
+1)
+
+    
+556
+Returns: 5
+The invalid PLU codes less than 556 are 111, 222, 333, 444 and 555.
+2)
+
+    
+1113
+Returns: 13
+The invalid PLU codes less than 1113 are 111, 222, 333, 444, 555, 666, 777, 888, 999, 1000, 1110, 1111 and 1112.
+3)
+
+    
+7346556
+Returns: 323647
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

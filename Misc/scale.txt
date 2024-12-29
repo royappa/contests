@@ -1,0 +1,99 @@
+	public String[] transform(int[] x, int[] y)
+	{
+		int minX = 2000000000, minY = 2000000000, maxX = -2000000000, maxY = -2000000000;
+		
+		for (int i = 0; i < x.length; i++)
+		{
+			minX = Math.min(minX, x[i]);
+			minY = Math.min(minY, y[i]);
+			maxX = Math.max(maxX, x[i]);
+			maxY = Math.max(maxY, y[i]);
+		}
+		ArrayList a = new ArrayList();
+		for (int i = 0; i < x.length; i++)
+		{
+			double nx = (double) (x-minX)*1000.0/(double)(maxX-minX);
+			double ny = (double) (y-minY)*1000.0/(double)(maxY-minY);
+			
+			a.add(""+( (int) Math.round(nx)) + " "  + ( (int) Math.round(ny) ) );
+		}
+		return (String[]) a.toArray(new String[0]);
+	}
+	
+Problem Statement
+    
+We want to display a scatterplot in a 1000x1000 window. However, our points may have x and y values anywhere between -1,000,000,000 and 1,000,000,000. So, in order to display our data in a reasonable fashion, we want to make it fit in the window. Your task is, given the x and y values of the data, scale and translate the data so that the lowest x value is 0, and the highest is 1000. Do the same thing for the y values, being careful to preserve the relative distances in both the x and y directions. For example, if x = {-100, 0, 50, 100}, then it should be changed to {0,500,750,1000}. Note that changing the points may result in non-integral values, which should be rounded to the nearest integer (.5 rounds up). The return value should be a String[], each of whose elements is formatted as "<x> <y>", where <x> and <y> are the scaled and translated values of the corresponding elements of the input. <x> and <y> should be separated by exactly one space and have no extra leading zeros.
+Definition
+    
+Class:
+Display
+Method:
+transform
+Parameters:
+int[], int[]
+Returns:
+String[]
+Method signature:
+String[] transform(int[] x, int[] y)
+(be sure your method is public)
+    
+
+Constraints
+-
+Each element of x and y will be between -1,000,000,000 and 1,000,000,000, inclusive.
+-
+x will contain at least two distinct values.
+-
+y will contain at least two distinct values.
+-
+x and y will contain the same number of elements.
+-
+x and y will each contain between 2 and 50 elements, inclusive.
+Examples
+0)
+
+    
+{-100, 0, 50, 100}
+{-100, 0, 50, 100}
+Returns: { "0 0",  "500 500",  "750 750",  "1000 1000" }
+If we translate all the points +100 in both the x and y directions, and then scale all the coordinates up by a factor of 5, we find that they meet our requirements.
+1)
+
+    
+{0,2000,1}
+{0,2001,1}
+Returns: { "0 0",  "1000 1000",  "1 0" }
+
+2)
+
+    
+{-1000000000,1000000000,500000,499999}
+{-1000000000,1000000000,500000,499999}
+Returns: { "0 0",  "1000 1000",  "500 500",  "500 500" }
+
+3)
+
+    
+{-53,652,-6132,673,74,-473,373,736363,234,234,234}
+{-6464,36464,-43,373,363,-37633,2022,-644,2520,2520,2520}
+Returns: 
+{ "8 421",
+  "9 1000",
+  "0 507",
+  "9 513",
+  "8 513",
+  "8 0",
+  "9 535",
+  "1000 499",
+  "9 542",
+  "9 542",
+  "9 542" }
+
+4)
+
+    
+{0,1001,2000}
+{0,999,2000}
+Returns: { "0 0",  "501 500",  "1000 1000" }
+Be sure to round up when the fractional part is .5.
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

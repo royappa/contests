@@ -1,0 +1,82 @@
+	public int meet(int[] alice, int[] bob)
+	{
+		int min = 0;
+		int da = 0, db = 0;
+		int sum = 0;
+		for (int i = 0; i < alice.length; i++)
+			sum += alice[i];
+			
+		for (int i = 0; i < alice.length; i++)
+		{
+			da += alice[i];
+			db += bob[i];
+			if (da >= sum-db)
+				return i;
+		}
+		return alice.length;
+	}
+	
+Problem Statement
+    
+This morning, at exactly 8:00am, Alice started on a hike up from the bottom to the top of a local hill. At the same time, Bob began to hike down from the top to the bottom of the same hill. Both hikers used the same trail, and they passed each other sometime during the hike. Given minute-by-minute records of the distance hiked by each hiker, as two int[]'s, alice and bob, you are to determine the time at which they met on the trail, measured as minutes after 8:00am, rounding down to the nearest minute if necessary.
+For example, suppose Alice hiked at a steady pace of 25 meters per minute for a total of 10 minutes, whereas Bob hiked at 30 meters per minute for the first 7 minutes, and 20 meters per minute for the next 2 minutes. They passed each other between 8:04am and 8:05am, so you would return 4.
+Definition
+    
+Class:
+Hiking
+Method:
+meet
+Parameters:
+int[], int[]
+Returns:
+int
+Method signature:
+int meet(int[] alice, int[] bob)
+(be sure your method is public)
+    
+
+Constraints
+-
+alice contains between 1 and 50 elements, inclusive.
+-
+bob contains between 1 and 50 elements, inclusive.
+-
+Each element of alice is between 0 and 1000, inclusive.
+-
+Each element of bob is between 0 and 1000, inclusive.
+-
+At least one element of alice is positive.
+-
+At least one element of bob is positive.
+-
+The sum of the elements in alice equals the sum of the elements in bob.
+Examples
+0)
+
+    
+{ 25,25,25,25,25,25,25,25,25,25 }
+{ 30,30,30,30,30,30,30,20,20 }
+Returns: 4
+The example above.
+1)
+
+    
+{ 100,100,0,0,0,100,100 }
+{ 100,100,0,0,0,100,100 }
+Returns: 2
+The hikers met at exactly 8:02am. They stopped to chat for several minutes before continuing their hikes.
+2)
+
+    
+{ 100,100,100,100,100,100,100,100,100,100 }
+{ 1000 }
+Returns: 0
+Bob tripped over a root at the top of the hill and fell all the way to the bottom.
+3)
+
+    
+{ 1,2,3,4,5,6,7,8,9,30 }
+{ 1,2,3,4,5,6,7,8,9,30 }
+Returns: 8
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

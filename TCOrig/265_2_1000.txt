@@ -1,0 +1,214 @@
+#include <vector>
+#include <list>
+#include <map>
+#include <set>
+#include <deque>
+#include <stack>
+#include <bitset>
+#include <algorithm>
+#include <functional>
+#include <numeric>
+#include <utility>
+#include <sstream>
+#include <iostream>
+#include <iomanip>
+#include <cstdio>
+#include <cmath>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+int height, width;
+vector<string> pipes;
+vector<vector<int> > used;
+
+class PipePuzzle {
+public:
+
+void step(int& r, int& c, int dir)
+{
+	if (dir == 'N') r--;
+	if (dir == 'S') r++;
+	if (dir == 'E') c++;
+	if (dir == 'W') c--;
+	return;
+}
+
+bool canStep(int r, int c, char dir)
+{
+	step(r, c, dir);
+	if (r < 0 || r >= height || c < 0 || c >= width)
+		return false;
+	if (pipes[r][c] == '+')
+	{
+		return used[r][c] < 2;
+	} 
+	return used[r][c] == 0;
+}
+
+char left(char dir)
+{
+	return dir == 'N' ? 'W' :
+			dir == 'W' ? 'S' :
+				dir == 'S' ? 'E' : 'N';
+}
+
+char right(char dir)
+{
+	return dir == 'N' ? 'E' :
+			dir == 'E' ? 'S' :
+				dir == 'S' ? 'W' : 'N';
+}
+
+int dist(int r, int c, char dir)
+{
+//cout << r << " " << c << " " << dir << endl;
+	if (!canStep(r, c, dir))
+	{
+		return 0;
+	}
+	step(r, c, dir);
+	used[r][c]++;
+	int d = 0;
+	if (pipes[r][c] == '-' || pipes[r][c] == '+')
+	{
+		d = 1 + dist(r, c, dir);
+	}
+	else if (pipes[r][c] == 'L')
+	{
+		int d1 = dist(r, c, left(dir));
+		int d2 = dist(r, c, right(dir));
+		d = 1 + max(d1, d2);
+	}
+	used[r][c]--;
+	return d;
+}
+
+int longest(vector <string> _pipes) 
+{
+	used.clear();
+	pipes.clear();
+	int r = 0, c = 0;
+	string hole = "NSEW";
+	pipes = _pipes;
+	height = pipes.size();
+	width = pipes[0].size();
+	for (int i = 0; i < height; i++)
+	{
+		vector<int> row(width, 0);
+		used.push_back(row);
+		for (int j = 0; j < width; j++)
+		{
+			if (hole.find(pipes[i][j]) != -1)
+			{
+				r = i;
+				c = j;
+			}
+		}
+	}
+	//cout << r << c << endl;
+	return dist(r, c, pipes[r][c]);
+	
+	return 0;
+}
+
+};
+
+
+//Powered by [KawigiEdit]
+
+Problem Statement
+    
+The pipe game is played on a grid with three kinds of pipes. The straight pipe '-' allows water to flow straight. The elbow pipe 'L' diverts water either to the left or to the right. The cross pipe '+' has the same effect as a straight pipe. Unlike the other two pipes, the cross pipe allows water to flow through it a second time in a direction perpendicular to the first pass. 
+
+The water source is represented by one of: 'N', 'S', 'W' or 'E' indicating whether the water will begin flowing north, south, west or east respectively. 
+
+You are allowed to rotate each pipe in the grid by 90 degree increments with the objective of maximizing the number of pipes connected to the water source.
+
+Given a vector <string> pipes that represents the game grid, determine the length of the longest possible flow of water. Each pipe that the water flows through adds one to the total length. 
+
+A cross pipe through which water passes twice contributes two to the overall length. The starting water source is not a pipe, does not count towards the length, and may not be rotated.
+
+{"LL-L-",
+ "L+L+L",
+ "--NL-",
+ "L+--L",
+ "LL+L-"}
+ 
+  This is a graphical representation of the puzzle above.
+Definition
+    
+Class:
+PipePuzzle
+Method:
+longest
+Parameters:
+vector <string>
+Returns:
+int
+Method signature:
+int longest(vector <string> pipes)
+(be sure your method is public)
+    
+
+Notes
+-
+In each grid, south is the direction of increasing index within pipes, and north that of decreasing index. East is the direction of increasing index within an element of pipes, and west that of decreasing index.
+Constraints
+-
+pipes will have between 1 and 20 elements, inclusive.
+-
+Each element of pipes will have length between 1 and 20, inclusive.
+-
+Every element of pipes will have the same length.
+-
+pipes will only contain the characters ('-', 'L', '+', 'N', 'S', 'E', 'W').
+-
+pipes will have exactly one water source.
+-
+pipes will contain between 0 and 20 elbow 'L' pipes, inclusive.
+Examples
+0)
+
+    
+{"LL-L-",
+ "L+L+L",
+ "--NL-",
+ "L+--L",
+ "LL+L-"}
+Returns: 19
+ 
+1)
+
+    
+{"ELLL",
+ "LLLL",
+ "LLLL",
+ "LLLL"}
+Returns: 13
+ 
+2)
+
+    
+{"ELLLLL+",
+ "++++++L",
+ "L+++++L",
+ "L+++++L",
+ "L+++++L",
+ "L+++++L",
+ "+LLLLLL"}
+Returns: 71
+
+3)
+
+    
+{"-+-+-+-+-+-+-+-+-+-W"}
+Returns: 19
+
+4)
+
+    
+{"N"}
+Returns: 0
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

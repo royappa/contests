@@ -1,0 +1,84 @@
+	public int presentType(int n)
+	{
+		int count = 0;
+		int d;
+		for (d = 1; ; d++)
+		{
+			if (n >= count && n <= count+d*(d+1)/2)
+			{
+				n -= count;
+				for (int t = d; t >= 1; t--)
+				{
+					n -= t*t;
+					if (n <= 0)
+						return t;
+				}
+			}
+			count += d*(d+1)/2;
+		}		
+	}
+	
+	1 1:1
+	2 2:2,1:1
+	3 3:3,2:2,1:1
+	
+Problem Statement
+    
+I give my true love presents every day. On day 1, I give her one Type 1 present. On day 2, I give her two Type 2 presents, followed by one Type 1 present. On day 3, I give her three Type 3 presents, followed by two Type 2 presents, followed by one Type 1 present. This pattern continues day after day. Soon I begin to wonder, what type of present will be the 100th present that I give my true love? The 1000th? The 1000000th?
+
+For example, the 10th present that I give my true love is the Type 1 present on day 3.
+
+Write a method that takes an int n and returns the type of the nth present that I give my true love. Note that n is one-based, so n=1 refers to the very first present I give her (the Type 1 present on day 1).
+Definition
+    
+Class:
+TwoTurtledoves
+Method:
+presentType
+Parameters:
+int
+Returns:
+int
+Method signature:
+int presentType(int n)
+(be sure your method is public)
+    
+
+Notes
+-
+Unlike the poseur in the popular Christmas song, I do not stop giving my true love presents after the 12th day.
+Constraints
+-
+n is between 1 and 1000000000, inclusive.
+Examples
+0)
+
+    
+10
+Returns: 1
+The example above.
+1)
+
+    
+12
+Returns: 4
+The second of four Type 4 presents on Day 4.
+2)
+
+    
+399
+Returns: 11
+
+3)
+
+    
+123456
+Returns: 65
+
+4)
+
+    
+1000000000
+Returns: 1704
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

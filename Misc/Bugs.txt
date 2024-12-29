@@ -1,0 +1,92 @@
+
+
+COMMON LIMITS
+* 50^2=2500
+* 50^3 = 125,000
+* 50^4 = 6,250,000
+* 50^5 = 312,500,000
+* 50^6 = 15,625,000,000 (too much)
+
+* 10^6 = 1,000,000
+* 10^7 = 10,000,000
+* 10^8 = 100,000,000
+* 10^9 = 1000,000,000 (too much)
+
+* Expected values: the format is  E() = P1*E1 + P2*E2 + P3*E3 ..  (SUM of the terms, not MAX of the terms!)
+
+* Sorting: always declare the comparison function for non-basic types like this:
+	bool lessThan(const string& a, const string &b)
+Otherwise a call-by-value copy is made and this can timeout, e.g. in problems calling sort() within a next_permutation() loop.
+Can make the difference between timeout & pass.
+
+* Set stack size for GCJ-type contests if worried about stack depth overflow: 
+	g++ -Wl,--stack=0x100000 B.cpp
+	
+* Overflow: anytime a constraint says 1000000000 and you are multiplying numbers, use LONG LONG in things like this:
+	int x = (a * b) % MODULUS;   // a*b might overflow BEFORE the mod!
+	
+* Number of integers divisible by m, in the closed integer interval [a,b]:
+	(b-a+m-(m+b%m)%m)/m
+This works for any a,b, including negative, and m > 0.
+From venco, here.
+http://forums.topcoder.com/?module=Thread&threadID=612718&start=0&mc=13#972922
+For counting the number of integers whose remainder mod m is r < m, use:
+	(b-a+m-(m+(b-r)%m)%m)/m	
+
+* Google: if asked to write a function which returns a sequence, check in online encyclopedia of sequences
+	
+* Floating comparisons: never use a floating comparison to make a DISCRETE choice 
+	* It is ok to do  if (a < b) result = a; else result = b; // result is still one of a or b, so it has only rounding error
+	* It is NOT ok to do if (a < b) result = 10; else result = 20; // result may be off by 100% based on small rounding error in a or b!
+
+* Memoization
+	* If calling the top-level memo function multiple times, MAY have to re-initialize the memo! (IS needed if changing the problem's original data)
+	* But MAY NOT have to re-initialize it (if time is important)
+	* Check function return type (make sure f() is declared as LL instead of int, if necessary)
+	
+* Dynamic programming - circular cases
+	* Check that we don't go from (state X) -> ... -> (state X). This is not to be solved by DP/memo, but by BFS (unweighted) or Dijkstra (weighted).
+	
+* Check array dimensions:
+	* Note that if an index can go up to 50 (common in DP with standard limits), then it MUST be declared of size [51]. Don't confuse this with defensive programming!
+	* When declaring an array for a mask of N bits, declare it of size [1<<N] and not just [N].
+	* Remember that 2^30 = "1 followed by 30 zeroes" = 31 digits.
+	* Likewise 1<<30 has 31 digits
+	
+* Sizing - if anything is up to 2^30 or 2^31, use LONG LONG! Don't mess with int's if the result is near the boundary, unless memory is tight.
+
+* Initializing
+	* Check if a global variable like "int n" has been redeclared as a local, "int n"
+	* Check if an array is declared like  vector<int> v(n,0) and is then being initialized with push_back() in a loop:
+	
+		vector<int> v(n,0);
+		for (int i = 0; i < n; i++)
+		{
+			v.push_back(x[i]);
+		}
+
+* Bit count
+	* __builtin_popcount() is for int. Use __builtin_popcountll() for LL types.
+
+
+* Calculating sums
+	If calculating (a1+a2+..an) / den, where the final result num/den is guaranteed to fit in LL, watch out for overflow.
+	Can instead calculate a1/den+a2/den,.. removing overflow at every step (i.e., add the fractions, don't add the numerator first and then divide at the end).
+	
+
+* Strings
+	substr(i,j) - both i and j must be NON-NEGATIVE. They are of type "size_type" (unsigned). 
+				  Do not assume that negative values will be "clamped" to the ends of the strings automatically, it throws an exception.
+				  
+* operations MOD 1000007 etc (large primes)
+	- quickly check if the modulus is prime
+	- if taking factorials or choose() over a finite field, make sure to use division in the finite field instead of "/"
+	
+* queue's: use #include <deque> and like so:
+	deque<int> q;
+	q.push_back(x); 
+	int h = q.front(); q.pop_front();
+	
+* overlap
+If I want to check if a range [a,b] overlaps another range [x,y], then use logic of (a <= y) AND (x <= b) 
+

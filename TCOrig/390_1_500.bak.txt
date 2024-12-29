@@ -1,0 +1,128 @@
+vector<int> B, S;
+#define INF 1.0e50
+double memo[51][66000];
+int n, m;
+
+double cost[51][51][16];
+
+double f(int p, int mask) // minimum time to paint the boards [p,n) given mask of painters used
+{
+	double& r = memo[p][mask];
+	if (r >= 0)
+		return r;
+	
+	if (p == n)
+	{
+		return 0.0;
+	}
+	if (__builtin_popcount(mask) == m)
+	{
+		return INF;
+	}
+	r = INF;
+	// check which painter to assign the next slice
+	for (int i = 0; i < n; i++)
+	{
+		if ((mask & (1<<i)) == 0)
+		{
+			for (int q = p; q < n; q++)
+			{
+				double c = cost[p][q][i];
+				double t = f(q, mask|(1<<i));
+				if (t != INF && t+c < r)
+				{
+					r = t+c;
+				}
+			}
+		}
+	}
+	return r;
+}				
+		
+double minimalTime(vector <int> boardLength, vector <int> painterSpeed) 
+{
+	B = boardLength;
+	S = painterSpeed;
+	n = B.size();
+	m = S.size();
+	for (int i = 0; i < 51; i++)
+	{
+		for (int j = 0; j < 66000; j++)
+		{
+			memo[i][j] = -1.0;
+		}
+	}
+	
+	for (int i = 0; i < n; i++)
+	{
+		int len = 0;
+		for (int j = i; j < n; j++)
+		{
+			l
+	return f(0, 0); 
+}
+
+Problem Statement
+    
+There are several boards arranged side by side in a straight line. Boards go in order and you can't change the order of boards. The length of the i-th board in the line is boardLength[i] inches. There are also several painters. The i-th painter can paint a one inch length of board in 1/painterSpeed[i] seconds. You can assign jobs to some of painters (not necessarily to all of them). Each painter can be assigned at most a single block of one or more consecutive boards. All the painters start at the same time and work simultaneously. Return the minimal number of seconds needed to paint all the boards.
+Definition
+    
+Class:
+PaintingBoards
+Method:
+minimalTime
+Parameters:
+vector <int>, vector <int>
+Returns:
+double
+Method signature:
+double minimalTime(vector <int> boardLength, vector <int> painterSpeed)
+(be sure your method is public)
+    
+
+Notes
+-
+Painters do not have to be assigned to boards in any particular order. For example, painter 2 can be assigned to boards 1 to 3, while painter 1 is assigned to boards 4 to 5, etc.
+-
+The returned value must be accurate to within a relative or absolute value of 1E-9.
+Constraints
+-
+boardLength will contain between 1 and 50 elements, inclusive.
+-
+Each element of boardLength will be between 1 and 10000, inclusive.
+-
+painterSpeed will contain between 1 and 15 elements, inclusive.
+-
+Each element of painterSpeed will be between 1 and 10000, inclusive.
+Examples
+0)
+
+    
+{5,3,2}
+{2,3,5}
+Returns: 1.0
+Assign painter 3 (1-indexed) to the board of length 5, painter 2 to the board of length 3, and painter 1 to the board of length 2. Each painter will finish in exactly one second.
+1)
+
+    
+{1,2,1,4,2,1,1}
+{1,2,3}
+Returns: 2.0
+Assign painter 2 (1-indexed) to the first three boards {1, 2, 1}, painter 3 to the next two boards {4, 2}, and painter 1 to the last two boards {1, 1}. Each painter will finish in exactly 2 seconds.
+2)
+
+    
+{40, 46, 82, 89, 33, 46, 3, 50, 95, 
+81, 69, 40, 94, 93, 90, 98, 17, 34, 
+45, 18, 93, 28, 43, 38, 35}
+{49, 51, 35, 27, 48, 36, 54, 10}
+Returns: 4.686274509803922
+
+3)
+
+    
+{3,3,20}
+{9,1}
+Returns: 2.888888888888889
+It's better to assign everything to the fast painter and not assign anything to the slow painter.
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

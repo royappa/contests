@@ -1,0 +1,100 @@
+
+
+string goodnessSubstring(vector <string> superstring) 
+{
+	string s;
+	int n;	
+	
+	s = "";
+	for (int i = 0; i < superstring.size(); i++)
+	{
+		s += superstring[i];
+	}
+	n = s.size();
+	
+	int bestFirst = -1, bestLast = -1;
+	
+	vector<int> cp(26, -1);
+	
+	for (int i = 0; i < n; i++)
+	{
+		cp[s[i]-'0'] = i;
+		int first = 1<<30, last = 0;
+		for (int j = 0; j < 26; j++)
+		{
+			if (cp[j] != -1)
+			{
+				first = min(cp[j], first);
+				last = max(cp[j], last);
+			}
+		}
+		if (bestFirst == -1)
+		{
+			bestFirst = first;
+			bestLast = last;
+		}
+		else if (bestFirst != first || bestLast != last)
+		{
+			if (s.substr(first, last-first+1) < s.substr(bestFirst, bestLast-bestFirst+1))
+			{
+				bestFirst = first;
+				bestLast = last;
+			}
+		}
+	}
+	return s.substr(bestFirst, bestLast-bestFirst+1);
+		
+}
+
+Problem Statement
+    
+We define the goodness of a string S as the number of letters that appear in S only once. For instance, the goodness of the string "CHALLENGE" is 5 because it contains 5 distinct letters 'C', 'H', 'A', 'N' and 'G'.
+You are given a vector <string> superstring. superstring is split for convenience only, so you should concatenate all of its elements in order and treat it as a single string. You are to find the substring of superstring that has the maximal goodness. In case of a tie, return the substring that comes earliest alphabetically.
+Definition
+    
+Class:
+SuperString
+Method:
+goodnessSubstring
+Parameters:
+vector <string>
+Returns:
+string
+Method signature:
+string goodnessSubstring(vector <string> superstring)
+(be sure your method is public)
+    
+
+Constraints
+-
+superstring will have between 1 and 50 elements, inclusive.
+-
+Each element of superstring will contain between 1 and 50 characters, inclusive.
+-
+Each element of superstring will contain uppercase letters ('A'-'Z') only.
+Examples
+0)
+
+    
+{"CHALLENGE"}
+Returns: "CHALLENG"
+
+1)
+
+    
+{"THEWORD"}
+Returns: "THEWORD"
+
+2)
+
+    
+{"THE", "MULTI", "LINE", "TEST"}
+Returns: "HEMULTI"
+
+3)
+
+    
+{"ZYXWVUTSRQPONMLKJIHGFEDCBA", "ZYXWVUTSRQPONMLKJIHGFEDCBA"}
+Returns: "AZYXWVUTSRQPONMLKJIHGFEDCB"
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

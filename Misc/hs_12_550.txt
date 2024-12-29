@@ -1,0 +1,211 @@
+// CUBE ROTATIONS CORRECT USEFUL ROT ROTATE ROTATED 
+#include <vector>
+#include <list>
+#include <map>
+#include <set>
+#include <deque>
+#include <stack>
+#include <bitset>
+#include <algorithm>
+#include <functional>
+#include <numeric>
+#include <utility>
+#include <sstream>
+#include <iostream>
+#include <iomanip>
+#include <cstdio>
+#include <cmath>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+// Whatever cube input data is given, we put it into the unambiguous Cube struct below.
+// 24 rotations of a cube are obtained by rotating each of the six faces to the top, and then spinning CCW from the top 4 times each.
+// So we use "spin from top" and "spin from front" functions
+
+// Another totally different way is based on getting the "Canonical" representation of a cube string as follows, assuming it has DISTINCT marked faces
+// (the correct method implemented below this, might not depend on distinct faces - not sure).
+// We do this by rotating a cube in all combinations of ways and picking the minimum lexigographic representation as the canonical one
+// pseudocode - implmentation of X,Y,Z rotations left for later.
+string canonical(string c)
+{
+	string can = c;
+	for (int i = 0; i < 4; i++)
+	{
+		rotateX(c);
+		for (int j = 0; j < 4; j++)
+		{
+			rotateY(c);
+			for (int k = 0; k < 4; k++)
+			{
+				rotateZ(c);
+				can = min(can, c);
+			}
+		}
+	}
+	return can;
+}
+
+class Cube
+{
+public:
+	char top, bottom, left, right, front, back;
+	
+	Cube()
+	{
+	}
+	
+	Cube(char T, char U, char L, char R, char F, char B)
+	{
+		top = T;
+		bottom = U;
+		left = L;
+		right = R;
+		front = F;
+		back = B;
+	}
+	
+	string toString()
+	{
+		string s = "";
+		return s + top + bottom + left + right + front + back;
+	}
+	
+	void spinCCWFromTop()
+	{
+		Cube r;
+		r.top = top;
+		r.bottom = bottom;
+		r.left = front;
+		r.right = back;
+		r.front = right;
+		r.back = left;
+		*this = r;
+	}
+
+	void spinCCWFromFront()
+	{
+		Cube r;
+		r.front = front;
+		r.back = back;
+		r.top = left;
+		r.left = bottom;
+		r.right = top;
+		r.bottom = right;
+		*this = r;
+	}
+};
+
+
+class DistinctDice {
+public:
+
+bool try4(Cube c, set<string> all)
+{
+	for (int i = 0; i < 4; i++)
+	{
+		string s = c.toString();
+		if (all.find(s) != all.end())
+		{
+			return true;
+		}
+		c.spinCCWFromTop();
+	}
+	return false;
+}
+
+	
+int getDistinct(vector <string> dice) 
+{
+
+	set<string> all;
+	for (int i = 0; i < dice.size(); i++)
+	{
+		// if no rotation of dice[i] is in the set, add it
+		Cube c(dice[i][0], dice[i][1], dice[i][2], dice[i][3], dice[i][4], dice[i][5]);
+		bool exists = try4(c, all);
+
+		c.spinCCWFromFront(); // front
+		exists = exists || try4(c, all);
+		c.spinCCWFromFront(); // bottom
+		exists = exists || try4(c, all);
+		c.spinCCWFromFront(); // back
+		exists = exists || try4(c, all);
+		c.spinCCWFromFront(); // restored
+		
+		c.spinCCWFromTop(); c.spinCCWFromFront(); // right
+		exists = exists || try4(c, all);
+		c.spinCCWFromFront(); c.spinCCWFromTop(); // restored
+		
+		c.spinCCWFromTop(); c.spinCCWFromTop(); c.spinCCWFromTop(); c.spinCCWFromFront();
+		exists = exists || try4(c, all);
+		if (!exists)
+		{
+			all.insert(c.toString());
+		}
+	}
+	return all.size();
+}
+};
+
+
+//Powered by [KawigiEdit]
+//Powered by [KawigiEdit]		
+
+Problem Statement
+    
+Let's consider a standard six-sided die. Each side contains a distinct number between 1 and 6. We can represent a single die as a sequence of 6 digits in the following order: the number on its top side, bottom side, left, right, front and back sides. You are given a vector <string> givenDice, each element of which represents a single die in the described format.
+Your task is to determine the number of distinct dice in givenDice. Two dice are considered equal if they can be rotated in such a way that the numbers on the corresponding sides are all equal.
+Definition
+    
+Class:
+DistinctDice
+Method:
+getDistinct
+Parameters:
+vector <string>
+Returns:
+int
+Method signature:
+int getDistinct(vector <string> givenDice)
+(be sure your method is public)
+    
+
+Constraints
+-
+givenDice will contain between 1 and 50 elements, inclusive.
+-
+Each element of givenDice will contain exactly 6 characters.
+-
+Each character of each element of givenDice will be a digit between '1' and '6', inclusive.
+-
+Within each element of givenDice, all characters will be distinct.
+Examples
+0)
+
+    
+{"123456","654321"}
+Returns: 1
+
+1)
+
+    
+{"145326","154236","216543"}
+Returns: 3
+
+2)
+
+    
+{"165324"}
+Returns: 1
+
+3)
+
+    
+{"546231", "245631", "531462", "524631",
+ "614235", "415623", "423651", "316254",
+ "432165", "316452", "135426", "643512"}
+Returns: 10
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

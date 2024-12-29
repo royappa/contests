@@ -1,0 +1,15 @@
+1.	When the session is timed out, it seems like the site generates errors instead of catching it gracefully
+2.	I am logged in as test@test.com / 123 and this seems to be a “moderator” user. For this user, “Administration” link and features should be unavailable (and hidden).
+3.	Do not allow “Delete” on eConnect Administrator user.
+a.	Can there be more than one eConnect Administrator?
+b.	If so, we can allow delete on all except if this delete action would leave zero eConnect Administrators.
+4.	Can I get a password for eweblife@eweblife.com user (eConnect Administrator) to try those features.
+5.	
+
+SpiralFX Interactive, LLC
+(214) 497-6573 direct
+(877) 857-2539 toll-free
+(214) 853-9186 fax
+ 
+SpiralFX Update: try our fun new sports web site, www.UltimateEliminator.com! 
+

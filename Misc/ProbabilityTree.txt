@@ -1,0 +1,171 @@
+
+	public int[] getOdds(String[] tree, int lowerBound, int upperBound)
+	{
+		HashMap P = new HashMap();
+		P.put("0", new Double(tree[0]));
+		
+		HashMap PAB = new HashMap();
+		HashMap PANB = new HashMap();
+		for (int i = 1; i < tree.length; i++)
+		{
+			String[] w = tree[i].split(" ");
+			PAB.put(w[0], new Double(w[1]));
+			PANB.put(w[0], new Double(w[2]));
+		}
+		
+	}
+
+Problem Statement
+    
+Probability trees are a useful tool in mathematics to help determine conditional probabilities of complex events. Each node in a probability tree represents an event. We write P(X) to mean "the probability that event X occurs", and P(~X) to mean "the probability that event X does not occur". 
+
+If a node is at the root of the tree, it has a single number associated with it (between 0.0 and 1.0, inclusive) which represents the likelihood of this event taking place. All other nodes on the tree have two numbers attached to them: the probability of this event happening if the parent node's event occurs, and the probability of this event happening if the parent node's event does not occur. 
+
+If the current node is A and the parent node is B, these probabilities are referred to as P(A|B) (probability of A given B) and P(A|~B) (probability of A given not-B), respectively.
+
+
+For example, here is a tree with only two nodes:  
+To calculate the probability of event 1 occurring (whether or not event 0 occurs), one can use this rule: 
+P(A) = P(A|B) * P(B) + P(A|~B) * P(~B) The following diagram shows a more complete list of probabilities which can be derived:  
+
+Note that the sum of two opposite events is always equal to 1. 
+P(1) was calculated as follows: P(1) = P(1|0) * P(0) + P(1|~0) * P(~0) = (0.4 * 0.7) + (0.6 * 0.1) = 0.34
+
+You will be given a String[] tree, representing a probability tree. The first element of tree represents the root node, and will be a single integer between 1 and 99, inclusive, representing the percent likelihood of the event taking place. Each successive element of tree will be of the form "<parent> <prob1> <prob2>", where <parent> is the zero-based index of the parent node in tree, and <prob1> and <prob2> are P(A|B) and P(A|~B) for this node, respectively. 
+
+You will also be given two percentages, lowerBound and upperBound. Your method should return a int[] containing every node X, in ascending order, such that lowerBound < P(X) < upperBound.
+
+Definition
+    
+Class:
+ProbabilityTree
+Method:
+getOdds
+Parameters:
+String[], int, int
+Returns:
+int[]
+Method signature:
+int[] getOdds(String[] tree, int lowerBound, int upperBound)
+(be sure your method is public)
+    
+
+Constraints
+-
+tree will contain between 1 and 50 elements, inclusive.
+-
+Each element of tree will contain between 1 and 8 characters, inclusive.
+-
+The first element of tree will contain a single integer between 1 and 99, inclusive, with no leading zeroes.
+-
+All other elements of tree will contain three space-separated integers of the form "<parent> <prob1> <prob2>", with no unnecessary leading zeroes.
+-
+<parent> will be an integer between 0 and N-1, inclusive, where N is the number of elements in tree.
+-
+<prob1> and <prob2> will be between 1 and 99, inclusive.
+-
+All nodes in tree will be connected, directly or indirectly, to the root node.
+-
+lowerBound will be between 0 and 99, inclusive.
+-
+upperBound will be between 1 and 100, inclusive.
+-
+lowerBound will be strictly less than upperBound.
+-
+No event's likelihood will be within 1e-9 of lowerBound or upperBound.
+Examples
+0)
+
+    
+{"40","0 70 10"}
+30
+50
+Returns: { 0,  1 }
+This is the example from the problem statement. The probability of event 0 is 0.4, and the probability of event 1 is 0.34, both of which are within the specified range.
+1)
+
+    
+{"20","2 50 50","0 50 50"}
+49
+51
+Returns: { 1,  2 }
+Both event 1 and event 2 have 50% probabilities of happening, regardless of what happens at their parents.
+2)
+
+    
+{"10","0 99 41","1 40 3","2 91 43"}
+81
+88
+Returns: { }
+event | probability (rounded)
+------+------------
+ 0    | 0.10
+ 1    | 0.47
+ 2    | 0.20
+ 3    | 0.53
+3)
+
+    
+{"79","0 64 52","1 70 87","0 38 99","1 24 8"}
+47
+81
+Returns: { 0,  1,  2,  3 }
+
+4)
+
+    
+{"51",
+ "29 58 3",
+ "6 56 86",
+ "18 97 1",
+ "44 99 25",
+ "33 69 90",
+ "27 67 49",
+ "32 15 19",
+ "33 1 21",
+ "45 12 33",
+ "29 24 40",
+ "45 86 74",
+ "40 30 65",
+ "0 18 27",
+ "1 90 65",
+ "0 47 62",
+ "40 81 72",
+ "42 25 56",
+ "45 16 81",
+ "8 94 92",
+ "29 41 92",
+ "24 4 29",
+ "32 56 91",
+ "20 16 77",
+ "1 35 79",
+ "45 77 61",
+ "6 50 19",
+ "20 69 43",
+ "4 6 16",
+ "15 55 26",
+ "42 73 90",
+ "40 8 49",
+ "33 16 33",
+ "15 95 47",
+ "9 66 40",
+ "25 80 39",
+ "35 72 70",
+ "27 10 36",
+ "40 36 10",
+ "32 2 48",
+ "33 44 23",
+ "22 51 45",
+ "25 8 43",
+ "18 32 96",
+ "45 41 74",
+ "0 51 6",
+ "18 48 15"}
+8
+82
+Returns: 
+{ 0,  1,  2,  3,  4,  5,  6,  7,  9,  10,  11,  12,  13,  14,  15,  16,
+  17,  18,  20,  21,  23,  24,  25,  26,  27,  28,  29,  31,  32,  33,
+  34,  35,  36,  37,  38,  39,  40,  41,  42,  43,  44,  45,  46 }
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

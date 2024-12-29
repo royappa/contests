@@ -1,0 +1,124 @@
+#include <vector>
+#include <list>
+#include <map>
+#include <set>
+#include <deque>
+#include <stack>
+#include <bitset>
+#include <algorithm>
+#include <functional>
+#include <numeric>
+#include <utility>
+#include <sstream>
+#include <iostream>
+#include <iomanip>
+#include <cstdio>
+#include <cmath>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+class CommonMultiples {
+public:
+typedef long long LL;
+
+LL gcd(LL x, LL y)
+{
+	return y == 0 ? x : gcd(y, x%y);
+}
+
+int f(int k, vector<int> a)  // return number of ints <= n, that are multiples of all members of a
+{
+	if (k == 0)
+		return 1;
+		
+	int n = a.size();
+	
+	LL m = a[0];
+	for (int i = 1; i < n; i++)
+	{
+		m = (m*LL(a[i]))/gcd(m, a[i]);
+		if (m > k)
+			return 1;
+	}
+//cout << k << " " << m << endl;
+	return k/m+1;
+}
+
+int countCommMult(vector <int> a, int lower, int upper) 
+{
+	LL x = f(upper, a);
+	LL y = f(lower-1, a);
+	return x-y;
+}
+
+};
+
+
+//Powered by [KawigiEdit]
+
+
+Problem Statement
+    
+You will be given a vector <int> a and two ints lower and upper. Return the number of integers between lower and upper, inclusive, 
+that are multiples of all members of a.
+
+Definition
+    
+Class:
+CommonMultiples
+Method:
+countCommMult
+Parameters:
+vector <int>, int, int
+Returns:
+int
+Method signature:
+int countCommMult(vector <int> a, int lower, int upper)
+(be sure your method is public)
+    
+
+Constraints
+-
+a will contain between 1 and 50 elements, inclusive.
+-
+Each element of a will be between 1 and 100, inclusive.
+-
+upper will be between 1 and 2000000000 (2*10^9), inclusive.
+-
+lower will be between 1 and upper, inclusive.
+Examples
+0)
+
+    
+{1,2,3}
+5
+15
+Returns: 2
+The only numbers between 5 and 15 that are multiples of 1, 2 and 3 are 6 and 12.
+1)
+
+    
+{1,2,4,8,16,32,64}
+128
+128
+Returns: 1
+128 is a multiple of all smaller powers of 2.
+2)
+
+    
+{2,3,5,7,11,13,17,19,23,29,31,37,41,43,49}
+1
+2000000000
+Returns: 0
+
+3)
+
+    
+{1,1,1}
+1
+2000000000
+Returns: 2000000000
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

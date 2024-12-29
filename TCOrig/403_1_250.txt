@@ -1,0 +1,97 @@
+#include <deque>
+	
+int count(int a, int b) 
+{
+	deque<int> q;
+	q.push_back(4);
+	q.push_back(7);
+	map<int,int> visited;
+	visited[4] = 1;
+	visited[7] = 1;
+	int num;
+	while (q.size() > 0)
+	{
+		int h = q.front();
+		q.pop_back();
+		if (h >= a && h <= b)
+			num++;
+		char buf[100];
+		sprintf(buf, "%d", h);
+		string s = buf;
+		if (s.size() < 9)
+		{
+			int x = h*10+4;
+			if (visited.count(x) == 0)
+			{
+				visited[x] = 1;
+				q.push_back(x);
+			}
+			x = h*10+7;
+			if (visited.count(x) == 0)
+			{
+			{
+				visited[x] = 1;
+				q.push_back(x);
+			}
+		}
+	}
+	return num;
+}
+
+Problem Statement
+    
+John thinks 4 and 7 are lucky digits, and all other digits are not lucky. 
+
+A lucky number is a number that contains only lucky digits in decimal notation.
+You are given ints a and b. Return the number of lucky numbers between a and b, inclusive.
+
+Definition
+    
+Class:
+TheLuckyNumbers
+Method:
+count
+Parameters:
+int, int
+Returns:
+int
+Method signature:
+int count(int a, int b)
+(be sure your method is public)
+    
+
+Constraints
+-
+a will be between 1 and 1,000,000,000, inclusive.
+-
+b will be between a and 1,000,000,000, inclusive.
+Examples
+0)
+
+    
+1
+10
+Returns: 2
+There are only two lucky numbers among the first ten positive integers.
+1)
+
+    
+11
+20
+Returns: 0
+But there are none among the next ten.
+2)
+
+    
+74
+77
+Returns: 2
+These two numbers are lucky. There are no additional lucky numbers between them.
+3)
+
+    
+1000000
+5000000
+Returns: 64
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

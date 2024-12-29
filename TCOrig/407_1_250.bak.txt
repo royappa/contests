@@ -1,0 +1,78 @@
+
+Problem Statement
+    
+You are working in the HR department of a huge corporation. Each employee may have several direct managers and/or several direct subordinates. Of course, his subordinates may also have their own subordinates, and his direct managers may have their own managers. We say employee X is a boss of employee Y if there exists a sequence of employees A, B, ..., D, such that X is the manager of A, A is the manager of B, and so on, and D is the manager of Y (of course, if X is a direct manager of employee Y, X will be a boss of employee Y). If A is a boss of B, then B can not be a boss of A. According to the new company policy, the salary of an employee with no subordinates is 1. If an employee has any subordinates, then his salary is equal to the sum of the salaries of his direct subordinates. You will be given a vector <string> relations, where the j-th character of the i-th element is 'Y' if employee i is a direct manager of employee j, and 'N' otherwise. Return the sum of the salaries of all the employees.
+Definition
+    
+Class:
+CorporationSalary
+Method:
+totalSalary
+Parameters:
+vector <string>
+Returns:
+long long
+Method signature:
+long long totalSalary(vector <string> relations)
+(be sure your method is public)
+    
+
+Constraints
+-
+relations will contain between 1 and 50 elements, inclusive. 
+-
+Each element of relations will contain the same number of characters, which is equal to number of elements in relations. 
+-
+Each element of relations will contain only 'Y' or 'N'. 
+-
+Character i of element i of relations will be 'N' for each i. 
+-
+If A is a boss of B, then B will not be a boss of A.
+Examples
+0)
+
+    
+{"N"}
+Returns: 1
+Here we've got only one employee so the answer is 1.
+1)
+
+    
+{"NNYN",
+ "NNYN",
+ "NNNN",
+ "NYYN"}
+Returns: 5
+There are 4 employees here. 0, 1 and 3 are managers of 2, and also 3 is a manager of 1. So: salary(2) = 1 salary(0) = salary(2) = 1 salary(1) = salary(2) = 1 salary(3) = salary(2) + salary(1) = 2
+2)
+
+    
+{"NNNNNN",
+ "YNYNNY",
+ "YNNNNY",
+ "NNNNNN",
+ "YNYNNN",
+ "YNNYNN"}
+Returns: 17
+
+3)
+
+    
+{"NYNNYN",
+ "NNNNNN",
+ "NNNNNN",
+ "NNYNNN",
+ "NNNNNN",
+ "NNNYYN"}
+Returns: 8
+
+4)
+
+    
+{"NNNN",
+ "NNNN",
+ "NNNN",
+ "NNNN"}
+Returns: 4
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

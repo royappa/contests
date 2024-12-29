@@ -1,0 +1,76 @@
+	public int minSamples(String percent)
+	{
+		DecimalFormat df = new DecimalFormat("00.00");
+		for (int num = 1; num <= 10000; num++)
+		{
+			for (resp = 1; resp <= num; resp++)
+			{
+				String p = df.format((double) resp / (double) num) + "%";
+				if (p.equals(percent))
+					return num;
+			}
+		}
+		return "";
+	}
+	
+Problem Statement
+    
+Statistics can be misleading, even if they are technically correct. For example, if you were told that 71.43% of people polled answered "yes" to a question, the two digits after the decimal place imply high precision, and that many people must have been polled in order to arrive at that level of accuracy. However, in this example, if only 7 people were polled and 5 answered "yes", (5/7)*100 = 71.43 (rounded to the nearest hundredth of a percent). Given a percentage rounded to two decimal places, we want to determine the minimum number of people who could have been polled.
+Create a class Percents with a method minSamples. This method will take a String percent that gives the percentage of people who responded "yes" to a poll, rounded to the nearest hundredth of a percent. The String percent will be of the form "xx.xx%", where each 'x' represents a digit between '0' and '9', inclusive. The method should return an int, the minimum possible number of people who could have been polled to result in that percentage.
+Definition
+    
+Class:
+Percents
+Method:
+minSamples
+Parameters:
+String
+Returns:
+int
+Method signature:
+int minSamples(String percent)
+(be sure your method is public)
+    
+
+Notes
+-
+All percentages are rounded to the nearest hundredth of a percent. In case the difference is exactly 0.005, round up.
+-
+The answer will be between 1 and 10000, inclusive, as any percentage to two decimal places can be achieved with 10000 people.
+-
+Note that, if there were d people, then the number of people who responded "yes" must be either floor(d*percent/100) or ceil(d*percent/100).
+Constraints
+-
+percent will contain exactly 6 characters (with leading and/or trailing zeros if necessary), and will be between "00.00%" and "99.99%", inclusive.
+Examples
+0)
+
+    
+"25.00%"
+Returns: 4
+1 out of 4 is 25.00%.
+1)
+
+    
+"66.67%"
+Returns: 3
+2 out of 3 is 66.67%, rounded to 2 decimal places.
+2)
+
+    
+"66.66%"
+Returns: 2858
+1905 is 66.6550034895032% of 2858. 1905/2858 is the fraction with the smallest denominator that equals 66.66 when rounded to two decimal places.
+3)
+
+    
+"71.43%"
+Returns: 7
+This is the example from the problem statement.
+4)
+
+    
+"00.00%"
+Returns: 1
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

@@ -1,0 +1,92 @@
+	private int[][][] cache;
+	
+	int findGain(int turn, int left, int right, int[] bags)
+	{
+		if (left > right)
+		{
+			return 0;
+		}
+		int value = cache[turn][left][right];
+		if (value != -1)
+			return value;
+			
+		if (turn == 0)
+		{
+			int leftVal = bags[left]+findGain(1, left+1, right, bags);
+			int rightVal = bags[right]+findGain(1, left, right-1, bags);
+			value = Math.max(leftVal, rightVal);
+		}
+		else if (turn == 1)
+		{
+			int leftVal = -bags[left]+findGain(0, left+1, right, bags);
+			int rightVal = -bags[right]+findGain(0, left, right-1, bags);
+			value = Math.min(leftVal, rightVal);
+		}
+		cache[turn][left][right] = value;
+		return value;	
+	}
+
+	public int netGain(int[] bags)
+	{
+		int n = bags.length;
+		cache = new int[2][n][n];
+		
+		for (int i = 0; i < 2; i++)
+			for (int j = 0; j < n; j++)
+				for (int k = 0; k < n; k++)
+					cache[i][j][k] = -1;
+					
+		return findGain(0, 0, n-1, bags); // turn==0 means "my turn"; endpoints are 0,n-1		
+	}
+
+Problem Statement
+    
+My partner and I have bags of gold, lined up in a row. The bags are different sizes. My partner has offered to split up the gold using the following system: we take turns, each time choosing one bag from either end of the line. She has even generously offered to let me go first -- hmmmmmmmm....
+I need software to tell me the total amount of gold that I will get compared to how much my partner will get if I choose first. Of course we will assume that my partner and I are brilliant and always choose in the optimum way.
+Create a class BagsOfGold that contains a method netGain that is given a int[] bags, the values of all the bags of gold in the order in which they are lined up. It should return how much more gold I will get than my partner if we both behave optimally. (I fear that the answer might be a negative number since my partner proposed the plan.)
+Definition
+    
+Class:
+BagsOfGold
+Method:
+netGain
+Parameters:
+int[]
+Returns:
+int
+Method signature:
+int netGain(int[] bags)
+(be sure your method is public)
+    
+
+Constraints
+-
+bags will contain between 1 and 50 elements inclusive.
+-
+Each element of bags will be between 1 and 100,000 inclusive.
+Examples
+0)
+
+    
+{7,2}
+Returns: 5
+I will choose the 7, and then she gets the 2. So the result is 7 - 2 = 5.
+1)
+
+    
+{2,7,3}
+Returns: -2
+It doesn't matter whether I choose the 2 or the 3. She will choose the 7 and I will get the remaining bag. (2+3) - 7 = -2
+2)
+
+    
+{1000,1000,1000,1000,1000}
+Returns: 1000
+Since I choose first I will get 3 bags and my partner will get only 2 bags. They all have the same value so (1000+1000+1000) - (1000+1000) = 1000.
+3)
+
+    
+{823,912,345,100000,867,222,991,3,40000}
+Returns: -58111
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

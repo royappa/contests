@@ -1,0 +1,329 @@
+Problem Statement for RobotHerb
+Problem Statement
+               
+Robot Herb is playing on an infinite square grid. At any moment, Herb stands on one of the squares and he faces one of the four cardinal directions. In his memory, Herb has a program. The program is a sequence of commands. For each i, the i-th of these commands has the following form:
+ 
+First move forward a[i] tiles.
+Then turn 90 degrees to the right, a[i] times in a row.
+Herb has decided to run the program T times. You are given the int T and the int[] a that describes Herb's program. Let A be the initial position of Herb and B be his position after the program was executed T times. Return the Manhattan distance between tiles A and B.
+ 
+Definition
+               
+Class:     RobotHerb
+Method:              getdist
+Parameters:        int, int[]
+Returns:               long
+Method signature:           long getdist(int T, int[] a)
+(be sure your method is public)
+    
+ 
+Notes
+-              Let's introduce a Cartesian coordinate system on the grid so that each cardinal direction is parallel to one of the axes. The Manhattan distance between two tiles with centers at points (x1, y1) and (x2, y2) is defined as |x1-x2| + |y1-y2|.
+Constraints
+-              T will be between 1 and 1,000,000,000, inclusive.
+-              a will contain between 1 and 50 elements, inclusive.
+-              Each element of a will be between 1 and 10,000,000, inclusive.
+Examples
+0)            
+               
+1
+{1,2,3}
+Returns: 2
+Suppose that initially Herb stands on the tile with center at (0, 0) and faces the positive y direction. The program will get executed as follows:
+                       tile         direction
+After 1st command:     (0, 1)       positive x
+After 2nd command:     (2, 1)       negative x
+After 3rd command:     (-1, 1)      negative y
+The manhattan distance between the initial and the final positions is |-1| + |1| = 2.
+1)            
+               
+100
+{1}
+Returns: 0
+2)            
+               
+5
+{1,1,2}
+Returns: 10
+3)            
+               
+1000000000
+{100}
+Returns: 100000000000
+The answer doesn't fit into a 32-bit integer data type.
+4)            
+               
+570
+{2013,2,13,314,271,1414,1732}
+Returns: 4112
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2010, TopCoder, Inc. All rights reserved.
+ 
+ 
+ 
+ 
+This problem was used for: 
+       Single Round Match 570 Round 1 - Division I, Level One
+       
+**********************************************
+Problem Statement for NewArenaPassword
+ 
+ 
+Problem Statement
+               You are a huge fan of an online programming contest called SRM (Special Round Match). To participate in an SRM contest, you must first download an applet called Arena, log in to the Arena by entering your username and password, and start competing. 
+ 
+ 
+ 
+Recently, to avoid hackers' attacks on the Arena, SRM imposes a new rule for the users' passwords. From now on, the first K characters of each user's password must match its last K characters. In this way, if someone enters a password with different first and last K characters repeatedly, it can be considered an attack from hackers. 
+ 
+ 
+ 
+However, you love your old password and do not want to change many characters from it. You are given a String oldPassword representing your old password, and an int K. Return the minimum number of characters of oldPassword that must be changed so that the string containing the first K characters of oldPassword is equal to the string containing the last K characters of oldPassword.
+Definition
+               
+Class:     NewArenaPassword
+Method:              minChange
+Parameters:        String, int
+Returns:               int
+Method signature:           int minChange(String oldPassword, int K)
+(be sure your method is public)
+    
+ 
+Constraints
+-              oldPassword will contain between 1 and 50 characters, inclusive.
+-              Each character of oldPassword will be a lowercase letter 'a' - 'z'.
+-              K will be between 1 and the number of characters of oldPassword, inclusive.
+Examples
+0)            
+               
+"topcoderopen"
+5
+Returns: 3
+A possible solution is changing your password into "topcndetopcn". To do this, you must change the 4th, 7th, and 10th characters (0-based) of "topcoderopen".
+1)            
+               
+"puyopuyo"
+4
+Returns: 0
+Your old password already satisfies the new rule.
+2)            
+               
+"loool"
+3
+Returns: 1
+The first and the last K characters can overlap. In this case, the only optimal solution is to change your password into "lolol".
+3)            
+               
+"arena"
+5
+Returns: 0
+4)            
+               
+"amavckdkz"
+7
+Returns: 5
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2010, TopCoder, Inc. All rights reserved.
+ 
+ 
+ 
+ 
+This problem was used for: 
+       Single Round Match 572 Round 1 - Division I, Level One
+**************************
+Problem Statement for TeamContest
+ 
+ 
+Problem Statement
+               Your university is holding a programming competition and your team is going to compete. 
+ 
+ 
+ 
+There are 3*N students in the university. They are numbered from 0 to 3*N-1. Each student has a certain strength which is a positive integer that characterizes his/her programming skills. You are given a int[] strength. The strength of student i is equal to strength[i]. 
+ 
+ 
+ 
+Your team will consist of students 0, 1 and 2. Other 3*N-3 students will form N-1 more teams so that each team has exactly 3 members. The exact composition of other teams is not known yet. Each team has a strength that is calculated as follows: if it consists of members with strengths X, Y and Z, then the team's strength is equal to max{X, Y, Z} + min{X, Y, Z}. 
+ 
+ 
+ 
+You are interested how your team will rank by strength among the other teams. Formally, the rank of your team is defined as 1 + (the number of other teams that have a strictly greater strength than the strength of your team). 
+ 
+ 
+ 
+Return the maximum possible rank that your team may have after all students split into teams.
+Definition
+               
+Class:     TeamContest
+Method:              worstRank
+Parameters:        int[]
+Returns:               int
+Method signature:           int worstRank(int[] strength)
+(be sure your method is public)
+    
+ 
+Constraints
+-              strength will contain between 3 and 48 elements, inclusive.
+-              The number of elements in strength will be divisible by 3.
+-              Each element of strength will be between 1 and 1,000,000, inclusive.
+Examples
+0)            
+               
+{5, 7, 3, 5, 7, 3, 5, 7, 3}
+Returns: 2
+The strength of your team is max{5, 7, 3} + min{5, 7, 3} = 10. It is possible that one of the other teams will be stronger than your team. For example, if it consists of students with strengths 5, 7 and 7, then its strength will be 12. However, it is not possible that both other teams will be stronger than your team.
+1)            
+               
+{5, 7, 3}
+Returns: 1
+Just your team. No rivals.
+2)            
+               
+{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
+Returns: 1
+All teams (including yours) will have the same strength: 2.
+3)            
+               
+{3,9,4,6,2,6,1,6,9,1,4,1,3,8,5}
+Returns: 3
+4)            
+               
+{53,47,88,79,99,75,28,54,65,14,22,13,11,31,43}
+Returns: 3
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2010, TopCoder, Inc. All rights reserved.
+ 
+ 
+ 
+ 
+This problem was used for: 
+       Single Round Match 573 Round 1 - Division I, Level One
+*************************
+Problem Statement for TheNumberGame
+ 
+ 
+Problem Statement
+               Manao has recently invented a brand new game called The Number Game. He usually plays this game against his friend. 
+ 
+ 
+ 
+Initially, Manao has an integer A and his friend has an integer B. Note that neither A nor B contain a zero digit in their base 10 representation. The players make moves alternatively with Manao starting first. In each move, the player can either reverse his current number, or he can divide it by 10 (using integer division). For example, if the current number is 12849, the player can either reverse it to obtain 94821, or he can divide it by 10 to obtain 1284. Note that we always round down when using integer division. Also note that each player is only allowed to change his own number, and not the number of the other player. 
+ 
+ 
+ 
+If after some move the players' numbers become equal, Manao is declared the winner. If after 1000 moves (that is, 500 moves by Manao and 500 by his friend) Manao has not won, he loses. Given A and B, determine whether Manao would win if both players play optimally. Return "Manao wins" or "Manao loses" accordingly.
+Definition
+               
+Class:     TheNumberGame
+Method:              determineOutcome
+Parameters:        int, int
+Returns:               String
+Method signature:           String determineOutcome(int A, int B)
+(be sure your method is public)
+    
+ 
+Constraints
+-              A will be between 1 and 999,999,999, inclusive.
+-              B will be between 1 and 999,999,999, inclusive.
+-              A and B will not contain a zero digit in base 10 representation.
+-              A and B will be distinct.
+Examples
+0)            
+               
+45
+4
+Returns: "Manao wins"
+Manao can win in one move by dividing his number by 10.
+1)            
+               
+45
+5
+Returns: "Manao wins"
+There are several possible scenarios this game can follow:
+ 
+Manao divides by 10 and obtains 4. Now his opponent can reverse his number and obtain 5 again. Obviously, no matter what Manao does in his next 499 moves, his opponent can evade him.
+Manao reverses his number and obtains 54. His opponent reverses his 5. Manao divides 54 by 10 and obtains 5, thus making the numbers equal
+Manao reverses his number and obtains 54. His opponent divides by 10 and obtains zero. Manao will win in three moves, dividing his number by 10 twice.
+Obviously, Manao will not choose to divide by 10 in his first move and will win.
+2)            
+               
+99
+123
+Returns: "Manao loses"
+No matter how Manao plays, the opponent can perform reverse moves until the end of the game.
+3)            
+               
+2356236
+5666
+Returns: "Manao loses"
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2010, TopCoder, Inc. All rights reserved.
+ 
+ 
+ 
+ 
+This problem was used for: 
+       Single Round Match 574 Round 1 - Division I, Level One
+       
+*********************************
+ 
+Problem Statement for TheNumberGameDivOne
+ 
+ 
+Problem Statement
+               John and Brus play a game with a number. The game starts with a positive integer n. The two players take alternating turns, John starts. Each move looks as follows: Let C be the current value of the integer. The current player has to choose a positive divisor of the number C, other than 1 and C. Once he chooses the divisor, he has to subtract it from C. The result is the new number with which the other player now starts his move. If a player cannot make a valid move, he loses the game. 
+ 
+ 
+ 
+For example, if they start with n=15, one possible gameplay can look as follows:
+John takes the number 15, chooses its divisor 3, and decreases the number to 15-3 = 12.
+Brus takes the number 12, chooses its divisor 4, and decreases the number to 12-4 = 8.
+John takes the number 8, chooses its divisor 2, and decreases the number to 8-2 = 6.
+Brus takes the number 6, chooses its divisor 3, and decreases the number to 6-3 = 3.
+John takes the number 3, and as there are no divisors other than 1 and 3, he has no valid move and thus he loses the game.
+ 
+ 
+ 
+ 
+You are given the long n. Assume that both players use the optimal strategy while playing the game. Return "John" (quotes for clarity) if John wins the game and "Brus" otherwise.
+Definition
+               
+Class:     TheNumberGameDivOne
+Method:              find
+Parameters:        long
+Returns:               String
+Method signature:           String find(long n)
+(be sure your method is public)
+    
+ 
+Constraints
+-              n will be between 1 and 10^18, inclusive.
+Examples
+0)            
+               
+6
+Returns: "John"
+John has two possible moves: either decrease 6 by 2 or decrease 6 by 3. If he chooses the second option, Brus will have no possible moves, hence John will win the game.
+1)            
+               
+2
+Returns: "Brus"
+2)            
+               
+747
+Returns: "Brus"
+3)            
+               
+128
+Returns: "Brus"
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2010, TopCoder, Inc. All rights reserved.
+ 
+ 
+ 
+ 
+This problem was used for: 
+       Single Round Match 575 Round 1 - Division I, Level One
+       
+ 
+ 
+SpiralFX Interactive, LLC
+(214) 497-6573 direct
+(877) 857-2539 toll-free
+(214) 853-9186 fax
+ 

@@ -1,0 +1,94 @@
+
+Problem Statement
+    
+Twin Towns are towns which are paired together to encourage human contact and cultural links. The government of your country has decided to establish such relationships among a given set of towns. The following rules must be followed:
+
+Each town must have between 0 and maxPartners twins, inclusive.
+The distance between each pair of twin towns must be at least minDistance. The distance between two towns located at (x1, y1) and (x2, y2) is defined as |x1-x2| + |y1-y2|.
+
+The government will establish as many relationships as possible. 
+
+If there are multiple ways to do this, the government will choose the one that minimizes the sum of the distances between each pair of twin towns. You are given vector <int>s x and y, where (x[i], y[i]) are the coordinates of the i-th town. 
+
+Return a vector <int> containing exactly two elements, where the first element is the number of relationships the government will establish, and the second element is the sum of the distances between each pair of twin towns.
+
+Definition
+    
+Class:
+TwinTowns
+Method:
+optimalTwinTowns
+Parameters:
+vector <int>, vector <int>, int, int
+Returns:
+vector <int>
+Method signature:
+vector <int> optimalTwinTowns(vector <int> x, vector <int> y, int maxPartners, int minDistance)
+(be sure your method is public)
+    
+
+Constraints
+-
+maxPartners will be between 1 and 3, inclusive.
+-
+x and y will contain between 1 and 10 elements, inclusive.
+-
+x and y will contain the same number of elements.
+-
+Each element of x and y will be between 0 and 1,000, inclusive.
+-
+minDistance will be between 1 and 2,000, inclusive.
+-
+No two towns will have the same coordinates.
+Examples
+0)
+
+    
+{0,0,10}
+{0,10,4}
+1
+1
+Returns: {1, 10 }
+We have 3 towns here at coordinates (0,0), (0,10), and (10,4). Each town can have at most one twin. Since we have only 3 towns, we can establish at most one pair of twin towns. The best solution pairs the first and second towns, where the distance is 10.
+1)
+
+    
+{0,0,10}
+{0,10,4}
+1
+11
+Returns: {1, 14 }
+These are the same towns from Example 0, but minDistance is now 11. The first and second towns cannot be twins. The best solution is to pair the first and third towns, where the distance is 14.
+2)
+
+    
+{0,10,0,10}
+{0,0,20,20}
+1
+1
+Returns: {2, 20 }
+Here we have 4 towns located at the vertices of a rectangle. Each town can have at most one twin. The best solution is to pair the first town with the second, and the third town with the fourth. The distance between each pair is 10.
+3)
+
+    
+{0,10,0,10}
+{0,0,20,20}
+2
+10
+Returns: {4, 60 }
+These are the same towns from Example 2, but now, each town can have up to two twins. The best solution establishes 4 pairs of twin towns:
+the first city at (0,0) with the second city at (10,0), where the distance is 10
+the first city at (0,0) with the third city at (0,20), where the distance is 20
+the second city at (10,0) with the fourth city at (10,20), where the distance is 20
+the third city at (0,20) with the fourth city at (10,20), where the distance is 10
+The sum of the distances is 60.
+4)
+
+    
+{0,0,0,0,0,0,0,0,0}
+{1,2,3,4,5,6,7,8,9}
+3
+6
+Returns: {6, 40 }
+We can pair the following list of towns (indexed from 1): 1-7, 1-8, 1-9, 2-8, 2-9, 3-9.
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

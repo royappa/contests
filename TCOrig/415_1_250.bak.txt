@@ -1,0 +1,149 @@
+vector<string> split_nonre(string s, string sep)
+{
+	char *sC = (char *) malloc(s.size()+1);
+	strcpy(sC, s.c_str());
+	char *sepC = (char *) sep.c_str();
+	char *status = NULL;
+	
+	char *word;
+	vector<string> results;
+	while ((word = strtok_r(sC, sepC, &status)) != NULL)
+	{
+		results.push_back(word);
+		sC = NULL;
+	}
+	return results;
+}
+
+#define MAX_VAL (1<<30)
+vector<int> b, c;
+int nb, nc, memo[51][10001];
+
+int f(int p, int k) // return minimum of max number assigned to any crane [p,nc) to boxes [k,nb)
+{
+	if (p == n-1)
+	{
+		return nb-k;
+	}
+	int& r = memo[p][k];
+	if (r != -1)
+		return r;
+		
+	r = f(p+1, k); // don't assign any to crane p	
+	for (int i = k; i < nb && c[p] >= b[i]; i++)
+	{
+		r = min(r, max(i-k+1, f(p+1, i+1)));
+	}
+	return r;
+}
+
+int minimumTime(vector <int> c_, vector <string> boxes) 
+{
+	c = c_;
+	string s = "";
+	for (int i = 0; i < boxes.size(); i++)
+	{
+		s += boxes[i];
+	}
+	vector<string> w = split_nonre(s, " ");
+	
+	for (int i = 0; i < w.size(); i++)
+	{
+		if (w[i].size() == 0) continue;
+		b.push_back(atoi(w[i].c_str()));
+	}
+	sort(c.begin(), c.end());
+	nc = c.size();
+	sort(b.begin(), b.end());
+	nb = b.size();
+	if (c[nc-1] < b[nb-1])
+		return -1;
+	// z = minimize the maximum number assigned to any crane
+	
+	return f(0, 0);
+	
+}
+
+Problem Statement
+    
+You have to load a ship with some cargo. All the cargo is put in boxes. 
+
+There are some cranes and each of them can put one box in the ship per minute. 
+
+All cranes can work simultaneously. 
+
+Each crane has a weight limit - it cannot move a box whose weight is greater than that limit. 
+
+Return the minimal time (measured in minutes) needed to load the ship with all cargo or -1 if it is impossible. 
+
+You are given a vector <int> cranes, the i-th element of which is the weight limit of the i-th crane. 
+
+You are also given a vector <string> boxes. 
+
+Concatenate the elements of boxes to get a space-separated list of the boxes' weights.
+
+Definition
+    
+Class:
+ShipLoading
+Method:
+minimumTime
+Parameters:
+vector <int>, vector <string>
+Returns:
+int
+Method signature:
+int minimumTime(vector <int> cranes, vector <string> boxes)
+(be sure your method is public)
+    
+
+Constraints
+-
+cranes will contain between 1 and 50 elements, inclusive. 
+-
+boxes will contain between 0 and 50 elements, inclusive. 
+-
+Each element of boxes will contain between 0 and 50 characters, inclusive.
+-
+The concatenation of all elements of boxes will be a non-empty space-separated list of integers with no leading zeroes. It will contain no leading, trailing, or consecutive spaces. 
+-
+Each element of cranes will be between 1 and 1,000,000, inclusive. 
+-
+Each box weight will be between 1 and 1,000,000, inclusive. 
+Examples
+0)
+
+    
+{6,8,9}
+{"2 5 2 4 7"}
+Returns: 2
+Everything can be done in 2 minutes.
+1)
+
+    
+{19,20}
+{"14 12 16 19 16 1 5"}
+Returns: 4
+Only two cranes, but each of them can move any of the boxes.
+2)
+
+    
+{23,32,25,28}
+{"5 27 10 16 24 20 2 32 18 7"}
+Returns: 3
+
+3)
+
+    
+{11,17,5,2,20,7,5,5,20,7}
+{"18 18 15 15 17"}
+Returns: 2
+
+4)
+
+    
+{56,114,979,120,120,87,480}
+{"221 882 504 358 642 674 212 679 203 279 632 799 79","6 502 275 823 372 594 482 343"}
+Returns: 12
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

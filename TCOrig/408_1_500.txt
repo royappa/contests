@@ -1,0 +1,195 @@
+typedef long long LL;
+
+int maximumCandy(vector <string> A, int t) 
+{
+	LL big = 2000000000LL;
+	LL s = 0;
+	n = A.size();
+	LL inf = 1000000;
+	LL dist[60][60];
+	for (int i = 0; i < 60; i++) for (int j = 0; j < 60; j++) dist[i][j] = INF;
+	for (int i = 0; i < n; i++)
+		for (int j = 0; j < n; j++)
+			dist[i][j] = A[i][j]=='Y';
+		
+	for (int k = 0; k < n; k++)
+	{
+		for (int i = 0; i < n; i++)
+		{
+			for (int j = 0; j < n; j++)
+			{
+				if (dist[i][[k] != INF && dist[k][j] != INF)
+					dist[i][j] = MIN(dist[i][j], dist[i][k]+dist[k][j]);
+			}
+		}
+	}
+				
+	for (int i = 0; i < n; i++)
+	{
+		if (i == t) continue;
+		int numKids = 0;
+		for (int j = 0; j < n; j++)
+		{
+			if (A[i][j] == 'Y' && dist[i][target] < dist[j][target]) 
+				numKids++;
+		}
+		if (numKids > 0)
+			continue;
+		int p = 0;
+		for (; p < n; p++)
+		{
+			if (dist[i][target]+1 == dist[p][target] && A[p][i] == 'Y')
+				break;
+		}
+		int numParKids = 0;
+		for (int j = 0; j < n; j++)
+		{
+			if (dist[j][target]+1 == dist[p][target] && A[p][j] == 'Y')
+				numParKids++;
+		}
+		if (numParKids > 1) // not an only child
+		{
+			s++;
+			if (s > big)
+				return -1;
+		}
+		// only child
+		LL d = dist[i][target];
+		s += (1LL<<d)-1LL;
+		if (s > big)
+			return -1;
+	}
+	return s;		
+}
+
+Problem Statement
+    
+Your brother is playing a new game he received for his birthday. 
+
+The game takes place on an acyclic, undirected graph, with pieces of candy located on some of the nodes. 
+
+On each turn, your brother picks a node with at least 2 pieces of candy on it. 
+
+He then picks up 2 pieces of candy from that node, eats one piece, and places the other piece on an adjacent node. 
+
+If at any time there is a piece of candy on the target node, then the game is over and your brother wins. If he cannot put candy on that node through any sequence of moves, he loses. 
+
+Your brother is smart, and so if there is a winning sequence of moves he will find it.
+
+You enjoy frustrating your brother and want to make him lose the game. The graph will be given as a vector <string>. The j-th character of element i will be 'Y' if nodes i and j are connected in the graph; otherwise, it will be 'N'. 
+
+Return the maximum number of pieces that can be placed on the board without your brother being able to win; if more than 2,000,000,000 pieces can be placed on the board without your brother winning, return -1 instead.
+
+Definition
+    
+Class:
+CandyGame
+Method:
+maximumCandy
+Parameters:
+vector <string>, int
+Returns:
+int
+Method signature:
+int maximumCandy(vector <string> graph, int target)
+(be sure your method is public)
+    
+
+Constraints
+-
+graph will contain N elements, where N is between 1 and 50, inclusive.
+-
+Each element of graph will contain exactly N characters.
+-
+Each character in graph will be either 'Y' or 'N'.
+-
+In graph, the j-th character of element i will equal the i-th character of element j.
+-
+The i-th character of the i-th element of graph will be 'N'.
+-
+The graph represented by graph will have no cycles.
+-
+target will be between 0 and N-1, inclusive.
+Examples
+0)
+
+    
+{"NYN", "YNY", "NYN"}
+1
+Returns: 2
+The graph is a straight line:
+0-1-2
+With node 1 as the target, we can only put one piece of candy each on nodes 0 and 2. If you place a second piece on either, your brother can eat one and move the other to node 1.
+1)
+
+    
+{"NYN", "YNY", "NYN"}
+2
+Returns: 3
+The same graph as example 0, but now node 2 is the target. The optimal strategy places 3 pieces of candy on node 0.
+2)
+
+    
+{"NYYY", "YNNN", "YNNN", "YNNN"}
+0
+Returns: 3
+
+3)
+
+    
+{"NYYY", "YNNN", "YNNN", "YNNN"}
+1
+Returns: 4
+
+4)
+
+    
+{"NYNNNYN",
+ "YNYNYNN",
+ "NYNYNNN",
+ "NNYNNNN",
+ "NYNNNNN",
+ "YNNNNNY",
+ "NNNNNYN"}
+0
+Returns: 11
+
+5)
+
+    
+{"NYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN",
+ "YNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNN",
+ "NYNYNNNNNNNNNNNNNNNNNNNNNNNNNNNN",
+ "NNYNYNNNNNNNNNNNNNNNNNNNNNNNNNNN",
+ "NNNYNYNNNNNNNNNNNNNNNNNNNNNNNNNN",
+ "NNNNYNYNNNNNNNNNNNNNNNNNNNNNNNNN",
+ "NNNNNYNYNNNNNNNNNNNNNNNNNNNNNNNN",
+ "NNNNNNYNYNNNNNNNNNNNNNNNNNNNNNNN",
+ "NNNNNNNYNYNNNNNNNNNNNNNNNNNNNNNN",
+ "NNNNNNNNYNYNNNNNNNNNNNNNNNNNNNNN",
+ "NNNNNNNNNYNYNNNNNNNNNNNNNNNNNNNN",
+ "NNNNNNNNNNYNYNNNNNNNNNNNNNNNNNNN",
+ "NNNNNNNNNNNYNYNNNNNNNNNNNNNNNNNN",
+ "NNNNNNNNNNNNYNYNNNNNNNNNNNNNNNNN",
+ "NNNNNNNNNNNNNYNYNNNNNNNNNNNNNNNN",
+ "NNNNNNNNNNNNNNYNYNNNNNNNNNNNNNNN",
+ "NNNNNNNNNNNNNNNYNYNNNNNNNNNNNNNN",
+ "NNNNNNNNNNNNNNNNYNYNNNNNNNNNNNNN",
+ "NNNNNNNNNNNNNNNNNYNYNNNNNNNNNNNN",
+ "NNNNNNNNNNNNNNNNNNYNYNNNNNNNNNNN",
+ "NNNNNNNNNNNNNNNNNNNYNYNNNNNNNNNN",
+ "NNNNNNNNNNNNNNNNNNNNYNYNNNNNNNNN",
+ "NNNNNNNNNNNNNNNNNNNNNYNYNNNNNNNN",
+ "NNNNNNNNNNNNNNNNNNNNNNYNYNNNNNNN",
+ "NNNNNNNNNNNNNNNNNNNNNNNYNYNNNNNN",
+ "NNNNNNNNNNNNNNNNNNNNNNNNYNYNNNNN",
+ "NNNNNNNNNNNNNNNNNNNNNNNNNYNYNNNN",
+ "NNNNNNNNNNNNNNNNNNNNNNNNNNYNYNNN",
+ "NNNNNNNNNNNNNNNNNNNNNNNNNNNYNYNN",
+ "NNNNNNNNNNNNNNNNNNNNNNNNNNNNYNYN",
+ "NNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNY",
+ "NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYN"}
+0
+Returns: -1
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

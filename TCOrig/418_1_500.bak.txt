@@ -1,0 +1,238 @@
+typedef long long LL;
+typedef PL pair<LL,int>;
+map<PL,int> memo;
+
+int n;
+vector< vector<int> > buyers; // the buyer-numbers of each stamp
+vector< vector<int> > wanted; // the stamps a given buyer wants
+
+vector<int> price; // the price that buyer k is willing to pay for all his stamps
+
+
+int f(LL mask, int p) // return maximum that we can make from selling stamps [p,n), given mask of used stamps
+{
+	if (__builtin_popcountll(mask) == n) // all stamps sold
+		return 0;
+	if (p == n)
+		return 0;
+	
+	PL key = make_pair(mask, p);
+	if (memo.count(key) > 0)
+		return memo[key];
+	
+	int r = 0;
+	if (mask & (1LL<<p))  // p is already sold
+	{
+		r = f(mask, p+1);
+	}
+	else
+	{
+		// try to sell p. There may be 0, 1 or 2 buyers.
+		int nb = buyers[p].size();
+		if (nb == 0)
+		{
+			r = f(mask, p+1); // no buyers, just go to next stamp
+		}
+		else if (nb == 1) 
+		{
+			int b = buyers[p][0];
+			int w1 = wanted[b][0], w2 = wanted[b][1];
+			if (w1 != p)
+				swap(w1, w2);
+			if (w2 != -1)
+			{
+				if (mask|(1LL<<w2)) // other stamp this buyer wants is already sold
+				{
+					r = f(mask, p+1); // can't sell this stamp to this buyer at all
+				}
+				else
+				{
+					r =	price[b]+f(mask|(1LL<<w1)|(1LL<<w2), p+1); // sell him two stamps
+				}
+			}
+			else
+			{
+				r = price[b]+f(mask|(1LL<<w1), p+1) // just one buyer wants to buy it, and he wants only this one stamp
+			}
+		}
+		else if (nb == 2)
+		{
+			int ba = buyers[p][0];
+			int bb = buyers[p][1];			
+			// two buyers want this stamp.
+			int r1, r2;			
+			int baw1 = wanted[ba][0], baw2 = wanted[ba][1];
+			if (baw1 != p)
+				swap(baw1, baw2);
+			if (baw2 != -1)
+			{
+				if (mask|(1LL<<baw2)) // other stamp this buyer wants is already sold
+				{
+					r1 = f(mask, p+1); // can't sell this stamp to this buyer at all
+				}
+				else
+				{
+					r1 =	price[ba]+f(mask|(1LL<<baw1)|(1LL<<baw2), p+1); // sell him two stamps
+				}
+			}
+			else
+			{
+				r1 = price[ba]+f(mask|(1LL<<baw1), p+1)
+			}
+
+			int bbw1 = wanted[bb][0], bbw2 = wanted[bb][1];
+			if (bbw1 != p)
+				swap(bbw1, bbw2);
+			if (bbw2 != -1)
+			{
+				if (mask|(1LL<<bbw2)) // other stamp this buyer wants is already sold
+				{
+					r2 = f(mask, p+1); // can't sell this stamp to this buyer at all
+				}
+				else
+				{
+					r2 =	price[bb]+f(mask|(1LL<<bbw1)|(1LL<<bbw2), p+1); // sell him two stamps
+				}
+			}
+			else
+			{
+				r2 = price[bb]+f(mask|(1LL<<bbw1), p+1)
+			}
+			r = max(r1, r2);
+		}
+	}
+	return memo[key] = r;
+}	
+
+vector<string> split_nonre(string s, string sep)
+{
+	char *sC = (char *) malloc(s.size()+1);
+	strcpy(sC, s.c_str());
+	char *sepC = (char *) sep.c_str();
+	char *status = NULL;
+	
+	char *word;
+	vector<string> results;
+	while ((word = strtok_r(sC, sepC, &status)) != NULL)
+	{
+		results.push_back(word);
+		sC = NULL;
+	}
+	return results;
+}
+		
+int sell(int n_, vector <string> demand_, vector <int> price_) 
+{
+	n = n_;
+	for (int i = 0; i < n; i++)
+	{
+		vector<int> v;
+		buyers.push_back(v);
+	}
+	price = price_;
+	for (int i = 0; i < size(demand_); i++)
+	{
+		vector<string> w = split_nonre(demand_[i], " ");
+		vector<int> v;
+		for (int j = 0; j < w.size(); j++)
+		{
+			int s = atoi(w[j].c_str());
+			buyers[s].push_back(i);
+			v.push_back(s);
+		}
+		if (v.size() == 1)
+			v.push_back(-1);
+		wanted.push_back(v);
+	}
+	return f(0, 0);	
+}
+
+Problem Statement
+    
+You have decided to sell your stamp collection, which consists of n stamps numbered 0 to n-1. 
+
+You have already found some buyers. The i-th buyer wants to buy the stamps listed in demand[i]. 
+
+This will be a space-separated list containing either one or two stamps. 
+
+He is willing to pay a total of price[i]. If he wants to buy two stamps, he will not agree to buy only one of them.  
+
+To make this task simpler, for each stamp, there will be no more than two buyers who want to buy it. 
+
+Return the maximum amount of money you can get from selling your stamps.
+
+Definition
+    
+Class:
+StampsCollection
+Method:
+sell
+Parameters:
+int, vector <string>, vector <int>
+Returns:
+int
+Method signature:
+int sell(int n, vector <string> demand, vector <int> price)
+(be sure your method is public)
+    
+
+Notes
+-
+You don't have to sell all of your stamps.
+Constraints
+-
+n will be between 1 and 50, inclusive.
+-
+demand will contain between 1 and 50 elements, inclusive.
+-
+price will contain the same number of elements as demand.
+-
+Each element of demand will be a space-separated list of one or two distinct integers.
+-
+All numbers in demand will be between 0 and n-1, inclusive, with no leading zeroes.
+-
+All numbers in price will be between 1 and 1000000, inclusive.
+-
+For each stamp, there will be at most 2 buyers who want to buy it.
+Examples
+0)
+
+    
+10
+{"0 4"}
+{3}
+Returns: 3
+There is only one buyer, so all we can do is to sell two stamps.
+1)
+
+    
+2
+{"1 0","0"}
+{3,5}
+Returns: 5
+There are two buyers, but both want to buy stamp 0.
+2)
+
+    
+3
+{"0 1","0 2","1 2"}
+{10,11,12}
+Returns: 12
+Only one buyer can get what he wants - we choose the third one, who is willing to pay the most.
+3)
+
+    
+3
+{"0","1 0","1 2"}
+{5,9,5}
+Returns: 10
+Although the second buyer will pay the most, it is better to choose the first and third buyers.
+4)
+
+    
+20
+{"0 1","1 2","2 3","3 0","4 5","5 6","6 4","8","8","9","9 10","10 11","11 12","12"}
+{3,7,4,1,3,3,1,5,6,5,18,10,1,5}
+Returns: 40
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

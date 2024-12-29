@@ -1,0 +1,173 @@
+#include <vector>
+#include <list>
+#include <map>
+#include <set>
+#include <deque>
+#include <stack>
+#include <bitset>
+#include <algorithm>
+#include <functional>
+#include <numeric>
+#include <utility>
+#include <sstream>
+#include <iostream>
+#include <iomanip>
+#include <cstdio>
+#include <cmath>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+typedef vector<string> vs;
+
+class WordSplit {
+public:
+string s;
+int n;
+
+int seen[60];
+vs memo[60];
+int diff[60][60];
+
+vs f(int p)
+{
+	if (diff[p][n-1])
+	{
+		string s = s.substr(p, n-p);
+		memo[p] = s;
+	}
+	if (seen[p])
+	{
+		return memo[p];
+	}
+	int r = 1<<30;
+	vs best;
+	for (int i = p; i < n && diff[p][i]; i++)
+	{
+		vs d = f(i+1);
+		if (1+d.size() < r)
+		{
+			r = d.size()+1;
+			best = d;
+		}
+		else if (d.size()+1 == r)
+		{
+			d.push_back(s.substr(p, i));
+			sort(d.begin(), d.end());
+			if (d < best)
+			{
+				r = d.size()+1;
+				best = d;
+			}
+		}
+	}
+	seen[p] = 1;
+	return memo[p] = best;
+}
+			
+vector <string> pieces(string s_) 
+{
+	s = s_;
+	n = s.size();
+	
+	memset(diff, 0, sizeof(diff));
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = i; j < n; j++)
+		{
+			set<char> letters;
+			letters.insert(s.begin()+i, s.begin()+j+1);
+			diff[i][j] = int(letters.size()) == j-i+1;
+			piece[i][j] = s.substr(i, j-i+1);
+			sort(piece[i][j].begin(), piece[i][j].end());
+			//cout << i << "  " << j << " " << diff[i][j] << endl;
+		}
+	}
+	memset(seen, 0, sizeof(seen));
+	return f(0);
+}
+};
+
+
+//Powered by [KawigiEdit]
+
+Problem Statement
+    
+Given a string of lowercase letters, I want to split it up into pieces so that the letters in each piece are distinct. 
+
+I want to form as few pieces as possible. 
+
+Given theString return a vector <string> containing the pieces sorted alphabetically.
+
+If more than one way of splitting is minimal, return the sorted sequence of pieces that is first lexicographically. 
+
+That means that the first element in the sequence that differs is earlier alphabetically.
+
+Definition
+    
+Class:
+WordSplit
+Method:
+pieces
+Parameters:
+string
+Returns:
+vector <string>
+Method signature:
+vector <string> pieces(string theString)
+(be sure your method is public)
+    
+
+Constraints
+-
+theString will contain between 1 and 50 characters, inclusive.
+-
+Each character in theString will be a lowercase letter ('a'-'z').
+Examples
+0)
+
+    
+"facetiously"
+Returns: {"facetiously" }
+No splits are required since all the letters are distinct.
+1)
+
+    
+"aaaaa"
+Returns: {"a", "a", "a", "a", "a" }
+This is the only legal split.
+
+2)
+
+    
+"aba"
+Returns: {"a", "ab" }
+
+We need one split to separate the 'a's. Our choices are a/ba or ab/a. We return the one whose pieces form the earlier sequence lexicographically.
+
+aabbcaa
+
+a a b b c a a
+a ab bca a
+
+ababab
+
+a ba ba b
+ab ab ab
+
+abcabcabcabc
+
+ab cab cab cab c
+abc abc abc abc
+
+abcabdabe
+abc abd abe
+ab cabd abe
+abc ab dabe
+
+
+
+
+
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

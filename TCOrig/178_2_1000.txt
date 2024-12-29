@@ -1,0 +1,104 @@
+#include <vector>
+#include <list>
+#include <map>
+#include <set>
+#include <deque>
+#include <stack>
+#include <bitset>
+#include <algorithm>
+#include <functional>
+#include <numeric>
+#include <utility>
+#include <sstream>
+#include <iostream>
+#include <iomanip>
+#include <cstdio>
+#include <cmath>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+typedef long long LL;
+
+class BadSubstring {
+public:
+
+map<pair<int,string>,LL> memo;
+
+LL calc(int n, string context)
+{
+//cout << n << " " << context << endl;
+	int k = context.size();
+	if (k >= 2 && context.substr(k-2) == "ab")
+		return 0LL;
+	if (n == 0)
+		return 1LL;
+	LL& val = memo[make_pair(n,context)];
+	if (val != -1LL)
+		return val;
+	val =	calc(n-1, "a")+
+		    calc(n-1, context[k-1]=='a'?"ab":"b")+
+		    calc(n-1, "c");
+	return val;
+}
+
+LL howMany(int n) 
+{
+	memo.clear();
+	for (int i = 0; i <= n; i++)
+	{
+		memo[make_pair(i,"")] = -1LL;
+		memo[make_pair(i,"a")] = -1LL;
+		memo[make_pair(i,"ab")] = -1LL;
+		memo[make_pair(i,"b")] = -1LL;
+		memo[make_pair(i,"c")] = -1LL;
+	}
+	return calc(n, "");
+}
+
+};
+
+
+//Powered by [KawigiEdit]
+
+Problem Statement
+    
+Return how many strings containing length characters do not have the substring (quotes for clarity) "ab". The only characters allowed in the strings are 'a', 'b', and 'c'. A substring is any contiguous portion of a string. A substring may be empty, or the entire string.
+Definition
+    
+Class:
+BadSubstring
+Method:
+howMany
+Parameters:
+int
+Returns:
+long long
+Method signature:
+long long howMany(int length)
+(be sure your method is public)
+    
+
+Constraints
+-
+length will be between 0 and 44 inclusive.
+Examples
+0)
+
+    
+0
+Returns: 1
+The only string of length 0 is the empty string, and it doesn't have "ab" as a substring.
+1)
+
+    
+3
+Returns: 21
+There are 3*3*3=27 possible strings of length 3. 3 begin with ab, and 3 end with ab. The remaining 21 are all good.
+2)
+
+    
+29
+Returns: 1548008755920
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

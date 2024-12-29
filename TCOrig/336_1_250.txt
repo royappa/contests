@@ -1,0 +1,130 @@
+typedef vector<string> vs;
+
+vector<string> split_nonre(string s, string sep)
+{
+	char *sC = (char *) malloc(s.size()+1);
+	strcpy(sC, s.c_str());
+	char *sepC = (char *) sep.c_str();
+	char *status = NULL;
+	
+	char *word;
+	vector<string> results;
+	while ((word = strtok_r(sC, sepC, &status)) != NULL)
+	{
+		results.push_back(word);
+		sC = NULL;
+	}
+	return results;
+}
+
+
+vector <string> makeList(vector <string> services) 
+{
+	vector<vs> v;
+	
+	for (int i = 0; i < services.size(); i++)
+	{
+		v.push_back(split_nonre(services[i], " "));
+	}
+	
+	set<string> kinds;
+	map<string, set<string> > m;
+	
+	for (int i = 0; i < v.size(); i++)
+	{
+		for (int j = 1; j < v[i].size(); j++)
+		{
+			kinds.insert(v[i][j]);
+			m[v[i][j]].insert(v[i][0]);
+		}
+	}
+	
+	vs r;
+	
+	for (set<string>::iterator it = kinds.begin(); it != kinds.end(); it++)
+	{
+		set<string> s = m[*it];
+		string x = "";
+		for (set<string>::iterator jt = s.begin(); jt != s.end(); jt++)
+		{
+			x += ", " + (*jt);
+		}
+		x = x.substr(2);
+		r.push_back(*it+" ==> "+x);
+	}
+	sort(r.begin(), r.end());
+	return r;
+}
+
+Problem Statement
+    
+I want a list of BioServices that are associated with each KindOfInput (such as "gene", "DNAFragment", "genome", etc.). 
+
+What is available from my service provider is a list of strings, each containing the name of a service followed by all the KindsOfInput it requires.
+
+Given a vector <string> services, return a vector <string> in which each element contains a KindOfInput followed by the names of all the services that use that kind of input.
+
+
+Each KindOfInput should appear exactly once in the return. Within each element of the return, the service names should be in alphabetical order, and should be separated by the 2 characters ", " (comma space). 
+
+The KindOfInput should be separated from the first service name by the 5 characters " ==> " (space eq eq gt space). 
+
+The returned list should be in alphabetical order.
+
+Note that all names are case-sensitive, and that "alphabetical order" refers to the ASCII ordering, where, for example, 'Z' precedes 'a'.
+
+Definition
+    
+Class:
+ServiceNames
+Method:
+makeList
+Parameters:
+vector <string>
+Returns:
+vector <string>
+Method signature:
+vector <string> makeList(vector <string> services)
+(be sure your method is public)
+    
+
+Constraints
+-
+services will contain between 1 and 50 elements, inclusive.
+-
+Each element of services will contain between 1 and 50 characters, inclusive.
+-
+Each element of services will contain tokens separated by a single space (' ').
+-
+Each token will consist of 1 or more letters ('A'-'Z' or 'a'-'z').
+-
+The first tokens of the elements in services will be distinct.
+-
+Within each element of services the KindsOfInput will be distinct.
+
+Examples
+0)
+
+    
+{"BLAST Genome Annotation Sensitivity","PING","X Annotation"}
+Returns: {"Annotation ==> BLAST, X", "Genome ==> BLAST", "Sensitivity ==> BLAST" }
+
+1)
+
+    
+{"PING"}
+Returns: { }
+There are no KindsOfInput so the return has 0 elements.
+2)
+
+    
+{"BLAST Genome annotation Sensitivity","PING","X Annotation","Apple X ample"}
+Returns: 
+{"Annotation ==> X",
+ "Genome ==> BLAST",
+ "Sensitivity ==> BLAST",
+ "X ==> Apple",
+ "ample ==> Apple",
+ "annotation ==> BLAST" }
+annotation and Annotation are distinct kinds of input. annotation comes later alphabetically than any name that starts with an uppercase letter.
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

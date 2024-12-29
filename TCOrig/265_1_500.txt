@@ -1,0 +1,271 @@
+#include <vector>
+#include <list>
+#include <map>
+#include <set>
+#include <deque>
+#include <stack>
+#include <bitset>
+#include <algorithm>
+#include <functional>
+#include <numeric>
+#include <utility>
+#include <sstream>
+#include <iostream>
+#include <iomanip>
+#include <cstdio>
+#include <cmath>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+typedef map<string,int> msi;
+typedef vector<string> vs;
+
+class Recipe {
+public:
+
+vs split_nonre(string s, string sep)
+{
+	char *sC = (char *) malloc(s.size()+1);
+	strcpy(sC, s.c_str());
+	char *sepC = (char *) sep.c_str();
+	char *status = NULL;
+	
+	char *word;
+	vector<string> results;
+	while ((word = strtok_r(sC, sepC, &status)) != NULL)
+	{
+		results.push_back(word);
+		sC = NULL;
+	}
+	return results;
+}
+
+int quant(string q, string t)
+{
+	int x = atoi(q.c_str());
+	return t == "tsp" ? x : 
+			t == "Tbsp" ? x*3 : x*16*3;
+}
+
+string itos(int q, string ingr)
+{
+	string r = "";
+	int c = q / 48;
+	if (c > 0)
+	{
+		char buf[2000];
+		sprintf(buf, "%d cups", c);
+		r = buf;
+		q %= 48;
+	}
+	int T = q / 3;
+	if (T > 0)
+	{
+		char buf[2000];
+		sprintf(buf, "%s%d Tbsp", r!=""?(r+" ").c_str():"", T);
+		r = buf;
+		q %= 3;
+	}
+	if (q > 0)
+	{
+		char buf[1000];
+		sprintf(buf, "%s%d tsp", r!=""?(r+" ").c_str():"", q);
+		r = buf;
+	}
+	r = r + " " + ingr;
+	return r;
+}
+
+msi parse(vs ingr)
+{
+	msi m;
+	for (int i = 0; i < ingr.size(); i++)
+	{
+		vs  v = split_nonre(ingr[i], " ");
+		m[v[2]] = quant(v[0], v[1]);
+	}
+	return m;
+}
+
+int gcd(int a, int b)
+{
+	return b == 0 ? a : gcd(b, a % b);
+}
+
+vs fix(vs recipe, vs bowl)
+{
+	msi need;
+	msi have;
+	need = parse(recipe);
+	have = parse(bowl);
+	
+	int g = need.begin()->second;
+	for (msi::iterator it = need.begin(); it != need.end(); it++)
+	{
+		g = gcd(it->second, g);
+	}
+	int mult = g;
+	for (msi::iterator it = need.begin(); it != need.end(); it++)
+	{
+		int nq = it->second/g;
+		int hq = have[it->first];
+		if (hq > nq*mult)
+		{
+			mult = max(mult, (int) ceil((double)hq/(double)nq));
+		}
+	}
+	vs result;
+	//cout << mult << " " << g << endl;
+	/*for (msi::iterator it = need.begin(); it != need.end(); it++)
+	{
+		cout << it->first << " " << it->second << " " << it->second / g << " " << have[it->first] << endl;
+	}*/
+	for (int i = 0; i < recipe.size(); i++)
+	{
+		string ingred = recipe[i].substr(recipe[i].rfind(' ')+1);
+		int q = need[ingred];
+		//cout << ingred << " " << q << endl;
+		int nq = (q/g)*mult;
+		int bq = nq-have[ingred];
+		if (bq > 0)
+		{
+			result.push_back(itos(bq, ingred));
+		}
+	}
+		
+	return result;
+}
+};
+
+//Powered by [KawigiEdit]
+
+
+Problem Statement
+    
+While cooking your favorite recipe, you realize that you have put the wrong quantity of one or more of the ingredients into your mixing bowl. You must figure out the minimum amount of each ingredient that must be added to the bowl to fix your mistake. It is essential to end up with at least the quantities required in the recipe and to maintain the ingredient proportions.
+
+For instance, if you used 2 cups of flour in a recipe that requires 3 cups, all you have to do is add 1 more cup. If, in another recipe, you used 2 teaspoons of salt where only 1 teaspoon was required, you must make sure that all of the recipe's ingredients are doubled to maintain the correct proportions.
+
+You are able to measure quantities in teaspoons (tsp), tablespoons (Tbsp), and cups. A teaspoon is the smallest amount that can be added to the bowl. 3 teaspoons are equivalent to 1 tablespoon. 16 tablespoons are equivalent to 1 cup.
+
+You will be given a vector <string> recipe that lists the required ingredients, and a vector <string> mixingBowl listing the ingredients that are in the bowl. 
+
+Your program should return a vector <string> indicating the quantities of only the ingredients that must be added. 
+
+The ingredients should be in the same order that they appear in recipe. 
+
+If no ingredients need to be added, then the result should have 0 elements.
+
+Each element of the result must indicate the maximum number of cups to be added, followed by the the maximum number of tablespoons, and finally the remaining teaspoons to be added. 
+
+In general, each element should be formatted (quotes for clarity) as "QTY cups QTY Tbsp QTY tsp NAME", where each QTY is an integer with no leading zeros, and NAME is the name of the ingredient. 
+
+If none of a certain unit needs to be added, then that unit should be excluded from the element.
+
+Definition
+    
+Class:
+Recipe
+Method:
+fix
+Parameters:
+vector <string>, vector <string>
+Returns:
+vector <string>
+Method signature:
+vector <string> fix(vector <string> recipe, vector <string> mixingBowl)
+(be sure your method is public)
+    
+
+Constraints
+-
+recipe will contain between 1 and 50 elements, inclusive.
+-
+mixingBowl will contain between 0 and 50 elements, inclusive.
+-
+Each element of recipe and mixingBowl will be in one of the following formats (quotes for clarity):
+"QTY tsp NAME"
+"QTY Tbsp NAME"
+"QTY cups NAME"
+-
+QTY will be an integer with no leading zeros between 1 and 99, inclusive.
+-
+NAME will contain between 1 and 25, inclusive, uppercase letters ('A'-'Z').
+-
+Each NAME in recipe will be distinct.
+-
+Each NAME in mixingBowl will be distinct.
+-
+Each NAME in mixingBowl will also appear in an element of recipe.
+Examples
+0)
+
+    
+{"4 cups FLOUR", "1 Tbsp SALT", "1 cups SUGAR", "1 tsp VANILLA"}
+{"4 cups FLOUR", "1 Tbsp SALT", "1 Tbsp SUGAR", "1 Tbsp VANILLA"}
+Returns: {"8 cups FLOUR", "2 Tbsp SALT", "2 cups 15 Tbsp SUGAR" }
+This recipe requires 4 cups of FLOUR, 1 tablespoon of SALT, 1 cup of SUGAR and 1 teaspoon of VANILLA. There are two mistakes in mixingBowl:
+1) Not enough SUGAR
+2) Too much VANILLA
+Since there is three times the required amount of VANILLA in mixingBowl, we must add enough to triple the other ingredients so that we end up with the same proportions. This is accomplished by adding 8 cups of FLOUR, 2 tablespoons of SALT and 2 cups plus 15 tablespoons of SUGAR.
+1)
+
+    
+{"3 cups FLOUR", "1 tsp SALT"}
+{"3 cups FLOUR", "2 tsp SALT"}
+Returns: {"3 cups FLOUR" }
+
+2)
+
+    
+{"1 cups FLOUR", "1 cups SUGAR", "1 cups MILK"}
+{"2 cups FLOUR", "32 Tbsp SUGAR", "96 tsp MILK"}
+Returns: { }
+
+3)
+
+    
+{"2 cups FLOUR", "2 tsp SALT"}
+{"1 cups FLOUR", "1 tsp SALT"}
+Returns: {"1 cups FLOUR", "1 tsp SALT" }
+
+4)
+
+    
+{"3 cups FLOUR"}
+{"2 cups FLOUR"}
+Returns: {"1 cups FLOUR" }
+
+5)
+
+    
+{"71 tsp CINNAMON"}
+{}
+Returns: {"1 cups 7 Tbsp 2 tsp CINNAMON" }
+
+6)
+
+    
+{"3 cups FLOUR","1 cups SUGAR","9 tsp SALT","9 Tbsp GINGER","2 cups MILK","21 tsp CINNAMON","5 Tbsp VANILLA"}
+{"1 Tbsp SUGAR","8 tsp SALT","5 Tbsp CINNAMON","21 tsp VANILLA","44 tsp GINGER","3 cups FLOUR","3 cups MILK"}
+
+144 
+48
+9
+27
+96
+21
+15
+	
+
+Returns: 
+{"2 cups FLOUR",
+ "1 cups 9 Tbsp 2 tsp SUGAR",
+ "2 Tbsp 1 tsp SALT",
+ "1 tsp GINGER",
+ "5 Tbsp 1 tsp MILK",
+ "6 Tbsp 2 tsp CINNAMON",
+ "1 Tbsp 1 tsp VANILLA" }
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

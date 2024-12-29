@@ -1,0 +1,161 @@
+typedef vector<string> vs;
+map<string,bool> known
+
+vector<string> split_nonre(string s, string sep)
+{
+	char *sC = (char *) malloc(s.size()+1);
+	strcpy(sC, s.c_str());
+	char *sepC = (char *) sep.c_str();
+	char *status = NULL;
+	
+	char *word;
+	vector<string> results;
+	while ((word = strtok_r(sC, sepC, &status)) != NULL)
+	{
+		results.push_back(word);
+		sC = NULL;
+	}
+	return results;
+}
+
+string outcome(string rule)
+{
+	return rule.substr(1+rule.find('>'));
+}
+
+bool evalOr(string orCond)
+{
+	vs facts = split_nonre(orCond, "/");
+	for (int i = 0; i < facts.size(); i++)
+	{
+		if (known[facts[i]])
+			return true;
+	}
+	return false;
+}
+
+bool eval(string rule)
+{
+	string pre = rule.substr(1, rule.find(' '));
+	
+	vs andCond = split_nonre(pre, ",");
+	for (int i = 0; i < andCond.size(); i++)
+	{
+		if (!evalOr(andCond[i]))
+		{
+			return false;
+		}
+	}
+	return true;
+}
+
+vector <string> operate(vector <string> facts, vector <string> rules) 
+{ 
+	vs r;
+	for (int i = 0; i < facts.size(); i++)
+	{
+		known[facts[i]] = true;
+	}
+	
+	do
+	{
+		bool changed = false;
+		// update;
+		for (int i = 0; i < rules.size(); i++)
+		{
+			if (eval(rules[i]))
+			{
+				changed = true;
+				string newFact = outcome(rules[i]);
+				r.push_back(newFact);
+				known[newFact] = true;
+				erase(rules.begin()+i);
+				break;
+			}
+		}
+	} while (changed);
+	
+	sort(r.begin(), r.end());
+	return r;
+}
+Problem Statement
+    
+A human expert uses his prior knowledge to analyze a set of observations that are presented to him. These days, companies are starting to explore the benefits of computerized expert systems. Expert systems attempt to model the way human experts think and arrive at conclusions. Knowledge obtained in this way is more reliable, cheaper and reproducible.
+facts contains all the observations presented to the expert. rules is a set of rules that the expert can use to arrive at new conclusions. rules will be formatted as (<FACT>/.../<FACT>),...,(<FACT>/.../<FACT>) -> <FACT>. In the input, '/' represents the OR operator and ',' represents the AND operator. Hence, the above input represents a boolean expression like (<FACT> OR ... OR <FACT>) AND ... AND (<FACT> OR ... OR <FACT>) -> <FACT>. Each <FACT> represents a sequence of uppercase characters and the character '_'. Note: brackets and parentheses are only used for clarity and are not part of the input.
+A rule composed solely of AND will fire only if all the facts listed in the rule are known. Similarly, a rule composed solely of OR will fire if any of the facts listed in the rule are known. Once a rule has fired, its outcome fact can be added to the knowledge of the expert (if not already known).
+Given a vector <string> of facts and a vector <string> of rules return a vector <string> of all outcome facts, sorted in ascending alphabetical order. If there are no outcome facts then return an empty vector <string>.
+Definition
+    
+Class:
+ComputerExpert
+Method:
+operate
+Parameters:
+vector <string>, vector <string>
+Returns:
+vector <string>
+Method signature:
+vector <string> operate(vector <string> facts, vector <string> rules)
+(be sure your method is public)
+    
+
+Constraints
+-
+facts will contain between 1 and 50 elements inclusive.
+-
+Each element of facts will contain between 1 and 50 characters inclusive.
+-
+Elements of facts will only contain characters 'A'-'Z' and the character '_'.
+-
+rules will contain between 1 and 50 elements inclusive.
+-
+Each element of rules will contain between 6 and 50 characters inclusive.
+-
+Each element in rules will be formatted as (<FACT>/.../<FACT>),...,(<FACT>/.../<FACT>) -> <FACT>. In the input, '/' represents the OR operator and ',' represents the AND operator. Each <FACT> must be a sequence of uppercase characters 'A'-'Z' and the character '_'. Note: brackets and parentheses are only used for clarity and are not part of the input.
+Examples
+0)
+
+    
+{"SKY_IS_CLOUDY","HAVE_MONEY"}
+{"HAVE_MONEY,BAD_WEATHER -> WATCH_MOVIE","SKY_IS_CLOUDY -> BAD_WEATHER",
+"GOOD_WEATHER -> PLAY_SOCCER"}
+Returns: {"BAD_WEATHER", "WATCH_MOVIE" }
+In this simplistic example we want to decide whether to watch a movie or play soccer. We observe that SKY_IS_CLOUDY and that we HAVE_MONEY. The second rule tells us that if SKY_IS_CLOUDY then we have BAD_WEATHER. So we conclude that the weather is bad. Knowing this fact, we can now use the first rule that tells us that if we HAVE_MONEY and BAD_WEATHER then we WATCH_MOVIE. So we choose to watch a movie. The third rule never gets fired.
+1)
+
+    
+{"NEEDLE_LEAF","KEEPS_LEAVES"}
+{"KEEPS_LEAVES -> EVERGREEN","NEEDLE_LEAF -> GYMNOSPERM",
+"EVERGREEN,GYMNOSPERM -> PINE_TREE"}
+Returns: {"EVERGREEN", "GYMNOSPERM", "PINE_TREE" }
+In this example we try to classify a plant. Since it has a NEEDLE_LEAF we know its a GYMNOSPERM. Since it KEEPS_LEAVES we know its an EVERGREEN. An EVERGREEN and a GYMNOSPERM must be a PINE_TREE.
+2)
+
+    
+{"I"}
+{"I -> I","P -> CONSONANT", "Z -> CONSONANT", "A/E/I/O/U -> VOWEL"}
+Returns: {"VOWEL" }
+I is a VOWEL. Note that there is no point firing the first rule, because we already know the outcome fact I.
+3)
+
+    
+{"Y","W","L","T","H","J","G","T","F","P","T","P","P","N"}
+{"C/V,J,F/T,N,W,L -> M","N/L,F,B/N/E,Y -> C",
+"M,G,G,S/F/Q,G,S/G,H/Z,W,F,C,Q/F,M -> E"}
+Returns: {"C", "E", "M" }
+
+4)
+
+    
+{"G","H"}
+{"A/B/C/D/E/F,G/Z -> Y", "H,H,H,H,H,H,H,H -> Z"}
+Returns: {"Z" }
+
+5)
+
+    
+{"A","B","_X", "X_"}
+{"A/B,C -> D","A,B,C -> D","X -> Y","_X_ -> Y"}
+Returns: { }
+Here there are no rules fired. Note that "_X" and "X_" are not the same as "X" or "_X_".
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

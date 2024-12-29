@@ -1,0 +1,231 @@
+int winner(vector <string> v) 
+{
+	int n = v[0].size();
+	vector<set> cand;
+	for (int i = 0; i < n; i++)
+	{
+		cand.insert(i);
+	}
+	while (cand.size() > 0)
+	{
+		// vote
+		map<int,int> counts;
+		int votes = 0;
+		for (int i = 0; i < v.size(); i++)
+		{
+			for (int j = 0; j < n; j++)
+			{
+				int c = v[i][j]-'0';
+				if (cand.count(c) > 0) // this candidate is alive
+				{
+					counts[c]++;
+					votes++;
+					break;
+				}
+			}
+		}
+		int m = 0, cc = -1, few = 1<<30;
+		for (typeof(counts.begin()) it = counts.begin(); it != counts.end(); it++)
+		{
+			if (it->second > m)
+			{
+				m = it->second;
+				cc = it->first;
+			}
+			if (it->second < few)
+			{
+				few = it->second;
+			}
+		}
+		if (m*2 > votes)
+		{
+			return cc;
+		}
+		// eliminate
+		set<int> cand2;
+		for (typeof(counts.begin()) it = counts.begin(); it != counts.end(); it++)
+		{
+			if (it->second != few)
+			{
+				cand2.insert(it->first);
+			}
+		}
+		cand = cand2;
+	}
+	return -1;
+}
+
+Problem Statement
+    
+Instant run-off voting is a system for selecting the most preferred candidate in an election. 
+
+At the beginning of the process, each voter ranks the candidates from most preferred to least preferred. 
+
+A series of automated voting rounds are then held to determine the overall winner.
+
+In each round, each voter casts a single vote for his most preferred remaining candidate. 
+If a candidate receives strictly more than 50% of the votes cast in that round, that candidate is declared the winner of the election. 
+
+Otherwise, the candidate with the fewest votes in that round is eliminated, and another round is held. 
+
+If multiple candidates are tied for the least number of votes, they are all eliminated. 
+
+If all the candidates are eliminated, the election ends without a winner.
+
+You are given the preferences of the voters in an election, and you must determine the outcome. 
+
+There are N candidates numbered 0 to N-1, inclusive. 
+
+The preferences are given in a vector <string> voters, where each element describes the preferences of a single voter. 
+
+This is a permutation of the digits 0 to N-1 in decreasing order of preference. 
+
+In other words, the first digit is the voter's most preferred candidate, the second digit is his second most preferred candidate, and so on. 
+
+Return the number of the candidate who wins the election, or -1 if the election ends without a winner.
+
+Definition
+    
+Class:
+InstantRunoffVoting
+Method:
+winner
+Parameters:
+vector <string>
+Returns:
+int
+Method signature:
+int winner(vector <string> voters)
+(be sure your method is public)
+    
+
+Constraints
+-
+voters will contain between 1 and 50 elements, inclusive.
+-
+Each element of voters will contain between 1 and 10 characters, inclusive.
+-
+Each element of voters will contain the same number of characters.
+-
+Each element of voters will be a permutation of the digits between 0 and N-1, where N is the number of characters in each element of voters.
+Examples
+0)
+
+    
+{"01","10","01","01","10"}
+Returns: 0
+In the first round, candidate 0 gets 3 votes and candidate 1 gets 2 votes, so candidate 0 wins.
+1)
+
+    
+{"120","102","210","021","012"}
+Returns: 1
+Nobody gets an absolute majority in the first round and candidate 2 is eliminated. Candidate 1 then receives 3 votes in the next round, giving an absolute majority.
+2)
+
+    
+{"10","01"}
+Returns: -1
+Each candidate gets 1 vote, so nobody can be declared winner.
+3)
+
+    
+{"3120","3012","1032"
+,"3120","2031","2103"
+,"1230","1230"}
+Returns: -1
+Candidate 0 is eliminated in the first round of voting. Candidate 2 is eliminated in the second round. In the third round, candidates 1 and 3 get 4 votes each. Neither candidate receives an absolute majority, and they are both eliminated for having the least number of votes, so the election ends without a winner.
+4)
+
+    
+{"24103","30412","32014","21043","30412"
+,"32401","14203","04123","30241","02413"
+,"13042","01432","01342","32401","24301"
+,"12430","41023","02413","42310","12043"}
+Returns: 1
+
+5)
+
+    
+{"0649853172","2146875039","2671548309"
+,"5897216403","4719823056","7945213860"
+,"9021538647","9286145307","9176403528"
+,"3709486152"}
+Returns: 9
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.
+Problem Statement
+    
+Instant run-off voting is a system for selecting the most preferred candidate in an election. At the beginning of the process, each voter ranks the candidates from most preferred to least preferred. A series of automated voting rounds are then held to determine the overall winner.
+In each round, each voter casts a single vote for his most preferred remaining candidate. If a candidate receives strictly more than 50% of the votes cast in that round, that candidate is declared the winner of the election. Otherwise, the candidate with the fewest votes in that round is eliminated, and another round is held. If multiple candidates are tied for the least number of votes, they are all eliminated. If all the candidates are eliminated, the election ends without a winner.
+You are given the preferences of the voters in an election, and you must determine the outcome. There are N candidates numbered 0 to N-1, inclusive. The preferences are given in a vector <string> voters, where each element describes the preferences of a single voter. This is a permutation of the digits 0 to N-1 in decreasing order of preference. In other words, the first digit is the voter's most preferred candidate, the second digit is his second most preferred candidate, and so on. Return the number of the candidate who wins the election, or -1 if the election ends without a winner.
+Definition
+    
+Class:
+InstantRunoffVoting
+Method:
+winner
+Parameters:
+vector <string>
+Returns:
+int
+Method signature:
+int winner(vector <string> voters)
+(be sure your method is public)
+    
+
+Constraints
+-
+voters will contain between 1 and 50 elements, inclusive.
+-
+Each element of voters will contain between 1 and 10 characters, inclusive.
+-
+Each element of voters will contain the same number of characters.
+-
+Each element of voters will be a permutation of the digits between 0 and N-1, where N is the number of characters in each element of voters.
+Examples
+0)
+
+    
+{"01","10","01","01","10"}
+Returns: 0
+In the first round, candidate 0 gets 3 votes and candidate 1 gets 2 votes, so candidate 0 wins.
+1)
+
+    
+{"120","102","210","021","012"}
+Returns: 1
+Nobody gets an absolute majority in the first round and candidate 2 is eliminated. Candidate 1 then receives 3 votes in the next round, giving an absolute majority.
+2)
+
+    
+{"10","01"}
+Returns: -1
+Each candidate gets 1 vote, so nobody can be declared winner.
+3)
+
+    
+{"3120","3012","1032"
+,"3120","2031","2103"
+,"1230","1230"}
+Returns: -1
+Candidate 0 is eliminated in the first round of voting. Candidate 2 is eliminated in the second round. In the third round, candidates 1 and 3 get 4 votes each. Neither candidate receives an absolute majority, and they are both eliminated for having the least number of votes, so the election ends without a winner.
+4)
+
+    
+{"24103","30412","32014","21043","30412"
+,"32401","14203","04123","30241","02413"
+,"13042","01432","01342","32401","24301"
+,"12430","41023","02413","42310","12043"}
+Returns: 1
+
+5)
+
+    
+{"0649853172","2146875039","2671548309"
+,"5897216403","4719823056","7945213860"
+,"9021538647","9286145307","9176403528"
+,"3709486152"}
+Returns: 9
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

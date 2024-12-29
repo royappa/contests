@@ -1,0 +1,180 @@
+map<pair<string,int>,bool> memo;
+int n;
+
+
+void setBoard(string board, int row, int col)
+{
+	board[row] = char('0'+col);
+}
+
+bool validBoard(string board, int row, int col)
+{
+	// check if row is occupied
+	if (board[row] == '.')
+		return false;
+	// check if the col is attacked - any row has something in that column?
+	for (int r = 0; r < n; r++)
+	{
+		if (board[r] != '.' && board[r] == char('0'+col))
+			return false;
+	}
+	int dr[] = {-2,-1, 1, 2,2,1,-1,-2};
+	int dc[] = {-1,-2,-2,-1,1,2, 2, 1};
+	for (int i = 0; i < 8; i++)
+	{
+		int r = row+dr[i];
+		int c = col+dc[i];
+		if (r < 0 || c < 0 || r >= n || c >= n)
+			continue;
+		if (board[r] == char('0'+c))
+			return false;
+	}
+	return true;
+}
+
+bool game(string board, int turn)
+{
+	if (board.find('.') != -1)
+		return false;
+	pair<string,int> key = make_pair(board, turn);
+	if (memo.count(key) > 0)
+		return memo[key];
+	
+	bool& val = memo[key];
+	
+	val = false;
+	for (int r = 0; r < n; r++)
+	{
+		if (board[r] == '.')
+		{
+			for (int c = 0; c < n; c++)
+			{
+				if (validBoard(board, r, c))
+				{
+					board[r] = char('0'+c);
+					val = game(board, 1-turn);
+					if (val)
+						return true;
+					board[r] = '.';
+				}
+			}
+		}
+	}
+	return false;
+}
+
+string result(int _n, vector <string> moves) 
+{
+	
+	n = _n;
+	string board = string(n, '.');
+	for (int i = 0; i < moves.size(); i++)
+	{
+		int row = moves[i][0]-'a';
+		int col = moves[i][1]-'1';
+		if (!validBoard(board, row, col))
+		{
+			return "Invalid input";
+		}
+		setBoard(board, row, col);
+	}
+	return game(board, moves.size()%2) ? "Second player wins" : "First player wins";
+}
+
+
+Problem Statement
+    
+Two players play a game on a n*n chessboard. 
+
+Starting with the first player, they take alternate turns putting figures on empty cells. 
+
+During each turn, a player will place a figure on an empty cell in such a way that it can't be captured by any of the figures already on the board. 
+
+Each figure can capture as a rook and as a knight. 
+
+* Rooks capture backwards, forwards, and sideways. 
+* Knights capture in an L-shape (two consecutive squares backwards, forwards, or sideways, and then one square in a perpendicular direction).
+
+A player wins the game when the other player cannot make a move. You are given the first moves of such a game, and you are to determine who will win if both players are trying their best to win.
+
+You are given a vector <string> moves representing the moves that have already been made. Each element of moves will be formatted as "xX", where x is a lowercase letter representing the vertical position and X is a number representing the horizontal position. 
+
+Return one of three possible answers:
+"First player wins", if the first player will win or has already won (there are no valid moves left, and the first player made the last move).
+"Second player wins", if the second player will win or has already won (there are no valid moves left, and the second player made the last move).
+
+"Invalid input", if the input is invalid (a figure is placed on a previously occupied square, or a figure can be captured by another figure).
+Definition
+    
+Class:
+GameEnding
+Method:
+result
+Parameters:
+int, vector <string>
+Returns:
+string
+Method signature:
+string result(int n, vector <string> moves)
+(be sure your method is public)
+    
+
+Notes
+-
+The moves that are given in the input may not have been the best moves, but all subsequent moves will be the best possible moves (meaning that if there are moves leading to victory, the player must choose one of them).
+
+Constraints
+-
+n will be between 1 and 7, inclusive.
+-
+moves will contain between 0 and n elements, inclusive.
+-
+Each element of moves will be formatted as "xX".
+-
+Each x is a lowercase letter between 'a' and 'a'+n-1, inclusive.
+-
+Each X is a digit between 1 and n, inclusive.
+Examples
+0)
+
+    
+3
+{"b2"}
+Returns: "First player wins"
+The first player makes the first move at b2. After that, only the four corner cells are available for valid moves. The second player places a figure on one of those corner cells. The first player then places a figure on the opposite corner. There are no more moves available to the second player, so the first player wins.
+1)
+
+    
+4
+{"a2","b3"}
+Returns: "Second player wins"
+Only cells c4 and d1 are available. The first player plays one of them, and the second player plays the other. The first player will then have no valid moves left, so the second player wins.
+2)
+
+    
+4
+{"a3","b3"}
+Returns: "Invalid input"
+The second player made an invalid move. The figure on b3 can be captured by the figure on a3.
+3)
+
+    
+4
+{"a1","b2","c3","d4"}
+Returns: "Second player wins"
+There are no valid moves left, and the second player made the last move, so he wins.
+4)
+
+    
+7
+{}
+Returns: "First player wins"
+
+5)
+
+    
+7
+{"b5","g3","f2"}
+Returns: "Second player wins"
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

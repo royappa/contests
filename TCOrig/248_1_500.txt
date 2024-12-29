@@ -1,0 +1,118 @@
+int cost[100][100];
+int memo[100][60][5];
+
+int c, n;
+
+// mincost to do tasks j..(n-1), if previous task was done by company k, repeated r times
+int minCost(int j, int k, int r)
+{
+	if (j == n)
+	{
+		return 0;
+	}
+	if (memo[j][k][r] != -1)
+	{
+		return memo[j][k][r];
+	}
+	
+	int best = (1<<31 - 1);
+	for (int i = 0; i < c; i++)
+	{
+		if (i == k && r == 2)
+		{
+			continue;
+		}
+		int cur = cost[i][j] + minCost(j+1, i, k==i?r+1:1);
+		best = min(best, cur);
+	}
+	memo[j][k][r] = best;
+	return best;
+}
+
+int minimumCost(vector <string> costs, int numTasks) 
+{
+	n = numTasks;
+	c = costs.size();
+	
+	for (int i = 0; i < c; i++)
+	{
+		istringstream sin(costs[i]);
+		for (int j = 0; j < n; j++)
+		{
+			sin >> cost[i][j];
+		}
+	}
+	
+	for (int i = 0; i < 100; i++)
+		for (int j = 0; j < 60; j++)
+			for (int k = 0; k < 5; k++)
+				memo[i][j][k] = -1;
+				
+	return minCost(0, 0, 0);
+	
+}
+
+
+Problem Statement
+    
+Your company has a set of numTasks tasks that it wishes to complete. These tasks must be completed in order; that is to say, work on task j + 1 cannot begin until task j is complete. Your company has decided to contract the work to outside companies. There is a set of companies, each of which performs each of these tasks for a certain fee. Naturally, your company wants to spend as little as possible in accomplishing these tasks. Because each of these tasks is so complex, there's another restriction: One contract company cannot perform three tasks in a row for your company.  Create a class ContractWork containing a method minimumCost which takes a vector <string> costs and an int numTasks as input. Each element of costs is a string of numbers separated by exactly one space. The jth number in element i of costs represents the amount company i will charge to perform task j. Each string will contain exactly numTasks numbers. Clearly, the number of companies is the number of elements in costs. The method should return an int corresponding to the minimum cost incurred by your company while contracting out the tasks.
+Definition
+    
+Class:
+ContractWork
+Method:
+minimumCost
+Parameters:
+vector <string>, int
+Returns:
+int
+Method signature:
+int minimumCost(vector <string> costs, int numTasks)
+(be sure your method is public)
+    
+
+Constraints
+-
+costs will contain between 2 and 50 elements inclusive.
+-
+numTasks will be between 2 and 50 inclusive.
+-
+Each element of costs will contain exactly numTasks numbers, each separated by single spaces.
+-
+Each number in costs will be an integer between 0 and 100, inclusive with no extra leading zeroes.
+-
+Each element of costs will contain between 1 and 50 characters, inclusive.
+Examples
+0)
+
+    
+{"1 2 3", "4 5 6"}
+3
+Returns: 9
+There are three ways to achieve the best answer. Company 0 can perform tasks 0 and 1 with Company 1 performing task 2, or, Company 1 can perform task 0 with Company 0 performing tasks 1 and 2, or finally, Company 0 can perform tasks 0 and 2, with Company 1 performing task 1. Any other combination gives a higher cost to your company.
+1)
+
+    
+{"1 1 1 1", "1 1 1 1", "1 1 1 1"}
+4
+Returns: 4
+
+2)
+
+    
+{"12 14 4 11 0 35", "44 41 1 1 0 15", "35 1 35 55 1 13", "0 0 0 0 0 0"}
+6
+Returns: 1
+Lots of companies are willing to perform certain tasks for free...
+3)
+
+    
+{"44 92 2 78 13",
+"36 47 76 41 71",
+"59 27 59 35 16",
+"40 63 7 72 76",
+"49 80 45 67 33"}
+5
+Returns: 113
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

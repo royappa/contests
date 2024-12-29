@@ -1,0 +1,92 @@
+	public String[] logo(int size, char background)
+	{
+		int height = size+size-1;
+		char[][] board = new char[height][size];
+		for (int r = 0; r < size+size-1; r++)
+			Arrays.fill(board[r], background);
+			
+		int mid = size/2+1;
+		for (int r = 0; r < size; r++)
+		{
+			int left = mid-r;
+			int right = mid+r;
+			board[r][left] = 'X';
+			board[r][right] = 'X';
+		}
+		int i = 0;
+		for (int r = height-1; r >= size; r--)
+		{
+			int left = mid-i;
+			int right = mid+i;
+			i++;
+			board[r][left] = 'X';
+			board[r][right] = 'X';
+		}
+		String[] res = new String[height];
+		for (int r = 0; r < height; r++)
+			res[i] = new String(board[r]);
+		return res;
+	}
+	
+Problem Statement
+    
+*** You may only submit a given problem once - no resubmissions will be accepted. ***  Diamond and Xerxes Inc. is designing their logo. It will be a hollow (the inside will be filled with spaces) diamond, in a square field of characters. The edges of the diamond will be denoted by 'X' (for Xerxes). But how big should it be? What should the background character be? They want software that will generate a logo so that they can choose.
+    .X.      --X--
+    X X      -X X-
+    .X.      X   X
+             -X X-
+             --X--   
+Above are drawn two possible logos. The left-hand one has size 2 (the number of X's along each edge of the diamond) and background character '.'. The right-hand one has size 3 and background character '-'.
+Create a class DiamondLogo that contains a method logo that is given an int size, the number of X's along each edge of the diamond, and a char background that is the character to be used as the background. The method should return a String[] giving the resulting square logo. The first element of the return will be the top row, the next element the second row, etc. The return must not include any extraneous rows or columns.
+Definition
+    
+Class:
+DiamondLogo
+Method:
+logo
+Parameters:
+int, char
+Returns:
+String[]
+Method signature:
+String[] logo(int size, char background)
+(be sure your method is public)
+    
+
+Constraints
+-
+background will be an ASCII character between 32 and 126 inclusive
+-
+size will be between 2 and 40 inclusive
+Examples
+0)
+
+    
+2
+'.'
+Returns: { ".X.",  "X X",  ".X." }
+This is the left-hand example above. Each element of the return contains 3 characters, thus providing the 3x3 logo.
+1)
+
+    
+3
+'-'
+Returns: { "--X--",  "-X X-",  "X   X",  "-X X-",  "--X--" }
+This is the right-hand example above, giving a 5x5 logo.
+2)
+
+    
+5
+'q'
+Returns: 
+{ "qqqqXqqqq",
+  "qqqX Xqqq",
+  "qqX   Xqq",
+  "qX     Xq",
+  "X       X",
+  "qX     Xq",
+  "qqX   Xqq",
+  "qqqX Xqqq",
+  "qqqqXqqqq" }
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

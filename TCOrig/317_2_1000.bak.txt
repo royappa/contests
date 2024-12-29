@@ -1,0 +1,96 @@
+typedef long long LL;
+
+long long countOrderings(vector <string> A) 
+{
+	int n = A.size();
+	
+	for (
+	
+}
+Problem Statement
+    
+There is a finite set of elements {a0, a1, ..., an-1} that we need to sort. The final order must satisfy a set of requirements that are each of the form "ai must be before aj". However, the set of requirements is not necessarily complete or even possible, so we need to know how many possible orderings satisfy all the requirements.
+
+You will be given the set of requirements as a vector <string> req representing a square matrix where the jth character of the ith element is 'Y' if ai is required to be before aj in the resulting order, or 'N' if there is no such requirement. Return the number of orderings of {a0, a1 ..., an-1} that satisfy all the requirements.
+Definition
+    
+Class:
+OrderingCount
+Method:
+countOrderings
+Parameters:
+vector <string>
+Returns:
+long long
+Method signature:
+long long countOrderings(vector <string> req)
+(be sure your method is public)
+    
+
+Constraints
+-
+req will contain between 1 and 20 elements, inclusive.
+-
+Each element of req will contain exactly N characters, where N is the number of elements in req.
+-
+Each character of each element of req will be either 'Y' or 'N'.
+Examples
+0)
+
+    
+{"NNNN",
+ "YNNY",
+ "NNNN",
+ "YNNN"}
+Returns: 4
+Note that elements a0, a1 and a3 must be in the order a1-a3-a0 due to the requirements. On the other hand, element a2 is not involved in any requirement so it can be placed anywhere. Therefore, the possible orderings are:
+a1-a3-a0-a2
+a1-a3-a2-a0
+a1-a2-a3-a0
+a2-a1-a3-a0
+
+1)
+
+    
+{"NYN",
+ "NNY",
+ "YNN"}
+Returns: 0
+Each element is required to be before some other element, so no element can be the last one and no ordering is possible.
+2)
+
+    
+{"NNNNN","NNNNN","NNNNN","NNNNN","NNNNN"}
+Returns: 120
+Having no requirements make all 5! orderings possible.
+3)
+
+    
+{"NYNNNN",
+ "NNYNNN",
+ "NNNYNN",
+ "NNNNYN",
+ "NNNNNY",
+ "NNNNNN"}
+Returns: 1
+Only the order a0-a1-a2-a3-a4-a5 is possible here.
+4)
+
+    
+{"NNYNNN",
+ "YNYNNN",
+ "NNNNNN",
+ "NNNNNN",
+ "NNYYNN",
+ "NNYNNN"}
+Returns: 42
+
+5)
+
+    
+{"NNN",
+ "NYN",
+ "NNN"}
+Returns: 0
+a1 can't be before itself.
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

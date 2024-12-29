@@ -1,0 +1,152 @@
+int score(char ch)
+{
+	return  ch == '0' ? 0 : 
+		   isupper(ch) ? -(ch-'A'+1) : (ch-'a'+1);
+}
+
+double differenceTemperature(int DS, int DW, vector <string> temperature) 
+{
+	string s = "";
+	for (int i = 0; i < temperature.size(); i++)
+	{
+		s += temperature[i];
+	}
+	int n = s.size();
+	vector<int> cum(n, 0);
+	cum[0] = score(s[0]);
+	for (int i = 1; i < n; i++)
+	{
+		cum[i] = cum[i-1]+score(s[i]);
+	}	
+	
+	double best = -(1<<30);
+	for (int i = 0; i+DS-1 < n; i++)
+	{
+		double sSum = cum[i+DS-1]-(i==0?0:cum[i-1]);
+		// left of ds
+		for (int j = 0; j+DW-1 < i; j++)
+		{
+			double wSum = cum[j+DW-1]-(j==0?0:cum[j-1]);
+			if (sSum/DS-wSum/DW > best)
+			{
+				best = sSum/DS-wSum/DW;
+			}
+		}
+		
+		for (int j = i+DS; j+DW-1 < n; j++)
+		{
+			double wSum = cum[j+DW-1]-(j==0?0:cum[j-1]);
+			if (sSum/DS-wSum/DW > best)
+			{
+				best = sSum/DS-wSum/DW;
+			}
+		}
+	}
+	return best;
+}
+
+Problem Statement
+    
+One of the most famous and most dangerous competitions is Crazy Competition. 
+Crazy Competition 2007 will take place in Antarctica and consist of two phases: Summer and Winter. 
+
+The Summer phase lasts for daysSummer consecutive days and the Winter phase lasts for daysWinter consecutive days. 
+
+The two phases cannot overlap. You are in charge of scheduling the two phases, and your goal is to maximize the 
+difference between the average temperatures of the two phases 
+
+(i.e., the average temperature during the Summer phase minus the average temperature during the Winter phase).
+
+You are given the temperatures for every day of a single year in a String[]. 
+
+Concatenate the elements of the String[] into one long string. 
+
+The i-th character of this string represents the temperature on the i-th day of 2007. 
+
+The first and last days are not considered consecutive. 
+
+Characters 'A' through 'Z' represent temperatures -1 through -26. 
+
+The character '0' (zero) represents the temperature 0. 
+
+Characters 'a' through 'z' represent temperatures 1 through 26. 
+
+Return the maximum possible difference between the average temperatures of the two phases.
+
+Definition
+    
+Class:
+CrazyCompetition
+Method:
+differenceTemperature
+Parameters:
+int, int, vector <string>
+Returns:
+double
+Method signature:
+double differenceTemperature(int daysSummer, int daysWinter, vector <string> temperature)
+(be sure your method is public)
+    
+
+Notes
+-
+The returned value must be accurate to 1e-9 relative or absolute.
+Constraints
+-
+temperature will contain between 1 and 50 elements, inclusive.
+-
+Each element of temperature will contain between 1 and 50 characters, inclusive.
+-
+temperature will contain only lowercase letters ('a'-'z'), uppercase letters ('A'-'Z'), and '0' (zero) characters.
+-
+daysSummer and daysWinter will be greater than 0 and (daysSummer + daysWinter) will be less than or equal to the number of characters in temperature.
+Examples
+0)
+
+    
+1
+1
+{"aa"}
+Returns: 0.0
+
+1)
+
+    
+1
+1
+{"ba"}
+Returns: 1.0
+Summer have to be warmer. (first day)
+2)
+
+    
+1
+1
+{"az"}
+Returns: 25.0
+Summer have to be warmer. (second day)
+3)
+
+    
+2
+3
+{"aaaa","x"}
+Returns: 11.5
+
+4)
+
+    
+2
+3
+{"a","a","a","a","x"}
+Returns: 11.5
+Same as previous example.
+5)
+
+    
+4
+1
+{"00A00"}
+Returns: -0.25
+Summer phase is colder than Winter phase.
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

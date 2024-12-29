@@ -1,0 +1,128 @@
+// C++ PROGRAMMING PATTERNS
+// MOSTLY NON-ALGORITHMIC
+
+1) Keep changing a value by some process until the value no longer changes.
+
+new = cur;
+do
+{
+	cur = new;
+	new = f(cur); // modify new
+}
+while (cur != new);
+Example: SRM 147 D1 250 (or 148/146 .. )
+
+2) Iterate through neighbors in a 2D graph
+int d[] = {};
+for (int i = 0; i < sizeof(d)/2; i++)
+{
+	int dr = d[2*i], dc = d[2*i+1];
+	if (r+dr >= 0 && r+dr < height && c+dc >= 0 && c+dc < width)
+	{
+		process (r+dr,c+dc)	
+	}
+}
+
+int d[] = {0,-1,-1,0,0,1,1,0}; // 4 hor & vertical neighbors
+int d[] = { .. } // 8 diagonal neighbors
+int dp[ = {    } // knight's move jumps. Can store as snippets.
+
+Example: many
+
+3) Convert some fixed letters into numeric codes.
+	E.g. A,1,2,3,4,5,6,7,8,9,T,J,Q,K -> 1,...,13  (Card values)
+	
+	return string("A123456789TJQK").find(ch)-'0'+1;
+
+Related, check if something is a vowel:
+	if (string("AEIOU").find(ch) != -1)
+	
+4) Go through all permutations of an array but retain the array in original order for indexing purposes
+
+	vector<T> v;  // we want to permute this array, but rearranging it would lose the correspondence of i->v[i] which we need for something else.
+	// thus, build an array of indexes and permute those instead.
+	int n = v.size();
+	vector<int> p(n);
+	for (int i = 0; i < n; i++)
+	{
+		p[i] = i;
+	}
+	do
+	{
+		for (int i = 0; i < n; i++)
+		{
+			// now we can use v[i] = original item and v[p[i]] = permuted item (explain)
+		}
+	}
+	while (next_permutation(p.begin(), p.end()));
+e.g. TCHS 44 doghouses, assigning dogs to houses, came in handy.
+
+5) Accumulation shortcuts (test)
+	vector<int> v;
+	int sum = accumulate(v.begin(), v.end(), 0);
+	vector<string> vs;
+	string cat = accumulate(vs.begin(), vs.end(), string());
+	
+6) Alternating blocks
+	* Given a string of characters, break it up into alternating blocks of two different classes of characters
+		* e.g., 0011011010110000111111
+		* e.g., THISISALLTHETEXTTHEREIS  alternate vowels & cons
+		
+		string s;
+		vector<string> v;
+		if (s.size() == 0)
+			return v;
+		
+		string .. (finish this)
+		for (int i = 0; i < s.size(); i++)
+		{
+			if (which == "vow")
+			{
+				isVowel(ch))
+				{
+					vowels += ch;	
+			
+		(write example with & without sentinels)
+			
+	* For Java,  regular expressions can be used to process these with less thinking and less typing (and more correctly)
+	
+7) Use Boolean expressions.
+	* Many programmers wouldn't hesitate to say
+		return (a+b);
+	* but instead of saying
+		return a && b;
+	thesay
+		if (a && b)
+			return true;
+		else
+			return false;
+			
+8) // returns a%m where a may be negative
+#define MF(a,m) (((a)%(m)+(m))%(m))
+
+
+9) Create a string of N space-separated values all on one line. The point here is to do it with a sentinel, i.e., with less thinking than an "if" statement requires.
+
+	string s = "";
+	for (int i = 0; i < N; i++)
+	{
+		s += string(" ") + value[i];
+	}
+	s = s.substr(1);
+	
+10) Sorting by multiple keys, possibly in different directions
+- show lessThan function
+
+11) permute
+
+12) use a hash function
+
+13) Round up to next integer
+
+14) Bisection with "lo" and "hi"
+
+15) Trisection
+
+**) Sort in reverse order
+	sort(v.rbegin(), v.rend());
+	

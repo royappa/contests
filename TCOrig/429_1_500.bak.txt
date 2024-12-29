@@ -1,0 +1,147 @@
+LL gcd(LL a, LL b) { return b == 0 ? a : gcd(b, a % b); }
+
+vector<string> prop;
+int n;
+vector<LL> r;
+
+void normalize()
+{
+	LL g = r[0];
+	for (int i = 1; i < n; i++)
+	{
+		g = gcd(g, r[i]);
+	}
+	for (int i = 0; i < n; i++)
+	{
+		r[i] /= g;
+	}
+	return;
+}
+
+void update(int a, int b, int p, int q)
+{
+	r[a] *= q;
+	r[b] *= p;
+	normalize();
+	
+	vector<int> q;
+	
+	for (int i = 0; i < n; i++)
+	{
+		int na, nb, np, nq;
+		sscanf(prop[i].c_str(), "#%d and #%d as %d:%d", &na, &nb, &np, &nq);
+		if (na == a && nb == b) continue;
+		if (na == a) q.push_back(i);
+		if (na == b) q.push_back(i);
+		if (nb == a) q.push_back(i);
+		if (nb == b) q.push_back(i);
+	}
+	sort(q.begin(), q.end());
+	q.erase(unique(q.begin(), q.end()), q.end());
+	for (int j = 0; j < q.size(); j++)
+	{
+		int na, nb, np, nq;
+		sscanf(prop[i].c_str(), "#%d and #%d as %d:%d", &na, &nb, &np, &nq);
+		if (na == a) r[nb] *= q;
+		if (nb == a) r[na] *= q;
+		if (na == b) r[nb] *= p;
+		if (nb == b) r[na
+		
+		
+vector <int> getMasses(vector <string> prop_) 
+{
+	prop = prop_;
+	int n = 1+prop.size();
+	r.resize(n, 1);
+	
+	for (int i = 0; i < prop.size(); i++)
+	{
+		int a, b, p, q;
+		sscanf(prop[i].c_str(), "#%d and #%d as %d:%d", &a, &b, &p, &q);
+		update(a, b, p, q);
+	}
+	
+	vector<int> res;
+	for (int i = 0; i < n; i++)
+	{
+		res.push_back(r[i]);
+	}
+	return res;	
+}
+
+Problem Statement
+    
+Your friend has invented a splendid cocktail consisting of N ingredients. 
+
+However, she has forgotten the amount of each ingredient that goes into the recipe.
+
+For N-1 pairs of ingredients, she remembers the proportion in which the ingredients within each pair should be added to the cocktail. 
+
+Fortunately, these N-1 proportions are sufficient to restore the recipe of the entire cocktail.
+
+You are given a vector <string> proportions containing the N-1 proportions. 
+
+Each element is formatted "#<a> and #<b> as <p>:<q>" (quotes for clarity), which means that the mass of ingredient <a> divided by the mass of ingredient <b> in the cocktail must be equal to <p>/<q> (all ingredients are 0-indexed). 
+
+Return a vector <int> containing exactly N elements, where the i-th element is the mass of ingredient i, such that all the given proportions are satisfied and the total mass is as small as possible. The total mass must be greater than 0.
+
+Definition
+    
+Class:
+IngredientProportions
+Method:
+getMasses
+Parameters:
+vector <string>
+Returns:
+vector <int>
+Method signature:
+vector <int> getMasses(vector <string> proportions)
+(be sure your method is public)
+    
+
+Constraints
+-
+proportions will contain between 1 and 9 elements, inclusive.
+-
+proportions will contain exactly N-1 elements, where N is the number of ingredients in the cocktail.
+-
+Each element of proportions will contain exactly 16 characters.
+-
+Each element of proportions will be formatted as described in the statement.
+-
+Each <a> will be between 0 and N-1, inclusive.
+-
+Each <b> will be between 0 and N-1, inclusive.
+-
+Each <p> will be between 1 and 9, inclusive.
+-
+Each <q> will be between 1 and 9, inclusive.
+-
+The information given in proportions will be sufficient to restore the recipe of the cocktail uniquely up to a constant factor.
+Examples
+0)
+
+    
+{"#0 and #1 as 6:4"}
+Returns: {3, 2 }
+Taking 6 units of ingredient #0 and 4 units of ingredient #1 would satisfy the proportion, but it wouldn't give the smallest possible total mass. To minimize the total mass, divide the masses by 2.
+1)
+
+    
+{"#0 and #1 as 9:8","#1 and #2 as 9:8"}
+Returns: {81, 72, 64 }
+
+2)
+
+    
+{"#4 and #0 as 1:1", "#4 and #1 as 3:1", "#4 and #2 as 5:1", "#4 and #3 as 7:1"}
+Returns: {105, 35, 21, 15, 105 }
+The mass of ingredient #4 should be divisible by 3, 5 and 7. The smallest such number is 105.
+3)
+
+    
+{"#2 and #3 as 6:8", "#0 and #1 as 9:3", "#3 and #0 as 7:5"}
+Returns: {60, 20, 63, 84 }
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

@@ -1,0 +1,189 @@
+
+	private int countUnAssigned(int[] a, int n)
+	{
+		int count = 0;
+		for (int i = 0; i < n; i++)
+		{
+			if (a[i] == -1)
+				count++;
+		}
+		return count;
+	}
+	
+	private getMax(int[] a, int[] score, int n)
+	{
+		int max = 0;
+		for (int i = 0; i < n; i++)
+		{
+			if (a[i] >= 0)
+			{
+				max = Math.max(max, score[i]);
+			}
+		
+		}
+		return max;	
+	}
+	
+	public int[] nextRound(int[] score, int[] rating)
+	{
+		int n = score.length;
+		
+		int[] a = new int[n];
+		Arrays.fill(a, -1);
+		
+		while (countUnAssigned(a, n) > 0)
+		{
+			int max = getMax(a, score, n);
+			int count = 0;
+			for (int i = 0; i < n; i++)
+			{
+				if (a[i] != -1)
+					count++;
+			}
+			// take cur max scores
+			int[] cur = new int[count%2==0?count:count+1];
+			int ind = 0;
+			for (int i = 0; i < n; i++)
+			{
+				if (a[i] != -1 && score[i] == max)
+				{
+					cur[ind++] = i;
+				}
+			}
+			// sort cur by rating
+			for (int i = 0; i < count; i++)
+			{
+				int maxInd = i;
+				for (int j = i; j < count; j++)
+				{
+					if (rating[cur[j]] > rating[cur[maxInd]])
+						maxInd = j;
+				}
+				// swap
+				int t = cur[i];
+				cur[i] = cur[maxInd];
+				cur[maxInd] = t;			
+			}
+			for (int i = 0; i < count; i++)
+			{
+				a[cur[i]] = -2;
+			}
+			//.. if odd, take next highest rated player among those with second highest score
+			if (count % 2 == 1)
+			{
+				int max = getMax(a, score, n);
+				int maxRating = 0, maxi = 0;
+				for (int i = 0; i < n; i++)
+				{
+					if (a[i] >= 0 && score[i] == max && rating[i] > maxRating)
+					{
+						maxRating = rating[i];
+						maxi = i;
+					}
+				}
+				cur[count] = maxi;
+				count++;
+			}
+			for (int i = 0; i < count/2; i++)
+			{
+				a[cur[i]] = cur[i+count/2];
+				a[cur[i+count/2]] = cur[i];
+			}		
+		}
+		
+		return a;
+	}
+	
+Problem Statement
+    
+In chess tournaments with many players, it's usually not possible for everyone to play everyone else. Instead, some special algorithm for determining the pairings for the next round is used, based on the scores and ratings of the players. The idea is that players with similar scores should play each other in the next round.
+
+More formally, you will be given a int[] score and a int[] rating, where element i in score and rating are the current score and rating for player i. 
+
+No two players will have the same rating. 
+
+To determine the pairings for the next round, apply the following algorithm repeatedly (initially all players belong in a pool of unassigned players).
+
+Pick all players with the highest score from the pool of unassigned players, and sort them by rating (in descending order).
+
+If this number is odd, also pick the highest rated player among those with the second highest score. 
+
+This player should be added to the end of the list of picked players.
+
+Split the picked players in half. 
+
+The first player in each half should play each other in the next round, the second player in each half should play each other in the next round, etc.
+
+Remove the picked players from the pool of unassigned players.
+
+See examples 0 and 1 for further clarifications.
+
+Create a class ChessTournament containing the method nextRound which takes a int[] score and a int[] rating. The method should return a int[] where element i is the index of the opponent for the ith player. The first player has index 0, and so on.
+
+Definition
+    
+Class:
+ChessTournament
+Method:
+nextRound
+Parameters:
+int[], int[]
+Returns:
+int[]
+Method signature:
+int[] nextRound(int[] score, int[] rating)
+(be sure your method is public)
+    
+
+Constraints
+-
+score will contain between 2 and 50 elements inclusive.
+-
+score will contain an even number of elements.
+-
+rating will contain the same number of elements as score.
+-
+Each element in score will be between 0 and 1000, inclusive.
+-
+Each element in rating will be between 1500 and 3000, inclusive.
+-
+All elements in rating will be distinct.
+Examples
+0)
+
+    
+{0,2,4,3,3,2,4,3,0,3}
+{1923,1882,2103,2210,2027,1988,2320,2294,1736,1864}
+Returns: { 8,  5,  6,  9,  7,  1,  2,  4,  0,  3 }
+There are two players with 4 points (2 and 6), so they get to play each other. Then we have four players with 3 points. We order these by rating:
+#  Rat.
+-------
+7  2294 \ Upper half
+3  2210 / 
+4  2027 \ Lower half
+9  1864 / 
+The first players in each half (7 and 4) get to play each other and the second players in each half (3 and 9) get to play each other.
+The two players with 2 points (1 and 5) get to play each other, and finally the two players with 0 points (0 and 8) get to play each other.
+1)
+
+    
+{1,2,3,4,1,2,3,4,1,2,3,4,2,3}
+{2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,1999}
+Returns: { 4,  9,  12,  11,  0,  8,  13,  10,  5,  1,  7,  3,  2,  6 }
+Since there is an odd number of players with 4 points, we also include the highest rated player with 3 points among the picked players. The picked players are then
+ #  Rat.
+-------
+11  2011 \ Upper half
+ 7  2007 / 
+ 3  2003 \ Lower half
+10  2010 / 
+Notice that the extra added player is always put at the bottom of this group. Player 11 gets to play player 3 and player 7 gets to play player 10.
+When repeating the algorithm, we now have an odd number of players with 3 points as well, so the highest rated player with 2 points is included in this group.
+2)
+
+    
+{0,1000}
+{1500,3000}
+Returns: { 1,  0 }
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

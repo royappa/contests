@@ -1,0 +1,115 @@
+typedef pair<int,int> pi;
+
+int A[100][100];
+
+int overlaps(pi v1, pi v2)
+{
+	int a = v1.first, b = v1.second;
+	int c = v2.first, d = v2.second;
+	
+	return (a >= c && a <= d) || (b >= c && b <= d) || (c >= a && c <= b) || (d >= a && d <= b);
+}
+
+int numberOfSubsets(vector <int> start, vector <int> finish) 
+{
+	vector<pi> v;
+	int n = start.size();
+	for (int i = 0; i < n; i++)
+	{
+		v.push_back(make_pair(start[i], finish[i]));
+	}
+	memset(A, 0, sizeof(A));
+	int tot = 0;
+	for (int i = 0; i < n; i++)
+	{
+		int over = 0;
+		for (int j = i+1; j < n; j++)
+		{
+			if (overlaps(v[i], v[j]))
+				over++;
+		}
+		if (over == 0)
+			tot++;
+		else
+			tot += over;
+	}
+	return tot;	
+}
+
+Problem Statement
+    
+You are given two vector <int>s, start and finish, representing a set of intervals. The i-th interval is between start[i] and finish[i], inclusive. 
+
+A subset of the given set is valid only if the following two conditions are satisfied:
+1. No two intervals in the subset intersect each other. Two intervals intersect each other if they both contain at least one common number.
+2. Adding any remaining interval from the original set would make the subset invalid. (Cause an overlap)
+
+Return the number of distinct valid subsets of the given set. 
+
+Two subsets are distinct if there is at least one interval in the first subset which is not in the second. 
+
+Two intervals are distinct if their indexes in start (so, in finish also) are different. 
+
+Correct result will always fit in 32-bit signed integer.
+
+Definition
+    
+Class:
+IntervalSubsets
+Method:
+numberOfSubsets
+Parameters:
+vector <int>, vector <int>
+Returns:
+int
+Method signature:
+int numberOfSubsets(vector <int> start, vector <int> finish)
+(be sure your method is public)
+    
+
+Constraints
+-
+start and finish will each contain between 1 and 50 elements, inclusive.
+-
+start and finish will contain the same number of elements.
+-
+For all i, start[i] will be less than or equal to finish[i].
+-
+Each element of start and finish will be between 1 and 100, inclusive.
+Examples
+0)
+
+    
+{68,25}
+{75,64}
+Returns: 1
+The whole set is the only valid subset.
+1)
+
+    
+{4,2,3}
+{4,5,3}
+Returns: 2
+The given set of intervals is {[4, 4], [2, 5], [3, 3]}. The valid subsets are {[4, 4], [3, 3]} and {[2, 5]}.
+2)
+
+    
+{3,4,3,2,1}
+{4,5,4,5,5}
+Returns: 5
+
+3)
+
+    
+{2,3,4,4,4,4,2,2,1}
+{3,5,4,5,4,5,3,2,4}
+Returns: 14
+
+4)
+
+    
+{1, 1, 3, 3}
+{2, 2, 4, 4}
+Returns: 4
+The given set of intervals is {[1, 2], [1, 2], [3, 4], [3, 4]}. We can combine each of the first two intervals with each of the other two.
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

@@ -1,0 +1,228 @@
+// WORKS - but very close to timeout..
+#include <vector>
+#include <list>
+#include <map>
+#include <set>
+#include <deque>
+#include <stack>
+#include <bitset>
+#include <algorithm>
+#include <functional>
+#include <numeric>
+#include <utility>
+#include <sstream>
+#include <iostream>
+#include <iomanip>
+#include <cstdio>
+#include <cmath>
+#include <cstdlib>
+#include <ctime>
+#define short int
+
+using namespace std;
+short memo[12][1<<20];
+int bc[1<<21];
+int n;
+int frag[20][50];
+int fragCount[20];
+int ok[12][20];
+
+class CMajor {
+public:
+
+vector<string> split_nonre(string s, string sep)
+{
+	char *sC = (char *) malloc(s.size()+1);
+	strcpy(sC, s.c_str());
+	char *sepC = (char *) sep.c_str();
+	char *status = NULL;
+	
+	char *word;
+	vector<string> results;
+	while ((word = strtok_r(sC, sepC, &status)) != NULL)
+	{
+		results.push_back(word);
+		sC = NULL;
+	}
+	return results;
+}
+
+void parse(vector<string> fragments)
+{
+	for (int i = 0; i < n; i++)
+	{
+		vector<string> r = split_nonre(fragments[i], " ");
+		for (int j = 0; j < r.size(); j++)
+		{
+			frag[i][j] = atoi(r[j].c_str());
+		}
+		fragCount[i] = r.size();
+	}		
+	return;
+}
+
+void  build(int keys[], int numKeys)
+{
+	
+	for (int start = 0; start < numKeys; start++)
+	{
+		if (keys[start] == 0)
+			continue;
+		for (int i = 0; i < n; i++)
+		{
+			// ok[start][i] = finish of fragment i from start, or -1
+			int pos = start;
+			int can = true;
+			for (int j = 0; j < fragCount[i]; j++)
+			{
+				pos += frag[i][j];
+				pos = ((pos % numKeys) + numKeys) % numKeys;
+				if (keys[pos] == 0)
+				{
+					can = false;
+					break;
+				}
+			}
+			ok[start][i] = can ? pos : -1;
+		}
+	}
+}			
+
+short longest(int start, int used)
+{
+//printf("%d %d\n", start, used);
+	if (used == (1<<n)-1)
+	{
+		return n;
+	}
+	short &m = memo[start][used];
+	if (m != -1)
+		return m;
+	m = short(bc[used]);
+	
+	for (int i = 0; i < n; i++)
+	{
+		if ((used & (1<<i)) == 0)
+		{
+			int finish = ok[start][i];
+			if (finish != -1)
+			{
+				short x = longest(finish, used|(1<<i));
+				if (x > m)
+					m = x;
+				if (m == n)
+					break;
+			}
+		}
+	}
+	//printf("%d %d returning %d\n", start, used, int(m));
+	return m;
+}
+	
+int getLongest(vector <string> fragments) 
+{
+	int m = 0;
+	n = fragments.size();
+	parse(fragments);
+	memset(memo, -1, sizeof(memo));
+	memset(bc, 0, sizeof(bc));
+	for (int i = 0; i < (1<<n); i++)
+	{
+		bc[i] = 0;
+		for (int j = 0; j < n; j++)
+		{
+			if (i & (1<<j))
+				bc[i]++;
+		}
+	}
+	int keys[] = {1, 0, 1, 1, 0, 1, 0, 1, 1, 0, 1, 0}; // A,x,B,C,x,D,x,E,F,x,G,x
+	build(keys, 12);
+	for (int start = 0; start < 12; start++)
+	{
+		if (keys[start])
+		{
+			m = max(m, int(longest(start, 0))); // longest you can make starting at "start", with none used
+		}
+	}
+	return m;
+}
+
+};
+
+Problem Statement
+    
+A musician has composed several melody fragments and wants you to make a program to create a complete melody by appending those fragments. A fragment is described as a sequence of key jumps on a piano keyboard. A piano keyboard looks like this:
+
+ 
+For instance, to go from the leftmost C key to the F key, a jump of 5 keys is needed (note that the black keys are counted), and to go back requires a jump of -5 keys. A fragment does not specify a starting position. It could be "2 3 -1" meaning that after the initial key we should move two keys to the right, then three and finally one to the left.
+But there is a problem: the musician has set the restriction that the resulting melody must not use (including the starting position) black keys. Then, the fragment shown above could be used either starting on a G key (and then A, C and B) or starting on a C key (and then D, F and E). Each fragment can be used only once in the melody and cannot be used partially.
+You are given a vector <string> fragments, the melody fragments, and you must return the number of fragments in the longest melody that can be created by appending those fragments.
+Definition
+    
+Class:
+CMajor
+Method:
+getLongest
+Parameters:
+vector <string>
+Returns:
+int
+Method signature:
+int getLongest(vector <string> fragments)
+(be sure your method is public)
+    
+
+Notes
+-
+Assume that the piano keyboard is infinite.
+Constraints
+-
+fragments will contain between 1 and 19 elements, inclusive.
+-
+Each element of fragments will contain between 1 and 50 characters, inclusive.
+-
+Each element of fragments will be a list of integers, each separated by a single space, with no additional leading or trailing spaces.
+-
+Each integer in fragments will be between -10000 and 10000, inclusive, with no leading zeros.
+Examples
+0)
+
+    
+{"2 2 1 2 2 2 1","2 1 2 2 2 1 2"}
+Returns: 1
+The first fragment can only be played starting from C and ending on the next C, and the second fragment can only be played starting from D and ending on the next D. Therefore, they cannot be appended.
+1)
+
+    
+{"2","2","1","2","2","2","1","2","2","1","2","2","2","1","2","2","1","2","2"}
+Returns: 19
+All these fragments can be played in order starting from a C key.
+2)
+
+    
+{"2 2 2 2","1 1","5 -4 12 -11","0 2 -2 5 -1 -4 2 -2 7 -2"}
+Returns: 1
+The only fragment that can be played, without using black keys, is the last one.
+3)
+
+    
+{"2 0 2 0 -2 -2 -1 5 1 2 2 2 1"}
+Returns: 1
+
+4)
+
+    
+{"5748 -4385 -790 5294 3349","-3279 -1783 3768 -2459 6066 2556 -8138 -4982 1435",
+ "2951","-2405 2104 3756","5578 -5040 -9497 -4868 7407 9305 -6701",
+ "-3339 9514 -787 7209 7467 -4467", "7496 3011 9941 -8340 3012"}
+Returns: 4
+
+5)
+
+    
+{"72","1872","8916","-288","2208","-4716","2328","9516",
+ "-5472","9840","6420","3492","-1608","4176","264","-6264",
+ "1176","-684","3984"}
+Returns: 19
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

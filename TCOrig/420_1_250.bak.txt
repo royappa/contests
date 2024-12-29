@@ -1,0 +1,110 @@
+int periodLength(vector <int> heaps) 
+{
+	int period = 0;
+	map< vector<int>, int > pos;
+	sort(heaps.begin(), heaps.end());
+	pos[heaps] = 0;
+	do
+	{
+		period++;
+		vector<int> v;
+		int k = 0;
+		for (int i = 0; i < heaps.size(); i++)
+		{
+			k++;
+			heaps[i]--;
+			if (heaps[i] > 0)
+				v.push_back(heaps[i]);
+		}
+		v.push_back(k);
+		if (pos.count(v) > 0)
+			return period-pos[v];
+		pos[v] = period;
+		heaps = v;
+	}
+	while (1);
+}
+
+Problem Statement
+    
+Consider the following solitaire game: We have a deck of identical cards. 
+
+Initially, these cards are split into several heaps, with heaps[i] cards on the i-th heap. 
+
+Each step of the game looks as follows: Pick one card from each of the heaps and make a new heap out of these cards.
+
+When describing a position in the game, only the heap sizes matter, their order does not. 
+
+Clearly, sooner or later a position will repeat and the game will become periodic from that point on.
+
+Write a method that takes a vector <int> heaps and returns the length of the shortest period of the game. 
+
+In other words, find the smallest number of steps S such that for some X the positions after X and X+S steps are equal.
+
+Definition
+    
+Class:
+SolitaireSimulation
+Method:
+periodLength
+Parameters:
+vector <int>
+Returns:
+int
+Method signature:
+int periodLength(vector <int> heaps)
+(be sure your method is public)
+    
+
+Notes
+-
+After some finite number of moves the game must always become periodic.
+Constraints
+-
+heaps will contain between 1 and 50 elements, inclusive.
+-
+Each element in heaps will be between 1 and 50, inclusive.
+-
+The sum of all elements in heaps will be between 1 and 50, inclusive.
+Examples
+0)
+
+    
+{3,1,3}
+Returns: 4
+In the first step of this game we take one card from each of the heaps, leaving two heaps with two cards each. Then we form a new heap consisting of the three cards we took. Thus the new heap sizes are 2, 2, and 3.
+In the next step, the sizes of these heaps decrease to 1, 1, 2, and a new heap of size 3 appears.
+After the third step the heap sizes will be 1, 2, and 4.
+After the fourth step the heap sizes will be 1, 3, and 3. This is exactly the starting position.
+1)
+
+    
+{1,4}
+Returns: 3
+In this case, the positions after the next few steps will look as follows:
+2,3
+1,2,2
+1,1,3
+2,3
+1,2,2
+...
+The shortest period has length 3. Note that the starting position 1,4 is never repeated again.
+2)
+
+    
+{1}
+Returns: 1
+After each step we have the same heap with one card.
+3)
+
+    
+{4,3,2,1}
+Returns: 1
+
+4)
+
+    
+{3,3,3,3}
+Returns: 5
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

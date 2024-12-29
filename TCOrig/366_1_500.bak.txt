@@ -1,0 +1,187 @@
+typedef long long LL;
+typedef pair<int,LL> px;
+memo<px,int> memo;
+vector<int> choice;
+
+vector<int> hasUnique;
+vector<LL> mask;
+vector<int> songCount;
+vector<string> names, songs;
+
+LL songMask(string s)
+{
+	int len = s.size();
+	LL m = 0;
+	for (int i = 0; i < len; i++)
+	{
+		if (s[i] == 'Y')
+			m &= 1LL<<i;
+	}
+	return m;
+}
+
+int bc(LL x)
+{
+	int c = 0;
+	while (x)
+	{
+		c++;
+		x &= x-1LL;
+	}
+	return c;
+}
+
+int f(int p, LL covered)
+{
+	px key = make_pair(p, covered);
+	if (memo.count(key) > 0)
+		return memo[key];
+	if (p == n)
+		return 0;
+	
+	int m = 0;
+	if (hasUnique(p))
+	{
+		// we must use this guitar
+		choice[p] = 1;
+		m = songCount[p]+f(p+1, covered|mask[p]);
+		return memo[key] = m;
+	}
+	// may or may not use it.
+	// use it
+	int m1 = bc(mask[p]|covered)+f(p+1, covered|mask[p]);
+	int m2 = bc(covered)+f(p+1, covered);
+	if (m1 >= m2)
+	{
+		choice[p] = 1; // prefer earlier guitars, if equal
+		return memo[key] = m1;
+	}
+	choice[p] = p;
+	return memo[key] = m2;
+}	
+
+vector <string> buyGuitars(vector <string> names_, vector <string> songs_) 
+{
+	names = names_;
+	songs = songs_;
+	sort(names.begin(), names.end());
+	n = songs.size();
+	
+	choice.resize(n, 0);
+	hasUnique.resize(n, 0);
+	mask.resize(n, 0LL);
+	songCount.resize(n, 0);
+	for (int i = 0; i < n; i++)
+	{
+		mask[i] = songMask(songs[i]);
+		LL x = mask[i];
+		while (x)
+		{
+			songCount[i]++;
+			x &= x-1LL;
+		}
+	}
+	
+	for (int i = 0; i < n; i++)
+	{
+		LL mi = mask[i];
+		for (int j = 0; j < n; j++)
+		{
+			if (i == j) continue;
+			LL mj = mask[j];
+			if (mi != mj)
+			{
+				hasUnique[i] = 1;
+			}
+		}
+	}
+	
+	
+	f(0, 0);
+	vector<string> ret;
+	for (int i = 0; i < n; i++)
+	{
+		if (choice[i])
+		{
+			ret.push_back(songs[i]);
+		}
+	}
+	return ret;
+}
+
+Problem Statement
+    
+You are a guitar player and you want to play a concert. Unfortunately, you don't have any good guitars left, so you need to buy some new guitars. You are given a vector <string> guitarNames, the i-th element of which is the name of the i-th guitar that is available for purchase.
+ 
+You have a list of songs that you would like to play at the concert. Certain songs cannot be played with certain guitars because they will sound weird, so you might not be able to play the entire concert with just one guitar. You are given a vector <string> guitarSongs, where the j-th character of the i-th element is 'Y' if the j-th song can be played on the i-th guitar, and 'N' otherwise.
+ 
+You want your concert to be as long as possible, so your main goal is to play as many of the songs as possible (you can only play each song at most once). You also want to save your money, so you want to buy the least number of guitars required to play that maximum number of songs. Return a vector <string> containing the names of the guitars you should buy in alphabetical order. If there are multiple possible return values, return the one among them that comes first lexicographically. A vector <string> s1 comes before vector <string> s2 lexicographically if s1[i] comes before s2[i] alphabetically, where i is the first position at which they differ.
+Definition
+    
+Class:
+GuitarConcert
+Method:
+buyGuitars
+Parameters:
+vector <string>, vector <string>
+Returns:
+vector <string>
+Method signature:
+vector <string> buyGuitars(vector <string> guitarNames, vector <string> guitarSongs)
+(be sure your method is public)
+    
+
+Constraints
+-
+guitarNames will contain between 1 and 10 elements, inclusive.
+-
+guitarSongs will contain the same number of elements as guitarNames.
+-
+Each element of guitarSongs will contain between 1 and 50 characters, inclusive.
+-
+Each element of guitarSongs will contain the same number of characters.
+-
+Each element of guitarSongs will contain only the uppercase letters 'Y' or 'N'.
+-
+Each element of guitarNames will contain between 2 and 50 characters, inclusive.
+-
+Each element of guitarNames will contain only uppercase letters ('A' - 'Z').
+-
+All elements of guitarNames will be distinct.
+Examples
+0)
+
+    
+{"GIBSON","FENDER", "TAYLOR"}
+{"YNYYN", "NNNYY", "YYYYY"}
+Returns: {"TAYLOR" }
+You can play all the songs on the TAYLOR guitar.
+1)
+
+    
+{"GIBSON", "CRAFTER", "FENDER", "TAYLOR"}
+{"YYYNN", "NNNYY", "YYNNY", "YNNNN"}
+Returns: {"CRAFTER", "GIBSON" }
+You can play all the songs, but you need 2 guitars to do it.
+2)
+
+    
+{"AB", "AA", "BA"}
+{"YN", "YN", "NN"}
+Returns: {"AA" }
+You can only play the first song, so you buy guitar AA because it comes before AB alphabetically.
+3)
+
+    
+{"FENDER", "GIBSON", "CRAFTER", "EPIPHONE", "BCRICH"}
+{"YYNNYNN", "YYYNYNN", "NNNNNYY", "NNYNNNN", "NNNYNNN"}
+Returns: {"BCRICH", "CRAFTER", "GIBSON" }
+
+4)
+
+    
+{"GIBSON","FENDER"}
+{"NNNNNNNNNNNNNNNNNNNNNNNNN", "NNNNNNNNNNNNNNNNNNNNNNNNN"}
+Returns: { }
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

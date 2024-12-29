@@ -1,0 +1,124 @@
+int numBits(int b, int p)
+{
+	int c = 0;
+	for (int i = 0; i < b; i++)
+	{
+		if (p & (1<<i))
+			c++;
+	}
+	return c;
+}
+
+int dist(int b, int n, int p)
+{	
+	int d = 1<<30;
+	for (int i = 0; i < b; i++)
+	{
+		if (p & (1<<i))
+		{
+			int r1 = i/n;
+			int c1 = i%n;
+			for (int j = 0; j < b; j++)
+			{
+				if (j == i)
+					continue;
+				if (p & (1<<j))
+				{
+					int r2 = j/n;
+					int c2 = j%n;
+					d = min(d, abs(r1-r2)+abs(c1-c2));
+				}
+			}					
+		}
+	}
+	return d;
+}
+
+	
+int scatter(int m, int n, int nr) 
+{
+	int best = 0;
+	int b = 1<<(m*n);
+	for (int p = 0; p < b; p++)
+	{
+		if (numBits(m*n, p) == nr)
+		{
+			best = max(best, dist(m*n, n, p));
+		}
+	}
+	return best;
+}
+
+Problem Statement
+    
+You are the most popular programmer in town and the mayor needs your help. This time he wishes to reorganize the town's detention system. All the inmates are held in an underground rectangular-shaped prison, with cells situated on m rows and n columns. When opened, the cells communicate with each other vertically and horizontally. Thus, the distance between two cells is defined as the Manhattan distance:  
+(absolute value of difference in x-coordinates) + (absolute value of difference in y-coordinates)
+ The mayor's plan is to reduce the conflicts by placing the prisoners as far from each other as possible. There are nr prisoners to place and each cell can hold at most one prisoner. The goal is to put the prisoners in cells such that the minimum of all the distances between two occupied cells is as high as possible. Given an int m, an int n and an int nr representing the number of rows, the number of columns and the number of prisoners, respectively, return an int denoting the highest possible minimum distance between two occupied cells.
+Definition
+    
+Class:
+PrisonCells
+Method:
+scatter
+Parameters:
+int, int, int
+Returns:
+int
+Method signature:
+int scatter(int m, int n, int nr)
+(be sure your method is public)
+    
+
+Constraints
+-
+m is between 1 and 4, inclusive.
+-
+n is between 1 and 4, inclusive.
+-
+nr is between 2 and n*m, inclusive.
+Examples
+0)
+
+    
+3
+4
+2
+Returns: 5
+The best way is to put the two prisoners in two opposing corners, like in the diagram below:
+* - - -
+- - - -
+- - - *
+1)
+
+    
+4
+4
+3
+Returns: 4
+In this case there are 3 distances to consider: between prisoner 1 and prisoner 2, between prisoner 1 and prisoner 3 and between prisoner 2 and prisoner 3. A possible solution, with none of the three distances less than 4, is given below:
+* - - -
+- - - *
+- - - -
+- * - -
+2)
+
+    
+4
+4
+4
+Returns: 3
+Everyone in the corner:
+* - - *
+- - - -
+- - - -
+* - - *
+Out of the 6 possible distances, 2 have a length of 6 and 4 have a length of 3. So, the answer should be 3.
+3)
+
+    
+4
+4
+16
+Returns: 1
+Every cell is occupied, so the smallest distance between two prisoners is clearly 1.
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

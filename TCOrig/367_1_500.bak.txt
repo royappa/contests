@@ -1,0 +1,203 @@
+typedef long long LL;
+typedef pair<int,int> pi;
+vector<LL> off, sz;
+int n;
+LL M, OH, P; // P is usable packet size
+
+map<pi,int> memo;
+
+LL f(int p, int s)  // min bytes to write items i..n, given that s bytes of p have already been written
+{
+	pi key = make_pair(p, s);
+	if (memo.count(key) > 0)
+		return memo[key];
+	if (p == n)
+		return 0;
+		
+	LL r = 1LL<<60;
+	// we should always transmit M bytes in every packet
+	// choice: should our last packet end with this chunk, or span the remaining chunks?
+	LL bytes = sz[p]-s;
+	
+	LL numP = (bytes+P-1)/P; // number of packets we need
+	
+	r = numP*OH+bytes+ f(p+1, 0); // this is if we don't span 
+	LL last = bytes % P;
+	if (last > 0 && p < n-1)
+	{
+		// consider spanning
+		bytes -= last;
+		LL rem = P-last;
+		int q = p+1;
+		LL start = 0;
+		while (q < n && rem > off[q]-(off[q-1]+sz[q-1]))
+		{
+			rem -= off[q]-(off[q-1]+sz[q-1]);
+			last += off[q]-(off[q-1]+sz[q-1]);
+			if (rem < sz[q])
+			{
+				last += rem;
+				q++;
+				start = rem;
+				break;
+			}
+			else
+			{
+				rem -= sz[q];
+				last += sz[q];
+				start = 0;
+				q++;
+			}
+		}
+		LL rr = numP*OH+bytes+last+f(q, start);
+		r <?= rr;
+	}
+	
+	return memo[key] = r;
+}	
+	
+	
+	
+long long minBytes(vector <int> offset, vector <int> size, int maxPacketSize, int overhead) 
+{
+	n = offset.size();
+	M = maxPacketSize;
+	OH = overhead;
+	P = M-OH;
+	
+	vector<pi> v;
+	for (int i = 0; i < n; i++)
+	{
+		v.push_back(make_pair(offset[i], size[i]));
+	}
+	sort(v.begin(), v.end());
+	for (int i = 0; i < n; i++)
+	{
+		off.push_back(v[i].first);
+		sz.push_back(v[i].second);
+	}
+	
+	return f(0, 0); 
+}
+
+Problem Statement
+    
+You work in a company that produces measuring devices. 
+
+The software for each device is stored in reprogrammable memory. 
+
+To program a device, you must connect it to a personal computer and transmit data to the device's reprogrammable memory through a serial interface. Your task is to make this process as efficient as possible.
+
+You are given two vector <int>s offset and size. 
+
+Each corresponding pair of elements in offset and size describes a piece of data that must be transmitted to the device. 
+
+The i-th piece of data consists of size[i] consecutive bytes that must be written starting at the address in offset[i]. 
+
+To successfully program a device, you must write every piece of the given data. 
+
+Memory addresses that are not referenced in this data are not important - so you can write anything to those addresses, or write nothing at all to them.
+
+Data is transmitted from the computer to the device through packets. 
+
+Each packet contains a consecutive piece of data that will be written to a specified memory address. 
+
+Each packet must also include overhead bytes of various overhead information (like a packet header, the destination address, checksum, etc.). 
+
+The size of one packet (including the overhead information) can not be more than maxPacketSize bytes. 
+
+Return the minimum possible total number of bytes required to transmit all of the given data to the device.
+
+Definition
+    
+Class:
+DeviceProgramming
+Method:
+minBytes
+Parameters:
+vector <int>, vector <int>, int, int
+Returns:
+long long
+Method signature:
+long long minBytes(vector <int> offset, vector <int> size, int maxPacketSize, int overhead)
+(be sure your method is public)
+    
+
+Notes
+-
+Assume that the reprogrammable memory of the measuring device is infinitely large.
+Constraints
+-
+offset will contain between 1 and 50 elements, inclusive.
+-
+offset and size will contain the same number of elements.
+-
+Each element of offset will be between 0 and 1,000,000,000, inclusive.
+-
+Each element of size will be between 1 and 1,000,000,000, inclusive.
+-
+None of the pieces of data described by offset and size will overlap.
+-
+overhead will be between 1 and 999, inclusive.
+-
+maxPacketSize will be between overhead + 1 and 1000, inclusive.
+Examples
+0)
+
+    
+{0, 42, 60}
+{40, 15, 2}
+26
+6
+Returns: 78
+Send 40 bytes starting from offset 0 in 2 packets (26 * 2 = 52 bytes). 
+Then, send 20 bytes starting from offset 42 in 1 packet (26 bytes). 
+Only 17 of those 20 bytes are meaningful. 
+There are 3 dummy bytes starting from offset 57. A total of 78 bytes are sent.
+
+1)
+
+    
+{0, 42, 60}
+{40, 15, 13}
+26
+6
+Returns: 92
+Send 40 bytes starting from offset 0 in 2 packets (26 * 2 = 52 bytes). Then, send 15 bytes starting from offset 42 in 1 packet (6 + 15 = 21 bytes). Finally, send 13 bytes starting from offset 60 in 1 packet (6 + 13 = 19 bytes). A total of 92 bytes are sent.
+2)
+
+    
+{0, 2, 13}
+{1, 7, 2}
+10
+5
+Returns: 26
+
+3)
+
+    
+{10264, 111, 357, 100066, 714}
+{117, 134, 235, 2395, 23}
+100
+10
+Returns: 3254
+
+4)
+
+    
+{1, 100000000, 450000000}
+{99999999, 315000000, 500000000}
+1000
+30
+Returns: 943298999
+
+5)
+
+    
+{0, 1000000000}
+{1000000000, 1000000000}
+1000
+999
+Returns: 2000000000000
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

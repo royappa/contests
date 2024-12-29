@@ -1,0 +1,7 @@
+# HTTrack Website Copier Cookie File
+# This file format is compatible with Netscape cookies
+spoj.sphere.pl	TRUE	/	FALSE	1999999999	PHPSESSID	aef05769772c7333cee81dc58823ad48
+spoj.sphere.pl	TRUE	/	FALSE	1999999999	phpbb2mysql_data	a%3A0%3A%7B%7D
+spoj.sphere.pl	TRUE	/	FALSE	1999999999	phpbb2mysql_sid	1452db46055a6df24c524f13ab458181
+spoj.sphere.pl	TRUE	/	FALSE	1999999999	css_0	%2Fthemes%2Fskin3.css
+

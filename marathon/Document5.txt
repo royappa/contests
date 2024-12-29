@@ -1,0 +1,90 @@
+	for (int t = 0; t < 101; t++)
+	{
+		count = 0;
+		r = 0;
+		c = t;
+		for (int i = 0; i < 101-t; i++)
+		{
+			if (s[r+i][c+i] == 'X')
+				count++;
+		}
+		if (count > 0)
+		{
+			r = 0;
+			c = t;
+			m = measure(r, c, r+101-t, c+101-t);
+			d = 1.0-pow(m, 1.0/(s2*count));
+			for (int i = 0; i < 101-t; i++)
+			{
+				sample[2][r+i][c+i] = d;
+			}
+		}
+		if (t == 0) continue;
+
+		count = 0;
+		r = t;
+		c = 0;
+		for (int i = 0; i < 101-t; i++)
+		{
+			if (s[r+i][c+i] == 'X')
+				count++;
+		}
+		if (count > 0)
+		{
+			r = t;
+			c = 0;
+			m = measure(r, c, r+101-t, c+101-t);
+			d = 1.0-pow(m, 1.0/(s2*count));
+			r = 0;
+			c = t;
+			for (int i = 0; i < 101-t; i++)
+			{
+				sample[3][r+i][c+i] = d;
+			}
+		}
+	}
+
+	// antidiagonal
+	for (int t = 0; t < 101; t++)
+	{
+		count = 0;
+		r = 0;
+		c = t;
+		for (int i = 0; i < t; i++)
+		{
+			if (s[r+i][c-i] == 'X')
+				count++;
+		}
+		if (count > 0)
+		{
+			r = 0;
+			c = t;
+			m = measure(r, c+1, r+1+t, 0);
+			d = 1.0-pow(m, 1.0/(s2*count));
+			for (int i = 0; i < t; i++)
+			{
+				sample[2][r+i][c-i] = d;
+			}
+		}
+		if (t == 0) continue;
+
+		count = 0;
+		r = t;
+		c = 101;
+		for (int i = 0; i < 101-t; i++)
+		{
+			if (s[r+i][c+i] == 'X')
+				count++;
+		}
+		if (count > 0)
+		{
+			m = measure(r, c, r+101-t, c+101-t);
+			d = 1.0-pow(m, 1.0/(s2*count));
+			r = 0;
+			c = t;
+			for (int i = 0; i < 101-t; i++)
+			{
+				sample[3][r+i][c+i] = d;
+			}
+		}
+	}

@@ -1,0 +1,35 @@
+read n, m
+
+maintain a list of sorter-sequences (SEQ) that start at 1
+for each SEQ, we maintain two values: len and reach
+This is maintained as two maps:
+reach[L] = the full extent of the  SEQ whose length is L
+len[R] = the length of the SEQ whose reach is R
+If len[S] < len[T] then reach[S] < reach[T], for any two different SEQs S & T
+And vice-versa, if reach[S] < reach[T] then len[S] < len[T]
+
+INITIALIZE best
+INITIALIZE lists to store a SEQ [len=0,range=1]
+for ( each sorter [a,b]) {
+	FIND smallest R in domain of len[....] such that R >= a 
+	if (none) {
+		continue; // nothing we have reaches this sorter, so discard [a,b]
+	}
+	// every sequence >= R will overlap [a,b]
+	L = len[R]
+	// we can extend the reach of sequence with length L, and then it becomes length L+1
+	if (b > reach[L+1]) { // we should use this sorter
+		reach[L+1] = b;
+		len[b] = L+1;
+		FLATTEN_AFTER(L+1, b); // delete everything with len > L+1 that is of reach <= b
+		if (b == n) {
+			UPDATE best = min(best, L+1);
+		}
+	}
+	else {
+		discard [a,b]
+		we can reach this sorter but even the shortest one that reaches it, is not worth extending
+	}
+}
+OUTPUT best;
+			

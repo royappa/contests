@@ -1,0 +1,132 @@
+bool Value[2600][8][101];
+
+int CoinWeight::possibleValues(int weight, vector <string> coins) 
+{
+	int n = coins.size();
+	
+	int coinVal[8], minWeight[8], maxWeight[8];
+	int minW = 10000, maxVal = 0;
+	for (int c = 1; c <= n; c++)
+	{
+		sscanf(coins[c-1].c_str(), "%d %d %d", &coinVal[c], &minWeight[c], &maxWeight[c]);
+		maxVal = max(maxVal, coinVal[c]);
+		minW = min(minW, minWeight[c]);
+	}
+
+	for (int v = 0; v <= (weight/minW)*maxVal; v++)
+	{
+		for (int c = 1; c <= n; c++)
+		{
+			for (int W = 0; W <= weight; W++)
+			{
+				Value[v][c][W] = (v == 0 && W == 0);					
+			}
+		}
+	}	
+
+	for (int c = 1; c <= n; c++)
+	{
+		for (int W = 0; W <= weight; W++)
+		{
+			for (int v = 0; v <= (weight/minW)*maxVal; v++)
+			{
+				Value[v][c][W] = Value[v][c][W] || Value[v][c-1][W];		
+				for (int w = minWeight[c]; w <= maxWeight[c] && !Value[v][c][W]; w++)
+				{
+					if (v-coinVal[c] >= 0 && W-w >= 0)
+					{
+						Value[v][c][W] = Value[v][c][W] || Value[v-coinVal[c]][c][W-w];
+					}
+				}
+			}
+		}
+	}
+	int count = 0;
+	for (int v = 0; v <= (weight/minW)*maxVal; v++)
+	{
+		if (Value[v][n][weight])
+		{
+			count++;
+		}
+	}
+	return count;	
+}
+
+
+
+Problem Statement
+    
+Many places like to have the ability to determine the value of coins simply by weighing them - places like highway toll booths, vending machines, and even banks. However, coins do not have exact weights, as much as we'd like them to for problems like this. Due to variances in types of metals, corrosion, and general wear and tear on coins, each denomination of coin has a minimum and a maximum weight. Of course, each coin also has an associated value. You will be given the value and the minimum and maximum weights for each denomination, as well as the weight of a number of coins. You must determine what possible values the coins could possess.
+For instance, let's say that a penny (worth one unit) has a minimum weight of 19 and a maximum weight of 21. Let's also say that a nickel (worth five units) has a minimum weight of 40 and a maximum of 43. Now let's assume we're given a number of coins whose weight is 105. There could be two nickels weighing 43 each, and a penny weighing 19, for a total value of 11 units. Another possibility is to have 5 pennies weighing 21 each, for a value of 5 units.
+Each denomination of coin will be represented by three integers in a string as follows (angle brackets are for clarification only):
+"<value> <minimum weight> <maximum weight>"
+The return value should be the number of distinct possible values. For instance, if the coins could be worth 1, 2, or 4, the return value would be 3.
+Definition
+    
+Class:
+CoinWeight
+Method:
+possibleValues
+Parameters:
+int, vector <string>
+Returns:
+int
+Method signature:
+int possibleValues(int weight, vector <string> coins)
+(be sure your method is public)
+    
+
+Constraints
+-
+weight will be between 10 and 100, inclusive.
+-
+Each element of coins will be formatted exactly as described above, with exactly one space between the integers. There may be leading zeros for the integers.
+-
+coins will have between 1 and 7 elements, inclusive.
+-
+Within each element of coins, value will be between 1 and 50, inclusive.
+-
+Within each element of coins, minimum weight will be between 2 and 100, inclusive.
+-
+Within each element of coins, maximum weight will be between 2 and 100, inclusive.
+-
+Within each element of coins, maximum weight will be between minimum weight and minimum weight + 30, inclusive.
+-
+Each element of coins will have between 5 and 10 characters, inclusive.
+Examples
+0)
+
+    
+30
+{"001 10 10"}
+Returns: 1
+There is only one possible value - 3.
+1)
+
+    
+11
+{"25 20 22"}
+Returns: 0
+There are no values possible.
+2)
+
+    
+50
+{"1 15 20", "3 30 30"}
+Returns: 2
+We can have 3 coins of value 1, or one coin of value 3 and one coin of value 1.
+3)
+
+    
+50
+{"1 15 20", "2 30 30"}
+Returns: 1
+Similar to example 3, except while there are two combinations, there is only one value.
+4)
+
+    
+100
+{"1 2 31","2 16 46","4 31 61","8 46 76","16 61 91","32 76 100","50 2 31"}
+Returns: 1316
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

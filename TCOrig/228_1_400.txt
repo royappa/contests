@@ -1,0 +1,105 @@
+#include <vector>
+#include <list>
+#include <map>
+#include <set>
+#include <deque>
+#include <stack>
+#include <bitset>
+#include <algorithm>
+#include <functional>
+#include <numeric>
+#include <utility>
+#include <sstream>
+#include <iostream>
+#include <iomanip>
+#include <cstdio>
+#include <cmath>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+class BagsOfGold {
+public:
+vector<int> bags;
+int memo[51][51][2];
+
+int best(int left, int right, int turn)
+{
+	if (left > right)
+		return 0;
+		
+	int& b = memo[left][right][turn];
+	if (b != -1)
+		return b;
+	
+	int total = 0;
+
+	b = max(bags[left]-best(left+1, right, 1-turn), bags[right]-best(left, right-1, 1-turn));
+	return b;
+}
+
+int netGain(vector <int> _bags) 
+{
+	bags = _bags;
+	int n = bags.size();
+	memset(memo, -1, sizeof(memo));
+	return best(0, n-1, 0);		
+}
+};
+
+
+//Powered by [KawigiEdit]
+
+
+Problem Statement
+    
+My partner and I have bags of gold, lined up in a row. The bags are different sizes. My partner has offered to split up the gold using the following system: we take turns, each time choosing one bag from either end of the line. She has even generously offered to let me go first -- hmmmmmmmm....
+I need software to tell me the total amount of gold that I will get compared to how much my partner will get if I choose first. Of course we will assume that my partner and I are brilliant and always choose in the optimum way.
+Create a class BagsOfGold that contains a method netGain that is given a vector <int> bags, the values of all the bags of gold in the order in which they are lined up. It should return how much more gold I will get than my partner if we both behave optimally. (I fear that the answer might be a negative number since my partner proposed the plan.)
+Definition
+    
+Class:
+BagsOfGold
+Method:
+netGain
+Parameters:
+vector <int>
+Returns:
+int
+Method signature:
+int netGain(vector <int> bags)
+(be sure your method is public)
+    
+
+Constraints
+-
+bags will contain between 1 and 50 elements inclusive.
+-
+Each element of bags will be between 1 and 100,000 inclusive.
+Examples
+0)
+
+    
+{7,2}
+Returns: 5
+I will choose the 7, and then she gets the 2. So the result is 7 - 2 = 5.
+1)
+
+    
+{2,7,3}
+Returns: -2
+It doesn't matter whether I choose the 2 or the 3. She will choose the 7 and I will get the remaining bag. (2+3) - 7 = -2
+2)
+
+    
+{1000,1000,1000,1000,1000}
+Returns: 1000
+Since I choose first I will get 3 bags and my partner will get only 2 bags. They all have the same value so (1000+1000+1000) - (1000+1000) = 1000.
+3)
+
+    
+{823,912,345,100000,867,222,991,3,40000}
+Returns: -58111
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

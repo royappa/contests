@@ -1,0 +1,147 @@
+int wayTime(vector <string> A) 
+{
+	int rs, rf, cs, cf;
+	int n = A.size();
+	for (int i = 0; i < n; i++)
+	{
+		if (A[i].find('S') != -1)
+		{
+			rs = i;
+			cs = A[i].find('S');
+		}
+		if (A[i].find('F') != -1)
+		{
+			rf = i;
+			cf = A[i].find('F');
+		}
+	}
+	if (rf == rs)
+	{
+		return 2*abs(cs-cf);
+	}
+	
+	int dir = 0;
+	if (rs > rf)
+	{
+		swap(rs, rf);
+		swap(cs, cf);
+		dir = 1;
+	}
+	
+	int t = 0;
+	int k = 0;
+	for (int i = rs+1; i <= rf-1; i++)
+	{
+		int p = A[i].find('|');
+		t += abs(p-cs);
+		cs = p;
+		k++;
+	}
+	t += k*(dir ? 3 : 1);
+	t += abs(cs-cf);
+	return t;
+	
+}
+
+
+Problem Statement
+    
+The elevator in your house is broken, so you need to use stairs to get to different places. Now you want to know how long it will take to get from one location in your house to another one. You will be given the plan of your house as a vector <string>. All elements with even indices (elements 0, 2, 4, ...) will represent the floors of the building. Each '#' character represents a piece of the floor, and the characters 'S' and 'F' represent your starting position and your destination, respectively. All elements with odd indices will represent the area between floors. The '|' character represents a set of stairs, and the '.' character represents an empty space. You can only move from one floor to another floor by going up or down a set of stairs. There will only be one set of stairs between each pair of consecutive floors. You spend one second to move one floor down, two seconds to move one step left or right and three seconds to move one floor up. You are to return the minimal time you need to get from the starting position to the finish. For example, for the following plan:  
+#S### 
+...|. 
+##### 
+.|... 
+####F 
+
+the optimal path will consist of two steps to the right, moving 1 floor down, two steps to the left, moving 1 floor down and finally three steps to the right. The total time spent is 2*2 + 1*1 + 2*2 + 1*1 + 3*2 = 16 seconds. First element represents the topmost floor.
+Definition
+    
+Class:
+BrokenElevator
+Method:
+wayTime
+Parameters:
+vector <string>
+Returns:
+int
+Method signature:
+int wayTime(vector <string> plan)
+(be sure your method is public)
+    
+
+Constraints
+-
+plan will contain between 1 and 49 elements, inclusive.
+-
+plan will contain an odd number of elements.
+-
+Each element of plan will contain between 1 and 50 characters, inclusive.
+-
+Each element of plan will contain the same number of characters.
+-
+Elements of plan with even indices (0-based) will contain only the characters '#', 'S', and 'F'.
+-
+Elements of plan with odd indices will contain only the characters '.' and '|'.
+-
+Each element of plan with an odd index will contain exactly one '|'.
+-
+plan will contain exactly one 'S' and exactly one 'F'.
+Examples
+0)
+
+    
+{"#S###","...|.","#####",".|...","####F"}
+Returns: 16
+The example from the statement.
+1)
+
+    
+{"#F###","...|.","#####",".|...","####S"}
+Returns: 20
+The optimal path contains 3 steps to the left (6 seconds), moving 1 floor up (3 seconds), two steps to the right (4 seconds), moving another 1 floor up (3 seconds) and 2 steps to the left (4 seconds).
+2)
+
+    
+{"SF"}
+Returns: 2
+Just one step to the right
+3)
+
+    
+{"FS"}
+Returns: 2
+
+4)
+
+    
+{"F", "|", "S"}
+Returns: 3
+
+5)
+
+    
+{
+"###############S####",
+"........|...........",
+"####################",
+".........|..........",
+"####################",
+".|..................",
+"####################",
+"|...................",
+"####################",
+"..............|.....",
+"###############F####",
+"|...................",
+"####################",
+".......|............",
+"####################",
+"..............|.....",
+"####################",
+"................|...",
+"####################",
+"..........|.........",
+"####################"}
+Returns: 69
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

@@ -1,0 +1,216 @@
+vector<string> split_nonre(string s, string sep)
+{
+	char *sC = (char *) malloc(s.size()+1);
+	strcpy(sC, s.c_str());
+	char *sepC = (char *) sep.c_str();
+	char *status = NULL;
+	
+	char *word;
+	vector<string> results;
+	while ((word = strtok_r(sC, sepC, &status)) != NULL)
+	{
+		results.push_back(word);
+		sC = NULL;
+	}
+	return results;
+}
+
+/*
+	double x;
+	sscanf(num.c_str(), "%lf", &x);
+	int p = num.find('.');
+	string s = num.substr(p)+num.substr(p+1); // s = num*1000
+	
+	LD val = x;
+
+	val *= k;
+	
+	LL val1 = (LL) floor((double) val/double(k));
+	
+	val1 *= 1000;
+	char buf[100];
+	sprintf(buf, "%.8lf", double(val1));
+	string sbuf = buf;
+
+cout << "correct? " << val << " " << val1 << " " << sbuf << endl;
+	p = sbuf.find('.');
+	sbuf = sbuf.substr(p);
+	if (sbuf == s)
+		return true;
+	
+	val1 = (LL) ceil((double) val/double(k));
+	val1 *= 1000;
+	sprintf(buf, "%.8lf", double(val1));
+	sbuf = buf;
+	p = sbuf.find('.');
+	sbuf = sbuf.substr(p);
+	if (sbuf == s)
+		return true;
+cout << "correct " << num << " " << k << " false " << endl;
+	return false;
+	*/
+	
+typedef long long LL;
+typedef long double LD;
+
+vector<string> v;
+int n;
+
+bool correct(string num, LL k)
+{
+	double x;
+	sscanf(num.c_str(), "%ld", &x);
+	int p = num.find('.');
+	string s = num.substr(p)+num.substr(p+1); // s = num*1000
+	
+	LD val = x;
+	
+	val *= k;
+	
+	LL val1 = (LL) floor((double) val/double(k));
+	
+	val1 *= 1000;
+	char buf[100];
+	sprintf(buf, "%.8lf", double(val1));
+	string sbuf = buf;
+	p = sbuf.find('.');
+	sbuf = sbuf.substr(p);
+	if (sbuf == s)
+		return true;
+	
+	val1 = (LL) ceil((double) val/double(k));
+	val1 *= 1000;
+	sprintf(buf, "%.8lf", double(val1));
+	sbuf = buf;
+	p = sbuf.find('.');
+	sbuf = sbuf.substr(p);
+	if (sbuf == s)
+		return true;
+	return false;
+}
+	
+bool valid(LL k) // return true if k is enough
+{
+	for (int i = 0; i < n; i++)
+	{
+		if (!correct(v[i], k))
+			return false;
+	}
+	return true;
+}
+	
+int numberOfParticipants(vector <string> marks) 
+{
+
+	for (int i = 0; i < marks.size(); i++)
+	{
+		vector<string> w = split_nonre(marks[i], " ");
+		for (int j = 0; j < w.size(); j++)
+		{
+			v.push_back(w[j]);
+		}
+	}
+
+	int n = v.size();
+	
+	LL low = 1, high = 1LL<<36;
+
+	// target is some unknown number that is MORE than disp (problem goal)
+	
+	if (valid(low))
+		return 1;
+		
+	// Here we are MINIMIZING. So we keep "low" as too small ("illegal"), and "high" as at least as large as we want ("legal").
+	// The goal is to reduce "high" to the smallest legal value. Keep "high" in the legal range, "low" in the illegal range.
+	
+	// invariant (enforced by above): F(low) < target, F(high) >= target
+	// we then maintain this invariant until the search range is small.
+	// above conditions should also guarantee that initial search range high-low >= 1 
+	// stop when high-low==1, because then midpoint will always equal low. When this is reached, return high.
+	// probably when maximizing, when this is reached we would return low and maybe adjust the < sign below
+	
+	while (high - low > 1)
+	{
+		LL mid = (low + high)/2LL;
+		if (valid(mid))
+		{
+			high = mid;
+		}
+		else
+		{
+			low = mid;
+		}
+	}
+	return high;			
+	
+}
+
+Problem Statement
+    
+You are given the results of a sociological survey containing several questions. 
+
+Each participant was required to answer each question with an integer between 0 and 10, inclusive. 
+
+You are given the average answer for each question, but the decimal portion of each average is truncated after the first three digits. 
+
+For example, if there were three participants and their answers to a particular question were 4, 6 and 10, 
+the average for that question would be given to you as 6.666.
+
+You are given a vector <string> marks. 
+
+Each element of marks is a single space delimited list of numbers. 
+
+Each number in marks is the average answer for a survey question. 
+
+Return the minimum possible number of participants that could have taken this survey.
+
+Definition
+    
+Class:
+AverageProblem
+Method:
+numberOfParticipants
+Parameters:
+vector <string>
+Returns:
+int
+Method signature:
+int numberOfParticipants(vector <string> marks)
+(be sure your method is public)
+    
+
+Constraints
+-
+marks will contain between 1 and 50 elements, inclusive.
+-
+Each element of marks will contain between 5 and 50 characters, inclusive.
+-
+Each element of marks will be a single space separated list of numbers, where each number is between 0 and 10, inclusive, contains no extra leading zeroes, and contains exactly one decimal point followed by exactly 3 digits.
+-
+marks will contain between 1 and 50 numbers, inclusive.
+Examples
+0)
+
+    
+{"0.000"}
+Returns: 1
+There will always be at least one participant. In this case, the smallest number of participants that could have produced this result is 1.
+1)
+
+    
+{"0.500 0.250", "0.125"}
+Returns: 8
+
+2)
+
+    
+{"0.500","0.300"}
+Returns: 10
+
+3)
+
+    
+{"0.500","0.301"}
+Returns: 106
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

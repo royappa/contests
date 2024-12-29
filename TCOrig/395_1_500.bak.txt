@@ -1,0 +1,139 @@
+#define MOD 1000000007LL
+typedef long long LL;
+
+LL comb(int n, int k)
+{
+	if (k == 1)
+		return 0;
+		
+	LL r = 1; 
+	LL t = n-k;
+	while (n > 1 || k > 1 || t > 1)
+	{
+		if (n > 1)
+		{
+			r *= n;
+			n--;
+		}
+		while (k > 1 && r % k == 0)
+		{
+			r /= k;
+			k--;
+		}
+		while (t > 1 && r % t == 0)
+		{
+			r /= t;
+			t--;
+		}
+	}
+	return r;
+}
+
+LL memo[101][101];
+
+LL f(int n, int k)
+{
+	if (n == 1)
+	{
+		return k == 1 ? 1 : 0;
+	}
+	LL& r = memo[n][k];
+	if (r != -1LL)
+		return r;
+		
+	r = 0;
+	for (int i = 1; i <= n; i++)
+	{
+		r = (r + ((choose(n, i-1)%MOD)*f(n-1, k-1))%MOD)%MOD;
+	}
+		
+LL g(int n, int k)
+{
+	memset(memo, -1, sizeof(memo));
+	return f(n, k);
+}
+
+int buildingCount(int N, int leftSide, int rightSide) 
+{
+	LL tot = 0;
+	for (int i = 1; i <= N; i++)
+	{
+		tot = (tot + ((choose(N,i-1)*g(i, leftSide))%MOD*g(N-i+1, rightSide))%MOD)%MOD;
+	}
+	return tot;
+}
+
+Problem Statement
+    
+The skyline of the city of Terrapin City has N buildings all in a straight line; each building has a distinct height between 1 and N, inclusive. 
+
+The building at index i is considered visible from the left is there is no building with a smaller index that is taller (formally, height[j] < height[i] for all j < i). 
+
+Similarly, a building is visible from the right if there is no taller building with a higher index (height[j] < height[i] for all j > i). For example, if the buildings in order are {1, 3, 5, 2, 4}, then three buildings are visible from the left (1, 3 and 5), but only two are visible from the right (4 and 5).
+
+You will be given N, leftSide and rightSide, corresponding to the total number of buildings, the buildings visible from the left, and the buildings visible from the right, respectively. 
+
+Return the number of permutations of the buildings that are consistent with these values; as this can be a large number, you should return it modulo MOD.
+
+Definition
+    
+Class:
+Skyscrapers
+Method:
+buildingCount
+Parameters:
+int, int, int
+Returns:
+int
+Method signature:
+int buildingCount(int N, int leftSide, int rightSide)
+(be sure your method is public)
+    
+
+Constraints
+-
+N will be between 1 and 100, inclusive.
+-
+leftSide and rightSide will be between 1 and N, inclusive.
+Examples
+0)
+
+    
+3
+2
+2
+Returns: 2
+There are two arrangements of buildings that match these requirements: {1, 3, 2} and {2, 3, 1}.
+1)
+
+    
+3
+2
+1
+Returns: 1
+Only {2, 1, 3} fits these requirements.
+2)
+
+    
+5
+3
+2
+Returns: 18
+
+3)
+
+    
+12
+1
+1
+Returns: 0
+With 12 buildings, it is impossible for you to only see one building from each side.
+4)
+
+    
+8
+3
+2
+Returns: 4872
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

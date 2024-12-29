@@ -1,0 +1,121 @@
+double shortestTime(int n, int D, int ss, int gs) 
+{
+	if (gs <= ss)
+		return double(D-1)/double(ss);
+	// all snails are carried
+	double len = D-1;
+	double C = 0.0;
+	double a = 0.0, b = len;
+	for (int i = 0; i < 500; i++)
+	{
+		double c = (a+b)/2.0;
+		if (possible(n, c, ss, gs))
+		{
+			a = c;
+			C = c;
+		}
+		else
+		{
+			b = c;
+		}
+	}
+	
+}
+
+Problem Statement
+    
+George wanted to arrange a race for his snail farm. He put all his snails on the starting line, shouted "GO!", and started watching the exciting race.
+
+After an hour or two, he realized that snails are good tacticians. 
+
+All of them were running at the same constant speed of snailSpeed meters per hour, probably saving strength for a rapid finish in the last meter. 
+
+With distance meters remaining until the finish line, he decides to speed up the race and help his little friends by carrying each of them closer to the end. 
+
+He needs to be careful, so he decides to carry only one snail at a time. 
+
+George can walk georgeSpeed meters per hour. 
+
+To keep the race fair, all the snails need to be moved by the same distance, and of course, all of them need to be transported before any of them reaches one meter from the finish line.
+
+You are given four ints: 
+	n, the number of snails, 
+	D, the distance in meters remaining until the finish line, 
+	ss, the speed of each snail in meters per hour, and 
+	gs, George's walking speed in meters per hour. 
+	
+Compute the shortest possible time (in hours) after which all the snails will be one meter from the finish line.
+
+Definition
+    
+Class:
+SnailRace
+Method:
+shortestTime
+Parameters:
+int, int, int, int
+Returns:
+double
+Method signature:
+double shortestTime(int n, int D, int ss, int gs)
+(be sure your method is public)
+    
+
+Notes
+-
+You can assume that lifting up and putting down a snail doesn't take any time.
+-
+George can start carrying the first snail immediately because he is currently standing exactly where his snails are.
+-
+After carrying each snail, George needs to go back to get the next one. He does so at the same speed (georgeSpeed meters per hour).
+-
+Returned value must be within 1.0e-9 absolute or relative error.
+-
+
+Constraints
+-
+snails will be between 1 and 50, inclusive.
+-
+distance will be between 2 and 1000, inclusive.
+-
+snailSpeed will be between 1 and 100, inclusive.
+-
+georgeSpeed will be between 1 and 10000, inclusive.
+Examples
+0)
+
+    
+2
+11
+4
+8
+Returns: 1.75
+The snails have 10 meters to go before reaching the final meter. It takes George 0.75 hours to move the first snail 6 meters forward. At that time, the second snail will be at the 3rd meter. George immediately turns back and meets that snail at the 4th meter 0.25 hours later. Finally, it takes him 0.75 hours to carry the second snail to the 10th meter, where the first snail is, for a total of 1.75 hours.
+1)
+
+    
+3
+12
+2
+100
+Returns: 0.502
+In this case, we have 3 snails, and each will be carried 10.2 meters and run the remaining 0.8 meters on its own. The total time is 0.102 + 0.4 = 0.502 hours.
+2)
+
+    
+2
+11
+50
+40
+Returns: 0.2
+It is possible for a man to move slower than a snail! George can't help his snails, so he must wait 0.2 hours, letting the snails run on their own.
+3)
+
+    
+10
+6
+1
+1000
+Returns: 0.09323356231599604
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

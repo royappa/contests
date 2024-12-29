@@ -1,0 +1,91 @@
+#include <vector>
+#include <list>
+#include <map>
+#include <set>
+#include <queue>
+#include <deque>
+#include <stack>
+#include <bitset>
+#include <algorithm>
+#include <functional>
+#include <numeric>
+#include <utility>
+#include <sstream>
+#include <iostream>
+#include <iomanip>
+#include <cstdio>
+#include <cmath>
+#include <cstdlib>
+#include <ctime>
+#include <string.h>
+
+using namespace std;
+#define INF (-1)
+#define INFPLUS(a,b) ((a)==INF||(b)==INF?INF:(a)+(b))
+#define INFEQ(a,b) ((a)==INF||(b)==INF?false:(a)==(b))
+#define INFGT(a,b) ((a)==INF?(b)!=INF:((b)==INF?false:(a)>(b)))
+
+class BuildingRoutes {
+public:
+int build(vector <string> dist, int T) 
+{
+	int n = dist.size();
+	int A[50][50], B[50][50];
+	memset(A, -1, sizeof(A));
+	memset(B, 0, sizeof(B));
+	for (int i = 0; i < n; i++)
+		for (int j = 0; j < n; j++)
+		{
+			A[i][j] = i==j?INF:dist[i][j]-'0';
+			B[i][j] = 0;
+		}
+
+	for (int k = 0; k < n; k++)
+	{
+		for (int i = 0; i < n; i++)
+		{
+			for (int j = 0; j < n; j++)
+			{
+				if (i == j || i == k || j == k) continue;
+				if (INFEQ(A[i][j], INFPLUS(A[i][k],A[k][j])))
+				{
+					B[i][k]++;
+					B[k][j]++;
+				}
+				else if (INFGT(A[i][j], INFPLUS(A[i][k],A[k][j])))
+				{
+					A[i][j] = INFPLUS(A[i][k],A[k][j]);
+					B[i][k]++;
+					B[k][j]++;
+				}
+			}
+		}
+	}
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = 0; j < n; j++)
+		{
+			if (i != j && A[i][j] == dist[i][j]-'0')
+				B[i][j]++;
+		}
+	}
+
+	int sum = 0;
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = 0; j < n; j++)
+		{
+			if (i == j) continue;
+			if (B[i][j] >= T)
+			{
+				sum += A[i][j];
+			}
+		}
+	}
+	return sum;
+}
+};
+
+
+<%:testing-code%>
+//Powered by KawigiEdit 2.1.4 (beta) modified by pivanof!

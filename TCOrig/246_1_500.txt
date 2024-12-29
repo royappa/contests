@@ -1,0 +1,130 @@
+
+// DYNAMIC PROGRAMMING MEMOIZATION GOOD NOTES
+// This program first didn't work with memoization.
+// I had the function minCost setup as minCost(string s, string sub)
+// The memo was map<string,int> memo,  I.e.  memo[s] = cost.
+// The problem was that too many substrings were created in the recursion.
+// So changing it to memoize on "pos" made all the difference, this way it is able to recurse without
+// generating a ton of intermediate strings. Thus we hold all the main string items in globals, 
+// and the only parameters in the recursion are integer index strings.
+// Without memoization AND this optimization, it fails.
+//
+// Note it is OK to pass "s" and "sub" as parameters as long as they don't get changed from one call to the next.
+// It's only if they keep getting changed that things get slow.
+
+map<int,int> memo;
+string s, sub;
+
+class CalcButton {
+public:
+
+int minCost(int pos)
+{
+	int n = s.size();
+	if (n-pos < 3)
+	{
+		return n-pos;
+	}
+	
+	int cost;
+	if (cost = memo[pos])
+		return cost; 
+	cost = 1 + minCost(pos+1);
+	
+	if (sub[0] == s[pos] && sub[1] == s[pos+1] && sub[2] == s[pos+2])
+	{
+		cost = min(cost, 1+minCost(pos+3));
+	}
+	
+	return memo[pos] = cost;
+}
+
+string getDigits(vector <string> sv) 
+{
+	s = "";
+	for (int i = 0; i < sv.size(); i++)
+	{
+		s += sv[i];
+	}
+	
+	int best = 1<<30;
+	string bestSub;
+	for (char a = '0'; a <= '9'; a++)
+	{
+		for (char b = '0'; b <= '9'; b++)
+		{
+			for (char c = '0'; c <= '9'; c++)
+			{
+				memo.clear();
+				sub = "";
+				sub = sub + a + b + c;
+				int cost = minCost(0);
+				if (cost < best)
+				{
+					best = cost;
+					bestSub = sub;
+				}
+			}
+		}
+	}
+	return bestSub;	
+}
+
+Problem Statement
+    
+You are developing a new software calculator. You decided to add a new feature - the three-digit button. Clicking on this button will add three digits into the edit field. This feature is for fast typing of common digit combinations. The problem is to figure out which digits should be placed on this button. 
+
+You have prepared some statistical data - a long sequence of digits. 
+
+You have decided that the button will be chosen to minimize the quantity of clicking required for typing this sequence.
+
+
+You will be given a vector <string> sequence. The data is divided into several rows only for convenience. You can assume that this is a solid array (i.e. the first character in the i-th row is directly after the last character in the (i-1)-th row). You should return a three-character string containing the digits on the button. If there are several solutions you should return the one which appears first lexicographically.
+Definition
+    
+Class:
+CalcButton
+Method:
+getDigits
+Parameters:
+vector <string>
+Returns:
+string
+Method signature:
+string getDigits(vector <string> sequence)
+(be sure your method is public)
+    
+
+Constraints
+-
+sequence will have between 1 and 50 elements, inclusive.
+-
+Each element of sequence will contain between 1 and 50 characters, inclusive.
+-
+Each element of sequence will contain only digits ('0'-'9').
+Examples
+0)
+
+    
+{"100002000"}
+Returns: "000"
+We can type the sequence in 5 clicks (the extra button is used twice)
+1)
+
+    
+{"777777777"}
+Returns: "777"
+We can type the entire sequence in 3 clicks
+2)
+
+    
+{"6503","210"}
+Returns: "032"
+A sequence can be divided into several rows.
+3)
+
+    
+{"0993034","6","4137","45959935","25939","93993","0","9358333"}
+Returns: "993"
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

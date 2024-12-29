@@ -1,0 +1,117 @@
+void f(int n, int e, int w, int liarCount, bool& egg, bool& chicken) 
+{
+	// go through all scenarios offered by the oracle
+	// in each scenario, i people would have told me the opposite answer to the one given by the oracle
+	// for each scenario, tell whether it is consistent with egg, and whether it is consistent with chicken
+	
+	egg = false;
+	chicken = false;
+	for (int l = 0; l <= liarCount; l++)
+	{
+		// check if the facts are consistent with truth="egg"
+		// there are n people, e have said "egg", the oracle says it has told the wrong answer to w, and l are lying (giving me the opposite answer of what they heard)
+		if (n == e)
+		{
+			egg = true;
+		}
+	}
+	return;
+}
+
+string theTruth(int n, int eggCount, int lieCount, int liarCount) 
+{
+	bool egg, chicken;
+	f(n, eggCount, lieCount, liarCount, egg, chicken);
+	if (egg && chicken)
+		return "Ambiguous";
+	else if (!egg && !chicken)
+		return "The oracle is a lie";
+	else if (egg)
+		return "The egg";
+	else
+		return "The chicken";	
+}
+
+Problem Statement
+    
+This time, instead of solving an easy problem with a known solution, you will be in charge in solving an old problem with a solution which was unknown to this date. 
+
+The old question is whether the egg or the chicken came first. This question has been very difficult to answer over the ages, but a chance has finally come: It is said that a new oracle has appeared which knows everything.  
+
+You tried asking the question to the oracle, but the oracle refused to answer, arguing that it has already answered the question to n other people and is tired of answering that question. 
+
+Not to give up, you decided to interview each of the n people. Of them, eggCount people told you that the answer was "The egg", while the remaining n-eggCount people claimed that the answer was "The chicken". 
+
+Confused by the results, you asked the oracle a second time. The oracle still refused to answer the question, but instead explained the results: 
+In order to hide the truth to those unworthy, the oracle has intentionally given the wrong answer to exactly lieCount people. 
+
+On the other hand, also to avoid sharing the secret, exactly liarCount people (not necessarily those that were told the right answer by the oracle) have intentionally given you the opposite answer to the one given to them by the oracle.  
+
+You are still suspiscious that the explanation given by the oracle is another lie. 
+
+Given ints n, eggCount, lieCount and liarCount, find out if scenarios exist such that "The egg" or "The chicken" is the correct answer. 
+
+If there exist scenarios such that either answer is correct, return "Ambiguous" (quotes for clarity). 
+
+If only one answer has a possible scenario, return "The egg" or "The chicken" (quotes for clarity) depending on the answer. 
+
+If neither of the answers has a possible scenario, return "The oracle is a lie".
+
+Definition
+    
+Class:
+ChickenOracle
+Method:
+theTruth
+Parameters:
+int, int, int, int
+Returns:
+string
+Method signature:
+string theTruth(int n, int eggCount, int lieCount, int liarCount)
+(be sure your method is public)
+    
+
+Constraints
+-
+n will be between 1 and 1000000, inclusive.
+-
+eggCount, lieCount and liarCount will each be between 0 and n, inclusive.
+Examples
+0)
+
+    
+10
+10
+0
+0
+Returns: "The egg"
+In this case, every person has answered correctly.
+1)
+
+    
+60
+40
+0
+30
+Returns: "The oracle is a lie"
+According to the oracle, it has told the correct answer to all 60 people and then 30 of them lied to you. However, it contradicts the fact that 40 people have told you one answer and 20 people have told another one.
+2)
+
+    
+60
+20
+5
+25
+Returns: "The chicken"
+
+3)
+
+    
+1000
+500
+250
+250
+Returns: "Ambiguous"
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

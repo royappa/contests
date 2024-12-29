@@ -1,0 +1,157 @@
+typedef long long LL;
+
+LL memo[51][51][2];
+int n;
+vector<string> w;
+
+bool prefix(int a, int b) // check if a is a prefix of b
+{
+	int na = w[a].size(), nb = w[b].size();
+	
+	if (na > nb)
+		return false;
+	for (int j = 0; j < na; j++)
+	{
+		if (w[a][j] != w[b][j])
+			return false;
+	}
+	return true;
+}
+
+LL f(int k, int p, int have) // number prefix-free subsets in k..n which have a child of p, or have not
+{
+	if (k == n)
+	{
+		return 1LL;
+	}
+	LL& r = memo[k][p][have];
+	
+	if (r != -1LL)
+	{
+		return r;
+	}
+	
+	if (p == k)
+	{
+		if (have)
+		{
+			r = 2LL*(f(k+1, p, 0) + f(k+1, p, 1));
+		}
+		else
+		{
+			r = f(k+1, p, 0);
+		}
+	}
+	else
+	{
+		r = 0LL;
+		if (have)
+		{
+			for (int i = k+1; i < n; i++)
+			{
+				if (prefix(p, i)) // i is a child of p
+				{
+					r += f(k+1, i, 1);
+				}
+			}
+		}
+		else
+		{
+			for (int i = k+1; i < n; i++)
+			{
+				if (prefix(p, i)) // i is a child of p
+				{
+					r += f(k+1, i, 0);
+				}
+			}	
+			r -= f(k+1, p, 1);
+		}
+	}
+	memo[k][p][have] = r;
+}
+				
+	
+//f(k, p, have) = # of PF subsets of k..n which have a child of p (or don't)
+
+long long cantPrefFreeSubsets(vector <string> words) 
+{
+	memset(memo, -1LL, sizeof(memo));
+	
+	w = words;
+	sort(w.begin(), w.end());
+	n = w.size();
+	
+	return f(0, 0, 0) + f(0, 0, 1);
+	
+}
+
+Problem Statement
+    
+A prefix-free set is a set of words in which no element is a prefix of another element in the set. 
+
+For example {"hello"} , {"hello", "goodbye", "giant", "hi"} and the empty set are examples of prefix-free sets. 
+
+On the other hand, {"hello","hell"} and {"great","gig","g"} are not prefix-free.
+
+You will be given a vector <string> words containing a set of words, and you must return the number of subsets of words that are prefix-free. 
+
+Note that both the empty set and the entire set count as subsets.
+
+Definition
+    
+Class:
+PrefixFreeSubsets
+Method:
+cantPrefFreeSubsets
+Parameters:
+vector <string>
+Returns:
+long long
+Method signature:
+long long cantPrefFreeSubsets(vector <string> words)
+(be sure your method is public)
+    
+
+Notes
+-
+A prefix of a string is the result of erasing zero or more characters from the right end of that string.
+
+Constraints
+-
+words will contain between 1 and 50 elements, inclusive.
+-
+Each element of words will contain between 1 and 50 characters, inclusive.
+-
+Each character of each element of words will be a lowercase letter ('a'-'z').
+-
+No two elements of words will be equal.
+Examples
+0)
+
+    
+{"hello","hell","hi"}
+Returns: 6
+There are 2^3=8 possible subsets. 
+Only the subsets containing both "hello" and "hell" will not be prefix-free. 
+There are 2 of those (one with "hi" and one without), and therefore, there are 8-2=6 prefix-free subsets.
+
+1)
+
+    
+{"a","b","c","d"}
+Returns: 16
+All subsets are prefix-free.
+2)
+
+    
+{"a","ab","abc","abcd","abcde","abcdef"}
+Returns: 7
+Only subsets with one or less elements are prefix-free.
+
+3)
+
+    
+{"a","b","aa","ab","ba","bb"}
+Returns: 25
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

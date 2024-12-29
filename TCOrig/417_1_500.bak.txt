@@ -1,0 +1,209 @@
+typedef vector<string> vs;
+
+vs rot(vs x)
+{
+	int r = x.size(), c = x[0].size();
+	vs t(c);
+	for (int i = 0; i < c; i++)
+	{
+		string q = string(r, ' ');
+		t.push_back(q);
+	}
+	for (int i = 0; i < r; i++)
+	{
+		for (int j = 0; j < c; j++)
+		{
+			t[c-j-1][i] = x[i][j];
+		}
+	}
+	return t;
+}
+
+string isCubeNet(vector <string> t) 
+{
+	vector<string> a;
+	for	(int i = 0; i < t.size(); i++)
+	{
+		if (t[i].find('#') == -1) continue;
+		a.push_back(t[i]);
+	}
+	int cols = a[0].size();
+	vector<int> dc;
+	for (int i = 0; i < cols; i++)
+	{
+		int np = 0;
+		for (int j = 0; j < a.size(); j++)
+		{
+			if (a[j][i] == '#') np++;
+		}
+		if (np == 0) 
+			dc.push_back(i);
+	}
+	vector<string> b;
+	for (int i = 0; i < a.size(); i++)
+	{
+		string r = "";
+		for (int j = 0; j < a[0].size(); j++)
+		{
+			if (find(dc.begin(), dc.end(), j) != dc.end())
+				r += a[i][j];
+		}
+		b.push_back(r);
+	}
+	vector<vs> v(11);
+	
+	vs x;
+	
+	x.clear();
+	x.push_back('#...');
+	x.push_back('####');
+	x.push_back('#...');
+	v.push_back(x);
+
+	x.clear();
+	x.push_back('.#..');
+	x.push_back('####');
+	x.push_back('#...');
+	v.push_back(x);	
+	
+	x.clear();
+	x.push_back('..#.');
+	x.push_back('####');
+	x.push_back('#...');
+	v.push_back(x);	
+	
+	x.clear();
+	x.push_back('...#');
+	x.push_back('####');
+	x.push_back('#...');
+	v.push_back(x);	
+
+	x.clear();
+	x.push_back('.#..');
+	x.push_back('####');
+	x.push_back('.#..');
+	v.push_back(x);	
+
+	x.clear();
+	x.push_back('. #.');
+	x.push_back('####');
+	x.push_back('.#..');
+	v.push_back(x);		
+	
+	x.clear();
+	x.push_back('##..');
+	x.push_back('.###');
+	x.push_back('...#');
+	v.push_back(x);	
+
+	x.clear();
+	x.push_back('.#..');
+	x.push_back('.###');
+	x.push_back('##..');
+	v.push_back(x);	
+
+	x.clear();
+	x.push_back('##..');
+	x.push_back('.##.');
+	x.push_back('..##');
+	v.push_back(x);	
+
+	x.clear();
+	x.push_back('##..');
+	x.push_back('.###');
+	x.push_back('..#.');
+	v.push_back(x);	
+	
+	x.clear();
+	x.push_back('###..');
+	x.push_back('..###');
+	v.push_back(x);	
+	
+	for (int i = 0; i < 4; i++)
+	{
+		b = rot(b);
+		for (int j = 0; j < 11; j++)
+		{
+			if (b == fold(j))
+				return "YES";
+		}
+	}
+	return "NO";
+}
+
+Problem Statement
+    
+In geometry a cube net is an arrangement of identical edge-joined squares in the plane which can be folded (along the edges) to become the faces of a cube.
+ 
+In this problem you need to check if the given figure is a cube net. 
+
+The given figure will be a union of six identical squares lying in the same plane and will be given to you as a vector <string> figure. Each element of figure will consist of '.' (dot) and '#' (sharp) characters only. A sharp represents one of the six squares, whereas a dot represents an empty space. Return "YES" if figure represents a cube net, or "NO" otherwise (all quotes for clarity).
+
+
+Definition
+    
+Class:
+CubeNets
+Method:
+isCubeNet
+Parameters:
+vector <string>
+Returns:
+string
+Method signature:
+string isCubeNet(vector <string> figure)
+(be sure your method is public)
+    
+
+Constraints
+-
+figure will contain between 1 and 6 elements, inclusive.
+-
+Each element of figure will contain between 1 and 6 characters, inclusive.
+-
+Each element of figure will contain '.' (dot) and '#' (sharp) characters only.
+-
+All elements of figure will contain the same number of characters.
+-
+There will be exactly 6 '#' (sharp) characters among all the elements of figure.
+Examples
+0)
+
+    
+{"..#.",
+ "####",
+ "..#."}
+Returns: "YES"
+Here you can first fold across all the vertical edges to make the middle four squares become the down, right, up and left faces of the cube-to-be. One then finishes off the construction by folding across the remaining two edges to make the other two squares become the front and back faces of the cube.
+1)
+
+    
+{"###",
+ "###"}
+Returns: "NO"
+This is not a cube net.
+2)
+
+    
+{"..#.",
+"####",
+".#.."}
+Returns: "YES"
+
+3)
+
+    
+{"##..",
+ ".##.",
+ "..##"}
+Returns: "YES"
+
+4)
+
+    
+{"####",
+ "...#",
+ "...#"}
+Returns: "NO"
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

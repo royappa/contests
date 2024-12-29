@@ -1,0 +1,202 @@
+#include <vector>
+#include <list>
+#include <map>
+#include <set>
+#include <deque>
+#include <stack>
+#include <bitset>
+#include <algorithm>
+#include <functional>
+#include <numeric>
+#include <utility>
+#include <sstream>
+#include <iostream>
+#include <iomanip>
+#include <cstdio>
+#include <cmath>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+class YahtzeeAdversary {
+public:
+vector<int> best;
+vector<int> cur;
+long long bestScore, bestCount;
+vector<int> orig;
+vector<int> points;
+
+int score(vector<int> t)
+{
+	vector<int> w;
+	sort(t.begin(), t.end());
+	if (t[0] == t[4])
+		w.push_back(0); // yahtzee
+	if (t[4] == t[3]+1 && t[3] == t[2]+1 && t[2] == t[1]+1 && t[1] == t[0]+1)
+		w.push_back(1); // LS
+	if ( (t[4] == t[3]+1 && t[3] == t[2]+1 && t[2] == t[1]+1) || (t[3] == t[2]+1 && t[2] == t[1]+1 && t[1] == t[0]+1))
+		w.push_back(2); // SS
+	if ((t[0] == t[1] && t[2] == t[4]) || (t[0] == t[2] && t[3] == t[4]))
+		w.push_back(3); // FH
+	int m = 0;
+	for (int i = 0; i < w.size(); i++)
+	{
+		m = max(m, points[w[i]]);
+	}
+	return m;
+}
+	
+
+void updateBest(int numRolled)
+{
+	long long tmp = 0;
+	int count = 0;
+	vector<int> t(orig.begin(), orig.end());
+	
+	
+	if (bestScore == -1.0 || tmp*bestCount < bestScore*count)
+	{
+		cout << bestScore << " " << bestCount << " / " << tmp << " " << count << endl;
+		for (int i = 0; i < numRolled; i++) cout << cur[i] << " " ; cout << endl;
+		bestScore = tmp;
+		bestCount = count;
+		best = vector<int>(cur.begin(), cur.begin()+numRolled);
+	}
+}
+
+void f(int nextDie, int numRolled)
+{
+	if (numRolled >= 2)
+	{
+		updateBest(numRolled);
+	}
+	if (nextDie == 5)
+	{
+		return;
+	}	
+	for (int die = nextDie; die < 5; die++)
+	{
+		cur[numRolled] = die;
+		f(die+1, numRolled+1);
+	}
+	return;
+}
+
+vector <int> reRollDice(vector <int> scores, vector <int> dice) 
+{
+	orig = dice;
+	points = scores;
+	cur.resize(5);
+	bestScore = -1;
+	best.resize(5);
+	f(0, 0);
+	
+	return best;
+}
+};
+
+
+//Powered by [KawigiEdit]
+
+Problem Statement
+    
+In the game of Yahtzee, 5 dice (6 sided) are rolled (and then some of them re-rolled) in an attempt to make one of several formations with the dice. 
+
+We will introduce a new two-player version of the game in which player one first rolls all five dice, and then player two chooses at least two of the five dice, which the first player must then re-roll. 
+
+The goal of player two is to minimize the expected score of the first player.
+
+In our version of the game, we are only concerned about four possible results: 
+
+Yahtzee: All five dice show the same value
+Large Straight: All five dice form a straight (1,2,3,4,5 or 2,3,4,5,6)
+Small Straight: Four of the five dice form a straight
+Full House: Three dice show the same value, and the other two also have the same value (ex. {1, 3, 1, 1, 3} or {2, 2, 2, 2, 2})
+
+You are given a vector <int> scores indicating how many points each of the four formations is worth. 
+(In order, they are given as Yahtzee, Large Straight, Small Straight, Full House) 
+
+You are also given a vector <int> dice, indicating the values shown on each of the five dice after player one has rolled. 
+
+You should return a vector <int> indicating the 0-based indices of the dice that should be selected for re-rolling, to minimize the expected score of player one. 
+
+If more than one selection of dice produces the same expected score, return the one that comes first lexicographically. (See notes)
+
+Definition
+    
+Class:
+YahtzeeAdversary
+Method:
+reRollDice
+Parameters:
+vector <int>, vector <int>
+Returns:
+vector <int>
+Method signature:
+vector <int> reRollDice(vector <int> scores, vector <int> dice)
+(be sure your method is public)
+    
+
+Notes
+-
+Although a set of five dice may fit the criteria for more than one formation, it can only be scored for one of the formations. The formation of maximum value will be used as the score. (Ex. 1,2,3,4,5 can only count as a small or large straight, but not both at once.)
+-
+A set of five like values, such as {1, 1, 1, 1, 1} is both a Yahtzee and a Full House. The higher score of the two is counted.
+-
+vector <int> A1 comes before vector <int> A2 lexicographically if A1 has a lower value in the first position at which they differ.
+-
+To calculate the expected score, multiply the score of each possible outcome by the probability of that outcome, and sum those values together.
+Constraints
+-
+scores will contain exactly four elements.
+-
+Each element of scores will be between 0 and 10000, inclusive.
+-
+dice will contain exactly five elements.
+-
+Each element of dice will be between 1 and 6, inclusive.
+Examples
+0)
+
+    
+{50, 40, 30, 25}
+{1, 1, 1, 1, 1}
+Returns: {0, 1, 2 }
+This is standard Yahtzee scoring. Rerolling four dice instead of just three increases the likelihood of getting a full house or straight. Rerolling three is the best bet. Picking any three of the five (since they are all showing the same value), we choose the three that come first lexicographically.
+1)
+
+    
+{50, 40, 30, 25}
+{1, 2, 3, 4, 5}
+Returns: {2, 3 }
+Notice that any possible straight we could form (small or large) would contain 3 and 4 in it. Forcing these two to be rerolled is a good move.
+2)
+
+    
+{50, 40, 30, 25}
+{5, 4, 3, 2, 1}
+Returns: {1, 2 }
+Notice that for this same example (in a different order) it is still those same two values.
+3)
+
+    
+{10000, 0, 0, 0}
+{1, 1, 1, 1, 1}
+Returns: {0, 1, 2, 3 }
+A Yahtzee is the only thing that can score us any points. Either rerolling all five dice or only four leaves the same odds of landing the Yahtzee, so we choose the lexicographically first possibility.
+4)
+
+    
+{0, 0, 10000, 0}
+{4, 2, 3, 4, 4}
+Returns: {1, 2 }
+Here, only a straight will be worth any points. Leaving the opponent with three like dice makes it impossible to end up with four dice in a straight. Please note that we must reroll at least 2 dice.
+5)
+
+    
+{0, 0, 0, 1}
+{3, 3, 3, 3, 3}
+Returns: {0, 1, 2, 3 }
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

@@ -1,0 +1,206 @@
+#include <vector>
+#include <list>
+#include <map>
+#include <set>
+#include <deque>
+#include <stack>
+#include <bitset>
+#include <algorithm>
+#include <functional>
+#include <numeric>
+#include <utility>
+#include <sstream>
+#include <iostream>
+#include <iomanip>
+#include <cstdio>
+#include <cmath>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+class MirrorNumber {
+public:
+typedef long long LL;
+
+LL memo[10][20];
+map<LL,LL> memo2;
+
+LL g(int d, int p) // return number of mirror numbers <= d*10^p
+{
+	if (p == 0)
+	{
+		int sum = 0;
+		for (int i = 0; i <= d; i++)
+		{
+			if (i == 0 || i == 1 || i == 8)
+				sum++;
+		}
+		return sum;
+	}
+	if (d == 0)
+	{
+		return 1;
+	}
+	LL &r = memo[d][p];
+	if (r != -1LL)
+		return r;
+	
+	r = 0;
+	if (d == 0)
+	{
+		r = g(9, p-1);
+	}
+	else
+	{
+		for (int i = 0; i <= d-1; i++)
+		{
+			if (flip[i] != -1)
+			{
+				r += g(i, p);
+			}
+		}
+		r += g(9, p-1);
+		if (flip[d] != -1)
+			r++;
+	}
+	return r;
+}
+		
+	
+int flip[10];
+
+bool mirror(LL x)
+{
+	char buf[100];
+	sprintf(buf, "%lld", x);
+	int len = strlen(buf);
+	int j = len-1;
+	for (int i = 0; i < (len+1)/2; i++)
+	{
+		if (buf[i]-'0' != flip[buf[j]-'0'])
+			return false;
+		j--;
+	}
+	return true;
+}
+
+LL f(LL x) // return number of mirror numbers from 0..x, inclusive
+{
+	if (x < 0)
+		return 0;
+	
+	if (x < 10LL)
+	{
+		int sum = 0;
+		for (int i = 0; i <= x; i++)
+		{
+			if (i == 0 || i == 1 || i == 8)
+				sum++;
+		}
+		return sum;
+	}		
+	if (memo2.count(x) > 0)
+	{
+		return memo2[x];
+	}
+	
+	char buf[100];
+	sprintf(buf, "%lld", x);
+	string s = buf;
+	LL d = s[0]-'0';
+	s = s.substr(1);
+	int p = s.size();
+	LL rest;
+	sscanf(s.c_str(), "%lld", &rest);
+	
+	LL res;
+	if (d == 0 || d == 1 || d == 8)
+	{
+		res = g(d, p) + f(rest);
+		if (mirror(rest))
+			res--;
+	}
+	else
+	{
+		res = g(d, p);
+	}
+	memo2[x] = res;
+	return res;
+}
+
+	
+int count(string A, string B) 
+{
+	LL a, b;
+	sscanf(A.c_str(), "%lld", &a);
+	sscanf(B.c_str(), "%lld", &b);
+
+	memset(memo, -1, sizeof(memo));
+	flip[0] = 0;
+	flip[1] = 1;
+	flip[2] = 5;
+	flip[3] = -1;
+	flip[4] = -1;
+	flip[5] = 2;
+	flip[6] = -1;
+	flip[7] = -1;
+	flip[8] = 8;
+	flip[9] = -1;
+	
+	return f(a)-f(b-1);
+}
+};
+
+
+//Powered by [KawigiEdit]
+
+
+Problem Statement
+    
+A number is written on a traditional digital display. If the display looks identical when flipped horizontally (i.e., around a vertical axis), the number is called a "mirror number". On a digital display, the digits 0, 1 and 8 are symmetrical, and the digits 2 and 5 are mirror images of each other. No other digits make sense when flipped horizontally. For example, 0, 101 and 1521 are all mirror numbers, while 1221 and 1010 are not (see images below). Given two strings A and B, both representing integers with no extra leading zeroes, return the number of mirror numbers between A and B, inclusive.  Mirror numbers (both remain unchanged after mirroring):         Not mirror numbers (1221 mirrors to 1551, and 1010 mirrors to 0101):       
+Definition
+    
+Class:
+MirrorNumber
+Method:
+count
+Parameters:
+string, string
+Returns:
+int
+Method signature:
+int count(string A, string B)
+(be sure your method is public)
+    
+
+Constraints
+-
+A will represent an integer between 0 and 10^18, inclusive.
+-
+B will represent an integer between A and 10^18, inclusive.
+-
+Both A and B will have no extra leading zeros.
+Examples
+0)
+
+    
+"0"
+"10"
+Returns: 3
+There is only 0, 1 and 8 here.
+1)
+
+    
+"0"
+"100"
+Returns: 7
+Few more: 11, 25, 52, 88.
+2)
+
+    
+"143"
+"23543"
+Returns: 54
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

@@ -1,0 +1,111 @@
+typedef long double LD;
+vector<int> v;
+int n;
+
+LD memo[3000];
+
+LD f(int k)
+{
+	if (k == 0)
+	{
+		return 0.0;
+	}
+	
+	LD r = memo[k];
+	if (r != LD(-1.0))
+	{
+		return r;
+	}
+	r = 1.0e12;
+	
+	for (int p = 1; p <= k; p++)
+	{
+		LD c = 
+	
+double calculateCost(vector <string> boards) 
+{
+	string s = "";
+	for (int i = 0; i < boards.size(); i++)
+	{
+		s += boards[i];
+	}
+	vector<int> v;
+	
+	for (int i = 0; i < s.size(); i++)
+	{
+		if (s[i] == 'X')
+			v.push_back(i);
+	}
+	n = v.size(); // v <= 2500
+	for (int i = 0; i < 3000; i++)
+	{
+		memo[i] = LD(-1.0);
+	}
+
+	return double(f(n));
+	
+}
+Problem Statement
+    
+You are going to repair an old fence. The fence consists of several consecutive boards, some of which are broken and some of which are fine. The boards are numbered from left to right in increasing order. To repair all the boards between i and j, inclusive, where j is greater than or equal to i, a woodworker charges sqrt(j-i+1), where sqrt is the square root function. Due to the woodworker's pricing scheme, it is often necessary to repair boards even if they are not broken in order to get the best price (see examples).
+You will be given a vector <string> boards. Concatenate the elements of boards to create a single string representing the fence from left to right. Broken boards are represented by 'X' characters and good boards are represented by '.' characters. Return the minimal cost required to repair all broken boards.
+Definition
+    
+Class:
+FenceRepairing
+Method:
+calculateCost
+Parameters:
+vector <string>
+Returns:
+double
+Method signature:
+double calculateCost(vector <string> boards)
+(be sure your method is public)
+    
+
+Notes
+-
+Your return value must have an absolute or relative error less than 1e-9.
+Constraints
+-
+boards will contain between 1 and 50 elements, inclusive.
+-
+Each element of boards will contain between 1 and 50 characters, inclusive.
+-
+Each element of boards will contain only '.' and uppercase 'X' characters.
+Examples
+0)
+
+    
+{"X.X...X.X"}
+1
+1.4
+1.6
+2
+2.1
+2.5
+
+Returns: 3.0
+The best choice is to repair the entire fence at once. This will cost sqrt(8-0+1) = 3.
+1)
+
+    
+{"X.X.....X"}
+Returns: 2.732050807568877
+The best choice is to perform two repairs. First, repair the three leftmost boards. Then, repair the rightmost board. The total cost is sqrt(2-0+1) + sqrt(8-8+1) = 2.73.
+2)
+
+X.............XX.X.......X...X..
+    
+{"X.......", "......XX", ".X......", ".X...X.."}
+Returns: 5.0
+
+3)
+
+    
+{".X.......X", "..........", "...X......", "...X..X...", "..........",
+ "..........", "..X....XX.", ".........X", "XXX", ".XXX.....X"}
+Returns: 9.591663046625438
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

@@ -1,0 +1,104 @@
+typedef pair<int,int> pi;
+#define INF 2000000000
+vector <int> getLuckiest(vector <int> L, int n) 
+{
+	sort(L.begin(), L.end());
+	vector<pi> q;
+	int beg = 1;
+	for (int i = 0; i < L.size(); i++)
+	{
+		if (beg <= L[i]-2)
+		{
+			q.push_back(make_pair(L[i]-1-beg+1, beg);
+		}
+		beg = L[i]+1;
+	}
+	q.insert(make_pair(INF,beg));
+	vector<int> r;
+	int i = 0;
+	while (n > 0)
+	{
+		r.push_back(L[i]);
+		n--;
+		i++;
+	}
+	if (n == 0)
+		return r;		
+	while (n > 0)
+	{
+		sort(q.begin(), q.end());
+		r.push_back(q[0].second);
+		n--;
+		if (n > 0)
+		{
+			int last = int(q.size())-1;
+			
+	}
+	return r;
+}
+Problem Statement
+    
+You are given a set of integers called luckySet. An interval [A,B], where B is greater than A, and A and B are positive integers, is considered unlucky if none of the integers between A and B, inclusive, belongs to luckySet.  An integer x is considered to be luckier than another integer y if the number of unlucky intervals that contain x is smaller than the number of unlucky intervals that contain y. In case both x and y belong to an equal number of unlucky intervals, or both belong to an infinite number of unlucky intervals, the smallest of them is considered to be luckier than the other.  Given a vector <int> luckySet, return the top n luckiest positive integers sorted in descending order by luckiness (in other words, each element of the vector <int> must be luckier than the next element).
+Definition
+    
+Class:
+UnluckyIntervals
+Method:
+getLuckiest
+Parameters:
+vector <int>, int
+Returns:
+vector <int>
+Method signature:
+vector <int> getLuckiest(vector <int> luckySet, int n)
+(be sure your method is public)
+    
+
+Constraints
+-
+luckySet will contain between 1 and 50 elements, inclusive.
+-
+Each element of luckySet will be between 1 and 1000000000, inclusive.
+-
+Each element of luckySet will be distinct.
+-
+n will be between 1 and 100, inclusive.
+Examples
+0)
+
+    
+{3}
+6
+Returns: {3, 1, 2, 4, 5, 6 }
+0 unlucky intervals contain 3. 1 unlucky interval contains 1: [1,2]. 1 unlucky interval contains 2: [1, 2]. Since 1 and 2 are inside an equal number of intervals, 1 is considered luckier because it is less than 2. For every number greater than 3, there is an infinite number of unlucky intervals that contain it. However, 4 and 5 are considered to be the luckiest among them, as they are smallest.
+1)
+
+    
+{5, 11, 18}
+9
+Returns: {5, 11, 18, 1, 4, 6, 10, 2, 3 }
+3 unlucky intervals: [1,2], [1,3] and [1,4] include 1. 3 unlucky intervals: [1,4], [2,4] and [3,4] include 4. 4 unlucky intervals: [6,7], [6,8], [6,9] and [6,10] include 6. 4 unlucky intervals: [6,10], [7,10], [8,10] and [9,10] include 10. 5 unlucky intervals: [1,2], [1,3], [1,4], [2,3] and [2,4] include 2. 5 unlucky intervals: [1,3], [1,4], [2,3], [2,4] and [3,4] include 3. 
+2)
+
+    
+{7, 13, 18}
+9
+Returns: {7, 13, 18, 14, 17, 8, 12, 1, 6 }
+
+3)
+
+    
+{1000, 1004, 4000, 4003, 5000}
+19
+Returns: 
+{1000, 1004, 4000, 4003, 5000, 4001, 4002, 1001, 1003, 1002, 4004, 4999,
+ 1, 999, 4005, 4998, 2, 998, 4006 }
+
+4)
+
+    
+{1000000000}
+8
+Returns: {1000000000, 1, 999999999, 2, 999999998, 3, 999999997, 4 }
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

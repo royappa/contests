@@ -1,0 +1,27 @@
+
+To do a fractional comparison accurately, use double:
+	if (n > 7/10)		// will truncate 7/10 to 0
+	if (n > (double) 7/10)	// correct
+	
+	
+General ArrayList/int[] usage:
+	
+	ArrayList a = new ArrayList();
+	
+	int x;
+	
+	a.add(new Integer(x)); // add int x to array list
+	.. use add()/remove() operations
+	
+	// to get back into an integer list:
+	
+	int result[] = new int[a.size()];
+	for (int i = 0; i < a.size(); i++)
+	{
+		result[i] =((Integer) a.get(i)).intValue();
+	}
+	
+	// to get into an Object array
+	
+	Integer[] dummy = {};
+	Integer[] results = (Integer[]) a.toArray(dummy);

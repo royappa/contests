@@ -1,0 +1,105 @@
+typedef long double LD;
+
+double minimizeFuel(int D, int K, int E, int F) 
+{
+	
+}
+
+
+Problem Statement
+    
+The Breguet range equation tells us how far an aircraft can fly if it has a given mass of fuel on board. 
+
+It states that the maximum range of an aircraft R is given by: 
+	R = K * log(take-off mass / empty mass) 
+	
+	where K is a constant for the aircraft and 
+	the take-off mass is equal to the 
+		empty mass + the mass of fuel on board the aircraft. 
+	
+In addition, taking off and gaining altitude takes a certain, constant amount of fuel.  
+
+An airline wishes to minimize the amount of fuel consumed on a given journey by allowing the aircraft to stop at intermediate cities along the way to refuel. 
+
+Assume that the aircraft can stop an unlimited number of times and can stop at any point of its journey. 
+
+Also assume that it can carry an unlimited amount of fuel.  
+
+You will be given an int distance, the total distance of the journey, the int value K for the aircraft, an int emptyMass containing the empty mass of the aircraft and an int takeoffFuel containing the additional mass of fuel required each time the aircraft takes off. 
+
+You should return a double containing the minimum amount of fuel required to complete the journey.
+
+Definition
+   
+Class:
+FlightScheduler
+Method:
+minimizeFuel
+Parameters:
+int, int, int, int
+Returns:
+double
+Method signature:
+double minimizeFuel(int distance, int K, int emptyMass, int takeoffFuel)
+(be sure your method is public)
+    
+
+Notes
+-
+The return value must be accurate to within an absolute or relative tolerance of 1e-9.
+Constraints
+-
+distance will be between 1 and 200,000, inclusive.
+-
+K will be between 1 and 200,000, inclusive.
+-
+emptyMass will be between 1 and 200,000, inclusive.
+-
+takeoffFuel will be between 1 and 200,000, inclusive.
+Examples
+0)
+
+    
+40000
+100000
+150000
+5000
+Returns: 76420.82744805096
+The optimal schedule here is to make 1 stop right in the middle of the flight.
+1)
+
+    
+40000
+55000
+150000
+5000
+Returns: 138450.61724934017
+K is a measure of the efficiency of the aircraft. With this less efficient aircraft it's best to stop twice.
+2)
+
+    
+1000
+500
+1000
+50
+Returns: 2664.9853821314487
+
+3)
+
+    
+10000
+100
+200
+5
+Returns: 24635.869665316768
+
+4)
+
+    
+140000
+4
+10000
+10
+Returns: 3.6576871282155204E8
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

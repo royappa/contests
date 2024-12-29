@@ -1,0 +1,201 @@
+	private int getDepth(int[] parents, int f)
+	{
+		if (f == 0) return 0;
+		return getDepth(parents, parents[f])+1;
+	}
+	
+	// for anything other than f==0 &
+	private boolean contains(int[] parent, int p, int f)
+	{
+		if (f == 0) return false;
+		if (f == p) return true;
+		return contains(parent, p, parent[f]);
+	}
+	public int[] findHome(String[] folders, String[] users)
+	{
+		int numF = folders.length;
+		int numU = users.length;
+		int[] homes = new int[numU];
+		int[] depth = new int[numF];
+		int[] par = new int[numF];
+		Arrays.fill(par, 0);
+		Arrays.fill(depth, 0);
+		for (int i = 0; i < numF; i++)
+		{
+			String[] w = folders[i].split(" ");
+			int parent = Integer.parseInt(w[0]);
+			par[i] = parent;
+		}
+		for (int i = 1; i < numF; i++)
+		{
+			depth[i] = getDepth(par, i);
+		}		
+		for (int i = 0; i < numU; i++)
+		{
+			// make a list of folders that the user can access
+			String user = users[i];
+			ArrayList access = new ArrayList();
+			for (int j = 0; j < numF; j++)
+			{
+				String[] w = folders[j].split(" ");
+				int folder = Integer.parseInt(w[0]);
+				String[] w2 = w[1].split(",");
+				for (int k = 0; k < w2.length; k++)
+				{
+					if (w2[k].equals(user))
+					{
+						access.add(""+j);
+						break;
+					}
+				}
+			}
+			if (access.size() == 0)
+			{
+				homes[i] = -1;
+				continue;
+			}
+			// walk the list all folders, and find the deepest folder that contains all
+			// that he can access
+			int home = 0;
+			int maxDepth = 0;
+			for (int j = 0; j < numF; j++)
+			{
+				// check if folder j contains all the folders f that the user can access
+				boolean containsAll = true;
+				for (int k = 0; k < access.size(); k++)
+				{
+					int f = Integer.parseInt((String) access.get(k));
+					if (j == 0)
+						break;
+					if (!contains(par, j, f))
+					{
+						containsAll = false;
+						break;
+					}
+				}				
+				// check depth of folder j
+				if (containsAll)
+				{
+					if (depth[j] >= maxDepth)
+					{
+						home = j;
+						maxDepth = depth[j];
+					}
+				}
+			}
+			homes[i] = home;
+		}
+		return homes;
+	}
+	
+Problem Statement
+    
+You are building a web site for your clients to access, and want to create a welcome screen that serves as a starting point where they can view various pieces of data.
+
+All of your data is stored hierarchically in folders, much like a file system. 
+
+You are given a String[] folders, where each element includes the id of the parent folder, a space, and a comma-delimited list of users who have permission to view that folder. 
+
+The root level folder, 0, is its own parent, and all folders are descendants of the root node. 
+
+Additionally, you are given a String[], users, which contains a list of the users who will be accessing the web site.
+
+For each user, you are to determine which folder should serve as their "home folder". 
+
+A user's home folder is defined as the deepest folder which contains all of the folders the user can access.
+
+Suppose the data is very simple, such that folders looks like this:
+[0]: 0 Administrator
+[1]: 0 Joe,Phil
+[2]: 0 Joe
+and your users are Administrator, Joe, and Phil. 
+
+Clearly, the Administrator's home folder is 0, since he can access the root node. 
+
+Similarly, Phil's home folder is 1, since he can only access folder 1. 
+
+But Joe can access folders 1 and 2, so his home folder must be folder 0, which contains folders 1 and 2.
+
+The return value should be a int[], indicating the home folder for each corresponding element of users. 
+
+Users who have access to no folders are assigned a home folder of -1.
+
+Definition
+    
+Class:
+PermissionTree
+Method:
+findHome
+Parameters:
+String[], String[]
+Returns:
+int[]
+Method signature:
+int[] findHome(String[] folders, String[] users)
+(be sure your method is public)
+    
+
+Notes
+-
+User names are case-sensitive
+Constraints
+-
+folders will have between 1 and 50 elements, inclusive.
+-
+users will have between 1 and 50 elements, inclusive.
+-
+Each element of users will have between 1 and 50 alphabetic ('A'-'Z' or 'a'-'z') characters.
+-
+Each element of folders will be of the form "<parent> <user list>" (quotes added for clarity).
+-
+Each element of folders will contain between 3 and 50 characters, inclusive.
+-
+<parent> will be an integer index of an element of folders, between 0 and n - 1, inclusive, where n is the number of elements in folders. Leading zeroes are permitted.
+-
+<user list> will be a comma-delimited list of user names, with no spaces, and containing only the characters 'A'-'Z', 'a'-'z', or ','.
+-
+<user list> can not be empty, and may contain repeats.
+
+-
+The elements of folders will define a valid tree.
+Examples
+0)
+
+    
+{"0 Admin", "0 Joe,Phil", "0 Joe"}
+{"Admin", "Joe", "Phil"}
+Returns: { 0,  0,  1 }
+The example from the problem statement.
+1)
+
+    
+{"0 Admin"}
+{"Peter", "Paul", "Mary"}
+Returns: { -1,  -1,  -1 }
+There is not much to access, and only the admin can see it.
+2)
+
+    
+{"0 Admin", "2 John", "0 Peter,John", "0 Tim", "1 John"}
+{"John"}
+Returns: { 2 }
+Notice that, apart from the root node always being (0), other folders are not necessarily defined in order of depth. (Here, folder 2 is the parent of folder 1.)
+3)
+
+    
+{"0 Admin",
+"0 Jeff", "1 Mark,Tim", "1 Tim,Jeff",
+"0 Dan", "4 Ed", "4 Tom", "4 Kyle,Ed",
+"0 Ben", "8 Rich", "8 Sam", "8 Tim"}
+{"Jeff", "Ed", "Tim", "Steve"}
+Returns: { 1,  4,  0,  -1 }
+
+4)
+
+    
+{"0 Admin", "0 Bob,Joe,Bob", "0 Joe"}
+{"Joe", "Bob"}
+Returns: { 0,  1 }
+Notice here that a username can be repeated for a given folder.
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

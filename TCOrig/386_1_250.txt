@@ -1,0 +1,177 @@
+int bc(int x)
+{
+	int c = 0;
+	while (x)
+	{
+		x &= x-1;
+		c++;
+	}
+	return c;
+}
+
+vector<string> t;
+int n;
+int rows;
+
+bool superkey(int m)
+{
+	set<string> s;
+	for (int i = 0; i < rows; i++)
+	{
+		string r = "";
+		for (int j = 0; i < n; j++)
+		{
+			if (m & (1<<j))
+			{
+				r += t[i][j];
+			}
+		}
+		s.insert(r);
+	}
+	return s.size() == rows;
+}
+
+bool subset(int i, int m)
+{
+	return ((i & m) == i) && bc(i) < bc(m);
+}
+
+bool candidate(int m)
+{
+	if (superkey(m))
+	{
+		for (int i = 0; i < (1<<n); i++)
+		{
+			if (bc(i) > 0 && subset(i, m))
+				return false;
+		}
+	}
+	return true;
+}
+
+vector <int> getKeys(vector <string> table) 
+{
+	t = table;
+	n = t[0].size();
+	rows = t.size();
+	int mx = 0, mn = 1<<30;
+	for (int i = 0; i < (1<<n); i++)
+	{
+		if (candidate(i))
+		{
+			int x = bc(i);
+			mx >?= x;
+			mn <?= x;
+		}
+	}
+	vector<int> r;
+	if (mx == 0)
+	{
+		return r;
+	}
+	r.push_back(mn);
+	r.push_back(mx);
+	return r;
+}
+
+Problem Statement
+    
+A database table consists of a set of columns called attributes, and a set of rows called entries. 
+
+A superkey is a set of attributes such that each entry's values for those attributes forms a unique ordered set. 
+
+That is, for any superkey, each pair of entries differs in at least one of the attributes contained within the superkey. 
+
+A candidate superkey is a superkey such that no proper subset of its attributes forms a superkey.  
+
+Return a vector <int> with exactly two elements. 
+
+The first element should be the number of attributes in the smallest candidate superkey of the table, and the second element should be the number of attributes in the largest candidate superkey of the table. 
+
+If there is no valid candidate superkey, return an empty vector <int> instead.  
+
+The input is described by a vector <string> table. 
+
+Each string in table represents one entry, while characters contained in the string are attribute values for that entry.
+
+Definition
+    
+Class:
+CandidateKeys
+Method:
+getKeys
+Parameters:
+vector <string>
+Returns:
+vector <int>
+Method signature:
+vector <int> getKeys(vector <string> table)
+(be sure your method is public)
+    
+
+Notes
+-
+A proper subset of a superkey is a set of attributes that is formed by removing one or more attributes from the superkey.
+
+Constraints
+-
+table will contain between 2 and 50 elements, inclusive.
+-
+Each element of table will contain between 1 and 10 characters, inclusive.
+-
+Each element of table will contain the same number of characters.
+-
+Each character in table will be an uppercase letter ('A'-'Z').
+Examples
+0)
+
+    
+{
+"ABC",
+"ABC",
+"ABC"
+}
+Returns: { }
+Since all entries are the same, there is no set of attributes that can differentiate between them. Therefore, this table has no candidate superkeys.
+1)
+
+    
+{
+"ABC",
+"ABD",
+"ABE"
+}
+Returns: {1, 1 }
+There are four superkeys here: {column 0, column 1, column 2} {column 0, column 2} {column 1, column 2} {column 2} Note that the fourth superkey is a subset of all the other superkeys, so it is the only candidate superkey.
+2)
+
+    
+{
+"ABC",
+"ACD",
+"BBE"
+}
+Returns: {1, 2 }
+
+3)
+
+    
+{"A","B"}
+Returns: {1, 1 }
+
+4)
+
+    
+{
+"AABB",
+"BABA",
+"CAAB",
+"DAAA",
+"EBBB",
+"FBBA",
+"GBAB",
+"HBAA"
+}
+Returns: {1, 3 }
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

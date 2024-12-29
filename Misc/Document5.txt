@@ -1,0 +1,8 @@
+if (debug) { printf("visiting %d,%d from %d,%d\n", dr, dc, r, c);}
+if (debug) { printf("yes\n");}
+if (debug) { printf("b:\n"); for (auto z : b) { printf("%d,%d ", z.first, z.second); printf("\n");}}
+if (debug) { printf("u:\n"); for (auto z : u) { printf("%d,%d ", z.first, z.second); printf("\n");}}
+if (debug) { printf("initial b:\n"); for (auto z : b) { printf("%d,%d ", z.first, z.second); printf("\n");}}
+
+cout <<"start: " << n << " " << m << endl;
+if (debug) { printf("b:\n"); for (auto z : b) { printf("%d,%d ", z.first, z.second); printf("\n");}}

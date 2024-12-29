@@ -1,0 +1,114 @@
+#include <vector>
+#include <list>
+#include <map>
+#include <set>
+#include <deque>
+#include <stack>
+#include <bitset>
+#include <algorithm>
+#include <functional>
+#include <numeric>
+#include <utility>
+#include <sstream>
+#include <iostream>
+#include <iomanip>
+#include <cstdio>
+#include <cmath>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+typedef long long LL;
+
+class NearFrac
+{
+public:
+
+LL f(int k)
+{
+	if (k <= 1)
+	{
+		return 1LL;
+	}
+	if (k == 2)
+	{
+		return 2LL;
+	}
+	if (k % 2 == 0)
+	{
+		return f(k/2) + f((k-2)/2);
+	}
+	return f((k-1)/2);
+}
+	
+LL howMany(int k)
+{
+	return f(k);
+}
+
+};
+
+
+
+Problem Statement
+    
+Given a positive integer k, the binary representation expresses k as a sum of powers of 2. Each digit in the binary representation is allowed to be 0 or 1 (for example, 9 = 10012 = 23 + 20). What if it could be 0, 1 or 2? Given k you will return how many different binary decompositions it has, where the digit values can be 0, 1 or 2. Note, each representation has no leading zeros.
+Definition
+    
+Class:
+BadBinary
+Method:
+howMany
+Parameters:
+int
+Returns:
+long long
+Method signature:
+long long howMany(int k)
+(be sure your method is public)
+    
+
+Constraints
+-
+k will be between 1 and 2^31-1, inclusive.
+-
+The return value will be at most 2^63-1.
+Examples
+0)
+
+    
+1
+Returns: 1
+"1" is the only answer.
+1)
+
+    
+2
+Returns: 2
+Two possibilities are "10" and "2".
+2)
+
+    
+3
+Returns: 1
+"11" is the only answer.
+3)
+
+    
+4
+Returns: 3
+"100", "20" and "12".
+4)
+
+    
+10
+Returns: 5
+"1010", "1002", "210", "202" and "122".
+5)
+
+    
+489225632
+Returns: 67366
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

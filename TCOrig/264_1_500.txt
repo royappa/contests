@@ -1,0 +1,175 @@
+#include <vector>
+#include <list>
+#include <map>
+#include <set>
+#include <deque>
+#include <stack>
+#include <bitset>
+#include <algorithm>
+#include <functional>
+#include <numeric>
+#include <utility>
+#include <sstream>
+#include <iostream>
+#include <iomanip>
+#include <cstdio>
+#include <cmath>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+string mal = "MALFORMED", cor = "CORRECT", inco = "INCORRECT";
+
+
+class GradingGridIns {
+public:
+
+int p10(int x)
+{
+	int p = 1;
+	while (x > 0)
+	{
+		p *= 10;
+		x--;
+	}
+	return p;
+}
+
+bool ge(int na,int da, int nb, int db)
+{
+	return na*db >= nb*da;
+}
+
+bool between(int na, int da, int ln, int ld, int un, int ud)
+{
+	return ge(na, da, ln, ld) && ge(un, ud, na, da);
+}
+
+int gcd(int a, int b)
+{
+	if (b == 0)
+		return a;
+	return gcd(b, a % b);
+}
+
+string check2(int num, int den, vector<int> lower, vector<int> upper)
+{
+	if (between(num, den, lower[0], lower[1], upper[0], upper[1]))
+	{
+		return cor;
+	}
+	
+	bool low = ge(lower[0], lower[1], num, den);
+	
+	for (int n = 0; n <= 9999; n++)
+	{
+		for (int d = 1; d <= 9999; d++)
+		{
+			if (low && between(n, d, num, den, lower[0], lower[1]))
+				return inco;
+			else if (between(n, d, upper[0], upper[1], num, den))
+				return inco;
+		}
+	}
+	return cor;
+}
+	
+string checkfrac(string a, vector<int> lower, vector<int> upper)
+{
+	int p = 0;
+	for (p = 0; p < a.size(); p++)
+		if (a[p] == '/')
+			break;
+	string num = a.substr(0, p);
+	string den = a.substr(p+1);
+	if (num.size() == 0 || den.size() == 0)
+		return mal;
+	int n = atoi(num.c_str()), d = atoi(den.c_str());
+	if (d == 0)
+		return mal;
+	return check2(n, d, lower, upper);
+}
+string checkdec(string a, vector<int> lower, vector<int> upper)
+{
+	string num = "";
+	bool flag = false;
+	for (int i = 0; i < a.size(); i++)
+	{
+		if (a[i] == '.')
+		{
+			continue;
+		}
+		num += a[i];
+	}
+	int p = a.size()-1;
+	while (p >= 0 && a[p] == '0')
+		p--;
+	int n = 0;
+	while (p >= 0 && a[p] != '.')
+	{
+		p--;
+		n++;
+	}
+	char buf[100];
+	sprintf(buf, "%s/%d", num.c_str(), p10(n));
+	string x = buf;
+	return checkfrac(x, lower, upper);
+}
+	
+string checkint(string a, vector<int> lower, vector<int> upper)
+{
+	string af = a + "/1";
+	return checkfrac(af, lower, upper);
+}
+
+string check(string a, vector<int> lower, vector<int> upper)
+{
+	// rule 1
+	for (int i = 1; i <= 2; i++)
+	{
+		if (a[i] == ' ' && a[i-1] != ' ' && a[i+1] != ' ')
+			return mal;
+	}
+	// rule 1b
+	string x = "";
+	for (int i = 0; i < a.size(); i++)
+	{
+		if (a[i] != ' ')
+			x += a[i];
+	}
+	a = x;
+	// rules 2, 3, 4
+	int dc = 0, sc = 0, digcount = 0;
+	for (int i = 0; i < a.size(); i++)
+	{
+		if (a[i] == '.') dc++;
+		if (a[i] == '/') sc++;
+		if (a[i] >= '0' && a[i] <= '9') digcount++;
+	}
+	if (!((dc == 0 && sc <= 1) || (sc == 0 && dc <= 1)) || digcount == 0)
+		return mal;
+	
+	if (dc == 0 && sc == 0)
+		return checkint(a, lower, upper);
+	else if (dc == 0 && sc == 1)
+		return checkfrac(a, lower, upper);
+	else 
+		return checkdec(a, lower, upper);
+	
+}
+
+vector <string> score(vector <string> answer, vector <int> lower, vector <int> upper) 
+{
+	vector<string> result;
+	
+	for (int i = 0; i < answer.size(); i++)
+	{
+		result.push_back(check(answer[i], lower, upper));
+	}
+	return result;	
+}
+
+};
+
+
+//Powered by [KawigiEdit]

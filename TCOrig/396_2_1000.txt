@@ -1,0 +1,122 @@
+map< pair<string, vector<int> > , string> memo;
+
+string f(string s, vector<int> hist)
+{
+	pair<string, vector<int> > key = make_pair(s, hist);
+	
+	if (memo.count(key) > 0)
+		return memo[key];
+		
+	int sum = 0;
+	for (int i = 0; i < 10; i++)
+		sum += hist[i];
+	if (sum == 0)
+	{
+		return memo[key] = s;
+	}
+	
+	if (s.size() == 0)
+	{
+		return memo[key] = "";
+	}
+	string r = "";
+	string q = f(s.substr(1), hist);
+	if (q != "") // best we can do without deleting this char
+	{
+		r += s[0];
+		r += q;
+	}
+		
+	int d = s[0]-'0';
+	if (hist[d] != 0) // we can try deleting this
+	{
+		hist[d]--;
+		string q2 = f(s.substr(1), hist); // removed
+		r >= q2;
+	}
+	return memo[key] = r;
+}
+
+string maxNumber(string number, string digits) 
+{
+
+	vector<int> hist(10, 0);
+	for (int i = 0; i < digits.size(); i++)
+	{
+		hist[digits[i]-'0']++;
+	}
+	return f(number, hist);
+}
+
+Problem Statement
+    
+You are given two strings, number and digits. 
+
+Each string contains only digits between 1 and 9, inclusive. 
+
+For each occurrence of a digit in digits, you must remove a single occurrence of that digit from number. 
+
+Your goal is to end up with the largest possible remaining number after all the necessary digits are removed. Return this number as a string.
+
+Definition
+    
+Class:
+RemovingDigits
+Method:
+maxNumber
+Parameters:
+string, string
+Returns:
+string
+Method signature:
+string maxNumber(string number, string digits)
+(be sure your method is public)
+    
+
+Constraints
+-
+number will contain between 1 and 50 characters, inclusive.
+-
+digits will contain between 0 and n-1 characters, inclusive, where n is the number of characters in number.
+-
+Each character in number and digits will be a non-zero digit ('1'-'9').
+-
+The number of occurrences of each digit in number will be greater than or equal to the number of occurrences of that digit in digits.
+
+Examples
+0)
+
+    
+"12345"
+"513"
+Returns: "24"
+If we remove the digits '5', '3', '1' we get the number 24.
+1)
+
+    
+"112352"
+"1123"
+Returns: "52"
+There are two choices. We can either get a "25" or a "52". The largest is "52".
+2)
+
+    
+"123456654321"
+"612534"
+Returns: "654321"
+Removing the first half of our number gives us the maximum result.
+3)
+
+    
+"654321123456"
+"612534"
+Returns: "654321"
+Removing the last half of our number gives us the maximum result.
+4)
+
+    
+"2654982765982365"
+"2345978"
+Returns: "698265265"
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

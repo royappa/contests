@@ -1,0 +1,29 @@
+
+n = yi (mod xi) 
+=> n = yi+m*xi
+ 
+n = yj (mod xj)
+
+=> yi+m*xi = yj (mod xj)
+
+yj-yi = m*xi (mod xj)
+
+=> m = (yj-yi)/xi (mod xj)
+
+When xi,xj are coprime, we can find xi's inverse mod xj and calculate m
+Then, n can be calculated as above
+
+When xi,xj are not coprime:
+
+yj-yi = m*xi (mod xj)
+
+=> (yj-yi)-m*xi = k*xj
+
+=> yj-yi = k*xj+m*xi
+
+Let g = gcd(xj,xi); divide both sides by g
+ 
+(yj-yi)/g = k*(xj/g)+m*(xi/g)
+
+If (yj-yi)%g != 0, then there is no solution
+Otherwise, again, we can find m and all is well.

@@ -1,0 +1,203 @@
+vector< vector<int> > r(4);
+bool check(int i, int j)
+{
+	int c1 = 0, c2 = 0, c3 = 0, c4 = 0;
+	for (int di = 0; di < 2; di++)
+	{
+		for (int dj = 0; dj < 2; dj++)
+		{
+			int dx = i+di, dy = j+dj;
+			if (r[dx][dy] == 1) c1++;
+			else if (r[dx][dy] == 2) c2++;
+			else if (r[dx][dy] == 3) c3++;
+			else if (r[dx][dy] == 4) c4++;
+		}
+	}
+	return (c1 == 1 && c2 == 1 && c3 == 1 && c4 == 1);
+}
+
+int countWays(vector <string> board) 
+{
+	
+
+	vector< vector<int> > B(4);
+	for (int i = 0; i < 4; i++)
+	{
+		vector<int> x;
+		for (int j = 0; j < 4; j++)
+		{
+			x.push_back(board[i][j] == '-' ? 0 : (board[i][j]-'0'));
+		}
+		B.push_back(x);
+	}
+	
+	for (int i = 0; i < 4; i++)
+	{
+		vector<int> x;
+		for (int j = 1; j <= 4; j++)
+		{
+			x.push_back(j);
+		}
+		r.push_back(x);
+	}
+	int count = 0;
+	do
+	{
+		do
+		{
+			do
+			{
+				do
+				{
+					// check if cur is a valid sudoku
+					bool good = true;
+					for (int col = 0; col < 4; col++)
+					{
+						int c1 = 0, c2 = 0, c3 = 0, c4 = 0;
+						for (int row = 0; row < 4; row++)
+						{
+							if (r[row][col] == 1) c1++;
+							else if (r[row][col] == 2) c2++;
+							else if (r[row][col] == 3) c3++;
+							else if (r[row][col] == 4) c4++;
+						}
+						if (!(c1 == 1 && c2 == 1 && c3 == 1 && c4 == 1))
+						{
+							good = false;
+							break;
+						}
+					}
+					if (good)
+					{
+						good = check(0,0) && check(2,0) && check(0,2) && check(2,2);
+					}
+					if (good)
+					{
+						bool fine = true;
+						for (int row = 0; row < 4 && fine; row++)
+						{
+							for (int col = 0; col < 4; col++)
+							{
+								if (B[row][col] != 0 && B[row][col] != r[row][col])
+								{
+									fine = false;
+									break;
+								}
+							}
+						}
+						if (fine)
+						{
+							count++;
+						}
+					}
+					// check if cur is compatible with B - if yes, add to count
+
+				} while (next_permutation(r[3].begin(), r[3].end()));
+
+			} while (next_permutation(r[2].begin(), r[2].end()));			
+			
+		} while (next_permutation(r[1].begin(), r[1].end()));
+		
+	} while (next_permutation(r[0].begin(), r[0].end()));
+	return count;
+}
+
+Problem Statement
+    
+This problem statement contains images that may appear incorrectly or not appear at all in some plugins. In that case, use the standard view in the arena to see it correctly.
+
+Little Johnny has just learned about Sudoku, but finds these puzzles annoyingly hard, so he plays a much simpler version. He plays on a 4x4 table where each cell is either empty or contains a single number between 1 and 4, inclusive. The purpose of the game is to fill the entire table with numbers so that each row, each column, and each 2x2 square (labeled A, B, C, and D in the picture below) contains each of the numbers 1, 2, 3, and 4 exactly once.
+ 
+You are given a vector <string> board. The jth character of the ith element of board represents the cell at row i, column j. The '-' character represents an empty cell. Cells that are filled with numbers are represented by the characters '1', '2', '3', and '4'. Return the number of different ways this puzzle can be solved.
+Definition
+    
+Class:
+SillySudoku
+Method:
+countWays
+Parameters:
+vector <string>
+Returns:
+int
+Method signature:
+int countWays(vector <string> board)
+(be sure your method is public)
+    
+
+Constraints
+-
+table will contain exactly 4 elements.
+-
+Each element will have exactly four characters.
+-
+Each character will be '-', '1', '2', '3' or '4'.
+Examples
+0)
+
+    
+{"--21", 
+ "--34", 
+ "2143", 
+ "3412"}
+Returns: 1
+This puzzle has only one solution: 
+4321
+1234
+2143
+3412
+  Each row contains 1, 2, 3, and 4:  
+ 4321
+
+ 1234
+
+ 2143
+
+ 3412
+  Each column contains 1, 2, 3, and 4:  
+ 4  3  2  1
+ 1  2  3  4
+ 2  1  4  3
+ 3  4  1  2
+  And each of the four 2x2 squares contains 1, 2, 3, and 4:  
+ 43  21
+ 12  34
+
+ 21  43
+ 34  12
+1)
+
+    
+{"--1-", 
+ "--1-", 
+ "----", 
+ "----"}
+Returns: 0
+This is a clearly invalid puzzle since it contains two 1s in the upper left 2x2 square.
+2)
+
+    
+{"1---", 
+ "-42-", 
+ "-3--", 
+ "----"}
+Returns: 3
+
+3)
+
+    
+{"1---", 
+ "--1-", 
+ "-1--", 
+ "---1"}
+Returns: 18
+
+4)
+
+    
+{"1---", 
+ "----", 
+ "----", 
+ "----"}
+Returns: 72
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

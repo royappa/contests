@@ -1,0 +1,129 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  
+<!-- Mirrored from www.cs.duke.edu/csed/onlineprobs/string4.html by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 14 Mar 2006 08:55:07 GMT -->
+<head>
+    <title>Weekly Problem string1</title>
+  </head>
+
+  <body>
+    <h1>Weekly Problem string4</h1>
+
+
+<p>
+<hr>
+
+<h3>Problem Statement</h3>
+
+<p>
+Given a URL for a web page such as
+<tt>www.cs.duke.edu/help.html</tt>, where the URL ends
+with a page whose name has a <tt>.html</tt> suffix, return
+a string that contains the type of the URL domain, e.g., com, edu,
+org, net; and contains the root-name (without the .html suffix) of the
+web page. The domain and root-name should be separated by
+a colon, e.g., <tt>"edu:help"</tt>.
+<p>
+The domain name is whatever comes after the last period of the prefix
+that occurs before the first slash <tt>/</tt>; and the root-name
+is whatever comes before the suffix <tt>.html</tt> and after the
+last slash.
+<P>
+Hint: The string member function <tt>rfind</tt> will be useful, 
+see Tapestry for details.
+<P> 
+<h3>Definition</h3>
+
+<UL>
+<LI> Class: none used in this problem
+<LI> Function/Method: parseUrl
+<LI> Parameters: string
+<LI> Returns: string
+<LI> Method signature (see below)
+
+</UL>
+
+ <h3>Prototype</h3>
+
+(be sure you have the necessary include files as shown)
+
+<XMP>
+#include <string>
+using namespace std;
+
+   string parseUrl(string url)
+   {
+           // fill in code here
+   }
+
+</XMP>
+
+<P>
+
+<h3>Constraints</h3>
+<UL>
+
+<LI> Parameter url contains at least one slash <tt>/</tt>
+character.
+<P>
+<LI> Parameter url contains at least one period before
+the first slash.
+<P>
+<LI> Paramter url has a valid web-page name with a .html
+suffix after the last <tt>/</tt> in url.
+
+</UL>
+
+<P>
+<h3>Examples</h3>
+
+(quote for clarity, they're not part of the string)
+<OL>
+<LI>
+<PRE>
+  "www.cs.duke.edu/courses/cps006/fall03/tests.html"
+
+Returns:  "edu:tests"
+</PRE>
+
+<P>
+<LI>
+<PRE>    
+
+  "www.acm.org/jobs.html"
+
+Returns: "org:jobs"
+</PRE>
+<P>
+<P>
+<LI>
+<PRE>
+   
+  "www.amazon.com/books/howtosucceedinschool.html"
+
+Returns: "com:howtosucceedinschool"
+</PRE>
+<P>
+
+<P>
+<LI>
+<PRE>
+
+  "cia.gov/ispy/division/colleges/Duke/cps.html"
+
+Returns: "gov:cps"
+</PRE>
+
+</OL>
+
+
+    <hr>
+    <address><a href="mailto:rodger@cs.duke.edu">Susan H. Rodger</a></address>
+<!-- Created: Sun Apr  6 22:07:57 EDT 2003 -->
+<!-- hhmts start -->
+Last modified: Thu Sep 11 21:03:32 EDT 2003
+<!-- hhmts end -->
+  </body>
+
+<!-- Mirrored from www.cs.duke.edu/csed/onlineprobs/string4.html by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 14 Mar 2006 08:55:07 GMT -->
+</html>

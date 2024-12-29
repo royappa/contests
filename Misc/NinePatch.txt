@@ -1,0 +1,85 @@
+
+	public int numBlocks(int[] len, int[] width)
+	{
+		int sum = 0;
+		for (int i = 0; i < len.width; i++)
+		{
+			sum += (len[i]/2) * (width[i]);			
+		}
+		
+		return sum/9;		
+	}
+
+Problem Statement
+    
+A nine-patch quilt is made from blocks containing nine squares of fabric arranged in a three-by-three grid. You are making a nine-patch quilt from rectangular fabric scraps and want to know how many blocks you can make. Each square of fabric will be two inches on each side, so each block will be six inches on each side (ignoring seam allowances).
+
+You will be given the length and width in inches of each fabric scrap as two int[]'s, where the dimensions of scrap i are given by element i of length and element i of width. You plan to cut as many squares as possible from each scrap, but the squares must all be cut with sides parallel to the sides of the scrap (because a square cut at an angle will stretch in unwanted ways). You will return the maximum number of blocks that can be constructed using all the scraps.
+
+For example, suppose you have only a single scrap that is 13 inches long and 9 inches wide. There is room for 6 two-inch squares lengthwise and 4 two-inch squares widthwise, so you could cut a total of 24 squares. From those squares, you could make 2 blocks, with 6 squares left over. Note that, after cutting the 24 squares, you would have some extra strips. You might think you could sew those strips together into as many as 5 extra two-inch squares. 
+
+Combined with the 6 solid squares left over, you would then have enough squares to make another block. 
+
+However, for aesthetic reasons, you have decided that your individual squares must never show any seams, so you refuse to piece together squares in this fashion.
+Definition
+    
+Class:
+NinePatch
+Method:
+numBlocks
+Parameters:
+int[], int[]
+Returns:
+int
+Method signature:
+int numBlocks(int[] length, int[] width)
+(be sure your method is public)
+    
+
+Constraints
+-
+length contains between 1 and 50 elements, inclusive.
+-
+width contains the same number of elements as length.
+-
+Each element of length is between 1 and 1000, inclusive.
+-
+Each element of width is between 1 and 38, inclusive.
+Examples
+0)
+
+    
+{ 13 }
+{ 9 }
+Returns: 2
+The example above.
+1)
+
+    
+{ 1, 8 }
+{ 4, 1 }
+Returns: 0
+One scrap is too short to make any squares, and the other scrap is too narrow.
+2)
+
+    
+{ 7, 13, 192 }
+{ 6, 22, 31 }
+Returns: 168
+
+3)
+
+    
+{ 606, 517, 358, 813, 522, 766, 795, 661, 572, 465,
+  729, 290, 905,  61, 187, 147, 449, 531,  44, 969,
+  337, 539, 232, 936, 117, 579, 115, 402, 486, 510,
+  952, 400, 691, 287, 919, 323, 581, 943, 730, 652,
+   48, 847, 490, 386,  21,  86,  70, 869, 415, 334 }
+{  36,  2, 35, 37,  1, 28, 11,  9,  5, 22,
+    7, 12, 34,  6, 26, 29,  5, 24, 13, 36,
+   21, 26, 37,  7,  9, 27, 35, 13,  9, 14,
+    3,  1,  8, 18,  6,  7, 20, 26,  8, 32,
+   10, 32, 20,  9, 10,  6, 19, 18, 24,  7 }
+Returns: 12008
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

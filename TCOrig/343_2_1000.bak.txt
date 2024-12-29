@@ -1,0 +1,205 @@
+#define INF	(1<<30)
+
+vector<string> resp;
+
+int memo[(1<<16)+1], bc[(1<<16)+1];
+vector<int> guilt;
+int n, playerIndex;
+
+int f(int remain)
+{
+	int& r = memo[remain];
+	if (r != -1)
+		return r;
+		
+	int num = bc[remain];
+	if (num == 1)
+	{
+		return (remain & (1<<playerIndex)) != 0;
+	}
+	r = 0;
+	if (num % 2 == 0)
+	{
+		for (int i = 0; i < n; i++)
+		{
+			if (i == playerIndex)
+				continue;
+			if ((remain & (1<<i)) == 0)
+				continue;
+			r = max(r, 1 + f(remain & ~(1<<i)));
+		}
+	}
+	else
+	{
+		int minGuilt = 1<<30, minIndex = -1;
+		for (int i = 0; i < n; i++) // select and remove most guilty person left
+		{
+			if (remain & (1<<i))
+			{
+				int g = 0;
+				for (int j = 0; j < n; j++)
+				{
+					if ((remain & (1<<j)) == 0)
+					{
+						g += resp[j][i];
+					}
+				}
+				if (g < minGuilt)
+				{
+					minGuilt = g;
+					minIndex = i;
+				}
+			}
+		}
+		r = 1 + f(remain & ~(1<<minIndex));
+	}
+	return r;
+}
+	
+	
+int play(vector <int> guilt_, vector <string> responses, int playerIndex_) 
+{
+	guilt = guilt_;
+	n = guilt.size();
+	playerIndex = playerIndex;
+	
+	resp = responses;
+	memset(memo, -1, sizeof(memo));
+	
+	for (int i = 0; i < (1<<16); i++)
+	{
+		int m = i;
+		bc[i] = 0;
+		while (m > 0)
+		{
+			m &= m-1;
+			bc[i]++;
+		}
+	}
+	
+	return f((1<<n)-1)
+}
+Problem Statement
+    
+You and your friends have recently started playing the game of Mafia. In this game, play goes as follows:
+The players are divided into two groups at the start of the game: the Mafia, and villagers. The identities of the Mafia are unknown to the villagers.
+When there are an even number of players, it is the "night". During the night, the Mafia secretly select a person who is removed from the game.
+When there are an odd number of players, it is the "day". During the day, the players select the most guilty person and remove that person from the game.
+If at any time, there are no Mafia remaining in the game, the game is over, and the villager team wins.
+If at any time, there are no villagers remaining in the game, the game is over, and the Mafia team wins.
+After having played the game for a while, you are the only member of the Mafia team remaining, and now you need to figure out a way to win. You will be given guilt, the current guilt of each villager; this is a number that is used to decide which villager is removed during the day (as described below). You will also be given a vector <string> responses. The game will play as follows:
+During the night, the Mafia selects a person to remove from the game. This causes all of the players' guilts to change. If player i was removed, then the j-th character in responses[i] corresponds to the change in guilt for player j. Specifically, if this is a lowercase letter ('a'-'z'), the guilt is decreased by 1-26, respectively. If this character is an uppercase letter ('A'-'Z'), the guilt is increased by 1-26, respectively. See example 0 for clarification.
+During the day, the players select the player with the highest guilt among those players still in the game. This player is removed from the game. If there is a tie among guilty people, the player with the lowest index is removed from the game. Players removed from the game during the day do not change the players' guilts.
+You are player playerIndex (indexed from 0), and you want to survive as long as possible. Return the maximum number of nights that will occur in this game, assuming that you play optimally. See the examples for clarification.
+Definition
+    
+Class:
+Mafia
+Method:
+play
+Parameters:
+vector <int>, vector <string>, int
+Returns:
+int
+Method signature:
+int play(vector <int> guilt, vector <string> responses, int playerIndex)
+(be sure your method is public)
+    
+
+Constraints
+-
+guilt will contain between 1 and 16 elements, inclusive.
+-
+Each element of guilt will be between 300 and 800, inclusive.
+-
+responses will contain the same number of elements as guilt.
+-
+Each element of responses will contain exactly N characters, where N is the number of elements in guilt.
+-
+Each character in responses will be a letter ('A'-'Z', 'a'-'z').
+-
+playerIndex will be between 0 and N-1, inclusive, where N is the number of elements in guilt.
+Examples
+0)
+
+    
+{500,500,500,500}
+{"ADCb",
+ "bADC",
+ "CbAD",
+ "DCbA"}
+1
+Returns: 2
+With 4 players, this game starts out at night. If you remove player 0 from the game, the guilts of the living players will now be:
+Player | Guilt
+-------+------
+  1    |  504
+  2    |  503
+  3    |  498
+The villagers will remove player 1 (you) from the game, causing you to lose. Alternatively, by removing player 2 from the game first, the guilts will be:
+Player | Guilt
+-------+------
+  0    |  503
+  1    |  498
+  3    |  504
+The villagers will remove player 3 from the game, and during the next night the Mafia will remove player 0 from the game to win. Thus, there are two nights in the game.
+1)
+
+    
+{500,500,500,500,501}
+{"ADCbE",
+ "bADCE",
+ "CbADE",
+ "DCbAE",
+ "EDCbA"}
+1
+Returns: 2
+With an odd number of players, the game starts during the day. The most guilty player is player 4, so he is removed from the game. Play then proceeds as in example 0.
+2)
+
+    
+{500,500,500,500,500,500}
+{"cccccc",
+ "BBBBBB",
+ "dddddd",
+ "FFFFFF",
+ "GGGGGG",
+ "hhhhhh"}
+0
+Returns: 1
+Due to tie-breaks, you will be removed from the game during the first day, with only 1 night.
+3)
+
+    
+{501, 499, 499, 499}
+{"ABCD",
+ "zfAg",
+ "ESAS",
+ "atsm"}
+0
+Returns: 2
+
+4)
+
+    
+{800}
+{"E"}
+0
+Returns: 0
+
+5)
+
+    
+{643,457,642,710,595,631,566,634}
+{"APOSIfjf",
+ "ewFOJWeJ",
+ "jElLLoSS",
+ "GeOSSmff",
+ "zWSTsOuu",
+ "fmfOPPsa",
+ "MSoPPWXn",
+ "FeojwFAM"}
+5
+Returns: 3
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

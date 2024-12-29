@@ -1,0 +1,70 @@
+
+Problem Statement
+    
+We say that a local maximum of a series of numbers is a number in the series such that the previous and next numbers in the series are both strictly smaller than it. Similarly, a local minimum is a number such that the previous and next numbers are both strictly greater than it. A local extremum of a series is either a local maximum or minimum. Note that the first and last elements of a series cannot be local extrema.  You've been given a partial series of numbers with some numbers in the series missing. You know that the missing numbers are all from the set of available numbers (each one may be used at most once). Your task is to fill in the missing numbers of the series such that the number of local extrema is as small as possible. If there are many such series that satisfy this contraint, you should return the one with the smallest first entry. If there is still more than one solution, you should return the one with the smallest second entry, and so on if there are still several solutions.  The input will be described by a vector <int> series. Each element of series will be either -1, representing a missing number, or non-negative otherwise.
+Definition
+    
+Class:
+PartialSeries
+Method:
+getFirst
+Parameters:
+vector <int>, vector <int>
+Returns:
+vector <int>
+Method signature:
+vector <int> getFirst(vector <int> series, vector <int> available)
+(be sure your method is public)
+    
+
+Notes
+-
+Each available number may be used at most one time.
+Constraints
+-
+series will contain between 1 and 50 elements, inclusive.
+-
+available will contain between 0 and 15 elements, inclusive.
+-
+Each element of series will be between -1 and 10, inclusive.
+-
+Each element of available will be between 0 and 10, inclusive.
+-
+There will be at least as many available numbers as missing ones.
+Examples
+0)
+
+    
+{-1,-1,-1,-1,-1}
+{1,2,3,4,5}
+Returns: {1, 2, 3, 4, 5 }
+We just fill in the numbers in increasing order to avoid any local extrema.
+1)
+
+    
+{1,2,-1,4,5}
+{10}
+Returns: {1, 2, 10, 4, 5 }
+Since we only have one choice, 10 must be a local maximum while 4 is a local minimum.
+2)
+
+    
+{1,-1,6,2,4,-1,2,7,-1,-1}
+{1,2,4,7,8,8}
+Returns: {1, 1, 6, 2, 4, 2, 2, 7, 7, 4 }
+
+3)
+
+    
+{8,-1,6,4,-1,-1,6}
+{2,3,6}
+Returns: {8, 6, 6, 4, 2, 3, 6 }
+
+4)
+
+    
+{-1, 5, -1}
+{1, 1, 9}
+Returns: {1, 5, 9 }
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

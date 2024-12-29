@@ -1,0 +1,211 @@
+import java.util.*;
+import java.util.regex.*;
+import java.text.DecimalFormat;
+
+public class RoomSummary
+{
+
+	public class Points { public String x; public double pts; public Points(String xx, double dd) { x=xx; pts=dd; } }
+	public class ptCmp implements Comparator
+	{
+		public int compare (Object oa, Object ob)
+		{
+			Points a = (Points) oa, b = (Points) ob;
+			return a.pts < b.pts ? 1 :
+				a.pts > b.pts ? -1 : b.x.compareTo(a.x);
+		}
+	}
+	public String[] generate(String[] problems, String[] handles, String[] submissions, String[] challenges, String[] failed)
+	{
+		HashMap points = new HashMap();
+		for (int i = 0; i < submissions.length; i++)
+		{
+			String[] w = submissions[i].split(" ");
+			points.put(w[0]+" "+w[1], w[2]);
+		}
+System.out.println(points.toString());
+		for (int i = 0; i < challenges.length; i++)
+		{
+			String[] w = challenges[i].split(" ");
+			if (w[3].equals("successful"))
+			{
+				double pts = points.containsKey(w[0]) ? Double.parseDouble((String) points.get(w[0]))
+						: 0.00;
+				pts += 50;
+				points.put(w[0], Double.toString(pts));
+				points.put(w[1]+" "+w[2], "0.00");				
+			}
+			else
+			{
+				double pts = points.containsKey(w[0]) ? Double.parseDouble((String) points.get(w[0])) : 0.00;
+				pts -= 50;
+				points.put(w[0], Double.toString(pts));
+			}
+		}
+System.out.println(points.toString());
+		for (int i = 0; i < failed.length; i++)
+		{
+			points.put(failed[i], "0.00");
+		}
+System.out.println(points.toString());
+		ArrayList res = new ArrayList();
+		for (int i = 0; i < handles.length; i++)
+		{
+			double pts = 0.0;
+			for (int j = 0; j < problems.length; j++)
+			{
+				pts += points.containsKey(handles[i]+" "+problems[j]) ? 
+					Double.parseDouble((String) points.get(handles[i]+" "+problems[j])) : 0.0;
+			}
+			pts += points.containsKey(handles[i]) ? Double.parseDouble((String)points.get(handles[i])) : 0.0;
+			res.add(new Points(handles[i], pts));
+		}
+		Collections.sort(res, new ptCmp());
+		String[] result = new String[handles.length];
+		DecimalFormat df = new DecimalFormat("0.00");
+		for (int i = 0; i < res.size(); i++)
+		{
+			String name = ((Points) res.get(i)).x;
+			double pts = ((Points) res.get(i)).pts;
+			result[i] = name + " "+df.format(pts);
+		}
+		return result;
+	}
+}
+
+
+Problem Statement
+    
+Given a summary of events occurring during a TopCoder match in a single room, return the room summary for that room. The room summary is a list of coders' handles with their point totals, sorted in decreasing order by points. Ties are broken by listing lexicographically lower handles first (according to ASCII values). The room summary is a String[], where each element is the result of a coder's performance in the format "<handle> <points>" (quotes for clarity) where <handle> is the coder's handle and <points> is the coder's point total (<points> must contain exactly 2 decimal places and have no extra leading zeros), eg. "SnapDragon 1201.30"  
+
+The Problems  The name of the three problems are given in the String[] problems.  
+
+The Coders  The coder's handles are given in the String[] handles.  
+
+I. Coding Phase  Each event during the Coding Phase is a submission, which is given as an element of the String[] submissions in the following format: "<handle> <problem> <points>" (quotes for clarity), where
+<handle> is a coder's handle that corresponds to an element of handles,
+<problem> is a problem's name that corresponds to an element of problems,
+<points> is the points the coder receives for the submission of the respective problem, with exactly 2 decimal places and no extra leading zeros, eg. "612.34" (quotes for clarity).
+
+
+This means that coder <handle> submits problem <problem> for <points> points. If a coder submits a problem more than once (i.e. resubmits), only the last submission made (i.e. the one with the higher index in submissions) is to be considered. Points are between 60.00 and 1000.00, inclusive.  
+
+II. Challenge Phase  Each event during the Challenge Phase is a challenge, which is given as an element of challenges in the following format: "<handle1> <handle2> <problem> <result>" (quotes for clarity), where
+<handle1> is a coder's handle that corresponds to an element of handles,
+<handle2> is a coder's handle that corresponds to a different element of handles,
+<problem> is a problem's name that corresponds to an element of problems,
+<result> is the result of the challenge, either "successful" or "unsuccessful" (quotes for clarity).
+This means that coder <handle1> challenges problem <problem> of coder <handle2> with the result <result>. For a successful challenge, <handle1> receives 50 points and <handle2> loses all points for his submission of <problem>. For an unsuccessful challenge, <handle1> loses 50 points (possibly getting a negative score). 
+
+Challenges occur in the order listed in challenges. Coders with a non-positive score are still allowed to challenge (unlike in real TopCoder matches).  
+
+III. System Testing Phase  Each element in failed is a result of the System Testing Phase in the following format: "<handle> <problem>" (quotes for clarity), where
+<handle> is a coder's handle that corresponds to an element of handles,
+<problem> is a problem's name that corresponds to an element of problems.
+
+This means that problem <problem> of coder <handle> failed the system tests and <handle> loses all points for his submission of <problem>. All submissions that pass the system tests are not listed within failed.
+
+
+Definition
+    
+Class:
+RoomSummary
+Method:
+generate
+Parameters:
+String[], String[], String[], String[], String[]
+Returns:
+String[]
+Method signature:
+String[] generate(String[] problems, String[] handles, String[] submissions, String[] challenges, String[] failed)
+(be sure your method is public)
+    
+
+Notes
+-
+Problem names and coder handles are case sensitive.
+Constraints
+-
+problems contains exactly 3 elements.
+-
+Each element of problems contains between 1 and 15 alphanumeric characters ('A'-'Z', 'a'-'z', '0'-'9').
+-
+There are no duplicates within problems.
+-
+handles contains between 1 and 20 elements, inclusive.
+-
+Each element of handles contains between 1 and 10 alphanumeric characters ('A'-'Z', 'a'-'z', '0'-'9').
+-
+There are no duplicates within handles.
+-
+submissions contains between 0 and 50 elements, inclusive.
+-
+challenges contains between 0 and 50 elements, inclusive.
+-
+failed contains between 0 and 50 elements, inclusive.
+-
+All elements of submissions, challenges and failed are formatted as described in the problem statement.
+-
+Points for submissions are between 60.00 and 1000.00, inclusive.
+-
+A resubmission results in a lower score than a previous submission or in the minimal possible score of 60.00.
+-
+A coder will not challenge his own problems or another coder's problem that was previously unsuccessfully challenged by him or successfully challenged by somebody else. Only problems that have been submitted will be challenged.
+-
+failed only contains problems that have been submitted and have not been successfully challenged.
+Examples
+0)
+
+    
+{ "EasyP", "MediumP", "HardP" }
+{ "Andrea", "Billy", "Chris", "eddy", "David", "Feliza" }
+{ "Andrea EasyP 220.31",
+  "Billy EasyP 213.24",
+  "Chris EasyP 194.24",
+  "Chris EasyP 75.00",
+  "Andrea MediumP 472.23",
+  "Billy MediumP 428.34",
+  "Andrea HardP 823.60" }
+{ "Chris Andrea EasyP unsuccessful",
+  "Chris Billy EasyP unsuccessful",
+  "Billy Andrea HardP successful" }
+{ "Billy MediumP" }
+Returns: 
+{ "Andrea 692.54",
+  "Billy 263.24",
+  "David 0.00",
+  "Feliza 0.00",
+  "eddy 0.00",
+  "Chris -25.00" }
+Andrea has 1516.14 (220.31 + 472.23 + 823.60) points after the coding phase. She loses 823.60 points during the challenge phase because her submission of HardP was successfully challenged. Her final score is 692.54. Billy has 641.58 (213.24 + 428.34) points after the coding phase. He gains 50.00 points during the challenge phase and loses 428.34 points because his MediumP fails the system tests. His final score is 263.24. Chris receives 75.00 points for his submission of EasyP (which was a resubmission), but loses 100.00 points due to two unsuccessful challenges. His final score is -25.00. David, eddy and Feliza are not involved in any submission or challenge, thus all have a final score of 0.00. They are listed in lexicographical order (lower ASCII values first).
+1)
+
+    
+{ "EasyP", "MediumP", "HardP" }
+{ "Andrea", "Billy", "Chris" }
+{ "Billy EasyP 240.31",
+  "Billy MediumP 425.23",
+  "Chris HardP 831.42",
+  "Andrea EasyP 89.12" }
+{ "Andrea Billy EasyP unsuccessful",
+  "Andrea Chris HardP unsuccessful" }
+{}
+Returns: { "Chris 831.42",  "Billy 665.54",  "Andrea -10.88" }
+
+2)
+
+    
+{ "250pointer", "500pointer", "1000pointer" }
+{ "Andrea", "Billy", "Chrissy", "Chris" }
+{ "Billy 250pointer 244.32",
+  "Andrea 250pointer 241.42",
+  "Andrea 500pointer 432.39",
+  "Billy 500pointer 372.40",
+  "Billy 250pointer 100.42" }
+{ "Billy Andrea 250pointer unsuccessful",
+  "Andrea Billy 500pointer successful",
+  "Billy Andrea 500pointer unsuccessful" }
+{}
+Returns: { "Andrea 723.81",  "Billy 0.42",  "Chris 0.00",  "Chrissy 0.00" }
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

@@ -1,0 +1,79 @@
+# CORRECT PRIM'S MINIMAL SPANNING TREE OR MAXIMAL SPANNING TREE ALGORITHM
+# probably a slow implementation. From http://en.wikipedia.org/wiki/Prim%27s_algorithm
+#include <vector>
+#include <list>
+#include <map>
+#include <set>
+#include <deque>
+#include <stack>
+#include <bitset>
+#include <algorithm>
+#include <functional>
+#include <numeric>
+#include <utility>
+#include <sstream>
+#include <iostream>
+#include <iomanip>
+#include <cstdio>
+#include <cmath>
+#include <cstdlib>
+#include <ctime>
+
+
+using namespace std;
+
+class FreeGuitars {
+public:
+typedef pair<int,int> pi;
+typedef pair<int,pi> edge;
+#define INF (1<<30)
+
+int minimumCosts(int N, vector <string> edges) 
+{
+	set<int> v;
+	for (int i = 1; i <= N; i++)
+		v.insert(i);
+		
+	set<edge> e;
+
+	for (int i = 0; i < edges.size(); i++)
+	{
+		int v1, v2, cost;
+		sscanf(edges[i].c_str(), "%d%d%d", &v1, &v2, &cost);
+		e.insert(make_pair(cost, make_pair(v1, v2)));
+	}
+	set<int> vnew;
+	vnew.insert(*v.begin());
+	int total = 0;
+	while (v != vnew)
+	{
+		int v1, v2, cost;
+		bool found = false;
+		for (typeof(e.begin()) it = e.begin(); it != e.end(); it++)
+		{
+			cost = it->first;
+			v1 = it->second.first;
+			v2 = it->second.second;
+			if (vnew.count(v1) > 0 && vnew.count(v2) == 0)
+			{
+				found = true;
+				break;
+			}
+			if (vnew.count(v2) > 0 && vnew.count(v1) == 0)
+			{
+				found = true;
+				swap(v1, v2);
+				break;
+			}			
+		}
+		if (!found)
+			return -1; // graph is disconnected so no MST
+		vnew.insert(v2);
+		total += cost;
+	}
+	return total;
+}
+};
+
+
+//Powered by [KawigiEdit]

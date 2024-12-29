@@ -1,0 +1,91 @@
+int maxCells(int height, int width) 
+{
+		
+}
+Problem Statement
+    
+A lame knight is located at the bottom-left corner of a height x width chessboard. 
+
+Unlike a healthy knight, a lame knight can only make moves where he goes to the right. 
+
+The only possible moves are:
+2 cells up, 1 cell right;
+1 cell up, 2 cells right;
+1 cell down, 2 cells right;
+2 cells down, 1 cell right.
+
+
+1+
+11+
+*11
+11+
+1+
+
+The knight will make one trip, and he wants to maximize the number of visited cells. 
+
+The knight's starting cell counts toward this number. 
+
+There is also one restriction for the knight's trip: it must contain each kind of a move at least once, unless it is shorter than 4 moves. 
+
+If the knight makes less than 4 moves (thus visiting less than 5 cells), his moves are not limited in any way. 
+
+Return the maximal number of cells the knight can visit during one trip, including the initial cell.
+
+Definition
+    
+Class:
+LameKnight
+Method:
+maxCells
+Parameters:
+int, int
+Returns:
+int
+Method signature:
+int maxCells(int height, int width)
+(be sure your method is public)
+    
+
+Constraints
+-
+height will be between 1 and 2,000,000,000, inclusive.
+-
+width will be between 1 and 2,000,000,000, inclusive.
+Examples
+0)
+
+    
+100
+50
+Returns: 48
+1 move of kind 2, 1 move of kind 3, 23 moves of kind 1 and 22 moves of kind 4.
+1)
+
+    
+1
+1
+Returns: 1
+There are no possible moves here, so the only visited cell is the starting cell.
+2)
+
+    
+17
+5
+Returns: 4
+It's possible to visit 5 cells (making 4 moves of kind 1 for example), but it's impossible to make it by 4 different moves. So, the best strategy here is to make 3 moves (thus visiting 4 cells).
+3)
+
+    
+2
+4
+Returns: 2
+
+4)
+
+    
+20
+4
+Returns: 4
+4 cells can be visited using 2 moves of kind 1 and 1 move of kind 4.
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

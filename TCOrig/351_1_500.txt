@@ -1,0 +1,70 @@
+int maxUntouched(string boxes) 
+{
+	
+}
+Problem Statement
+    
+Several boxes are placed in a row. Each box is one of three colors. 
+
+We want to rearrange these boxes in a such way that no three consecutive boxes are of the same color. 
+
+This process should affect the fewest boxes possible. More formally, we want to achieve the desired configuration by swapping pairs of boxes, and we want to maximize the number of boxes that are never moved.
+
+You will be given a string boxes which describes the colors of the boxes. Colors are given as characters 'A', 'B' and 'C' respectively. 
+
+Rearrange the boxes as described above and return the maximum possible number of boxes that are never moved. 
+
+Return -1 if it is not possible to achieve the desired configuration.
+
+Definition
+    
+Class:
+BoxesArrangement
+Method:
+maxUntouched
+Parameters:
+string
+Returns:
+int
+Method signature:
+int maxUntouched(string boxes)
+(be sure your method is public)
+    
+
+Constraints
+-
+boxes will contain between 1 and 50 characters, inclusive.
+-
+boxes will consist of characters 'A', 'B' and 'C' only.
+Examples
+0)
+
+    
+"AAABBBCCC"
+Returns: 6
+The boxes could be rearranged into "ABABCBCAC".
+1)
+
+    
+"AAAAAAAACBB"
+Returns: 7
+The best rearangement is "AABAABAACAA".
+2)
+
+    
+"CCCCCB"
+Returns: -1
+
+3)
+
+    
+"BAACAABAACAAA"
+Returns: 5
+
+4)
+
+    
+"CBBABA"
+Returns: 6
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

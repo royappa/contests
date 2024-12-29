@@ -1,0 +1,85 @@
+
+int f(int countA, int maxA, int countB, int maxB)
+{
+	
+int maximumLength(int countA, int countB, int maxA, int maxB) 
+{
+	if (maxA == 0) return max(countB, maxB);
+	if (maxB == 0) return max(countA, maxA);
+	int numA = (countA+maxA-1)/maxA;
+	int numB = (countB+maxB-1)/maxB;
+	
+	return max(f(countA, maxA, countB, maxB),
+			   f(countB, maxB, countA, maxA));
+}
+
+Problem Statement
+    
+A string composed of the letters 'A' and 'B' is called beautiful if it satisfies all of the following criteria:
+it contains no more than countA occurences of 'A';
+it contains no more than countB occurences of 'B';
+each substring that contains only 'A's consists of no more than maxA characters;
+each substring that contains only 'B's consists of no more than maxB characters.
+Given countA, countB, maxA and maxB, return the maximum possible length of a beautiful string.
+Definition
+    
+Class:
+BeautifulString
+Method:
+maximumLength
+Parameters:
+int, int, int, int
+Returns:
+int
+Method signature:
+int maximumLength(int countA, int countB, int maxA, int maxB)
+(be sure your method is public)
+    
+
+Constraints
+-
+countA will be between 0 and 1000000, inclusive.
+-
+countB will be between 0 and 1000000, inclusive.
+-
+maxA will be between 0 and 1000000, inclusive.
+-
+maxB will be between 0 and 1000000, inclusive.
+Examples
+0)
+
+    
+0
+0
+10
+10
+Returns: 0
+We don't have any available letters as countA=0 and countB=0, so the only beautiful string is the empty one.
+1)
+
+    
+10
+10
+0
+0
+Returns: 0
+Now we have available letters, but can't include them into the beautiful string as maxA=0 and maxB=0.
+2)
+
+    
+3
+5
+1
+1
+Returns: 7
+In this case we can't have two consecutive 'A's or 'B's, so letters in the beautiful string should alternate. If we start the string from 'A', the longest one we'll be able to get is "ABABAB". But if we start the string from 'B', we'll be able to get the longer one - "BABABAB".
+3)
+
+    
+677578
+502524
+989951
+504698
+Returns: 1180102
+Here maxA >= countA and maxB >= countB, so we can easily construct a beautiful string using all available countA+countB letters.
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

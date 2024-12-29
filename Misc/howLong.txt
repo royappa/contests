@@ -1,0 +1,131 @@
+	HashMap cache;
+	
+	private int findMin(int[] expense, int[] revenue, int[] ptime, int C, int D, int time)
+	{
+		if (C >= D)
+			return time;	
+		if (C <= 0)
+		{
+			return -1;
+		}
+		String key = ""+C+":"+D+":"+time;
+		if (cache.containsKey(key))
+		{
+			Integer ret = (Integer) cache.get(key);
+			return ret.intValue();
+		}
+		
+		int minTime = -1;
+		for (int i = 0; i < expense.length; i++)
+		{
+			if (C >= expense[i])
+			{
+				int t = findMin(expense, revenue, ptime, C-expense[i]+revenue[i], D, ptime[i]+time);
+				if (minTime == -1 || (t != -1 && t < minTime))
+					minTime = t;
+			}
+		}		
+	
+		cache.put(key, new Integer(minTime));
+		return minTime;
+	}
+
+	public int howLong(int[] expense, int[] revenue, int[] ptime, int C, int D)
+	{
+		cache = new HashMap();
+		
+		return findMin(expense, revenue, ptime, C, D, 0);
+	}	
+	
+Problem Statement
+    
+A new company has hired you to help create a business plan. The company can produce several products, but only one product unit at a time. For each product the expense and the revenue for one unit is known, as well as the production time ptime. There must be enough money to cover the expenses before the production of a unit is started. After a unit of a product is finished, it is sold immediately for the value defined in revenue. 
+
+The company has a startup capital of C dollars, but to repay their debts they need to reach an amount of D dollars as soon as possible. 
+
+It is your job to write a method that calculates the minimum amount of time units that the company needs to reach an amount of at least D dollars. If it is impossible to reach an amount of at least D dollars without borrowing any more money, your method should return -1. Your method is given the information about the products as int[] expense, int[] revenue and int[] ptime. The ith element of expense, revenue and ptime represents the ith product.
+Definition
+    
+Class:
+BusinessPlan
+Method:
+howLong
+Parameters:
+int[], int[], int[], int, int
+Returns:
+int
+Method signature:
+int howLong(int[] expense, int[] revenue, int[] ptime, int C, int D)
+(be sure your method is public)
+    
+
+Notes
+-
+All money values are given in dollars.
+Constraints
+-
+expense, revenue and ptime contain between 1 and 10 elements, inclusive.
+-
+expense, revenue and ptime contain the same number of elements.
+-
+Each element of expense and revenue is between 1 and 100000, inclusive.
+-
+The ith element of revenue is always greater than the ith element of expense.
+-
+Each element of ptime is between 1 and 10, inclusive.
+-
+C is between 1 and 2147483647, inclusive.
+-
+D is between 0 and 100000, inclusive.
+Examples
+0)
+
+    
+{1,4}
+{2,10}
+{1,2}
+1
+10
+Returns: 5
+First, only product 0 can be produced, since there is not enough money to cover the expenses for product 1. After 3 time units producing product 0, the required money for product 1 is available. Producing a unit of product 1 requires 2 time units, therefore the return value is 5.
+1)
+
+    
+{11}
+{20}
+{10}
+10
+10
+Returns: 0
+There is already enough money available to repay the debt. Note that we don't care that the company won't be able to produce anything without borrowing more money.
+2)
+
+    
+{11}
+{20}
+{10}
+10
+11
+Returns: -1
+Now the company needs to earn some money, but as in the previous test case, producing one unit requires an amount of 11 dollars.
+3)
+
+    
+{1,1,1}
+{3,4,8}
+{1,2,3}
+1
+11
+Returns: 5
+Produce one unit of product 1 and one unit of product 2. Another possibility is to produce two units of product 0 and one unit of product 2.
+4)
+
+    
+{99999,1,99998,2,99997,3,99996,4,99995,5}
+{100000,100000,100000,100,100000,100000,100000,100000,100000,100000}
+{1,9,1,10,1,9,1,9,1,9}
+2
+100
+Returns: 9
+The company wants to get at least 100 dollars, so producing product 1 one time and getting 100000 dollars is fine.
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

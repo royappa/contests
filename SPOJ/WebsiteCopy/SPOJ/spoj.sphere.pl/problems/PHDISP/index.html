@@ -1,0 +1,183 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<!-- Mirrored from spoj.sphere.pl/problems/PHDISP/ by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 10 Jan 2006 05:02:06 GMT -->
+<head>
+<title>Sphere Online Judge (SPOJ)  - Problem PHDISP</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-2">
+<META NAME="Keywords" CONTENT="spoj, online, judge, problem, set, problemset, archive, ACM, Polish, Poland, contest, contester, task, tasks, ADA, Java, Pascal, C, C++, Whitespace, sphere, interest, group, python, ruby, icon, o'caml, caml, ocaml, perl, haskell, bf, brain, clips, prolog, fortran, asm, assembler, asembler, functional, esoteric, programming, languages">
+
+<link href="https://spoj.sphere.pl/gfx/favicon" rel="shortcut icon" type="image/x-icon">
+
+<link href="../../themes/skin3.css" rel="stylesheet" type="text/css" id="theme">
+<style type="text/css">
+<!--
+.maintable {width: 755;} 
+-->
+</style>
+<script type="text/javascript" language="javascript">
+<!--
+function UnCryptMailto(s) {
+	var n=0;
+	var r="";
+	for(var i=0;i<s.length;i++) {		
+		n=s.charCodeAt(i); 
+		if (n>=8364) {n = 128;}
+		r += String.fromCharCode(n+(2));	
+	}
+	return r;
+}
+function linkTo_UnCryptMailto(s)	{
+	location.href=UnCryptMailto(s);
+}
+// -->
+</script>
+
+</head>
+<body>
+<center>
+<table cellpadding="10" cellspacing="0" class="maintable" id="maintable">
+<tr>
+    <td colspan="2" class="header">
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+        <tr>
+		<td class="headerleft"/>
+		<td class="headercenter"><h1>Sphere Online Judge</h1></td>
+		<td class="headerright"/>
+	</tr>
+	</table>
+    </td>
+</tr>
+<tr><td class="menu" width="92" valign="top">
+<form name="login"  action="http://spoj.sphere.pl/problems/PHDISP/" method="post" 
+	onsubmit="if(document.login.ssl.checked) document.login.action='https://spoj.sphere.pl/problems/PHDISP/'" style="margin-bottom: 18px"> 
+User: <input name="login_user" type="text" style="width: 85px;" class="form"><BR>
+Password: <input name="password" type="password" style="width: 85px;" class="form"><BR>
+<script language="javascript" type="text/javascript">
+<!--
+document.write('<input type="checkbox" name="ssl" id="ssl" checked>secure<br>');
+//-->
+</script>
+<input name="submit" type="submit" value="Log In" class="button" style="width: 85px;">
+</form><div class="menucmd"><a href="https://spoj.sphere.pl/register">register</a><br><br><a href="https://spoj.sphere.pl/status">status</a><br><a href="https://spoj.sphere.pl/submit">submit</a><br><a href="../classical/sort=5,start=0.html">problems</a><br><br><a href="https://spoj.sphere.pl/">news</a><br><a href="https://spoj.sphere.pl/contests">contests</a><br><a href="https://spoj.sphere.pl/info">info</a><br><a href="https://spoj.sphere.pl/ranks/">ranks</a><br><br><a href="https://spoj.sphere.pl/forum">forum</a><br><a href="https://spoj.sphere.pl/help">help</a><br><a href="https://spoj.sphere.pl/links">links</a><br><hr></div>Server time:<br>2006-01-10<br>05:53:31<a href="../classical/sort=5,start=0.html"></a><br><br>
+<form method="get" action="https://spoj.sphere.pl/search/" class="form" style="width:90px">
+<input type="text" name="query" style="width:85px" maxlength=255 value="" class="form"><br>
+<input type="submit" value="Search" style="width:85px" class="form" title="Search site"><br>
+&nbsp;<a href="https://spoj.sphere.pl/search/problems=on,users=on,contests=on" title="More search options"><small>advanced...</small></a>
+</form></td><td class="content" width="99%"><table class="problems" width="100%">
+<tr class="navigation">
+<td><a href="https://spoj.sphere.pl/submit/PHDISP/">Submit</a></td>
+<td><a href="https://spoj.sphere.pl/status/PHDISP/">All submissions</a></td>
+<td><a href="https://spoj.sphere.pl/ranks/PHDISP/">Best solutions</a></td>
+<td><a href="https://spoj.sphere.pl/problems/PHDISP.ps">PS</a></td>
+<td><a href="https://spoj.sphere.pl/problems/PHDISP.pdf">PDF</a></td>
+<td><a href="../classical/sort=5,start=0.html">Back to list</a></td>
+</tr>
+</table>
+
+<div class="prob">
+
+<h2>SPOJ Problem Set </h2>
+<h1>334. The Philosophical Dispute</h1>
+<h2>Problem code: PHDISP</h2>
+<p align="justify">
+<p>One day, mathematician and philosopher were engaged in a heated dispute.<BR><BR>
+
+Philosopher said:<BR>
+- Ideal line has only length and no width, therefore, no line can have an area.<BR>
+Mathematician replied:<BR>
+- That's as it may be, but still you can ll a square with a line in such a way that there will be no gaps.<BR>
+And you can't deny that a square has an area, and he grinned.<BR>
+But Philosopher still wasn't convinced:<BR>
+- Show me this line, then.<BR>
+- With pleasure... - responded Mathematician and scribbled some equations on a piece of paper:<BR>
+<img src="img0001.jpg"><BR>
+- With t increasing, the point (x, y) will move around the square, forming a line.<BR>
+- So what? - asked Philosopher. How is it going to ll the entire square?<BR>
+- Indeed, it will, - said Mathematician, - Whichever point inside the square you draw, the line will eventually cross that point.<BR>
+- No, - replied Philosopher indignantly, - Anyway, I don't believe. When will the line cross this point? - and he put a thick dot inside the square.<BR>
+Give Philosopher an answer. <BR>
+</p>
+
+<h3>Input</h3>
+<p><i>t</i> &#8211; number of tests [<i>t</i> <= 150], than t test cases follows.<BR>
+The first line of each test case contains the coordinates (x0, y0) of the dot center (-1 <= x0, y0 <= 1). The second line contains eps <= 0.0001 - the radius of the dot (the dot is essentially a small circle).
+</p>
+
+<h3>Output</h3>
+<p>For each test case output any value of t in the segment [0, 10^12], which corresponds to the line crossing the dot, or "FAIL", if the line doesn't cross the dot.
+
+<h3>Example</h3>
+
+<pre>
+<b>Sample input:</b>
+1
+0.744 0.554
+0.01
+
+<b>Sample output:</b>
+5.3
+
+</pre>
+
+<hr>
+<table border=0 cellspacing=0 cellpadding=0 align=left>
+<tr><td width=130>Added by:</td><td><a href="https://spoj.sphere.pl/search/'Roman%20Sol'">Roman Sol</a></td></tr>
+<tr><td>Date:</td><td>2005-04-25</td></tr>
+<tr><td>Time limit:</td><td>3s
+</td></tr>
+<tr><td>Source limit:</td><td>20000B</td></tr>
+<tr><td>Resource:</td><td>IX Ural Championship (Round II)</td></tr></table>
+</div></td>
+</tr>
+
+<tr>
+<td colspan="2" class="footer">
+
+<script language="javascript" type="text/javascript">
+<!--
+function swapSheet(sheet, caller) {
+    document.getElementById('theme').href=sheet;
+    document.cookie="css_0="+sheet+"; path=/;";
+    caller.href="#bottom";
+}
+
+function setWidth(w, caller) {
+    document.getElementById('maintable').style.width=w;
+    document.cookie="res="+w+"; path=/;";
+    caller.href="#bottom";
+}
+//-->
+
+</script>
+        <table width="100%">
+    <tr>
+	<td align="left">
+            <a href="http://www.pg.gda.pl/eng.html"><IMG src="https://spoj.sphere.pl/gfx/logo-pg" alt="www.pg.gda.pl" border=0 height=36 width=44></a>&nbsp;
+            <a href="http://www.eti.pg.gda.pl/"><IMG src="https://spoj.sphere.pl/gfx/logo-eti" alt="www.eti.pg.gda.pl" border=0 height=36 width=44></a>
+	</td>
+	<td align="center">
+	    page size:
+	    <a href="https://spoj.sphere.pl/?res=755"  onClick="setWidth('755', this)">800x600</a>
+	    <a href="https://spoj.sphere.pl/?res=980"  onClick="setWidth('980', this)">1024x768</a>
+	    <a href="https://spoj.sphere.pl/?res=100%" onClick="setWidth('100%', this)">Full</a>
+	    &nbsp;&nbsp;
+	    theme:
+	    <a href="../../indexb6a4.html?css=/themes/skin1.css" onClick="swapSheet('../../themes/skin1.css', this)">olive</a>
+	    <a href="../../index3840.html?css=/themes/skin2.css" onClick="swapSheet('../../themes/skin2.css', this)">banana</a>
+	    <a href="../../index80f0.html?css=/themes/skin3.css" onClick="swapSheet('../../themes/skin3.css', this)">plum</a>
+	    <br>
+	    <a href="http://sphere.pl/?id=66">spoj team at sphere</a> &copy; 2004-05 all rights reserved
+	</td>
+	<td align="right">
+            <a href="http://task.gda.pl/english/"><IMG src="https://spoj.sphere.pl/gfx/logo-task" alt="task.gda.pl" border=0 height=36 width=44></a>&nbsp;
+            <a href="http://sphere.pl/"><IMG src="https://spoj.sphere.pl/gfx/logo-sphere" alt="sphere.pl" border=0 height=32></a>
+	</td>
+    </tr>
+    </table>
+    </tr></table>
+</center>
+</body>
+
+<!-- Mirrored from spoj.sphere.pl/problems/PHDISP/ by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 10 Jan 2006 05:02:06 GMT -->
+</html>

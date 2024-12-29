@@ -1,0 +1,143 @@
+
+typedef vector<int> vi;
+typedef vector<vi> vvi;
+typedef vector<vvi> vvvi;
+
+vvvi go(vi A, int n)
+{
+	if (n == 1)
+	{
+		vvvi r;
+		vvi one;
+		one.push_pack(A);
+		r.push_back(one);
+		return r;
+	}
+	if (A.size() < n)
+	{
+		vvvi r;
+		return r;
+	}
+	
+	// Rule: partition k items into n sets as follows:
+	// (1) Partition the first k-1 items into n sets. Then add the k'th item into each of those n sets.
+	// (2) partition the first k-1 items into n-1 sets. The n'th set consists of just the k'th item.
+	
+	// Rule 1
+	
+	int k = A.size();
+	int last = A[k-1];
+	A.erase(A.begin()+k-1); // remove last one
+	
+	vvvi groups = go(A, n);
+	vvvi result;
+	
+	for (int i = 0; i < groups.size(); i++) // all the possible partitions
+	{
+		for (int j = 0; j < groups[i].size(); j++) // one partition
+		{
+			groups[i][j].push_back(last);
+			result.push_back(groups[i]);
+			groups[i][j].pop_back();
+		}
+	}
+	
+	// Rule 2
+	groups = go(A, n-1);
+	vi L;
+	L.push_back(last);
+	for (int i = 0; i < groups.size(); i++) // all possible partitions
+	{
+		groups[i].push_back(L);
+		result.push_back(groups[i]);
+	}
+	return result;
+}
+
+		
+double minRange(vector <int> A, int n) 
+{
+
+	vvvi allGroups = go(A, n);
+	
+	double best = 1.0e20;
+	for (int i = 0; i < allGroups.size(); i++)
+	{
+		vvi group = allGroups[i];
+		double low = 1.0e20;
+		double high = 0.0;
+		
+		for (int j = 0; j < group.size(); j++)
+		{
+			double sum = 0.0;
+			for (int k = 0; k < group[j].size(); k++)
+			{
+				sum += group[j][k];
+			}
+			double a = sum/group[j].size();
+			low = min(low, a);
+			high = max(high, a);
+		}
+		best = min(best, high-low);
+	}
+	return best;
+}
+
+Problem Statement
+    
+Your are given a vector <int> numbers. Your task is to split these numbers into exactly m groups such that the difference between the highest average of any group and the lowest average of any group is minimized. Each element of numbers must belong to exactly one of the m groups. Return this minimal difference.
+Definition
+    
+Class:
+GroupingNumbers
+Method:
+minRange
+Parameters:
+vector <int>, int
+Returns:
+double
+Method signature:
+double minRange(vector <int> numbers, int n)
+(be sure your method is public)
+    
+
+Notes
+-
+The return value must be within 1e-9 absolute or relative error of the actual result.
+Constraints
+-
+numbers will have between 1 and 9 elements inclusive.
+-
+Each element in numbers will be between 1 and 1000 inclusive.
+-
+n will be between 1 and the number of elements in numbers inclusive.
+Examples
+0)
+
+    
+{1,2,99,100}
+2
+Returns: 0.0
+The best split is (1,100) and (2,99). Both groups have an average of 50.5, so the difference is 0.
+1)
+
+    
+{3,3,3,3,3,3,3,3,3}
+4
+Returns: 0.0
+When all the numbers are the same, the average of any group will be that number.
+2)
+
+    
+{2,3,5,7,11,13}
+3
+Returns: 0.33333333333333304
+The best split is (2,5,13), (3,11) and (7). The first group has an average of 6.66..., and the other two groups both have averages of 7. The difference is 0.33...
+3)
+
+    
+{1, 2, 2, 998, 667}
+2
+Returns: 0.0
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

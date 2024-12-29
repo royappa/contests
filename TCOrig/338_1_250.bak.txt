@@ -1,0 +1,115 @@
+// CORRECT BINARY SEARCH FOR MINIMIZATION OF A FUNCTION WITH INTEGER DOMAIN. 
+// SEE BELOW FOR MAXIMIZATION. ZERO/ROOT ALSO POSSIBLE
+
+typedef long long LL;
+
+class ImprovingStatistics {
+public:
+int howManyGames(int X_, int Y_) 
+{
+	LL X = X_, Y = Y_;
+	
+	if (Y*100LL/X >= 99)
+		return -1;
+
+	LL disp = Y*100LL/X;	
+	LL low = 1, high = 1LL<<40;
+
+	// target is some unknown number that is MORE than disp (problem goal)
+	
+	if ((Y+high)*100LL/(X+high) <= disp)
+		return -1;			// No value is high enough to get a value more than disp
+	if ((Y+low)*100LL/(X+low) > disp)
+		return low;			// The lowest value is enough to get a value more than disp
+
+	// Here we are MINIMIZING. So we keep "low" as too small ("illegal"), and "high" as at least as large as we want ("legal").
+	// The goal is to reduce "high" to the smallest legal value.
+	
+	// invariant (enforced by above): F(low) < target, F(high) >= target
+	// we then maintain this invariant until the search range is small.
+	// above conditions should also guarantee that initial search range high-low >= 1 
+	// stop when high-low==1, because then midpoint will always equal low. When this is reached, return high.
+	// probably when maximizing, when this is reached we would return low and maybe adjust the < sign below
+	
+	while (high - low > 1)
+	{
+		LL mid = (low + high)/2LL;
+		if ((Y+mid)*100LL/(X+mid) > disp)
+		{
+			high = mid;
+		}
+		else
+		{
+			low = mid;
+		}
+	}
+	return high;			
+}
+
+
+Problem Statement
+    
+Several years ago I was playing Spider Solitaire on my computer all the time. Sometimes I won, sometimes I lost. Then I stopped playing Spider Solitaire and started participating in programming competitions. After a few years I happened to start my old solitaire program again. I was pleased to discover that with the skill I gained during the years I am now able to win each and every game of Spider Solitaire. However, the program still remembers some of my previous games and thus the statistics don't necessarily reflect my current perfect skills.
+The program displays the statistics in the following way: Games played: X Games won: Y (Z %)
+The number Z is the percentage of games I won, rounded down to the nearest integer. For example, if X=53 and Y=47, then Z=88. (The value Y/X is roughly equal to 0.8868, which means that I won roughly 88.68% of the games I played. 88.68% rounded down to an integer is 88%.)
+You will be given two ints played and won - the number of games I played so far, and the number of games I won so far. Return the smallest positive integer G such that if I now win G games in a row the displayed value of Z will increase. If this is impossible, return -1 instead.
+Definition
+    
+Class:
+ImprovingStatistics
+Method:
+howManyGames
+Parameters:
+int, int
+Returns:
+int
+Method signature:
+int howManyGames(int played, int won)
+(be sure your method is public)
+    
+
+Notes
+-
+You may assume that the return value will always be less than 2,000,000,000.
+Constraints
+-
+played will be between 1 and 1,000,000,000, inclusive.
+-
+won will be between 0 and played, inclusive.
+Examples
+0)
+
+    
+10
+8
+Returns: 1
+So far I won 8 games out of 10, and thus the displayed success percentage is 80%. After I win the next game the percentage will increase to 81%.
+1)
+
+    
+100
+80
+Returns: 6
+Again, the currently displayed value is 80%. However, now I need to win at least 6 more games to bring it to 81%.
+2)
+
+    
+47
+47
+Returns: -1
+Nothing left to improve.
+3)
+
+    
+99000
+0
+Returns: 1000
+
+4)
+
+    
+1000000000
+470000000
+Returns: 19230770
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

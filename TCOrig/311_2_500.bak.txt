@@ -1,0 +1,91 @@
+#include <vector>
+#include <list>
+#include <map>
+#include <set>
+#include <deque>
+#include <stack>
+#include <bitset>
+#include <algorithm>
+#include <functional>
+#include <numeric>
+#include <utility>
+#include <sstream>
+#include <iostream>
+#include <iomanip>
+#include <cstdio>
+#include <cmath>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+typedef pair<int,int> pi;
+
+class MatchNumbersEasy {
+public:
+vector<int> matches;
+int m;
+map<pi,string> memo;
+
+string best(string a, string b)
+{
+	if (a == "")
+		return b;
+	if (b == "")
+		return a;
+	
+	string aa = a, bb = b;
+	while (aa.size() > 0 && a[0] == '0')
+	{
+		aa = aa.substr(1);
+	}
+	while (bb.size() > 0 && bb[0] == '0')
+	{
+		bb = bb.substr(1);
+	}
+	if (aa.size() > bb.size())
+	{
+		return aa;
+	}
+	else if (bb.size() > aa.size())
+	{
+		return bb;
+	}
+	else
+	{
+		return aa > bb ? aa : bb;
+	}
+}
+		
+string f(int d, int n)
+{
+	if (d == m || n == 0)
+	{
+		return "";
+	}
+	pi key = make_pair(d, n);
+	if (memo.count(key) > 0)
+		return memo[key];
+	
+	int nd = n/matches[d];
+	string r = "";
+	for (int k = 0; k <= nd; k++)
+	{
+		string s = f(d+1, n-k*matches[d]);
+		r = best(r, s+string(k, char('0'+d)));
+	}
+	memo[key] = r;
+	return r;	
+}
+
+	
+	
+string maxNumber(vector <int> matches_, int n) 
+{
+	matches = matches_;
+	m = matches.size();
+	return f(0, n);			
+}
+};
+
+
+//Powered by [KawigiEdit]

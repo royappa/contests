@@ -1,0 +1,114 @@
+vector<string> A;
+int K, N, M;
+int memo[1025][1025];
+
+int f(int p, int gmask) // how many ways to select exactly K total, given first p boys and "gmask" girls are already used
+{
+	int gn = __builtin_popcount(gmask);
+	if (gn == K)
+		return 1; // made K pairs already
+	if (p == N || gn == M) // no boys left or no girls left
+		return 0;
+	int& r = memo[bmask][gmask];
+	if (r != -1)
+		return r;
+	r = f(p+1, gmask); // if we don't use this boy
+	for (int i = p; i < N; i++)
+	{
+		for (int j = 0; j < M; j++)
+		{
+			if ((gmask & (1<<j)) == 0 && A[i][j] == 'Y')
+			{
+				r += f(p+1, gmask|(1<<j));
+			}
+		}
+	}
+	return r;
+}
+		
+int countPairs(vector <string> canDance, int K) 
+{
+	A = canDance;
+	N = A.size();
+	M = A[0].size();
+	memset(memo, -1, sizeof(memo));
+	return f(0, 0);
+}
+
+Problem Statement
+    
+There are N boys and M girls in a dance school. 
+
+The teachers are organizing a performance and they need exactly K boy-girl couples for their show. Unfortunately, this is not a straightforward task since some children cannot be paired with each other (due to differences in height, skill, etc.). One of the teachers is a computer science graduate, and has decided to count the number of ways to select K couples.
+
+You are given a vector <string> canDance containing exactly N elements, each with exactly M characters. The j-th character of the i-th element of canDance is 'Y' if boy i can be paired with girl j, and 'N' otherwise. 
+
+Return the number of distinct valid ways to select exactly K boy-girl pairs.
+
+Definition
+    
+Class:
+DancingCouples
+Method:
+countPairs
+Parameters:
+vector <string>, int
+Returns:
+int
+Method signature:
+int countPairs(vector <string> canDance, int K)
+(be sure your method is public)
+    
+
+Constraints
+-
+canDance will contain between 1 and 10 elements, inclusive.
+-
+Each element of canDance will contain between 1 and 10 characters, inclusive.
+-
+Each element of canDance will contain the same number of characters.
+-
+Each character in canDance will be either 'Y' or 'N'.
+-
+K will be between 1 and 10, inclusive.
+Examples
+0)
+
+    
+{"YYYY", 
+ "YYYY",
+ "YYYY"}
+3
+Returns: 24
+There are three boys and four girls. Every boy can dance with every girl. The first boy selects one of the four girls, the second boy selects one of the three remaining girls, and the third boy selects one of the two remaining girls. Thus, there are 4*3*2=24 ways to create three couples.
+1)
+
+    
+{"YYNN", 
+ "NYYN", 
+ "NNYY"}
+3
+Returns: 4
+There are 4 possible pairings: {boy1-girl1, boy2-girl2, boy3-girl3}, {boy1-girl1, boy2-girl2, boy3-girl4}, {boy1-girl1, boy2-girl3, boy3-girl4}, {boy1-girl2, boy2-girl3, boy3-girl4}
+2)
+
+    
+{"YY", 
+ "YY", 
+ "YY"}
+3
+Returns: 0
+There are 3 boys but only 2 girls, so it is impossible to select 3 pairs.
+3)
+
+    
+{"YYNNNN",
+ "NYYNNN",
+ "NNYYNN",
+ "NNNYYN",
+ "NNNNYY",
+ "YNNNNY"}
+3
+Returns: 112
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

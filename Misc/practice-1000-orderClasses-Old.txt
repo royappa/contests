@@ -1,0 +1,134 @@
+import java.util.*;
+import java.util.regex.*;
+
+public class Prerequisites
+{
+	private int debug = 1;
+	private HashMap adjG;
+
+	private boolean parseGraphSucceeded(String[] classSchedule)
+	{		
+		int numV = classSchedule.length;
+		adjG = new HashMap();
+
+		for (int i = 0; i < numV; i++)
+		{
+			String course = classSchedule[i].split(":")[0];
+			adjG.put(course, new HashSet());
+//if (debug==1) System.out.println(course + " " + vHash.get(course));
+		}
+//System.out.println("8" + vHash.get(new String("MMM888")));
+//System.out.println("7" + vHash.get("MMM777"));
+		for (int i = 0; i < numV; i++)
+		{
+			String parts[] = classSchedule[i].split(":"); 
+			String course = parts[0];
+			String[] preList = (parts.length > 1) ? parts[1].trim().split(" ") : new String[0];
+			int numNeighbors = preList.length;
+			if (debug==1) System.out.println(classSchedule[i]);
+			for (int k = 0; k < numNeighbors; k++)
+			{
+				if (!adjG.containsKey(preList[k]))
+				{
+					if (debug==1) System.out.println("empty |"+preList[k]+"|");
+					return false;
+				}
+				//if (debug==1) System.out.println(course + " " + vHash.get(course) + " " + preList[k] + " " + vHash.get(preList[k]));
+				((HashSet) adjG.get(course)).add(preList[k]);	
+			}
+				
+		}
+		return true; 
+	}
+	
+	private ArrayList removeInDegZero()
+	{
+		ArrayList courseList = new ArrayList(adjG.keySet());
+		ArrayList delList = new ArrayList();
+		if (debug == 1) System.out.println( "b " + adjG.toString());
+		for (int i = 0; i < courseList.size(); i++)
+		{
+			String course = (String) courseList.get(i);
+			HashSet coursePreList = (HashSet) adjG.get(course);
+			if (coursePreList.size() == 0) // course has zeroindegree, delete from adjG
+			{
+				delList.add(course);
+			}
+		}
+		for (int i = 0; i < delList.size(); i++)
+		{	
+			String courseZero = (String) delList.get(i);
+			for (int k = 0; k < courseList.size(); k++)
+			{
+				String course2 = (String) courseList.get(k);
+				HashSet coursePreList2 = (HashSet) adjG.get(course2);
+				if (debug==1) System.out.println("    x "+ " "+ i + " " +k + " " + course2 + " " + courseZero);
+				coursePreList2.remove(courseZero);
+			}
+		}
+		for (int i = 0; i < delList.size(); i++)
+		{
+			adjG.remove(delList.get(i));
+		}
+		return delList;
+	}
+	public String[] orderClasses(String[] classSchedule)
+	{
+	
+		String[] empty = {};
+		ArrayList finalList, tempList;
+		boolean dummy;
+
+		if (!parseGraphSucceeded(classSchedule))
+		{
+			return (empty);
+		}
+		finalList = new ArrayList();
+		tempList = removeInDegZero();
+		while (tempList.size() > 0)
+		{
+			if (debug == 1) System.out.println("******");
+			if (debug == 1) System.out.println(tempList.toString());
+			if (debug == 1) System.out.println(finalList.toString());
+			finalList.addAll(tempList);
+			tempList = removeInDegZero();
+		}	
+		if (adjG.size() > 0)
+		{
+			return empty;
+		}
+		dummy = parseGraphSucceeded(classSchedule);
+		Collections.sort(finalList, new CompareCourses());
+		return  (String[]) finalList.toArray(empty);
+	}
+
+class CompareCourses implements Comparator
+{
+private int debug  = 1;
+	public int compare(Object cobj1, Object cobj2)
+	{
+		String course1, course2, dept1, dept2;
+		int num1, num2;
+		Pattern p = Pattern.compile("([A-Z]{3,4})([0-9]{3})");
+		course1 = (String) cobj1;
+		course2 = (String) cobj2;
+		// check if course1 is prereq of course2, then return -1
+		
+//if (debug==1) System.out.println(course1 + " " + course2);
+		Matcher m1 = p.matcher(course1);
+		Matcher m2 = p.matcher(course2);
+		if (!m1.matches()) return 0;
+		dept1 = m1.group(1);
+		num1 = Integer.parseInt(m1.group(2));
+		if (!m2.matches()) return 0;
+		dept2 = m2.group(1);
+		num2 = Integer.parseInt(m2.group(2));
+//if (debug==1) System.out.println(dept1 + " " + dept2);
+		return num1 < num2 ? -1 :
+			num1 > num2  ? 1 : 
+			  dept1.compareTo(dept2);
+	}
+}
+			
+}	
+		

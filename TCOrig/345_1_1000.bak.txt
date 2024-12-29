@@ -1,0 +1,195 @@
+typedef long long LL;
+
+int A[60][60];
+LL limit;
+LL memo[60];
+int endPoint;
+
+LL f(int p)
+{
+	if (p == endPoint)
+		return 0;
+		
+	LL r = memo[p];
+	if (r != -1LL)
+		return r;
+	
+	r = 0;
+	for (int i = 0; i < n; i++)
+	{
+		if (A[p][i])
+		{
+			r += f(i);
+			if (r > limit)
+				return limit;
+		}
+	}
+	return r;
+}
+
+int countRoutes(vector <string> g, vector <int> startPoints, int e, int q) 
+{
+	int n = g.size();
+	endPoint = e;
+	memset(A, 0, sizeof(A));
+	
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = 0; j < n; j++)
+		{
+			A[i][j] = g[i][j]-'0';
+			T[i][j] = A[i][j];
+		}
+	}
+	
+	// Warshall..
+	for (int k = 0; k < n; k++)
+	{
+		for (int i = 0; i < n; i++)
+		{
+			for (int j = 0; j < n; j++)
+			{
+				T[i][j] = T[i][j] || (T[i][k] && T[k][j]);
+			}
+		}
+	}
+	
+	// if any route to endpoint contains a cycle, then there are oo routes
+	for (int i = 0; i < startPoints.size(); i++)
+	{
+		int p = startPoints[i];
+		for (int j = 0; j < n; j++)
+		{
+			if (T[p][j] && T[j][e] && T[j][j])
+			{
+				return -1;
+			}
+		}
+	}
+	// remove all points that are on a cycle as they cannot affect our routes anymore
+	for (int i = 0; i < n; i++)
+	{
+		if (T[i][i])
+		{
+			for (int j = 0; j < n; j++)
+			{
+				A[i][j] = 0;
+				A[j][i] = 0;
+			}
+		}
+	}
+	
+	
+	limit = q;
+	
+	LL sum = 0;
+	memset(memo, -1, sizeof(memo));
+	
+	for (int i = 0; i < startPoints.size(); i++)
+	{
+		sum += f(startPoints[i]);
+		if (sum > limit)
+			return -1;
+	}
+	return sum;	
+}
+Problem Statement
+    
+Your friend likes riding his bike on the hills outside your town. He asked you to help him count the number of routes he can take. There are several locations on the hills, some of them directly connected by paths (you can take each path only in one given direction). 
+
+He would like to start at one of the locations given in startPoints and end at location endPoint. 
+
+Return the number of distinct routes that he can use to do that. 
+
+If the number is larger than n or infinite, return -1.
+
+The definition of a route is as follows:
+A legal route is a sequence of locations starting with one from startPoints and ending with endPoint. 
+Each location on the route other than the last one has a path leading to the next consecutive location.
+Two routes are distinct if they each have a different sequence of locations.
+A route can have any length.
+
+Any location (including endPoint) may be present multiple times on the route.
+
+You are given all locations and connections between them in the vector <string> paths. 
+
+The j-th character of the i-th element of paths is '1' (one) if there is a direct one-way path from location i to location j, and '0' (zero) otherwise.
+
+Definition
+    
+Class:
+BikeRiding
+Method:
+countRoutes
+Parameters:
+vector <string>, vector <int>, int, int
+Returns:
+int
+Method signature:
+int countRoutes(vector <string> paths, vector <int> startPoints, int endPoint, int n)
+(be sure your method is public)
+    
+
+Constraints
+-
+paths will contain between 2 and 50 elements, inclusive (let k be this number).
+-
+Each element of paths will contain exactly k characters.
+-
+Each element of paths will contain only '0' (zero) and '1' (one) characters.
+-
+endPoint and each element of startPoints will be between 0 and k-1.
+-
+Each element in startPoints will be distinct.
+-
+None of the elements in startPoints will be equal to endPoint
+-
+n will be between 2 and 10^9, inclusive.
+Examples
+0)
+
+    
+{"011" ,
+ "001", 
+ "000"}
+{0,1}
+2
+5
+Returns: 3
+There is one possible route from location 1, and two from location 0.
+1)
+
+    
+{"01000",
+ "00100",
+ "00010",
+ "01001",
+ "00000"}
+{0}
+4
+10
+Returns: -1
+The number of routes is infinite.
+2)
+
+    
+{"000111000000000","000111000000000","000111000000000",
+ "000000111000000","000000111000000","000000111000000",
+ "000000000111000","000000000111000","000000000111000",
+ "000000000000111","000000000000111","000000000000111",
+ "000000000000001","000000000000001","000000000000000"}
+{0,1,2}
+14
+1000
+Returns: 243
+
+3)
+
+    
+{"010", "100", "001"}
+{0}
+2
+10
+Returns: 0
+There is no possible route.
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

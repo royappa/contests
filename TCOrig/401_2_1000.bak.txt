@@ -1,0 +1,79 @@
+int newsLength(vector <string> running) 
+{
+	
+}
+
+Problem Statement
+    
+There is an electronic sign above the entrance to FIELD-Tech headquarters. 
+
+The sign displays a scrolling message that is repeated over and over again. The letters show up on one side of the sign, scroll to the other side, and then disappear. Polly, who works in the office, is curious about the length of the message. She has observed the sign for some period of time and written down the letters she has seen, in order. Now, you must help her determine the minimal possible length of the message. For example, if she saw the letters "abcabcabcab", two possible messages would be "bca" and "abcabc". The shortest possible length would be 3.
+
+You will be given a vector <string> running. 
+
+Concatenate the elements of running to get a space separated list of sections, each formatted "N S" (quotes for clarity), representing the concatenation of N instances of S. 
+
+Expand out all the sections to get the entire text. 
+
+For example, "3 abc 1 ab" expands out to "abcabcabcab" (3 instances of "abc" followed by 1 instance of "ab"). 
+
+Return the minimal possible message length that could have produced the given text.
+
+Definition
+    
+Class:
+RunningLetters
+Method:
+newsLength
+Parameters:
+vector <string>
+Returns:
+int
+Method signature:
+int newsLength(vector <string> running)
+(be sure your method is public)
+    
+
+Constraints
+-
+running will contain between 1 and 50 elements, inclusive.
+-
+Each element of running will contain between 0 and 50 characters, inclusive.
+-
+running will be formatted as described in the statement, where each N is an integer between 1 and 1000000, inclusive, with no leading zeroes, and each S is a non-empty string containing only lowercase letters ('a'-'z').
+-
+running will contain no leading, trailing, or consecutive spaces.
+-
+The expanded text will contain between 1 and 1000000 characters, inclusive.
+Examples
+0)
+
+    
+{"3 abc 1 ab"}
+Returns: 3
+This is the example from the problem statement.
+1)
+
+    
+{"1 babaaba"}
+Returns: 5
+The text "babaaba" can be produce by the message "abaab".
+2)
+
+    
+{"1 ba 1 c 1 bacba 3 cba"}
+Returns: 3
+
+3)
+
+    
+{"42 runningletters 42 runningletters 1 running"}
+Returns: 14
+
+4)
+
+    
+{"1 b ", "1 a ", "1 b ", "1 a", " 1 b"}
+Returns: 2
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

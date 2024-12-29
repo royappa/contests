@@ -1,0 +1,61 @@
+int count(vector <string> words, int K) 
+{
+	
+}
+
+
+Problem Statement
+    
+A language teacher in Antarctica wants his students to be able to read as many words as possible. However, he only has time to teach them K letters. After that, the students will only be able to read words containing only those K letters. Your task is to determine which K letters should be taught to maximize the number of words that the students will be able to read.
+ 
+The Antarctican language is famous because it only contains words that start with "anta" and end with "tica" (quotes for clarity only). You are given a vector <string> words containing all the words in the language. Return the maximum number of words the students will be able to read if they learn the optimal set of K letters.
+Definition
+    
+Class:
+Teaching
+Method:
+count
+Parameters:
+vector <string>, int
+Returns:
+int
+Method signature:
+int count(vector <string> words, int K)
+(be sure your method is public)
+    
+
+Constraints
+-
+words will contain between 1 and 50 elements, inclusive.
+-
+Each element of words will contain between 8 and 15 lowercase letters ('a'-'z').
+-
+Each element of words will start with "anta" and end with "tica" (quotes for clarity).
+-
+All elements of words will be distinct.
+-
+K will be between 0 and 26, inclusive.
+Examples
+0)
+
+    
+{"antarctica","antahellotica","antacartica"}
+6
+Returns: 2
+If you choose the letters a, c, i, n, t and r, students will be able to read the first and last words.
+1)
+
+    
+{"antaxxxxxxxtica","antarctica"}
+3
+Returns: 0
+No word in the Antarctican language contains 3 or fewer distinct letters.
+2)
+
+    
+{"antabtica","antaxtica","antadtica","antaetica","antaftica",
+ "antagtica","antahtica","antajtica","antaktica"}
+8
+Returns: 3
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

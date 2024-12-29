@@ -1,0 +1,25 @@
+a->b->c
+
+a b c
+  a b,c
+    a,b,c
+    a,b,c
+    ..
+    
+a->b->c->a
+
+a b c
+c a b
+b c a
+a b c
+..
+
+a->b->c->b
+
+a b c
+  a,c b
+  b a,c
+  a,c b
+  b a,c
+  ..
+  

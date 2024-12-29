@@ -1,0 +1,83 @@
+int countMoves(vector <int> a) 
+{
+	int n = a.size();
+	
+	int mn = a[0], mx = a[0];
+	for (int i = 1; i < n; i++)
+	{
+		mn = min(mn, a[i]);
+		mx = max(mx, a[i]);
+	}
+	int minc = 0, maxc = 0;
+	for (int i = 0; i < n; i++)
+	{
+		if (a[i] < mn)
+			minc++;
+		if (a[i] > mx)
+			maxc++;
+	}
+	return minc+maxc;
+}
+Problem Statement
+    
+We have a sorting machine that works on a list of distinct numbers. 
+
+This machine only has two instructions, named MOVEBACK and MOVEFRONT. 
+
+Each instruction takes one element of the list as a parameter and removes that element from the list. 
+
+MOVEBACK will then append that element to the end of the remaining list, while MOVEFRONT will insert it at the beginning.
+
+For example, the sequence {8,12,25,7,15,19} can be sorted in ascending order using 2 instructions: MOVEFRONT 7, to get {7,8,12,25,15,19} MOVEBACK 25, to get {7,8,12,15,19,25}
+
+You will be given a vector <int> a containing a list of distinct numbers. 
+
+Return the minimum number of instructions required to sort the list in ascending order.
+Definition
+    
+Class:
+BifidSortMachine
+Method:
+countMoves
+Parameters:
+vector <int>
+Returns:
+int
+Method signature:
+int countMoves(vector <int> a)
+(be sure your method is public)
+    
+
+Constraints
+-
+a will have between 1 and 50 elements, inclusive.
+-
+Each element of a will be between -1000 and 1000, inclusive.
+-
+All elements of a will be distinct.
+Examples
+0)
+
+    
+{8,12,25,7,15,19}
+Returns: 2
+The example from the problem statement.
+1)
+
+    
+{1,2,3,4,5}
+Returns: 0
+This list is already sorted, so no instructions are needed.
+2)
+
+    
+{1000,-1000,0}
+Returns: 1
+This list can be sorted with a single instruction: MOVEBACK 1000.
+3)
+
+    
+{1, -10, -1, -8, 4}
+Returns: 3
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

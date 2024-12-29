@@ -1,0 +1,110 @@
+int L, cap;
+int memo[101];
+
+
+int f(int n)
+{
+	if (n*L+(n-1) <= cap && n%13 != 0)
+	{
+		return 1;
+	}
+	else if (n*L+(n-1) <= cap && n%13 == 0)
+	{
+		return 2;
+	}
+	int &r = memo[n];
+	if (r != -1)
+		return r;
+	
+	r = 200;
+	for (int p = 1; p <= n/2; p++)
+	{
+		r = min(r, f(p)+f(n-p));
+	}
+	return r;
+}
+
+int leastAmountOfCDs(int n, int _L, int _cap) 
+{
+	L = _L;
+	cap = _cap;
+	memset(memo, -1, sizeof(memo));
+	return f(n);	
+}
+Problem Statement
+    
+A popular musical group 'Flattened' has decided to release a new album. It consists of n songs. All songs are of the same length (given in seconds). 
+
+A CD can store cap seconds of audio. Each pair of consecutive songs must be separated by a 1 second pause. The group director is superstitious, so the number of songs on a CD must never be divisible by 13. Given these constraints, return the smallest number of CDs required to fit the entire album.
+Definition
+    
+Class:
+NewAlbum
+Method:
+leastAmountOfCDs
+Parameters:
+int, int, int
+Returns:
+int
+Method signature:
+int leastAmountOfCDs(int nSongs, int length, int cdCapacity)
+(be sure your method is public)
+    
+
+Constraints
+-
+nSongs will be between 1 and 100, inclusive.
+-
+cdCapacity will be between 1 and 10000, inclusive.
+-
+length will be between 1 and cdCapacity, inclusive.
+Examples
+0)
+
+    
+7
+2
+6
+Returns: 4
+There are at most two songs on each CD.
+1)
+
+    
+20
+1
+100
+Returns: 1
+All the songs will fit on a single CD.
+2)
+
+    
+26
+1
+100
+Returns: 2
+Even though all 26 songs will fit on a single CD, we must use two CDs because 26 is divisible by 13.
+3)
+
+    
+26
+3
+51
+Returns: 3
+
+4)
+
+    
+67
+271
+1000
+Returns: 23
+
+5)
+
+    
+27
+1
+27
+Returns: 3
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

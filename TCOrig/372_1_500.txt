@@ -1,0 +1,116 @@
+typedef long long LL;
+string num;
+int n;
+LL memo[20][600][20];
+
+LL p10[20];
+
+LL f(int p, int k, int m)  // return the total winnings of digits [p..n), given max of k changes, and m = [0..p) mod 11
+{
+	if (p == n)
+	{
+		return mod == 0 ? k : 0;
+	}
+	LL &r = memo[p][k][m];
+	if (r != -1LL)
+		return r;
+		
+	r = 0;
+	for (int d = 0; d <= 9; d++)
+	{
+		int dig = num[p]-'0';
+		int delta = abs(dig-d);
+		if (delta <= k)
+		{
+			r += f(p+1, k-delta, (m + d*p10[n-1-p])%11);
+		}
+	}
+	return r;
+}
+
+long long maxIncome(int number, int k) 
+{
+	char buf[100];
+	sprintf(buf, "%d", number);
+	num = buf;
+	
+	p10[0] = 1;
+	for (int i = 1; i < 15; i++)
+	{
+		p10[i] = p10[i-1]*10LL;
+	}
+	
+	n = num.size();
+	
+	memset(memo, -1, sizeof(memo));
+	return f(0, k, 0);	
+}
+
+Problem Statement
+    
+The government of a neighboring country is running a game show called "Let's Make Some Money!". 
+
+During the final round (the "Round of Eleven"), the contestant is given a number n and some money. 
+
+The goal is to change the number into a multiple of 11. 
+
+Contestants are allowed to spend 1 dollar to either increment a digit of n (to a maximum of 9) or decrement a digit of n (to a minimum of 0). 
+
+Upon reaching a multiple of 11 that has not been selected this week, the contestant can either leave with the money that they have not spent or choose to keep going. 
+
+For example, if n is 31 and the contestant has 4 dollars, he can change n to 11 (by decrementing the 3 twice), 22 (by decrementing 3 and incrementing 1) or 33 (by incrementing 1 twice). For each one, he would receive 2 dollars.
+
+As ruler of Rainban, you have decided that you will allow each of your subjects to attend the show and collect all of their winnings; fortunately for you, you have so many subjects that you can win every prize on the show. 
+
+This week, all subjects will get to start with the same values of n and money. Once one subject selects a multiple of 11, that multiple cannot be used by any future subject. In addition, you cannot add any digits to the number (so you cannot change 9 into 19), but you can create leading zeroes (for example, changing 19 into 09). Return the total amount of money that can be won, if your subjects play optimally. See the examples for clarification.
+
+Definition
+    
+Class:
+RoundOfEleven
+Method:
+maxIncome
+Parameters:
+int, int
+Returns:
+long long
+Method signature:
+long long maxIncome(int n, int money)
+(be sure your method is public)
+    
+
+Constraints
+-
+n will be between 1 and 2^31-1, inclusive, with no leading zeroes.
+-
+money will be between 1 and 500, inclusive.
+Examples
+0)
+
+    
+31
+4
+Returns: 6
+The example from the statement.
+1)
+
+    
+31
+5
+Returns: 11
+With 1 more dollar in the pot, you reach 33, 22 and 11 for 3 dollars each, as well as 00 and 44 for 1 dollar each.
+2)
+
+    
+110
+3
+Returns: 7
+
+3)
+
+    
+19759
+435
+Returns: 3788217
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

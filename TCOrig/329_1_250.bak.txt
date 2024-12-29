@@ -1,0 +1,137 @@
+string getInternational(vector <int> tickets) 
+{
+	set<int> dom, inter;
+	
+	for (int i = 1; i <= 36; i++)
+	{
+		dom.insert(i);
+	}
+	
+	for (int i = 1; i <= 9; i++)
+	{
+		int x[] = {1,3,4,6};
+		for (int j = 0; j < 4; j++)
+		{
+			int t = i*10+x[j];
+			inter.insert(t);
+		}
+	}
+	int n = tickets.size();
+	
+	vector<bool> dd(n, false), ii(n, false);
+	
+	for (int i = 0; i < n; i++)
+	{
+		bool dd = false, ii = false;
+		if (dom.count(ticket[i]) > 0)
+			dd[i] = true;
+		if (inter.count(ticket[i]) > 0)
+			ii[i] = true;
+	}
+	for (int i = 0; i < n; i++)
+	{
+		if (!dd[i] && !ii[i])
+		{
+			return "BAD DATA"; // every t must be valid in one way or another
+		}
+	}
+	int dc = 0, ic = 0;
+	for (int i = 0; i < n; i++)
+	{
+		if (dd[i]) dc++;
+		if (ii[i]) ic++;
+	}
+	if (dc == n && ic == n)
+	{
+		return "AMBIGUOUS";
+	}
+	char buf[1000];
+	strcpy(buf, "");
+	if (dc == n)
+	{
+		int x[] = {1,3,4,6};
+		for (int i = 0; i < n; i++)
+		{
+			int t = ticket[i];
+			int it = ((t-1)/4+1)*10+x[t%4];
+			char b2[100];
+			sprintf(b2, "%s%d", i<n-1?" ":"", it);
+			strcat(buf, b2);
+		}
+		return buf;
+	}
+	for (int i = 0; i < n; i++)
+	{
+		int ti = ticket[i];
+		char b2[100];
+		sprintf(b2, "%s%d", i<n-1?" ":"", it);
+		strcat(buf, b2);
+	}
+	return buf;		
+}
+Problem Statement
+    
+In a certain European country, railroad cars consist of 9 compartments, each containing 4 seats. There are two possible numeration methods for the seats: the domestic numeration and the international numeration.
+In the domestic numeration, the seats in the first compartment are numbered 1 through 4, the seats in the second compartment are numbered 5 through 8, and so on.
+In the international numeration, every seat's number consists of two digits. The first digit is the number of the compartment and the second digit is the number of the seat within that compartment. Compartments are numbered 1 through 9, and the four seats within each compartment are numbered 1, 3, 4, 6 (in the same order as in the domestic numeration).
+You are given a vector <int> tickets containing seat numbers in an unknown numeration. Assuming that every seat number in tickets is in the same numeration, convert them into the international numeration. Return the result as a string containing a single-space separated list of converted numbers in the same order that they are given in the input. If there are several possible return values, return "AMBIGUOUS" (quotes for clarity only). If the input cannot be interpreted as a valid list of seat numbers all in the same numeration, return "BAD DATA" (quotes for clarity only).
+Definition
+    
+Class:
+RailroadSeatNumeration
+Method:
+getInternational
+Parameters:
+vector <int>
+Returns:
+string
+Method signature:
+string getInternational(vector <int> tickets)
+(be sure your method is public)
+    
+
+Constraints
+-
+tickets will contain between 1 and 36 elements, inclusive.
+-
+Each element of tickets will be between 1 and 100, inclusive.
+-
+tickets will contain no duplicate elements.
+Examples
+0)
+
+    
+{1}
+Returns: "11"
+Seat number 1 exists only in the domestic numeration, and it corresponds to seat number 11 in the international numeration.
+1)
+
+    
+{11}
+Returns: "AMBIGUOUS"
+Seat number 11 exists in both numerations, so we cannot figure out which numeration is used here.
+2)
+
+    
+{45}
+Returns: "BAD DATA"
+No seat can be numbered 45 in any numeration.
+3)
+
+    
+{5, 7, 6}
+Returns: "21 24 23"
+Remember to return tickets in the same order as in the input.
+4)
+
+    
+{21, 24, 23}
+Returns: "AMBIGUOUS"
+
+5)
+
+    
+{8, 28}
+Returns: "26 76"
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

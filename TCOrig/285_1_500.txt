@@ -1,0 +1,149 @@
+int A[1000][1000];
+
+double estimateCommands(int N, string p) 
+{
+	long long total = 0LL;
+	// count total number of moves from each starting spot
+	
+	int maxU = 0, maxD = 0, maxL = 0, maxR = 0;
+	int dr = 0, dc = 0;
+	for (int i = 0; i < p.size(); i++)
+	{
+		char ch = p[i];
+		if (ch == 'U') dr--;
+		if (ch == 'D') dr++;
+		if (ch == 'L') dc--;
+		if (ch == 'R') dc++;
+		if (dr > maxD) maxD = dr;
+		if (dr < 0 && -dr > maxU) maxU = -dr;
+		if (dc > maxR) maxR = dc;
+		if (dc < 0 && -dc > maxL) maxL = -dc;
+	}
+	int pn = p.size();
+	for (int r = 0; r < N; r++)
+	{
+		for (int c = 0; c < N; c++)
+		{
+			if (r-maxU < 0 || r+maxD >= N || c-maxL < 0 || c+maxR >= N) // will go OOB somewhere on path
+			{
+				// steps(r, c, p); calc exact number of steps
+				int steps = 0;
+				int tr = r, tc = c;
+				for (int i = 0; i < pn; i++)
+				{
+					char ch = p[i];
+					if (ch == 'U') tr--;
+					else if (ch == 'D') tr++;
+					else if (ch == 'L') tc--;
+					else tc++;
+					steps++;
+					if (tr < 0 || tr >= N || tc <= 0 || tc >= N)
+						break;
+				}
+				total += steps;
+			}
+			else // will stay in bounds the whole time of path
+			{
+				
+				int tr = r, tc = c;
+				int steps = 0;
+				while (!(r-maxU < 0 || r+maxD >= N || c-maxL < 0 || c+maxR >= N) && steps < 50000)
+				{
+					tr += dr;
+					tc += dc;
+					steps += pn;
+				}
+				if (steps >= 50000)
+				{
+					total += 50000LL;
+				}
+				else
+				{
+					// steps(r, c, p); calc exact number of steps
+					for (int i = 0; i < pn; i++)
+					{
+						char ch = p[i];
+						if (ch == 'U') tr--;
+						else if (ch == 'D') tr++;
+						else if (ch == 'L') tc--;
+						else tc++;
+						steps++;
+						if (tr < 0 || tr >= N || tc <= 0 || tc >= N)
+							break;
+						if (steps >= 50000)
+							break;
+					}
+					total += steps;				
+				}
+			}
+		}
+	}
+	return double(tot)/double(N*N);
+}
+
+Problem Statement
+    
+A robot is placed randomly on a cell in a NxN square grid. The robot has a program consisting of several commands, where each command is either 'U' (move up), 'D' (move down), 'L' (move left), or 'R' (move right). The commands are executed in order, and the program is cyclical (i.e., after the last command is executed, it will start over from the first command). The robot stops moving only if it has left the grid or if it has executed 50,000 commands.
+You will be given an int N and a string program. Return the expected number of commands that will be executed before the robot stops. You can assume that all the cells in the grid are equally likely to be the starting cell.
+Definition
+    
+Class:
+RobotTesting
+Method:
+estimateCommands
+Parameters:
+int, string
+Returns:
+double
+Method signature:
+double estimateCommands(int N, string program)
+(be sure your method is public)
+    
+
+Notes
+-
+Your return value must have an absolute or relative error less than 1e-9.
+Constraints
+-
+N will be between 1 and 1000, inclusive.
+-
+program will contain between 1 and 50 characters, inclusive.
+-
+Each character in program will be either 'U', 'D', 'L' or 'R'.
+Examples
+0)
+
+    
+2
+"L"
+Returns: 1.5
+If the robot starts in the left column, it will leave the grid after the first command. Otherwise, it will leave the grid after the second command. These two scenarios are equally likely, so the answer is 1.5.
+1)
+
+    
+2
+"LURD"
+Returns: 12501.0
+If the robot starts in the bottom right corner, it will execute 50,000 commands.
+2)
+
+    
+4
+"LDLDLDRRR"
+Returns: 3.375
+
+3)
+
+    
+29
+"RRULDD"
+Returns: 53.236623067776456
+
+4)
+
+    
+697
+"LLLLLDRRRRR"
+Returns: 3806.5179340028694
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

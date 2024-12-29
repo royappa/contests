@@ -1,0 +1,56 @@
+
+Problem Statement
+    
+You are in possesion of a special Bag of Holding. You can put any items in this bag that you want and it never becomes bulkier or heavier. Whenever you want to take something out of the bag you just reach in and pull it out, if it isn't obscured by other items. Whenever you put an item in the bag, it will obscure all items already in the bag that are as small or smaller than it, preventing you from pulling those items out of the bag.  You have quite a few items that you want to keep in the bag, and you are wondering if you put all the items in the bag randomly, what are the odds that you'll be able to reach a certain item. Clearly you will only be able to reach that item if no items as big or bigger than it were put into the bag after it, and the ordering of items smaller than the item in question doesn't matter. Create a class BagOfHolding with a method oddsReachable that takes a int[] sizes, which contains the sizes of each item, and an int item, which is the index of the item in sizes that you are concerned with (the first item in the sizes is item 0), and returns a double that is the percent chance that you will be able to reach that item if you put all the items into the bag at random.
+Definition
+    
+Class:
+BagOfHolding
+Method:
+oddsReachable
+Parameters:
+int[], int
+Returns:
+double
+Method signature:
+double oddsReachable(int[] sizes, int item)
+(be sure your method is public)
+    
+
+Constraints
+-
+sizes will contain between 1 and 10 elements, inclusive.
+-
+Every element of sizes will be between 1 and 10000, inclusive.
+-
+item will be between 0 and the number of elements in sizes-1, inclusive.
+Examples
+0)
+
+    
+{1,2,3}
+1
+Returns: 0.5
+There are six orders in which these items could be put in the bag: {1,2,3}, {1,3,2}, {2,1,3}, {2,3,1}, {3,1,2}, {3,2,1}. We want to be able to reach the item with a size of 2, and we will be able to in 3 of the 6 orderings, so we return .5.
+1)
+
+    
+{1,2,3}
+2
+Returns: 1.0
+Same items, but this time we want to be able to reach the item with a size of 3. Since it is larger than all of the other items we will always be able to reach it, so we return 1.
+2)
+
+    
+{1,1,2,3}
+2
+Returns: 0.5
+Like example 0, but now there is another item of size 1. Remember that {1,1,2,3} can be two different orderings, since there are two distinct items of size 1.
+3)
+
+    
+{1,2,3,4,5,6,7,8,9,10}
+4
+Returns: 0.16666666666666666
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

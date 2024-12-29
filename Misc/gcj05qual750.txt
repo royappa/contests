@@ -1,0 +1,204 @@
+#include <vector>
+#include <list>
+#include <map>
+#include <set>
+#include <deque>
+#include <stack>
+#include <bitset>
+#include <algorithm>
+#include <functional>
+#include <numeric>
+#include <utility>
+#include <sstream>
+#include <iostream>
+#include <iomanip>
+#include <cstdio>
+#include <cmath>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+typedef vector<string> vs;
+typedef vector<vs> vvs;
+
+class ImageLayers {
+public:
+vector<string> split_nonre(string s, string sep)
+{
+	char *sC = (char *) malloc(s.size()+1);
+	strcpy(sC, s.c_str());
+	char *sepC = (char *) sep.c_str();
+	char *status = NULL;
+	
+	char *word;
+	vector<string> results;
+	while ((word = strtok_r(sC, sepC, &status)) != NULL)
+	{
+		results.push_back(word);
+		sC = NULL;
+	}
+	return results;
+}
+
+vector <string> contents(vector <string> macro)
+{
+	vvs layers;
+	for (int i = 0; i < macro.size(); i++)
+	{
+		vs v = split_nonre(macro[i], " ");
+		if (v[0] == "OPEN")
+		{
+			vs x;
+			x.push_back(v[1]);
+			layers.push_back(x);
+		}
+		else // MERGE
+		{
+			int a, b;
+			sscanf(v[1].c_str(), "%d-%d", &a, &b);
+			vvs layers2;
+			for (int j = 0; j < a; j++)
+			{
+				layers2.push_back(layers[j]);
+			}
+			vs x;
+			for (int j = a; j <= b; j++)
+			{
+				for (int k = 0; k < layers[j].size(); k++)
+				{
+					x.push_back(layers[j][k]);
+				}
+			}
+			sort(x.begin(), x.end());
+			layers2.push_back(x);
+			for (int j = b+1; j < layers.size(); j++)
+			{
+				layers2.push_back(layers[j]);
+			}
+			layers = layers2;
+		}
+	}
+	vs result;
+	for (int i = 0; i < layers.size(); i++)
+	{
+		string x = "";
+		for (int j = 0; j < layers[i].size(); j++)
+		{
+			if (x.size() > 0)
+			{
+				x += " ";
+			}
+			x += layers[i][j];
+		}
+		result.push_back(x);
+	}
+	return result;
+}
+
+};
+
+
+Problem Statement
+    
+An image editing application allows users to construct images containing multiple layers. 
+
+When dealing with large images, however, it is sometimes necessary to limit the number of layers due to memory constraints. If certain layers will not be altered during an editing session, they can be merged together to reduce the total number of layers in memory. 
+
+You are given a macro containing commands to open files and merge layers. 
+
+Each time a file is opened, it is loaded into a new layer of the current image. 
+
+Layers are numbered starting at 0 for the bottommost layer, 1 for the layer directly on top of the bottommost layer, etc... 
+
+Whenever a new layer is created, it is positioned on top of the previous topmost layer. 
+
+An open command is formatted as "OPEN filename" where filename is the name of the file to open. 
+
+Consecutive layers can be merged using the merge command, which is formatted as "MERGE layer1-layer2", where layer1 and layer2 specify an inclusive range of layer numbers that exist in the current image. 
+
+After multiple layers are merged, all the layers are renumbered according to the original specification. 
+
+For example, if an image contains four layers (0, 1, 2, 3), and layers 1 and 2 are merged into a single layer, the final image will contain three layers numbered 0, 1, 2 from bottom to top, where layer 0 is the same as before, layer 1 was previously layers 1 and 2, and layer 2 was previously layer 3.
+
+Given the vector <string> macro, perform all the operations in the macro in order and return the final state of the image layers as a vector <string>. 
+
+The vector <string> should contain exactly the same number of elements as there are layers in the final image, and each element i should correspond to the ith layer. 
+
+Each element of the vector <string> should be a single space delimited list of the filenames contained in that layer. 
+
+The filenames should be sorted in alphabetical order within each layer.
+
+Definition
+    
+Class:
+ImageLayers
+Method:
+contents
+Parameters:
+vector <string>
+Returns:
+vector <string>
+Method signature:
+vector <string> contents(vector <string> macro)
+(be sure your method is public)
+    
+
+Constraints
+-
+macro will contain between 1 and 50 elements, inclusive.
+-
+Each element of macro will be formatted as either "OPEN filename" or "MERGE layer1-layer2".
+-
+Each filename in macro will contain between 1 and 15 lowercase letters ('a'-'z'), inclusive.
+-
+Each layer1 and layer2 in macro will be integers between 0 and n-1, inclusive, with no leading zeros, where n is the number of layers that exist in the image immediately before the command is executed.
+-
+Within each element of macro that represents a merge command, layer1 will be less than layer2.
+-
+The first element of macro will be an OPEN command.
+Examples
+0)
+
+    
+{"OPEN background",
+ "OPEN aone",
+ "OPEN atwo",
+ "OPEN foreground",
+ "MERGE 0-2",
+ "OPEN border"}
+Returns: {"aone atwo background", "foreground", "border" }
+After the first four commands in macro are executed, the layers are (from bottom to top):
+
+0. background 1. aone 2. atwo 3. foreground
+
+The merge command combines the bottom three layers into a single layer. There are now only two layers (from bottom to top):
+
+0. background aone atwo 1. foreground
+
+Finally, one last file is opened and placed in a new layer on top. The final return value contains the filenames within each layer sorted alphabetically:
+
+0. aone atwo background 1. foreground 2. border
+1)
+
+    
+{"OPEN sky",
+ "OPEN clouds",
+ "OPEN ground",
+ "MERGE 0-1",
+ "OPEN grass",
+ "MERGE 0-2",
+ "OPEN trees",
+ "OPEN leaves",
+ "OPEN birds",
+ "MERGE 1-2",
+ "MERGE 0-1"}
+Returns: {"clouds grass ground leaves sky trees", "birds" }
+
+2)
+
+    
+{"OPEN a", "OPEN b", "OPEN a", "OPEN a", "MERGE 0-3"}
+Returns: {"a a a b" }
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

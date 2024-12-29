@@ -1,0 +1,158 @@
+int g(vector<string> &b, int r, int c, int rows, int cols)
+{
+	int s = (b[r][c] == '*');
+	b[r][c] = 'v';
+	int[] d = {-1,0, 0,1, 1,0, 0,-1};
+	for (int i = 0; i < 4; i++)
+	{
+		int dr = r+d[2*i], dc = c+d[2*i+1];
+		if (dr >= 0 && dr < rows && dc >= 0 && dc < cols && b[dr][dc] != '.' && b[dr][dc] != 'v')
+		{
+			s += g(b, dr, dc, rows, cols);
+		}
+	}
+	return s;
+}
+
+int f(vector<string> b)
+{
+	int best = 0;
+	int rows = b.size(), cols = b[0].size();
+	for (int i = 0; i < rows; i++)
+	{
+		for (int j = 0; j < cols; j++)
+		{
+			if (b[i][j] != '.' && b[i][j] != 'v')
+			{
+				best >?= g(b, i, j, rows, cols);
+			}
+		}
+	}
+	return b;
+}
+
+int maximumDiamond(vector <string> b) 
+{
+
+	int best = f(b);
+	for (int i = 0; i < b.size(); i++)
+	{
+		for (int j = 0; j < b[0].size(); j++)
+		{
+			if (b[i][j] == '.')
+			{
+				b[i][j] = '+';
+				best >?= f(b);
+				b[i][j] = '.';
+			}
+		}
+	}
+	return best;	
+}
+
+Problem Statement
+    
+The diamond game is played on a rectangular board, each cell of which is either empty or occupied by a diamond. First, you remove one arbitrary diamond from the board. Then, you continuously remove diamonds from cells that are vertically or horizontally adjacent to at least one cell from which you have previously (any time before) removed a diamond . Do this until you can no longer remove any more diamonds. Your goal is to remove as many diamonds as possible. At the beginning of the game, you have an extra diamond in your hand. You can optionally place it in any one of the empty cells before you start playing the game.
+The game board is given as a vector <string> diamondsBoard, where each cell is marked with a '*' or '.'. A '*' represents a cell occupied by a diamond and a '.' represents an empty cell. You are to return the maximum number of diamonds you can remove not including the extra diamond.
+Definition
+    
+Class:
+DiamondGame
+Method:
+maximumDiamond
+Parameters:
+vector <string>
+Returns:
+int
+Method signature:
+int maximumDiamond(vector <string> diamondsBoard)
+(be sure your method is public)
+    
+
+Constraints
+-
+diamondsBoard will contain between 1 and 50 elements, inclusive.
+-
+Each element of diamondsBoard will contain between 1 and 50 characters, inclusive.
+-
+Each element of diamondsBoard will contain the same number of characters.
+-
+Each character in each element of diamondsBoard will be either '*' or '.'.
+Examples
+0)
+
+    
+{"*",
+ "*",
+ ".",
+ "*"}
+Returns: 3
+
+1)
+
+    
+{"*.*",
+ "..*"}
+Returns: 3
+If you place the extra diamond in the cell at 1-st row, 2-nd column, you can remove all diamonds from the board.
+2)
+
+    
+{"...",
+ "...",
+ "...",
+ "..."}
+Returns: 0
+
+3)
+
+    
+{"*..",
+ "*.*"}
+Returns: 3
+
+4)
+
+    
+{"*",
+ "*"}
+Returns: 2
+Here you don't have a place to put the extra diamond, so you don't use it.
+5)
+
+    
+{"...***.**.****",
+ ".*****.*..*.**",
+ "**..***..****.",
+ ".*****.*..*.*.",
+ ".***.**.***.**",
+ "**...****..*.*",
+ "*****.*.******",
+ "....****.**.*.",
+ "**.*...****.**",
+ "**.****.**.**."}
+Returns: 83
+
+6)
+
+    
+{"**..**..**.***",
+ "**..***..*.*.*",
+ "*.*******..**.",
+ "*.*..*.*..***.",
+ "***..*...**..*",
+ ".*.***..*.**..",
+ "*******.*****.",
+ "***.*.*.***..*",
+ ".**...*..****.",
+ ".**.*..******.",
+ "*.*.*****.*.**",
+ "*.*.***..*.*.*",
+ "..*****.*.**..",
+ ".*.*.***.*****",
+ "...**.**.****.",
+ "...*****.*****",
+ "..*****.**.*.*"}
+Returns: 139
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

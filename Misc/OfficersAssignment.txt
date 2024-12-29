@@ -1,0 +1,125 @@
+	public int[] bestSquad(int[] start, int[] end)
+	{
+		int[] officers = new int[1001];
+		Arrays.fill(officers, 0);
+		int total = 0;
+		// make officers[i] count of number of officers at that skill level i = 1..1000
+		for (int i = 0; i < start.length; i++)
+		{
+			for (int j = start[i]; j <= end[i]; j++)
+			{
+				officers[j]++;
+			}
+			total += end[i]-start[i]+1;
+		}
+
+
+
+		int[] sums = new int[2001]; // possible sums range from 2..2000
+		Arrays.fill(sums, 0);
+		// make sums[s] contain the number of pairs of officers who sum up to s
+		for (int i = 1; i <= 1000; i++)
+		{
+			for (int j = i; j <= 1000; j++)
+			{
+				sums[i+j] += (i == j) ? officers[i]/2 : Math.min(officers[i], officers[j]);
+			}
+		}
+
+		int ms = 2;
+		for (int s = 2; s <= 2000; s++)
+		{
+			if (sums[s] >= sums[ms])
+			{
+				ms = s;
+			}
+		}
+
+		int[] result = new int[] { total - 2*sums[ms], ms/2 };
+		return result;		
+	}
+
+
+
+
+
+Problem Statement
+    
+A lot of new police officers have joined the force this year and you want to assign them to squad cars. Each of the squad cars is assigned two officers and its "skill" is the average of the skills of the two officers assigned to it. So, for example, if you have officers with skills 2, 3 and 4 then you can make a squad car having skill 2.5 (assign the officers with skills 2 and 3 to it) or 3.5 (assign the officers with skills 3 and 4 to it) or 3 (assign the officers with skills 2 and 4 to it).  When you assign this year's batch of officers you want to do it in a uniform manner, that is, you want all the squads formed to have the same skill. For example, if you have officers with skills 1, 2, 3, 4 and 5 you can make two squads each of skill 3 (2,4 and 1,5) but an assignment which results in one squad car of skill 3 (2,4) and another of skill 2 (1,3) is not allowed.  As you can see, many times officers are left unassigned. Naturally you want to avoid this. Given the skills of this year's batch of officers you have to find the assignment that minimizes the number of officers left over. If there is more than one such assignment, pick the one in which the squad skill is highest.  The police officers' skills are given as ranges. The ith elements skillStart[i] and skillEnd[i] together specify the range skillStart[i] to skillEnd[i], inclusive. If you are given a range 10 to 200, it means you have 191 officers of skills 10,11,12,...198,199,200. All the given ranges together specify the officers you have. For example, if skillStart = {2,8} and skillEnd = {3,8}, it would mean you have 3 officers of skills 2, 3 and 8. Note that it is possible for ranges to overlap. For instance, if skillStart = {2,2} and skillEnd = {3,3}, it would mean you have 4 officers of skills 2, 2, 3 and 3.  Return a int[] with exactly two elements, where the first element is the number of officers left unassigned and the second element is the squad skill (rounded down) of the optimal assignment.
+Definition
+    
+Class:
+PolicePair
+Method:
+bestSquad
+Parameters:
+int[], int[]
+Returns:
+int[]
+Method signature:
+int[] bestSquad(int[] skillStart, int[] skillEnd)
+(be sure your method is public)
+    
+
+Constraints
+-
+skillStart contains between 1 and 50 elements, inclusive.
+-
+skillStart contains the same number of elements as skillEnd.
+-
+Each element of skillStart and skillEnd will be between 1 and 1000, inclusive.
+-
+No element of skillStart will be larger than the corresponding element of skillEnd.
+-
+The total number of officers will be between 2 and 50,000, inclusive.
+Examples
+0)
+
+    
+{2}
+{4}
+Returns: { 1,  3 }
+You have 3 officers of skills 2, 3 and 4.The optimal arrangement is assigning the officers of skill 3 and 4 to one squad car and leaving the officer with skill 2 unassigned. This leaves one officer unassigned and results in a squad skill of (3+4)/2 = 3.5 which rounds down to 3. Hence, you should return {1,3}
+1)
+
+    
+{2,4}
+{3,4}
+Returns: { 1,  3 }
+The same case as above, except the input is given in a different manner.
+2)
+
+    
+{1}
+{5}
+Returns: { 1,  3 }
+
+3)
+
+    
+{2,3}
+{3,4}
+Returns: { 0,  3 }
+
+4)
+
+    
+{2,100,200}
+{5,100,200}
+Returns: { 2,  3 }
+
+5)
+
+    
+{2,5}
+{3,5}
+Returns: { 1,  4 }
+
+6)
+
+    
+{100,100,100,1}
+{200,300,400,800}
+Returns: { 503,  250 }
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

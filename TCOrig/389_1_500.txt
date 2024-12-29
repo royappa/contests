@@ -1,0 +1,192 @@
+#include <vector>
+#include <list>
+#include <map>
+#include <set>
+#include <deque>
+#include <stack>
+#include <bitset>
+#include <algorithm>
+#include <functional>
+#include <numeric>
+#include <utility>
+#include <sstream>
+#include <iostream>
+#include <iomanip>
+#include <cstdio>
+#include <cmath>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+class GuitarChords {
+public:
+vector<string> strings, chord;
+int n, m;
+int memo[7][65][37][37];
+#define INF (1<<30)
+vector<string> notes;
+int memo2[30][30];
+
+int fret(int ci, int si) // distance from chord note to string note
+{
+	int& r = memo2[ci][si];
+	if (r != -1)
+		return r;
+		
+	string c = chord[ci], s = strings[si];
+	if (s == c)
+		return r=0;
+	r = 0;
+	int p = find(notes.begin(), notes.end(), s)-notes.begin();
+	while (s != c)
+	{
+		p = (p + 1) % 12;
+		s = notes[p];
+		r++;
+	}
+	return r;
+}
+
+int f(int p, int cmask, int low, int high) // return minimum difficulty of playing strings [p,n), given cmask and frets used
+{
+	if (p == n)
+	{
+		if (cmask != (1<<m)-1)
+			return INF;
+		return high==0?0 : (high-low+1);
+	}
+	int& r = memo[p][cmask][low][high];
+	if (r != -1)
+		return r;
+	r = INF;
+	for (int i = 0; i < m; i++) // consider the i'th chord for this string p
+	{
+		int ff = fret(i, p);
+		//cout << p << " " << cmask << " " << i << " " << ff << " " << r << endl;
+		if (ff == 0)
+		{
+			r <?= f(p+1, cmask|(1<<i), low, high);
+		}
+		else
+		{
+			r <?= f(p+1, cmask|(1<<i), min(low,ff), max(high,ff));
+			ff += 12;
+			r <?= f(p+1, cmask|(1<<i), min(low,ff), max(high,ff));
+		}
+	}
+	//cout << p << " " << cmask << " " << " " << r << endl;
+	return r;
+}
+
+int stretch(vector <string> strings_, vector <string> chord_) 
+{
+	strings = strings_;
+	chord = chord_;
+	n = strings.size();
+	m = chord.size();
+	
+	char *tmp[] = {"A", "A#", "B", "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#"};
+	for (int i = 0; i < 12; i++)
+	{
+		notes.push_back(tmp[i]);
+	}
+
+	memset(memo, -1, sizeof(memo));
+	memset(memo2, -1, sizeof(memo2));
+	
+	return f(0, 0, 29, 0);
+}
+};
+
+
+//Powered by [KawigiEdit]
+
+
+Problem Statement
+    
+Musical notes are are given the following 12 names, in ascending order:
+
+	1  2   3  4  5   6  7   8  9  10  11 12
+    A, A#, B, C, C#, D, D#, E, F, F#, G, G#
+
+The names repeat for higher and lower notes, so the note one step higher than "G#" is "A" and the note 5 steps lower than "B" is "F#". Notes that are a multiple of 12 steps apart have the same name, and for our purposes we will consider them equivalent.
+
+Guitars have a number of strings, and each string is tuned to sound one of the 12 notes. The note each string sounds is called its "open" note. Underneath the strings are frets, numbered starting at 1, which are used to change the note a string sounds. If you press a string against the i-th fret with your finger, the note will be i steps higher than the string's open note. (i.e., if you press a string tuned to "C#" against the 3rd fret, it will sound the note "E").
+
+Chords are sets of notes played at the same time. To play a chord on a guitar, each string must sound one of the notes in the chord, and each note in the chord must be played on at least one string.
+
+There can be many ways to play the same chord. We measure the difficulty of one way to play a chord as the amount you must stretch your fingers to reach the required frets. Calculate this as the lowest fret used subtracted from the highest fret used, plus 1. Only consider the strings which are pressed against frets -- the strings that are not pressed against frets (and, thus, sound their open note) do not affect the difficultly of a chord. If a chord can be played without using any frets at all, its difficulty is zero.
+
+You are given a String[] strings, each element of which is the open note of one string on the guitar, and a String[] chord, each element of which is one note in a chord. Return the lowest possible difficulty value necessary to play that chord.
+
+Definition
+    
+Class:
+GuitarChords
+Method:
+stretch
+Parameters:
+vector <string>, vector <string>
+Returns:
+int
+Method signature:
+int stretch(vector <string> strings, vector <string> chord)
+(be sure your method is public)
+    
+
+Constraints
+-
+strings and chord will each contain between 1 and 6 elements, inclusive.
+-
+chord will not contain more elements than strings.
+-
+Each element of strings and chord will be one of the 12 note names given in the problem statement.
+-
+chord will not contain any duplicate elements.
+Examples
+0)
+
+    
+{ "A", "C", "F" }
+{ "C#", "F#", "A#" }
+Returns: 1
+The three notes in the chord are each one step higher than the notes played by the three strings. So, you can play this chord by putting your finger on the 1st fret on all three strings. The answer is therefore: (1-1)+1.
+1)
+
+    
+{ "E", "A", "D", "G", "B", "E" }
+{ "E", "G#", "B" }
+Returns: 2
+The best way to play this chord is with your fingers on the following frets:
+string 0, "E": no fret, plays note "E"
+string 1, "A": fret #2, plays note "B"
+string 2, "D": fret #2, plays note "E"
+string 3, "G": fret #1, plays note "G#"
+string 4, "B": no fret, plays note "B"
+string 5, "E": no fret, plays note "E"
+All strings are playing a note in the chord, and each note in the chord is played on at least one string. The largest-numbered fret is 2, and the smallest is 1. Therefore the answer is (2-1)+1.
+2)
+
+    
+{ "D#" }
+{ "D#" }
+Returns: 0
+
+3)
+
+    
+{ "E", "F" }
+{ "F#", "D#" }
+Returns: 3
+You can play this chord with the 11th fret of the "E" string (playing the note "D#") and the 13th fret of the "F" string (playing the note "F#"). 
+(13-11)+1 = 3.
+
+4)
+
+    
+{ "C", "C", "C" }
+{ "C", "E", "G" }
+Returns: 4
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

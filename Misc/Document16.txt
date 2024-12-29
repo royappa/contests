@@ -1,0 +1,93 @@
+
+Problem Statement
+    
+You are given a goal word as a string matchString and puzzle words as a vector <string> matchWords. The number of puzzle words is equal to the number of letters in the goal word. Assume all letters in all words have the same width and height.
+ 
+You want to play a game. At the beginning of the game, all the words from matchWords are arranged one below another, in the order that they're given. The words are horizontally aligned so that the first letters of all the words form a vertical line. You may then shift each of the words any number of places (zero or more) to the right, where one place is the width of a single letter. The goal of the game is to shift the puzzle words such that the goal word can be read vertically from top to bottom in a straight line. See examples for clarification.
+ 
+Your score is the sum of the number of places each puzzle word was shifted. Return the minimal score you can obtain while achieving your goal, or -1 if it is impossible.
+Definition
+    
+Class:
+MatchString
+Method:
+placeWords
+Parameters:
+string, vector <string>
+Returns:
+int
+Method signature:
+int placeWords(string matchString, vector <string> matchWords)
+(be sure your method is public)
+    
+
+Constraints
+-
+matchWords will contain between 1 and 50 elements, inclusive.
+-
+Each element of matchWords will contain between 1 and 50 characters, inclusive.
+-
+Each element of matchWords will contain only uppercase letters ('A'-'Z').
+-
+matchString will contain the same number of characters as the number of elements in matchWords.
+-
+matchString will contain only uppercase letters ('A'-'Z').
+Examples
+0)
+
+    
+"TOP"
+{"TIK", 
+ "PPPO", 
+ "OP"}
+Returns: 5
+The final arrangement is
+   TIK
+PPPO
+  OP
+The first word is shifted 3 places, and the last word is shifted 2 places. In this arrangement, the goal word can be read vertically in the fourth column from the right (shown in bold).
+1)
+
+    
+"EEA"
+{"GEGA", 
+ "TOPCODER", 
+ "TEST"}
+Returns: -1
+The puzzle words must be used in the order they are given, so it is impossible to form the goal word in this case.
+2)
+
+    
+"AB"
+{"ABA", 
+ "ABAB"}
+Returns: 1
+One possible arrangement is
+ ABA
+ABAB
+3)
+
+    
+"FIND"
+{"VERYFAST", 
+ "OPINION", 
+ "SPENDING", 
+ "ODD"}
+Returns: 3
+VERYFAST
+OPINION
+ SPENDING
+  ODD
+4)
+
+    
+"TOP"
+{"OUTTHERE", 
+ "FROM", 
+ "NOPQRSTU"}
+Returns: 0
+The final arrangement can be made without shifting at all:
+OUTTHERE
+FROM
+NOPQRSTU
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

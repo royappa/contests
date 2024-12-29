@@ -1,0 +1,137 @@
+typedef pair<int,int> pi;
+
+int dist(int a, int b, int x, int y)
+{
+	map<pi,int> visited;
+	map<pi,int> dist;
+	
+	vector<pi> q;
+	
+	q.push_back(make_pair(a, b));
+	dist[make_pair(a,b)] = 0;
+	while (q.size() > 0)
+	{
+		pi h = q.front();
+		q.erase(q.begin());
+		if (h == make_pair(x,y))
+		{
+			return dist[h];
+		}
+		for (int i = -1; i <= 1; i++)
+		{	
+			for (int j = -1; j <= 1; j++)
+			{
+				if (i == 0 && j == 0) continue;
+				int ta = h.first+i, tb = h.second+j;
+				if (abs(x-ta) > 1 || abs(y-tb) > 1)	
+					continue;
+				pi t = make_pair(ta, tb);
+				if (visited.count(t) > 0)
+					continue;
+				dist[t] = dist[h]+1;
+				visited[t] = 1;
+			}
+		}
+	}	
+}
+
+int dist1(int x, int y)
+{
+	if (x >= 0 && y >= 0 && x%2==0)
+		return x+y;
+	if (x >= 0 && y <= 0 && x%2==1)
+		return x+abs(y);
+	return 1<<28;
+}
+	
+int getDirections(int x, int y) 
+{
+	if (x == 0 && y == 0)
+		return 0;
+		
+	int m = 1<<28;
+	for (int i = -1; i <= 1; i++)
+	{
+		for (int j = -1; j <= 1; j++)
+		{
+			if (i == 0 && j == 0) continue;
+			m = min(m, dist1(x+i, x+j)+dist(x+i, x+j, x, y));
+		}
+	}
+	return m;
+}
+Problem Statement
+    
+Recently you have been working on the pathfinding module for your AI system. 
+
+Your objective is to find the shortest path for an agent that wants to travel between two points on a plane. 
+
+The agent will start at the point (0,0), and travel to the point (x,y). 
+
+You decided that the agent will move either on horizontal of vertical lines such that, at every moment, at least one coordinate of the agent is an integer.
+
+There is yet another restriction however. 
+
+Each line will only allow movement in one direction. 
+
+All horizontal lines with odd y-coordinates will be directed toward decreasing values of x, and all other horizontal lines toward increasing values of x. 
+
+Similarly, all vertical lines with odd x-coordinates will be directed toward decreasing values of y, and all other vertical lines toward increasing values of y.
+
+Given x and y, return the distance that the agent must travel.
+
+Definition
+    
+Class:
+Pathfinding
+Method:
+getDirections
+Parameters:
+int, int
+Returns:
+int
+Method signature:
+int getDirections(int x, int y)
+(be sure your method is public)
+    
+
+Constraints
+-
+x and y will both be between -10^6 and 10^6, inclusive.
+Examples
+0)
+
+    
+0
+-4
+Returns: 8
+A possible path from (0,0) to (0,-4) is through the points (1,0), (1,-2), (-1,-2) and (-1,-3).
+1)
+
+    
+5
+-4
+Returns: 9
+
+2)
+
+    
+5
+4
+Returns: 9
+
+3)
+
+    
+-1
+-4
+Returns: 7
+
+4)
+
+    
+0
+0
+Returns: 0
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

@@ -1,0 +1,130 @@
+
+import java.util.*;
+import java.util.regex.*;
+public class RepeatedSubstrings
+{
+	private int parseInt(String s) { return Integer.parseInt(s); }
+	private boolean isLetter(char ch) { return Character.isLetter(ch); }
+	
+	public String decompress(String compressed)
+	{
+		
+		// fill string W with ?
+		// fill string W with non-& from compressed
+		// for each & in compressed 
+		//	process W with &
+		Pattern p = Pattern.compile("&([0-9]+)-([0-9]+)");
+		Matcher m = p.matcher(compressed);
+		StringBuffer W = new StringBuffer();
+		while (m.find())
+		{
+			int len = parseInt(m.group(2)) - parseInt(m.group(1)) + 1;
+			char[] q = new char[len];
+			Arrays.fill(q, '?');
+			m.appendReplacement(W, new String(q));
+		}
+		m.appendTail(W);
+		char[] WC =  W.toString().toCharArray();
+System.out.println(compressed);
+System.out.println(new String(WC));
+String ss = "";
+for (int i = 0; i < 50; i++) { ss = ss + (char) ('0'+(i%10==0?i/10:i%10)); }
+System.out.println(ss);
+
+		boolean done;
+		do
+		{
+			done = true;
+			p = Pattern.compile("&([0-9]+)-([0-9]+)");
+			m = p.matcher(compressed);
+			int offset = 0;
+			while (m.find())
+			{
+				int s = parseInt(m.group(1));
+				int e = parseInt(m.group(2));
+				int pos = m.start()+offset;
+				offset += e-s+1 - (m.end()-m.start());
+				for (int i = s; i <= e; i++) 
+				{
+
+					WC[pos++] = WC[i];
+					if (WC[i] != '?') done = false;
+					
+				}
+			}
+		} while (!done);
+		return new String(WC);	
+	}
+}
+Consider a family of compression algorithms that exploit repeated substrings in the text to be compressed. The basic idea is to replace selected substrings with references of the form "&startPos-endPos", where the substring to be replaced is identical to the substring of the original text that begins at position startPos and ends at position endPos, inclusive. For example, the text "ABCDEFG ABCDEFG" might be compressed to "ABCDEFG &0-6". Notice that positions are zero-based and also that positions are given relative to the original text, not the compressed text. The original text is assumed to contain only uppercase letters ('A'-'Z') and spaces (' ').
+Compression algorithms in this family work as follows:
+  1. copy the original text into W
+  2. while not done do
+       A. choose some substring S of length > 1 that occurs both in W and in the original text
+       B. find the starting position startPos and ending position endPos
+            of some occurrence of S in the original text
+       C. replace some occurrence of S in W with "&startPos-endPos"
+  3. output W
+Different algorithms in this family might decide when to finish or how to choose S differently, but they all follow this basic outline. Your task is to write a decompression method that will decompress text compressed by any member of this family. In other words, given the output of a compression algorithm in this family, you are to reconstruct and return the original text.
+The input will be a String compressed containing only uppercase letters, spaces, and references of the form "&startPos-endPos", where startPos and endPos are non-negative integers written without extraneous leading zeros, and startPos < endPos. The original text is guaranteed to contain no more than 256 characters.
+Notice that if the compression algorithm makes unwise choices, the decompression algorithm may be unable to reconstruct some of the characters in the original text. In such cases, the decompression algorithm should return a '?' in each position for which the character cannot be determined. For example, consider the compressed text "AB&7-9&2-6". We know that the original text contains 10 characters, and that the first two characters of the original text are 'A' and 'B', but we cannot tell what the remaining characters are. Therefore, your method should return "AB????????".
+Definition
+    
+Class:
+RepeatedSubstrings
+Method:
+decompress
+Parameters:
+String
+Returns:
+String
+Method signature:
+String decompress(String compressed)
+(be sure your method is public)
+    
+
+Constraints
+-
+compressed contains between 1 and 50 characters, inclusive.
+-
+compressed is the concatenation of some number of tokens, where each token is an uppercase letter ('A'-'Z'), a space (' '), or a string of the form "&x-y", where x and y are integers between 0 and 255, inclusive, written without extraneous leading zeros, and with x < y.
+-
+compressed is the output of some member of the given family of compression algorithms for some original text containing between 1 and 256 characters, inclusive, all of which are uppercase letters or spaces.
+Examples
+0)
+
+    
+"ABCDEFG &0-6"
+Returns: "ABCDEFG ABCDEFG"
+The first example above.
+1)
+
+    
+"AB&7-9&2-6"
+Returns: "AB????????"
+The second example above.
+2)
+
+    
+"IT WAS THE BE&39-49 &0-10WORST OF TIMES"
+Returns: "IT WAS THE BEST OF TIMES IT WAS THE WORST OF TIMES"
+
+3)
+
+    
+"ABC&0-21"
+Returns: "ABCABCABCABCABCABCABCABCA"
+
+4)
+
+    
+"&0-10"
+Returns: "???????????"
+
+5)
+
+    
+"&5-9ABC&2-7DE&20-22&17-19F"
+Returns: "ABCCCABCCCCABCDEF?F?F?F"
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

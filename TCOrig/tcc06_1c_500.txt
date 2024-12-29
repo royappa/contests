@@ -1,0 +1,215 @@
+// CORRECT - modified 8 QUEENS EIGHT QUEENS
+#include <vector>
+#include <list>
+#include <map>
+#include <set>
+#include <deque>
+#include <stack>
+#include <bitset>
+#include <algorithm>
+#include <functional>
+#include <numeric>
+#include <utility>
+#include <sstream>
+#include <iostream>
+#include <iomanip>
+#include <cstdio>
+#include <cmath>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+class QueenCovering {
+public:
+vector<int> rowCol;
+vector<bool> rowUsed;
+vector<bool> colUsed;
+vector<bool> diagUsed;
+vector<bool> antiDiagUsed;
+
+vector<string> b;
+string best;
+
+void f(int r)
+{
+	if (r >= 8)
+	{
+		int covered = 0, possible = 0;
+		for (int i = 0; i < 8; i++)
+		{
+			for (int j = 0; j < 8; j++)
+			{
+				if (b[i][j] == '#')
+					continue;
+				possible++;
+				if (rowUsed[i] || colUsed[j] || diagUsed[10+i-j] || antiDiagUsed[10+i+j])
+					covered++;
+			}
+		}
+	
+		if (covered != possible)
+			return;
+		string temp = "";
+		for (int i = 0; i < 8; i++)
+		{
+			if (rowCol[i] != -1)
+			{
+				temp += char(i+1+'0');
+				temp += char(rowCol[i]+'A');
+			}
+		}
+		if (best == "" || temp.size() < best.size() || (temp.size() == best.size() && temp < best))
+		{
+			best = temp;
+		}
+	
+		return;
+	}
+	// try all columns of row r
+	bool tried = false;
+	for (int c = 0; c < 8; c++)
+	{
+		if (colUsed[c] || diagUsed[10+r-c] || antiDiagUsed[10+r+c] || b[r][c] == '#')
+			continue;
+		// try this column
+		rowUsed[r] = colUsed[c] = diagUsed[10+r-c] = antiDiagUsed[10+r+c] = true;
+		int t = rowCol[r];
+		rowCol[r] = c;
+		f(r+1);
+		rowUsed[r] = colUsed[c] = diagUsed[10+r-c] = antiDiagUsed[10+r+c] = false;
+		rowCol[r] = t;
+		tried = true;
+	}
+	f(r+1); // try skipping this row entirely, too
+	return;
+		
+}
+	
+string getPlacement(vector <string> board) 
+{
+	best = "";
+	b = board;
+	rowUsed.resize(8, false);
+	colUsed.resize(8, false);
+	diagUsed.resize(50, false);
+	antiDiagUsed.resize(50, false);
+	rowCol.resize(8, -1);
+	
+	f(0);
+	return best;
+}
+};
+
+
+//Powered by [KawigiEdit]
+
+Problem Statement
+    
+You are given an 8 x 8 chessboard, and you must place the minimum possible number of queens onto the board such that all cells are under attack from at least one queen, and no queens attack each other. Some of the cells on the board are destroyed. A queen cannot be placed on a destroyed cell, and destroyed cells don't need to be under attack. A queen attacks a cell if it is in the same row, same column, or same diagonal as that cell (even if there are destroyed cells between them). Rows are labelled from 1 to 8 and columns from 'A' to 'H'.
+
+You are given a vector <string> board, where the jth character of the ith element represents the cell at row i, column j. 
+
+A '.' denotes an empty cell, and a '#' denotes a destroyed cell. 
+
+A solution is represented by a string which concatenates the positions of the queens. 
+
+Each queen will be represented by two characters rc, where r is the row label and c is the column label. For example, if the solution contains one queen at row 1, column H and another at row 5, column C, it can be represented as "1H5C" or "5C1H". 
+
+If there are several solutions which use the minimal number of queens, return the one that comes first lexicographically.
+
+Definition
+    
+Class:
+QueenCovering
+Method:
+getPlacement
+Parameters:
+vector <string>
+Returns:
+string
+Method signature:
+string getPlacement(vector <string> board)
+(be sure your method is public)
+    
+
+Constraints
+-
+board will have exactly 8 elements.
+-
+Each element of board will contain exactly 8 characters.
+-
+Each character of board will be either '.' or '#'.
+Examples
+0)
+
+    
+{
+  "........",
+  "..######",
+  ".#.#####",
+  ".##.####",
+  ".###.###",
+  ".####.##",
+  ".#####.#",
+  "........"}
+Returns: "1A8B"
+We place one queen on the first row and the first column, and another queen on the last row and on the second column.
+1)
+
+    
+{
+ "#......#",
+ ".#......",
+ "..#...#.",
+ "........",
+ "..#.....",
+ "..#..#..",
+ "#.......",
+ "#...###."}
+Returns: "1B2D3A4C5E"
+
+2)
+
+    
+{
+ "........",
+ "........",
+ "........",
+ "........",
+ "........",
+ "........",
+ "........",
+ "........"}
+Returns: "1A2C3E4B5D"
+
+3)
+
+    
+{
+  "..##.##.",
+  ".###..##",
+  "##..###.",
+  "#..#...#",
+  ".#.##.#.",
+  "#...##..",
+  "#..#####",
+  "..#..#.#"}
+Returns: "1A4C5H6B"
+
+4)
+
+    
+{
+  "########",
+  "########",
+  "########",
+  "########",
+  "########",
+  "########",
+  "########",
+  "########"
+}
+Returns: ""
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

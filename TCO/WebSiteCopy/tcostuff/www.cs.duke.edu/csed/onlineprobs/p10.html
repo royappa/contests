@@ -1,0 +1,170 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  
+<!-- Mirrored from www.cs.duke.edu/csed/onlineprobs/p10.html by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 14 Mar 2006 08:55:05 GMT -->
+<head>
+    <title>Weekly Problem #10</title>
+  </head>
+
+  <body>
+    <h1>Weekly Problem #10</h1>
+
+<em>
+This problem statement is the exclusive and proprietary property of
+TopCoder, Inc. Any unauthorized use or reproduction of this information
+without the prior written consent of TopCoder, Inc. is strictly
+prohibited. (c)2003, TopCoder, Inc. All rights reserved.
+</em>
+
+<p>
+<hr>
+
+<h3>Problem Statement</h3>
+
+
+Many times, certain data file types can consist of large amounts of
+repeated data. For instance, images can have large runs of the same
+color. This can be easily compressed using a technique called run length
+encoding. With run length encoding, large amounts of repeated data are
+stored as the repeated data and the number of times to repeat it.
+<P>
+Create a class RunLengthEncode that contains the method encode which
+takes one argument: a <tt>string</tt> to be encoded as described below.
+<P>
+The return value should be a <tt>string</tt> 
+which has been encoded with the following algorithm:
+<P>
+
+If any character is repeated more than 4 times, the entire set of
+repeated characters should be replaced with a slash '/', followed by a
+2-digit number which is the length of the set of characters, and the
+character. For example, "aaaaa" would be encoded as "/05a". Runs of 4 or
+less characters should not be replaced since performing the encoding
+would not decrease the length of the string.
+<P>
+
+<P> 
+<h3>Definition</h3>
+
+<UL>    
+<LI> Class: RunLengthEncode
+<LI> Method: encode
+<LI> Parameters: <code>string</code>
+<LI> Returns: <code>string</code>
+<LI>Method signature: 
+<PRE>
+    string encode(const string&amp; input)
+</PRE>
+
+(be sure your method is public)
+<P>    
+
+ <h3>Class</h3>
+
+
+<XMP>
+
+#include<string>
+using namespace std;
+
+class RunLengthEncode
+{
+    public:
+      string encode(const string& input)
+      {
+            // fill in code here
+      }
+};
+</XMP>
+
+<P>
+<h3>Notes</h3
+
+<UL>
+<LI> Letters are case sensitive. For example "AaAaAa" cannot be encoded.
+<P>
+<LI> You may only encode repeats of a single character, repeats of multiple
+characters cannot be encoded. For example "ababababab" cannot be encoded
+as "/05ab".
+
+</UL>
+
+<P>
+<h3>Constraints</h3>
+<UL>
+<LI> input will have between 0 and 50 characters, inclusive.
+<P>
+<LI> input will consist only of letters 'a' - 'z' and 'A' - 'Z', digits '0'
+- '9', the space character, and the characters in the following string:
+"{}[]():;'+=.,". (quotes are for clarity only and cannot be in the input
+string)
+</UL>
+
+<P>
+<h3>Examples</h3>
+<OL>
+<LI>
+<PRE>
+input = "aaaaa"
+
+</PRE>
+
+Returns:  "/05a"
+<P>
+
+The example stated above.
+<P>
+<LI>
+<PRE>    
+
+input = "aaaa"
+
+</PRE>
+
+Returns: "aaaa"
+<P>
+Remember not to encode runs of length 4 or less.
+<P>
+<LI>
+<PRE>    
+
+input = "abcabcabcabcabc"
+</PRE>
+<P>
+Returns: "abcabcabcabcabc"
+<P>
+Do not encode repeated segments of more than one character
+<P>
+<LI>
+<PRE>
+
+input = "if(a){if(b){if(c){if(d){if(e){5 deeeeeeep}}}}}"
+
+</PRE>
+<P>
+Returns: "if(a){if(b){if(c){if(d){if(e){5 d/07ep/05}"
+<P>
+<LI>
+<PRE>
+
+input = ""
+</PRE>
+<P>
+Returns: ""
+</OL>
+
+
+
+
+
+
+    <hr>
+    <address><a href="mailto:ola@cs.duke.edu">Owen L. Astrachan</a></address>
+<!-- Created: Wed Feb 26 10:34:13 EST 2003 -->
+<!-- hhmts start -->
+Last modified: Wed Jul 23 10:30:49 EDT 2003
+<!-- hhmts end -->
+  </body>
+
+<!-- Mirrored from www.cs.duke.edu/csed/onlineprobs/p10.html by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 14 Mar 2006 08:55:05 GMT -->
+</html>

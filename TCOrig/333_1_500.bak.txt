@@ -1,0 +1,106 @@
+typedef long long LL;
+
+long long findZeroSegment(string A, string B, string zeroCount) 
+{
+	LL z;
+	
+	sscanf(zeroCount.c_str(), "%lld", &z);
+	
+	int n = A.size(), m = B.size();
+	if (z <= 2*m+2*n)
+	{
+		string s = Am+B+Am+B+B+Am+B+B+B;
+		return index of z's in s, or -1;
+	}
+	if (B is NOT all 0's)
+	{
+		string s = Am+B;
+		return index of z's in Am+B;
+	}
+	// else, B is all 0's, and z is large
+	// so, z is in (trailing 0's of A)+B^k+(leading 0's of A), for some k
+}
+
+
+Problem Statement
+    
+Given are two strings P1 and P2. Each of these strings contains a pattern of zeros and ones.
+The string S(n) is formed by concatenating 1,000,000 copies of P1 followed by n copies of P2.
+The infinite string S is formed by concatenating the strings S(1), S(2), S(3), ... in this order.
+The string T consists of the first 10^16 characters of the string S.
+We are interested in substrings of T that are zeroCount characters long and contain only zeros. Write a method that finds the first occurrence of such a substring in T, and returns the zero-based index of its first character. In case T contains no such substring return -1.
+Definition
+    
+Class:
+RepeatedPatterns
+Method:
+findZeroSegment
+Parameters:
+string, string, string
+Returns:
+long long
+Method signature:
+long long findZeroSegment(string P1, string P2, string zeroCount)
+(be sure your method is public)
+    
+
+Notes
+-
+The number zeroCount may be large, and therefore it is specified as a string.
+Constraints
+-
+P1 will contain between 1 and 50 characters, inclusive.
+-
+P2 will contain between 1 and 50 characters, inclusive.
+-
+P1 and P2 will contain only zeroes ('0') and ones ('1').
+-
+zeroCount will contain between 1 and 17 characters, inclusive.
+-
+zeroCount will contain only digits ('0'-'9').
+-
+zeroCount will represent a positive integer between 1 and 10^16, inclusive.
+-
+zeroCount will not contain leading zeros.
+Examples
+0)
+
+    
+"111010100001010"
+"010000001000"
+"3"
+Returns: 7
+The first occurrence of three consecutive zeroes is right in the first copy of P1.
+1)
+
+    
+"1101010010"
+"0001000"
+"3"
+Returns: 9999999
+This time the first substring "000" starts with the last character of the 1,000,000th copy of P1.
+2)
+
+    
+"1101010010"
+"0001000"
+"5"
+Returns: 20000011
+We have the same string T as in Example 1, only we look for the substring "00000". The first occurrence is between the second and the third copy of P2.
+3)
+
+    
+"10101010"
+"101010101010"
+"9876543219876"
+Returns: -1
+Nowhere in the infinite string S can we find two consecutive zeroes. Clearly, in the string T there is no substring with 9876543219876 consecutive zeroes.
+4)
+
+    
+"11111111111111111111111111"
+"0"
+"9876543219876"
+Returns: -1
+The infinite string S does contain 9876543219876 consecutive zeroes. However, the first occurrence is too far, thus the string T doesn't contain it.
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

@@ -1,0 +1,122 @@
+
+int N;
+vector<int> costs, times;
+
+int f(int n, int p, int tc, int tt)
+{
+	if (p == N)
+	{
+		return n;
+	}
+	if (tc+tt == 0)
+		return 0;
+		
+	char buf[128];
+	sprintf(buf, "%d:%d:%d:%d", n, p, tc, tt);
+	string key = buf;
+	if (memo.count(key) > 0)
+		return memo[key];
+	
+	int best = 0;
+	
+	for (int k = 1; k <= n; k++)
+	{
+		
+	
+int getMost(vector <int> costs_, vector <int> times_, int totCost, int totTime) 
+{
+	costs = costs_;
+	times = times_;
+	N = costs.size();
+	
+	return f(0, 0, totCost, totTime);		
+}
+
+Problem Statement
+    
+Your master construction unit can build 1 unit of type 0 in times[0] seconds at a cost of costs[0]. Each unit of type 0, once built, can in turn build 1 unit of type 1 in times[1] seconds at a cost of costs[1]. Type 1 units can build units of type 2, and so forth. Let N denote the number of elements in times. Given totTime seconds, return the greatest number of units of type N-1 that can be created without exceeding a total cost of totCost.
+Definition
+    
+Class:
+ProductionOptimization
+Method:
+getMost
+Parameters:
+vector <int>, vector <int>, int, int
+Returns:
+int
+Method signature:
+int getMost(vector <int> costs, vector <int> times, int totCost, int totTime)
+(be sure your method is public)
+    
+
+Constraints
+-
+costs will contain between 2 and 50 elements, inclusive.
+-
+times will contain the same number of elements as costs.
+-
+Each element of costs will be between 1 and 100, inclusive.
+-
+Each element of times will be between 1 and 100, inclusive.
+-
+totTime will be between 1 and 100, inclusive.
+-
+totCost will be between 1 and 100, inclusive.
+Examples
+0)
+
+    
+{1,1}
+{1,1}
+3
+3
+Returns: 2
+Build 1 unit 0, and then 2 of unit 1.
+1)
+
+    
+{1,1}
+{1,1}
+5
+3
+Returns: 3
+Build 2 of unit 0. The first will be able to build 2 of unit 1. The second will be able to build 1.
+2)
+
+    
+{
+1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1}
+{
+1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1}
+100
+100
+Returns: 51
+A lot of unit types.
+3)
+
+    
+{1, 1}
+{3, 12}
+100
+27
+Returns: 6
+
+4)
+
+    
+{20,1}
+{20,1}
+17
+19
+Returns: 0
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

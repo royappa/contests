@@ -1,0 +1,102 @@
+int squareCount(int N) 
+{
+	if (N < 4)
+	{
+		return 0;
+	}
+	
+	
+	int s = 1;
+	while (s*s < N)
+	{
+		s++;
+	}
+	
+	// s*s >= N
+	cout << "N = " << N << endl << s << endl;
+	
+	int num = 0;
+	int rows = s, cols = s, cols2 = s;
+	if (s*s != N)
+	{
+		int k = N % s;
+		if (k >= 2)
+		{
+			num = k-1;
+		}
+		cols2 = k;
+	}
+	cout << rows << " " << cols << " " << cols2 << endl;
+	// how many squares in a grid of rows, cols
+	for (int r = 0; r < rows-1; r++)
+	{
+		for (int c = 0; c < cols-1; c++)
+		{
+			int side = min(rows-r, cols-c);
+			num += side;
+		}
+	}
+	return num;			
+}
+
+Problem Statement
+    
+Consider an arrangement of N points on the cartesian plane. 
+
+The "square count" of the points is the total number of distinct squares with sides parallel to the coordinate axes which can be built using 4 different points as vertices. 
+
+Your task is to return the maximum square count, considering all possible arrangements of N points on the plane.
+
+Definition
+    
+Class:
+MaximizeSquares
+Method:
+squareCount
+Parameters:
+int
+Returns:
+int
+Method signature:
+int squareCount(int N)
+(be sure your method is public)
+    
+
+Notes
+-
+Two squares are distinct if at least one of their corners is in a different location.
+Constraints
+-
+N will be between 0 and 1000000, inclusive.
+Examples
+0)
+
+    
+4
+Returns: 1
+Clearly, we can only make one square out of 4 points.
+1)
+
+    
+5
+Returns: 1
+No matter where we place a fifth point, we can't get any extra squares.
+2)
+
+    
+6
+Returns: 2
+We can get 2 squares by placing the points in the shape of a rectangle.
+3)
+
+    
+16
+Returns: 14
+
+4)
+
+    
+115
+Returns: 340
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

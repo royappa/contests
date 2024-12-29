@@ -1,0 +1,187 @@
+	bool L[50][50]; 
+	
+	bool compar(int i, int j)
+	{
+		if (L[j][i])
+			return true;
+		if (L[i][j])
+			return false;
+		return i < j;
+	}
+
+vector <int> leaveOrder(vector <string> numSeen) 
+{
+	int A[50][50];
+	
+	int n = numSeen.size();
+
+	for (int i = 0; i < n; i++)
+	{
+		istringstream fin(numSeen[i]);
+		for (int j = 0; j < n; j++)
+		{
+			fin >> A[i][j];
+		}
+	}
+	
+	// L[i][j] = 1 if i must leave-after j
+	
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = 0; j < n; j++)
+		{
+			// if there is a k s.t. A[i][k] > A[j][k]
+			bool leaveAfter = false;
+			for (int k = 0; k < n; k++)
+			{
+				if (A[i][k] > A[j][k])
+				{
+					leaveAfter = true;
+					break;
+				}
+			}
+			L[i][j] = leaveAfter;		
+		}
+	}
+	
+	
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = 0; j < n; j++)
+		{
+			cout << (L[i][j] ? "T" : "F");
+			cout << " ";
+		}
+		cout << endl;
+	}
+	// if there is i,j s.t. L[i][j] and L[j][i], then no order is possible
+	
+	vector<int> empty(0);
+	
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = 0; j < n; j++)
+		{
+			if (L[i][j] && L[j][i])
+			{
+				return empty;
+			}
+		}
+	}
+	
+	vector<int> r(n);
+	for (int i = 0; i < n; i++)
+	{
+		r[i] = i;
+	}
+	
+	sort(r.begin(), r.end(), compar);
+	
+	return r;
+}
+
+Problem Statement
+    
+A group of people have participated in an online chat session. 
+
+Element i (0-based) of numSeen contains the number of lines of chat seen by person i before leaving (everyone arrives at the same time). 
+
+More precisely, integer j in element i of numSeen is the exact number of lines written by person j that are seen by person i before leaving. 
+
+Integer i of element i will always be 0, and should be ignored. 
+
+You will return a vector <int> containing the order in which each person left. 
+
+If multiple orders are possible, return the one that occurs first lexicographically. 
+
+If none are possible, return an empty vector <int>.
+Definition
+    
+Class:
+ChatExit
+Method:
+leaveOrder
+Parameters:
+vector <string>
+Returns:
+vector <int>
+Method signature:
+vector <int> leaveOrder(vector <string> numSeen)
+(be sure your method is public)
+    
+
+Notes
+-
+Order A comes lexicographically before order B if A has a lower value than B in the first position that they disagree.
+Constraints
+-
+numSeen will contain between 2 and 25 elements inclusive.
+-
+Each element of numSeen will contain between 3 and 50 characters inclusive.
+-
+Each element of numSeen will be a single space delimited list of integers. Each integer will be between 0 and 100 inclusive, and will have no extra leading zeros.
+-
+Each element of numSeen will contain exactly k integers, where k is the number of elements in numSeen.
+-
+Integer i in element i of numSeen will always be 0.
+Examples
+0)
+
+    
+{
+"0 1 1",
+"2 0 0",
+"3 1 0"
+}
+Returns: {1, 0, 2 }
+A possible sequence of events is: Person 0 writes a line. Person 1 writes a line. Person 0 writes a line. Person 1 leaves. Person 2 writes a line. Person 0 writes a line. Person 0 leaves. Person 2 leaves. 
+1)
+
+    
+{
+"0 1 1",
+"4 0 0",
+"3 1 0"
+}
+Returns: { }
+No order is possible here due to the following requirements:
+Person 1 must see 4 lines from person 0, but person 2 must only see 3 lines from person 0.
+Person 0 must see 1 line from person 2, but person 1 must not see any.
+The first item above forces person 1 to leave after person 2. The second item forces person 1 to leave before person 2.
+2)
+
+    
+{
+"0 100 100 100 100 100",
+"100 0 100 100 100 100",
+"100 100 0 100 100 100",
+"100 100 100 0 100 100",
+"100 100 100 100 0 100",
+"100 100 100 100 100 0"
+}
+Returns: {0, 1, 2, 3, 4, 5 }
+Everyone says exactly 100 lines. Any leaving order is possible. The lexicographically first order is returned.
+3)
+
+    
+{
+"0 1 0 0",
+"1 0 0 0",
+"0 0 0 0",
+"0 0 0 0"
+}
+Returns: {2, 3, 0, 1 }
+
+4)
+
+    
+{
+"0 0 0 0 0",
+"0 0 0 0 0",
+"0 0 0 0 0",
+"0 0 0 0 0",
+"0 0 0 0 0"
+}
+Returns: {0, 1, 2, 3, 4 }
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

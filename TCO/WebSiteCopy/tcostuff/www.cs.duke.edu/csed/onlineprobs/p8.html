@@ -1,0 +1,259 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  
+<!-- Mirrored from www.cs.duke.edu/csed/onlineprobs/p8.html by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 14 Mar 2006 08:55:05 GMT -->
+<head>
+    <title>Weekly Problem #8</title>
+  </head>
+
+  <body>
+    <h1>Weekly Problem #8</h1>
+
+<em>
+This problem statement is the exclusive and proprietary property of
+TopCoder, Inc. Any unauthorized use or reproduction of this information
+without the prior written consent of TopCoder, Inc. is strictly
+prohibited. (c)2002, TopCoder, Inc. All rights reserved.
+</em>
+
+<p>
+<hr>
+
+<h3>Problem Statement</h3>
+    
+
+A health club chain allows its members to visit any of its many health
+    club locations an unlimited number of times per day. The only
+    constraining rule is, a customer can only visit one health club
+    location per day, even though he or she may return to that location
+    an unlimited number of times for the rest of that day.
+<P>
+Although the honor system has always worked quite well, the club wants
+    to run some tests to see how many people really follow the
+    rules. You are to write a program that takes the entrance log files
+    from three different clubs (all logging the same day) and return a
+    sorted list of the people who are not honest and went to more than
+    one health club location in the same day.
+<P>
+
+The log files are represented as tvector&lt;string&gt;'s where each element is the
+    member name of a customer who entered that day. For example, if a
+    customer showed up three times to one of the club locations that
+    day, the member's name would appear three times in the corresponding
+    tvector&lt;string&gt;.
+<P> 
+<h3>Definition</h3>
+
+<UL>    
+<LI> Class: MemberCheck
+<LI> Method: whosDishonest
+<LI> Parameters: <code>const tvector&lt;string&gt;&amp;, const tvector&lt;string&gt;&amp;,
+	  const tvector&lt;string&gt;&amp;</code> 
+<LI> Returns: <code>tvector&lt;string&gt;</code>
+<LI>Method signature: 
+<PRE>
+    tvector&lt;string&gt; whosDishonest(const tvector&lt;string&gt;&amp; club1, const tvector&lt;string&gt;&amp; club2, const tvector&lt;string&gt;&amp;  club3)
+</PRE>
+
+(be sure your method is public)
+<P>    
+
+ <h3>Class</h3>
+
+
+<XMP>
+#include <string>
+using namespace std;
+#include "tvector.h"
+
+class MemberCheck
+{
+    public:
+      tvector<string> whosDishonest(const tvector<string>& club1, 
+                                    const tvector<string>& club2,
+                                    const tvector<string>& club3)
+      {
+            // fill in code here
+      }
+};
+</XMP>
+
+<P>
+<h3>Notes</h3
+<UL>
+<LI> club1, club2, and club3 may contain a different number of elements.
+<P>
+<LI> The same member name can appear multiple times in a single log file.
+<LI> The elements of the returned <code>tvector&lt;string&gt;</code> should be sorted in
+lexicographic order (the order they would appear in a dictionary).
+<P>
+<LI> Assume that two people with the same name are in fact the same person.
+</UL> 
+<P>
+<h3>Constraints</h3>
+<UL>
+<LI> club1, club2, and club3 each have between 1 and 50 elements,
+      inclusive.
+
+<LI> Each element of club1, club2, and club3 contains between 1 and 50 characters, inclusive..
+<LI> Each element of club1, club2, and club3 consists only of uppercase letters ('A'-'Z').
+</UL>
+
+<P>
+<h3>Examples</h3>
+<OL>
+<LI>
+<PRE>
+club1 = {"JOHN","JOHN","FRED","PEG"}
+
+club2 = {"PEG","GEORGE"}
+
+club3 = {"GEORGE","DAVID"}
+</PRE>
+
+Returns: <tt>{ "GEORGE",  "PEG" }</tt>
+<P>
+
+"PEG" went to club1 and club2, and "GEORGE" went to club2 and club3.
+<P>
+<LI>
+<PRE>    
+
+club1 = {"DOUG","DOUG","DOUG","DOUG","DOUG"}
+
+club2 = {"BOBBY","BOBBY"}
+
+club3 = {"JAMES"}
+</PRE>
+
+Returns: <tt>{ }</tt>
+<P>
+Here, no one went to more than one club location.
+<P>
+<LI>
+<PRE>    
+
+club1 = {"BOBBY"}
+
+club2 = {"BOB","BOBBY"}
+
+club3 = {"BOB"}
+</PRE>
+<P>
+Returns: <tt>{ "BOB",  "BOBBY" }</tt>
+<P>
+Note that "BOB" is sorted before "BOBBY"
+<P>
+<LI>
+<PRE>
+club1 = {"BOBBY","HUGH","LIZ","GEORGE"}
+
+club2 = {"ELIZABETH","WILL"}
+
+club3 = {"BOB","BOBBY","BOBBY","PAM","LIZ","BOBBY","BOBBY","WILL"}
+</PRE>
+<P>
+Returns: <tt>{ "BOBBY",  "LIZ",  "WILL" }</tt>
+<P>
+<LI>
+<PRE>
+
+club1 = {"JAMES","HUGH","HUGH","GEORGE","ELIZABETH","ELIZABETH","HUGH",
+"DAVID","ROBERT","DAVID","BOB","BOBBY","PAM","JAMES","JAMES"}
+
+club2 = {"BOBBY","ROBERT","GEORGE","JAMES","PEG","JAMES","DAVID","JOHN","LIZ",
+"SANDRA","GEORGE","JOHN","GEORGE","ELIZABETH","LIZ","JAMES"}
+
+club3 = {"ROBERT","ROBERT","ROBERT","SANDRA","PAM","BOB","LIZ","GEORGE"}
+</PRE>
+<P>
+Returns: 
+<PRE>
+{ "BOB",
+ "BOBBY",
+ "DAVID",
+ "ELIZABETH",
+ "GEORGE",
+ "JAMES",
+ "LIZ",
+ "PAM",
+ "ROBERT",
+ "SANDRA" }
+</PRE>
+<P>
+<LI>
+<PRE>
+
+club1 = {"LIZ","WILL","JAMES"}
+
+club2 = {"JOHN","ROBERT","GEORGE","LIZ","PEG","HUGH","BOB","BOBBY","ROBERT","ELIZABETH","DAVID"}
+
+club3 = {"PAM","DAVID","SANDRA","GEORGE","JOHN","ROBERT","SANDRA","GEORGE"}
+</PRE>
+<P>
+Returns: <tt>{ "DAVID",  "GEORGE",  "JOHN",  "LIZ",  "ROBERT" }</tt>
+<P>
+<LI>
+<PRE>    
+
+club1 = {"PEG","ROBERT","PAM","JOHN","DAVID","JOHN","ROBERT",
+"GEORGE","HUGH","WILL","JAMES","JAMES","BOBBY","BOBBY","SANDRA"}
+
+club2 = {"SANDRA","BOB","PAM","JAMES","WILL","DAVID","BOBBY","GEORGE",
+"WILL","LIZ","BOBBY","ROBERT","WILL","BOB","BOBBY","ELIZABETH","HUGH"}
+
+club3 = {"WILL","PEG","ELIZABETH","DAVID","HUGH","BOBBY","JOHN","SANDRA","ELIZABETH",
+"ELIZABETH","SANDRA","GEORGE","PAM","ELIZABETH","BOBBY","DAVID","PAM"}
+</PRE>
+<P>
+Returns: 
+<PRE>
+{ "BOBBY",
+ "DAVID",
+ "ELIZABETH",
+ "GEORGE",
+ "HUGH",
+ "JAMES",
+ "JOHN",
+ "PAM",
+ "PEG",
+ "ROBERT",
+ "SANDRA",
+ "WILL" }
+</PRE>
+<P>
+<LI>    
+<PRE>
+club1 = {"AHHOZY","AHHAPLL","ASNV"}
+
+club2 = {"AHDLTOE","AHUKPJ","AHDENCTPP","AHDENCJ","AHDLNZC","AHDLTOGG","AHHAPMBG",
+"ALE","AHBHA","AHUKP","AHDQMILLP","AHDENEDY","AHDENEE","AHHOHVCX","AHISK",
+"AHW","AQDB","AHUP","AQDBNPU","AGWZUV","AHHOSUW","AHXS","AHDENCP","AHDQM",
+"AHDLTURV","AHBHVV","AHDQMILL","AHDQMD","AHH","AHDLTU","AHISFNO","AHURF",
+"AH","AHHAPNQ","AQPL","AHDXL","AHDLTUGX","AHDLT","AHUKRC","AHDLTUGX",
+"AQDTXYX","AGWZS"}
+
+club3 = {"AHHAPMFF","AHURA","AHHOZ","AHISKH","AHUPR","AHHAPM","AHUKRHIN","AHHAP",
+"AHDLTMO","AHDLTUJ","AHDQY","AHUK","AHDENEDY","AHWK","AHHOZGJJ","AHXS",
+"AHDLTUREL","AHHOZQNL","AHHOSUWOS"}
+</PRE>
+<P>
+Returns: <tt>{ "AHDENEDY",  "AHXS" }</tt>
+<P>
+</OL>
+
+
+
+
+
+
+    <hr>
+    <address><a href="mailto:ola@cs.duke.edu">Owen L. Astrachan</a></address>
+<!-- Created: Wed Feb 26 10:34:13 EST 2003 -->
+<!-- hhmts start -->
+Last modified: Tue Oct 21 19:11:16 EDT 2003
+<!-- hhmts end -->
+  </body>
+
+<!-- Mirrored from www.cs.duke.edu/csed/onlineprobs/p8.html by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 14 Mar 2006 08:55:05 GMT -->
+</html>

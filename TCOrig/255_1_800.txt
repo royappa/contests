@@ -1,0 +1,67 @@
+string findMultiple(int N, int M) 
+{
+	int p = 1;
+	vector<int> p10;
+	int pmax = 0;
+	while (find(p10.begin(), p10.end()) != p10.end())
+	{
+		p10.push_back(p);
+		p = (p*10) % N;
+		pmax++;
+	}
+	
+}
+Problem Statement
+    
+An odd-digitable number is a positive integer which consists of only odd digits. For example, 1, 7, 15, 91 and 73353 are odd-digitable numbers, but 2, 70, 94 and 72653 are not odd-digitable.
+You will be given integers N and M. Your method should return the smallest odd-digitable number that equals M modulo N. Your method should return "-1"(quotes for clarity only) if there are no such odd-digitable numbers.
+Definition
+    
+Class:
+OddDigitable
+Method:
+findMultiple
+Parameters:
+int, int
+Returns:
+string
+Method signature:
+string findMultiple(int N, int M)
+(be sure your method is public)
+    
+
+Constraints
+-
+N will be between 2 and 100000, inclusive.
+-
+M will be between 0 and N-1, inclusive.
+Examples
+0)
+
+    
+10
+7
+Returns: "7"
+
+1)
+
+    
+22
+12
+Returns: "-1"
+
+2)
+
+    
+29
+0
+Returns: "319"
+
+3)
+
+    
+5934
+2735
+Returns: "791957"
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

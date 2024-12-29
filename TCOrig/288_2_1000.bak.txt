@@ -1,0 +1,187 @@
+// WORKING, not bad efficiency, Dijkstra's single-source shortest path to all vertices; uses STL priority queue
+#include <vector>
+#include <list>
+#include <map>
+#include <set>
+#include <deque>
+#include <stack>
+#include <bitset>
+#include <algorithm>
+#include <functional>
+#include <numeric>
+#include <utility>
+#include <sstream>
+#include <iostream>
+#include <iomanip>
+#include <cstdio>
+#include <cmath>
+#include <cstdlib>
+#include <ctime>
+#include <queue>
+
+using namespace std;
+#define setbit(x,b) (x) |= (1<<(b))
+#define flipbit(x,b) (x) ^= (1<<(b))
+typedef pair<int,int> pii;
+
+class TurnOffLights {
+public:
+
+
+int step1(int state, int btn)
+{
+	int dir[] = {0,-1,-1,0,0,1,1,0};
+	int r = btn / 4, c = btn % 4;
+	
+	for (int k = 0; k < 8; k += 2)
+	{
+		int dr = dir[k], dc = dir[k+1];
+		if (r+dr < 0 || r+dr >= 4 || c+dc < 0 || c+dc >= 4)
+		{
+			continue;
+		}
+		flipbit(state, (r+dr)*4+(c+dc));
+	}
+	flipbit(state, btn);
+	return state;		
+}
+
+int step2(int state, int btn)
+{
+	flipbit(state, btn);
+	return state;
+}
+
+int fewestMoves(vector <string> board) 
+{
+	int state = 0;
+	for (int i = 0; i < 4; i++)
+	{
+		for (int j = 0; j < 4; j++)
+		{
+			if (board[i][j] == '1')
+			{
+				int pos = i*4+j;
+				setbit(state, pos);
+			}
+		}
+	}
+	int n = 1<<16;
+	vector<int> dist(n+1, 1<<30);
+	vector<bool> used(n+1, false);
+
+	dist[state] = 0;
+	
+	priority_queue<pii> pq;				// PQ elements are pair<dist,node>. Thus they are sorted by dist. But is max-heap, so we store -dist.
+	pq.push(make_pair(0, state));		// initial node is dist 0 away
+	
+	while (pq.size() > 0)
+	{
+		pii closest = pq.top(); pq.pop();
+		int d = -closest.first, v = closest.second; // STL pq is max-heap by default, too lazy to change.
+		if (d > dist[v]) // this is to handle stupid STL pq, which does not have an update. So we may have outdated vertices in PQ, must ignore.
+			continue;
+					
+		for (int i = 0; i < 16; i++) 
+		{
+			int state1 = step1(v, i);
+			if (d+1 < dist[state1])
+			{
+				dist[state1] = d+1;
+				pq.push(make_pair(-dist[state1], state1));
+			}
+			int state2 = step2(v, i);
+			if (state2 == state1)
+				continue;
+			if (d+2 < dist[state2])
+			{
+				dist[state2] = d+2;
+				pq.push(make_pair(-dist[state2], state2));
+			}			
+		}
+	}
+	return dist[0];
+}
+};
+
+
+//Powered by [KawigiEdit]
+
+Problem Statement
+    
+You are given a 4x4 game board consisting of buttons which are either lit or unlit. The buttons are numbered 1-16, like so:
+ 1  2  3  4
+ 5  6  7  8
+ 9 10 11 12
+13 14 15 16
+Pressing a button changes the state of that button, along with the states of the buttons to the immediate left, right, top and bottom. Pressing and holding a button, which counts as two moves, changes only the state of that individual light.
+The goal of the game is to turn off all of the lights. You are given a vector <string> board consisting of four elements, each containing four characters. Each character will be a '0' or '1', indicating whether each light is off or on, respectively. You are to return an int indicating the least number of moves necessary to turn off all of the lights.
+Definition
+    
+Class:
+TurnOffLights
+Method:
+fewestMoves
+Parameters:
+vector <string>
+Returns:
+int
+Method signature:
+int fewestMoves(vector <string> board)
+(be sure your method is public)
+    
+
+Constraints
+-
+board will contain exactly 4 elements.
+-
+Each element of board will contain exactly 4 characters.
+-
+Each character of each element of board will be '0' (zero) or '1' (one).
+Examples
+0)
+
+    
+{"1100",
+ "1000",
+ "0000",
+ "0000"}
+Returns: 1
+Press only the button in the upper left corner.
+1)
+
+    
+{"0100",
+ "1110",
+ "0100",
+ "0000"}
+Returns: 1
+Again, a single button press suffices.
+2)
+
+    
+{"1000",
+ "0000",
+ "0000",
+ "0000"}
+Returns: 2
+We need to press and hold the lit button, which costs us two moves.
+3)
+
+    
+{"1100",
+ "1000",
+ "0000",
+ "0001"}
+Returns: 3
+Press the upper left button (costs 1). Press and hold the lower right button (costs 2).
+4)
+
+    
+{"1011",
+ "1010",
+ "0000",
+ "0000"}
+Returns: 2
+Here, we push buttons 1 and 3. Notice that button 2 lights up after the first button push, but ends up unlit at the end.
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

@@ -1,0 +1,154 @@
+bool lessThan(string a, string b)
+{
+	int a1,a2,a3, b1,b2,b3;
+	
+	sscanf(a.c_str(), "%d%d%d", &a1, &a2, &a3);
+	sscanf(b.c_str(), "%d%d%d", &b1, &b2, &b3);
+	return a2 > b2;
+}
+
+vector<string> plat;
+int n;
+int memo[60];
+int v, g;
+typedef long long LL;
+
+bool canReach(LL x1, LL y1, LL x2, LL y2)
+{
+	if (y2 >= y1)
+		return false;
+	LL xd = abs(x2-x1);
+	LL yd = abs(y2-y1);
+	//A dropped object without starting velocity will fall down g*t^2/2 units in time t
+	return g*(xd*xd) > yd*2LL*v*v;
+}
+	
+	
+int f(int p)
+{
+	int& r = memo[p];
+	if (r != -1)
+		return r;
+		
+	if (p == n)
+	{
+		return 0; // no platforms left
+	}
+	
+	int x, y, c;
+	sscanf(plat[p].c_str(), "%d%d%d", &x, &y, &c);
+	r = c; // can get the money here
+	int best = 0;
+	for (int j = p+1; j < n; j++)
+	{
+		int jx, jy, jc;
+		sscanf(plat[j].c_str(), "%d%d%d", &jx, &jy, &jc);
+		if (canReach(x, y, jx, jy))
+		{
+			best = max(best, f(j));
+		}
+	}
+	r += best;
+	return r;
+}
+
+int maxCoins(vector <string> platforms, int v_, int g_) 
+{
+	plat = platforms;
+	v = v_;
+	g = g_;
+	sort(plat.begin(), plat.end(), lessThan);
+
+	int best = 0;
+	n = plat.size();
+	memset(memo, -1, sizeof(memo));
+	
+	for (int i = 0; i < n; i++)
+	{
+		best = max(best, f(i));
+	}
+	return best;
+}
+Problem Statement
+    
+In an old school arcade video game, you have reached the following bonus level. 
+
+There are a number of platforms containing coins, and you must jump from platform to platform collecting the coins. 
+
+You may only jump to lower platforms, so your entire journey will be downward. 
+
+You can select any platform as your starting platform.
+
+Your jumping behavior is defined as follows. 
+
+On each jump, your horizontal speed is constant and does not exceed v. 
+
+Your fall down follows the standard laws of physics: your free fall acceleration is g and initially your speed is 0.
+
+For simplicity, we will represent each platform as a single point. 
+
+Each element of platforms represents a single platform and is formatted "X Y C" (quotes for clarity), where X and Y are the x and y coordinates of the platform and C is the number of coins on the platform. 
+
+Greater values of y represent higher locations. 
+
+Return the greatest number of coins you can collect.
+
+Definition
+    
+Class:
+PlatformJumper
+Method:
+maxCoins
+Parameters:
+vector <string>, int, int
+Returns:
+int
+Method signature:
+int maxCoins(vector <string> platforms, int v, int g)
+(be sure your method is public)
+    
+
+Notes
+-
+A dropped object without starting velocity will fall down g*t2/2 units in time t.
+-
+Note, that you always can drop to the platform right below you.
+Constraints
+-
+platforms will contain between 1 and 50 elements, inclusive.
+-
+Each element of platforms will be formatted as "X Y C", where X, Y and C are integers with no extra leading zeroes.
+-
+In each element of platforms, X and Y will be between 0 and 5000, inclusive.
+-
+In each element of platforms, C will be between 0 and 10000, inclusive.
+-
+All platforms will have distinct locations.
+-
+v and g will each be between 1 and 100, inclusive.
+Examples
+0)
+
+    
+{"3 10 7", "5 15 7", "8 9 12" }
+2
+10
+Returns: 14
+It is possible to jump from platform 1 to platform 0, thus we can earn 7+7=14 coins. It is impossible to jump from platform 1 to platform 2.
+1)
+
+    
+{"0 0 1", "2 4 1", "4 0 1"}
+1
+2
+Returns: 2
+
+2)
+
+    
+{"0 0 1", "5000 5000 10"}
+100
+87
+Returns: 10
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

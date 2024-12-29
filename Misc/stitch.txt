@@ -1,0 +1,123 @@
+	public String[] stitch(String[] A, String[] B, int overlap)
+	{
+		int height = A.length;
+		int widthA = A[0].length();
+		int widthB = B[0].length();
+		int width = widthA+widthB-overlap;
+		
+		char[][] mat = new char[height][width];
+		
+		for (int i = 0; i < height; i++)
+		{
+			int c = 0;
+			for (int j = 0; j < widthA-overlap; j++)
+			{
+				mat[i][c] = A.charAt(j);
+				c++;
+			}
+			// overlap..
+			int aInd = overlap;
+			int bInd = 0;
+			for (int p = 1; p <= overlap; p++)
+			{
+				int a = A.charAt(aInd++);
+				int b = B.charAt(bInd++);
+				int valueN = (overlap+1-p)*a+(p*b);
+				int valueD = (overlap+1);
+				mat[i][c] = (valueN+1)/valueD;
+				c++;
+			}
+			for (int j = overlap; j < widthB; j++)
+			{
+				mat[i][c] = B.charAt(j);
+				c++;
+			}
+		}
+		
+		String[] result = new String[height];
+		for (int i = 0; i < height; i++)
+			result[i] = new String(mat[i]);
+		return result;
+	}
+
+Problem Statement
+    
+Many image editing programs have the ability to stitch two images together to form one larger image. In this problem, you will be given two images, represented by String[]'s. Each String[] represents a bitmap, where the ASCII value of character j of element i represents the color of the pixel in row i, column j of the image. Your task is to stitch the two images together. Specifically, image A goes to the left of image B and overlap pixels from the right of A and the left of B overlap. To prevent any obvious artifacts from the stitching, you want to gradually blend the stitched region from image A to image B. 
+
+The ith pixel (indexed from 1) from the left in the overlapping region should have a value of ((overlap+1-i)*a+(i*b))/(overlap+1) where a and b are the values of the pixels from A and B, respectively. Hence, the leftmost pixels in the overlapping region should have values of (overlap*a+b)/(overlap+1). In all cases, you should round the pixel values to the nearest integer, rounding 0.5 up.
+Definition
+    
+Class:
+Stitch
+Method:
+stitch
+Parameters:
+String[], String[], int
+Returns:
+String[]
+Method signature:
+String[] stitch(String[] A, String[] B, int overlap)
+(be sure your method is public)
+    
+
+Constraints
+-
+A will contain between 1 and 50 elements, inclusive.
+-
+B will contain the same number of elements as A.
+-
+Each element of A will contain the same number of characters.
+-
+Each element of B will contain the same number of characters.
+-
+Each element of A and B will contain between overlap+1 and 50 characters, inclusive.
+-
+overlap will be between 0 and 49, inclusive.
+-
+Each character in A and B will have ASCII value between 32 and 126, inclusive.
+Examples
+0)
+
+    
+{"AAAAAA"}
+{"JJJJJ"}
+4
+Returns: { "AACEFHJ" }
+First, line up the two images:
+ AAAAAA
+   JJJJJ
+Then, blend the overlapping region:
+ AACEFHJ
+1)
+
+    
+{"14ABCD",
+ "25EFGH",
+ "36IJKL"}
+{"ABCD14",
+ "EFGH25",
+ "IJKL36"}
+4
+Returns: { "14ABCD14",  "25EFGH25",  "36IJKL36" }
+
+2)
+
+    
+{" 32ygfd",
+ "3uh53G:",
+ ")O83gh3"}
+{"hsd$*(PH",
+ "3G:$)(*P",
+ "gh86$PBB"}
+3
+Returns: { " 32ygmd$*(PH",  "3uh53G:$)(*P",  ")O83gh76$PBB" }
+
+3)
+
+    
+{"A"}
+{"A"}
+0
+Returns: { "AA" }
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

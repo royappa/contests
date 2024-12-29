@@ -1,0 +1,626 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<!-- Mirrored from spoj.sphere.pl/problems/classical/sort=2,start=50 by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 10 Jan 2006 04:56:26 GMT -->
+<head>
+<title>Sphere Online Judge (SPOJ)  - Problems</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-2">
+<META NAME="Keywords" CONTENT="spoj, online, judge, problem, set, problemset, archive, ACM, Polish, Poland, contest, contester, task, tasks, ADA, Java, Pascal, C, C++, Whitespace, sphere, interest, group, python, ruby, icon, o'caml, caml, ocaml, perl, haskell, bf, brain, clips, prolog, fortran, asm, assembler, asembler, functional, esoteric, programming, languages">
+
+<link href="https://spoj.sphere.pl/gfx/favicon" rel="shortcut icon" type="image/x-icon">
+
+<link href="../../themes/skin3.css" rel="stylesheet" type="text/css" id="theme">
+<style type="text/css">
+<!--
+.maintable {width: 755;} 
+-->
+</style>
+<script type="text/javascript" language="javascript">
+<!--
+function UnCryptMailto(s) {
+	var n=0;
+	var r="";
+	for(var i=0;i<s.length;i++) {		
+		n=s.charCodeAt(i); 
+		if (n>=8364) {n = 128;}
+		r += String.fromCharCode(n+(2));	
+	}
+	return r;
+}
+function linkTo_UnCryptMailto(s)	{
+	location.href=UnCryptMailto(s);
+}
+// -->
+</script>
+
+</head>
+<body>
+<center>
+<table cellpadding="10" cellspacing="0" class="maintable" id="maintable">
+<tr>
+    <td colspan="2" class="header">
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+        <tr>
+		<td class="headerleft"/>
+		<td class="headercenter"><h1>Sphere Online Judge</h1></td>
+		<td class="headerright"/>
+	</tr>
+	</table>
+    </td>
+</tr>
+<tr><td class="menu" width="92" valign="top">
+<form name="login"  action="http://spoj.sphere.pl/problems/classical/sort=2,start=50" method="post" 
+	onsubmit="if(document.login.ssl.checked) document.login.action='https://spoj.sphere.pl/problems/classical/sort=2,start=50'" style="margin-bottom: 18px"> 
+User: <input name="login_user" type="text" style="width: 85px;" class="form"><BR>
+Password: <input name="password" type="password" style="width: 85px;" class="form"><BR>
+<script language="javascript" type="text/javascript">
+<!--
+document.write('<input type="checkbox" name="ssl" id="ssl" checked>secure<br>');
+//-->
+</script>
+<input name="submit" type="submit" value="Log In" class="button" style="width: 85px;">
+</form><div class="menucmd"><a href="https://spoj.sphere.pl/register">register</a><br><br><a href="https://spoj.sphere.pl/status">status</a><br><a href="https://spoj.sphere.pl/submit">submit</a><br><a href="index.html">problems</a><br><div class="submenucmd"><a href="../classical.html">classical</a><br><a href="../challenge.html">challenge</a><br><a href="../tutorial/index.html">tutorial</a><br></div><br><a href="https://spoj.sphere.pl/">news</a><br><a href="https://spoj.sphere.pl/contests">contests</a><br><a href="https://spoj.sphere.pl/info">info</a><br><a href="https://spoj.sphere.pl/ranks/">ranks</a><br><br><a href="https://spoj.sphere.pl/forum">forum</a><br><a href="https://spoj.sphere.pl/help">help</a><br><a href="https://spoj.sphere.pl/links">links</a><br><hr></div>Server time:<br>2006-01-10<br>05:50:13<a href="index.html"></a><br><br>
+<form method="get" action="https://spoj.sphere.pl/search/" class="form" style="width:90px">
+<input type="text" name="query" style="width:85px" maxlength=255 value="" class="form"><br>
+<input type="submit" value="Search" style="width:85px" class="form" title="Search site"><br>
+&nbsp;<a href="https://spoj.sphere.pl/search/problems=on,users=on,contests=on" title="More search options"><small>advanced...</small></a>
+</form></td><td class="content" width="99%"><H3>list of classical problems</H3>
+
+<table class="navigation" width="99%">
+<tr><td align="left" width="27%">
+<a href="sort=2,start=0.html">&lt; Previous</a></td><td class="navigationcenter" width="7%"><a href="sort=2,start=0.html">&nbsp;1</a></td> 
+<td class="navigationcenter" width="7%">&nbsp;2</td> 
+<td class="navigationcenter" width="7%"><a href="sort=2,start=100.html">&nbsp;3</a></td> 
+<td class="navigationcenter" width="7%"><a href="sort=2,start=150.html">&nbsp;4</a></td> 
+<td class="navigationcenter" width="7%"><a href="sort=2,start=200.html">&nbsp;5</a></td> 
+<td class="navigationcenter" width="7%"><a href="sort=2,start=250.html">&nbsp;6</a></td> 
+<td class="navigationcenter" width="7%"><a href="sort=2,start=300.html">&nbsp;7</a></td> 
+<td align="right" width="25%">
+<a href="sort=2,start=100.html">Next &gt;</a></td></table><table class="problems" width="100%">
+<tr class="headerrow">
+<th width="6%" class="headerrowleft"><a href="sort=5.html?sort=5" title="Problem ID. Click here to sort.">ID</a></th>
+<th width="60%"><a href="sort=2,start=504bd3.html?sort=-2" title="Problem name. Click here to sort. Click on the name of a problem to read its description.">NAME</a></th>
+<th width="11%"><a href="sort=1.html?sort=1" title="Problem code. Click here to sort. If a link in this column is inactive for some problem, solutions cannot be submitted.">CODE</a></th>
+<th width="9%"><a href="sort=2,start=503604.html?sort=6" title="The number of users who have solved a problem. Click here to sort.">USERS</a></th>
+<th width="9%" class="headerrowright"><a href="sort=7.html?sort=7" title="The percentage of all solutions to a problem, which were accepted. This is some indicator of the difficulty of the problem. Click here to sort.">ACC&nbsp;%</a></th>
+</tr>
+
+<tr class="problemrow">
+<td>368</td>
+<td align="left">&nbsp;
+<a href="../CSTREET/index.html">&nbsp;<b>Cobbled streets</b></a></td>
+<td><a href="https://spoj.sphere.pl/submit/CSTREET" title="Submit a solution to this problem.">
+CSTREET</a></td>
+<td><a href="https://spoj.sphere.pl/ranks/CSTREET" title="Value 0.64 points. See the best solutions.">84</a></td>
+<td><a href="https://spoj.sphere.pl/status/CSTREET" title="See all submitted solutions to this problem.">47.54</a></td>
+</tr>
+<tr class="problemrow">
+<td>45</td>
+<td align="left">&nbsp;
+<a href="../COMMEDIA/index.html">&nbsp;<b>Commedia dell Arte</b></a></td>
+<td><a href="https://spoj.sphere.pl/submit/COMMEDIA" title="Submit a solution to this problem.">
+COMMEDIA</a></td>
+<td><a href="https://spoj.sphere.pl/ranks/COMMEDIA" title="Value 1.18 points. See the best solutions.">27</a></td>
+<td><a href="https://spoj.sphere.pl/status/COMMEDIA" title="See all submitted solutions to this problem.">47.22</a></td>
+</tr>
+<tr class="problemrow">
+<td>8</td>
+<td align="left">&nbsp;
+<a href="../CMPLS/index.html">&nbsp;<b>Complete the Sequence!</b></a></td>
+<td><a href="https://spoj.sphere.pl/submit/CMPLS" title="Submit a solution to this problem.">
+CMPLS</a></td>
+<td><a href="https://spoj.sphere.pl/ranks/CMPLS" title="Value 0.53 points. See the best solutions.">110</a></td>
+<td><a href="https://spoj.sphere.pl/status/CMPLS" title="See all submitted solutions to this problem.">34.97</a></td>
+</tr>
+<tr class="problemrow">
+<td>10</td>
+<td align="left">&nbsp;
+<a href="../CMEXPR/index.html">&nbsp;<b>Complicated Expressions</b></a></td>
+<td><a href="https://spoj.sphere.pl/submit/CMEXPR" title="Submit a solution to this problem.">
+CMEXPR</a></td>
+<td><a href="https://spoj.sphere.pl/ranks/CMEXPR" title="Value 0.71 points. See the best solutions.">71</a></td>
+<td><a href="https://spoj.sphere.pl/status/CMEXPR" title="See all submitted solutions to this problem.">33.51</a></td>
+</tr>
+<tr class="problemrow">
+<td>666</td>
+<td align="left">&nbsp;
+<a href="../VOCV/index.html">&nbsp;<b>Con-Junctions</b></a></td>
+<td><a href="https://spoj.sphere.pl/submit/VOCV" title="Submit a solution to this problem.">
+VOCV</a></td>
+<td><a href="https://spoj.sphere.pl/ranks/VOCV" title="Value 1.33 points. See the best solutions.">19</a></td>
+<td><a href="https://spoj.sphere.pl/status/VOCV" title="See all submitted solutions to this problem.">62.96</a></td>
+</tr>
+<tr class="problemrow">
+<td>262</td>
+<td align="left">&nbsp;
+<a href="../CONNECT/index.html">&nbsp;<b>Connections</b></a></td>
+<td><a href="https://spoj.sphere.pl/submit/CONNECT" title="Submit a solution to this problem.">
+CONNECT</a></td>
+<td><a href="https://spoj.sphere.pl/ranks/CONNECT" title="Value 1.43 points. See the best solutions.">15</a></td>
+<td><a href="https://spoj.sphere.pl/status/CONNECT" title="See all submitted solutions to this problem.">33.78</a></td>
+</tr>
+<tr class="problemrow">
+<td>260</td>
+<td align="left">&nbsp;
+<a href="../CTAIN/index.html">&nbsp;<b>Containers</b></a></td>
+<td><a href="https://spoj.sphere.pl/submit/CTAIN" title="Submit a solution to this problem.">
+CTAIN</a></td>
+<td><a href="https://spoj.sphere.pl/ranks/CTAIN" title="Value 1.14 points. See the best solutions.">29</a></td>
+<td><a href="https://spoj.sphere.pl/status/CTAIN" title="See all submitted solutions to this problem.">46.61</a></td>
+</tr>
+<tr class="problemrow">
+<td>236</td>
+<td align="left">&nbsp;
+<a href="../ROMAN/index.html">&nbsp;<b>Converting number formats</b></a></td>
+<td><a href="https://spoj.sphere.pl/submit/ROMAN" title="Submit a solution to this problem.">
+ROMAN</a></td>
+<td><a href="https://spoj.sphere.pl/ranks/ROMAN" title="Value 1.4 points. See the best solutions.">16</a></td>
+<td><a href="https://spoj.sphere.pl/status/ROMAN" title="See all submitted solutions to this problem.">40.98</a></td>
+</tr>
+<tr class="problemrow">
+<td>43</td>
+<td align="left">&nbsp;
+<a href="../BOOKS1/index.html">&nbsp;<b>Copying Books</b></a></td>
+<td><a href="https://spoj.sphere.pl/submit/BOOKS1" title="Submit a solution to this problem.">
+BOOKS1</a></td>
+<td><a href="https://spoj.sphere.pl/ranks/BOOKS1" title="Value 0.62 points. See the best solutions.">89</a></td>
+<td><a href="https://spoj.sphere.pl/status/BOOKS1" title="See all submitted solutions to this problem.">23.24</a></td>
+</tr>
+<tr class="problemrow">
+<td>264</td>
+<td align="left">&nbsp;
+<a href="../CORNET/index.html">&nbsp;<b>Corporative Network</b></a></td>
+<td><a href="https://spoj.sphere.pl/submit/CORNET" title="Submit a solution to this problem.">
+CORNET</a></td>
+<td><a href="https://spoj.sphere.pl/ranks/CORNET" title="Value 1.1 points. See the best solutions.">32</a></td>
+<td><a href="https://spoj.sphere.pl/status/CORNET" title="See all submitted solutions to this problem.">24.52</a></td>
+</tr>
+<tr class="problemrow">
+<td>374</td>
+<td align="left">&nbsp;
+<a href="../MATRIX/index.html">&nbsp;<b>Count maximum matrices</b></a></td>
+<td><a href="https://spoj.sphere.pl/submit/MATRIX" title="Submit a solution to this problem.">
+MATRIX</a></td>
+<td><a href="https://spoj.sphere.pl/ranks/MATRIX" title="Value 1.08 points. See the best solutions.">33</a></td>
+<td><a href="https://spoj.sphere.pl/status/MATRIX" title="See all submitted solutions to this problem.">25.85</a></td>
+</tr>
+<tr class="problemrow">
+<td>302</td>
+<td align="left">&nbsp;
+<a href="../CANTON/index.html">&nbsp;<b>Count on Canton</b></a></td>
+<td><a href="https://spoj.sphere.pl/submit/CANTON" title="Submit a solution to this problem.">
+CANTON</a></td>
+<td><a href="https://spoj.sphere.pl/ranks/CANTON" title="Value 0.29 points. See the best solutions.">236</a></td>
+<td><a href="https://spoj.sphere.pl/status/CANTON" title="See all submitted solutions to this problem.">62.13</a></td>
+</tr>
+<tr class="problemrow">
+<td>363</td>
+<td align="left">&nbsp;
+<a href="../COPER/index.html">&nbsp;<b>Crane Operator</b></a></td>
+<td><a href="https://spoj.sphere.pl/submit/COPER" title="Submit a solution to this problem.">
+COPER</a></td>
+<td><a href="https://spoj.sphere.pl/ranks/COPER" title="Value 1.95 points. See the best solutions.">0</a></td>
+<td><a href="https://spoj.sphere.pl/status/COPER" title="See all submitted solutions to this problem.">0.00</a></td>
+</tr>
+<tr class="problemrow">
+<td>58</td>
+<td align="left">&nbsp;
+<a href="../PICAD/index.html">&nbsp;<b>Crime at Piccadily Circus</b></a></td>
+<td><a href="https://spoj.sphere.pl/submit/PICAD" title="Submit a solution to this problem.">
+PICAD</a></td>
+<td><a href="https://spoj.sphere.pl/ranks/PICAD" title="Value 0.53 points. See the best solutions.">111</a></td>
+<td><a href="https://spoj.sphere.pl/status/PICAD" title="See all submitted solutions to this problem.">18.59</a></td>
+</tr>
+<tr class="problemrow">
+<td>66</td>
+<td align="left">&nbsp;
+<a href="../CRSCNTRY/index.html">&nbsp;<b>Cross-country</b></a></td>
+<td><a href="https://spoj.sphere.pl/submit/CRSCNTRY" title="Submit a solution to this problem.">
+CRSCNTRY</a></td>
+<td><a href="https://spoj.sphere.pl/ranks/CRSCNTRY" title="Value 0.63 points. See the best solutions.">86</a></td>
+<td><a href="https://spoj.sphere.pl/status/CRSCNTRY" title="See all submitted solutions to this problem.">77.72</a></td>
+</tr>
+<tr class="problemrow">
+<td>291</td>
+<td align="left">&nbsp;
+<a href="../CUBERT/index.html">&nbsp;<b>Cube Root</b></a></td>
+<td><a href="https://spoj.sphere.pl/submit/CUBERT" title="Submit a solution to this problem.">
+CUBERT</a></td>
+<td><a href="https://spoj.sphere.pl/ranks/CUBERT" title="Value 1.21 points. See the best solutions.">25</a></td>
+<td><a href="https://spoj.sphere.pl/status/CUBERT" title="See all submitted solutions to this problem.">21.38</a></td>
+</tr>
+<tr class="problemrow">
+<td>92</td>
+<td align="left">&nbsp;
+<a href="../CUTSQRS/index.html">&nbsp;<b>Cutting off Squares</b></a></td>
+<td><a href="https://spoj.sphere.pl/submit/CUTSQRS" title="Submit a solution to this problem.">
+CUTSQRS</a></td>
+<td><a href="https://spoj.sphere.pl/ranks/CUTSQRS" title="Value 0.87 points. See the best solutions.">51</a></td>
+<td><a href="https://spoj.sphere.pl/status/CUTSQRS" title="See all submitted solutions to this problem.">51.01</a></td>
+</tr>
+<tr class="problemrow">
+<td>67</td>
+<td align="left">&nbsp;
+<a href="../CUTOUT/index.html">&nbsp;<b>Cutting out</b></a></td>
+<td><a href="https://spoj.sphere.pl/submit/CUTOUT" title="Submit a solution to this problem.">
+CUTOUT</a></td>
+<td><a href="https://spoj.sphere.pl/ranks/CUTOUT" title="Value 0.93 points. See the best solutions.">45</a></td>
+<td><a href="https://spoj.sphere.pl/status/CUTOUT" title="See all submitted solutions to this problem.">47.59</a></td>
+</tr>
+<tr class="problemrow">
+<td>98</td>
+<td align="left">&nbsp;
+<a href="../DFLOOR/index.html">&nbsp;<b>Dance Floor</b></a></td>
+<td><a href="https://spoj.sphere.pl/submit/DFLOOR" title="Submit a solution to this problem.">
+DFLOOR</a></td>
+<td><a href="https://spoj.sphere.pl/ranks/DFLOOR" title="Value 0.76 points. See the best solutions.">64</a></td>
+<td><a href="https://spoj.sphere.pl/status/DFLOOR" title="See all submitted solutions to this problem.">35.90</a></td>
+</tr>
+<tr class="problemrow">
+<td>108</td>
+<td align="left">&nbsp;
+<a href="../MORSE/index.html">&nbsp;<b>Decoding Morse Sequences</b></a></td>
+<td><a href="https://spoj.sphere.pl/submit/MORSE" title="Submit a solution to this problem.">
+MORSE</a></td>
+<td><a href="https://spoj.sphere.pl/ranks/MORSE" title="Value 0.8 points. See the best solutions.">59</a></td>
+<td><a href="https://spoj.sphere.pl/status/MORSE" title="See all submitted solutions to this problem.">28.24</a></td>
+</tr>
+<tr class="problemrow">
+<td>382</td>
+<td align="left">&nbsp;
+<a href="../DECORATE/index.html">&nbsp;<b>Decorate the wall</b></a></td>
+<td><a href="https://spoj.sphere.pl/submit/DECORATE" title="Submit a solution to this problem.">
+DECORATE</a></td>
+<td><a href="https://spoj.sphere.pl/ranks/DECORATE" title="Value 0.92 points. See the best solutions.">46</a></td>
+<td><a href="https://spoj.sphere.pl/status/DECORATE" title="See all submitted solutions to this problem.">37.35</a></td>
+</tr>
+<tr class="problemrow">
+<td>409</td>
+<td align="left">&nbsp;
+<a href="../DELCOMM/index.html">&nbsp;<b>DEL Command</b></a></td>
+<td><a href="https://spoj.sphere.pl/submit/DELCOMM" title="Submit a solution to this problem.">
+DELCOMM</a></td>
+<td><a href="https://spoj.sphere.pl/ranks/DELCOMM" title="Value 1.48 points. See the best solutions.">13</a></td>
+<td><a href="https://spoj.sphere.pl/status/DELCOMM" title="See all submitted solutions to this problem.">27.08</a></td>
+</tr>
+<tr class="problemrow">
+<td>85</td>
+<td align="left">&nbsp;
+<a href="../DICE1/index.html">&nbsp;<b>Dice Contest</b></a></td>
+<td><a href="https://spoj.sphere.pl/submit/DICE1" title="Submit a solution to this problem.">
+DICE1</a></td>
+<td><a href="https://spoj.sphere.pl/ranks/DICE1" title="Value 1.74 points. See the best solutions.">5</a></td>
+<td><a href="https://spoj.sphere.pl/status/DICE1" title="See all submitted solutions to this problem.">18.75</a></td>
+</tr>
+<tr class="problemrow">
+<td>9</td>
+<td align="left">&nbsp;
+<a href="../DIRVS/index.html">&nbsp;<b>Direct Visibility</b></a></td>
+<td><a href="https://spoj.sphere.pl/submit/DIRVS" title="Submit a solution to this problem.">
+DIRVS</a></td>
+<td><a href="https://spoj.sphere.pl/ranks/DIRVS" title="Value 1.57 points. See the best solutions.">10</a></td>
+<td><a href="https://spoj.sphere.pl/status/DIRVS" title="See all submitted solutions to this problem.">13.10</a></td>
+</tr>
+<tr class="problemrow">
+<td>416</td>
+<td align="left">&nbsp;
+<a href="../DIV15/index.html">&nbsp;<b>Divisibility by 15</b></a></td>
+<td><a href="https://spoj.sphere.pl/submit/DIV15" title="Submit a solution to this problem.">
+DIV15</a></td>
+<td><a href="https://spoj.sphere.pl/ranks/DIV15" title="Value 0.7 points. See the best solutions.">73</a></td>
+<td><a href="https://spoj.sphere.pl/status/DIV15" title="See all submitted solutions to this problem.">14.35</a></td>
+</tr>
+<tr class="problemrow">
+<td>74</td>
+<td align="left">&nbsp;
+<a href="../DIVSUM/index.html">&nbsp;<b>Divisor Summation</b></a></td>
+<td><a href="https://spoj.sphere.pl/submit/DIVSUM" title="Submit a solution to this problem.">
+DIVSUM</a></td>
+<td><a href="https://spoj.sphere.pl/ranks/DIVSUM" title="Value 0.21 points. See the best solutions.">333</a></td>
+<td><a href="https://spoj.sphere.pl/status/DIVSUM" title="See all submitted solutions to this problem.">32.54</a></td>
+</tr>
+<tr class="problemrow">
+<td>660</td>
+<td align="left">&nbsp;
+<a href="../QUEST4/index.html">&nbsp;<b>Dungeon of Death</b></a></td>
+<td><a href="https://spoj.sphere.pl/submit/QUEST4" title="Submit a solution to this problem.">
+QUEST4</a></td>
+<td><a href="https://spoj.sphere.pl/ranks/QUEST4" title="Value 1.1 points. See the best solutions.">32</a></td>
+<td><a href="https://spoj.sphere.pl/status/QUEST4" title="See all submitted solutions to this problem.">36.52</a></td>
+</tr>
+<tr class="problemrow">
+<td>56</td>
+<td align="left">&nbsp;
+<a href="../DYZIO/index.html">&nbsp;<b>Dyzio</b></a></td>
+<td><a href="https://spoj.sphere.pl/submit/DYZIO" title="Submit a solution to this problem.">
+DYZIO</a></td>
+<td><a href="https://spoj.sphere.pl/ranks/DYZIO" title="Value 0.34 points. See the best solutions.">197</a></td>
+<td><a href="https://spoj.sphere.pl/status/DYZIO" title="See all submitted solutions to this problem.">35.38</a></td>
+</tr>
+<tr class="problemrow">
+<td>82</td>
+<td align="left">&nbsp;
+<a href="../EASYPIE/index.html">&nbsp;<b>Easy Problem</b></a></td>
+<td><a href="https://spoj.sphere.pl/submit/EASYPIE" title="Submit a solution to this problem.">
+EASYPIE</a></td>
+<td><a href="https://spoj.sphere.pl/ranks/EASYPIE" title="Value 0.83 points. See the best solutions.">55</a></td>
+<td><a href="https://spoj.sphere.pl/status/EASYPIE" title="See all submitted solutions to this problem.">35.56</a></td>
+</tr>
+<tr class="problemrow">
+<td>75</td>
+<td align="left">&nbsp;
+<a href="../EDIT1/index.html">&nbsp;<b>Editor</b></a></td>
+<td><a href="https://spoj.sphere.pl/submit/EDIT1" title="Submit a solution to this problem.">
+EDIT1</a></td>
+<td><a href="https://spoj.sphere.pl/ranks/EDIT1" title="Value 1.57 points. See the best solutions.">10</a></td>
+<td><a href="https://spoj.sphere.pl/status/EDIT1" title="See all submitted solutions to this problem.">38.71</a></td>
+</tr>
+<tr class="problemrow">
+<td>76</td>
+<td align="left">&nbsp;
+<a href="../EDIT2/index.html">&nbsp;<b>Editor Inverse</b></a></td>
+<td><a href="https://spoj.sphere.pl/submit/EDIT2" title="Submit a solution to this problem.">
+EDIT2</a></td>
+<td><a href="https://spoj.sphere.pl/ranks/EDIT2" title="Value 1.63 points. See the best solutions.">8</a></td>
+<td><a href="https://spoj.sphere.pl/status/EDIT2" title="See all submitted solutions to this problem.">20.41</a></td>
+</tr>
+<tr class="problemrow">
+<td>138</td>
+<td align="left">&nbsp;
+<a href="../POSTERS/index.html">&nbsp;<b>Election Posters</b></a></td>
+<td><a href="https://spoj.sphere.pl/submit/POSTERS" title="Submit a solution to this problem.">
+POSTERS</a></td>
+<td><a href="https://spoj.sphere.pl/ranks/POSTERS" title="Value 0.67 points. See the best solutions.">79</a></td>
+<td><a href="https://spoj.sphere.pl/status/POSTERS" title="See all submitted solutions to this problem.">33.04</a></td>
+</tr>
+<tr class="problemrow">
+<td>367</td>
+<td align="left">&nbsp;
+<a href="../EMPODIA/index.html">&nbsp;<b>Empodia</b></a></td>
+<td><a href="https://spoj.sphere.pl/submit/EMPODIA" title="Submit a solution to this problem.">
+EMPODIA</a></td>
+<td><a href="https://spoj.sphere.pl/ranks/EMPODIA" title="Value 1.27 points. See the best solutions.">22</a></td>
+<td><a href="https://spoj.sphere.pl/status/EMPODIA" title="See all submitted solutions to this problem.">34.11</a></td>
+</tr>
+<tr class="problemrow">
+<td>199</td>
+<td align="left">&nbsp;
+<a href="../EMPTY/index.html">&nbsp;<b>Empty Cuboids</b></a></td>
+<td><a href="https://spoj.sphere.pl/submit/EMPTY" title="Submit a solution to this problem.">
+EMPTY</a></td>
+<td><a href="https://spoj.sphere.pl/ranks/EMPTY" title="Value 1.31 points. See the best solutions.">20</a></td>
+<td><a href="https://spoj.sphere.pl/status/EMPTY" title="See all submitted solutions to this problem.">52.56</a></td>
+</tr>
+<tr class="problemrow">
+<td>414</td>
+<td align="left">&nbsp;
+<a href="../BONFIRE/index.html">&nbsp;<b>Equatorial Bonfire</b></a></td>
+<td><a href="https://spoj.sphere.pl/submit/BONFIRE" title="Submit a solution to this problem.">
+BONFIRE</a></td>
+<td><a href="https://spoj.sphere.pl/ranks/BONFIRE" title="Value 1.48 points. See the best solutions.">13</a></td>
+<td><a href="https://spoj.sphere.pl/status/BONFIRE" title="See all submitted solutions to this problem.">33.33</a></td>
+</tr>
+<tr class="problemrow">
+<td>35</td>
+<td align="left">&nbsp;
+<a href="../EQBOX/index.html">&nbsp;<b>Equipment Box</b></a></td>
+<td><a href="https://spoj.sphere.pl/submit/EQBOX" title="Submit a solution to this problem.">
+EQBOX</a></td>
+<td><a href="https://spoj.sphere.pl/ranks/EQBOX" title="Value 0.73 points. See the best solutions.">69</a></td>
+<td><a href="https://spoj.sphere.pl/status/EQBOX" title="See all submitted solutions to this problem.">20.81</a></td>
+</tr>
+<tr class="problemrow">
+<td>383</td>
+<td align="left">&nbsp;
+<a href="../EUROPEAN/index.html">&nbsp;<b>European railroad tracks</b></a></td>
+<td><a href="https://spoj.sphere.pl/submit/EUROPEAN" title="Submit a solution to this problem.">
+EUROPEAN</a></td>
+<td><a href="https://spoj.sphere.pl/ranks/EUROPEAN" title="Value 1.1 points. See the best solutions.">32</a></td>
+<td><a href="https://spoj.sphere.pl/status/EUROPEAN" title="See all submitted solutions to this problem.">30.97</a></td>
+</tr>
+<tr class="problemrow">
+<td>336</td>
+<td align="left">&nbsp;
+<a href="../EOPERA/index.html">&nbsp;<b>Exchange Operations</b></a></td>
+<td><a href="https://spoj.sphere.pl/submit/EOPERA" title="Submit a solution to this problem.">
+EOPERA</a></td>
+<td><a href="https://spoj.sphere.pl/ranks/EOPERA" title="Value 1.7 points. See the best solutions.">6</a></td>
+<td><a href="https://spoj.sphere.pl/status/EOPERA" title="See all submitted solutions to this problem.">6.98</a></td>
+</tr>
+<tr class="problemrow">
+<td>109</td>
+<td align="left">&nbsp;
+<a href="../EXCHNG/index.html">&nbsp;<b>Exchanges</b></a></td>
+<td><a href="https://spoj.sphere.pl/submit/EXCHNG" title="Submit a solution to this problem.">
+EXCHNG</a></td>
+<td><a href="https://spoj.sphere.pl/ranks/EXCHNG" title="Value 1.25 points. See the best solutions.">23</a></td>
+<td><a href="https://spoj.sphere.pl/status/EXCHNG" title="See all submitted solutions to this problem.">55.38</a></td>
+</tr>
+<tr class="problemrow">
+<td>348</td>
+<td align="left">&nbsp;
+<a href="../EXPEDI/index.html">&nbsp;<b>Expedition</b></a></td>
+<td><a href="https://spoj.sphere.pl/submit/EXPEDI" title="Submit a solution to this problem.">
+EXPEDI</a></td>
+<td><a href="https://spoj.sphere.pl/ranks/EXPEDI" title="Value 1.07 points. See the best solutions.">34</a></td>
+<td><a href="https://spoj.sphere.pl/status/EXPEDI" title="See all submitted solutions to this problem.">37.41</a></td>
+</tr>
+<tr class="problemrow">
+<td>68</td>
+<td align="left">&nbsp;
+<a href="../EXPR1/index.html">&nbsp;<b>Expression</b></a></td>
+<td><a href="https://spoj.sphere.pl/submit/EXPR1" title="Submit a solution to this problem.">
+EXPR1</a></td>
+<td><a href="https://spoj.sphere.pl/ranks/EXPR1" title="Value 1.14 points. See the best solutions.">29</a></td>
+<td><a href="https://spoj.sphere.pl/status/EXPR1" title="See all submitted solutions to this problem.">46.25</a></td>
+</tr>
+<tr class="problemrow">
+<td>11</td>
+<td align="left">&nbsp;
+<a href="../FCTRL/index.html">&nbsp;<b>Factorial</b></a></td>
+<td><a href="https://spoj.sphere.pl/submit/FCTRL" title="Submit a solution to this problem.">
+FCTRL</a></td>
+<td><a href="https://spoj.sphere.pl/ranks/FCTRL" title="Value 0.1 points. See the best solutions.">768</a></td>
+<td><a href="https://spoj.sphere.pl/status/FCTRL" title="See all submitted solutions to this problem.">57.40</a></td>
+</tr>
+<tr class="problemrow">
+<td>51</td>
+<td align="left">&nbsp;
+<a href="../TOUR/index.html">&nbsp;<b>Fake tournament</b></a></td>
+<td><a href="https://spoj.sphere.pl/submit/TOUR" title="Submit a solution to this problem.">
+TOUR</a></td>
+<td><a href="https://spoj.sphere.pl/ranks/TOUR" title="Value 1.14 points. See the best solutions.">29</a></td>
+<td><a href="https://spoj.sphere.pl/status/TOUR" title="See all submitted solutions to this problem.">23.47</a></td>
+</tr>
+<tr class="problemrow">
+<td>115</td>
+<td align="left">&nbsp;
+<a href="../FAMILY/index.html">&nbsp;<b>Family</b></a></td>
+<td><a href="https://spoj.sphere.pl/submit/FAMILY" title="Submit a solution to this problem.">
+FAMILY</a></td>
+<td><a href="https://spoj.sphere.pl/ranks/FAMILY" title="Value 1.6 points. See the best solutions.">9</a></td>
+<td><a href="https://spoj.sphere.pl/status/FAMILY" title="See all submitted solutions to this problem.">11.18</a></td>
+</tr>
+<tr class="problemrow">
+<td>366</td>
+<td align="left">&nbsp;
+<a href="../FARMER/index.html">&nbsp;<b>Farmer</b></a></td>
+<td><a href="https://spoj.sphere.pl/submit/FARMER" title="Submit a solution to this problem.">
+FARMER</a></td>
+<td><a href="https://spoj.sphere.pl/ranks/FARMER" title="Value 1.05 points. See the best solutions.">35</a></td>
+<td><a href="https://spoj.sphere.pl/status/FARMER" title="See all submitted solutions to this problem.">28.91</a></td>
+</tr>
+<tr class="problemrow">
+<td>31</td>
+<td align="left">&nbsp;
+<a href="../MUL/index.html">&nbsp;<b>Fast Multiplication</b></a></td>
+<td><a href="https://spoj.sphere.pl/submit/MUL" title="Submit a solution to this problem.">
+MUL</a></td>
+<td><a href="https://spoj.sphere.pl/ranks/MUL" title="Value 0.88 points. See the best solutions.">50</a></td>
+<td><a href="https://spoj.sphere.pl/status/MUL" title="See all submitted solutions to this problem.">18.47</a></td>
+</tr>
+<tr class="problemrow">
+<td>146</td>
+<td align="left">&nbsp;
+<a href="../MULTIPLY/index.html">&nbsp;<b>Fast Multiplication Again</b></a></td>
+<td><a href="https://spoj.sphere.pl/submit/MULTIPLY" title="Submit a solution to this problem.">
+MULTIPLY</a></td>
+<td><a href="https://spoj.sphere.pl/ranks/MULTIPLY" title="Value 1.48 points. See the best solutions.">13</a></td>
+<td><a href="https://spoj.sphere.pl/status/MULTIPLY" title="See all submitted solutions to this problem.">61.54</a></td>
+</tr>
+<tr class="problemrow">
+<td>149</td>
+<td align="left">&nbsp;
+<a href="../FSHEEP/index.html">&nbsp;<b>Fencing in the Sheep</b></a></td>
+<td><a href="https://spoj.sphere.pl/submit/FSHEEP" title="Submit a solution to this problem.">
+FSHEEP</a></td>
+<td><a href="https://spoj.sphere.pl/ranks/FSHEEP" title="Value 1.48 points. See the best solutions.">13</a></td>
+<td><a href="https://spoj.sphere.pl/status/FSHEEP" title="See all submitted solutions to this problem.">11.22</a></td>
+</tr>
+<tr class="problemrow">
+<td>110</td>
+<td align="left">&nbsp;
+<a href="../CISTFILL/index.html">&nbsp;<b>Fill the Cisterns</b></a></td>
+<td><a href="https://spoj.sphere.pl/submit/CISTFILL" title="Submit a solution to this problem.">
+CISTFILL</a></td>
+<td><a href="https://spoj.sphere.pl/ranks/CISTFILL" title="Value 0.73 points. See the best solutions.">69</a></td>
+<td><a href="https://spoj.sphere.pl/status/CISTFILL" title="See all submitted solutions to this problem.">50.94</a></td>
+</tr>
+<tr class="problemrow">
+<td>101</td>
+<td align="left">&nbsp;
+<a href="../FISHER/index.html">&nbsp;<b>Fishmonger</b></a></td>
+<td><a href="https://spoj.sphere.pl/submit/FISHER" title="Submit a solution to this problem.">
+FISHER</a></td>
+<td><a href="https://spoj.sphere.pl/ranks/FISHER" title="Value 0.71 points. See the best solutions.">71</a></td>
+<td><a href="https://spoj.sphere.pl/status/FISHER" title="See all submitted solutions to this problem.">48.73</a></td>
+</tr>
+</table>
+
+<form name="fch" class="form" style="margin-top:12px; margin-bottom:8px" action="#" method="post">
+<table width="100%">
+<tr>
+    <td align=left>
+	<b>Document type:</b>
+	<input type="radio" name="pspdf" value="/" onClick="appendLink(this.value)"  checked >html
+	<input type="radio" name="pspdf" value=".ps" onClick="appendLink(this.value)"  >ps
+	<input type="radio" name="pspdf" value=".pdf" onClick="appendLink(this.value)"  >pdf
+	<noscript><input class="button" value="change" type="submit"></noscript>
+    </td>
+    <td align="right">
+	<b><a href="../classical.html" id="booklet">booklet</a></b>
+    </td>
+</tr>
+</table>
+</form>
+
+ <script language="javascript" type="text/javascript">
+<!--  
+function appendLink(target)
+{
+    for(a = 0; a < document.links.length; a++)
+	if (document.links[a].href.match(/^.*\/problems(\/[A-Z0-9_]+\/?)(\.[a-z]+)?$/) || document.links[a].id=='booklet')
+	{
+	    document.links[a].href = document.links[a].href.replace(/\.[a-z]+$/, "").replace(/\/$/, "")+target;
+	    if (target.match(/^\/$/) && document.links[a].id=='booklet')
+		document.links[a].style.visibility = 'hidden';
+	    else document.links[a].style.visibility = 'visible';
+	}
+    document.cookie='pspdf='+target+'; path=/;';
+}
+
+appendLink('https://spoj.sphere.pl/');
+
+//--></script> </td>
+</tr>
+
+<tr>
+<td colspan="2" class="footer">
+
+<script language="javascript" type="text/javascript">
+<!--
+function swapSheet(sheet, caller) {
+    document.getElementById('theme').href=sheet;
+    document.cookie="css_0="+sheet+"; path=/;";
+    caller.href="#bottom";
+}
+
+function setWidth(w, caller) {
+    document.getElementById('maintable').style.width=w;
+    document.cookie="res="+w+"; path=/;";
+    caller.href="#bottom";
+}
+//-->
+
+</script>
+        <table width="100%">
+    <tr>
+	<td align="left">
+            <a href="http://www.pg.gda.pl/eng.html"><IMG src="https://spoj.sphere.pl/gfx/logo-pg" alt="www.pg.gda.pl" border=0 height=36 width=44></a>&nbsp;
+            <a href="http://www.eti.pg.gda.pl/"><IMG src="https://spoj.sphere.pl/gfx/logo-eti" alt="www.eti.pg.gda.pl" border=0 height=36 width=44></a>
+	</td>
+	<td align="center">
+	    page size:
+	    <a href="https://spoj.sphere.pl/?res=755"  onClick="setWidth('755', this)">800x600</a>
+	    <a href="https://spoj.sphere.pl/?res=980"  onClick="setWidth('980', this)">1024x768</a>
+	    <a href="https://spoj.sphere.pl/?res=100%" onClick="setWidth('100%', this)">Full</a>
+	    &nbsp;&nbsp;
+	    theme:
+	    <a href="../../indexb6a4.html?css=/themes/skin1.css" onClick="swapSheet('../../themes/skin1.css', this)">olive</a>
+	    <a href="../../index3840.html?css=/themes/skin2.css" onClick="swapSheet('../../themes/skin2.css', this)">banana</a>
+	    <a href="../../index80f0.html?css=/themes/skin3.css" onClick="swapSheet('../../themes/skin3.css', this)">plum</a>
+	    <br>
+	    <a href="http://sphere.pl/?id=66">spoj team at sphere</a> &copy; 2004-05 all rights reserved
+	</td>
+	<td align="right">
+            <a href="http://task.gda.pl/english/"><IMG src="https://spoj.sphere.pl/gfx/logo-task" alt="task.gda.pl" border=0 height=36 width=44></a>&nbsp;
+            <a href="http://sphere.pl/"><IMG src="https://spoj.sphere.pl/gfx/logo-sphere" alt="sphere.pl" border=0 height=32></a>
+	</td>
+    </tr>
+    </table>
+    </tr></table>
+</center>
+</body>
+
+<!-- Mirrored from spoj.sphere.pl/problems/classical/sort=2,start=50 by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 10 Jan 2006 04:56:38 GMT -->
+</html>

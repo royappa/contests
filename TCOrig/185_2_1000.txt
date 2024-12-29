@@ -1,0 +1,112 @@
+		
+int steps(int k, int x, int y) 
+{
+	if (k == 1)
+	{
+		if (x == 1 && y == 1) return 0;
+		if (x == 1 && y == 2) return 1;
+		if (x == 2 && y == 2) return 2;
+		return 3;
+	}
+	
+	int h = 1<<(k-1);
+	int xo = x <= h ? 1 : h+1;
+	int yo = y <= h ? 1 : h+1;
+	int qsteps = (1<<(2*(k-1)))-1; // 4^(k-1)-1  = #steps through one quadrant
+	if (xo == 1 && yo == 1)
+	{
+		// reflect y
+		return steps(k-1, y, x);
+		
+	}
+	else if (xo == 1 && yo == h+1)
+	{
+		// 4^k = (2^2)^k = 2^(2k)
+		return qsteps+1+steps(k-1, x, y-h);
+	}
+	else if (xo == h+1 && yo == h+1)
+	{
+		return 2*qsteps+2+steps(k-1, x-h, y-h);
+	}
+	else
+	{
+		return 3*qsteps+3+steps(k-1, h-y+1, 2*h-x+1);
+	}
+}
+
+Problem Statement
+    
+[Note to plug-in users: This problem statement contains images and superscripts. If you do not see the images, or if 2k is displayed the same as 2k, then please view the problem in the applet.]
+A Hilbert curve is a path that traces through all the points in a two-dimensional square grid in such a way that each step in the path moves between neighbors in the grid. Hilbert curves are sometimes used in image processing because they exhibit greater locality than other common methods of linearizing a two-dimensional image, such as row-by-row (even than the boustrophedonic variations of row-by-row that alternate between left-to-right and right-to-left).
+A rank-k Hilbert curve is a path through a 2k-by-2k grid. A rank-1 Hilbert curve is a simple U-shape through a 2-by-2 grid, as shown below.     The blue point indicates the first point in the path and the red point indicates the last point in the path. For k > 1, a rank-k Hilbert curve is composed of four rank-(k-1) Hilbert curves, shown below as dotted lines.     Notice how the curve is organized in quadrants, first the upper left, then the lower left, then the lower right, and finally the upper right. (The cross in the background is not part of the curve; it merely highlights the quadrants.) Notice also how some of the rank-(k-1) curves are flipped and rotated compared to the orientation of the rank-k curve. The blue and red points indicate where each rank-(k-1) curve begins and ends, respectively. The overall rank-k curve begins at the first point of the upper left rank-(k-1) curve and ends at the last point of the upper right rank-(k-1) curve. Here is a complete picture of a rank-3 Hilbert curve.   
+You will be given a value k and coordinates x and y in a 2k-by-2k grid. Coordinates range from 1 to 2k inclusive, with the upper left corner at coordinates (1,1). Assuming the points are traversed in the order specified by a rank-k Hilbert curve, determine how many steps it takes to reach the point at coordinates (x,y). For example, it takes 0 steps to reach the upper left corner at coordinates (1,1) and 4k-1 steps to reach the upper right corner at coordinates (2k,1).
+Definition
+    
+Class:
+Hilbert
+Method:
+steps
+Parameters:
+int, int, int
+Returns:
+int
+Method signature:
+int steps(int k, int x, int y)
+(be sure your method is public)
+    
+
+Constraints
+-
+k is between 1 and 15, inclusive.
+-
+x and y are between 1 and 2k, inclusive.
+Examples
+0)
+
+    
+3
+2
+3
+Returns: 13
+The target is the colored point in the image below. It takes 13 steps to reach from the start point along the path highlighted in blue.   
+1)
+
+    
+5
+1
+1
+Returns: 0
+The upper left corner.
+2)
+
+    
+15
+32768
+1
+Returns: 1073741823
+The upper right corner.
+3)
+
+    
+1
+2
+2
+Returns: 2
+
+4)
+
+    
+10
+546
+109
+Returns: 955129
+
+5)
+
+    
+15
+30000
+30000
+Returns: 706873514
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

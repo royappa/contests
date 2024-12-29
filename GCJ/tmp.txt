@@ -1,0 +1,45 @@
+		memset(color, 0, sizeof(color));
+		int cur = 1;
+		vector<vector<int>> subgraphs;
+		for (int i = 0; i < N; i++)
+		{
+			if (color[i] != 0) continue;
+			color[i] = cur;
+			dfs(i, cur);
+			vector<int> g;
+			for (int j = 0; j < N; j++)
+			{
+				if (color[j] == cur)
+				{
+					g.push_back(j);
+				}
+			}
+			subgraphs.push_back(g);
+			cur++;
+		}
+	for (int i = 0; i < N; i++)
+		cout << color[i] << " "; cout << endl;
+
+		for (int i = 0; i < subgraphs.size(); i++)
+		{
+			cout << "subgraph #" << i << endl;
+			for (int j = 0; j < subgraphs[i].size(); j++)
+			{
+				cout << subgraphs[i][j] << " ";
+			}
+			cout << endl;
+		}
+		
+		int color[10];
+		
+		void dfs(int r, int cur)
+		{
+			for (int i = 0; i < N; i++)
+			{
+				if (color[i] == 0)
+				{
+					color[i] = cur;
+					dfs(i, cur);
+				}
+			}
+		}

@@ -1,0 +1,141 @@
+	public int numSteps(String[] maze)
+	{
+		int nr = maze.length, nc = maze[0].length();
+		char[][] arr = new char[nr+2][];
+		boolean[][] visited = new boolean[nr+2][];
+		for (int i = 0; i < nr+2; i++)
+		{
+			arr[i] = new char[nc+2];
+			visited[i] = new boolean[nc+2];
+			Arrays.fill(arr[i], 'X');
+			Arrays.fill(boolean[i], false);
+			maze[i].getChars(0, nc, arr[i], 1);
+		}
+		int curR = 0, curC = 0;
+		for (int r = 1; r <= nr; r++) 
+			for (int c = 1; c <= nr; c++)
+				if (arr[r][c] == 'Y')
+				{
+					curR = r;
+					curC = c;
+					break;
+				}
+		//
+		int steps = 0;
+		int dirh = 1, dirv = 0;
+		visited[curR][curC] = true;
+		while (arr[curR][curC] != 'D')
+		{
+			if (arr[curR+dirv][curC+dirh] == ' ')
+			{
+				curR = curR+dirv;
+				curC = curC+dirh;
+				if (visited[curR][curC]) { steps = -1; break; }
+				visited[curR][curC] = true;
+				steps++;
+			}
+			else 
+			{
+				if 	(dirh==1 && dirv==0)  { dirh = 1; dirv = 1; }
+				else if (dirh==1 && dirv==1)  { dirh = 0; dirv = 1; }
+				else if (dirh==0 && dirv==1)  { dirh = -1; dirv = 1; }
+				else if (dirh==-1 && dirv==1) { dirh = -1; dirv = 0; }
+				else if (dirh==-1 && dirv==0) { dirh = -1; dirv = -1; }
+				else if (dirh==-1 && dirv==-1){ dirh = 0; dirv = -1; }
+				else if (dirh==0 && dirv==-1) { dirh = 1; dirv = -1; }
+				else if (dirh==1 && dirv==-1) { dirh = 1; dirv = 0; }
+			}
+		}
+		return steps;
+	}
+
+Problem Statement
+    
+You will be given a String[] maze containing blank spots ('.' characters), walls ('X' characters), your character (a single 'Y' character), and the destination (a single 'D' character). You have implemented the following naive maze traversal strategy:
+1) Initially, set the current direction to Right.
+2) If you are on the destination spot, exit this process.
+3a) If taking 1 step in the current direction will lead to a blank spot or the destination take the step.
+3b) If taking 1 step in the current direction will lead to a wall or will leave the bounds of the maze, change the current direction by turning 45 degrees clockwise. For example, if the current direction is set to Right then turning 45 degrees clockwise will set the current direction to Down-Right.
+4) Go to step 2.
+Character 0 is the leftmost spot in any element of maze. Furthermore, element 0 is the highest element of maze. Return the number of steps required to reach the destination, or -1 if this will never occur. A step is counted when you physically change spots but not when you simply change direction.
+Definition
+    
+Class:
+BadMazeStrategy
+Method:
+numSteps
+Parameters:
+String[]
+Returns:
+int
+Method signature:
+int numSteps(String[] maze)
+(be sure your method is public)
+    
+
+Notes
+-
+If your character is at (element E, character C) of maze, and the current direction is Down-Right, then taking one step would leave you at (element E+1, character C+1) of maze. The other diagonal directions are treated analogously.
+-
+The following sequence of directions are formed by consecutively turning 45 degrees clockwise: Right, Down-Right, Down, Down-Left, Left, Up-Left, Up, Up-Right, Right.
+Constraints
+-
+maze will contain between 1 and 50 elements inclusive.
+-
+Each element of maze will contain between 1 and 50 characters inclusive.
+-
+Each element of maze will contain the same number of characters.
+-
+Each character in maze will be (quotes for clarity) '.', 'X', 'Y', or 'D'.
+-
+maze will contain exactly one 'Y' and one 'D'.
+Examples
+0)
+
+    
+{"XXXXXXX"
+,"X.....X"
+,"X.....X"
+,"XY...DX"
+,"X.....X"
+,"XXXXXXX"}
+Returns: 4
+After taking 4 steps to the right, we reach the destination.
+1)
+
+    
+{"XXXXXXX"
+,"XY....X"
+,"X.....X"
+,"X.....X"
+,"X....DX"
+,"XXXXXXX"}
+Returns: 7
+After taking 4 steps to the right, continuing would lead into a wall. After changing direction to Down-Right we are still facing a wall, so we change directions again. Now facing downward we take 3 more steps and reach the destination.
+2)
+
+    
+{"XXXXXXX"
+,"XY....X"
+,"X.....X"
+,"X..D..X"
+,"X.....X"
+,"XXXXXXX"}
+Returns: -1
+We keep running around the perimeter while the destination lies in the center.
+3)
+
+    
+{"DY............."}
+Returns: 27
+Don't run off the maze.
+4)
+
+    
+{"Y..X.............."
+,"XXX.XXXXXXXXXXXX.X"
+,".X.X.XX.......D..."
+,".XX.XXX..........."}
+Returns: 39
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

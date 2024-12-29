@@ -1,0 +1,80 @@
+S = sum(x, x+d`x, x+2*d, ..., x+(k-1)*d)
+= k*x+(0+1+...(k-1))*d
+= k*x+d*k*(k-1)/2
+
+S = kx+d*(mod k2)
+
+S-kx = 0 (mod k2)
+S = kx (mod k2)
+int howMany(int left, int right, int k) 
+{
+	
+}
+
+Problem Statement
+    
+A magic arithmetic progression with k elements is a sequence of the form x, x+d, x+2*d, ..., x+(k-1)*d for some positive integers x and d. How many integers between left and right, inclusive, can be represented as the sum of some magic arithmetic progression with exactly k elements?
+Definition
+    
+Class:
+SummingArithmeticProgressions
+Method:
+howMany
+Parameters:
+int, int, int
+Returns:
+int
+Method signature:
+int howMany(int left, int right, int k)
+(be sure your method is public)
+    
+
+Constraints
+-
+left will be between 1 and 1000000000, inclusive.
+-
+right will be between left and 1000000000, inclusive.
+-
+k will be between 2 and 5, inclusive.
+Examples
+0)
+
+    
+1
+12
+3
+Returns: 3
+The representable numbers are: 6=1+2+3, 9=2+3+4=1+3+5, 12=3+4+5=2+4+6=1+4+7. Note that there can be several possible representations for a number.
+1)
+
+    
+1
+10
+2
+Returns: 8
+Every number except 1 and 2 is representable: 3=1+2, 4=1+3, 5=1+4, etc.
+2)
+
+    
+20
+30
+4
+Returns: 6
+The representable numbers are 20, 22, 24, 26, 28 and 30.
+3)
+
+    
+1
+9
+4
+Returns: 0
+The minimal possible sum is 1+2+3+4=10.
+4)
+
+    
+1
+13
+4
+Returns: 1
+And the next possible sum is 2+3+4+5=14.
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

@@ -1,0 +1,258 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<!-- Mirrored from spoj.sphere.pl/problems/JRIDE/ by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 10 Jan 2006 04:53:52 GMT -->
+<head>
+<title>Sphere Online Judge (SPOJ)  - Problem JRIDE</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-2">
+<META NAME="Keywords" CONTENT="spoj, online, judge, problem, set, problemset, archive, ACM, Polish, Poland, contest, contester, task, tasks, ADA, Java, Pascal, C, C++, Whitespace, sphere, interest, group, python, ruby, icon, o'caml, caml, ocaml, perl, haskell, bf, brain, clips, prolog, fortran, asm, assembler, asembler, functional, esoteric, programming, languages">
+
+<link href="https://spoj.sphere.pl/gfx/favicon" rel="shortcut icon" type="image/x-icon">
+
+<link href="../../themes/skin3.css" rel="stylesheet" type="text/css" id="theme">
+<style type="text/css">
+<!--
+.maintable {width: 755;} 
+-->
+</style>
+<script type="text/javascript" language="javascript">
+<!--
+function UnCryptMailto(s) {
+	var n=0;
+	var r="";
+	for(var i=0;i<s.length;i++) {		
+		n=s.charCodeAt(i); 
+		if (n>=8364) {n = 128;}
+		r += String.fromCharCode(n+(2));	
+	}
+	return r;
+}
+function linkTo_UnCryptMailto(s)	{
+	location.href=UnCryptMailto(s);
+}
+// -->
+</script>
+
+</head>
+<body>
+<center>
+<table cellpadding="10" cellspacing="0" class="maintable" id="maintable">
+<tr>
+    <td colspan="2" class="header">
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+        <tr>
+		<td class="headerleft"/>
+		<td class="headercenter"><h1>Sphere Online Judge</h1></td>
+		<td class="headerright"/>
+	</tr>
+	</table>
+    </td>
+</tr>
+<tr><td class="menu" width="92" valign="top">
+<form name="login"  action="http://spoj.sphere.pl/problems/JRIDE/" method="post" 
+	onsubmit="if(document.login.ssl.checked) document.login.action='https://spoj.sphere.pl/problems/JRIDE/'" style="margin-bottom: 18px"> 
+User: <input name="login_user" type="text" style="width: 85px;" class="form"><BR>
+Password: <input name="password" type="password" style="width: 85px;" class="form"><BR>
+<script language="javascript" type="text/javascript">
+<!--
+document.write('<input type="checkbox" name="ssl" id="ssl" checked>secure<br>');
+//-->
+</script>
+<input name="submit" type="submit" value="Log In" class="button" style="width: 85px;">
+</form><div class="menucmd"><a href="https://spoj.sphere.pl/register">register</a><br><br><a href="https://spoj.sphere.pl/status">status</a><br><a href="https://spoj.sphere.pl/submit">submit</a><br><a href="../classical/sort=0,start=200.html">problems</a><br><br><a href="https://spoj.sphere.pl/">news</a><br><a href="https://spoj.sphere.pl/contests">contests</a><br><a href="https://spoj.sphere.pl/info">info</a><br><a href="https://spoj.sphere.pl/ranks/">ranks</a><br><br><a href="https://spoj.sphere.pl/forum">forum</a><br><a href="https://spoj.sphere.pl/help">help</a><br><a href="https://spoj.sphere.pl/links">links</a><br><hr></div>Server time:<br>2006-01-10<br>05:48:41<a href="../classical/sort=0,start=200.html"></a><br><br>
+<form method="get" action="https://spoj.sphere.pl/search/" class="form" style="width:90px">
+<input type="text" name="query" style="width:85px" maxlength=255 value="" class="form"><br>
+<input type="submit" value="Search" style="width:85px" class="form" title="Search site"><br>
+&nbsp;<a href="https://spoj.sphere.pl/search/problems=on,users=on,contests=on" title="More search options"><small>advanced...</small></a>
+</form></td><td class="content" width="99%"><table class="problems" width="100%">
+<tr class="navigation">
+<td><a href="https://spoj.sphere.pl/submit/JRIDE/">Submit</a></td>
+<td><a href="https://spoj.sphere.pl/status/JRIDE/">All submissions</a></td>
+<td><a href="https://spoj.sphere.pl/ranks/JRIDE/">Best solutions</a></td>
+<td><a href="https://spoj.sphere.pl/problems/JRIDE.ps">PS</a></td>
+<td><a href="https://spoj.sphere.pl/problems/JRIDE.pdf">PDF</a></td>
+<td><a href="../classical/sort=0,start=200.html">Back to list</a></td>
+</tr>
+</table>
+
+<div class="prob">
+
+<h2>SPOJ Problem Set </h2>
+<h1>408. Jill Rides Again</h1>
+<h2>Problem code: JRIDE</h2>
+<p align="justify">
+<p>Jill likes to ride her bicycle, but since the pretty city of Greenhills
+where she lives has grown, Jill often uses the
+excellent public bus system for part of her journey. She has a folding
+bicycle
+which she carries with her when she
+uses the bus for the first part of her trip. When the bus reaches some
+pleasant part of the city, Jill gets off and rides
+her bicycle. She follows the bus route until she reaches her
+destination or
+she comes to a part of the city she does
+not like. In the latter event she will board the bus to finish her
+trip.
+</p>
+<p><br>
+Through years of experience, Jill has rated each road on an integer
+scale
+of niceness. Positive niceness values
+indicate roads Jill likes; negative values are used for roads she does
+not
+like. There are not zero values. Jill plans where to leave the bus and
+start bicycling, as well as where to stop bicycling and re-join the
+bus,
+so that the sum of niceness values of the roads
+she bicycles on is maximized. This means that she will sometimes cycle
+along
+a road she does not like, provided
+that it joins up two other parts of her journey involving roads she
+likes
+enough to compensate. It may be that no
+part of the route is suitable for cycling so that Jill takes the bus
+for its
+entire route. Conversely, it may be that the
+whole route is so nice Jill will not use the bus at all.
+</p>
+<p><br>
+Since there are many different bus routes, each with several stops at
+which
+Jill could leave or enter the bus, she feels
+that a computer program could help her identify the best part to cycle
+for
+each bus route.
+</p>
+<h3>Input</h3>
+<p>The input file contains information on several bus routes. The first
+line of
+the file is a single integer <i>b</i> representing
+the number of route descriptions in the file. The identifier for each
+route (<i>r</i>) is the sequence number within the data
+file, 1 &#8804; r &#8804; b.
+Each route description begins with the number of stops on
+the route: an integer <i>s</i>, 2 &#8804; s &#8804; 100000 on
+a line by itself. The number of stops is followed by <i>s</i> - 1
+lines, each
+line <i>i</i> (1 &#8804; i < s)
+is an integer <i>n</i><sub><i>i</i></sub> with absolute value &#8804; 1000
+representing
+Jill's assessment of the niceness of the road between the two stops <i>i</i>
+and <i>i</i>+1.</p>
+<h3>Output</h3>
+<p>For each route in the input file, your program should
+identify the beginning
+bus stop <i>i</i> and the ending bus stop <i>j</i>
+that identify the segment of the route which yields the maximal sum of
+niceness, m= n<sub>i</sub>+n<sub>i+1</sub>+...+n<sub>j-1</sub>.
+If more
+than one segment is maximally nice, choose the one with the longest
+cycle
+ride (largest <i>j</i>-<i>i</i>). To break ties in longest
+maximal segments, choose the segment that begins with the earliest stop
+(lowest <i>i</i>). For each route <i>r</i> in the input
+file, print a line in the form:
+
+<p><br>
+<tt>The nicest part of route </tt><i>r</i><tt> is between stops </tt><i>i</i><tt>
+and </tt><i>j</i>
+</p>
+<p><br>
+However, if the maximal sum is not positive, your program should print:
+</p>
+<p><br>
+<tt>Route </tt><i>r</i><tt> has no nice parts</tt>
+</p>
+<h3>Example</h3>
+
+<pre>
+<b>Input:</b>
+
+3
+3
+-1
+6
+10
+4
+-5
+4
+-3
+4
+4
+-4
+4
+-5
+4
+-2
+-3
+-4
+
+<b>Output:</b>
+
+The nicest part of route 1 is between stops 2 and 3
+The nicest part of route 2 is between stops 3 and 9
+Route 3 has no nice parts
+</pre>
+
+
+<hr>
+<table border=0 cellspacing=0 cellpadding=0 align=left>
+<tr><td width=130>Added by:</td><td><a href="https://spoj.sphere.pl/search/'Adrian%20Kuegel'">Adrian Kuegel</a></td></tr>
+<tr><td>Date:</td><td>2005-07-27</td></tr>
+<tr><td>Time limit:</td><td>4s
+</td></tr>
+<tr><td>Source limit:</td><td>50000B</td></tr>
+<tr><td>Resource:</td><td>ACM ICPC World Finals 1997</td></tr></table>
+</div></td>
+</tr>
+
+<tr>
+<td colspan="2" class="footer">
+
+<script language="javascript" type="text/javascript">
+<!--
+function swapSheet(sheet, caller) {
+    document.getElementById('theme').href=sheet;
+    document.cookie="css_0="+sheet+"; path=/;";
+    caller.href="#bottom";
+}
+
+function setWidth(w, caller) {
+    document.getElementById('maintable').style.width=w;
+    document.cookie="res="+w+"; path=/;";
+    caller.href="#bottom";
+}
+//-->
+
+</script>
+        <table width="100%">
+    <tr>
+	<td align="left">
+            <a href="http://www.pg.gda.pl/eng.html"><IMG src="https://spoj.sphere.pl/gfx/logo-pg" alt="www.pg.gda.pl" border=0 height=36 width=44></a>&nbsp;
+            <a href="http://www.eti.pg.gda.pl/"><IMG src="https://spoj.sphere.pl/gfx/logo-eti" alt="www.eti.pg.gda.pl" border=0 height=36 width=44></a>
+	</td>
+	<td align="center">
+	    page size:
+	    <a href="https://spoj.sphere.pl/?res=755"  onClick="setWidth('755', this)">800x600</a>
+	    <a href="https://spoj.sphere.pl/?res=980"  onClick="setWidth('980', this)">1024x768</a>
+	    <a href="https://spoj.sphere.pl/?res=100%" onClick="setWidth('100%', this)">Full</a>
+	    &nbsp;&nbsp;
+	    theme:
+	    <a href="../../indexb6a4.html?css=/themes/skin1.css" onClick="swapSheet('../../themes/skin1.css', this)">olive</a>
+	    <a href="../../index3840.html?css=/themes/skin2.css" onClick="swapSheet('../../themes/skin2.css', this)">banana</a>
+	    <a href="../../index80f0.html?css=/themes/skin3.css" onClick="swapSheet('../../themes/skin3.css', this)">plum</a>
+	    <br>
+	    <a href="http://sphere.pl/?id=66">spoj team at sphere</a> &copy; 2004-05 all rights reserved
+	</td>
+	<td align="right">
+            <a href="http://task.gda.pl/english/"><IMG src="https://spoj.sphere.pl/gfx/logo-task" alt="task.gda.pl" border=0 height=36 width=44></a>&nbsp;
+            <a href="http://sphere.pl/"><IMG src="https://spoj.sphere.pl/gfx/logo-sphere" alt="sphere.pl" border=0 height=32></a>
+	</td>
+    </tr>
+    </table>
+    </tr></table>
+</center>
+</body>
+
+<!-- Mirrored from spoj.sphere.pl/problems/JRIDE/ by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 10 Jan 2006 04:53:52 GMT -->
+</html>

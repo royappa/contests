@@ -1,0 +1,91 @@
+
+vector <int> closestValue(int low, int high, vector <int> values) 
+{
+	vector<int> r;
+	for (int i = 0; i < values.size(); i++)
+	{
+		r.push_back(minBitDiff(low, high, values[i]);
+	}
+	return r;
+}
+
+Problem Statement
+    
+Given a vector <int> values, return a vector <int> of the same size where the k-th element is an integer X such that low <= X <= high and the bit difference between X and values[k] is minimal. If there are multiple such vector <int>s, return the one that comes first lexicographically. A vector <int> a1 comes before a vector <int> a2 lexicographically if a1 has a lower value at the first position where they differ.
+ 
+To calculate the bit difference between two integers, first convert them to their binary representations. If their binary representations have different lengths, pad the shorter one with 0's on the left until they both have the same length. The bit difference is the number of positions where the two binary representations differ.
+
+Definition
+    
+Class:
+RangeFixer
+Method:
+closestValue
+Parameters:
+int, int, vector <int>
+Returns:
+vector <int>
+Method signature:
+vector <int> closestValue(int low, int high, vector <int> values)
+(be sure your method is public)
+    
+
+Constraints
+-
+low will be between 0 and 2^30 - 1, inclusive.
+-
+high will be between low and 2^30 - 1, inclusive.
+-
+values will contain between 1 and 50 elements, inclusive. 
+-
+Each element of values will be between 0 and 2^30 - 1, inclusive.
+Examples
+0)
+
+    
+101
+105
+{71}
+Returns: {103 }
+
+1)
+
+    
+98
+304
+{12, 65, 302, 1, 1000000}
+Returns: {140, 193, 302, 129, 192 }
+
+2)
+
+    
+16
+16
+{1000000}
+Returns: {16 }
+There is only one value in the interval, so there is only one possible answer.
+3)
+
+    
+83
+92
+{48}
+Returns: {84 }
+The bit difference between 48 and 84 is 3 and the bit difference between 48 and 88 is 3 too, so we return the lowest one.
+4)
+
+    
+1
+4
+{5, 6, 7}
+Returns: {1, 2, 3 }
+
+5)
+
+    
+10000000
+20000000
+{50382, 1234, 58126, 13952, 1475, 24, 1560}
+Returns: {16827598, 16778450, 16835342, 16791168, 16778691, 16777240, 16778776 }
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

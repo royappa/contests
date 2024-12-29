@@ -1,0 +1,242 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<!-- Mirrored from spoj.sphere.pl/problems/CMPLS/ by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 10 Jan 2006 04:48:44 GMT -->
+<head>
+<title>Sphere Online Judge (SPOJ)  - Problem CMPLS</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-2">
+<META NAME="Keywords" CONTENT="spoj, online, judge, problem, set, problemset, archive, ACM, Polish, Poland, contest, contester, task, tasks, ADA, Java, Pascal, C, C++, Whitespace, sphere, interest, group, python, ruby, icon, o'caml, caml, ocaml, perl, haskell, bf, brain, clips, prolog, fortran, asm, assembler, asembler, functional, esoteric, programming, languages">
+
+<link href="https://spoj.sphere.pl/gfx/favicon" rel="shortcut icon" type="image/x-icon">
+
+<link href="../../themes/skin3.css" rel="stylesheet" type="text/css" id="theme">
+<style type="text/css">
+<!--
+.maintable {width: 755;} 
+-->
+</style>
+<script type="text/javascript" language="javascript">
+<!--
+function UnCryptMailto(s) {
+	var n=0;
+	var r="";
+	for(var i=0;i<s.length;i++) {		
+		n=s.charCodeAt(i); 
+		if (n>=8364) {n = 128;}
+		r += String.fromCharCode(n+(2));	
+	}
+	return r;
+}
+function linkTo_UnCryptMailto(s)	{
+	location.href=UnCryptMailto(s);
+}
+// -->
+</script>
+
+</head>
+<body>
+<center>
+<table cellpadding="10" cellspacing="0" class="maintable" id="maintable">
+<tr>
+    <td colspan="2" class="header">
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+        <tr>
+		<td class="headerleft"/>
+		<td class="headercenter"><h1>Sphere Online Judge</h1></td>
+		<td class="headerright"/>
+	</tr>
+	</table>
+    </td>
+</tr>
+<tr><td class="menu" width="92" valign="top">
+<form name="login"  action="http://spoj.sphere.pl/problems/CMPLS/" method="post" 
+	onsubmit="if(document.login.ssl.checked) document.login.action='https://spoj.sphere.pl/problems/CMPLS/'" style="margin-bottom: 18px"> 
+User: <input name="login_user" type="text" style="width: 85px;" class="form"><BR>
+Password: <input name="password" type="password" style="width: 85px;" class="form"><BR>
+<script language="javascript" type="text/javascript">
+<!--
+document.write('<input type="checkbox" name="ssl" id="ssl" checked>secure<br>');
+//-->
+</script>
+<input name="submit" type="submit" value="Log In" class="button" style="width: 85px;">
+</form><div class="menucmd"><a href="https://spoj.sphere.pl/register">register</a><br><br><a href="https://spoj.sphere.pl/status">status</a><br><a href="https://spoj.sphere.pl/submit">submit</a><br><a href="../classical/sort=0,start=250.html">problems</a><br><br><a href="https://spoj.sphere.pl/">news</a><br><a href="https://spoj.sphere.pl/contests">contests</a><br><a href="https://spoj.sphere.pl/info">info</a><br><a href="https://spoj.sphere.pl/ranks/">ranks</a><br><br><a href="https://spoj.sphere.pl/forum">forum</a><br><a href="https://spoj.sphere.pl/help">help</a><br><a href="https://spoj.sphere.pl/links">links</a><br><hr></div>Server time:<br>2006-01-10<br>05:47:13<a href="../classical/sort=0,start=250.html"></a><br><br>
+<form method="get" action="https://spoj.sphere.pl/search/" class="form" style="width:90px">
+<input type="text" name="query" style="width:85px" maxlength=255 value="" class="form"><br>
+<input type="submit" value="Search" style="width:85px" class="form" title="Search site"><br>
+&nbsp;<a href="https://spoj.sphere.pl/search/problems=on,users=on,contests=on" title="More search options"><small>advanced...</small></a>
+</form></td><td class="content" width="99%"><table class="problems" width="100%">
+<tr class="navigation">
+<td><a href="https://spoj.sphere.pl/submit/CMPLS/">Submit</a></td>
+<td><a href="https://spoj.sphere.pl/status/CMPLS/">All submissions</a></td>
+<td><a href="https://spoj.sphere.pl/ranks/CMPLS/">Best solutions</a></td>
+<td><a href="https://spoj.sphere.pl/problems/CMPLS.ps">PS</a></td>
+<td><a href="https://spoj.sphere.pl/problems/CMPLS.pdf">PDF</a></td>
+<td><a href="../classical/sort=0,start=250.html">Back to list</a></td>
+</tr>
+</table>
+
+<div class="prob">
+
+<h2>SPOJ Problem Set </h2>
+<h1>8. Complete the Sequence!</h1>
+<h2>Problem code: CMPLS</h2>
+<p align="justify">
+<P>
+
+You probably know those quizzes in Sunday magazines: given the sequence 1, 2,
+3, 4, 5, what is the next number? Sometimes it is very easy to answer,
+sometimes it could be pretty hard. Because these "sequence problems" are very
+popular, ACM wants to implement them into the "Free Time" section of their
+new WAP portal.
+
+<P>
+ACM programmers have noticed that some of the quizzes can be solved by
+describing the sequence by polynomials. For example, the sequence 1, 2, 3, 4, 5
+can be easily understood as a trivial polynomial. The next number is 6. But even
+more complex sequences, like 1, 2, 4, 7, 11, can be described by a polynomial.
+In this case, 
+1/2.<VAR>n</var><SUP>2</sup>-1/2.<VAR>n</var>+1 can be used. Note that even
+if the members of the sequence are integers, polynomial coefficients may be any
+real numbers.
+
+<P>
+Polynomial is an expression in the following form:
+<BR><P></p>
+<DIV ALIGN="CENTER">
+<VAR>P</var>(<VAR>n</var>) = <VAR>a</var><SUB><VAR>D</var></sub>.<VAR>n</var><SUP><VAR>D</var></sup>+<VAR>a</var><SUB><VAR>D</var>-1</sub>.<VAR>n</var><SUP><VAR>D</var>-1</sup>+...+<VAR>a</var><SUB>1</sub>.<VAR>n</var>+<VAR>a</var><SUB>0</sub>
+
+</div>
+<BR CLEAR="ALL">
+<p>
+If <VAR>a</var><SUB><VAR>D</var></sub> <> 0, the number <VAR>D</var> is called a <EM>degree</em> of the polynomial. Note
+that constant function <VAR>P</var>(<VAR>n</var>) = <VAR>C</var> can be considered as polynomial of degree 0, and
+the zero function <VAR>P</var>(<VAR>n</var>) = 0 is usually defined to have degree -1.
+</p>
+
+<P>
+<H3>Input</h3>
+
+<P>
+There is a single positive integer <VAR>T</var> on the first line of input (equal to about 5000). It stands
+for the number of test cases to follow. Each test case consists of two
+lines. First line of each test case contains two integer numbers <VAR>S</var> and
+<VAR>C</var> separated by a single space, 
+1 <= <VAR>S</var> < 100, 
+1 <= <VAR>C</var> < 100,
+
+(<VAR>S</var>+<VAR>C</var>) <= 100. The first number, <VAR>S</var>, stands for the length of the given
+sequence, the second number, <VAR>C</var> is the amount of numbers you are to find to
+complete the sequence.
+
+
+<P>
+The second line of each test case contains <VAR>S</var> integer numbers
+
+<VAR>X</var><SUB>1</sub>, <VAR>X</var><SUB>2</sub>, ... <VAR>X</var><SUB><VAR>S</var></sub> separated by a space. These numbers form the given
+sequence. The sequence can always be described by a polynomial <VAR>P</var>(<VAR>n</var>) 
+such that for every <VAR>i</var>, 
+
+<VAR>X</var><SUB><VAR>i</var></sub> = <VAR>P</var>(<VAR>i</var>). Among these polynomials, we can find the
+polynomial <VAR>P</var><SUB><VAR>min</var></sub> with the lowest possible degree. This polynomial should be
+used for completing the sequence.
+
+<P>
+<H3>Output</h3>
+
+<P>
+
+For every test case, your program must print a single line containing <VAR>C</var> 
+integer numbers, separated by a space. These numbers are the values
+completing the sequence according to the polynomial of the lowest possible
+degree. In other words, you are to print values
+
+<VAR>P</var><SUB><VAR>min</var></sub>(<VAR>S</var>+1), <VAR>P</var><SUB><VAR>min</var></sub>(<VAR>S</var>+2), .... <VAR>P</var><SUB><VAR>min</var></sub>(<VAR>S</var>+<VAR>C</var>).
+
+
+<P>
+It is guaranteed that the results 
+<VAR>P</var><SUB><VAR>min</var></sub>(<VAR>S</var>+<VAR>i</var>) will be non-negative and
+will fit into the standard <EM>integer</em> type.
+
+<h3>Example</h3>
+
+<p>Sample Input:</p><PRE><tt>4
+6 3
+1 2 3 4 5 6
+8 2
+1 2 4 7 11 16 22 29
+10 2
+1 1 1 1 1 1 1 1 1 2
+1 10
+3
+</tt>
+</pre>
+
+<p>Sample Output:</p><PRE><tt>7 8 9
+37 46
+11 56
+3 3 3 3 3 3 3 3 3 3</tt>
+</pre>
+<b>Warning: large Input/Output data, be careful with certain languages</b>
+
+<hr>
+<table border=0 cellspacing=0 cellpadding=0 align=left>
+<tr><td width=130>Added by:</td><td><a href="https://spoj.sphere.pl/search/'Adrian%20Kosowski'">Adrian Kosowski</a></td></tr>
+<tr><td>Date:</td><td>2004-05-08</td></tr>
+<tr><td>Time limit:</td><td>5s
+</td></tr>
+<tr><td>Source limit:</td><td>50000B</td></tr>
+<tr><td>Resource:</td><td>ACM Central European Programming Contest, Prague 2000</td></tr></table>
+</div></td>
+</tr>
+
+<tr>
+<td colspan="2" class="footer">
+
+<script language="javascript" type="text/javascript">
+<!--
+function swapSheet(sheet, caller) {
+    document.getElementById('theme').href=sheet;
+    document.cookie="css_0="+sheet+"; path=/;";
+    caller.href="#bottom";
+}
+
+function setWidth(w, caller) {
+    document.getElementById('maintable').style.width=w;
+    document.cookie="res="+w+"; path=/;";
+    caller.href="#bottom";
+}
+//-->
+
+</script>
+        <table width="100%">
+    <tr>
+	<td align="left">
+            <a href="http://www.pg.gda.pl/eng.html"><IMG src="https://spoj.sphere.pl/gfx/logo-pg" alt="www.pg.gda.pl" border=0 height=36 width=44></a>&nbsp;
+            <a href="http://www.eti.pg.gda.pl/"><IMG src="https://spoj.sphere.pl/gfx/logo-eti" alt="www.eti.pg.gda.pl" border=0 height=36 width=44></a>
+	</td>
+	<td align="center">
+	    page size:
+	    <a href="https://spoj.sphere.pl/?res=755"  onClick="setWidth('755', this)">800x600</a>
+	    <a href="https://spoj.sphere.pl/?res=980"  onClick="setWidth('980', this)">1024x768</a>
+	    <a href="https://spoj.sphere.pl/?res=100%" onClick="setWidth('100%', this)">Full</a>
+	    &nbsp;&nbsp;
+	    theme:
+	    <a href="../../indexb6a4.html?css=/themes/skin1.css" onClick="swapSheet('../../themes/skin1.css', this)">olive</a>
+	    <a href="../../index3840.html?css=/themes/skin2.css" onClick="swapSheet('../../themes/skin2.css', this)">banana</a>
+	    <a href="../../index80f0.html?css=/themes/skin3.css" onClick="swapSheet('../../themes/skin3.css', this)">plum</a>
+	    <br>
+	    <a href="http://sphere.pl/?id=66">spoj team at sphere</a> &copy; 2004-05 all rights reserved
+	</td>
+	<td align="right">
+            <a href="http://task.gda.pl/english/"><IMG src="https://spoj.sphere.pl/gfx/logo-task" alt="task.gda.pl" border=0 height=36 width=44></a>&nbsp;
+            <a href="http://sphere.pl/"><IMG src="https://spoj.sphere.pl/gfx/logo-sphere" alt="sphere.pl" border=0 height=32></a>
+	</td>
+    </tr>
+    </table>
+    </tr></table>
+</center>
+</body>
+
+<!-- Mirrored from spoj.sphere.pl/problems/CMPLS/ by HTTrack Website Copier/3.x [XR&CO'2005], Tue, 10 Jan 2006 04:48:44 GMT -->
+</html>

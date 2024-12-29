@@ -1,0 +1,156 @@
+int rowcount[9], colcount[9];
+
+int countRepaints(vector <string> A) 
+{
+	for (int i = 0; i < 9; i++)
+	{
+		int rc = 0, cc = 0;
+		for (int j = 0; j < 9; j++)
+		{
+			if (A[i][j] == '1')
+				rc++;
+			if (A[j][i] == '1')
+				cc++;
+		}
+		rowcount[i] = rc;
+		colcount[i] = cc;
+	}	
+	int best == 1<<30;
+	for (int m = 0; m < (1<<18); m++)
+	{
+		int c = 0, k = m;
+		while (k)
+		{
+			k &= k-1;
+			c++;
+		}
+		// c is the number of rows/cols we are going to paint
+		// 
+		if (possible(m))
+		{
+			best = min(best, c);
+		}
+	}
+	
+		for (int i = 0; i < 18; i++)
+		{
+			if (m & (1<<i))
+			{
+				if (i < 9) // row
+				{
+				}
+				else // col
+				{
+				}
+			}
+		}
+	}
+	
+	return best == 1<<30 ? -1 : best;
+	
+}
+
+Problem Statement
+    
+There is a matrix with 9 rows and 9 columns. Each cell of the matrix is either black or white. With a single repaint operation, you can repaint all the cells in a single row or column black if the row or column already contains at least 5 black cells. Your goal is to make all the cells in the matrix black using a minimal number of repaint operations.
+
+You will be given a vector <string> matrix, where the jth character of the ith element represents the cell at row i, column j. 
+
+Black cells will be written as '1' (one), and white cells will be written as '0' (zero). 
+
+Return the minimal number of repaint operations required to make all the cells black, or -1 if this is impossible.
+
+Definition
+    
+Class:
+MatrixPainting
+Method:
+countRepaints
+Parameters:
+vector <string>
+Returns:
+int
+Method signature:
+int countRepaints(vector <string> matrix)
+(be sure your method is public)
+    
+
+Constraints
+-
+matrix will contain exactly 9 elements.
+-
+Each element of matrix will contain exactly 9 characters.
+-
+Each element of matrix will consist of '0' and '1' characters only.
+Examples
+0)
+
+    
+{"001111111",
+ "011111111",
+ "011111111",
+ "011111111",
+ "011111111",
+ "101111111",
+ "101111111",
+ "101111111",
+ "101111111"}
+Returns: 3
+First, you should repaint the first row. After that, you can repaint the first and the second column.
+1)
+
+    
+{"011111111",
+ "101111111",
+ "110111111",
+ "111011111",
+ "111101111",
+ "111110111",
+ "111111011",
+ "111111101",
+ "111111110"}
+Returns: 9
+Each white cell must be repainted separately.
+2)
+
+    
+{"000000001",
+ "000000011",
+ "000000111",
+ "000001111",
+ "000011111",
+ "000011110",
+ "000011100",
+ "000011000",
+ "000010000"}
+Returns: 14
+After repainting the 5 rightmost columns, you will be able to repaint the rows.
+3)
+
+    
+{"000000001",
+ "000000011",
+ "000000111",
+ "000001111",
+ "000011111",
+ "000011110",
+ "000011100",
+ "000011000",
+ "000000000"}
+Returns: -1
+
+4)
+
+    
+{"011111111",
+ "010001001",
+ "111111101",
+ "011111111",
+ "101010100",
+ "011111111",
+ "111111101",
+ "111011101",
+ "011111111"}
+Returns: 5
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

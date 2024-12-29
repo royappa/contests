@@ -1,0 +1,172 @@
+// CORRECT, EFFICIENT AND ACCURATE TRIANGLE AREA for both 2d and 3d triangles. Works for collinear vertices and other bad triangles
+
+#include <vector>
+#include <list>
+#include <map>
+#include <set>
+#include <deque>
+#include <stack>
+#include <bitset>
+#include <algorithm>
+#include <functional>
+#include <numeric>
+#include <utility>
+#include <sstream>
+#include <iostream>
+#include <iomanip>
+#include <cstdio>
+#include <cmath>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+typedef long double LD;
+
+class FindTriangle {
+public:
+vector<string> split_space(string s)
+{
+	vector<string> results;
+	istringstream fin(s);
+	while (!fin.eof())
+	{
+		string x;
+		fin >> x;
+		results.push_back(x);
+	}
+	return results;
+}
+
+// CHANGE ALL PARAMS to LD to avoid possible INTEGER OVERFLOW in multiplications
+LD det(int a, int b, int c, int d, int e, int f)
+{
+	return (long double) ( (b*f-e*c)-(a*f-d*c)+(a*e-d*b));
+}
+
+// make this a 2D triangle area just by setting the z's to 0
+// CHANGE ALL PARAMS to LD to avoid possible INTEGER OVERFLOW in multiplications
+LD calc(int x1, int y1, int z1, int x2, int y2, int z2, int x3, int y3, int z3)
+{
+	LD a = det(x1, x2, x3, y1, y2, y3);
+	LD b = det(y1, y2, y3, z1, z2, z3);
+	LD c = det(z1, z2, z3, x1, x2, x3);
+	
+	return 0.5*sqrt(double(a*a+b*b+c*c));
+}
+
+double largestArea(vector <string> p) 
+{
+	int n = p.size();
+	LD area = 0.0;
+	char c1, c2, c3;
+	int x1, y1, z1;
+	int x2, y2, z2;
+	int x3, y3, z3;
+				
+	
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = i+1; j < n; j++)
+		{
+			for (int k = j+1; k < n; k++)
+			{
+				sscanf(p[i].c_str(), "%c%d%d%d", &c1, &x1, &y1, &z1);
+				sscanf(p[j].c_str(), "%c%d%d%d", &c2, &x2, &y2, &z2);
+				sscanf(p[k].c_str(), "%c%d%d%d", &c3, &x3, &y3, &z3);
+				if ((c1 == c2 && c1 == c3) || (c1 != c2 && c1 != c3 && c2 != c3))
+				{
+					LD tmp = calc(x1, y1, z1, x2, y2, z2, x3, y3, z3);
+					if (tmp > area)
+					{
+						//printf("%d %d %d\n", i, j, k);
+						area = tmp;
+					}
+				}
+			}
+		}
+	}
+	return double(area);
+}
+};
+
+//Powered by [KawigiEdit]
+
+
+Problem Statement
+    
+You are given the coordinates of several vertices in space. Each vertex is colored 'R', 'G' or 'B'. You are to determine the maximum possible area of a triangle such that all three of its vertices are the same color, or all three of its vertices are different colors.
+You are given a vector <string> points describing the vertices. Each element of points will be in the form "color x y z", where color is 'R', 'G', or 'B', and x, y, z are integers with no leading zeroes.
+Definition
+    
+Class:
+FindTriangle
+Method:
+largestArea
+Parameters:
+vector <string>
+Returns:
+double
+Method signature:
+double largestArea(vector <string> points)
+(be sure your method is public)
+    
+
+Notes
+-
+A triangle with all three vertices colinear, or two vertices overlapping, has area 0.
+-
+Returned value must be within 1.0e-9 absolute or relative error.
+Constraints
+-
+points will have between 5 and 50 elements, inclusive.
+-
+Each element of points will be formatted as "color x y z" (quotes added for clarity).
+-
+Each color will be 'R', 'G', or 'B'.
+-
+Each x, y and z will be an integer between 0 and 999, inclusive, with no leading zeros.
+Examples
+0)
+
+    
+{"R 0 0 0",
+ "R 0 4 0",
+ "R 0 0 3",
+ "G 92 14 7",
+ "G 12 16 8"}
+Returns: 6.0
+The coloring restrictions mean that we can only consider the first three points, which form a classic 3-4-5 triangle with an area of 6.
+1)
+
+    
+{"R 0 0 0",
+ "R 0 4 0",
+ "R 0 0 3",
+ "G 0 5 0",
+ "B 0 0 12"}
+Returns: 30.0
+Our bet here is to take the red point at the origin, the green point, and the blue point. These actually form a 5-12-13 triangle. Area = 30.
+2)
+
+    
+{"R 0 0 0",
+ "R 0 4 0",
+ "R 0 0 3",
+ "R 90 0 3",
+ "G 2 14 7",
+ "G 2 18 7",
+ "G 29 14 3",
+ "B 12 16 8"}
+Returns: 224.99999999999997
+We have a lot more choices here.
+3)
+
+    
+{"R 0 0 0",
+ "R 1 1 0",
+ "R 4 4 0",
+ "G 10 10 10",
+ "G 0 1 2"}
+Returns: 0.0
+All three red points are colinear.
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

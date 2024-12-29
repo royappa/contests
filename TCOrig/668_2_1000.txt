@@ -1,0 +1,48 @@
+
+LL gcd(LL a, LL b)
+{
+	return b == 0 ? a : gcd(b, a%b);
+}
+
+int f(vector<int> A, int K)
+{
+	int n = A.size();
+	
+	int num = 0;
+	vector<map<int,int>> divcount(n+1);
+	
+	map<int,int> c;
+	divcount[n] = c;
+	for (int i = n-1; i >= 0; i--)
+	{
+		set<int> divisors;
+		if (A[i]%2 == 0) { divisors.insert(2); divisors.insert(A[i]/2); }
+		for (int d = 3; d*d <= A[i]; d++)
+		{
+			if (K%d == 0)
+			{
+				divisors.insert(d);
+				divisors.insert(A[i]/d);
+			}
+		}
+		for (auto d : divisors)
+		{
+			divcount[p][d] = divcount[p+1][d]+1;
+		}
+	}
+			
+		
+	for (int p = 0; p < n; p++)
+	{
+		for (int q = 0; q < n; q++)
+		{
+			int x = A[p], y = P[q];
+			// (x*y)*z should be divisible by K
+			LL a = LL(x)*LL(y);
+			LL g = gcd(a, K);
+			LL d = K/g;
+			num += divcount[p][d];
+		}
+	}
+	return num;
+}

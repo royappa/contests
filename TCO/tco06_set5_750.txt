@@ -1,0 +1,146 @@
+#include <vector>
+#include <list>
+#include <map>
+#include <set>
+#include <deque>
+#include <stack>
+#include <bitset>
+#include <algorithm>
+#include <functional>
+#include <numeric>
+#include <utility>
+#include <sstream>
+#include <iostream>
+#include <iomanip>
+#include <cstdio>
+#include <cmath>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+typedef long long LL;
+LL M;
+
+map<LL,int> memo;
+
+class BigFibonacci {
+public:
+
+int fib(LL n)
+{
+	if (n == 0LL)
+		return 0;
+	else if (n <= 2LL)
+		return 1;
+	else if (n == 3LL)
+		return 2;
+	if (memo.count(n) > 0)
+	{
+		return memo[n];
+	}
+	LL r;
+	if (n%2LL == 1LL)
+	{
+		LL a = fib((n+1LL)/2LL);
+		LL b = fib((n-1LL)/2LL);
+		printf("%lld+%lld\n", a, b);
+		LL aa = (a*a)%M;
+		LL bb = (b*b)%M;
+		r = (aa+bb)%M;
+	}
+	else
+	{
+		LL a = fib(n/2LL+1LL);
+		LL b = fib(n/2LL-1LL);
+		printf("%lld-%lld\n", a, b);
+		LL aa = (a*a)%M;
+		LL bb = (b*b)%M;
+		r = ((aa-bb)%M+M)%M;
+	}
+	printf("n=%lld r=%lld\n", n, r);
+	memo[n] = r;
+	return r;
+}
+
+int fibNumber(string _index, int _M) 
+{
+	LL index;
+	M = _M;
+	sscanf(_index.c_str(), "%lld", &index);
+	return fib(index);	
+}
+};
+
+
+//Powered by [KawigiEdit]
+
+
+Problem Statement
+    
+Depicted below is the Fibonacci sequence:
+0, 1, 1, 2, 3, 5, 8, 13, 21, 34, ...
+As you can see, each value from 2 on is the sum of the previous two values. Given the 0-based index of a Fibonacci number and an int M, return the index-th Fibonacci number modulo M.
+Definition
+    
+Class:
+BigFibonacci
+Method:
+fibNumber
+Parameters:
+string, int
+Returns:
+int
+Method signature:
+int fibNumber(string index, int M)
+(be sure your method is public)
+    
+
+Constraints
+-
+index will be an integer between 0 and 1015, inclusive, with no extra leading zeroes.
+-
+M will be between 1 and 1000000 (106).
+Examples
+0)
+
+    
+"7"
+10
+Returns: 3
+
+1)
+
+    
+"5"
+1
+Returns: 0
+
+2)
+
+    
+"0"
+23
+Returns: 0
+
+3)
+
+    
+"17"
+2
+Returns: 1
+
+4)
+
+    
+"54"
+341890
+Returns: 177022
+F54 = 86267571272. 86267571272 % 341890 = 177022.
+5)
+
+    
+"300"
+77531
+Returns: 0
+F300 = 222232244629420445529739893461909967206666939096499764990979600.
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

@@ -1,0 +1,202 @@
+
+Problem Statement
+    
+Many different technical languages use nestings to convey some sort of meaning. Mathematics uses parentheses and brackets very often in expressions to group values. Your method will test whether a given nesting is valid, and if it is, how deep it goes. To be valid, a nesting must obey the following criteria (quotes for clarity): 1) Every left marker has a CORRECTLY matching right marker (i.e. every '[' has a ']'; described in table below) 2) Nestings cannot be interwoven. (e.g. "{[}]" is not a valid nesting since {} and [] are interwoven) In other words, a right marker must be CORRECTLY matched by the left marker immediately preceding it, which has not already been matched. 3) Every nesting marker in the string must delimit a nesting. All other characters must be letters. For example, "{[}" isn't valid since '[' is a marker that does not delimit a nesting. "asdJLBasdf" is valid since letters can exist anywhere in the string. The CORRECTLY matched nesting markers are:
+Left         Right
+<             >
+(             )
+[             ]
+{             }
+/*            */
+If there is an invalid nesting your method will return -1. Otherwise you will return the deepest nesting level in the input. For example: Nesting-wise explanations will use numbers to depict nesting depths throughout the given strings. nested = "" no nestings so deepest nesting level is 0 nested = "<(A)(b)>" nesting-wise this looks like <1(2)1(2)1> so the deepest level would be 2 nested = "<()()>" nesting-wise this looks like <1(2)1(2)1> so the deepest level would be 2 nested = "(/*/)" is invalid(-1) since /* is a valid left marker but the / left over is not a valid marker nested = "(*)" is invalid(-1) since * is not a letter and it isn't used as part of a nesting marker As seen in examples above, the nesting depth at any point in a string measures how many sets of markers you are between. If the nesting is valid, your method returns the highest nesting depth occuring in the input string.  Create a class Nestings that contains the method howDeep, which takes a String nested, and returns an int describing the deepest nesting level or -1 if it is invalid.
+Definition
+    
+Class:
+Nestings
+Method:
+howDeep
+Parameters:
+String
+Returns:
+int
+Method signature:
+int howDeep(String nested)
+(be sure your method is public)
+    
+
+Constraints
+-
+nested will have a length between 0 and 50 inclusive
+-
+nested will only contain letters (A-Z,a-z) or characters from: "<>(){}/*[]" (quotes for clarity)
+Examples
+0)
+
+    
+""
+Returns: 0
+This example is given above.
+1)
+
+    
+"<(A)(b)>"
+Returns: 2
+This example is given above.
+2)
+
+    
+"(/*/)"
+Returns: -1
+
+3)
+
+    
+"<<<</**/asdf>>>>"
+Returns: 5
+
+4)
+
+    
+"abcd(A(B(C(D)C)B)A)abcd"
+Returns: 4
+
+5)
+
+    
+"([)]"
+Returns: -1
+No interwoven nesting markers allowed.
+6)
+
+    
+"([{/**/}])"
+Returns: 4
+
+7)
+
+    
+"("
+Returns: -1
+
+8)
+
+    
+"]["
+Returns: -1
+
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.
+
+
+CODE (correct)
+
+import java.util.*;
+import java.util.regex.*;
+
+public class Nestings
+{
+
+	private ArrayList stack;
+
+	private void pushStack(String s)
+	{
+		stack.add(s);
+	}
+
+	private String popStack()
+	{
+		int i = stack.size() - 1;
+		
+		return (String) stack.remove(i);
+	}
+
+	private boolean stackIsEmpty()
+	{
+		return stack.size() == 0;
+	}
+
+	private boolean isOpen(String s)
+	{
+		return s.matches("<|\\(|\\[|\\{|/\\*");
+	}
+
+	private boolean isClosed(String s)
+	{
+		//System.out.println("check " + s  + " " + 
+		return s.matches("^(<>|\\(\\)|\\[\\]|\\{\\}|/\\*\\*/)$");
+	}
+			
+	public int howDeep(String inputStr)
+	{
+		System.out.println(inputStr);
+		String nested = inputStr.replaceAll("[^<>\\(\\)\\[\\]\\{\\}/\\*]+", "");
+		System.out.println(nested);
+		if (nested.equals(""))
+		{
+			return 0;
+		}
+/*
+<             >
+(             )
+[             ]
+{             }
+**            **
+*/
+		Pattern p = Pattern.compile("<|>|\\(|\\)|\\[|\\]|\\{|\\}|/\\*|\\*/");
+		Matcher m = p.matcher(nested);
+		// test that this consumes the whole string without leaving any extra
+		String test = "";
+		while (m.find())
+		{
+			test += m.group();
+		}
+		System.out.println("test = "  + test);
+		if (!nested.equals(test)) 
+		{
+			return -1;
+		}
+		int depth = 0;
+		int maxDepth = 0;
+		stack = new ArrayList();
+		m = p.matcher(nested);
+
+		while (m.find())
+		{
+			String token = m.group();
+			System.out.println(token);
+			if (isOpen(token))
+			{
+				System.out.println("open " + token + depth + " " + stack.size());
+				pushStack(token);
+				depth++;
+				if (depth > maxDepth)
+				{
+					maxDepth = depth;
+				}
+			}
+			else
+			{
+				System.out.println("clos " + token + depth + " " + stack.size());
+				if (stackIsEmpty())
+				{
+					return -1;
+				}
+				String topToken = popStack();
+				depth--;
+				if (!isClosed(topToken+token))
+				{
+					return -1;
+				}
+			}
+			
+		}
+		System.out.println(stack.size());
+		if (!stackIsEmpty())
+		{
+			return -1;
+		}
+		return maxDepth;
+	}
+}
+		
+	

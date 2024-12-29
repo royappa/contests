@@ -1,0 +1,159 @@
+#include <vector>
+#include <list>
+#include <map>
+#include <set>
+#include <deque>
+#include <stack>
+#include <bitset>
+#include <algorithm>
+#include <functional>
+#include <numeric>
+#include <utility>
+#include <sstream>
+#include <iostream>
+#include <iomanip>
+#include <cstdio>
+#include <cmath>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+class NewStation {
+public:
+string location(vector <string> grid, vector <string> stations)
+{
+	int bsum = 1<<30, bnum = 1;
+	
+	for (int k = 0; k < stations.size(); k++)
+	{
+		int num = 0, sum = 0;
+		int sr, sc;
+		sscanf(stations[i].c_str(), "%d %d", &sr, &sc);
+		for (int i = 0; i < grid.size(); i++)
+		{
+			for (int j = 0; j < grid[0].size(); j++)
+			{
+				num += grid[i][j]-'0';
+				sum += (grid[i][j]-'0')*(abs(i-r)+abs(j-sc));
+			}
+		}
+		if (sum * bnum < bsum * num )
+		{
+			bsum = sum;
+			bnum = num;
+		}
+	}
+	
+	int osum = bsum, onum = bnum;
+	for (int i = 0; i < grid.size(); i++)
+	{
+		for (int j = 0; j < grid[0].size(); j++)
+		{
+			int sum = 0, num = 0;
+			for (int ii = 0; ii < grid.size(); ii++)
+			{
+				for (int jj = 0; jj < grid[i].size(); jj++)
+				{
+					num += grid[ii][jj]-'0';
+					sum += (grid[ii][jj]-'0')*(abs(ii-i)+abs(jj-j));
+				}
+			}
+			if (sum * bnum < bsum * num )
+			{
+				bsum = sum;
+				bnum = num;
+			}
+		}
+	}
+	if (osum == bsum && onum == bnum)
+	{
+		return "";
+	}
+	char buf[100];
+	sprintf(buf, "%d %d", bsum, bnum);
+	return buf;
+}
+
+};
+
+
+
+Problem Statement
+    
+You are given a String[], grid, representing a city where each character in grid is a single city block. Each block will contain a digit representing the relative population on that block. For example, a block containing the digit '6' will contain three times as many people as a block containing the digit '2'. You are also given a String[], stations, containing the locations of all the fire stations within the city. Each element of stations is formatted as "r c" (quotes for clarity only), where r and c represent the row and column, respectively, of the block on which a fire station is located. Character j of element i of grid represents the block at row i, column j. All indices are 0-based.
+
+The city has received enough funds to build one additional fire station, and the mayor has decided that it is most important to minimize the average distance between a person and the closest fire station to that person. The metric used to determine the distance between two locations in the city is the Manhattan distance between the two blocks on which the locations are situated. The Manhattan distance between two blocks (r1, c1) and (r2, c2) is |r1-r2|+|c1-c2| (the vertical bars represent absolute value). Determine the block on which the new station should be built and return its row and column formatted as "r c" (quotes for clarity only). The return String should contain no extra leading zeros. If multiple blocks are equally optimal, return the one with the lowest row, and if multiple optimal blocks have the same lowest row, return the one among them with the lowest column. If adding an additional fire station would not reduce the average distance between a person and the closest fire station to that person, return the empty String ("").
+Definition
+    
+Class:
+NewStation
+Method:
+location
+Parameters:
+String[], String[]
+Returns:
+String
+Method signature:
+String location(String[] grid, String[] stations)
+(be sure your method is public)
+    
+
+Constraints
+-
+grid will contain between 1 and 20 elements, inclusive.
+-
+Each element of grid will contain between 1 and 20 characters, inclusive.
+-
+Each element of grid will contain exactly the same number of characters.
+-
+Each element of grid will contain only digits ('0'-'9').
+-
+At least one character in grid will be non-zero.
+-
+stations will contain between 1 and 10 elements, inclusive.
+-
+Each element of stations will be formatted as "r c" (quotes for clarity only), where r and c are each integers between 0 and 19, inclusive, with no leading zeros.
+-
+Each element of stations will represent a location within the boundaries of grid.
+Examples
+0)
+
+    
+{"111",
+ "111",
+ "111"}
+{"1 1"}
+Returns: "0 1"
+There's an existing station at (1, 1) and each block contains exactly the same number of people. Placing a new station at either (0, 1), (1, 0), (1, 2), or (2, 1) would minimize the average distance. (0, 1) is chosen since it has the lowest row. Adding the new station reduces the average distance from approximately 1.33 to 1.0. The distance from each block to the nearest station becomes:
+101
+101
+212
+1)
+
+    
+{"111",
+ "111",
+ "111"}
+{"0 0", "0 1", "0 2",
+ "1 0", "1 1", "1 2",
+ "2 0", "2 1", "2 2"}
+Returns: ""
+There's a fire station on every block, so adding a new station would not reduce the average distance.
+2)
+
+    
+{"2312",
+ "0233"}
+{"1 3"}
+Returns: "0 1"
+Placing a fire station at (0, 1) would make the average distance 0.625.
+3)
+
+    
+{"2312",
+ "0233"}
+{"1 1", "1 1"}
+Returns: "0 3"
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

@@ -1,0 +1,91 @@
+char memo[1<<12][1<<12][13][13]; 
+vector<string> A;
+int nm, nw;
+#define INF 1000
+
+int f(int mset, int wset)  // fewest number of marriages possible among remaining men/women, if mset & wset denote the used sets
+{
+	if (no men left && women left)
+		return INF;
+	if (men left && no women left)
+		return INF;
+	if (no men left && no women left)
+		return 0;
+	// try to marry off the remaining pairs
+	for (
+}
+
+
+int neededMarriages(vector <string> preferences) 
+{
+	A = preferences;
+	nm = A.size();
+	nw = A[0].size();
+	
+	memset(f, 0, sizeof(f));
+	int r = f(0, 0); 
+	if (r == INF)
+		return -1;
+}
+
+Problem Statement
+    
+There are several unmarried men and women living in a society where marriage is defined as either one husband with one or more wives, or one wife with one or more husbands. You are given a vector <string> preferences. The j-th character of the i-th element of preferences is '1' (one) if the i-th man and the j-th woman are willing to be part of the same marriage, and '0' (zero) otherwise.
+
+Your task is to group these people into the minimum possible number of marriages. Each person must be a member of exactly one marriage, and each marriage must contain only willing members. Return the number of marriages, or -1 if this is not possible.
+Definition
+    
+Class:
+MarriageProblemRevised
+Method:
+neededMarriages
+Parameters:
+vector <string>
+Returns:
+int
+Method signature:
+int neededMarriages(vector <string> preferences)
+(be sure your method is public)
+    
+
+Constraints
+-
+preferences will contain between 1 and 12 elements, inclusive.
+-
+The length of each element of preferences will be betwen 1 and 12, inclusive.
+-
+All elements of preferences will be of the same length.
+-
+Each element of preferences will contain only '0' (zeroes) and '1' (ones).
+Examples
+0)
+
+    
+{"111"}
+Returns: 1
+Here, we have one man and three women, and everybody is willing to be in the same marriage. Therefore, we only need one marriage.
+1)
+
+    
+{"100", "010", "001"}
+Returns: 3
+
+2)
+
+    
+{"00", "00"}
+Returns: -1
+Nobody is willing to be in the same marriage as anybody else, so there cannot be any marriages in this case.
+3)
+
+    
+{"0001", "0001", "0001", "1111"}
+Returns: 2
+
+4)
+
+    
+{"11101011","00011110","11100100","01010000","01000010","10100011","01110110","10111111"}
+Returns: 3
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

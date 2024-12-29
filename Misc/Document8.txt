@@ -1,0 +1,13 @@
+abcabccababcabcabcabcabcabcabcabcabcabcabcabcbad
+
+{"abc","cab","abc","cab","abc","bac","abc","cab","cba","abc","cba","bac","abc","cab","abc","cab","abc","bac","abc","cab","cba","abc","cba","bac","abc","cab","abc","cab","abc","bac","abc","cab","cba","abc","cba","bac","abc","cab","abc","cab","abc","bac","abc","cab","cba","abc","cba","bac","abc","dba"}
+
+ahmedsaad
+kemo
+Asocasno
+leehark
+szkielet
+aleh_b
+
+
+100,50,{-50,50},{50,50}

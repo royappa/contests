@@ -1,0 +1,140 @@
+#include <vector>
+#include <list>
+#include <map>
+#include <set>
+#include <deque>
+#include <stack>
+#include <bitset>
+#include <algorithm>
+#include <functional>
+#include <numeric>
+#include <utility>
+#include <sstream>
+#include <iostream>
+#include <iomanip>
+#include <cstdio>
+#include <cmath>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+long long c[20][100001];
+	
+class DigitFiller {
+public:
+long long howMany(string s, int num) 
+{
+	memset(c, 0, sizeof(c));
+	
+	int n = s.size();
+	vector<vector<int> > v;
+	
+	vector<int> v0, v1, v2;
+	for (int i = 1; i <= 9; i++)
+		v0.push_back(i);
+	for (int i = 0; i <= 9; i++)
+		v1.push_back(i);
+	v2.push_back(0);
+	v.push_back(v0);
+	v.push_back(v1);
+	v.push_back(v2);
+	
+	c[1][(s[0]-'0')%num] = 1LL;
+	for	(int i = 2; i <= n; i++)
+	{
+		int p;
+		if (i == 1)
+		{
+			p = 0;
+		}
+		else if (s[i-1] == 'X')
+		{
+			p = 1;
+		}
+		else
+		{
+			v[2][0] = s[i-1]-'0';
+			p = 2;
+		}
+		for (int j = 0; j < v[p].size(); j++)
+		{
+			int d = v[p][j];
+			for (int r = 0; r < num; r++)
+			{
+				c[i][(r*10+d)%num] += c[i-1][r];
+			}
+		}
+	}
+	return c[n][0];
+}
+};
+
+
+Problem Statement
+    
+You have k objects divided evenly into num piles. Unfortunately, some of the digits of k may have been erased (replaced with 'X's in the input). 
+Return the number of possible values that k could have been.
+Definition
+    
+Class:
+DigitFiller
+Method:
+howMany
+Parameters:
+string, int
+Returns:
+long long
+Method signature:
+long long howMany(string k, int num)
+(be sure your method is public)
+    
+
+Constraints
+-
+k will contain between 2 and 18 characters inclusive.
+-
+Each character in k will be a digit ('0'-'9') or 'X'.
+-
+Character 0 of k will be a positive digit ('1'-'9').
+-
+num will be between 1 and 10000 inclusive.
+-
+The return value will be at least 1.
+Examples
+0)
+
+    
+"8X"
+9
+Returns: 1
+Since the objects are divided evenly into 9 piles, 81 is the only possible solution.
+1)
+
+    
+"1XX"
+10
+Returns: 10
+Here there are 10 possible values k could have been.
+2)
+
+    
+"14"
+7
+Returns: 1
+None of the digits are missing.
+3)
+
+    
+"9999999999999X"
+3
+Returns: 4
+
+4)
+
+    
+"23X34XX24XX34X"
+17
+Returns: 58823
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

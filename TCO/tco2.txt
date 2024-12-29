@@ -1,0 +1,101 @@
+int howMany(int n) 
+{
+	int fib[50];
+	
+	fib[1] = 1, fib[2] = 1;
+	for (int i = 3; i <= 30; i++)
+	{
+		fib[i] = fib[i-2] + fib[i-1];
+	}
+	cout << fib[30] << endl;
+	
+	int A[1000000+10];
+	A[0] = 0;
+
+	
+	// A[s] = fewest number of coins needed to make the sum s
+	for (int s = 1; s <= n; s++)
+	{
+		for (int i = 1; i <= 30; i++)
+		{
+			if (s-fib[i] >= 0)
+			{
+				if (A[s] == 0)
+				{
+					A[s] = A[s-fib[i]]+1;
+				}
+				else
+				{
+					A[s] = 1+min(A[s-fib[i]], A[s]);
+				}
+			}
+		}
+	}
+	
+	return A[n] // ,30] = min coins needed to make change for A[n] using coins 1..30;
+}
+
+/*
+28 514229
+29 832040 -- 30th fib number
+30 1346269
+31 2178309
+32 3524578
+33 5702887
+34 9227465
+*/
+Problem Statement
+    
+Depicted below is the Fibonacci sequence:
+   1, 1, 2, 3, 5, 8, 13, 21, 34, ...
+As you can see, each value from 2 on is the sum of the previous two values. 
+
+Any positive integer can be written as a sum of values taken from the Fibonacci sequence. 
+
+These values need not be distinct. 
+
+Return the smallest number of such values that sum to n.
+Definition
+    
+Class:
+FibonacciSum
+Method:
+howMany
+Parameters:
+int
+Returns:
+int
+Method signature:
+int howMany(int n)
+(be sure your method is public)
+    
+
+Constraints
+-
+n will be between 1 and 1 000 000 inclusive.
+Examples
+0)
+
+    
+1
+Returns: 1
+Just a single number is required.
+1)
+
+    
+7
+Returns: 2
+The best we can do is 5+2 = 7.
+2)
+
+    
+70
+Returns: 3
+The best here is 34+34+2 = 70.
+3)
+
+    
+107
+Returns: 3
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

@@ -1,0 +1,26 @@
+/*
+ID: royappa1
+LANG: JAVA
+TASK: hello
+*/
+import java.io.*;
+import java.util.*;
+
+class ride {
+  public static void main (String [] args) throws IOException {
+  
+	BufferedReader in
+	   = new BufferedReader(new FileReader("ride.in"));
+    PrintWriter out = new PrintWriter(new BufferedWriter(
+            new FileWriter("ride.out")));	  // output file name
+            
+	String line;
+	while ((line = in.readLine()) != null)
+	{
+    	out.println(line);                  // output result	
+	}
+  
+    out.close();                                  // close the output file
+    System.exit(0);                               // don't omit this!
+  }
+}

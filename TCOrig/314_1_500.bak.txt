@@ -1,0 +1,124 @@
+typedef long long LL;
+
+double memo[100000];
+int n;
+vector<int> fences;
+double area[20][20][20];
+
+double f(int mask)
+{
+	if (mask == (1<<n)-1)
+	{
+		return 0;
+	}
+	double& r = memo[mask];
+	if (r < 0)
+	{
+		return r;
+	}
+	r = 0.0;
+	for (int i = 0; i < n; i++)
+	{
+		int mi = mask & (1<<i);
+		if (!mi) continue;
+		for (int j = 0; j < n; j++)
+		{
+			int mj = mask & (1<<j);
+			if (mj) continue;
+			for (int k = 0; k < n; k++)
+			{
+				int mk = mask & (1<<k);
+				if (!mk) continue;
+				r = max(r, f(mask|mi|mj|mk)+area[i][j][k];
+			}
+		}
+	}
+	return r;
+}
+				
+double maximalFencedArea(vector <int> fences_) 
+{
+	fences = fences_;
+	n = fences.size();
+	
+	for (int i = 0; i < 100000; i++)
+	{
+		memo[i] = -1.0;
+	}
+	sort(fences.begin(), fences.end());
+	for (int i = 0; i < n; i++) for (int j = 0; j < n; j++) for (int k = 0; k < n; k++) area[i][j][k] = 0.0;
+	
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = i+1; j < n; j++)
+		{
+			for (int k = j+1; k < n; k++)
+			{
+				double A = fences[i], B = fences[j], C = fences[k];
+				if (A+B <= C) continue;
+				double p = (A+B+C)/2.0;
+				area[i][j][k] = p*(p-A)*(p-B)*(p-C);
+			}
+		}
+	}
+	return sqrt(f(0));
+}
+
+Problem Statement
+    
+There is a large grassland next to the villa Pemberley in the southern region of Byterland. Mrs. Darcy is afraid of her potted plants being trampled by strangers, so she decides to fence in some triangular areas in the grassland.
+Mrs. Darcy has several fences in her basement. She will form each triangular area using exactly three fences, such that each side of the triangle is a single fence. Since the fences are beautifully decorated, she will not glue multiple fences together to form a single side, or split a single fence into multiple smaller fences. Her goal is to fence in as large an area as possible.
+You are given a vector <int> fences containing the lengths of Mrs. Darcy's fences. Return the maximal area that can be fenced in.
+Definition
+    
+Class:
+GrasslandFencer
+Method:
+maximalFencedArea
+Parameters:
+vector <int>
+Returns:
+double
+Method signature:
+double maximalFencedArea(vector <int> fences)
+(be sure your method is public)
+    
+
+Notes
+-
+A return value with either an absolute or relative error of less than 1.0E-9 is considered correct.
+-
+With three fences of length A, B, and C, where A <= B <= C, a triangle can be constructed if and only if A + B > C.
+-
+The area of a triangle with side lengths A, B, and C is sqrt(p*(p-A)*(p-B)*(p-C)), where p = (A+B+C)/2."
+Constraints
+-
+fences will contain between 1 and 16 elements, inclusive.
+-
+Each element of fences will be between 1 and 100, inclusive.
+Examples
+0)
+
+    
+{3,4,5,6,7,8,9}
+Returns: 36.754383146489694
+You can construct two triangles (3, 4, 5) and (7, 8, 9) with a total area of approximately 32.83 square meters. This is a preferable solution to constructing triangles (4, 5, 6) and (7, 8, 9), which have a total area of approximately 36.75 square meters.
+1)
+
+    
+{1,2,4,8}
+Returns: 0.0
+Can not form any triangle here.
+2)
+
+    
+{7,4,4,4}
+Returns: 6.928203230275509
+Duplicate elements in fences are allowed.
+3)
+
+    
+{21,72,15,55,16,44,54,63,69,35,75,69,76,70,50,81}
+Returns: 7512.322360676162
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

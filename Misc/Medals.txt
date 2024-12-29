@@ -1,0 +1,114 @@
+
+	private int Itoi(Object I) { return I==null ? 0 : ((Integer) I).intValue(); }
+	private int atoi(String s) { return Integer.parseInt(s); }
+	public class Compar implements Comparator
+	{
+		public int compare(Object a, Object b)
+		{
+			String[] wa = ((String) a).split(" ");
+			String[] wb = ((String) b).split(" ");
+			int ma = atoi(wa[1]);
+			int mb = atoi(wb[1]);
+			if (ma != mb) return mb-ma;
+			ma = atoi(wa[2]);
+			mb = atoi(wb[2]);
+			if (ma != mb) return mb-ma;
+			ma = atoi(wa[3]);
+			mb = atoi(wb[3]);
+			if (ma != mb) return mb-ma;
+			return wa[0].compareTo(wb[0]);
+		}	
+	}
+	public String[] generate(String[] results)
+	{
+		HashMap[] won = new HashMap[3];
+		for (int i = 0; i < 3; i++)
+		{
+			won[i] = new HashMap();
+		}
+		HashSet countries = new HashSet();
+		for (int i = 0; i < results.length; i++)
+		{
+			String[] w = results[i].split(" ");
+			for (int j = 0; j < 3; j++)
+			{
+				countries.add(w[j]);
+				if (won[j].containsKey(w[j]))
+				{
+					int x = ((Integer) won[j].get(w[j])).intValue();
+					won[j].put(w[j], new Integer(x+1));
+				}
+				else
+				{
+					won[j].put(w[j], new Integer(1));
+				}
+			}			
+		}
+		String[] ret = new String[countries.size()];
+		Iterator it = countries.iterator();
+		int p = 0;
+		while (it.hasNext())
+		{
+			String c = (String) it.next();
+			ret[p++] = c + " " + Itoi(won[0].get(c)) + " " + Itoi(won[1].get(c)) + " " + Itoi(won[2].get(c));
+		}
+		Arrays.sort(ret, new Compar());
+		return ret;
+	}
+	
+
+
+
+Problem Statement
+    
+The Olympic Games in Athens end tomorrow. Given the results of the olympic disciplines, generate and return the medal table.  The results of the disciplines are given as a String[] results, where each element is in the format "GGG SSS BBB". GGG, SSS and BBB are the 3-letter country codes (three capital letters from 'A' to 'Z') of the countries winning the gold, silver and bronze medal, respectively.  The medal table is a String[] with an element for each country appearing in results. Each element has to be in the format "CCO G S B" (quotes for clarity), where G, S and B are the number of gold, silver and bronze medals won by country CCO, e.g. "AUT 1 4 1". The numbers should not have any extra leading zeros. Sort the elements by the number of gold medals won in decreasing order. If several countries are tied, sort the tied countries by the number of silver medals won in decreasing order. If some countries are still tied, sort the tied countries by the number of bronze medals won in decreasing order. If a tie still remains, sort the tied countries by their 3-letter code in ascending alphabetical order.
+Definition
+    
+Class:
+MedalTable
+Method:
+generate
+Parameters:
+String[]
+Returns:
+String[]
+Method signature:
+String[] generate(String[] results)
+(be sure your method is public)
+    
+
+Constraints
+-
+results contains between 1 and 50 elements, inclusive.
+-
+Each element of results is formatted as described in the problem statement.
+-
+No more than 50 different countries appear in results.
+Examples
+0)
+
+    
+{"ITA JPN AUS", "KOR TPE UKR", "KOR KOR GBR", "KOR CHN TPE"}
+Returns: 
+{ "KOR 3 1 0",
+  "ITA 1 0 0",
+  "TPE 0 1 1",
+  "CHN 0 1 0",
+  "JPN 0 1 0",
+  "AUS 0 0 1",
+  "GBR 0 0 1",
+  "UKR 0 0 1" }
+These are the results of the archery competitions.
+1)
+
+    
+{"USA AUT ROM"}
+Returns: { "USA 1 0 0",  "AUT 0 1 0",  "ROM 0 0 1" }
+
+2)
+
+    
+{"GER AUT SUI", "AUT SUI GER", "SUI GER AUT"}
+Returns: { "AUT 1 1 1",  "GER 1 1 1",  "SUI 1 1 1" }
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

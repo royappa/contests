@@ -1,0 +1,104 @@
+typedef long long LL;
+
+vector<long long> getQuantity(vector <string> table) 
+{
+	int n = table.size();
+	vector<string> A;
+	for (int j = 0; j < 2; j++)
+	{
+		for (int i = 0; i < n; i++)
+		{
+			A.push_back(table[i]+table[i]);
+		}
+	}
+	int h = 2*n, w = A[0].size();
+	
+	vector<LL> c(26, 0);
+	
+}
+
+Problem Statement
+    
+Tanya has a rectangular table filled with letters.
+First, she makes four copies of this table, and arranges the copies as a 2×2 rectangle.
+Then she lists all subrectangles of the resulting table.
+
+For example, for the following original table:
+OK
+she will arrange the copies like this:
+
+OKOK
+OKOK
+
+and then she will list the following 30 subrectangles (dots for clarity only):
+OKOK .... OKOK OKO. .... OKO. .KOK .... .KOK
+OKOK OKOK .... OKO. OKO. .... .KOK .KOK ....
+
+OK.. .... OK.. .KO. .... .KO. ..OK .... ..OK 
+OK.. OK.. .... .KO. .KO. .... ..OK ..OK .... 
+
+O... .... O... .K.. .... .K.. ..O. .... ..O. ...K .... ...K 
+O... O... .... .K.. .K.. .... ..O. ..O. .... ...K ...K ....
+
+(Note that she is considering all subrectangles based on their positions rather than their content, so the same subrectangle might appear multiple times in the list. In this case, subrectangle "K" appears four times because it occurs at four different positions.)
+
+Tanya wonders how frequently each letter of the alphabet occurs among all these subrectangles. You are given a vector <string> table, where the j-th character of the i-th element is the letter at row i, column j of the original table. Return a vector<long long> containing exactly 26 elements, where the i-th element is the number of occurrences of the i-th letter in the alphabet among all of Tanya's subrectangles. 'A' is the 0-th letter, 'B' is the 1-st letter, etc.
+
+Definition
+    
+Class:
+SubrectanglesOfTable
+Method:
+getQuantity
+Parameters:
+vector <string>
+Returns:
+vector<long long>
+Method signature:
+vector<long long> getQuantity(vector <string> table)
+(be sure your method is public)
+    
+
+Constraints
+-
+table will contain between 1 and 50 elements, inclusive.
+-
+Each element of table will contain between 1 and 50 characters, inclusive.
+-
+Each element of table will contain the same number of characters.
+-
+Each element of table will contain only uppercase letters ('A'-'Z').
+Examples
+0)
+
+    
+{"OK"}
+Returns: 
+{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 40, 0, 0, 0, 40, 0, 0, 0, 0, 0, 0, 0, 0,
+ 0, 0, 0 }
+The 30 Tanya's rectangles are listed above. There is a total of 40 Ks and 40 Os in these rectangles.
+1)
+
+    
+{"GOOD", "LUCK"}
+Returns: 
+{0, 0, 320, 280, 0, 0, 280, 0, 0, 0, 280, 280, 0, 0, 640, 0, 0, 0, 0,
+ 0, 320, 0, 0, 0, 0, 0 }
+The four copies form the following table:
+GOODGOOD
+LUCKLUCK
+GOODGOOD
+LUCKLUCK
+Tanya lists 360 rectangles that contain a total of 320 Cs, 280 Ds, 280 Gs, 280 Ks, 280 Ls, 640 Os, and 320 Us.
+2)
+
+    
+{"TANYA",
+ "HAPPY",
+ "BIRTH",
+ "DAYYY"}
+Returns: 
+{5168, 1280, 0, 1120, 0, 0, 0, 2560, 1472, 0, 0, 0, 0, 1344, 0, 3008,
+ 0, 1536, 0, 2592, 0, 0, 0, 0, 6320, 0 }
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

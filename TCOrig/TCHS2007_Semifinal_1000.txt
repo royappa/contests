@@ -1,0 +1,70 @@
+
+Problem Statement
+    
+We have several items and a bag that can carry a maximum weight of C. The i-th element of x is the weight of the i-th item. Return the number of different sets of items you can carry in the bag. Two sets are considered different if there exists at least one item which is included in one set and not included in the other.
+Definition
+    
+Class:
+KnapsackProblem
+Method:
+numberOfWays
+Parameters:
+vector <int>, int
+Returns:
+int
+Method signature:
+int numberOfWays(vector <int> x, int C)
+(be sure your method is public)
+    
+
+Constraints
+-
+x will contain between 1 and 30 elements, inclusive.
+-
+Each element of x will between 1 and 10^9, inclusive.
+-
+C will between 0 and 10^9, inclusive.
+Examples
+0)
+
+    
+{1}
+1
+Returns: 2
+We can either take the item or not take it.
+1)
+
+    
+{1}
+2
+Returns: 2
+Same as the first example
+2)
+
+    
+{2, 2}
+1
+Returns: 1
+We cannot take any of the items.
+3)
+
+    
+{1,1}
+2
+Returns: 4
+We can take both items, just the first item, just the second item, or no items.
+4)
+
+    
+{1,1}
+1
+Returns: 3
+This is the same as the previous example, but with a lower capacity bag. We cannot take both items in this case.
+5)
+
+    
+{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
+30
+Returns: 1073741824
+We can take any subset of the items.
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

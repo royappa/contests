@@ -1,0 +1,108 @@
+#include <vector>
+#include <list>
+#include <map>
+#include <set>
+#include <deque>
+#include <stack>
+#include <bitset>
+#include <algorithm>
+#include <functional>
+#include <numeric>
+#include <utility>
+#include <sstream>
+#include <iostream>
+#include <iomanip>
+#include <cstdio>
+#include <cmath>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+class Trainyard {
+public:
+vector<string> A;
+int h, w;
+int visited[10][10][4][10]; // visited a row,column from direction d with x fuel left
+
+bool f(int sr, int sc, int tr, int tc, int dir, int fuel) // dir is incoming direction
+{
+	if (sr == tr && sc == tc) return true;
+	if (fuel == 0) return false;
+	
+	int d[] = {-1,0,0,-1,0,1,1,0};
+	for (int i = 0; i < 4; i++)
+	{
+		int dr = sr+d[2*i], dc = sc+d[2*i+1];
+		if (dr < 0 || dr >= h || dc < 0 || dc >= w) continue;
+		if (visited[dr][dc][i][fuel-1]) continue;
+		if (A[dr][dc] == '.') continue;
+		char from = A[sr][sc], to = A[dr][dc];
+		bool can = 0;		
+		can |= from == '+' && to == '+';
+		can |= (from == '+' && to == '|' && (i == 0 || i == 3));
+		can |= from == '+' && to == '-' && (i == 1 || i == 2);
+		can |= from == '|' && to == '+' && i == dir;
+		can |= from == '|' && to == '|' && i == dir;
+
+		can |= from == '-' && to == '+' && i == dir;
+		can |= from == '-' && to == '-' && i == dir;	
+		if (can)
+		{
+			visited[dr][dc][i][fuel-1] = 1;
+			if (f(dr, dc, tr, tc, i, fuel-1))
+			{
+				return true;
+			}
+		}
+	}
+	return false;
+}
+			
+			
+int reachableSquares(vector <string> layout, int fuel) 
+{
+	A = layout;
+	h = A.size();
+	w = A[0].size();
+	int sr, sc;
+	for (int r = 0; r < h; r++)
+	{
+		for (int c = 0; c < w; c++)
+		{
+			if (A[r][c] == 'S')
+			{
+				sr = r;
+				sc = c;
+			}
+		}
+	}
+	A[sr][sc] = '+';
+	int num = 0;
+	for (int r = 0; r < h; r++)
+	{
+		for (int c = 0; c < w; c++)
+		{
+			if (A[r][c] == '.') continue;
+			memset(visited, 0, sizeof(visited));
+			for (int dir = 0; dir < 4; dir++)
+			{
+				visited[sr][sc][dir][fuel] = 1;
+				if (f(sr,sc,r,c,dir,fuel))
+				{
+					num++;
+					break;
+				}
+			}
+		}
+	}
+	return num;
+}
+};
+
+
+//Powered by [KawigiEdit]
+
+
+
+//Powered by [KawigiEdit]

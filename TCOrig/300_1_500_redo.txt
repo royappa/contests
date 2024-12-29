@@ -1,0 +1,108 @@
+int cache[10]; // cache[k] = number of jumpy numbers from k0000 ... k9999
+
+int jumpy(int k)
+{
+	int last = -1;
+	while (k > 0)
+	{
+		int d = k % 10;
+		k /= 10;
+		if (last == -1)
+		{
+			last = d;
+			continue;
+		}
+		if (abs(last-d) < 2)
+			return 0;
+		last = d;
+	}
+	return 1;
+}
+
+int f(int k)  // return number of jumpy numbers from 1..k, inclusive; return 0 if k is 0
+{
+	int c = 0;
+	
+	int i;
+	for (i = 0; i + 9999 < k; i += 10000)
+	{
+		int left = i / 10000;
+		if (jumpy(left))
+		{
+			c += cache[left%10];
+		}
+	}
+	for (int j = i; j <= k; j++)
+	{
+		c += jumpy(j);
+	}
+	return c;
+}
+
+int howMany(int low, int high) 
+{
+	memset(cache, 0, sizeof(cache));
+	for (int i = 0; i <= 99999; i++)
+	{
+		cache[i/10000] += jumpy(i);
+	}
+	return f(high)-f(low-1);	
+}
+
+Problem Statement
+    
+A jumpy number is a positive integer, all of whose adjacent digits differ by at least 2. For example,
+        
+        NOT JUMPY: 28459, 28549, 1091919, 97753, 111111
+            JUMPY: 290464, 13131313, 97539753, 5
+Create a class JumpyNum that contains a method howMany that is given low and high and returns the number of jumpy numbers that are between low and high, inclusive.
+Definition
+    
+Class:
+JumpyNum
+Method:
+howMany
+Parameters:
+int, int
+Returns:
+int
+Method signature:
+int howMany(int low, int high)
+(be sure your method is public)
+    
+
+Constraints
+-
+low is between 1 and 2,000,000,000, inclusive.
+-
+high is between low and 2,000,000,000, inclusive.
+Examples
+0)
+
+    
+1
+10
+Returns: 9
+All the single digit numbers are jumpy, but 10 isn't since 1 and 0 differ by only 1.
+1)
+
+    
+9
+23
+Returns: 9
+The jumpy ones are 9,13,14,15,16,17,18,19,20
+2)
+
+    
+2000000000
+2000000000
+Returns: 0
+
+3)
+
+    
+8000
+20934
+Returns: 3766
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

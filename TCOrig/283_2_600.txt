@@ -1,0 +1,76 @@
+
+Problem Statement
+    
+You have discovered a region in need of power, and as an enterprising businessperson, you have decided to build a power line there. The region is a cartesian plane, and consumers are represented as points on the plane. Your power line will be a single straight line that is horizontal, vertical, or parallel to any of two diagonals. Each potential consumer will purchase power from your line if and only if the distance between him and your line is less than or equal to D. This distance is measured as the Euclidean distance (the length of the shortest line segment between the point and the line). You would like to maximize your profit by maximizing the number of consumers using your power line.
+You are given vector <int>s x and y containing the coordinates of the consumers. The ith elements of x and y represent the x and y coordinates of the ith consumer. Your are also given an int D, the value described above. Build your power line to maximize the number of consumers that will use it, and return this maximum number.
+Definition
+    
+Class:
+PowerSupply
+Method:
+maxProfit
+Parameters:
+vector <int>, vector <int>, int
+Returns:
+int
+Method signature:
+int maxProfit(vector <int> x, vector <int> y, int D)
+(be sure your method is public)
+    
+
+Notes
+-
+More than one consumer may be located at the same point.
+-
+The power line may cross consumer points, in which case those consumers are at a distance of zero from the power line (see example 1).
+Constraints
+-
+x and y will contain between 0 and 50 elements, inclusive.
+-
+x and y will contain the same number of elements.
+-
+Each element of x and y will be between -1000000 and 1000000, inclusive.
+-
+D will be between 0 and 1000000, inclusive.
+Examples
+0)
+
+    
+{0,3,0,0,0}
+{1,2,6,-4,1}
+1
+Returns: 4
+
+1)
+
+    
+{-1000000,13,1000000}
+{0,0,0}
+0
+Returns: 3
+All points are crossed by the line, so all three consumers can connect to the power line even with D equal to 0.
+2)
+
+    
+{-5,-2,2,8,-1}
+{1,2,1,2,8}
+1
+Returns: 4
+
+3)
+
+    
+{-5,-5,-2,-2,3}
+{-2,-3,4,6,9}
+2
+Returns: 4
+
+4)
+
+    
+{511590, -60297, 337900, -322958, -806739, 358447, 685932, 663609, 276080, -213586}
+{-500859, -840607, -792296, -379621, -890856, 362559, -98535, 617148, -128203, 802475}
+31194
+Returns: 4
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.
