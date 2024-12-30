@@ -1,2 +1,3 @@
+ALL INPUT FILES SHOULD BE *.ain so they are excluded from git commit, per AOC rules
 Always use g++ -O3
 run dos2unix on .txt files
