@@ -1,2 +1,6 @@
 Day 14, part 2: didn't implement simple pattern search carefully, used reddit hints to see tree pattern
 Day 21, needed reddit hint to run on n=26 instead of n=25
+Day 24, program runs each bit's full adder and stops when it reports a mismatch
+I analyzed results, swapped manually and continued running
+Solved the problem by finding the 4 bad swaps that way
+A real solution will be to have the program do the analysis on each adder and perform the swaps itself
