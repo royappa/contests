@@ -4,3 +4,6 @@ Day 24, program runs each bit's full adder and stops when it reports a mismatch
 I analyzed results, swapped manually and continued running
 Solved the problem by finding the 4 bad swaps that way
 A real solution will be to have the program do the analysis on each adder and perform the swaps itself
+Day 25, part 2 is free if you have 49* already
+
+Easter eggs open up after you complete all puzzles (underlined/hover)
