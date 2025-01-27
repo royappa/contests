@@ -1,0 +1,2 @@
+bison -d cfg.y -Wno-conflicts-sr -Wno-other
+gcc -Wl,-subsystem,console -o parser.exe cfg.tab.c lexer.c
