@@ -1,10 +1,4 @@
 import sys
-import re
-from collections import defaultdict
-from collections import Counter, deque
-import hashlib, copy
-from functools import reduce
-from operator import xor
 
 def f(parts, conn, tot, k):
   if len(parts) == 0:
